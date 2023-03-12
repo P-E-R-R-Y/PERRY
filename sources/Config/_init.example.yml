@@ -1,0 +1,11 @@
+version: 0.1
+
+components:
+  - name: 'position'
+    vars:
+      - x: 'int'
+      - y: 'int'
+
+functions:
+
+init:

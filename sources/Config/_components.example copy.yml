@@ -1,0 +1,23 @@
+version: 0.1
+
+specs:
+  compass:
+    enum:
+      LEFT:
+      RIGHT:
+      UP:
+      DOWN:
+
+components:
+  position:
+    vars:
+      - x: 'int'
+      - y: 'int'
+  velocity:
+    vars:
+      - x: 'int'
+      - y: 'int'
+  direction:
+    vars:
+      - d: ''
+  movable

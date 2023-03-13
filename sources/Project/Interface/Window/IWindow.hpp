@@ -20,11 +20,11 @@ class IWindow {
     public:
         ~IWindow() = default;
 
-        virtual void display() = 0;
-        virtual void clear() = 0;
         virtual bool isReady() = 0;
         virtual bool isOpen() = 0;
         virtual void close() = 0;
+        virtual void beginDraw() = 0;
+        virtual void endDraw() = 0;
 
     private:
         //your variables here

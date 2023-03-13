@@ -16,17 +16,20 @@
 #include <dlfcn.h>
 #include <iostream>
 
-int main() {
+int main(int ac, char **av) {
     std::string name = "sfml";
+//    std::string name = "raylib";
+    if (ac == 3 && av[1] == std::string("-l") )
+        name = av[2];
     void *lib;
     IWindow *(*createWindow)(int, int, std::string);
     void (*deleteWindow)();
     IWindow *window;
 
     //listLib
-    std::cout << std::string("./lib" + name + ".so").c_str() << std::endl;
+    std::cout << std::string("./Libraries/lib" + name + ".so").c_str() << std::endl;
 
-    lib = dlopen(std::string("./lib" + name + ".so").c_str(), RTLD_NOW);
+    lib = dlopen(std::string("./Libraries/lib" + name + ".so").c_str(), RTLD_NOW);
     if (!lib) {
         std::cerr << "Failed to load shared library: " << dlerror() << std::endl;
         return 84;
@@ -47,14 +50,14 @@ int main() {
     }
 
         //listWindow
-    window = createWindow(1920, 1080, "Perry");
+    window = createWindow(800, 500, "Perry");
 
     while (window->isOpen()) {
-        window->clear();
         if (!window->isOpen()) {
             window->close();
         }
-        window->display();
+        window->beginDraw();
+        window->endDraw();
     }
 
     deleteWindow();

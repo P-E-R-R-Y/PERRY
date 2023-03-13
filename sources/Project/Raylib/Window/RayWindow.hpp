@@ -13,34 +13,37 @@
  **/
 
 #include "../../Interface/Window/IWindow.hpp"
-#include <SFML/Graphics.hpp>
+#include "raylib.h"
+#include <iostream>
 
-class SfmlWindow : public IWindow {
+class RayWindow : public IWindow {
 
     public:
-        SfmlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title)
-        : _window(sf::VideoMode(screenWidth, screenHeight), title) {
+        RayWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
+            InitWindow(screenWidth, screenHeight, "raylib");
+//            SetTargetFPS(60);
         };
 
         bool isReady() override {
-            return _window.isOpen();
+            return IsWindowReady();
         };
 
         bool isOpen() override {
-            return _window.isOpen();
+            return !WindowShouldClose();
         };
 
         void close() override {
-            _window.close();
+            CloseWindow();
         };
 
         void beginDraw() override {
-            _window.clear();
+            BeginDrawing();
+            ClearBackground(BLACK);
         };
+
         void endDraw() override {
-            _window.display();
+            EndDrawing();
         };
 
     private:
-        sf::RenderWindow _window;
 };

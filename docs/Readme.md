@@ -49,12 +49,12 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
 
 # Summary
 
-- [ ] [PERRY](#perry-1)
-  - [ ] [Project](#project)
-  - [ ] [Engine](#engine)
-  - [ ] [Runtime](#runtime)
-  - [ ] [Reliable](#reliable)
-  - [ ] [YAML](#Yaml)
+- [x] [PERRY](#perry-1)
+  - [x] [Project](#project)
+  - [x] [Engine](#engine)
+  - [x] [Runtime](#runtime)
+  - [x] [Reliable](#reliable)
+  - [x] [YAML](#Yaml)
 
 - [ ] [Plan](#plan-daction)
 
@@ -108,6 +108,11 @@ I want to use .yml to setup the library.
 # Plan d'Action
 
 - [ ] Build an interface of a multimedia library
+  - [ ] IWindow Basics
+  - [ ] SfmlWindow Basics
+  - [ ] RaylibWindow Basics
+  - [ ] SDLWindow Basics
+  - [ ] LibCacaWindow Basics
 - [ ] Build an abstraction of the librarie
 - [ ] Build it dynamically
 - [ ] Make it cross plateform

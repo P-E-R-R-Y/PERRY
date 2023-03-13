@@ -1,0 +1,152 @@
+  952  mkdir build # Create a build directory
+  953  cd build && cmake .. # Build from that directory so the build files are in one place
+  954  cmake --build . # Build the project
+  955  make install
+  956  mkdir build
+  957  ls
+  958  rm build/
+  959  ls
+  960  rm -r build/
+  961  cd ..
+  962  ls
+  963  cd build/
+  964  cmake ../
+  965  cd ..
+  966  ls
+  967  mv build/ sources/Project/Raylib/
+  968  ls
+  969  cd sources/Project/Raylib/
+  970  ls
+  971  clear
+  972  cd build/
+  973  cmake ../
+  974  sudo dnf install alsa-lib-devel mesa-libGL-devel libX11-devel libXrandr-devel libXi-devel libXcursor-devel libXinerama-devel libatomic
+  975  cmake ../
+  976  git clone https://github.com/raysan5/raylib.git raylib
+  977  cd raylib/src/
+  978  make PLATFORM=PLATFORM_DESKTOP # To make the static version.
+  979  make PLATFORM=PLATFORM_DESKTOP RAYLIB_LIBTYPE=SHARED # To make the dynamic shared version.
+  980  make PLATFORM=PLATFORM_WEB # To make web version.
+  981  cd raylib/src/
+  982  make PLATFORM=PLATFORM_DESKTOP RAYLIB_LIBTYPE=SHARED # To make the dynamic shared version.
+  983  ls
+  984  cd ..
+  985  ls
+  986  cd sources/
+  987  ls
+  988  cd Shared/Linux/
+  989  cd Function/
+  990  ls
+  991  ./run.sh
+  992  clear
+  993  ls
+  994  cd ../..
+  995  ls
+  996  cd ..
+  997  ls
+  998  g++ -shared -fPIC -o libshared.so shared.cpp
+  999  git status
+ 1000  ls
+ 1001  cd sources/Project/
+ 1002  ls
+ 1003  g++ -shared -fPIC -o libsfml.so Sfml/sfml.cpp
+ 1004  g++ main.cpp -ldl -lsfml-graphics -lsfml-window -lsfml-system
+ 1005  ./a.out
+ 1006  g++ -shared -fPIC -o libsfml.so Sfml/sfml.cpp -lsfml-graphics -lsfml-window -lsfml-system
+ 1007  g++ main.cpp -ldl
+ 1008  ./a.out
+ 1009* ch
+ 1010  chmod +x run.sh
+ 1011  ./run.sh
+ 1012  ./run
+ 1013  chmod +x run.sh
+ 1014  ./run.sh
+ 1015  git status
+ 1016  git add .
+ 1017  git status
+ 1018  cd ..
+ 1019  git add .
+ 1020  git status
+ 1021  git commit -m "feat(poc): :construction: I'm laying the foundation: sources(DynamicLoader, Interface, SfmlDerivation), docs(readme, setup, developer), .gitignore"
+ 1022  git push
+ 1023  git status
+ 1024  git shotylog
+ 1025  git shortlog
+ 1026  ls
+ 1027  cd sources/Project/
+ 1028  ls
+ 1029  g++ _main.cpp -ldl
+ 1030  ./a.out
+ 1031  g++ main.cpp -ldl
+ 1032  ./a.out
+ 1033  g++ -shared -fPIC -o libray.so Raylib/raylib.cpp
+ 1034  ls
+ 1035  cd ..
+ 1036  ls
+ 1037  cd ..
+ 1038  ls
+ 1039  cd do
+ 1040  cd download/
+ 1041  cd raylib/
+ 1042  ls
+ 1043  cd src/
+ 1044  ls
+ 1045  cd ../../..
+ 1046  ls
+ 1047  cd cd sources/Project/
+ 1048  ls
+ 1049  cd sources/Project/
+ 1050  ls
+ 1051  clear
+ 1052  g++ -shared -fPIC -o libray.so Raylib/raylib.cpp
+ 1053  g++ main.cpp -ldl
+ 1054  ./a.out
+ 1055  cd -
+ 1056  ls
+ 1057  cd download/raylib/src/
+ 1058  ls
+ 1059  make PLATFORM=PLATFORM_DESKTOP RAYLIB_LIBTYPE=SHARED
+ 1060  make PLATFORM=PLATFORM_DESKTOP
+ 1061  sudo make install
+ 1062  g++ -shared -fPIC -o libray.so Raylib/raylib.cpp
+ 1063  cd -
+ 1064  cd sources/Project/
+ 1065  ls
+ 1066  g++ -shared -fPIC -o libray.so Raylib/raylib.cpp
+ 1067  g++ main.cpp -ldl -lraylib -lGL -lm -lpthread -lrt -lX11
+ 1068  ./a.out
+ 1069  ls
+ 1070  g++ -shared -fPIC -o libray.so Raylib/raylib.cpp -lraylib -lGL -lm -lpthread -lrt -lX11
+ 1071  g++ main.cpp -ldl
+ 1072  ./a.out
+ 1073  g++ main.cpp -ldl
+ 1074  ./a.out
+ 1075  g++ -shared -fPIC -o libray.so Raylib/raylib.cpp -lraylib -lGL -lm -lpthread -lrt -lX11
+ 1076  g++ main.cpp -ldl
+ 1077  ./a.out
+ 1078  g++ main.cpp -ldl
+ 1079  ./a.out
+ 1080  g++ main.cpp -ldl
+ 1081  ./a.out
+ 1082  g++ -shared -fPIC -o libray.so Raylib/raylib.cpp -lraylib -lGL -lm -lpthread -lrt -lX11
+ 1083  g++ _main.cpp -ldl
+ 1084  g++ main.cpp -ldl
+ 1093  ./a.out
+ 1094  g++ main.cpp -ldl
+ 1095  ./a.out
+ 1096  g++ -shared -fPIC -o libsfml.so Sfml/sfml.cpp -lsfml-graphics -lsfml-window -lsfml-system
+ 1097  g++ main.cpp -ldl
+ 1098  ./a.out
+ 1099  clear
+ 1100  g++ main.cpp -ldl
+ 1101  ./a.out
+ 1102  ./run.sh
+ 1103  g++ -shared -fPIC -o libray.so Raylib/raylib.cpp -lraylib -lGL -lm -lpthread -lrt -lX11
+ 1104  g++ main.cpp -ldl
+ 1105  ./a.out
+ 1106  g++ -shared -fPIC -o libraylib.so Raylib/raylib.cpp -lraylib -lGL -lm -lpthread -lrt -lX11
+ 1107  ./run.sh
+ 1108  clear
+ 1109  ./run.sh
+ 1110  cd ../../download/
+ 1111  history > history

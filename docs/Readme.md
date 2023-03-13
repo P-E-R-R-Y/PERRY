@@ -23,13 +23,13 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
   </tr>
   <tr>
     <td rowspan="5">Perry Chouteau</td>
-    <td>07/03/2023</td>
+    <td colspan="2">07/03/2023</td>
 
   </tr>
     <th colspan="2">Type de docs</th>
   </tr>
   <tr>
-    <td>markdown</td>
+    <td colspan="2">markdown</td>
   </tr>
   </tr>
     <th>Langue</th>

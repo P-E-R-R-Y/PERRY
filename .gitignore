@@ -1,2 +1,3 @@
-download/
+download/*
+!download/dump/
 a.out

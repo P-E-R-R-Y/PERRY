@@ -20,14 +20,12 @@ class RayWindow : public IWindow {
 
     public:
         RayWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
-            InitWindow(screenWidth, screenHeight, "raylib");
-//            SetTargetFPS(60);
+            InitWindow(screenWidth, screenHeight, title.c_str());
         };
 
-        bool isReady() override {
-            return IsWindowReady();
-        };
+        ~RayWindow() = default;
 
+        //GLOBAL
         bool isOpen() override {
             return !WindowShouldClose();
         };
@@ -36,6 +34,7 @@ class RayWindow : public IWindow {
             CloseWindow();
         };
 
+        //DRAW
         void beginDraw() override {
             BeginDrawing();
             ClearBackground(BLACK);
@@ -43,6 +42,18 @@ class RayWindow : public IWindow {
 
         void endDraw() override {
             EndDrawing();
+        };
+
+        //EVENT
+        bool isPoll() override {
+            return false;
+        }
+
+        bool pollEvent() override {
+            return false;
+        }
+
+        void eventClose() override {
         };
 
     private:

@@ -15,7 +15,7 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
   </tr>
   <tr>
     <td>PERRY</td>
-    <td>En cours</td>
+    <td colspan="2">En cours</td>
   </tr>
   <tr>
     <th>Author</th>
@@ -46,6 +46,8 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
 | Date       | Author         | Purpose |
 |------------|--------------- | - |
 | 07/03/2023 | Perry Chouteau | basics of the document |
+| 10/03/2023 | Perry Chouteau | add a lot of Parts & sub-parts |
+| 14/03/2023 | Perry Chouteau | add a link to dev & setup markdown |
 
 # Summary
 

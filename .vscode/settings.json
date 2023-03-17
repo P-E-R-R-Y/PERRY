@@ -91,6 +91,10 @@
         "typeinfo": "cpp",
         "typeindex": "cpp",
         "cinttypes": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "codecvt": "cpp",
+        "ratio": "cpp",
+        "iomanip": "cpp",
+        "sstream": "cpp"
     },
 }

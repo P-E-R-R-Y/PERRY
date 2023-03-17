@@ -22,25 +22,54 @@ class SfmlWindow : public IWindow {
         : _window(sf::VideoMode(screenWidth, screenHeight), title) {
         };
 
-        bool isReady() override {
-            return _window.isOpen();
-        };
+        ~SfmlWindow() = default;
 
+        //GLOBAL
         bool isOpen() override {
             return _window.isOpen();
         };
 
         void close() override {
-            _window.close();
         };
 
+        //DRAW
         void beginDraw() override {
             _window.clear();
         };
+
         void endDraw() override {
             _window.display();
         };
 
+        //EVENT
+        bool isPoll() override {
+            return true;
+        }
+
+        bool pollEvent() override {
+            return _window.pollEvent(_event);
+        }
+
+        void eventClose() override {
+            if (_event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                _window.close();
+        };
+
     private:
         sf::RenderWindow _window;
+        sf::Event _event;
 };
+
+// sfml                     // raylib           // code
+// event                    // ask_event()       // if is_poll_event() {
+//while (poll_event()) {    // ask_event()       //     while(poll_event()) {
+//    ask_event()s          // ask_event()       //         ask_events();
+//}                         // ask_event()       //     }
+                                                 // } else {
+                                                 //     ask_events();
+                                                 // }
+
+                                                 // ask_event() {
+                                                 //     ask_event()
+                                                 //     ask_event()
+                                                 // }

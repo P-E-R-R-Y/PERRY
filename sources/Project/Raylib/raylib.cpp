@@ -15,7 +15,7 @@
 #include "Window/RayWindow.hpp"
 
 extern "C" IWindow *createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
-    return new RayWindow(screenWidth, screenHeight, title);
+    return new RayWindow(screenWidth, screenHeight, "Raylib " + title);
 }
 
 extern "C" void deleteWindow(IWindow *window) {

@@ -19,12 +19,16 @@ class IWindow {
 
     public:
         ~IWindow() = default;
-
-        virtual bool isReady() = 0;
+        //global
         virtual bool isOpen() = 0;
         virtual void close() = 0;
+        //draw
         virtual void beginDraw() = 0;
         virtual void endDraw() = 0;
+        //event
+        virtual bool isPoll() = 0;
+        virtual bool pollEvent() = 0;
+        virtual void eventClose() = 0;
 
     private:
         //your variables here

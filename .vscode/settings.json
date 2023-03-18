@@ -24,12 +24,12 @@
             "language": "cpp",
             "template": [
                 "",
-                "File: <<filename>>",
-                "Created Date: <<filecreated('dd MMM yyyy')>>",
+                "File: <<filename>> (header.v2)",
+                "Created Date: <<filecreated('ddd DD/MM/yyyy')>>",
                 "Project: <<projectname>>",
                 "Author: <<author>>",
                 "",
-                "Last Modified: <<date>>",
+                "Last Modified: <<dateformat('ddd DD/MM/yyyy')>>",
                 "Modified By: <<author>>",
                 "",
                 "Copyright (c) <<yeartoyear(2023, 2033)>> <<author>>",
@@ -38,7 +38,7 @@
             "changeLogCaption": "HISTORY:",
 			"changeLogHeaderLineCount": 2,
 			"changeLogEntryTemplate": [
-				"<<dateformat('YYYY-MM-DD')>>\t<<initials>>\t"
+				"<<dateformat('ddd DD/MM/yyyy')>>\t<<initials>>\t"
 			]
         },
     ],
@@ -95,6 +95,7 @@
         "codecvt": "cpp",
         "ratio": "cpp",
         "iomanip": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "filesystem": "cpp"
     },
 }

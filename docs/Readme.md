@@ -48,6 +48,7 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
 | 07/03/2023 | Perry Chouteau | basics of the document |
 | 10/03/2023 | Perry Chouteau | add a lot of Parts & sub-parts |
 | 14/03/2023 | Perry Chouteau | add a link to dev & setup markdown |
+| 18/03/2023 | Perry Chouteau | update summary |
 
 # Summary
 
@@ -65,7 +66,8 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
   - [ ] [CBD](#cbd-component-based-design)
 
 - [ ] [Multimedia](#multimedia)
-  - [ ] [Window](#window)
+  - [x] [Window](#window)
+    - [x] [Window](#window-1)
     - [ ] [Event](#event)
     - [ ] [Camera](#camera)
   - [ ] [Graphics](#graphics)
@@ -77,12 +79,12 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
     - [ ] [Music](#music)
 
 - [ ] [CrossPlateform](#crossplateform)
-  - [ ] [Type](#type)
   - [ ] [Plateform](#plateform)
+  - [ ] [Type](#type)
 
-- [ ] [About](#about)
-  - [ ] [Developer](#developer)
-  - [ ] [Setup](#setup)
+- [x] [About](#about)
+  - [x] [Developer](#developer)
+  - [x] [Setup](#setup)
 
 # PERRY
 
@@ -109,16 +111,26 @@ I want to use .yml to setup the library.
 
 # Plan d'Action
 
-- [ ] Build an interface of a multimedia library
-  - [ ] IWindow Basics
-  - [ ] SfmlWindow Basics
-  - [ ] RaylibWindow Basics
-  - [ ] SDLWindow Basics
-  - [ ] LibCacaWindow Basics
-- [ ] Build an abstraction of the librarie
-- [ ] Build it dynamically
-- [ ] Make it cross plateform
-- [ ] Make it work on 32/64 & inversed bite type.
+- [x] POC
+  - [x] Build an interface of a multimedia library
+    - [x] IWindow Basics
+  - [x] Build an encapsulation of libraries
+    - [x] SfmlWindow Basics
+    - [x] RaylibWindow Basics
+    - [ ] SDLWindow Basics
+    - [ ] LibCacaWindow Basics
+  - [x] Build it dynamically
+  - [x] Build Core
+    - [x] Handle IMultimediaCore
+    - [x] Handle IGameCore
+    - [x] Switch library at runtime
+    - [x] Build simple IGameCore
+    - [ ] Build a Game in Core
+    - [x] Build combination of simple GameCore & simple MultimediaCore
+- [ ] MVP
+  - [ ] Make it cross plateform
+- [ ] Release
+  - [ ] Make it work on 32/64 & inversed bite type.
 - [ ]
 
 # Engine
@@ -135,7 +147,13 @@ I want to add a cbd system over the ECS. but I'm not realy sure about that.
 
 ## Window
 
+### Window
+
+handle a simple window
+
 ### Event
+
+handle simple event
 
 ### Camera
 

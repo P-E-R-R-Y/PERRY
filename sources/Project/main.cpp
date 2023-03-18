@@ -1,11 +1,11 @@
 /**
  *
- * File: main.cpp
- * Created Date: Su Mar 2023
+ * File: main.cpp (header.v2)
+ * Created Date: Tue 14/03/2023
  * Project: PERRY
  * Author: Perry Chouteau
  *
- * Last Modified: Sun Mar 12 2023
+ * Last Modified: Sat 18/03/2023
  * Modified By: Perry Chouteau
  *
  * Copyright (c) 2023-2033 Perry Chouteau
@@ -20,77 +20,31 @@
 #include <utility>
 #include <filesystem>
 #include <sys/stat.h>
+
 class Core {
+    protected:
+        virtual ~Core() = default;
+
+        virtual int Run(std::vector<std::string> files) = 0;
+
+        virtual void initHandler() = 0;
+
+        virtual void eventHandler() = 0;
+
+        virtual void updateHandler() = 0;
+
+        virtual void displayHandler() = 0;
+};
+
+class SwitchCore: public Core{
     public:
-        Core() {
+        SwitchCore(): Core() {
             up = true;
-            nlib = 1;
+            nlib = 0;
         }
 
-        int Run (std::vector<std::string> files) {
-//            // load library
-//            std::cout << 1 << std::endl;
-//            for (auto file: files) {
-//            std::string file = files[1];
-//            std::string key = file.substr(libPath.size() + std::string("lib").size(), file.size() - (libPath.size() + std::string("lib").size() + std::string(".so").size()));
-//
-//                std::cout << ">>>" << key << std::endl;
-//
-//                mdl.emplace(key, DynamicLoader(file));
-//            }
-//
-//            std::cout << "insert: " << key << " " << file << std::endl;
-//            keys.push_back(key);
-//            mdl.emplace(key, DynamicLoader(file));
-//            mdl[key].findSymbol("");
-//            mdl.at(key);
-//            std::cout << "_" << std::endl;
-//            std::cout << 2 << std::endl;
-//            // handler
-//            while (up) {
-//                up = false;
-//                // variables
-//                std::cout << 2.3 << std::endl;
-//                std::cout << keys.at(nlib) << std::endl;
-//
-//                for (auto pair: mdl) {
-//                    std::cout << "|" << pair.first << std::endl;
-//                    std::cout << "|" << pair.second.isReady() << std::endl;
-//                }
-//                std::cout << "|> " << (mdl.at(key/*keys.at(0)*/).isReady()) << std::endl;
-//                DynamicLoader dl(files[0]);
-//
-//                DynamicLoader dl = mdl.at(key/*keys.at(0)*/);
-//
-//                IWindow *(*createWindow)(int, int, std::string) = reinterpret_cast<IWindow *(*)(int, int, std::string)>(dl.findSymbol("createWindow"));
-//                void (*deleteWindow)() = reinterpret_cast<void (*)()>(dl.findSymbol("deleteWindow"));
-//
-//                if (createWindow == nullptr)
-//                    std::cout << "error" << std::endl;
-//                IWindow *window = createWindow(800, 500, "Perry");
-//                // handle game
-//                std::cout << 3 << std::endl;
-//                initHandler();
-//                while (window->isOpen()) {
-//                    //event
-//                    if (window->isPoll()) {
-//                        while (window->pollEvent())
-//                            eventHandler();
-//                    } else {
-//                        eventHandler();
-//                    }
-//                    window->beginDraw();
-//                    displayHandler();
-//                    window->endDraw();
-//                }
-//               deleteWindow();
-//
-//                // change librarie
-//                nlib += (nlib < mdl.size()) ? 1 : -nlib;
-//            }
-
+        int Run (std::vector<std::string> files) override {
             while (up) {
-
                 DynamicLoader dl(files[nlib]);
                 std::cout << files[nlib] << std::endl;
                 IWindow *(*createWindow)(int, int, std::string) = reinterpret_cast<IWindow *(*)(int, int, std::string)>(dl.findSymbol("createWindow"));
@@ -100,18 +54,23 @@ class Core {
                     continue;
                 IWindow *window = createWindow(800, 500, "Perry");
                 // main loop
+                this->initHandler();
                 while (window->isOpen()) {
                     if (window->isPoll()) {
                         while (window->pollEvent()) {
                             window->eventClose();
+                            this->eventHandler();
                         }
                     }
                       else {
-                        //ask_event()
                         window->eventClose();
+                        this->eventHandler();
                     }
+                    this->updateHandler();
                     window->beginDraw();
+                    this->displayHandler();
                     window->endDraw();
+
                 }
                 window->close();
 
@@ -123,18 +82,8 @@ class Core {
         }
 
     protected:
-
-        virtual void initHandler() = 0;
-
-        virtual void eventHandler() = 0;
-
-        virtual void displayHandler() = 0;
-
-    protected:
         bool up;
         std::size_t nlib;
-        std::vector<std::string> keys;
-        std::map<std::string, DynamicLoader> mdl;
 };
 
 class SimpleCore: public Core {
@@ -142,56 +91,57 @@ class SimpleCore: public Core {
         SimpleCore(): Core() {
         }
 
+        ~SimpleCore() {};
+
     protected:
         void initHandler() override {
+            std::cout << "initHandler ";
         }
 
         void eventHandler() override {
+            std::cout << "eventHandler ";
+        }
 
+        void updateHandler() override {
+            std::cout << "updateHandler ";
         }
 
         void displayHandler() override {
-            ;
+            std::cout << "displayHandler" << std::endl;
         }
 
     private:
         //vars
 };
 
-/*int dynaLoad(std::vector<std::string> flags) {
-//    bool app.isRunning(true);
+class SimpleSwitchCore: public SimpleCore, public SwitchCore {
+    public:
 
-    void *lib;
-    IWindow *(*createWindow)(int, int, std::string);
-    void (*deleteWindow)();
-    IWindow *window;
+        SimpleSwitchCore(): SimpleCore(), SwitchCore() { }
 
-    std::map<std::string, DynamicLoader> dl;
-
-     for (auto name: flags)
-        dl.emplace(name, DynamicLoader(std::string("./Shared/lib" + name + ".so")));
-
-//    while (close)
-
-    createWindow = reinterpret_cast<IWindow *(*)(int, int, std::string)>(dl.at(flags.at(0)).findSymbol("createWindow"));
-    deleteWindow = reinterpret_cast<void (*)()>(dl.at(flags.at(0)).findSymbol("deleteWindow"));
-    if (!createWindow || !deleteWindow)
-        return 84;
-
-    window = createWindow(800, 500, "Perry");
-
-    while (window->isOpen()) {
-        if (!window->isOpen()) {
-            window->close();
+        int Run(std::vector<std::string> files) override {
+            return SwitchCore::Run(files);
         }
-        window->beginDraw();
-        window->endDraw();
-    }
 
-    deleteWindow();
+    protected:
 
-    return 0;
-}*/
+        void initHandler() override {
+            SimpleCore::initHandler();
+        }
+
+        void eventHandler() override {
+            SimpleCore::eventHandler();
+        }
+
+        void updateHandler() override {
+            SimpleCore::updateHandler();
+        }
+
+        void displayHandler() override {
+            SimpleCore::displayHandler();
+        }
+
+};
 
 #include "Libraries/FlagParser.hpp"
 #include "Libraries/FileSearcher.hpp"
@@ -209,9 +159,9 @@ int main(int ac, char **av) {
     for(auto& i: files)
         std::cout << i << std::endl;
 
-    SimpleCore sc;
+    SimpleSwitchCore ssc;
 
-    sc.Run(files);
+    ssc.Run(files);
 
     return 0;
 }

@@ -12,8 +12,11 @@
  *
  **/
 
-#ifndef IWindow_HPP_
-#define IWindow_HPP_
+#ifndef IWINDOW_HPP_
+    #define IWINDOW_HPP_
+    #include "../Graphics/IModel2.hpp"
+
+//class IModel2;
 
 class IWindow {
 
@@ -24,6 +27,7 @@ class IWindow {
         virtual void close() = 0;
         //draw
         virtual void beginDraw() = 0;
+        virtual void draw2(IModel2 *model) = 0;
         virtual void endDraw() = 0;
         //event
         virtual bool isPoll() = 0;
@@ -34,4 +38,4 @@ class IWindow {
         //your variables here
 };
 
-#endif /* !IWindow_HPP_ */
+#endif /* !IWINDOW_HPP_ */

@@ -12,7 +12,14 @@
  *
  **/
 
+#ifndef SFMLWINDOW_HPP_
+#define SFMLWINDOW_HPP_
+
+//Interface
 #include "../../Interface/Window/IWindow.hpp"
+#include "../../Interface/Graphics/IModel2.hpp"
+
+//SFML
 #include <SFML/Graphics.hpp>
 
 class SfmlWindow : public IWindow {
@@ -37,6 +44,8 @@ class SfmlWindow : public IWindow {
             _window.clear();
         };
 
+        void draw2(IModel2 *model) override;
+
         void endDraw() override {
             _window.display();
         };
@@ -60,16 +69,12 @@ class SfmlWindow : public IWindow {
         sf::Event _event;
 };
 
-// sfml                     // raylib           // code
-// event                    // ask_event()       // if is_poll_event() {
-//while (poll_event()) {    // ask_event()       //     while(poll_event()) {
-//    ask_event()s          // ask_event()       //         ask_events();
-//}                         // ask_event()       //     }
-                                                 // } else {
-                                                 //     ask_events();
-                                                 // }
+//encapsulation
+#include "../Graphics/SfmlModel2.hpp"
 
-                                                 // ask_event() {
-                                                 //     ask_event()
-                                                 //     ask_event()
-                                                 // }
+void SfmlWindow::draw2(IModel2 *model) {
+    SfmlModel2 *sfmlmodel = static_cast<SfmlModel2 *>(model);
+    _window.draw(sfmlmodel->_sprite);
+};
+
+#endif /* !SFMLWINDOW_HPP_ */

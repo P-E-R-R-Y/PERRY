@@ -12,31 +12,20 @@
  *
  **/
 
+//Interface
 #include "Interface/Window/IWindow.hpp"
-#include "Libraries/DynamicLoader.hpp"
+#include "Interface/Graphics/IModel2.hpp"
+//EngineCore
+#include "Libraries/Core/Engine/NoEngineCore.hpp"
+
 #include <dlfcn.h>
 #include <map>
 #include <iostream>
 #include <utility>
 #include <filesystem>
 #include <sys/stat.h>
-
-class Core {
-    protected:
-        virtual ~Core() = default;
-
-        virtual int Run(std::vector<std::string> files) = 0;
-
-        virtual void initHandler() = 0;
-
-        virtual void eventHandler() = 0;
-
-        virtual void updateHandler() = 0;
-
-        virtual void displayHandler() = 0;
-};
-
-class SwitchCore: public Core{
+/*
+class SwitchCore: public Core {
     public:
         SwitchCore(): Core() {
             up = true;
@@ -47,12 +36,18 @@ class SwitchCore: public Core{
             while (up) {
                 DynamicLoader dl(files[nlib]);
                 std::cout << files[nlib] << std::endl;
+                //window
                 IWindow *(*createWindow)(int, int, std::string) = reinterpret_cast<IWindow *(*)(int, int, std::string)>(dl.findSymbol("createWindow"));
-                void (*deleteWindow)(IWindow * window) = reinterpret_cast<void (*)(IWindow * window)>(dl.findSymbol("deleteWindow"));
+                void (*deleteWindow)(IWindow * window) = reinterpret_cast<void (*)(IWindow *window)>(dl.findSymbol("deleteWindow"));
+                //model2
+                IModel2 *(*createModel2)(std::string) = reinterpret_cast<IModel2 *(*)(std::string)>(dl.findSymbol("createModel2"));
+                void (*deleteModel2)(IModel2 *model2) = reinterpret_cast<void (*)(IModel2 *model2)>(dl.findSymbol("deleteModel2"));
 
-                if (createWindow == nullptr || deleteWindow == nullptr)
+                if (createWindow == nullptr || deleteWindow == nullptr || createModel2 == nullptr || deleteModel2 == nullptr)
                     continue;
+
                 IWindow *window = createWindow(800, 500, "Perry");
+                IModel2 *model2 = createModel2("image.png");
                 // main loop
                 this->initHandler();
                 while (window->isOpen()) {
@@ -61,13 +56,13 @@ class SwitchCore: public Core{
                             window->eventClose();
                             this->eventHandler();
                         }
-                    }
-                      else {
+                    } else {
                         window->eventClose();
                         this->eventHandler();
                     }
                     this->updateHandler();
                     window->beginDraw();
+                    window->draw2(model2);
                     this->displayHandler();
                     window->endDraw();
 
@@ -75,6 +70,7 @@ class SwitchCore: public Core{
                 window->close();
 
                 deleteWindow(window);
+                deleteModel2(model2);
 
                 nlib += (nlib < files.size() - 1) ? 1 : -nlib;
             }
@@ -141,27 +137,48 @@ class SimpleSwitchCore: public SimpleCore, public SwitchCore {
             SimpleCore::displayHandler();
         }
 
+};*/
+
+#include <filesystem>
+
+class FirstGameCore: public SwitchLibCore/*NoEngineCore*/ {
+    public:
+        FirstGameCore() {
+
+        }
+    protected:
+
+        void initHandler() override {
+            std::cout << "initHandler " << std::endl;
+            model2 = createModel2("./image.png");
+        }
+
+        void eventHandler() override {
+            std::cout << "eventHandler " << std::endl;
+        }
+
+        void updateHandler() override {
+            std::cout << "updateHandler " << std::endl;
+        }
+
+        void displayHandler() override {
+            std::cout << "displayHandler" << std::endl;
+            window->draw2(model2);
+        }
+
+    private:
+        IModel2 *model2;
 };
 
 #include "Libraries/FlagParser.hpp"
 #include "Libraries/FileSearcher.hpp"
 
 int main(int ac, char **av) {
-//    FlagParser fp(ac, av);
-//    std::vector<std::string> flagL = fp.get("l");
-//    for (auto i: flagL) {
-//        std::cout << i << std::endl;
-//    }
-//    dynaLoad(fp.get("l"));
-/*------------------------------------------------------------------------------*/
-
     std::vector<std::string> files = FileSearcher::searchPathFiles("./Shared/", "so");
+    FirstGameCore fgc;
+
     for(auto& i: files)
         std::cout << i << std::endl;
-
-    SimpleSwitchCore ssc;
-
-    ssc.Run(files);
-
+    fgc.Run(files);
     return 0;
 }

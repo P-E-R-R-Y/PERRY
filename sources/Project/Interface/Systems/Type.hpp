@@ -15,35 +15,37 @@
 #ifndef TYPE_HPP_
 #define TYPE_HPP_
 
-#ifdef _WIN32
-    #define OS "Windows"
-#elif __linux__
-    #define OS "Linux"
-    #include <sys/types.h>
-    #include <string>
-    #include <iostream>
-    #define __v1i_t __int32_t
-    #define __v1f_t float
-#endif
+
+ #ifdef _WIN32
+     #define OS "Windows"
+ #elif __linux__
+     #define OS "Linux"
+     #include <sys/types.h>
+     #include <string>
+     #include <iostream>
+     #define __v1i_t __int32_t
+     #define __v1f_t float
+ #endif
+
 
 //int32
 typedef struct __v2u_s {
     __uint32_t x;
     __uint32_t y;
-} __v2i_t;
+} __v2u_t;
 
 typedef struct __v3u_s {
     __uint32_t x;
     __uint32_t y;
     __uint32_t z;
-} __v3i_t;
+} __v3u_t;
 
 typedef struct __v4u_s {
     __uint32_t x;
     __uint32_t y;
     __uint32_t w;
     __uint32_t h;
-} __v4i_t;
+} __v4u_t;
 
 typedef struct __v2i_s {
     __int32_t x;

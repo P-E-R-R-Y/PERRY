@@ -12,9 +12,17 @@
  *
  **/
 
+#ifndef RAYWINDOW_HPP_
+#define RAYWINDOW_HPP_
+
+//Interface
 #include "../../Interface/Window/IWindow.hpp"
+
+//Raylib
 #include "raylib.h"
 #include <iostream>
+
+class RayModel2;
 
 class RayWindow : public IWindow {
 
@@ -40,6 +48,8 @@ class RayWindow : public IWindow {
             ClearBackground(BLACK);
         };
 
+        virtual void draw2(IModel2 *model) override;
+
         void endDraw() override {
             EndDrawing();
         };
@@ -58,3 +68,17 @@ class RayWindow : public IWindow {
 
     private:
 };
+
+//encapsulation
+#include "../Graphics/RayModel2.hpp"
+
+void RayWindow::draw2(IModel2 *model) {
+    RayModel2 *raymodel = static_cast<RayModel2 *>(model);
+
+    Rectangle posSize = {float(raymodel->getPosition().x), float(raymodel->getPosition().y),
+                        float(raymodel->getSize().x), float(raymodel->getSize().y) };
+
+    DrawTexturePro(raymodel->_texture, raymodel->_crop, posSize, {0,0}, 0, WHITE);
+};
+
+#endif /* !RAYWINDOW_HPP_ */

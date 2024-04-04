@@ -18,6 +18,13 @@
 
  #ifdef _WIN32
      #define OS "Windows"
+ #elif __APPLE__
+    #define OS "macOS"
+     #include <sys/types.h>
+     #include <string>
+     #include <iostream>
+     #define __v1i_t __int32_t
+     #define __v1f_t float
  #elif __linux__
      #define OS "Linux"
      #include <sys/types.h>
@@ -25,6 +32,8 @@
      #include <iostream>
      #define __v1i_t __int32_t
      #define __v1f_t float
+ #else
+    #define OS "Warn"
  #endif
 
 

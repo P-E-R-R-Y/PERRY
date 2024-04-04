@@ -58,9 +58,9 @@ class FlagParser {
 
     private:
 
-        void strToFlags(int ac, char **av, std::string &str) {
-//            str.substr(0, str.find(...));
-        }
+//        void strToFlags(int ac, char **av, std::string &str) {
+////            str.substr(0, str.find(...));
+//        }
 
     private:
         std::map<std::string, std::vector<std::string>> _keyValue;

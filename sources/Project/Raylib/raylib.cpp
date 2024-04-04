@@ -18,6 +18,8 @@
 //Raylib
 #include "Window/RayWindow.hpp"
 #include "Graphics/RayModel2.hpp"
+#include "Graphics/RayModel3.hpp"
+#include "Graphics/RayCamera.hpp"
 
 extern "C" IWindow *createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
     return new RayWindow(screenWidth, screenHeight, std::string("Raylib " + title));
@@ -33,6 +35,14 @@ extern "C" IModel2 *createModel2(std::string path) {
 
 extern "C" void deleteModel2(IModel2 *model2) {
     delete model2;
+}
+
+extern "C" ICamera *createCamera() {
+    return new RayCamera();
+}
+
+extern "C" void deleteCamera(ICamera *camera) {
+    delete camera;
 }
 
 #endif /* !RAYLIB_CPP_ */

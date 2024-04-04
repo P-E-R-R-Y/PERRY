@@ -11,6 +11,7 @@
  * Copyright (c) 2023-2033 Perry Chouteau
  *
  **/
+#include <iostream>
 
 class Core {
     public:

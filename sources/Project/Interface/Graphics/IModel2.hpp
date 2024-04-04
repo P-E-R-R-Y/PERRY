@@ -24,7 +24,7 @@
 
         public:
             //constructor
-            ~IModel2() = default;
+            virtual ~IModel2() = default;
             //is
             virtual bool isReady() const = 0;
             //b

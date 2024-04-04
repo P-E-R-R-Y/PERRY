@@ -19,7 +19,7 @@
 #include "../../Interface/Window/IWindow.hpp"
 
 //Raylib
-#include "raylib.h"
+#include "../raylib.h"
 #include <iostream>
 
 class RayModel2;
@@ -54,6 +54,17 @@ class RayWindow : public IWindow {
             EndDrawing();
         };
 
+        //Draw3 (Carve)
+        void beginMode3(ICamera *camera) override {
+//            BeginMode3D();
+        };
+        
+        virtual void draw3(IModel3 *model) override;
+
+        void endMode3() override {
+            EndMode3D();
+        };
+
         //EVENT
         bool isPoll() override {
             return false;
@@ -71,6 +82,7 @@ class RayWindow : public IWindow {
 
 //encapsulation
 #include "../Graphics/RayModel2.hpp"
+#include "../Graphics/RayModel3.hpp"
 
 void RayWindow::draw2(IModel2 *model) {
     RayModel2 *raymodel = static_cast<RayModel2 *>(model);
@@ -79,6 +91,12 @@ void RayWindow::draw2(IModel2 *model) {
                         float(raymodel->getSize().x), float(raymodel->getSize().y) };
 
     DrawTexturePro(raymodel->_texture, raymodel->_crop, posSize, {0,0}, 0, WHITE);
+};
+
+void RayWindow::draw3(IModel3 *model) {
+    RayModel3 *raymodel = static_cast<RayModel3 *>(model);
+
+//    DrawTexturePro(raymodel->_texture, raymodel->_crop, posSize, {0,0}, 0, WHITE);
 };
 
 #endif /* !RAYWINDOW_HPP_ */

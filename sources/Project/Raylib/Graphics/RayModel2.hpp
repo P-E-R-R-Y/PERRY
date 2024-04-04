@@ -20,7 +20,7 @@
 #include "../../Interface/Graphics/IModel2.hpp"
 
 //Raylib
-#include "raylib.h"
+#include "../raylib.h"
 
 class RayModel2 : public IModel2 {
 

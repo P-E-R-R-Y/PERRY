@@ -29,7 +29,6 @@ class SwitchLibCore: public Core/*DynamicCore*/ {
                 // if (ml.Init(files[nlib]) == false)
                     // throw std::runtime_error("Failed to load the librarie functions");
                 std::cout << files[nlib] << std::endl;
-                std::cout << 4 << std::endl;
                 // if (ml.createWindow == nullptr) {
                     // throw std::runtime_error("Failed to find createWindow function in the library");
                 // } else
@@ -42,6 +41,8 @@ class SwitchLibCore: public Core/*DynamicCore*/ {
                 deleteWindow = reinterpret_cast<void (*)(IWindow *window)>(dl.findSymbol("deleteWindow"));
                 createModel2 = reinterpret_cast<IModel2 *(*)(std::string)>(dl.findSymbol("createModel2"));
                 deleteModel2 = reinterpret_cast<void (*)(IModel2 *model)>(dl.findSymbol("deleteModel2"));
+                createCamera = reinterpret_cast<ICamera *(*)()>(dl.findSymbol("createCamera"));
+                deleteCamera = reinterpret_cast<void (*)(ICamera *camera)>(dl.findSymbol("deleteCamera"));
 
 //                IWindow *window = ml.createWindow(800, 500, "Perry");
                 window = createWindow(800, 500, "Perry");
@@ -63,6 +64,7 @@ class SwitchLibCore: public Core/*DynamicCore*/ {
                     window->beginDraw();
                     this->displayHandler();
                     window->endDraw();
+//                    window->beginDraw3();
                 }
                 window->close();
 
@@ -85,6 +87,9 @@ class SwitchLibCore: public Core/*DynamicCore*/ {
         // model
         IModel2 *(*createModel2)(std::string);
         void (*deleteModel2)(IModel2 *model);
+        //camera
+        ICamera *(*createCamera)();
+        void (*deleteCamera)(ICamera *camera);
         //vars
         IWindow *window;
         bool up;

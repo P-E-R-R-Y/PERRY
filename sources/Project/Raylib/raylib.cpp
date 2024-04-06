@@ -45,4 +45,12 @@ extern "C" void deleteCamera(ICamera *camera) {
     delete camera;
 }
 
+extern "C" IModel3 *createModel3() {
+    return new RayModel3();
+}
+
+extern "C" void deleteModel3(IModel3 *model3) {
+    delete model3;
+}
+
 #endif /* !RAYLIB_CPP_ */

@@ -15,6 +15,7 @@
 #include "../Type/DynamicCore.hpp"
 #include <typeinfo>
 
+//todo make the switchlibcore use dynamicCore and not simple core to auto define simple function;
 class SwitchLibCore: public Core/*DynamicCore*/ {
     public:
         SwitchLibCore()/*: DynamicCore()*/ {
@@ -37,12 +38,17 @@ class SwitchLibCore: public Core/*DynamicCore*/ {
                 // std::cout << typeid(ml.createWindow).name() << std::endl;
 
                 DynamicLoader dl(files[nlib]);
+                //Core
                 createWindow = reinterpret_cast<IWindow *(*)(__int32_t, __int32_t, std::string)>(dl.findSymbol("createWindow"));
                 deleteWindow = reinterpret_cast<void (*)(IWindow *window)>(dl.findSymbol("deleteWindow"));
+                //Graphics
                 createModel2 = reinterpret_cast<IModel2 *(*)(std::string)>(dl.findSymbol("createModel2"));
                 deleteModel2 = reinterpret_cast<void (*)(IModel2 *model)>(dl.findSymbol("deleteModel2"));
+                //3D
                 createCamera = reinterpret_cast<ICamera *(*)()>(dl.findSymbol("createCamera"));
                 deleteCamera = reinterpret_cast<void (*)(ICamera *camera)>(dl.findSymbol("deleteCamera"));
+                createModel3 = reinterpret_cast<IModel3 *(*)()>(dl.findSymbol("createModel3"));
+                deleteModel3 = reinterpret_cast<void (*)(IModel3 *model3)>(dl.findSymbol("deleteModel3"));
 
 //                IWindow *window = ml.createWindow(800, 500, "Perry");
                 window = createWindow(800, 500, "Perry");
@@ -90,6 +96,10 @@ class SwitchLibCore: public Core/*DynamicCore*/ {
         //camera
         ICamera *(*createCamera)();
         void (*deleteCamera)(ICamera *camera);
+        //3D
+        IModel3 *(*createModel3)();
+        void (*deleteModel3)(IModel3 *model3);
+
         //vars
         IWindow *window;
         bool up;

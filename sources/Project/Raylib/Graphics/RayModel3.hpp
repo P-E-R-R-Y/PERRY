@@ -16,16 +16,13 @@
 #ifndef CAMERA3_HPP_
 #define CAMERA3_HPP_
 
-//Interface
-#include "../../Interface/Graphics/IModel2.hpp"
-
 //Raylib
 #include "../raylib.h"
 
 class RayModel3 : public IModel3 {
 
     public:
-        RayModel3(std::string path) {
+        RayModel3() {
             _position = {0, 0};
             _scale = {1, 1};
         }

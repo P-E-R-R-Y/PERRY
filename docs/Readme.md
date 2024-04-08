@@ -65,12 +65,17 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
   - [ ] [ECS](#ecs-entity-component-system)
   - [ ] [CBD](#cbd-component-based-design)
 
-- [ ] [Multimedia](#multimedia)
+- Module
+  - Graphics3
+  - Graphics2
+  - ...
+
+- [ ] [Graphic3](#multimedia)
   - [x] [Window](#window)
     - [x] [Window](#window-1)
     - [ ] [Event](#event)
-    - [ ] [Camera](#camera)
-  - [ ] [Graphics](#graphics)
+    - [x] [Camera](#camera)
+  - [ ] [Graphic](#graphics)
     - [ ] [Model2](#model2)
     - [ ] [Model3](#model3)
     - [ ] [Text](#text)
@@ -143,33 +148,44 @@ This engine will implement the ECS from rtype with my add-ons.
 
 I want to add a cbd system over the ECS. but I'm not realy sure about that.
 
-# Multimedia
+# Module
+- engine
+- graphics2
+- graphics3
+- Window
+- network
+- json
+- audio
+- physics (math)
+- ...
+- ide
+
+# Graphic3
 
 ## Window
 
-### Window
-
 handle a simple window
 
-### Event
+## Event
 
 handle simple event
 
-### Camera
+## Camera
 
 ## Graphics
 
-### Model2
+## Model2
 
-### Model3
+## Model3
 
-### Text
+## Text
 
-## Audio
+# Audio2
 
-### Music
-
-### Sound
+# Long
+- Music
+# Small
+- Sound
 
 # About
 
@@ -180,3 +196,6 @@ Firstly it's a personal work but in the future if I work with other devs, you sh
 ## Setup
 
 Secondly if you want to install the library to build your game you should folow this [Setup.md](docs/Setup.md)
+
+## known libs
+https://en.cppreference.com/w/c/links/libs

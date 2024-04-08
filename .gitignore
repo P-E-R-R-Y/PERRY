@@ -1,4 +1,6 @@
 download/*
 !download/dump/
 a.out
+a
+
 build/

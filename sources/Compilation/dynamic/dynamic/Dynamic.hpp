@@ -18,7 +18,6 @@
 #include "Static.hpp"
 
 //Windowing
-extern "C" Debug *debug() {
-}
+extern "C" Debug *debug();
 
 #endif /* !RAYLIB_CPP_ */

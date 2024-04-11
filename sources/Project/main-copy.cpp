@@ -1,3 +1,12 @@
+#include "IWindow.hpp"
+
+int main()
+{
+    graphic3::IWindow *window;
+    return 0;
+}
+
+
 /*
 class SwitchCore: public Core {
     public:

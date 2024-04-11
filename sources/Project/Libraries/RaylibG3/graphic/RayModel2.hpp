@@ -17,7 +17,7 @@
 #define RAYMODEL2_HPP_
 
 //Interface
-#include "../../../Interface/graphic3/graphic/IModel2.hpp"
+#include "../../../Interfaces/graphic3/graphic/IModel2.hpp"
 
 //Raylib
 #include "../raylib.h"

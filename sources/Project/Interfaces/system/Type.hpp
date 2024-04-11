@@ -18,15 +18,11 @@
 
     #ifdef _WIN32
         #define OS "Windows"
-        #define __v1i_t __int32_t
-        #define __v1f_t float
     #elif __APPLE__
         #define OS "macOS"
         #include <sys/types.h>
         #include <string>
         #include <iostream>
-        #define __v1i_t __int32_t
-        #define __v1f_t float
         //use __int32_t
         //use float
     #else //if __linux__
@@ -34,10 +30,10 @@
         #include <sys/types.h>
         #include <string>
         #include <iostream>
-        #define __v1i_t __int32_t
-        #define __v1f_t float
     #endif
 
+#define __v1i_t __int32_t
+#define __v1f_t float
 
 //int32
 typedef struct __v2u_s {

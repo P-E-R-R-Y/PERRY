@@ -9,7 +9,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then #Linux
   g++ -shared -fPIC -o libraylib.so Library/Raylib/raylib.cpp -lraylib -lGL -lm -lpthread -lrt -lX11 -std=c++20
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then #Macos
-  g++ -shared -fPIC -o libraylib.so Library/RaylibG3/raylib.cpp -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL Library/RaylibG3/libraylib.a -std=c++20
+  g++ -shared -fPIC -o libraylib.so Libraries/RaylibG3/raylib.cpp -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL Libraries/RaylibG3/libraylib.a -std=c++20
 fi
 
 # MOVE LIBRARIES

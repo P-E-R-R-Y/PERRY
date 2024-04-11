@@ -18,7 +18,7 @@
 #include "../raylib.h"
 
 //Interface
-#include "../../../Interface/graphic3/window/IWindow.hpp"
+#include "../../../Interfaces/graphic3/window/IWindow.hpp"
 //encapsulation
 #include "../graphic/RayModel2.hpp"
 #include "../graphic/RayModel3.hpp"

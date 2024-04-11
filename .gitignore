@@ -1,6 +1,6 @@
-download/*
-!download/dump/
-a.out
-a
-
 build/
+
+.vscode/
+a.out
+.DS_Store
+a

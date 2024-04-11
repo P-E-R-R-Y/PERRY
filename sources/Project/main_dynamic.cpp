@@ -13,10 +13,10 @@
  **/
 
 //Interface
-#include "Interface/graphic3/window/IWindow.hpp"
-#include "Interface/graphic3/graphic/IModel2.hpp"
+#include "Interfaces/graphic3/window/IWindow.hpp"
+#include "Interfaces/graphic3/graphic/IModel2.hpp"
 //EngineCore
-#include "Library/Core/Engine/NoEngineCore.hpp"
+#include "Libraries/Core/Engine/NoEngineCore.hpp"
 
 #include <dlfcn.h>
 #include <map>
@@ -28,9 +28,7 @@
 
 class FirstGameCore: public SwitchLibCore/*NoEngineCore*/ {
     public:
-        FirstGameCore() {
-
-        }
+        FirstGameCore(std::vector<std::string> files): SwitchLibCore(files) {}
     protected:
 
         void initHandler() override {
@@ -50,7 +48,7 @@ class FirstGameCore: public SwitchLibCore/*NoEngineCore*/ {
 
         void displayHandler() override {
             std::cout << "displayHandler" << std::endl;
-//            window->draw2(model2);
+            window->draw2(model2);
             window->beginMode3(camera);
             window->draw3(model3);
             
@@ -63,17 +61,17 @@ class FirstGameCore: public SwitchLibCore/*NoEngineCore*/ {
         graphic3::IModel3 *model3;
 };
 
-#include "Library/FlagParser.hpp"
-#include "Library/FileSearcher.hpp"
+#include "Libraries/FlagParser.hpp"
+#include "Libraries/FileSearcher.hpp"
 
 int main(int ac, char **av) {
     std::vector<std::string> files = FileSearcher::searchPathFiles("./Shared/", "so");
-    FirstGameCore fgc;
+    FirstGameCore fgc(files);
 
     std::cout << "--------------------" << std::endl;
     for(auto& i: files)
         std::cout << i << std::endl;
     std::cout << "--------------------" << std::endl;
-    fgc.Run(files);
+    fgc.Run();
     return 0;
 }

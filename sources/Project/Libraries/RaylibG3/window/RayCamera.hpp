@@ -17,7 +17,7 @@
 #define RAYCAMERA_HPP_
 
 //Interface
-#include "../../../Interface/graphic3/window/ICamera.hpp"
+#include "../../../Interfaces/graphic3/window/ICamera.hpp"
 
 //Raylib
 #include "../raylib.h"

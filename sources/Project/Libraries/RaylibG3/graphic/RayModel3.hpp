@@ -1,6 +1,6 @@
 /**
  *
- * File: IWindow.hpp
+ * File: RayModel3.hpp
  * Created Date: Fr Mar 2023
  * Project: PERRY
  * Author: Perry Chouteau
@@ -13,24 +13,24 @@
  **/
 
 
-#ifndef RAYOBJECT_HPP_
-#define RAYOBJECT_HPP_
+#ifndef RAYMODEL3_HPP_
+#define RAYMODEL3_HPP_
 
 //Interface
-#include "../../Interface/graphic/IObject.hpp"
+#include "../../../Interfaces/graphic3/graphic/IModel3.hpp"
 
 //Raylib
 #include "../raylib.h"
 
-class RayObject : public graphic3::IObject {
+class RayModel3 : public graphic3::IModel3 {
 
     public:
-        RayObject() {
+        RayModel3() {
             _position = {0, 0};
             _scale = {1, 1};
         }
 
-        ~RayObject() {
+        ~RayModel3() {
 //            UnloadTexture(_texture);
         }
 

@@ -15,8 +15,8 @@
 
 #ifndef IMODEL2_HPP_
     #define IMODEL2_HPP_
-    #include "../../Systems/Type.hpp"
-    #include "../Window/IWindow.hpp"
+    #include "../../system/Type.hpp"
+    #include "../window/IWindow.hpp"
 
     //class IWindow;
 

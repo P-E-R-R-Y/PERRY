@@ -97,8 +97,14 @@ class FileSearcher {
             if (stat(folder.c_str(), &_sb) == 0) {
                 for (const auto& entry : std::filesystem::directory_iterator(folder)) {
                     path = entry.path().string();
-                    if (stat(path.c_str(), &_sb) == 0 && !(_sb.st_mode & S_IFDIR) && path.find("." + extension) != path.npos)
-                        res.push_back(path);
+                    if (entry.is_directory() && !entry.is_symlink()) {
+                        std::vector<std::string> tmp = searchPathFiles(path, extension);
+                        res.insert(res.end(), tmp.begin(), tmp.end());
+                    } else {
+                        std::cout << path << std::endl;
+                        if (stat(path.c_str(), &_sb) == 0 && !(_sb.st_mode & S_IFDIR) && path.find("." + extension) != path.npos)
+                            res.push_back(path);
+                    }
                 }
             }
             return res;

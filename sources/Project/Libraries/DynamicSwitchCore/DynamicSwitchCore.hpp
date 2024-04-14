@@ -11,14 +11,14 @@
  * Copyright (c) 2023-2033 Perry Chouteau
  *
  **/
-#include "../../../Interfaces/engine/Core.hpp"
-#include "../../DynamicLoader.hpp"
+#include "../../Interfaces/core/ICore.hpp"
+#include "../DynamicLoader.hpp"
 #include <typeinfo>
 
 //todo make the switchlibcore use dynamicCore and not simple core to auto define simple function;
-class SwitchLibCore: public Core/*DynamicCore*/ {
+class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
     public:
-        SwitchLibCore(std::vector<std::string> files)/*: DynamicCore()*/ {
+        DynamicSwitchLibCore(std::vector<std::string> files)/*: DynamicCore()*/ {
 
                 _files = files; 
 
@@ -26,9 +26,12 @@ class SwitchLibCore: public Core/*DynamicCore*/ {
                 nlib = 0;
         }
 
-        ~SwitchLibCore() = default;
+        ~DynamicSwitchLibCore() = default;
 
         int Run () override {
+            if (_files.empty()) {
+                throw std::runtime_error("No libraries to load");
+            }
             while (up) {
                 DynamicLoader dl(_files[nlib]);
                 //Core

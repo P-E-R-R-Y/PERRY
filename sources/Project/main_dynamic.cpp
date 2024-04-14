@@ -16,7 +16,7 @@
 #include "Interfaces/graphic3/window/IWindow.hpp"
 #include "Interfaces/graphic3/graphic/IModel2.hpp"
 //EngineCore
-#include "Libraries/Core/Engine/NoEngineCore.hpp"
+#include "Libraries/DynamicSwitchCore/DynamicSwitchCore.hpp"
 
 #include <dlfcn.h>
 #include <map>
@@ -26,14 +26,14 @@
 #include <sys/stat.h>
 #include <filesystem>
 
-class FirstGameCore: public SwitchLibCore/*NoEngineCore*/ {
+class FirstGameCore: public DynamicSwitchLibCore/*NoEngineCore*/ {
     public:
-        FirstGameCore(std::vector<std::string> files): SwitchLibCore(files) {}
+        FirstGameCore(std::vector<std::string> files): DynamicSwitchLibCore(files) {}
     protected:
 
         void initHandler() override {
             std::cout << "initHandler " << std::endl;
-            model2 = createModel2("./image.png");
+            model2 = createModel2("./Assets/image.png");
             camera = createCamera();
             model3 = createModel3();
         }
@@ -49,9 +49,9 @@ class FirstGameCore: public SwitchLibCore/*NoEngineCore*/ {
         void displayHandler() override {
             std::cout << "displayHandler" << std::endl;
             window->draw2(model2);
+    
             window->beginMode3(camera);
-            window->draw3(model3);
-            
+                window->draw3(model3);
             window->endMode3();
         }
 
@@ -65,12 +65,17 @@ class FirstGameCore: public SwitchLibCore/*NoEngineCore*/ {
 #include "Libraries/FileSearcher.hpp"
 
 int main(int ac, char **av) {
-    std::vector<std::string> files = FileSearcher::searchPathFiles("./Shared/", "so");
+    std::cout << "hey" << std::endl;
+    //todo need to handle mutliple dynamic file extensions 
+    std::vector<std::string> files = FileSearcher::searchPathFiles("./Libraries", "dylib");
+    std::cout << "hey" << std::endl;
     FirstGameCore fgc(files);
+    std::cout << "hey" << std::endl;
 
     std::cout << "--------------------" << std::endl;
     for(auto& i: files)
         std::cout << i << std::endl;
+    std::cout << "hey" << std::endl;
     std::cout << "--------------------" << std::endl;
     fgc.Run();
     return 0;

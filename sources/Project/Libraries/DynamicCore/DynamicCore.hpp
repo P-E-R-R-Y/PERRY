@@ -16,11 +16,10 @@
 #include "../../DynamicLoader.hpp"
 
 //Core
-#include "../../../Interface/Core/Core.hpp"
+#include "../../../Interfaces/engine/Core.hpp"
 //Multimedia
-#include "../../../Interface/Window/IWindow.hpp"
-#include "../../../Interface/Graphics/IModel2.hpp"
-
+#include "../../../Interfaces/graphic3/window/IWindow.hpp"
+#include "../../../Interfaces/graphic3/graphic/IModel2.hpp"
 
 class MultimediaLibrary {
     public:

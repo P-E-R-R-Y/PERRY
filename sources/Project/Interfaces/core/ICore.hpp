@@ -15,11 +15,11 @@
 #include <vector>
 #include <string>
 
-class Core {
+class ICore {
     public:
-        virtual ~Core() = default;
+        virtual ~ICore() = default;
 
-        virtual int Run(std::vector<std::string> files) = 0;
+        virtual int Run() = 0;
 
     protected:
         virtual void initHandler() = 0;

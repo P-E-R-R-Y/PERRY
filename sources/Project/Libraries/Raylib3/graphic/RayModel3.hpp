@@ -27,7 +27,7 @@ class RayModel3 : public graphic3::IModel3 {
     public:
         RayModel3() {
             _position = {-1, -1, -1};
-            _scale = {0.5, 0.5, 0.5};
+            _scale = {1, 1, 1};
         }
 
         ~RayModel3() {

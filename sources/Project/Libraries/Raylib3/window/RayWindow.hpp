@@ -100,8 +100,8 @@ void RayWindow::beginMode3(graphic3::ICamera *camera) {
 void RayWindow::draw3(graphic3::IModel3 *model) {
     RayModel3 *raymodel = static_cast<RayModel3 *>(model);
 
-    DrawCube(raymodel->_position, 1, 1, 1, RED);
-    DrawCubeWires(raymodel->_position, 1.f, 1.f, 1.f, BLACK);
+    DrawCubeV(raymodel->_position, raymodel->_scale, RED);
+    DrawCubeWiresV(raymodel->_position, raymodel->_scale, BLACK);
     //DrawModel(raymodel->);
 };
 

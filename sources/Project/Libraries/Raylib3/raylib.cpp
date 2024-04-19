@@ -17,8 +17,8 @@
 
 //Raylib
 #include "window/RayWindow.hpp"
-#include "graphic/RayModel2.hpp"
-#include "graphic/RayModel3.hpp"
+#include "graphic/RayPolygon.hpp"
+#include "graphic/RayModel.hpp"
 #include "window/RayCamera.hpp"
 
 //Windowing
@@ -39,20 +39,28 @@ extern "C" void deleteCamera(graphic3::ICamera *camera) {
 }
 
 //Graphics
-extern "C" graphic3::IModel2 *createModel2(std::string path) {
-    return new RayModel2(path);
+extern "C" graphic3::IPolygon *createPolygon(std::vector<__v2f_t> points) {
+    return new RayPolygon(points);
 }
 
-extern "C" void deleteModel2(graphic3::IModel2 *model2) {
-    delete model2;
+extern "C" void deletePolygon(graphic3::IPolygon *polygon) {
+    delete polygon;
 }
 
-extern "C" graphic3::IModel3 *createModel3() {
-    return new RayModel3();
+extern "C" graphic3::ISprite *createSprite(std::string sprite) {
+    return new RaySprite(sprite);
 }
 
-extern "C" void deleteModel3(graphic3::IModel3 *model3) {
-    delete model3;
+extern "C" void deleteSprite(graphic3::ISprite *sprite) {
+    delete sprite;
+}
+
+extern "C" graphic3::IModel *createModel() {
+    return new RayModel();
+}
+
+extern "C" void deleteModel(graphic3::IModel *model) {
+    delete model;
 }
 
 #endif /* !RAYLIB_CPP_ */

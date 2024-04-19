@@ -91,4 +91,12 @@ typedef struct __v4f_s {
     double h;
 } __v4f_t;
 
+typedef struct __color_s {
+    double r;
+    double g;
+    double b;
+    double a;
+} __color_t;
+
+
 #endif /* !TYPE_HPP_ */

@@ -13,19 +13,19 @@
  **/
 
 
-#ifndef IOBJECT_HPP_
-    #define IOBJECT_HPP_
-    #include "../../System/Type.hpp"
+#ifndef IMODEL_HPP_
+    #define IMODEL_HPP_
+    #include "../../system/Type.hpp"
     #include "../window/IWindow.hpp"
 
     //class IWindow;
 namespace graphic3 {
 
-    class IObject {
+    class IModel {
 
         public:
             //constructor
-            virtual ~IObject() = default;
+            virtual ~IModel() = default;
             //p
             virtual __v3f_t getPosition() const = 0;
             virtual void setPosition(__v3f_t position) = 0;
@@ -36,4 +36,4 @@ namespace graphic3 {
 
 } // namespace graphic3
 
-#endif /* !IMODEL2_HPP_ */
+#endif /* !IMODEL_HPP_ */

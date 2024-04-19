@@ -14,7 +14,7 @@
 
 //Interface
 #include "Interfaces/graphic3/window/IWindow.hpp"
-#include "Interfaces/graphic3/graphic/IModel2.hpp"
+#include "Interfaces/graphic3/graphic/IPolygon.hpp"
 //EngineCore
 #include "Libraries/DynamicSwitchCore/DynamicSwitchCore.hpp"
 
@@ -33,32 +33,36 @@ class FirstGameCore: public DynamicSwitchLibCore/*NoEngineCore*/ {
 
         void initHandler() override {
             std::cout << "initHandler " << std::endl;
-            model2 = createModel2("./Assets/image.png");
+            std::vector<__v2f_t> points = {{100, 100}, {200, 100}, {200, 200}, {300, 200}, {300, 300}, {100, 300}};//{50, 300}
+            polygon = createPolygon(points);
+            sprite = createSprite("./Assets/image.png");
             camera = createCamera();
-            model3 = createModel3();
+            model = createModel();
         }
 
         void eventHandler() override {
-            std::cout << "eventHandler " << std::endl;
+            //std::cout << "eventHandler " << std::endl;
         }
 
         void updateHandler() override {
-            std::cout << "updateHandler " << std::endl;
+            //std::cout << "updateHandler " << std::endl;
         }
 
         void displayHandler() override {
             std::cout << "displayHandler" << std::endl;
-            window->draw2(model2);
-    
-            window->beginMode3(camera);
-                window->draw3(model3);
-            window->endMode3();
+            window->drawSprite(sprite);
+
+            //window->beginMode3(camera);
+            //    window->draw3(model);
+            //window->endMode3();
+            window->drawPoly(polygon);
         }
 
     private:
-        graphic3::IModel2 *model2;
+        graphic3::IPolygon *polygon;
+        graphic3::ISprite *sprite;
         graphic3::ICamera *camera;
-        graphic3::IModel3 *model3;
+        graphic3::IModel *model;
 };
 
 #include "Libraries/FlagParser.hpp"

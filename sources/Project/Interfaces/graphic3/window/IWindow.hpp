@@ -14,8 +14,9 @@
 
 #ifndef IWINDOW_HPP_
     #define IWINDOW_HPP_
-    #include "../graphic/IModel2.hpp"
-    #include "../graphic/IModel3.hpp"
+    #include "../graphic/IPolygon.hpp"
+    #include "../graphic/IModel.hpp"
+    #include "../graphic/ISprite.hpp"
     #include "ICamera.hpp"
 
 namespace graphic3 {
@@ -29,11 +30,13 @@ namespace graphic3 {
             virtual void close() = 0;
             //draw
             virtual void beginDraw() = 0;
-            virtual void draw2(IModel2 *model) = 0;
+            virtual void drawPoly(IPolygon *polygon) = 0;
+
+            virtual void drawSprite(ISprite *model) = 0;
             virtual void endDraw() = 0;
 
             virtual void beginMode3(ICamera *camera) = 0;
-            virtual void draw3(IModel3 *model) = 0;
+            virtual void draw3(IModel *model) = 0;
             virtual void endMode3() = 0;
             //event
             virtual bool isPoll() = 0;

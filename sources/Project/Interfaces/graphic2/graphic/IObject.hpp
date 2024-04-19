@@ -15,10 +15,11 @@
 
 #ifndef IOBJECT_HPP_
     #define IOBJECT_HPP_
-    #include "../Systems/Type.hpp"
+
+    #include "../../system/Type.hpp"
     #include "../Window/IWindow.hpp"
 
-    //class IWindow;
+namespace graphic2 {
 
     class IObject {
 
@@ -32,5 +33,7 @@
         private:
             //your variables here
     };
+
+} // namespace graphic2
 
 #endif /* !IMODEL2_HPP_ */

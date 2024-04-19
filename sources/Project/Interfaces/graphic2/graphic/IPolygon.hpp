@@ -13,18 +13,19 @@
  **/
 
 
-#ifndef IMODEL2_HPP_
-    #define IMODEL2_HPP_
+#ifndef IPOLYGON_HPP_
+    #define IPOLYGON_HPP_
     #include "../../system/Type.hpp"
     #include "../window/IWindow.hpp"
 
+namespace graphic2 {
     //class IWindow;
 
-    class IModel2 {
+    class IPolygon {
 
         public:
             //constructor
-            virtual ~IModel2() = default;
+            virtual ~IPolygon() = default;
             //is
             virtual bool isReady() const = 0;
             //b
@@ -41,5 +42,7 @@
         private:
             //your variables here
     };
+
+} // namespace graphic2
 
 #endif /* !IMODEL2_HPP_ */

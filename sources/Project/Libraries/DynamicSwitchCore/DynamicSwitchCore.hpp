@@ -38,13 +38,15 @@ class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
                 createWindow = reinterpret_cast<graphic3::IWindow *(*)(__int32_t, __int32_t, std::string)>(dl.findSymbol("createWindow"));
                 deleteWindow = reinterpret_cast<void (*)(graphic3::IWindow *window)>(dl.findSymbol("deleteWindow"));
                 //Graphics
-                createModel2 = reinterpret_cast<graphic3::IModel2 *(*)(std::string)>(dl.findSymbol("createModel2"));
-                deleteModel2 = reinterpret_cast<void (*)(graphic3::IModel2 *model)>(dl.findSymbol("deleteModel2"));
+                createPolygon = reinterpret_cast<graphic3::IPolygon *(*)(std::vector<__v2f_t>)>(dl.findSymbol("createPolygon"));
+                deletePolygon = reinterpret_cast<void (*)(graphic3::IPolygon *model)>(dl.findSymbol("deletePolygon"));
+                createSprite = reinterpret_cast<graphic3::ISprite *(*)(std::string)>(dl.findSymbol("createSprite"));
+                deleteSprite = reinterpret_cast<void (*)(graphic3::ISprite *model)>(dl.findSymbol("deleteSprite"));
                 //3D
                 createCamera = reinterpret_cast<graphic3::ICamera *(*)()>(dl.findSymbol("createCamera"));
                 deleteCamera = reinterpret_cast<void (*)(graphic3::ICamera *camera)>(dl.findSymbol("deleteCamera"));
-                createModel3 = reinterpret_cast<graphic3::IModel3 *(*)()>(dl.findSymbol("createModel3"));
-                deleteModel3 = reinterpret_cast<void (*)(graphic3::IModel3 *model3)>(dl.findSymbol("deleteModel3"));
+                createModel = reinterpret_cast<graphic3::IModel *(*)()>(dl.findSymbol("createModel"));
+                deleteModel = reinterpret_cast<void (*)(graphic3::IModel *model3)>(dl.findSymbol("deleteModel"));
 
                 std::cout << _files[nlib] << std::endl;
                 // if (ml.Init(files[nlib]) == false)
@@ -97,15 +99,18 @@ class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
         // window
         graphic3::IWindow *(*createWindow)(int, int, std::string);
         void (*deleteWindow)(graphic3::IWindow *window);
-        // model
-        graphic3::IModel2 *(*createModel2)(std::string);
-        void (*deleteModel2)(graphic3::IModel2 *model);
+        // polygon
+        graphic3::IPolygon *(*createPolygon)(std::vector<__v2f_t> points);
+        void (*deletePolygon)(graphic3::IPolygon *polygon);
+        // sprite
+        graphic3::ISprite *(*createSprite)(std::string);
+        void (*deleteSprite)(graphic3::ISprite *sprite);
         //camera
         graphic3::ICamera *(*createCamera)();
         void (*deleteCamera)(graphic3::ICamera *camera);
         //3D
-        graphic3::IModel3 *(*createModel3)();
-        void (*deleteModel3)(graphic3::IModel3 *model3);
+        graphic3::IModel *(*createModel)();
+        void (*deleteModel)(graphic3::IModel *model);
 
         //vars
         graphic3::IWindow *window;

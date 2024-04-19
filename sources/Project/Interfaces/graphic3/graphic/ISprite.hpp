@@ -13,18 +13,18 @@
  **/
 
 
-#ifndef IMODEL2_HPP_
-    #define IMODEL2_HPP_
+#ifndef ISPRITE_HPP_
+    #define ISPRITE_HPP_
     #include "../../system/Type.hpp"
     #include "../window/IWindow.hpp"
 
 namespace graphic3 {
 
-    class IModel2 {
+    class ISprite {
 
         public:
             //constructor
-            virtual ~IModel2() = default;
+            virtual ~ISprite() = default;
             //is
             virtual bool isReady() const = 0;
             //b
@@ -44,5 +44,4 @@ namespace graphic3 {
 
 } // namespace graphic3
 
-
-#endif /* !IMODEL2_HPP_ */
+#endif /* !ISPRITE_HPP_ */

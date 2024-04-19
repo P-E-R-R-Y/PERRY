@@ -72,7 +72,7 @@ class SfmlWindow : public IWindow {
 //encapsulation
 #include "../Graphics/SfmlModel2.hpp"
 
-void SfmlWindow::draw2(IModel2 *model) {
+void SfmlWindow::drawPoly(IModel2 *model) {
     SfmlModel2 *sfmlmodel = static_cast<SfmlModel2 *>(model);
     _window.draw(sfmlmodel->_sprite);
 };

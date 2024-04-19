@@ -13,26 +13,26 @@
  **/
 
 
-#ifndef RAYMODEL2_HPP_
-#define RAYMODEL2_HPP_
+#ifndef RAYSPRITE_HPP_
+#define RAYSPRITE_HPP_
 
 //Interface
-#include "../../../Interfaces/graphic3/graphic/IModel2.hpp"
+#include "../../../Interfaces/graphic3/graphic/IPolygon.hpp"
 
 //Raylib
 #include "../raylib.h"
 
-class RayModel2 : public graphic3::IModel2 {
+class RaySprite : public graphic3::ISprite {
 
     public:
-        RayModel2(std::string path) {
+        RaySprite(std::string path) {
             _texture = LoadTexture(path.c_str());
             _position = {0, 0};
             _scale = {1, 1};
             _crop = {0, 0, float(_texture.width), float(_texture.height)};
         }
 
-        ~RayModel2() {
+        ~RaySprite() {
             UnloadTexture(_texture);
         }
 
@@ -73,4 +73,4 @@ class RayModel2 : public graphic3::IModel2 {
         //your variables here
 };
 
-#endif /* !RAYMODEL2_HPP_ */
+#endif /* !RAYSPRITE_HPP_ */

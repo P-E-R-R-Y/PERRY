@@ -13,24 +13,24 @@
  **/
 
 
-#ifndef RAYMODEL3_HPP_
-#define RAYMODEL3_HPP_
+#ifndef RAYMODEL_HPP_
+#define RAYMODEL_HPP_
 
 //Interface
-#include "../../../Interfaces/graphic3/graphic/IModel3.hpp"
+#include "../../../Interfaces/graphic3/graphic/IModel.hpp"
 
 //Raylib
 #include "../raylib.h"
 
-class RayModel3 : public graphic3::IModel3 {
+class RayModel : public graphic3::IModel {
 
     public:
-        RayModel3() {
+        RayModel() {
             _position = {-1, -1, -1};
             _scale = {1, 1, 1};
         }
 
-        ~RayModel3() {
+        ~RayModel() {
 //            UnloadTexture(_texture);
         }
 

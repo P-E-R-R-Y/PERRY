@@ -19,9 +19,11 @@
 
 //Interface
 #include "../../../Interfaces/graphic3/window/IWindow.hpp"
+#include "../../../Interfaces/system/math.hpp"
 //encapsulation
-#include "../graphic/RayModel2.hpp"
-#include "../graphic/RayModel3.hpp"
+#include "../graphic/RayPolygon.hpp"
+#include "../graphic/RaySprite.hpp"
+#include "../graphic/RayModel.hpp"
 #include "RayCamera.hpp"
 
 
@@ -53,7 +55,8 @@ class RayWindow : public graphic3::IWindow {
             ClearBackground(BLACK);
         };
 
-        virtual void draw2(graphic3::IModel2 *model) override;
+        virtual void drawPoly(graphic3::IPolygon *polygon) override;
+        virtual void drawSprite(graphic3::ISprite *sprite) override;
 
         void endDraw() override {
             EndDrawing();
@@ -62,7 +65,7 @@ class RayWindow : public graphic3::IWindow {
         //Draw3 (Carve)
         void beginMode3(graphic3::ICamera *camera) override;
         
-        virtual void draw3(graphic3::IModel3 *model) override;
+        virtual void draw3(graphic3::IModel *model) override;
 
         void endMode3() override {
             EndMode3D();
@@ -83,12 +86,32 @@ class RayWindow : public graphic3::IWindow {
     private:
 };
 
-void RayWindow::draw2(graphic3::IModel2 *model) {
-    RayModel2 *raymodel = static_cast<RayModel2 *>(model);
-    Rectangle posSize = {float(raymodel->getPosition().x), float(raymodel->getPosition().y),
-                        float(raymodel->getSize().x), float(raymodel->getSize().y) };
+void RayWindow::drawPoly(graphic3::IPolygon *polygon) {
+    RayPolygon *rayPolygon = static_cast<RayPolygon *>(polygon);
+    std::vector<triangle_t> triangles = rayPolygon->_triangles;
 
-    DrawTexturePro(raymodel->_texture, raymodel->_crop, posSize, {0,0}, 0, WHITE);
+    std::cout << "StartDraw" << std::endl;
+    for (int i = 0; i < triangles.size(); i++) {
+        std::cout << "triangle: " << i << " " << triangles[i].A.x << " " << triangles[i].A.y << " " << triangles[i].B.x << " " << triangles[i].B.y << " " << triangles[i].C.x << " " << triangles[i].C.y << std::endl;
+        DrawTriangleLines({static_cast<float>(triangles[i].A.x), static_cast<float>(triangles[i].A.y)},
+                    {static_cast<float>(triangles[i].B.x), static_cast<float>(triangles[i].B.y)},
+                    {static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)},
+                    Color{255, 0, 0, 255});
+        //raylib ask for counter clockwise it's why I reverse the order
+        DrawTriangle({static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)},
+                    {static_cast<float>(triangles[i].B.x), static_cast<float>(triangles[i].B.y)},
+                    {static_cast<float>(triangles[i].A.x), static_cast<float>(triangles[i].A.y)},
+                    Color{static_cast<unsigned char>(rand()%255), 0, 0, 255});
+    }
+    std::cout << "EndDraw" << std::endl;
+};
+
+void RayWindow::drawSprite(graphic3::ISprite *sprite) {
+    RaySprite *raysprite = static_cast<RaySprite *>(sprite);
+    Rectangle posSize = {float(raysprite->getPosition().x), float(raysprite->getPosition().y),
+                        float(raysprite->getSize().x), float(raysprite->getSize().y) };
+
+    DrawTexturePro(raysprite->_texture, raysprite->_crop, posSize, {0,0}, 0, WHITE);
 };
 
 void RayWindow::beginMode3(graphic3::ICamera *camera) {
@@ -97,8 +120,8 @@ void RayWindow::beginMode3(graphic3::ICamera *camera) {
     BeginMode3D(raycamera->_camera);
 };
 
-void RayWindow::draw3(graphic3::IModel3 *model) {
-    RayModel3 *raymodel = static_cast<RayModel3 *>(model);
+void RayWindow::draw3(graphic3::IModel *model) {
+    RayModel *raymodel = static_cast<RayModel *>(model);
 
     DrawCubeV(raymodel->_position, raymodel->_scale, RED);
     DrawCubeWiresV(raymodel->_position, raymodel->_scale, BLACK);

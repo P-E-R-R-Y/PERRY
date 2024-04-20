@@ -55,7 +55,7 @@ class FirstGameCore: public DynamicSwitchLibCore/*NoEngineCore*/ {
             window->drawSprite(sprite);
 
             window->beginMode3(camera);
-                window->draw3(model);
+                window->drawModel(model);
             window->endMode3();
             window->drawPoly(poly_star);
             window->drawPoly(poly_heart);

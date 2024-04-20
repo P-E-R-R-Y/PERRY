@@ -24,6 +24,7 @@ endif()
 
 
 set(SOURCE_FILES raylib.cpp)
+
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 
 target_link_libraries(${PROJECT_NAME} igraphic3 raylib)

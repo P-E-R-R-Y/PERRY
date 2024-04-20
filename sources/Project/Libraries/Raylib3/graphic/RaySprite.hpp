@@ -20,7 +20,7 @@
 #include "../../../Interfaces/graphic3/graphic/IPolygon.hpp"
 
 //Raylib
-#include "../raylib.h"
+#include <raylib.h>
 
 class RaySprite : public graphic3::ISprite {
 

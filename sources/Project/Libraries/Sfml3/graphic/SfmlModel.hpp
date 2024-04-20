@@ -1,6 +1,6 @@
 /**
  *
- * File: IWindow.hpp
+ * File: RayModel3.hpp
  * Created Date: Fr Mar 2023
  * Project: PERRY
  * Author: Perry Chouteau
@@ -13,25 +13,26 @@
  **/
 
 
-#ifndef RAYOBJECT_HPP_
-#define RAYOBJECT_HPP_
+#ifndef SFMLMODEL_HPP_
+#define SFMLMODEL_HPP_
 
 //Interface
-#include "../../Interfaces/graphic/IObject.hpp"
+#include "../../../Interfaces/graphic3/graphic/IModel.hpp"
 
-//Raylib
-#include <raylib.h>
+//SFML
+#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
-class RayObject : public graphic3::IObject {
+class SfmlModel : public graphic3::IModel {
 
     public:
-        RayObject() {
-            _position = {0, 0};
-            _scale = {1, 1};
+        SfmlModel() {
+            _position = {-1, -1, -1};
+            _scale = {1, 1, 1};
         }
 
-        ~RayObject() {
-//            UnloadTexture(_texture);
+        ~SfmlModel() {
         }
 
         __v3f_t getPosition() const override {
@@ -41,12 +42,12 @@ class RayObject : public graphic3::IObject {
             _position = {float(position.x), float(position.y), float(position.z)};
         }
 
-        friend class RayWindow;
+        friend class SfmlWindow;
 
     private:
-        Vector3 _position;
-        Vector3 _scale;
+        sf::Vector3f _position;
+        sf::Vector3f _scale;
         //your variables here
 };
 
-#endif /* !RAYMODEL2_HPP_ */
+#endif /* !SFMLMODEL_HPP_ */

@@ -36,7 +36,7 @@ namespace graphic3 {
             virtual void endDraw() = 0;
 
             virtual void beginMode3(ICamera *camera) = 0;
-            virtual void draw3(IModel *model) = 0;
+            virtual void drawModel(IModel *model) = 0;
             virtual void endMode3() = 0;
             //event
             virtual bool isPoll() = 0;

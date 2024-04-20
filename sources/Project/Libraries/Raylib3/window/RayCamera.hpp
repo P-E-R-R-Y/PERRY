@@ -20,7 +20,7 @@
 #include "../../../Interfaces/graphic3/window/ICamera.hpp"
 
 //Raylib
-#include "../raylib.h"
+#include <raylib.h>
 
 class RayCamera : public graphic3::ICamera {
 

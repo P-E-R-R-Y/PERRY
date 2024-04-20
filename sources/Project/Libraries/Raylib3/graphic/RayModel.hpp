@@ -20,7 +20,7 @@
 #include "../../../Interfaces/graphic3/graphic/IModel.hpp"
 
 //Raylib
-#include "../raylib.h"
+#include <raylib.h>
 
 class RayModel : public graphic3::IModel {
 
@@ -31,7 +31,6 @@ class RayModel : public graphic3::IModel {
         }
 
         ~RayModel() {
-//            UnloadTexture(_texture);
         }
 
         __v3f_t getPosition() const override {
@@ -49,4 +48,4 @@ class RayModel : public graphic3::IModel {
         //your variables here
 };
 
-#endif /* !RAYMODEL2_HPP_ */
+#endif /* !RAYMODEL_HPP_ */

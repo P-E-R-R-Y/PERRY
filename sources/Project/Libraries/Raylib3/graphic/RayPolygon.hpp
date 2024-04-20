@@ -20,7 +20,7 @@
 #include "../../../Interfaces/graphic3/graphic/IPolygon.hpp"
 
 //Raylib
-#include "../raylib.h"
+#include <raylib.h>
 
 typedef struct triangle_s {
     __v2f_t A;

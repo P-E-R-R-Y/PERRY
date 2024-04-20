@@ -15,6 +15,7 @@ add_subdirectory(Interfaces/system) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic3
 #Libraries
 add_subdirectory(Libraries/DynamicSwitchCore) #${CMAKE_CURRENT_BINARY_DIR}/dynamic/dynamicswitchcore)
 add_subdirectory(Libraries/Raylib3) #${CMAKE_CURRENT_BINARY_DIR}/dynamic/raylib3)
+add_subdirectory(Libraries/Sfml3) #${CMAKE_CURRENT_BINARY_DIR}/dynamic/raylib3)
 
 #how to retrieve the lib create in the subdirectory
 

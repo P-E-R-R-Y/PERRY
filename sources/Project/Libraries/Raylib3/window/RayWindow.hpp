@@ -15,7 +15,7 @@
 #ifndef RAYWINDOW_HPP_
 #define RAYWINDOW_HPP_
 //Raylib
-#include "../raylib.h"
+#include <raylib.h>
 
 //Interface
 #include "../../../Interfaces/graphic3/window/IWindow.hpp"
@@ -65,7 +65,7 @@ class RayWindow : public graphic3::IWindow {
         //Draw3 (Carve)
         void beginMode3(graphic3::ICamera *camera) override;
         
-        virtual void draw3(graphic3::IModel *model) override;
+        virtual void drawModel(graphic3::IModel *model) override;
 
         void endMode3() override {
             EndMode3D();
@@ -115,7 +115,7 @@ void RayWindow::beginMode3(graphic3::ICamera *camera) {
     BeginMode3D(raycamera->_camera);
 };
 
-void RayWindow::draw3(graphic3::IModel *model) {
+void RayWindow::drawModel(graphic3::IModel *model) {
     RayModel *raymodel = static_cast<RayModel *>(model);
 
     DrawCubeV(raymodel->_position, raymodel->_scale, RED);

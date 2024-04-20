@@ -1,6 +1,6 @@
 /**
  *
- * File: IWindow.hpp
+ * File: RayModel2.hpp
  * Created Date: Fr Mar 2023
  * Project: PERRY
  * Author: Perry Chouteau
@@ -12,28 +12,32 @@
  *
  **/
 
-#ifndef SFMLMODEL2_HPP_
-#define SFMLMODEL2_HPP_
+
+#ifndef SFMLSPRITE_HPP_
+#define SFMLSPRITE_HPP_
 
 //Interface
-#include "../../Interface/Graphics/IModel2.hpp"
+#include "../../../Interfaces/graphic3/graphic/IPolygon.hpp"
 
-//SFML
+//Raylib
+#include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
 
-//friends
-#include "../Window/SfmlWindow.hpp"
-
-class SfmlModel2 : public IModel2 {
+class SfmlSprite : public graphic3::ISprite {
 
     public:
-        SfmlModel2(std::string path) {
+        SfmlSprite(std::string path) {
             if (_texture.loadFromFile(path)) {
                 _sprite.setTexture(_texture);
             }
+            _position = {0, 0};
+            _scale = {1, 1};
         }
 
-        ~SfmlModel2() = default;
+        ~SfmlSprite() = default;
 
         bool isReady() const override {
             return (_sprite.getTexture() != nullptr);
@@ -51,7 +55,6 @@ class SfmlModel2 : public IModel2 {
         __v2f_t getPosition() const override {
             return { _sprite.getPosition().x, _sprite.getPosition().y};
         }
-
         void setPosition(__v2f_t position) override {
             _sprite.setPosition(position.x, position.y);
         }
@@ -70,9 +73,11 @@ class SfmlModel2 : public IModel2 {
         friend class SfmlWindow;
 
     private:
-        //your variables here
         sf::Texture _texture;
         sf::Sprite _sprite;
+        sf::Vector2f _position;
+        sf::Vector2f _scale;
+        //your variables here
 };
 
-#endif /* !SFMLMODEL2_HPP_ */
+#endif /* !SFMLSPRITE_HPP_ */

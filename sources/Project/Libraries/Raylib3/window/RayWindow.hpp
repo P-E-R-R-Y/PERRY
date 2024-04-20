@@ -92,11 +92,6 @@ void RayWindow::drawPoly(graphic3::IPolygon *polygon) {
 
     std::cout << "StartDraw" << std::endl;
     for (int i = 0; i < triangles.size(); i++) {
-        std::cout << "triangle: " << i << " " << triangles[i].A.x << " " << triangles[i].A.y << " " << triangles[i].B.x << " " << triangles[i].B.y << " " << triangles[i].C.x << " " << triangles[i].C.y << std::endl;
-        DrawTriangleLines({static_cast<float>(triangles[i].A.x), static_cast<float>(triangles[i].A.y)},
-                    {static_cast<float>(triangles[i].B.x), static_cast<float>(triangles[i].B.y)},
-                    {static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)},
-                    Color{255, 0, 0, 255});
         //raylib ask for counter clockwise it's why I reverse the order
         DrawTriangle({static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)},
                     {static_cast<float>(triangles[i].B.x), static_cast<float>(triangles[i].B.y)},

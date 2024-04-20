@@ -46,6 +46,7 @@ class RayPolygon : public graphic3::IPolygon {
                 __v2f_t pointA = tmp[i % tmp.size()];
                 __v2f_t pointB = tmp[(i+1) % tmp.size()];
                 __v2f_t pointC = tmp[(i+2) % tmp.size()];
+            
                 if (is_convex(pointA, pointB, pointC)) {
                     bool isEar = true;
 

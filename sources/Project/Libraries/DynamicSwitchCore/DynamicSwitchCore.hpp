@@ -100,6 +100,7 @@ class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
         graphic3::IWindow *(*createWindow)(int, int, std::string);
         void (*deleteWindow)(graphic3::IWindow *window);
         // polygon
+        // graphic3::IPolygon *(*createPolygon)(std::vector<__v2f_t> points);
         graphic3::IPolygon *(*createPolygon)(std::vector<__v2f_t> points);
         void (*deletePolygon)(graphic3::IPolygon *polygon);
         // sprite

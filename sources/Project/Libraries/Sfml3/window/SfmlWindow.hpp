@@ -17,6 +17,10 @@
 
 //SFML
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
 
 //Interface
 #include "../../../Interfaces/graphic3/window/IWindow.hpp"
@@ -91,10 +95,21 @@ class SfmlWindow : public graphic3::IWindow {
 };
 
 void SfmlWindow::drawPoly(graphic3::IPolygon *polygon) {
-    SfmlPolygon *sfmlpolygon = static_cast<SfmlPolygon *>(polygon);
+    SfmlPolygon *sfmlPolygon = static_cast<SfmlPolygon *>(polygon);
+    std::vector<graphic3::triangle_t> triangles = sfmlPolygon->_triangles;
 
     std::cout << "StartDraw" << std::endl;
-    _window.draw(sfmlpolygon->_points.data(), sfmlpolygon->_points.size(), sf::Points);
+    for (int i = 0; i < triangles.size(); i++) {
+        sf::ConvexShape cpolygon;
+        cpolygon.setPointCount(3);
+        cpolygon.setPoint(0, sf::Vector2f(triangles[i].A.x, triangles[i].A.y));
+        cpolygon.setPoint(1, sf::Vector2f(triangles[i].B.x, triangles[i].B.y));
+        cpolygon.setPoint(2, sf::Vector2f(triangles[i].C.x, triangles[i].C.y));
+        cpolygon.setFillColor(sf::Color{static_cast<sf::Uint8>(rand()%255), 0, 0, 255});
+
+        cpolygon.setPosition(0, 0);
+        _window.draw(cpolygon);
+    }
     std::cout << "EndDraw" << std::endl;
 };
 

@@ -23,12 +23,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
-typedef struct triangle_s {
-    __v2f_t A;
-    __v2f_t B;
-    __v2f_t C;
-} triangle_t;
-
 class SfmlPolygon : public graphic3::IPolygon {
 
     public:
@@ -36,11 +30,41 @@ class SfmlPolygon : public graphic3::IPolygon {
             _color = sf::Color{255, 0, 0, 255};
             _position = {0, 0};
             _points = {};
+            _triangles = {};
+            std::vector<__v2f_t> tmp = {};
 
             for (auto point : points) {
                 _points.push_back(sf::Vertex(sf::Vector2f{float(point.x), float(point.y)}, _color));
+                tmp.push_back(__v2f_t{double(point.x), double(point.y)});
             }
+            for (int i = 0; tmp.size() >= 3; i++) {
+                std::cout << i << " " << tmp.size() << std::endl;
+                __v2f_t pointA = tmp[i % tmp.size()];
+                __v2f_t pointB = tmp[(i+1) % tmp.size()];
+                __v2f_t pointC = tmp[(i+2) % tmp.size()];
+            
+                if (is_convex(pointA, pointB, pointC)) {
+                    bool isEar = true;
 
+                    for (int j = 0; j < tmp.size(); j++) {
+                        if (j == i % tmp.size() || j == (i+1) % tmp.size() || j == (i+2) % tmp.size()) {
+                            continue;
+                        }
+                        if (is_inside_triangle(tmp[j], pointA, pointB, pointC)) {
+                            isEar = false;
+                            break;
+                        }
+                    }
+                    if (isEar) {
+                        std::cout << "ear" << std::endl;
+                        _triangles.push_back(graphic3::triangle_t{pointA, pointB, pointC});
+                        tmp.erase(tmp.begin() + (i+1) % tmp.size());
+                    }
+                }
+            }
+            for (int i = 0; i < _triangles.size(); i++) {
+                std::cout << "triangle: " << i << " " << _triangles[i].A.x << " " << _triangles[i].A.y << " " << _triangles[i].B.x << " " << _triangles[i].B.y << " " << _triangles[i].C.x << " " << _triangles[i].C.y << std::endl;
+            }
             std::cout << "SfmlPolygon created" << std::endl;
         }
 
@@ -88,7 +112,7 @@ class SfmlPolygon : public graphic3::IPolygon {
         sf::Color _color;
         sf::Vector2f _position;
         std::vector<sf::Vertex> _points;
-
+        std::vector<graphic3::triangle_t> _triangles;
 };
 
 #endif /* !SFMLPOLYGON_HPP_ */

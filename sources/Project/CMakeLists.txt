@@ -28,4 +28,4 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} PUBLIC igraphic3 icore system) #static
 target_link_libraries(${PROJECT_NAME} PUBLIC dynamicswitchcore) #static
 target_link_libraries(${PROJECT_NAME} PUBLIC raylib3) #dynamic
-file(COPY Assets DESTINATION ${CMAKE_BINARY_DIR})
+file(COPY Assets DESTINATION ${CMAKE_BINARY_DIR}) #can probably use this for dynamic lib too

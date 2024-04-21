@@ -22,12 +22,6 @@
 //Raylib
 #include <raylib.h>
 
-typedef struct triangle_s {
-    __v2f_t A;
-    __v2f_t B;
-    __v2f_t C;
-} triangle_t;
-
 class RayPolygon : public graphic3::IPolygon {
 
     public:
@@ -61,7 +55,7 @@ class RayPolygon : public graphic3::IPolygon {
                     }
                     if (isEar) {
                         std::cout << "ear" << std::endl;
-                        _triangles.push_back(triangle_t{pointA, pointB, pointC});
+                        _triangles.push_back(graphic3::triangle_t{pointA, pointB, pointC});
                         tmp.erase(tmp.begin() + (i+1) % tmp.size());
                     }
                 }
@@ -116,8 +110,7 @@ class RayPolygon : public graphic3::IPolygon {
         Color _color;
         Vector2 _position;
         std::vector<Vector2> _points;
-        std::vector<triangle_t> _triangles;
-
+        std::vector<graphic3::triangle_t> _triangles;
 };
 
 #endif /* !RAYPOLYGON_HPP_ */

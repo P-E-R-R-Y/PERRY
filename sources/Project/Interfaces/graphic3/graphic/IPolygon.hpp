@@ -19,6 +19,11 @@
     #include "../window/IWindow.hpp"
 
 namespace graphic3 {
+    typedef struct triangle_s {
+        __v2f_t A;
+        __v2f_t B;
+        __v2f_t C;
+    } triangle_t;
 
     class IPolygon {
 

@@ -88,8 +88,26 @@ class FileSearcher {
             return res;
         }
 
+        typedef enum {
+            SHARED_LIB,
+            STATIC_LIB,
+        } lib_e;
 
-        static std::vector<std::string> searchPathFiles(std::string folder, std::string extension) {
+        static std::vector<std::string> searchSharedLibraries(std::string folder, bool sub_directory = false) {
+            std::string extension;
+
+            #if defined(__APPLE__)
+                extension = "dylib";
+            #elif defined(__linux__)
+                extension = "so";
+            #elif defined(_WIN32)
+                extension = "dll";
+            #endif
+
+            return searchPathFiles(folder, extension, sub_directory);
+        }
+
+        static std::vector<std::string> searchPathFiles(std::string folder, std::string extension, bool sub_directory = false) {
             struct stat _sb;
             std::string path;
             std::vector<std::string> res;
@@ -97,11 +115,10 @@ class FileSearcher {
             if (stat(folder.c_str(), &_sb) == 0) {
                 for (const auto& entry : std::filesystem::directory_iterator(folder)) {
                     path = entry.path().string();
-                    if (entry.is_directory() && !entry.is_symlink()) {
+                    if (entry.is_directory() && !entry.is_symlink() && sub_directory) {
                         std::vector<std::string> tmp = searchPathFiles(path, extension);
                         res.insert(res.end(), tmp.begin(), tmp.end());
                     } else {
-                        std::cout << path << std::endl;
                         if (stat(path.c_str(), &_sb) == 0 && !(_sb.st_mode & S_IFDIR) && path.find("." + extension) != path.npos)
                             res.push_back(path);
                     }

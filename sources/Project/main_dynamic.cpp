@@ -73,18 +73,12 @@ class FirstGameCore: public DynamicSwitchLibCore/*NoEngineCore*/ {
 #include "Libraries/FileSearcher.hpp"
 
 int main(int ac, char **av) {
-    std::cout << "hey" << std::endl;
-    //todo need to handle mutliple dynamic file extensions 
-    std::vector<std::string> files = FileSearcher::searchPathFiles("./Libraries", "dylib");
-    std::cout << "hey" << std::endl;
+    std::vector<std::string> files = FileSearcher::searchSharedLibraries("./Libraries", true);
     FirstGameCore fgc(files);
-    std::cout << "hey" << std::endl;
 
     std::cout << "--------------------" << std::endl;
-    for(auto& i: files)
-        std::cout << i << std::endl;
-    std::cout << "hey" << std::endl;
+    for(auto& file: files)
+        std::cout << file << std::endl;
     std::cout << "--------------------" << std::endl;
-    fgc.Run();
-    return 0;
+    return fgc.Run();
 }

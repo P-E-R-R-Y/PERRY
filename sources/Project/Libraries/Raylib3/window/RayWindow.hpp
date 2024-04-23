@@ -26,7 +26,6 @@
 #include "../graphic/RayModel.hpp"
 #include "RayCamera.hpp"
 
-
 #include <iostream>
 
 //class RayModel2;
@@ -36,6 +35,9 @@ class RayWindow : public graphic3::IWindow {
     public:
         RayWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
             InitWindow(screenWidth, screenHeight, title.c_str());
+//            SetWindowState(FLAG_WINDOW_RESIZABLE);
+//            SetWindowMinSize(800, 600);
+//            SetWindowMaxSize(1920, 1080);
         };
 
         ~RayWindow() = default;
@@ -67,9 +69,7 @@ class RayWindow : public graphic3::IWindow {
         
         virtual void drawModel(graphic3::IModel *model) override;
 
-        void endMode3() override {
-            EndMode3D();
-        };
+        void endMode3() override;
 
         //EVENT
         bool isPoll() override {
@@ -123,7 +123,7 @@ void RayWindow::drawModel(graphic3::IModel *model) {
     //DrawModel(raymodel->);
 };
 
-void beginMode3() {
+void RayWindow::endMode3() {
     EndMode3D();
 };
 

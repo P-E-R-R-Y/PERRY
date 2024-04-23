@@ -1,6 +1,5 @@
 //Using SDL and standard IO
-#include <SDL.h>
-#include <stdio.h>
+#include <SDL3/SDL.h>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -22,7 +21,7 @@ int main( int argc, char* args[] )
     else
     {
         //Create window
-        window = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        window = SDL_CreateWindow( "SDL Tutorial", /*SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,*/ SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_MAXIMIZED);
         if( window == NULL )
         {
             printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
@@ -33,13 +32,21 @@ int main( int argc, char* args[] )
             screenSurface = SDL_GetWindowSurface( window );
 
             //Fill the surface white
-            SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
+            SDL_FillSurfaceRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
             
             //Update the surface
             SDL_UpdateWindowSurface( window );
 
             //Hack to get window to stay up
-            SDL_Event e; bool quit = false; while( quit == false ){ while( SDL_PollEvent( &e ) ){ if( e.type == SDL_QUIT ) quit = true; } }
+            SDL_Event e; 
+            bool quit = false;
+            while(quit == false){
+                while( SDL_PollEvent( &e ) ){
+                    if( e.type == SDL_EVENT_QUIT ) {
+                        quit = true;
+                    }
+                }
+            }
         }
     }
     //Destroy window

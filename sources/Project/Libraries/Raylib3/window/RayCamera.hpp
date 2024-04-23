@@ -84,6 +84,7 @@ class RayCamera : public graphic3::ICamera {
           __v3f_t getTarget() const override {
             return {_camera.target.x, _camera.target.y, _camera.target.z};
         }
+        
         void setTarget(__v3f_t target) override {
             _camera = {float(target.x), float(target.y), float(target.z)};
         }
@@ -92,6 +93,7 @@ class RayCamera : public graphic3::ICamera {
           __v3f_t getUp() const override {
             return {_camera.up.x, _camera.up.y, _camera.up.z};
         }
+
         void setUp(__v3f_t up) override {
             _camera.up = {float(up.x), float(up.y), float(up.z)};
         }

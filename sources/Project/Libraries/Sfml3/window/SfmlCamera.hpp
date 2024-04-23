@@ -46,7 +46,7 @@ class SfmlCamera : public graphic3::ICamera {
         
         //p
         __v3f_t getPosition() const override {
-            //throw std::runtime_error("Not implemented");
+            std::cout << "SfmlCamera::getPosition not implemented" << std::endl;
             return {0, 0, 0};
         }
         void setPosition(__v3f_t position) override {

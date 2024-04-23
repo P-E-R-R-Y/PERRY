@@ -5,6 +5,7 @@ project(raylib3)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+#set(CMAKE_OBJC_STANDARD_REQUIRED OFF)
 
 # Dependencies
 set (RAYLIB_VERSION 5.0)
@@ -22,10 +23,11 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
 endif()
 #set shared_lib file
 
-
 set(SOURCE_FILES raylib.cpp)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
+
+#set(GLFW_USE_COCOA OFF)
 
 target_link_libraries(${PROJECT_NAME} igraphic3 raylib)
 
@@ -35,10 +37,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   .
 )
 
-
 # Checks if OSX and links appropriate frameworks (Only required on MacOS)
 if (APPLE)
-target_link_libraries(${PROJECT_NAME} "-framework IOKit")
-target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
-target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
+  target_link_libraries(${PROJECT_NAME} "-framework IOKit")
+  target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
+  target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
 endif()

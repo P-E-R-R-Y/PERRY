@@ -52,17 +52,15 @@ file(COPY Assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 #Work only work after the first build how to copy the file after subdirectory build
 
 #add_custom_target(copy_shared_libraries DEPENDS raylib3 sfml3)
-set(CMAKE_SOURCE_SHARED_LIBS Raylib3 Sfml3)
-
+#set(CMAKE_SOURCE_SHARED_LIBS Raylib3 Sfml3)
 MAKE_DIRECTORY(${CMAKE_BINARY_DIR}/Shared)
-
-foreach(lib ${CMAKE_SOURCE_SHARED_LIBS})
-#how to print lib in cmake
-  string(TOLOWER ${lib} lib_lower)
-  message(${lib} " : " ${lib_lower})
-  if (EXISTS ${CMAKE_SOURCE_DIR}/Libraries/${lib})
+#create two list for the shared_lib: sources and the binary.
+list(APPEND CMAKE_SOURCE_SHARED_LIBS Raylib3 Sfml3)
+list(APPEND CMAKE_BIN_SHARED_LIBS raylib3 sfml3)
+foreach(folder bin IN ZIP_LISTS CMAKE_SOURCE_SHARED_LIBS CMAKE_BIN_SHARED_LIBS)
+  message(${folder} " : " ${bin})
+  if (EXISTS ${CMAKE_SOURCE_DIR}/Libraries/${folder})
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${lib_lower}> ${CMAKE_BINARY_DIR}/Shared
-  )
-  endif() 
+      COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${bin}> ${CMAKE_BINARY_DIR}/Shared)
+  endif()
 endforeach()

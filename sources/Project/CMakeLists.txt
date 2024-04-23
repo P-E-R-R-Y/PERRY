@@ -53,13 +53,10 @@ file(COPY Assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 #add_custom_target(copy_shared_libraries DEPENDS raylib3 sfml3)
 #
-#add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-##  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/Shared
-#  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/Libraries/Raylib3/libraylib3${SHARED_EXTENTION} ${CMAKE_BINARY_DIR}/Shared/
-#  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/Libraries/Sfml3/libsfml3${SHARED_EXTENTION} ${CMAKE_BINARY_DIR}/Shared
-#  COMMENT "Copying shared libraries to the Shared directory"
-#  DEPENDS copy_shared_libraries
-#)
-
-#file(COPY ${CMAKE_CURRENT_BINARY_DIR}/Libraries/Raylib3/libraylib3${SHARED_EXTENTION} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shared)
-#file(COPY ${CMAKE_CURRENT_BINARY_DIR}/Libraries/Sfml3/libsfml3${SHARED_EXTENTION} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shared)
+MAKE_DIRECTORY(${CMAKE_BINARY_DIR}/Shared)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+#  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/Shared
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:raylib3> ${CMAKE_BINARY_DIR}/Shared
+  COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:sfml3> ${CMAKE_BINARY_DIR}/Shared
+  COMMENT $<TARGET_FILE:sfml3>
+)

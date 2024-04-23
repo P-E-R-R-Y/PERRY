@@ -73,7 +73,7 @@ class FirstGameCore: public DynamicSwitchLibCore/*NoEngineCore*/ {
 #include "Libraries/FileSearcher.hpp"
 
 int main(int ac, char **av) {
-    std::vector<std::string> files = FileSearcher::searchSharedLibraries("./Libraries", true);
+    std::vector<std::string> files = FileSearcher::searchSharedLibraries("./Shared");
     FirstGameCore fgc(files);
 
     std::cout << "--------------------" << std::endl;

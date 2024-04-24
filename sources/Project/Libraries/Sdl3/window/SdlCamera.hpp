@@ -20,6 +20,7 @@
 #include "../../../Interfaces/graphic3/window/ICamera.hpp"
 
 //Sdl
+#include <SDL2/SDL.h>
 
 class SdlCamera : public graphic3::ICamera {
 

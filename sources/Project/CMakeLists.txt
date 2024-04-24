@@ -51,8 +51,7 @@ file(COPY Assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 #file(COPY Shared DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 #Work only work after the first build how to copy the file after subdirectory build
 
-#add_custom_target(copy_shared_libraries DEPENDS raylib3 sfml3)
-#set(CMAKE_SOURCE_SHARED_LIBS Raylib3 Sfml3)
+#remove file inside the Shared folder
 MAKE_DIRECTORY(${CMAKE_BINARY_DIR}/Shared)
 #create two list for the shared_lib: sources and the binary.
 list(APPEND CMAKE_SOURCE_SHARED_LIBS Raylib3 Sfml3 Sdl3)
@@ -61,6 +60,7 @@ foreach(folder bin IN ZIP_LISTS CMAKE_SOURCE_SHARED_LIBS CMAKE_BIN_SHARED_LIBS)
   message(${folder} " : " ${bin})
   #set(GLFW_USE_COCOA OFF)
   if (EXISTS ${CMAKE_SOURCE_DIR}/Libraries/${folder})
+    #prebuild remove the shared folder
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${bin}> ${CMAKE_BINARY_DIR}/Shared)
   endif()

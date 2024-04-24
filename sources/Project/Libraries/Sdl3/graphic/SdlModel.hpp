@@ -20,6 +20,7 @@
 #include "../../../Interfaces/graphic3/graphic/IModel.hpp"
 
 //Sdl
+#include <SDL2/SDL.h>
 
 class SdlModel : public graphic3::IModel {
 

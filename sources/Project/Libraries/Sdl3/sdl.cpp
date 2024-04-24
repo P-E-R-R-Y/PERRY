@@ -17,13 +17,14 @@
 
 //Sdl2
 #include "window/SdlWindow.hpp"
+#include "window/SdlCamera.hpp"
 #include "graphic/SdlPolygon.hpp"
 #include "graphic/SdlModel.hpp"
-#include "window/SdlCamera.hpp"
+#include "graphic/SdlSprite.hpp"
 
 //Windowing
 extern "C" graphic3::IWindow *createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
-    return new SdlWindow(screenWidth, screenHeight, std::string("Raylib " + title));
+    return new SdlWindow(screenWidth, screenHeight, std::string("Sdl " + title));
 }
 
 extern "C" void deleteWindow(graphic3::IWindow *window) {

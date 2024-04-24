@@ -1,6 +1,6 @@
 /**
  *
- * File: RayModel2.hpp
+ * File: SdlSprite.hpp
  * Created Date: Fr Mar 2023
  * Project: PERRY
  * Author: Perry Chouteau
@@ -20,26 +20,31 @@
 #include "../../../Interfaces/graphic3/graphic/IPolygon.hpp"
 
 //Sdl
-//#include <SDL3/SDL.h>
+#include <SDL2/SDL.h>
+//#include <SDL2/SDL_image.h>
+#include "SDL.h"
+#include "SDL_image.h"
 
 class SdlSprite : public graphic3::ISprite {
 
     public:
         SdlSprite(std::string path) {
-            std::cout << "SdlSprite not implemented" << std::endl;
+            _surface = IMG_Load(path.c_str());
+            _texture = nullptr;
+//            SDL_Surface *surface = IMG_LoadTexture(_render, path.c_str());
             //_texture = LoadTexture(path.c_str());
             //_position = {0, 0};
             //_scale = {1, 1};
             //_crop = {0, 0, float(_texture.width), float(_texture.height)};
         }
 
-        ~SdlSprite() {
-            //UnloadTexture(_texture);
+        ~SdlSprite() override {
+            if (_surface != nullptr)
+                SDL_FreeSurface(_surface);
         }
 
         bool isReady() const override {
-            std::cout << "isReady not implemented" << std::endl;
-            return true;
+            return _surface != nullptr;
             //return IsTextureReady(_texture);
         }
 
@@ -78,7 +83,8 @@ class SdlSprite : public graphic3::ISprite {
         friend class SdlWindow;
 
     private:
-        //Texture2D _texture;
+        SDL_Surface *_surface;
+        SDL_Texture *_texture;
         //__v2f_t _position;
         //Vector2 _scale;
         //Rectangle _crop;

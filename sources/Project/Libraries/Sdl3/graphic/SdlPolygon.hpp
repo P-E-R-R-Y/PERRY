@@ -1,6 +1,6 @@
 /**
  *
- * File: RayModel2.hpp
+ * File: SdlPolygon.hpp
  * Created Date: Fr Mar 2023
  * Project: PERRY
  * Author: Perry Chouteau
@@ -20,6 +20,7 @@
 #include "../../../Interfaces/graphic3/graphic/IPolygon.hpp"
 
 //Sdl
+#include <SDL2/SDL.h>
 
 class SdlPolygon : public graphic3::IPolygon {
 

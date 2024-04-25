@@ -37,6 +37,7 @@ class SfmlWindow : public graphic3::IWindow {
     public:
         SfmlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title)
         : _window(sf::VideoMode(screenWidth, screenHeight), title) {
+            _window.setFramerateLimit(60);
         };
 
         ~SfmlWindow() = default;

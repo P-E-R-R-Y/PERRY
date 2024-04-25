@@ -23,6 +23,16 @@
 #include "graphic/SdlSprite.hpp"
 
 //Windowing
+
+//...
+/*extern "C" std::shared_ptr<graphic3::IWindow> createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
+    return std::make_shared<SdlWindow>(screenWidth, screenHeight, std::string("Sdl " + title));
+}
+
+extern "C" void deleteWindow(graphic3::IWindow *window) {
+//    delete window;
+}*/
+
 extern "C" graphic3::IWindow *createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
     return new SdlWindow(screenWidth, screenHeight, std::string("Sdl " + title));
 }

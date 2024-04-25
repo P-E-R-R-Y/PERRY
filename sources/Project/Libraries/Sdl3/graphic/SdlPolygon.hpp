@@ -32,7 +32,7 @@ class SdlPolygon : public graphic3::IPolygon {
             _triangles = {};
             std::vector<__v2f_t> tmp = {};
             for (auto point : points) {
-                _points.push_back(__v2f_t{float(point.x), float(point.y)});
+                _points.push_back(SDL_Vertex{SDL_FPoint{float(point.x), float(point.y)}, SDL_Color{255, 255, 255, 255}, SDL_FPoint{0,0}});
                 tmp.push_back(__v2f_t{double(point.x), double(point.y)});
             }
             for (int i = 0; tmp.size() >= 3; i++) {
@@ -102,7 +102,7 @@ class SdlPolygon : public graphic3::IPolygon {
         std::vector<__v2f_t> getPoints() const override {
             std::vector<__v2f_t> points;
             for (auto point : _points) {
-                points.push_back({point.x, point.y});
+                points.push_back({point.position.x, point.position.y});
             }
             return points;
         }
@@ -112,7 +112,7 @@ class SdlPolygon : public graphic3::IPolygon {
     private:
         __color_t _color;
         __v2f_t _position;
-        std::vector<__v2f_t> _points;
+        std::vector<SDL_Vertex> _points;
         std::vector<graphic3::triangle_t> _triangles;
 };
 

@@ -41,7 +41,7 @@ class SdlWindow : public graphic3::IWindow {
                 _window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
                 if (_window) {
                     std::cout << "SDL_Init success2" << std::endl;
-                    _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
+                    _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
                     //_surface = SDL_GetWindowSurface(_window);
                     if(_renderer) {
                         std::cout << "SDL_Init success3" << std::endl;
@@ -121,18 +121,31 @@ class SdlWindow : public graphic3::IWindow {
 
 void SdlWindow::drawPoly(graphic3::IPolygon *polygon) {
     std::cout << "SdlWindow::drawPoly not implemented" << std::endl;
-//    SdlPolygon *rayPolygon = static_cast<SdlPolygon *>(polygon);
-//    std::vector<graphic3::triangle_t> triangles = rayPolygon->_triangles;
-//
-//    std::cout << "StartDraw" << std::endl;
-//    for (int i = 0; i < triangles.size(); i++) {
-//        //raylib ask for counter clockwise it's why I reverse the order
-//        DrawTriangle({static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)},
-//                    {static_cast<float>(triangles[i].B.x), static_cast<float>(triangles[i].B.y)},
-//                    {static_cast<float>(triangles[i].A.x), static_cast<float>(triangles[i].A.y)},
-//                    Color{static_cast<unsigned char>(rand()%255), 0, 0, 255});
-//    }
-//    std::cout << "EndDraw" << std::endl;
+    SdlPolygon *sdlPolygon = static_cast<SdlPolygon *>(polygon);
+
+    std::vector<graphic3::triangle_t> triangles = sdlPolygon->_triangles;
+    std::vector<SDL_Vertex> points = sdlPolygon->_points;
+
+    std::cout << "StartDraw" << std::endl;
+    for (int i = 0; i < triangles.size(); i++) {
+        //raylib ask for counter clockwise it's why I reverse the order
+//        SDL_RenderGeometry(_renderer, nullptr, points.data(), points.size(), nullptr, 0);
+        int rColor = rand()%255;
+        std::vector<SDL_Vertex> vertices = {
+            SDL_Vertex{SDL_FPoint{static_cast<float>(triangles[i].A.x), static_cast<float>(triangles[i].A.y)}, 
+                        SDL_Color{static_cast<unsigned char>(rColor), 0, 0, 255}, SDL_FPoint{0, 0}},
+            SDL_Vertex{SDL_FPoint{static_cast<float>(triangles[i].B.x), static_cast<float>(triangles[i].B.y)}, 
+                        SDL_Color{static_cast<unsigned char>(rColor), 0, 0, 255}, SDL_FPoint{0, 0}},
+            SDL_Vertex{SDL_FPoint{static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)}, 
+                        SDL_Color{static_cast<unsigned char>(rColor), 0, 0, 255}, SDL_FPoint{0, 0}},
+        }; 
+        SDL_RenderGeometry(_renderer, nullptr, vertices.data(), vertices.size(), nullptr, 0);
+        //DrawTriangle({static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)},
+        //            {static_cast<float>(triangles[i].B.x), static_cast<float>(triangles[i].B.y)},
+        //            {static_cast<float>(triangles[i].A.x), static_cast<float>(triangles[i].A.y)},
+        //            Color{static_cast<unsigned char>(rand()%255), 0, 0, 255});
+    }
+    std::cout << "EndDraw" << std::endl;
 };
 
 void SdlWindow::drawSprite(graphic3::ISprite *sprite) {

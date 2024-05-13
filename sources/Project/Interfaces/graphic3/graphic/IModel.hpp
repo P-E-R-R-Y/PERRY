@@ -1,16 +1,12 @@
 /**
- *
- * File: IWindow.hpp
- * Created Date: Fr Mar 2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Fri Mar 10 2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
+ * @ Author: Perry Chouteau
+ * @ Create Time: 2024-04-14 13:23:25
+ * @ Modified by: Your name
+ * @ Modified time: 2024-05-10 19:56:34
+ * @ Description: Interface for Model
+ */
+
+
 
 
 #ifndef IMODEL_HPP_

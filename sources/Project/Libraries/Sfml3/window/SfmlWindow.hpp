@@ -15,33 +15,41 @@
 #ifndef SFMLWINDOW_HPP_
 #define SFMLWINDOW_HPP_
 
-//SFML
+///SFML
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
-//Interface
+///Interface
 #include "../../../Interfaces/graphic3/window/IWindow.hpp"
 #include "../../../Interfaces/system/math.hpp"
-//encapsulation
+
+///Abstract
+//graphic
 #include "../graphic/SfmlPolygon.hpp"
 #include "../graphic/SfmlSprite.hpp"
 #include "../graphic/SfmlModel.hpp"
-
+//event
+#include "../event/SfmlEvent.hpp"
+//window
 #include "SfmlCamera.hpp"
 
 class SfmlWindow : public graphic3::IWindow {
 
     public:
         SfmlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title)
-        : _window(sf::VideoMode(screenWidth, screenHeight), title) {
+        : _window(sf::VideoMode(screenWidth, screenHeight), title), _event(nullptr){
             _window.setFramerateLimit(60);
         };
 
         ~SfmlWindow() = default;
 
+        //EVENT
+        void linkEvent(graphic3::IEvent *event) override {
+            _event = static_cast<SfmlEvent *>(event);
+        };
         //GLOBAL
         bool isOpen() override {
             return _window.isOpen();
@@ -82,17 +90,17 @@ class SfmlWindow : public graphic3::IWindow {
         }
 
         bool pollEvent() override {
-            return _window.pollEvent(_event);
+            return _window.pollEvent(_event->_event);
         }
 
         void eventClose() override {
-            if (_event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            if (_event->_event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                 _window.close();
         };
 
     private:
         sf::RenderWindow _window;
-        sf::Event _event;
+        SfmlEvent *_event;
 };
 
 void SfmlWindow::drawPoly(graphic3::IPolygon *polygon) {

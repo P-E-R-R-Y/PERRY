@@ -25,6 +25,7 @@
 #include "../graphic/SdlPolygon.hpp"
 #include "../graphic/SdlSprite.hpp"
 #include "../graphic/SdlModel.hpp"
+#include "../event/SdlEvent.hpp"
 #include "SdlCamera.hpp"
 
 
@@ -57,6 +58,10 @@ class SdlWindow : public graphic3::IWindow {
             SDL_DestroyRenderer(_renderer);
             SDL_DestroyWindow(_window);
         }
+        //event
+        void linkEvent(graphic3::IEvent *event) override {
+            _event = static_cast<SdlEvent *>(event);
+        };
 
         //GLOBAL
         bool isOpen() override {
@@ -100,12 +105,12 @@ class SdlWindow : public graphic3::IWindow {
         }
 
         bool pollEvent() override {
-            return SDL_PollEvent(&event) > 0;
+            return SDL_PollEvent(&_event->_event) > 0;
         }
 
         void eventClose() override {
             std::cout << "SdlWindow::eventClose implemented" << std::endl;
-            if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE) {
+            if (_event->_event.type == SDL_QUIT || _event->_event.key.keysym.sym == SDLK_ESCAPE) {
                 is_open = false;
             }
         };
@@ -115,8 +120,8 @@ class SdlWindow : public graphic3::IWindow {
         SDL_Window   *_window;
         //SDL_Surface *_surface;
         SDL_Renderer *_renderer;
-
-        SDL_Event event;
+        //IEvent *_event;
+        SdlEvent *_event;
 };
 
 void SdlWindow::drawPoly(graphic3::IPolygon *polygon) {
@@ -158,25 +163,15 @@ void SdlWindow::drawSprite(graphic3::ISprite *sprite) {
             SDL_FreeSurface(sdlSprite->_surface);
     }
     SDL_Rect rect = {0, 0, sdlSprite->_surface->w, sdlSprite->_surface->h};
-//    SDL_RenderCopy(_renderer, sdlSprite->_texture, &rect, &rect);
     SDL_RenderCopy(_renderer, sdlSprite->_texture, NULL, NULL);
 };
 
 void SdlWindow::beginMode3(graphic3::ICamera *camera) {
     std::cout << "SdlWindow::beginMode3 not implemented" << std::endl;
-
-//    RayCamera *raycamera = static_cast<RayCamera *>(camera);
-//
-//    BeginMode3D(raycamera->_camera);
 };
 
 void SdlWindow::drawModel(graphic3::IModel *model) {
     std::cout << "SdlWindow::drawModel not implemented" << std::endl;
-//    RayModel *raymodel = static_cast<RayModel *>(model);
-//
-//    DrawCubeV(raymodel->_position, raymodel->_scale, RED);
-//    DrawCubeWiresV(raymodel->_position, raymodel->_scale, BLACK);
-//    //DrawModel(raymodel->);
 };
 
 #endif /* !SDLWINDOW_HPP_ */

@@ -20,8 +20,11 @@
 #include "graphic/RayPolygon.hpp"
 #include "graphic/RayModel.hpp"
 #include "window/RayCamera.hpp"
+#include "event/RayKeyboard.hpp"
+#include "event/RayMouse.hpp"
+#include "event/RayEvent.hpp"
 
-//Windowing
+///Windowing
 extern "C" graphic3::IWindow *createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
     return new RayWindow(screenWidth, screenHeight, std::string("Raylib " + title));
 }
@@ -38,7 +41,32 @@ extern "C" void deleteCamera(graphic3::ICamera *camera) {
     delete camera;
 }
 
-//Graphics
+///Event
+extern "C" graphic3::IEvent *createEvent() {
+    return new RayEvent();
+}
+
+extern "C" void deleteEvent(graphic3::IEvent *event) {
+    delete event;
+}
+
+extern "C" graphic3::IKeyboard *createKeyboard() {
+    return new RayKeyboard();
+}
+
+extern "C" void deleteKeyboard(graphic3::IKeyboard *keyboard) {
+    delete keyboard;
+}
+
+extern "C" graphic3::IMouse *createMouse() {
+    return new RayMouse();
+}
+
+extern "C" void deleteMouse(graphic3::IMouse *mouse) {
+    delete mouse;
+}
+
+///Graphics
 extern "C" graphic3::IPolygon *createPolygon(std::vector<__v2f_t> points) {
     return new RayPolygon(points);
 }

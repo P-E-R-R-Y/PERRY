@@ -17,6 +17,7 @@
     #include "../graphic/IPolygon.hpp"
     #include "../graphic/IModel.hpp"
     #include "../graphic/ISprite.hpp"
+    #include "../event/IEvent.hpp"
     #include "ICamera.hpp"
 
 namespace graphic3 {
@@ -28,6 +29,8 @@ namespace graphic3 {
             //global
             virtual bool isOpen() = 0;
             virtual void close() = 0;
+            //event
+            virtual void linkEvent(IEvent *event) = 0;
             //draw
             virtual void beginDraw() = 0;
             virtual void drawPoly(IPolygon *polygon) = 0;

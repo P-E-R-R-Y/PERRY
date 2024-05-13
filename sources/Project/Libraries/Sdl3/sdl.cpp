@@ -15,24 +15,22 @@
 #ifndef SDLLIB_CPP_
 #define SDLLIB_CPP_
 
-//Sdl2
+//window
 #include "window/SdlWindow.hpp"
 #include "window/SdlCamera.hpp"
+//event
+#include "event/SdlEvent.hpp"
+#include "event/SdlKeyboard.hpp"
+#include "event/SdlMouse.hpp"
+//graphic
 #include "graphic/SdlPolygon.hpp"
 #include "graphic/SdlModel.hpp"
 #include "graphic/SdlSprite.hpp"
 
-//Windowing
-
-//...
-/*extern "C" std::shared_ptr<graphic3::IWindow> createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
-    return std::make_shared<SdlWindow>(screenWidth, screenHeight, std::string("Sdl " + title));
-}
-
-extern "C" void deleteWindow(graphic3::IWindow *window) {
-//    delete window;
-}*/
-
+/**
+ * @brief Window
+ * 
+ */
 extern "C" graphic3::IWindow *createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
     return new SdlWindow(screenWidth, screenHeight, std::string("Sdl " + title));
 }
@@ -49,7 +47,40 @@ extern "C" void deleteCamera(graphic3::ICamera *camera) {
     delete camera;
 }
 
-//Graphics
+/**
+ * @brief Event
+ * 
+ */
+
+extern "C" graphic3::IEvent *createEvent() {
+    return new SdlEvent();
+}
+
+extern "C" void deleteEvent(graphic3::IEvent *event) {
+    delete event;
+}
+
+extern "C" graphic3::IKeyboard *createKeyboard(graphic3::IEvent *event) {
+    return new SdlKeyboard(event);
+}
+
+extern "C" void deleteKeyboard(graphic3::IKeyboard *keyboard) {
+    delete keyboard;
+}
+
+extern "C" graphic3::IMouse *createMouse(graphic3::IEvent *event) {
+    return new SdlMouse(event);
+}
+
+extern "C" void deleteMouse(graphic3::IMouse *keyboard) {
+    delete keyboard;
+}
+
+
+/**
+ * @brief Graphic
+ * 
+ */
 extern "C" graphic3::IPolygon *createPolygon(std::vector<__v2f_t> points) {
     return new SdlPolygon(points);
 }

@@ -14,6 +14,8 @@
 
 //Interface
 #include "Interfaces/graphic3/window/IWindow.hpp"
+#include "Interfaces/graphic3/event/IKeyboard.hpp"
+#include "Interfaces/graphic3/event/IMouse.hpp"
 #include "Interfaces/graphic3/graphic/IPolygon.hpp"
 //EngineCore
 #include "Libraries/DynamicSwitchCore/DynamicSwitchCore.hpp"
@@ -40,9 +42,16 @@ class FirstGameCore: public DynamicSwitchLibCore/*NoEngineCore*/ {
             sprite = createSprite("./Assets/image.png");
             camera = createCamera();
             model = createModel();
+            keyboard = createKeyboard();
         }
 
         void eventHandler() override {
+            if (keyboard != nullptr) {
+                if (keyboard->isKeyDown(graphic3::IKeyboard::Keys::KEY_SPACE))
+                    std::cout << "SPACE" << std::endl;
+            } else {
+                std::cout << "isNULL" << std::endl;
+            }
             //std::cout << "eventHandler " << std::endl;
         }
 
@@ -67,6 +76,10 @@ class FirstGameCore: public DynamicSwitchLibCore/*NoEngineCore*/ {
         graphic3::ISprite *sprite;
         graphic3::ICamera *camera;
         graphic3::IModel *model;
+        //event
+        graphic3::IKeyboard *keyboard;
+        graphic3::IMouse *mouse;
+
 };
 
 #include "Libraries/FlagParser.hpp"

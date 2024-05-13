@@ -71,14 +71,13 @@ class SdlPolygon : public graphic3::IPolygon {
         }
 
         bool isReady() const override {
-            std::cout << "isReady not implemented" << std::endl;
             return true;
         }
 
         __v2f_t getPosition() const override {
-            std::cout << "getPosition not implemented" << std::endl;
             return {_position.x, _position.y};
         }
+
         void setPosition(__v2f_t position) override {
             _position = {float(position.x), float(position.y)};
         }

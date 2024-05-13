@@ -1,11 +1,8 @@
-#Abstract-Raylib3
-
 cmake_minimum_required(VERSION 3.24)
-project(raylib3)
+project(app)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-#set(CMAKE_OBJC_STANDARD_REQUIRED OFF)
 
 # Dependencies
 set (RAYLIB_VERSION 5.0)
@@ -21,20 +18,13 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
   set(BUILD_EXAMPLES OFF CACHE INTERNAL "")
   FetchContent_MakeAvailable(raylib)
 endif()
-#set shared_lib file
 
-set(SOURCE_FILES raylib.cpp)
+#OurProject
+set(SOURCE_FILES Main.cpp)
 
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
-
-#set(GLFW_USE_COCOA OFF)
-
-target_link_libraries(${PROJECT_NAME} igraphic3 raylib)
-
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+target_link_libraries(${PROJECT_NAME} raylib)
 target_include_directories(${PROJECT_NAME} PUBLIC
-  window
-  graphic
-  event
   .
 )
 

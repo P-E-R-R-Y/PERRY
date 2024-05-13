@@ -37,6 +37,13 @@ class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
                 //Core
                 createWindow = reinterpret_cast<graphic3::IWindow *(*)(__int32_t, __int32_t, std::string)>(dl.findSymbol("createWindow"));
                 deleteWindow = reinterpret_cast<void (*)(graphic3::IWindow *window)>(dl.findSymbol("deleteWindow"));
+                //Event
+                createEvent = reinterpret_cast<graphic3::IEvent *(*)()>(dl.findSymbol("createEvent"));
+                deleteEvent = reinterpret_cast<void (*)(graphic3::IEvent *event)>(dl.findSymbol("deleteEvent"));
+                createKeyboard = reinterpret_cast<graphic3::IKeyboard *(*)(graphic3::IEvent *event)>(dl.findSymbol("createKeyboard"));
+                deleteKeyboard = reinterpret_cast<void (*)(graphic3::IKeyboard *keyboard)>(dl.findSymbol("deleteKeyboard"));
+                createMouse = reinterpret_cast<graphic3::IMouse *(*)(graphic3::IEvent *event)>(dl.findSymbol("createMouse"));
+                deleteMouse = reinterpret_cast<void (*)(graphic3::IMouse *mouse)>(dl.findSymbol("deleteMouse"));
                 //Graphics
                 createPolygon = reinterpret_cast<graphic3::IPolygon *(*)(std::vector<__v2f_t>)>(dl.findSymbol("createPolygon"));
                 deletePolygon = reinterpret_cast<void (*)(graphic3::IPolygon *model)>(dl.findSymbol("deletePolygon"));
@@ -47,6 +54,7 @@ class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
                 deleteCamera = reinterpret_cast<void (*)(graphic3::ICamera *camera)>(dl.findSymbol("deleteCamera"));
                 createModel = reinterpret_cast<graphic3::IModel *(*)()>(dl.findSymbol("createModel"));
                 deleteModel = reinterpret_cast<void (*)(graphic3::IModel *model3)>(dl.findSymbol("deleteModel"));
+
 
                 std::cout << _files[nlib] << std::endl;
                 // if (ml.Init(files[nlib]) == false)
@@ -60,6 +68,8 @@ class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
 
 //                IWindow *window = ml.createWindow(800, 500, "Perry");
                 window = createWindow(800, 500, "Perry");
+                event = createEvent();
+                window->linkEvent(event);
                 std::cout << 6 << std::endl;
                 // main loop
                 this->initHandler();
@@ -94,13 +104,40 @@ class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
         }
 
     protected:
+        /**
+         * @brief Shared Libraries Files Path
+         * 
+         */
         std::vector<std::string> _files;
-        //func
-        // window
+
+        /**
+         * @brief Window
+         * 
+         */
+
         graphic3::IWindow *(*createWindow)(int, int, std::string);
         void (*deleteWindow)(graphic3::IWindow *window);
+
+        /**
+         * @brief Event
+         * 
+         */
+
+        graphic3::IEvent *(*createEvent)();
+        void (*deleteEvent)(graphic3::IEvent *event);
+        
+        graphic3::IKeyboard *(*createKeyboard)(graphic3::IEvent *event);
+        void (*deleteKeyboard)(graphic3::IKeyboard *keyboard);
+
+        graphic3::IMouse *(*createMouse)(graphic3::IEvent *event);
+        void (*deleteMouse)(graphic3::IMouse *mouse);
+        
+        /**
+         * @brief Graphics
+         * 
+         */
+
         // polygon
-        // graphic3::IPolygon *(*createPolygon)(std::vector<__v2f_t> points);
         graphic3::IPolygon *(*createPolygon)(std::vector<__v2f_t> points);
         void (*deletePolygon)(graphic3::IPolygon *polygon);
         // sprite
@@ -113,8 +150,12 @@ class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
         graphic3::IModel *(*createModel)();
         void (*deleteModel)(graphic3::IModel *model);
 
-        //vars
+        /**
+         * @brief Init Handler
+         * 
+         */
         graphic3::IWindow *window;
+        graphic3::IEvent *event;
         bool up;
         std::size_t nlib;
 };

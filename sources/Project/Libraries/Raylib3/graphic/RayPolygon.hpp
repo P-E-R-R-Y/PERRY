@@ -22,6 +22,8 @@
 //Raylib
 #include <raylib.h>
 
+#include <vector>
+
 class RayPolygon : public graphic3::IPolygon {
 
     public:

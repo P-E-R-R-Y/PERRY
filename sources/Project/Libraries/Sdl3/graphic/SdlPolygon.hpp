@@ -22,6 +22,8 @@
 //Sdl
 #include <SDL2/SDL.h>
 
+#include <vector>
+
 class SdlPolygon : public graphic3::IPolygon {
 
     public:

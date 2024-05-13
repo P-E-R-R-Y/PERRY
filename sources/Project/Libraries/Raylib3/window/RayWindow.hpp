@@ -42,6 +42,10 @@ class RayWindow : public graphic3::IWindow {
 
         ~RayWindow() = default;
 
+        //event
+        void linkEvent(graphic3::IEvent *event) override {
+        };
+        
         //GLOBAL
         bool isOpen() override {
             return !WindowShouldClose();

@@ -37,21 +37,27 @@ class DynamicSwitchLibCore: public ICore/*DynamicCore*/ {
                 //Core
                 createWindow = reinterpret_cast<graphic3::IWindow *(*)(__int32_t, __int32_t, std::string)>(dl.findSymbol("createWindow"));
                 deleteWindow = reinterpret_cast<void (*)(graphic3::IWindow *window)>(dl.findSymbol("deleteWindow"));
+                
                 //Event
                 createEvent = reinterpret_cast<graphic3::IEvent *(*)()>(dl.findSymbol("createEvent"));
                 deleteEvent = reinterpret_cast<void (*)(graphic3::IEvent *event)>(dl.findSymbol("deleteEvent"));
+
                 createKeyboard = reinterpret_cast<graphic3::IKeyboard *(*)(graphic3::IEvent *event)>(dl.findSymbol("createKeyboard"));
                 deleteKeyboard = reinterpret_cast<void (*)(graphic3::IKeyboard *keyboard)>(dl.findSymbol("deleteKeyboard"));
+              
                 createMouse = reinterpret_cast<graphic3::IMouse *(*)(graphic3::IEvent *event)>(dl.findSymbol("createMouse"));
                 deleteMouse = reinterpret_cast<void (*)(graphic3::IMouse *mouse)>(dl.findSymbol("deleteMouse"));
+                
                 //Graphics
                 createPolygon = reinterpret_cast<graphic3::IPolygon *(*)(std::vector<__v2f_t>)>(dl.findSymbol("createPolygon"));
                 deletePolygon = reinterpret_cast<void (*)(graphic3::IPolygon *model)>(dl.findSymbol("deletePolygon"));
+                
                 createSprite = reinterpret_cast<graphic3::ISprite *(*)(std::string)>(dl.findSymbol("createSprite"));
                 deleteSprite = reinterpret_cast<void (*)(graphic3::ISprite *model)>(dl.findSymbol("deleteSprite"));
                 //3D
                 createCamera = reinterpret_cast<graphic3::ICamera *(*)()>(dl.findSymbol("createCamera"));
                 deleteCamera = reinterpret_cast<void (*)(graphic3::ICamera *camera)>(dl.findSymbol("deleteCamera"));
+                
                 createModel = reinterpret_cast<graphic3::IModel *(*)()>(dl.findSymbol("createModel"));
                 deleteModel = reinterpret_cast<void (*)(graphic3::IModel *model3)>(dl.findSymbol("deleteModel"));
 

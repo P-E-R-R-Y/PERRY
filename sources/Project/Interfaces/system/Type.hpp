@@ -32,6 +32,7 @@
         #include <iostream>
     #endif
 
+#include <vector>
 #define __v1i_t __int32_t
 #define __v1f_t float
 

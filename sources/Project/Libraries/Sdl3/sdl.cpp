@@ -76,7 +76,6 @@ extern "C" void deleteMouse(graphic3::IMouse *mouse) {
     delete mouse;
 }
 
-
 /**
  * @brief Graphic
  * 

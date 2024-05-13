@@ -34,6 +34,7 @@ target_link_libraries(${PROJECT_NAME} igraphic3 raylib)
 target_include_directories(${PROJECT_NAME} PUBLIC
   window
   graphic
+  event
   .
 )
 

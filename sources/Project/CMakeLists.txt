@@ -11,13 +11,16 @@ add_subdirectory(Interfaces/core) #${CMAKE_CURRENT_BINARY_DIR}/static/core)
 add_subdirectory(Interfaces/graphic3) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic3)
 add_subdirectory(Interfaces/system) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic3)
 
-#Libraries
 ##Static
 add_subdirectory(Libraries/DynamicSwitchCore) #${CMAKE_CURRENT_BINARY_DIR}/dynamic/dynamicswitchcore)
+
 ##Shared
-add_subdirectory(Libraries/Raylib3) #${CMAKE_CURRENT_BINARY_DIR}/dynamic/raylib3)
-add_subdirectory(Libraries/Sfml3) #${CMAKE_CURRENT_BINARY_DIR}/dynamic/raylib3)
-add_subdirectory(Libraries/Sdl3) #${CMAKE_CURRENT_BINARY_DIR}/dynamic/raylib3)
+list(APPEND CMAKE_SOURCE_SHARED_LIBS Raylib3 Sfml3 Sdl3)
+list(APPEND CMAKE_BIN_SHARED_LIBS raylib3 sfml3 sdl3)
+
+foreach(folder IN LISTS CMAKE_SOURCE_SHARED_LIBS)
+  add_subdirectory(Libraries/${folder})
+endforeach()
 
 #SET_LIBRARY
 #move lib.(Shared) to root of bin
@@ -54,8 +57,6 @@ file(COPY Assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 #remove file inside the Shared folder
 MAKE_DIRECTORY(${CMAKE_BINARY_DIR}/Shared)
 #create two list for the shared_lib: sources and the binary.
-list(APPEND CMAKE_SOURCE_SHARED_LIBS Raylib3 Sfml3 Sdl3)
-list(APPEND CMAKE_BIN_SHARED_LIBS raylib3 sfml3 sdl3)
 foreach(folder bin IN ZIP_LISTS CMAKE_SOURCE_SHARED_LIBS CMAKE_BIN_SHARED_LIBS)
   message(${folder} " : " ${bin})
   #set(GLFW_USE_COCOA OFF)

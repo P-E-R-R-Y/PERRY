@@ -1,8 +1,4 @@
 # IN PROGRESS
-# IN PROGRESS
-# IN PROGRESS
-# IN PROGRESS
-# IN PROGRESS
 
 # P.E.R.R.Y.
 
@@ -10,40 +6,18 @@
 
 This project is a engine, and the goal is to build it like, it will be able to use any library like (sfml/raylib..) to build an app/game.
 
-For Epitech guys who have work on some project knows as Arcade,Rtype, I want to combine all those projects to build the engine who can help you make all your C/CPP software project in 2days.
+For Epitech guys who have work on some project knows as Arcade,Rtype, I want to combine all those projects to build the engine who can help you make all your C/CPP software project in 2days. (it's based on cpp)
 
 ## Info
 
 <table>
   <tr>
-    <th>Project name</th>
+    <th>Author</th>
     <th colspan="2">Document status</th>
   </tr>
   <tr>
-    <td>PERRY</td>
+    <td>Perry Chouteau +Help of friends</td>
     <td colspan="2">En cours</td>
-  </tr>
-  <tr>
-    <th>Author</th>
-    <th colspan="2">Publication date</th>
-  </tr>
-  <tr>
-    <td rowspan="5">Perry Chouteau</td>
-    <td colspan="2">07/03/2023</td>
-
-  </tr>
-    <th colspan="2">Type de docs</th>
-  </tr>
-  <tr>
-    <td colspan="2">markdown</td>
-  </tr>
-  </tr>
-    <th>Langue</th>
-    <th>Nombre de sections</th>
-  </tr>
-  <tr>
-    <td>English</td>
-    <td>7</td>
   </tr>
 </table>
 
@@ -55,6 +29,7 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
 | 10/03/2023 | Perry Chouteau | add a lot of Parts & sub-parts |
 | 14/03/2023 | Perry Chouteau | add a link to dev & setup markdown |
 | 18/03/2023 | Perry Chouteau | update summary |
+| 22/04/2024 | Perry Chouteau | will try to update with news update & vision of the project |
 
 # Summary
 
@@ -128,17 +103,28 @@ I want to use .yml to setup the library.
   - [x] Build an encapsulation of libraries
     - [x] SfmlWindow Basics
     - [x] RaylibWindow Basics
-    - [ ] SDLWindow Basics
-    - [ ] LibCacaWindow Basics
+    - [x] SDLWindow Basics
+    - [ ] LibCacaWindow Basics (Not need for now)
   - [x] Build it dynamically
   - [x] Build Core
     - [x] Handle IMultimediaCore
     - [x] Handle IGameCore
     - [x] Switch library at runtime
     - [x] Build simple IGameCore
-    - [ ] Build a Game in Core
-    - [x] Build combination of simple GameCore & simple MultimediaCore
-- [ ] MVP
+    - [ ] Build a Game.
+    - [x] Build combination of simple GameCore & simple MultimediaCore 
+- [ ] Poc V2
+  - [x] Stop being tired of working of big stuff
+  - [ ] Handle 2d
+    - [x] Handle Image
+    - [ ] Handle 2d simple polygone
+    - [ ] Handle transformation
+  - [x] Handle 3d
+    - [x] Handle Model(Cube but you could just avoid using 3d and define unimplemented on your library encaps..)
+    - [ ] need to Upgrade to real model.
+  - [ ] Handle Event
+    - [ ] 
+- [ ] MVP (push to later)
   - [ ] Make it cross plateform
 - [ ] Release
   - [ ] Make it work on 32/64 & inversed bite type.

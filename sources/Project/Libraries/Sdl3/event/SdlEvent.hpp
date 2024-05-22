@@ -2,7 +2,7 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-05-13 11:09:33
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-05-13 15:55:00
+ * @ Modified time: 2024-05-22 12:55:53
  * @ Description:
  */
 
@@ -24,6 +24,9 @@ class SdlEvent : public graphic3::IEvent {
     SdlEvent() {}
     ~SdlEvent() {}
   protected:
+    //std::vector<SDL_KeyCode> _actualKeys;
+    //std::vector<SDL_KeyCode> _previousKeys;
+
     SDL_Event _event;
 };
 

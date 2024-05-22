@@ -45,6 +45,9 @@ int main( int argc, char* args[] )
                     if( e.type == SDL_QUIT ) {
                         quit = true;
                     }
+                    if (e.key.keysym.sym == SDLK_a) {
+                        quit = true;
+                    }
                 }
             }
         }

@@ -109,7 +109,6 @@ class SdlWindow : public graphic3::IWindow {
         }
 
         void eventClose() override {
-            std::cout << "SdlWindow::eventClose implemented" << std::endl;
             if (_event->_event.type == SDL_QUIT || _event->_event.key.keysym.sym == SDLK_ESCAPE) {
                 is_open = false;
             }

@@ -2,7 +2,7 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-05-10 19:59:08
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-05-13 15:13:33
+ * @ Modified time: 2024-05-22 13:07:47
  * @ Description: Raylib Encapsulation for IMouse
  */
 
@@ -24,6 +24,7 @@ class SdlKeyboard : public graphic3::IKeyboard {
 
     public:
         SdlKeyboard(graphic3::IEvent *event) {
+            _event = static_cast<SdlEvent *>(event);
         }
 
         ~SdlKeyboard() {
@@ -36,24 +37,28 @@ class SdlKeyboard : public graphic3::IKeyboard {
         }
 
         bool isKeyPressed(Keys key) const override {
-            return false;
+            return (_event->_event.key.keysym.sym == _keys.at(key));
         }
 
         bool isKeyDown(Keys key) const override {
-            return false;
+            //return true
+            return (_event->_event.key.keysym.sym == _keys.at(key));
         }
 
         bool isKeyReleased(Keys key) const override {
-            return false;
+            return (_event->_event.key.keysym.sym == _keys.at(key));
         }
 
+
         bool isKeyUp(Keys key) const override {
-            return false;
+            return !(_event->_event.key.keysym.sym == _keys.at(key));
         }
 
         void update() override {};
 
     private:
+        SdlEvent *_event;
+
         const std::unordered_map<IKeyboard::Keys, int> _keys = {
             //line 0
             {IKeyboard::Keys::KEY_ESCAPE, SDL_KeyCode::SDLK_ESCAPE},

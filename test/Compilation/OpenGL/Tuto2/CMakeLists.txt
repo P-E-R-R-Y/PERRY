@@ -4,8 +4,8 @@ project(app)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(BUILD_UTILS ON)
-set(CMAKE_INSTALL_PREFIX ON)
+#set(BUILD_UTILS ON)
+#set(CMAKE_INSTALL_PREFIX ON)
 
 #if(WIN32)
 #    set(GUI_TYPE WIN32)
@@ -19,6 +19,8 @@ include(FetchContent)
 
 #findpackage or fetch
 find_package(GLEW 2.0 REQUIRED)
+find_package(glm REQUIRED)
+
 #set(GLEW_VERSION 2.2.0)
 #FetchContent_Declare(
 #  glew
@@ -34,11 +36,19 @@ FetchContent_Declare(glfw
     )
 FetchContent_MakeAvailable(glfw)
 
-set(SOURCE_FILES Main.cpp)
+set(glm_DIR <installation prefix>/lib/cmake/glm) # if necessary
+find_package(glm REQUIRED)
+
+file(COPY SimpleVertexShader.vertexshader DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY SimpleFragmentShader.fragmentshader DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+
+set(SOURCE_FILES Tuto2.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
-target_link_libraries(${PROJECT_NAME} PUBLIC GLEW::GLEW glfw)
+target_link_libraries(${PROJECT_NAME} PUBLIC GLEW::GLEW glfw glm::glm)
 
 if(APPLE)
 target_link_libraries(${PROJECT_NAME} PRIVATE "-framework Cocoa")
 endif()
+

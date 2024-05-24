@@ -122,8 +122,10 @@ I want to use .yml to setup the library.
   - [x] Handle 3d
     - [x] Handle Model(Cube but you could just avoid using 3d and define unimplemented on your library encaps..)
     - [ ] need to Upgrade to real model.
-  - [ ] Handle Event
-    - [ ] 
+  - [x] Handle Event
+    - [x] Sdl
+    - [x] Sfml
+    - [x] Raylib
 - [ ] MVP (push to later)
   - [ ] Make it cross plateform
 - [ ] Release

@@ -1,0 +1,1 @@
+should handle running the project using static lib (without shared lib).

@@ -8,18 +8,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #Interfaces
 add_subdirectory(Interfaces/core) #${CMAKE_CURRENT_BINARY_DIR}/static/core)
-add_subdirectory(Interfaces/graphic3) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic3)
+add_subdirectory(Interfaces/graphic) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic3)
 add_subdirectory(Interfaces/system) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic3)
 
 ##Static
-add_subdirectory(Libraries/DynamicSwitchCore) #${CMAKE_CURRENT_BINARY_DIR}/dynamic/dynamicswitchcore)
+add_subdirectory(Libraries/core/dynamic)
+add_subdirectory(Libraries/engine/dynamicswitchengine)
 
 ##Shared
-list(APPEND CMAKE_SOURCE_SHARED_LIBS Raylib3 Sfml3 Sdl3)
-list(APPEND CMAKE_BIN_SHARED_LIBS raylib3 sfml3 sdl3)
+list(APPEND CMAKE_SOURCE_SHARED_LIBS Raylib Sfml Sdl)
+list(APPEND CMAKE_BIN_SHARED_LIBS raylibgraphic sfmlgraphic sdlgraphic)
 
 foreach(folder IN LISTS CMAKE_SOURCE_SHARED_LIBS)
-  add_subdirectory(Libraries/${folder})
+  add_subdirectory(Libraries/graphic/${folder})
 endforeach()
 
 #SET_LIBRARY
@@ -39,15 +40,15 @@ endif()
 
 #je voudrais pouvoir creer un executable et lui donner acces a la librairie graphics3
 set(SOURCE_FILES
-  main_dynamic.cpp
+  main.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 #Link static libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC system)
-target_link_libraries(${PROJECT_NAME} PUBLIC igraphic3 icore)
-target_link_libraries(${PROJECT_NAME} PUBLIC dynamicswitchcore)
+target_link_libraries(${PROJECT_NAME} PUBLIC igraphic icore)
+target_link_libraries(${PROJECT_NAME} PUBLIC dynamiccore dynamicswitchengine)
 
 #Assets & More
 file(COPY Assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR}) 
@@ -60,9 +61,12 @@ MAKE_DIRECTORY(${CMAKE_BINARY_DIR}/Shared)
 foreach(folder bin IN ZIP_LISTS CMAKE_SOURCE_SHARED_LIBS CMAKE_BIN_SHARED_LIBS)
   message(${folder} " : " ${bin})
   #set(GLFW_USE_COCOA OFF)
-  if (EXISTS ${CMAKE_SOURCE_DIR}/Libraries/${folder})
+  if (EXISTS ${CMAKE_SOURCE_DIR}/Libraries/graphic/${folder})
+    message("-------------------------------------------------------------Shared folder found")
     #prebuild remove the shared folder
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
       COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${bin}> ${CMAKE_BINARY_DIR}/Shared)
+  else ()
+    message(FATAL_ERROR "-------------------------------------------------------------Shared folder not found")
   endif()
 endforeach()

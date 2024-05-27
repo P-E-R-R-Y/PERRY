@@ -1,8 +1,8 @@
 #ifndef MATH_HPP_
     #define MATH_HPP_
 
-  #include<iostream>
-  #include"Type.hpp" 
+  #include <iostream>
+  #include "Type.hpp" 
 
 double cross_product(__v2f_t a, __v2f_t b) {
     //cross product formula

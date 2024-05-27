@@ -24,19 +24,18 @@ foreach(folder IN LISTS CMAKE_SOURCE_SHARED_LIBS)
 endforeach()
 
 #SET_LIBRARY
-#move lib.(Shared) to root of bin
-if (WIN32)
-  set(STATIC_EXTENTION ".lib")
-  set(SHARED_EXTENTION ".dll")
-elseif(APPLE)
-  set(STATIC_EXTENTION ".a")
-  set(SHARED_EXTENTION ".dylib")
-elseif (UNIX)
-  set(STATIC_EXTENTION ".a")
-  set(SHARED_EXTENTION ".so")
-else ()
-  message(FATAL_ERROR "OS not supported")
-endif()
+#if (WIN32)
+#  set(STATIC_EXTENTION ".lib")
+#  set(SHARED_EXTENTION ".dll")
+#elseif(APPLE)
+#  set(STATIC_EXTENTION ".a")
+#  set(SHARED_EXTENTION ".dylib")
+#elseif (UNIX)
+#  set(STATIC_EXTENTION ".a")
+#  set(SHARED_EXTENTION ".so")
+#else ()
+#  message(FATAL_ERROR "OS not supported")
+#endif()
 
 #je voudrais pouvoir creer un executable et lui donner acces a la librairie graphics3
 set(SOURCE_FILES

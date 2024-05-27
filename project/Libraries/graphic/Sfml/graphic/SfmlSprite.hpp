@@ -59,6 +59,18 @@ class SfmlSprite : public graphic::ISprite {
             _sprite.setPosition(position.x, position.y);
         }
 
+        float getRotation() const override {
+            return _sprite.getRotation();
+        }
+
+        void setRotation(float angle, bool isRad = false) override {
+            if (isRad) {
+                _sprite.setRotation(angle * 180.f / 3.14159265f);
+            } else {
+                _sprite.setRotation(angle);
+            }
+        }
+
         __v2f_t getSize() const override {
             sf::Vector2u size = _sprite.getTexture()->getSize();
             sf::Vector2f scale = _sprite.getScale();

@@ -31,11 +31,12 @@ class SdlSprite : public graphic::ISprite {
         SdlSprite(std::string path) {
             _surface = IMG_Load(path.c_str());
             _texture = nullptr;
+            _crop = {0, 0, _surface->w, _surface->h};
+            _position = {0, 0};            
 //            SDL_Surface *surface = IMG_LoadTexture(_render, path.c_str());
             //_texture = LoadTexture(path.c_str());
             //_position = {0, 0};
             //_scale = {1, 1};
-            //_crop = {0, 0, float(_texture.width), float(_texture.height)};
         }
 
         ~SdlSprite() override {
@@ -49,24 +50,37 @@ class SdlSprite : public graphic::ISprite {
         }
 
         __v4f_t getBounds() const override {
-            std::cout << "getBounds not implemented" << std::endl;
-            return {0, 0, 0, 0};
-            //return {_position.x, _position.y, float(_texture.width), float(_texture.height)};
+            return {_position.x,
+                    _position.y,
+                    static_cast<float>(_crop.w),
+                    static_cast<float>(_crop.h)};
         }
 
         void setCrop(__v4f_t rect) override {
-            std::cout << "setCrop not implemented" << std::endl;
-            //_crop = {float(rect.x), float(rect.y), float(rect.w), float(rect.h)};
+            _crop = {static_cast<int>(rect.x),
+                    static_cast<int>(rect.y), 
+                    static_cast<int>(rect.w), 
+                    static_cast<int>(rect.h)};
         }
 
         __v2f_t getPosition() const override {
-            std::cout << "getPosition not implemented" << std::endl;
-            return {0, 0};
-            //return {_position.x, _position.y};
+            return _position;
         }
+
         void setPosition(__v2f_t position) override {
-            std::cout << "setPosition not implemented" << std::endl;
-            //_position = {float(position.x), float(position.y)};
+            _position = position;
+        }
+
+        float getRotation() const override {
+            return _rotation;
+        }
+
+        void setRotation(float angle, bool isRad = false) override {
+            if (isRad) {
+                _rotation = angle * 180 / M_PI;
+            } else {
+                _rotation = angle;
+            }
         }
 
         __v2f_t getSize() const override {
@@ -85,9 +99,9 @@ class SdlSprite : public graphic::ISprite {
     private:
         SDL_Surface *_surface;
         SDL_Texture *_texture;
-        //__v2f_t _position;
-        //Vector2 _scale;
-        //Rectangle _crop;
+        __v2f_t _position;
+        SDL_Rect _crop;
+        float _rotation;
         ////your variables here
 };
 

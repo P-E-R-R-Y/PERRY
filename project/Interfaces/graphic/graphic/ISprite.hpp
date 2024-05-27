@@ -34,6 +34,9 @@ namespace graphic {
             //p
             virtual __v2f_t getPosition() const = 0;
             virtual void setPosition(__v2f_t position) = 0;
+            //r
+            virtual float getRotation() const = 0;
+            virtual void setRotation(float angle, bool isRad = false) = 0;
             //s
             virtual __v2f_t getSize() const = 0;
             virtual void setSize(__v2f_t size) = 0;

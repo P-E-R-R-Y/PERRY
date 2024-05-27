@@ -34,27 +34,32 @@
 class SdlWindow : public graphic::IWindow {
 
     public:
-        SdlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
+        SdlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title): is_open(false) {
             std::cout << "SdlWindow::SdlWindow implemented" << std::endl;
-            is_open = false;
-            if(!(SDL_Init(SDL_INIT_VIDEO) < 0)) {
-                std::cout << "SDL_Init success1" << std::endl;
-                _window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
-                if (_window) {
-                    std::cout << "SDL_Init success2" << std::endl;
-                    _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-                    //_surface = SDL_GetWindowSurface(_window);
-                    if(_renderer) {
-                        std::cout << "SDL_Init success3" << std::endl;
-                        is_open = true;
-                    }
-                }
+            if((SDL_Init(SDL_INIT_VIDEO) < 0)) {
+                std::cout << "SDL_Init failed" << std::endl;
+                return;
+            }            
+            std::cout << "SDL_Init success" << std::endl;
+            _window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
+            if (!_window) {
+                std::cout << "SDL_Window failed" << std::endl;
+                return;
             }
-        };
+            std::cout << "SDL_Window success" << std::endl;
+            _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+            SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
+
+            //_surface = SDL_GetWindowSurface(_window);
+            if(!_renderer) {
+                std::cout << "SDL_Render failed" << std::endl;
+            }
+            std::cout << "SDL_Render success" << std::endl;
+            is_open = true;
+        }
 
         ~SdlWindow() {
             std::cout << "SdlWindow::~SdlWindow implemented" << std::endl;
-            //SDL_FreeSurface(_surface);
             SDL_DestroyRenderer(_renderer);
             SDL_DestroyWindow(_window);
         }
@@ -75,8 +80,7 @@ class SdlWindow : public graphic::IWindow {
         //DRAW
         void beginDraw() override {
             std::cout << "SdlWindow::beginDraw not implemented" << std::endl;
-            //BeginDrawing();
-            //ClearBackground(BLACK);
+            SDL_RenderClear(_renderer);
         };
 
         void drawPoly(graphic::IPolygon *polygon) override;
@@ -85,8 +89,6 @@ class SdlWindow : public graphic::IWindow {
         void endDraw() override {
             //std::cout << "SdlWindow::endDraw not implemented" << std::endl;
            SDL_RenderPresent(_renderer);
-
-            //EndDrawing();
         };
 
         //Draw3 (Carve)
@@ -158,11 +160,17 @@ void SdlWindow::drawSprite(graphic::ISprite *sprite) {
     if (sdlSprite->_texture == nullptr && sdlSprite->_surface != nullptr) {
         sdlSprite->_texture = SDL_CreateTextureFromSurface(_renderer, sdlSprite->_surface);
 
-        if (sdlSprite->_surface != nullptr)
-            SDL_FreeSurface(sdlSprite->_surface);
+        //if (sdlSprite->_surface != nullptr)
+        //    SDL_FreeSurface(sdlSprite->_surface);
     }
-    SDL_Rect rect = {0, 0, sdlSprite->_surface->w, sdlSprite->_surface->h};
-    SDL_RenderCopy(_renderer, sdlSprite->_texture, NULL, NULL);
+    SDL_FRect position = {static_cast<float>(sdlSprite->_position.x), 
+                        static_cast<float>(sdlSprite->_position.y),
+                        static_cast<float>(sdlSprite->_crop.w),
+                        static_cast<float>(sdlSprite->_crop.h)};
+    //SDL_FPoint center = {static_cast<float>(sdlSprite->_crop.w*-0.5), static_cast<float>(sdlSprite->_crop.h*-0.5)};
+    SDL_FPoint center = {0, 0};
+    std::cout << center.x << " " << center.y << std::endl;
+    SDL_RenderCopyExF(_renderer, sdlSprite->_texture, &sdlSprite->_crop, &position, sdlSprite->_rotation,  &center, SDL_FLIP_NONE);
 };
 
 void SdlWindow::beginMode3(graphic::ICamera *camera) {

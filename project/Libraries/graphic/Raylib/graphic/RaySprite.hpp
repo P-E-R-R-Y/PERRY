@@ -55,6 +55,18 @@ class RaySprite : public graphic::ISprite {
             _position = {float(position.x), float(position.y)};
         }
 
+        float getRotation() const override {
+            return _rotation;
+        }
+
+        void setRotation(float angle, bool isRad = false) override {
+            if (isRad) {
+                _rotation = angle * DEG2RAD;
+            } else {
+                _rotation = angle;
+            }
+        }
+
         __v2f_t getSize() const override {
             return { float(_texture.width) * _scale.x, float(_texture.height) * _scale.y };
         }
@@ -70,6 +82,8 @@ class RaySprite : public graphic::ISprite {
         Vector2 _position;
         Vector2 _scale;
         Rectangle _crop;
+        float _rotation;
+
         //your variables here
 };
 

@@ -110,7 +110,7 @@ void RayWindow::drawSprite(graphic::ISprite *sprite) {
     Rectangle posSize = {float(raysprite->getPosition().x), float(raysprite->getPosition().y),
                         float(raysprite->getSize().x), float(raysprite->getSize().y) };
 
-    DrawTexturePro(raysprite->_texture, raysprite->_crop, posSize, {0,0}, 0, WHITE);
+    DrawTexturePro(raysprite->_texture, raysprite->_crop, posSize, {0,0}, raysprite->_rotation, WHITE);
 };
 
 void RayWindow::beginMode3(graphic::ICamera *camera) {

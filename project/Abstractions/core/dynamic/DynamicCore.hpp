@@ -27,7 +27,7 @@
 
 #include "../../../Interfaces/graphic/window/ICamera.hpp"
 #include "../../../Interfaces/graphic/graphic/IModel.hpp"
-#include "../../DynamicLoader.hpp"
+#include "../../Libraries/DynamicLoader.hpp"
 #include <typeinfo>
 
 //todo make the switchlibcore use dynamicCore and not simple core to auto define simple function;

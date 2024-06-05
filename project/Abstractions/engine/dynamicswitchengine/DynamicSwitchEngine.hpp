@@ -15,12 +15,14 @@
 #ifndef DYNAMICSWITCHENGINE_HPP
 #define DYNAMICSWITCHENGINE_HPP
 
-#include "../../Libraries/core/dynamic/DynamicCore.hpp"
-#include "../../DynamicLoader.hpp"
+#include "../../Abstractions/core/dynamic/DynamicCore.hpp"
+#include "../../Libraries/DynamicLoader.hpp"
 #include <typeinfo>
+#include "../../Libraries/ECS/Registry.hpp"
+#include "../../Libraries/ECS/ComponentExtractor.hpp"
 
 //todo make the switchlibcore use dynamicCore and not simple core to auto define simple function;
-class DynamicSwitchEngine: public DynamicCore {
+class DynamicSwitchEngine: public DynamicCore, public ComponentExtractor {
     public:
         DynamicSwitchEngine(std::vector<std::string> files) {
 
@@ -74,6 +76,9 @@ class DynamicSwitchEngine: public DynamicCore {
             }
             return 0;
         }
+
+    public:
+        registry _ecs;
 
         graphic::IWindow *window;
         graphic::IEvent *event;

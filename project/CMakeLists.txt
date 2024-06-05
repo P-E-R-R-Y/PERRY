@@ -12,15 +12,15 @@ add_subdirectory(Interfaces/graphic) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic
 add_subdirectory(Interfaces/system) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic3)
 
 ##Static
-add_subdirectory(Libraries/core/dynamic)
-add_subdirectory(Libraries/engine/dynamicswitchengine)
+add_subdirectory(Abstractions/core/dynamic)
+add_subdirectory(Abstractions/engine/dynamicswitchengine)
 
 ##Shared
 list(APPEND CMAKE_SOURCE_SHARED_LIBS Raylib Sfml Sdl)
 list(APPEND CMAKE_BIN_SHARED_LIBS raylibgraphic sfmlgraphic sdlgraphic)
 
 foreach(folder IN LISTS CMAKE_SOURCE_SHARED_LIBS)
-  add_subdirectory(Libraries/graphic/${folder})
+  add_subdirectory(Abstractions/graphic/${folder})
 endforeach()
 
 #SET_LIBRARY
@@ -60,7 +60,7 @@ MAKE_DIRECTORY(${CMAKE_BINARY_DIR}/Shared)
 foreach(folder bin IN ZIP_LISTS CMAKE_SOURCE_SHARED_LIBS CMAKE_BIN_SHARED_LIBS)
   message(${folder} " : " ${bin})
   #set(GLFW_USE_COCOA OFF)
-  if (EXISTS ${CMAKE_SOURCE_DIR}/Libraries/graphic/${folder})
+  if (EXISTS ${CMAKE_SOURCE_DIR}/Abstractions/graphic/${folder})
     message("-------------------------------------------------------------Shared folder found")
     #prebuild remove the shared folder
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

@@ -18,7 +18,7 @@
 #include "Interfaces/graphic/event/IMouse.hpp"
 #include "Interfaces/graphic/graphic/IPolygon.hpp"
 //EngineCore
-#include "Libraries/engine/dynamicswitchengine/DynamicSwitchEngine.hpp"
+#include "Abstractions/engine/dynamicswitchengine/DynamicSwitchEngine.hpp"
 
 #include <dlfcn.h>
 #include <map>

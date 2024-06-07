@@ -44,6 +44,7 @@ class FirstGameCore: public DynamicSwitchEngine/*NoEngineCore*/ {
             model = createModel();
             keyboard = createKeyboard(event);
             mouse = createMouse(event);
+            window->setFrameLimit(120);
         }
 
         void eventHandler() override {
@@ -61,6 +62,7 @@ class FirstGameCore: public DynamicSwitchEngine/*NoEngineCore*/ {
         }
 
         void updateHandler() override {
+            std::cout << window->getDelta() << std::endl;
             //std::cout << "updateHandler " << std::endl;
         }
 

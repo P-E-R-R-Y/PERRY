@@ -40,8 +40,7 @@ class SfmlWindow : public graphic::IWindow {
 
     public:
         SfmlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title)
-        : _window(sf::VideoMode(screenWidth, screenHeight), title), _event(nullptr){
-            _window.setFramerateLimit(60);
+        : _window(sf::VideoMode(screenWidth, screenHeight), title), _event(nullptr), _deltaClock() {
         };
 
         ~SfmlWindow() = default;
@@ -59,6 +58,15 @@ class SfmlWindow : public graphic::IWindow {
             _window.close();
         };
 
+        //TIME
+        void setFrameLimit(__int32_t limit) override {
+            _window.setFramerateLimit(limit);
+        };
+
+        __int32_t getDelta() override {
+            return static_cast<__int32_t>(_deltaTime.asMilliseconds());
+        };
+
         //DRAW
         void beginDraw() override {
             _window.clear();
@@ -69,6 +77,7 @@ class SfmlWindow : public graphic::IWindow {
 
         void endDraw() override {
             _window.display();
+            _deltaTime = _deltaClock.restart();
         };
 
         //Draw3 (Carve)
@@ -101,6 +110,10 @@ class SfmlWindow : public graphic::IWindow {
     private:
         sf::RenderWindow _window;
         SfmlEvent *_event;
+
+        //time
+        sf::Clock _deltaClock;
+        sf::Time _deltaTime;
 };
 
 void SfmlWindow::drawPoly(graphic::IPolygon *polygon) {

@@ -7,9 +7,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #Interfaces
-add_subdirectory(Interfaces/core) #${CMAKE_CURRENT_BINARY_DIR}/static/core)
-add_subdirectory(Interfaces/graphic) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic3)
-add_subdirectory(Interfaces/system) #${CMAKE_CURRENT_BINARY_DIR}/static/graphic3)
+add_subdirectory(Interfaces/core)
+add_subdirectory(Interfaces/graphic)
+add_subdirectory(Interfaces/system)
 
 ##Static
 add_subdirectory(Abstractions/core/dynamic)
@@ -51,10 +51,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC dynamiccore dynamicswitchengine)
 
 #Assets & More
 file(COPY Assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR}) 
-#file(COPY Shared DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-#Work only work after the first build how to copy the file after subdirectory build
 
-#remove file inside the Shared folder
 MAKE_DIRECTORY(${CMAKE_BINARY_DIR}/Shared)
 #create two list for the shared_lib: sources and the binary.
 foreach(folder bin IN ZIP_LISTS CMAKE_SOURCE_SHARED_LIBS CMAKE_BIN_SHARED_LIBS)

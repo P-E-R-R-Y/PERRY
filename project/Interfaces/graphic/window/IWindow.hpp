@@ -29,6 +29,11 @@ namespace graphic {
             //global
             virtual bool isOpen() = 0;
             virtual void close() = 0;
+
+            virtual void setFrameLimit(__int32_t limit) = 0;
+            //getDelta
+            virtual __int32_t getDelta() = 0;
+
             //event
             virtual void linkEvent(IEvent *event) = 0;
             //draw

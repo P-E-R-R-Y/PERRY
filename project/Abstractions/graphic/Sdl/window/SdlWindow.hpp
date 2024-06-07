@@ -34,7 +34,7 @@
 class SdlWindow : public graphic::IWindow {
 
     public:
-        SdlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title): is_open(false) {
+        SdlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title): is_open(false), _frameLimit(0), _start(0), _end(60), _delta(60) {
             std::cout << "SdlWindow::SdlWindow implemented" << std::endl;
             if((SDL_Init(SDL_INIT_VIDEO) < 0)) {
                 std::cout << "SDL_Init failed" << std::endl;
@@ -77,6 +77,16 @@ class SdlWindow : public graphic::IWindow {
             SDL_Quit();
         };
 
+        //Time
+
+        void setFrameLimit(__int32_t limit) override {
+            _frameLimit = limit;
+        };
+
+        __int32_t getDelta() override {
+            return _delta;
+        };
+
         //DRAW
         void beginDraw() override {
             std::cout << "SdlWindow::beginDraw not implemented" << std::endl;
@@ -87,8 +97,15 @@ class SdlWindow : public graphic::IWindow {
         void drawSprite(graphic::ISprite *sprite) override;
 
         void endDraw() override {
-            //std::cout << "SdlWindow::endDraw not implemented" << std::endl;
-           SDL_RenderPresent(_renderer);
+            SDL_RenderPresent(_renderer);
+
+            //time handling
+            _end = SDL_GetTicks64();
+            _delta = _end - _start;
+            if (_frameLimit != 0 && _delta < _frameLimit) {
+                SDL_Delay(_frameLimit - _delta);
+            }
+            _start = _end;
         };
 
         //Draw3 (Carve)
@@ -123,6 +140,12 @@ class SdlWindow : public graphic::IWindow {
         SDL_Renderer *_renderer;
         //IEvent *_event;
         SdlEvent *_event;
+
+        __int32_t _frameLimit;
+        
+        __uint64_t _start;
+        __uint64_t _end;
+        float _delta;
 };
 
 void SdlWindow::drawPoly(graphic::IPolygon *polygon) {

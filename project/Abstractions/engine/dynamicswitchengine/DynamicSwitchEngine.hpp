@@ -20,11 +20,12 @@
 #include <typeinfo>
 #include "../../Libraries/ECS/Registry.hpp"
 #include "../../Libraries/ECS/ComponentExtractor.hpp"
+#include "../../Libraries/Clock.hpp"
 
 //todo make the switchlibcore use dynamicCore and not simple core to auto define simple function;
 class DynamicSwitchEngine: public DynamicCore, public ComponentExtractor {
     public:
-        DynamicSwitchEngine(std::vector<std::string> files) {
+        DynamicSwitchEngine(std::vector<std::string> files): clock(), target_delta(Clock::FpsToMs(15)) {
 
                 _files = files; 
 
@@ -48,6 +49,7 @@ class DynamicSwitchEngine: public DynamicCore, public ComponentExtractor {
                 this->initHandler();
                 std::cout << 7 << std::endl;
                 while (window->isOpen()) {
+                    clock.start();
                     if (window->isPoll()) {
                         while (window->pollEvent()) {
                             window->eventClose();
@@ -61,7 +63,11 @@ class DynamicSwitchEngine: public DynamicCore, public ComponentExtractor {
                     window->beginDraw();
                     this->displayHandler();
                     window->endDraw();
+                    clock.stop();
+                    
+                    clock.sleep(target_delta - clock.getDelta());
 //                    window->beginDraw3();
+//                    window->endDraw3();
                 }
                 window->close();
 
@@ -82,6 +88,9 @@ class DynamicSwitchEngine: public DynamicCore, public ComponentExtractor {
 
         graphic::IWindow *window;
         graphic::IEvent *event;
+
+        Clock clock;
+        std::chrono::milliseconds target_delta;
 
     protected:
         bool up;

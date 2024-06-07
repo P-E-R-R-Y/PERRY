@@ -65,7 +65,7 @@ class SfmlSprite : public graphic::ISprite {
 
         void setRotation(float angle, bool isRad = false) override {
             if (isRad) {
-                _sprite.setRotation(angle * 180.f / 3.14159265f);
+                _sprite.setRotation(angle * 180.f / M_PI);
             } else {
                 _sprite.setRotation(angle);
             }

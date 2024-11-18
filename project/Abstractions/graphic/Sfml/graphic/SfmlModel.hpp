@@ -17,7 +17,7 @@
 #define SFMLMODEL_HPP_
 
 //Interface
-#include "../../../Interfaces/graphic/graphic/IModel.hpp"
+#include "../../../interfaces/graphic/graphic/IModel.hpp"
 
 //SFML
 #include <SFML/System.hpp>

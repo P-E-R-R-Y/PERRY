@@ -15,19 +15,19 @@
 #ifndef DYNAMICCORE_HPP
 #define DYNAMICCORE_HPP
 
-#include "../../../Interfaces/core/ICore.hpp"
-#include "../../../Interfaces/graphic/window/IWindow.hpp"
+#include "../../../interfaces/core/ICore.hpp"
+#include "../../../interfaces/graphic/window/IWindow.hpp"
 
-#include "../../../Interfaces/graphic/event/IEvent.hpp"
-#include "../../../Interfaces/graphic/event/IKeyboard.hpp"
-#include "../../../Interfaces/graphic/event/IMouse.hpp"
+#include "../../../interfaces/graphic/event/IEvent.hpp"
+#include "../../../interfaces/graphic/event/IKeyboard.hpp"
+#include "../../../interfaces/graphic/event/IMouse.hpp"
 
-#include "../../../Interfaces/graphic/graphic/IPolygon.hpp"
-#include "../../../Interfaces/graphic/graphic/ISprite.hpp"
+#include "../../../interfaces/graphic/graphic/IPolygon.hpp"
+#include "../../../interfaces/graphic/graphic/ISprite.hpp"
 
-#include "../../../Interfaces/graphic/window/ICamera.hpp"
-#include "../../../Interfaces/graphic/graphic/IModel.hpp"
-#include "../../Libraries/DynamicLoader.hpp"
+#include "../../../interfaces/graphic/window/ICamera.hpp"
+#include "../../../interfaces/graphic/graphic/IModel.hpp"
+#include "../../libraries/DynamicLoader.hpp"
 #include <typeinfo>
 
 //todo make the switchlibcore use dynamicCore and not simple core to auto define simple function;

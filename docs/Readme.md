@@ -30,6 +30,7 @@ For Epitech guys who have work on some project knows as Arcade,Rtype, I want to 
 | 14/03/2023 | Perry Chouteau | add a link to dev & setup markdown |
 | 18/03/2023 | Perry Chouteau | update summary |
 | 22/04/2024 | Perry Chouteau | will try to update with news update & vision of the project |
+| 22/04/2024 | Perry Chouteau | updating to the 2024 vision of the project. |
 
 # Summary
 
@@ -193,3 +194,10 @@ Secondly if you want to install the library to build your game you should folow 
 
 ## known libs
 https://en.cppreference.com/w/c/links/libs
+
+
+## Credits (Thanks for feeding my brains with features)
+ 
+- Malek Gatoufi
+- [0xMemoryGrinder](https://github.com/0xMemoryGrinder) 
+- [Matis Dalleau](https://github.com/HelifeWasTaken)

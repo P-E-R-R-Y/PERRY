@@ -2,7 +2,7 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-05-10 19:59:08
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-05-25 19:27:50
+ * @ Modified time: 2024-11-12 00:10:32
  * @ Description: Sfml Encapsulation for IMouse
  */
 
@@ -10,7 +10,7 @@
 #define SFMLKEYBOARD_HPP_
 
 //Interface
-#include "../../../../Interfaces/graphic/event/IKeyboard.hpp"
+#include "../../../../interfaces/graphic/event/IKeyboard.hpp"
 
 //Sfml
 #include <SFML/Window/Keyboard.hpp>

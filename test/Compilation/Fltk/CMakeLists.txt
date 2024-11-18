@@ -9,9 +9,12 @@ endif()
 
 include(FetchContent)
 
+#set(FLTK_TAG "1.3.9")
 FetchContent_Declare(FLTK
     GIT_REPOSITORY https://github.com/fltk/fltk
+#    GIT_TAG ${FLTK_TAG}
 )
+
 FetchContent_MakeAvailable(FLTK)
 
 if(WIN32)

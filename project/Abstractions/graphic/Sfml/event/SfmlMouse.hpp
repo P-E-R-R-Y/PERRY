@@ -2,7 +2,7 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-05-10 19:59:08
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-05-25 19:25:47
+ * @ Modified time: 2024-11-11 23:44:28
  * @ Description: Raylib Encapsulation for IMouse
  */
 
@@ -10,7 +10,7 @@
 #define SFMLMOUSE_HPP_
 
 //Interface
-#include "../../../../Interfaces/graphic/event/IMouse.hpp"
+#include "../../../../interfaces/graphic/event/IMouse.hpp"
 #include "SfmlEvent.hpp"
 
 //Sfml

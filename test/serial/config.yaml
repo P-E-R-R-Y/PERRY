@@ -1,0 +1,17 @@
+version: 1.0
+name: app
+settings:
+  debuging: true
+  debug:
+    start: yaml
+    enabled: true
+    log:
+      level: null
+ports:
+  - 8080
+  - 8081
+data:
+  - name: data1
+    value: 1
+  - name: data2
+    value: 2

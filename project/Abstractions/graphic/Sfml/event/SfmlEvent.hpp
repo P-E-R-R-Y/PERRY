@@ -2,7 +2,7 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-05-13 11:09:33
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-05-25 19:24:33
+ * @ Modified time: 2024-11-11 23:44:42
  * @ Description:
  */
 
@@ -10,7 +10,7 @@
 #define SFMLEVENT_HPP
 
 //Interface
-#include "../../../Interfaces/graphic/event/IEvent.hpp"
+#include "../../../interfaces/graphic/event/IEvent.hpp"
 
 //Sfml
 #include <SFML/Window.hpp>

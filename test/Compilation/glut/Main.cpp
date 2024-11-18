@@ -3,6 +3,7 @@
 #include <OpenGL/glext.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 
 void display(void)
 {
@@ -14,16 +15,27 @@ void display(void)
 void close()
 {
     glutDestroyWindow(0);
-    exit(0);
+    std::cout << "close" << std::endl;
 }
 
-int main(int argc, char **argv)
+int windowId;
+
+int main(void)
 {
+  //glutInit without acces to ac and av ?
+  int argc = 0;
+  char *argv[] = { 0 };
   glutInit(&argc, argv);
+  //glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-  glutCreateWindow(argv[0]);
+  windowId = glutCreateWindow(argv[0]);
   glutWMCloseFunc(close);
   glutDisplayFunc(display);
+  glutKeyboardFunc([](unsigned char key, int x, int y) {
+    if (key == 27)
+      glutDestroyWindow(windowId);
+      exit(0);
+  });
   glutMainLoop();
   return 0;
 }

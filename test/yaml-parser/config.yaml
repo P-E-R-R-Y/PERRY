@@ -1,0 +1,20 @@
+#cmake
+
+cpp_version: 17
+
+flags:
+  - -Wall
+  - -Wextra
+  - -Werror
+
+dynamic:
+  active: true
+  selector: true
+
+interfaces:
+  - /path/to/interface1
+  - /path/to/interface2
+
+libraries:
+  - /path/to/library1
+  - /path/to/library2

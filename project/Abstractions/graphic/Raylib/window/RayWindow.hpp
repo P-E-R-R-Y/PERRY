@@ -18,8 +18,8 @@
 #include <raylib.h>
 
 //Interface
-#include "../../../../Interfaces/graphic/window/IWindow.hpp"
-#include "../../../../Interfaces/system/math.hpp"
+#include "../../../../interfaces/graphic/window/IWindow.hpp"
+#include "../../../../interfaces/system/math.hpp"
 //encapsulation
 #include "../graphic/RayPolygon.hpp"
 #include "../graphic/RaySprite.hpp"

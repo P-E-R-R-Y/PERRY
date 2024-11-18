@@ -17,7 +17,7 @@
 #define SFMLSPRITE_HPP_
 
 //Interface
-#include "../../../Interfaces/graphic/graphic/IPolygon.hpp"
+#include "../../../interfaces/graphic/graphic/IPolygon.hpp"
 
 //Raylib
 #include <SFML/System.hpp>

@@ -13,12 +13,12 @@
  **/
 
 //Interface
-#include "Interfaces/graphic/window/IWindow.hpp"
-#include "Interfaces/graphic/event/IKeyboard.hpp"
-#include "Interfaces/graphic/event/IMouse.hpp"
-#include "Interfaces/graphic/graphic/IPolygon.hpp"
+#include "interfaces/graphic/window/IWindow.hpp"
+#include "interfaces/graphic/event/IKeyboard.hpp"
+#include "interfaces/graphic/event/IMouse.hpp"
+#include "interfaces/graphic/graphic/IPolygon.hpp"
 //EngineCore
-#include "Abstractions/engine/dynamicswitchengine/DynamicSwitchEngine.hpp"
+#include "abstractions/engine/dynamicswitchengine/DynamicSwitchEngine.hpp"
 
 #include <dlfcn.h>
 #include <map>
@@ -28,9 +28,13 @@
 #include <sys/stat.h>
 #include <filesystem>
 
+#include "sources/cyclone/physics.hpp"
+
 class FirstGameCore: public DynamicSwitchEngine/*NoEngineCore*/ {
     public:
-        FirstGameCore(std::vector<std::string> files): DynamicSwitchEngine(files) {}
+        FirstGameCore(std::vector<std::string> files): DynamicSwitchEngine(files) {
+//            config_extractor<physics_config
+        }
     protected:
 
         void initHandler() override {
@@ -89,8 +93,8 @@ class FirstGameCore: public DynamicSwitchEngine/*NoEngineCore*/ {
 
 };
 
-#include "Libraries/FlagParser.hpp"
-#include "Libraries/FileSearcher.hpp"
+#include "libraries/FlagParser.hpp"
+#include "libraries/FileSearcher.hpp"
 
 int main(int ac, char **av) {
     std::vector<std::string> files = FileSearcher::searchSharedLibraries("./Shared");

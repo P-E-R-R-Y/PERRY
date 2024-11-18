@@ -7,20 +7,20 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #Interfaces
-add_subdirectory(Interfaces/core)
-add_subdirectory(Interfaces/graphic)
-add_subdirectory(Interfaces/system)
+add_subdirectory(interfaces/core)
+add_subdirectory(interfaces/graphic)
+add_subdirectory(interfaces/system)
 
 ##Static
-add_subdirectory(Abstractions/core/dynamic)
-add_subdirectory(Abstractions/engine/dynamicswitchengine)
+add_subdirectory(abstractions/core/dynamic)
+add_subdirectory(abstractions/engine/dynamicswitchengine)
 
 ##Shared
-list(APPEND CMAKE_SOURCE_SHARED_LIBS Raylib Sfml Sdl)
+list(APPEND CMAKE_SOURCE_SHARED_LIBS raylib sfml sdl)
 list(APPEND CMAKE_BIN_SHARED_LIBS raylibgraphic sfmlgraphic sdlgraphic)
 
 foreach(folder IN LISTS CMAKE_SOURCE_SHARED_LIBS)
-  add_subdirectory(Abstractions/graphic/${folder})
+  add_subdirectory(abstractions/graphic/${folder})
 endforeach()
 
 #SET_LIBRARY
@@ -57,11 +57,11 @@ MAKE_DIRECTORY(${CMAKE_BINARY_DIR}/Shared)
 foreach(folder bin IN ZIP_LISTS CMAKE_SOURCE_SHARED_LIBS CMAKE_BIN_SHARED_LIBS)
   message(${folder} " : " ${bin})
   #set(GLFW_USE_COCOA OFF)
-  if (EXISTS ${CMAKE_SOURCE_DIR}/Abstractions/graphic/${folder})
+  if (EXISTS ${CMAKE_SOURCE_DIR}/abstractions/graphic/${folder})
     message("-------------------------------------------------------------Shared folder found")
     #prebuild remove the shared folder
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${bin}> ${CMAKE_BINARY_DIR}/Shared)
+      COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${bin}> ${CMAKE_BINARY_DIR}/shared)
   else ()
     message(FATAL_ERROR "-------------------------------------------------------------Shared folder not found")
   endif()

@@ -1,2 +1,8 @@
 name: project
-
+binary: app 
+libraries:
+  - type: graphic
+    name: sfml
+  - name: ecs
+  - type: serial
+    name: yaml

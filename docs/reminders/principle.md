@@ -1,0 +1,107 @@
+# V1
+
+- Interface
+- Abstraction
+- Encapsulation
+- Shared Library
+- Static Library
+- Metaprogramming
+- Recursion
+- Polymorphism
+- Inheritance
+- Overloading / Overriding
+- Design Patterns (Singleton, Factory, Observer, etc.)
+- Dependency Injection
+- Concurrency / Multithreading
+- Memory Management (Pointers, References, RAII)
+- Templates (C++ Templates, Variadic Templates, Template Specialization)
+- Lambda Expressions
+- Type Traits
+- SFINAE (Substitution Failure Is Not An Error)
+- Move Semantics
+- Smart Pointers (unique_ptr, shared_ptr, weak_ptr)
+- Exception Handling (try-catch, custom exceptions)
+- Unit Testing
+- Reflection (where supported)
+- Functional Programming (Higher-order functions, Immutable data, etc.)
+- State Machines
+- SOLID Principles
+- Compiler Optimization
+- Linker & Loader Concepts
+- Multimodal Programming (mixing paradigms like OOP and Functional)
+- Functional Dependencies (like in Haskell)
+- Algorithms & Data Structures (Linked Lists, Trees, Graphs, Sorting Algorithms)
+- Code Profiling & Performance Optimization
+- Memory Leaks & Resource Management (RAII, Destructor semantics)
+- Concurrency Patterns (Mutexes, Atomic operations, Lock-free data structures)
+- Event-Driven Programming
+- Reactive Programming (Streams, Observables, etc.)
+- Finite State Machines
+- Type Systems (Static vs Dynamic, Strong vs Weak)
+- Immutable Data Structures
+- Lazy Evaluation
+- Partial Evaluation (reducing the number of computations by precomputing parts of them)
+
+# V2
+
+- Object-Oriented Design (OOD)
+-	Interface Segregation Principle (ISP)
+-	Open/Closed Principle (OCP)
+-	Liskov Substitution Principle (LSP)
+-	Dependency Inversion Principle (DIP)
+-	Composition over Inheritance
+-	Functional Composition
+-	Pure Functions
+-	Monads (Functional Programming)
+-	Lazy Evaluation
+-	Referential Transparency
+-	Immutability
+-	Callback Functions
+-	Event Loops (Reactive programming, Node.js)
+-	Asynchronous Programming (async/await, Promises, Futures)
+-	Actor Model (Concurrency model)
+-	Data-Oriented Design
+-	Graph Theory (Graph traversal, Shortest path algorithms)
+-	Command Pattern (Undo/redo, queue processing)
+-	Visitor Pattern (Visiting different data structures)
+-	Decorator Pattern (Extend functionality without altering structure)
+-	Adapter Pattern (Convert one interface to another)
+-	Proxy Pattern (Controlling access to an object)
+-	Flyweight Pattern (Memory-efficient object sharing)
+-	Mediator Pattern (Control communication between objects)
+-	Strategy Pattern (Define interchangeable algorithms)
+-	Chain of Responsibility (Pass request through a chain of handlers)
+-	Builder Pattern (Construct complex objects step-by-step)
+-	Prototype Pattern (Clone existing objects)
+-	Abstract Factory Pattern (Create families of related objects)
+-	State Pattern (Change behavior based on the state)
+-	Observer Pattern (Automatic notification of state changes)
+-	Iterator Pattern (Access elements sequentially without exposing structure)
+-	Composite Pattern (Treat individual objects and composites uniformly)
+-	Bridge Pattern (Separate abstraction from implementation)
+-	Template Method Pattern (Define skeleton of algorithm, allowing subclasses to redefine certain steps)
+-	Singleton Pattern (Ensure only one instance of a class)
+-	Dependency Injection Containers
+-	Naked Functions (C-style function pointers)
+-	Curry and Partial Application (Functional Programming)
+-	Haskell-like Type System (Type classes, Generics, Parametric Polymorphism)
+-	Higher-Order Functions (Functions that take functions as arguments or return functions)
+-	Category Theory (Monoids, Functors, etc., in programming)
+-	Type Erasure (Generic programming)
+-	Compile-Time Reflection
+-	Contextual Behavior (Context Objects)
+-	Data Flow Programming (Data transformation pipelines)
+-	Transaction Management (Atomicity, Consistency, Isolation, Durability)
+-	Design-by-Contract (Preconditions, postconditions, invariants)
+-	Separation of Concerns (Decoupling system logic)
+-	Concurrency Safety (Data race prevention, Mutexes, Semaphores)
+-	Lazy vs Eager Evaluation
+-	Rule-Based Systems (Expert systems, Forward/backward chaining)
+-	Stateful vs Stateless Programming
+-	Cohesion and Coupling
+-	GraphQL and Query Languages
+-	Protocol Buffers / Thrift / Avro (Serialization)
+-	Dependency Graphs (Managing dependencies between components)
+-	Observer and Publisher-Subscriber Patterns
+-	Message Queues (Microservices, Distributed Systems)
+-	Herding Cats (Concurrency patterns like C++ threads or async tasks)

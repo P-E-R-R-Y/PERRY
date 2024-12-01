@@ -2,14 +2,14 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-04-27 03:45:38
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-05-25 19:12:23
+ * @ Modified time: 2024-11-22 20:42:42
  * @ Description:
  */
 
 #ifndef IMOUSE_HPP_
 #define IMOUSE_HPP_
   
-#include "../../system/Type.hpp"
+#include "../../../libraries/system/type.hpp"
 
 namespace graphic {
 

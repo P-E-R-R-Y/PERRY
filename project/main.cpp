@@ -1,49 +1,71 @@
-/**
- *
- * File: main.cpp (header.v2)
- * Created Date: Tue 14/03/2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Sat 18/03/2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
-
-//Interface
-#include "interfaces/graphic/window/IWindow.hpp"
-#include "interfaces/graphic/event/IKeyboard.hpp"
-#include "interfaces/graphic/event/IMouse.hpp"
-#include "interfaces/graphic/graphic/IPolygon.hpp"
-//EngineCore
-#include "abstractions/engine/dynamicswitchengine/DynamicSwitchEngine.hpp"
-
-#include <dlfcn.h>
-#include <map>
 #include <iostream>
-#include <utility>
-#include <filesystem>
-#include <sys/stat.h>
-#include <filesystem>
+#include <ostream>
+#include <memory>
+#include <vector>
+#include <string>
+#include <map>
+//libraries
+#include "libraries/system/std.hpp"
+#include "libraries/finder/FileSearcher.hpp"
 
-#include "sources/cyclone/physics.hpp"
+//interface 
+#include "interfaces/InfoSharedLoader.hpp"
 
-class FirstGameCore: public DynamicSwitchEngine/*NoEngineCore*/ {
+//  graphic
+#include "interfaces/graphic/GraphicSharedLoader.hpp"
+#include "interfaces/serial/SerialSharedLoader.hpp"
+
+template <class ... T>
+class CustomisableEngine: public ICore, public T... {
     public:
-        FirstGameCore(std::vector<std::string> files): DynamicSwitchEngine(files) {
-//            config_extractor<physics_config
-        }
-    protected:
+        CustomisableEngine(typename T::Params... args): T(args)... {};
+        ~CustomisableEngine() = default;
 
+    protected:
+        virtual void initHandler() = 0;
+        virtual void destroyHandler() = 0;
+
+        virtual void eventHandler() = 0;
+        virtual void updateHandler() = 0;
+        virtual void displayHandler() = 0;
+};
+
+class Game: public CustomisableEngine<GraphicSharedLoader> {
+    public:
+        //todo change vector to variadic template
+        Game(std::string graphic): CustomisableEngine(graphic) {};
+        ~Game() = default;
+
+        int start() override {
+            // main loop
+            this->initHandler();
+            while (window->isOpen()) {
+                while (window->pollEvent()) {
+                    window->eventClose();
+                    this->eventHandler();
+                }
+                this->updateHandler();
+                window->beginDraw();
+                this->displayHandler();
+                window->endDraw();
+            }
+            window->close();
+
+            this->destroyHandler();
+            return 0;
+        }
+
+    protected:
         void initHandler() override {
             std::cout << "initHandler " << std::endl;
+            window = createWindow(800, 500, "Perry");
+            event = createEvent();
+            window->linkEvent(event);
             std::vector<__v2f_t> star_points = {{125, 200}, {175, 200}, {200, 150}, {225, 200}, {275, 200},  {250, 250}, {255, 305}, {200, 285}, {145, 305}, {150, 250}};
             std::vector<__v2f_t> heart_points = {{500, 100}, {600, 100}, {600, 200}, {700, 200}, {700, 300},  {500, 300}};
             poly_star = createPolygon(star_points);
             poly_heart = createPolygon(heart_points);
-            sprite = createSprite("./Assets/image.png");
+            sprite = createSprite("./assets/image.png");
             camera = createCamera();
             model = createModel();
             keyboard = createKeyboard(event);
@@ -56,7 +78,7 @@ class FirstGameCore: public DynamicSwitchEngine/*NoEngineCore*/ {
                 if (keyboard->isKeyDown(graphic::IKeyboard::Keys::KEY_SPACE)) {
                     std::cout << "SPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACESPACE" << std::endl;
                     __v2f_t pos = sprite->getPosition();
-//                    sprite->setPosition({pos.x + 1, pos.y});
+                    sprite->setPosition({pos.x + 1, pos.y});
                     sprite->setRotation(sprite->getRotation() + 1);
                 }
             } else {
@@ -75,13 +97,27 @@ class FirstGameCore: public DynamicSwitchEngine/*NoEngineCore*/ {
             window->drawSprite(sprite);
 
             window->beginMode3(camera);
-                window->drawModel(model);
+            window->drawModel(model);
             window->endMode3();
             window->drawPoly(poly_star);
             window->drawPoly(poly_heart);
         }
 
-    private:
+        void destroyHandler() override {
+            deleteWindow(window);
+            deleteEvent(event);
+            deletePolygon(poly_star);
+            deletePolygon(poly_heart);
+            deleteSprite(sprite);
+            deleteCamera(camera);
+            deleteModel(model);
+            deleteKeyboard(keyboard);
+            deleteMouse(mouse);
+        }
+
+    public:
+        graphic::IWindow *window;
+        graphic::IEvent *event;
         graphic::IPolygon *poly_star;
         graphic::IPolygon *poly_heart;
         graphic::ISprite *sprite;
@@ -93,16 +129,35 @@ class FirstGameCore: public DynamicSwitchEngine/*NoEngineCore*/ {
 
 };
 
-#include "libraries/FlagParser.hpp"
-#include "libraries/FileSearcher.hpp"
-
-int main(int ac, char **av) {
-    std::vector<std::string> files = FileSearcher::searchSharedLibraries("./Shared");
-    FirstGameCore fgc(files);
-
-    std::cout << "--------------------" << std::endl;
-    for(auto& file: files)
+std::map<std::string, std::vector<std::string>> sortSharedLibrary(std::vector<std::string> files) {
+    std::map<std::string, std::vector<std::string>> map;
+    for (auto& file: files) {
         std::cout << file << std::endl;
-    std::cout << "--------------------" << std::endl;
-    return fgc.Run();
+        InfoSharedLoader info_shared(file);
+        std::cout << "1" << std::endl;
+        std::cout << info_shared.getType() << std::endl;
+        std::cout << "2" << std::endl;
+        map[info_shared.getType()].push_back(file);
+        std::cout << "3" << std::endl;
+    }
+    return map;
+}
+
+int main() {
+    std::vector<std::string> files = FileSearcher::searchSharedLibraries("./shared");
+    std::cout << "Shared Libraries:" << std::endl;
+    std::map<std::string, std::vector<std::string>> map = sortSharedLibrary(files);
+
+    for (auto& [key, value]: map) {
+        std::cout << key << std::endl;
+        for (auto& file: value) {
+            std::cout << "\t" << file << std::endl;
+        }
+    }
+
+    for (int i = 0; i < 3; ++i) {
+        Game game(map["graphic"][i]);
+        game.start();
+    }
+    return 0;
 }

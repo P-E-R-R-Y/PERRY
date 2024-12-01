@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libdynamiccore.a CMakeFiles/dynamiccore.dir/no_source.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libdynamiccore.a

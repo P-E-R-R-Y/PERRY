@@ -2,7 +2,7 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-04-14 13:23:25
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-05-25 19:10:56
+ * @ Modified time: 2024-11-22 20:41:49
  * @ Description: Interface for Model
  */
 
@@ -11,7 +11,7 @@
 
 #ifndef IMODEL_HPP_
     #define IMODEL_HPP_
-    #include "../../system/Type.hpp"
+    #include "../../../libraries/system/type.hpp"
     #include "../window/IWindow.hpp"
 
     //class IWindow;

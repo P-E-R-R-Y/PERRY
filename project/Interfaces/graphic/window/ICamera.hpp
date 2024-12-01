@@ -15,7 +15,7 @@
 
 #ifndef ICAMERA_HPP_
     #define ICAMERA_HPP_
-    #include "../../system/Type.hpp"
+    #include "../../../libraries/system/type.hpp"
     #include "IWindow.hpp"
 
 class Module {

@@ -47,7 +47,6 @@ namespace graphic {
             virtual void drawModel(IModel *model) = 0;
             virtual void endMode3() = 0;
             //event
-            virtual bool isPoll() = 0;
             virtual bool pollEvent() = 0;
             virtual void eventClose() = 0;
 

@@ -15,7 +15,8 @@
 
 #ifndef IPOLYGON_HPP_
     #define IPOLYGON_HPP_
-    #include "../../system/Type.hpp"
+    #include "../../../libraries/system/type.hpp"
+    #include "../../../libraries/maths/geometry.hpp"
     #include "../window/IWindow.hpp"
 
 namespace graphic {

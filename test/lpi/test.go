@@ -1,7 +1,9 @@
-import "graphic"
+import "graphic";
+
+var enemy = 0;
+var window = "Test";
 
 func main() int {
-		var window = graphic.window("Test", 800, 600);
-		var image enemy  = "assets/image.png";
-		return 1;
+		graphic.print("Hello, World!");
+		return 0;
 }

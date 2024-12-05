@@ -15,21 +15,6 @@
 #include "interfaces/graphic/GraphicSharedLoader.hpp"
 #include "interfaces/serial/SerialSharedLoader.hpp"
 
-template <class ... T>
-class CustomisableEngine: public ICore, public T... {
-    public:
-        CustomisableEngine(typename T::Params... args): T(args)... {};
-        ~CustomisableEngine() = default;
-
-    protected:
-        virtual void initHandler() = 0;
-        virtual void destroyHandler() = 0;
-
-        virtual void eventHandler() = 0;
-        virtual void updateHandler() = 0;
-        virtual void displayHandler() = 0;
-};
-
 class Game: public CustomisableEngine<GraphicSharedLoader> {
     public:
         //todo change vector to variadic template

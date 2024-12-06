@@ -22,6 +22,10 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 
+#include <vector>
+#include <iostream>
+#include <utility>
+
 ///Interface
 #include "../../../../interfaces/graphic/window/IWindow.hpp"
 #include "../../../../libraries/maths/geometry.hpp"
@@ -82,15 +86,76 @@ class SfmlWindow : public graphic::IWindow {
 
         //Draw3 (Carve)
         void beginMode3(graphic::ICamera *camera) override {
-            std::cout << "Sfml::beginMode3 not implemented" << std::endl;
+            _sfmlcamera = static_cast<SfmlCamera *>(camera);
         }
         
         virtual void drawModel(graphic::IModel *model) override {
-            std::cout << "Sfml::drawModel not implemented" << std::endl;
+            std::cout << "BBBB>" << _sfmlcamera->_position.x;
+            if (_sfmlcamera == nullptr) {
+                throw std::runtime_error("begginMode3d not called");
+            }
+            //fov calculus from screen & camera
+            sf::Vector2u size = this->_window.getSize();
+            sf::Vector2u center = sf::Vector2u(size.x / 2, size.y / 2);
+            std::cout << "->" << size.x << " " << size.y << std::endl;
+            std::cout << "->->" << center.x << " " << center.y << std::endl;
+            float fovy = _sfmlcamera->_fovy;
+
+            sf::VertexArray triangle(sf::Triangles, 3);
+
+            std::vector<sf::Vector3f> cube = {
+                {-1, 1, 1}, // left top back
+                {1, 1, 1}, // right top back
+                {1, -1, 1}, // right bottom back
+                {-1, -1, 1}, // left bottom back
+
+                {-1, 1, -1}, // left top front
+                {1, 1, -1}, // right top front
+                {1, -1, -1}, // right bottom front
+                {-1, -1, -1}, // left bottom front
+            };
+            float mult = 50;
+            
+            //draw
+            for (int i = 0; i < 4; i++) {
+                sf::Vertex line [] = {
+                    sf::Vertex(sf::Vector2f(cube[i].x, cube[i].y)),
+                    sf::Vertex(sf::Vector2f(cube[(i + 1) % 4].x, cube[(i + 1) % 4].y))
+                };
+                line[0].position.x = line[0].position.x * mult + center.x;
+                line[0].position.y = line[0].position.y * mult + center.y;
+                line[1].position.x = line[1].position.x * mult + center.x;
+                line[1].position.y = line[1].position.y * mult + center.y;
+
+                _window.draw(line, 2, sf::Lines);
+            }
+            for (int i = 0; i < 4; i++) {
+                sf::Vertex line [] = {
+                    sf::Vertex(sf::Vector2f(cube[i].x, cube[i].y)),
+                    sf::Vertex(sf::Vector2f(cube[i + 4].x, cube[i + 4].y))
+                };
+                line[0].position.x = line[0].position.x * mult + center.x;
+                line[0].position.y = line[0].position.y * mult + center.y;
+                line[1].position.x = line[1].position.x * mult + center.x;
+                line[1].position.y = line[1].position.y * mult + center.y;
+            
+                _window.draw(line, 2, sf::Lines);
+            }
+            for (int i = 0; i < 4; i++) {
+                sf::Vertex line [] = {
+                    sf::Vertex(sf::Vector2f(cube[i + 4].x, cube[i + 4].y)),
+                    sf::Vertex(sf::Vector2f(cube[((i + 1) % 4) + 4].x, cube[((i + 1) % 4) + 4].y))
+                };
+                line[0].position.x = line[0].position.x * mult + center.x;
+                line[0].position.y = line[0].position.y * mult + center.y;
+                line[1].position.x = line[1].position.x * mult + center.x;
+                line[1].position.y = line[1].position.y * mult + center.y;
+            
+                _window.draw(line, 2, sf::Lines);
+            }
         }
 
         void endMode3() override {
-            std::cout << "Sfml::endMode3 not implemented" << std::endl;
         };
 
         //EVENT
@@ -106,6 +171,7 @@ class SfmlWindow : public graphic::IWindow {
     private:
         sf::RenderWindow _window;
         SfmlEvent *_event;
+        SfmlCamera *_sfmlcamera;
 
         //time
         sf::Clock _deltaClock;

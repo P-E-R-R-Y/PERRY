@@ -18,12 +18,20 @@
 
 //Interface
 #include "../../../../interfaces/graphic/window/ICamera.hpp"
+#include "../../../../libraries/system/type.hpp"
 
 class SfmlCamera : public graphic::ICamera {
-
     public:
+        friend class SfmlWindow;
+
         SfmlCamera() {
-            std::cout << "SfmlCamera not implemented" << std::endl;
+            _position = {1.0f, 1.0f, 1.0f };    // Camera position
+            _target = { 0.0f, 0.0f, 0.0f };      // Camera looking at point
+            _up = { 0.f, 1.0f, 0.f };          // Camera up vector (rotation towards target)
+            _fovy = 60.0f;                                // Camera field-of-view Y
+            _projection = ICamera::PERSPECTIVE;             // Camera projection type
+            _mode = ICamera::FIRST_PERSON;
+
         }
 
         ~SfmlCamera() {}
@@ -37,7 +45,7 @@ class SfmlCamera : public graphic::ICamera {
         }
         //m
         ICamera::Mode getMode() const override {
-            return ICamera::Mode();
+            return ICamera::Mode::FIRST_PERSON;
         }
 
         void setMode(ICamera::Mode mode) override {
@@ -79,7 +87,13 @@ class SfmlCamera : public graphic::ICamera {
 
         friend class SfmlWindow;
 
-    private:
+    protected:
+        __v3f_t _position;
+        __v3f_t _target;
+        __v3f_t _up;
+        float _fovy;
+        ICamera::Projection _projection;
+        ICamera::Mode _mode;
             //your variables here
 };
 

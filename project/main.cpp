@@ -81,11 +81,11 @@ class Game: public CustomisableEngine<GraphicSharedLoader> {
             std::cout << "displayHandler" << std::endl;
             window->drawSprite(sprite);
 
+            window->drawPoly(poly_star);
+            window->drawPoly(poly_heart);
             window->beginMode3(camera);
             window->drawModel(model);
             window->endMode3();
-            window->drawPoly(poly_star);
-            window->drawPoly(poly_heart);
         }
 
         void destroyHandler() override {

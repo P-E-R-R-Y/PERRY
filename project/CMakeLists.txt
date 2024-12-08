@@ -17,16 +17,16 @@ list(APPEND CMAKE_SOURCE_SHARED
   graphic/raylib
   graphic/sfml
   graphic/sdl
-  #serial/json
-  #serial/yaml
+  serial/json
+  serial/yaml
 )
 
 list(APPEND CMAKE_BIN_SHARED
   raylibgraphic 
   sfmlgraphic
   sdlgraphic
-  #jsonserial
-  # yamlserial
+  jsonserial
+  yamlserial
 )
 
 ## ----------- Subdirectory CMake -----------

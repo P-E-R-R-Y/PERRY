@@ -119,11 +119,11 @@ std::map<std::string, std::vector<std::string>> sortSharedLibrary(std::vector<st
     for (auto& file: files) {
         std::cout << file << std::endl;
         InfoSharedLoader info_shared(file);
-        std::cout << "1" << std::endl;
+        if (!info_shared.getType()) {
+            continue;
+        }
         std::cout << info_shared.getType() << std::endl;
-        std::cout << "2" << std::endl;
         map[info_shared.getType()].push_back(file);
-        std::cout << "3" << std::endl;
     }
     return map;
 }

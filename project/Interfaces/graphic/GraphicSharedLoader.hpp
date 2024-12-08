@@ -37,8 +37,7 @@ class GraphicSharedLoader {
     public:
         using Params = std::string;
 
-        GraphicSharedLoader(Params file) {
-            DynamicLoader dl(file);
+        GraphicSharedLoader(Params file): dl(file) {
             // Check if the shared library is a graphic library
             if (!dl.isReady() || std::string(reinterpret_cast<char *(*)()>(dl.findSymbol("getType"))()) != std::string("graphic")) {
                 std::cerr << "Failed to load: " << file << std::endl;
@@ -77,6 +76,8 @@ class GraphicSharedLoader {
         
         ~GraphicSharedLoader() = default;
 
+    private:
+        DynamicLoader dl;
     public:
         /**
          * @brief Window

@@ -20,6 +20,6 @@ set(SOURCE_FILES json.cpp)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE iserial nlohmann_json::nlohmann_json) # The library or executable that require yaml-cpp library
+target_link_libraries(${PROJECT_NAME} iserial nlohmann_json::nlohmann_json) # The library or executable that require yaml-cpp library
 
 target_include_directories(${PROJECT_NAME} PUBLIC .)

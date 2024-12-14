@@ -64,12 +64,23 @@ foreach(bin IN LISTS CMAKE_BIN_STATIC)
 endforeach()
 
 #modules
-MAKE_DIRECTORY(${CMAKE_BINARY_DIR}/shared)
+set(SHARED_DIR ${CMAKE_BINARY_DIR}/shared)
+
+file(MAKE_DIRECTORY ${SHARED_DIR})
+
+add_custom_target(copy_shared ALL
+#  COMMAND ${CMAKE_COMMAND} -E echo "Clearing shared directory..."
+#  COMMAND ${CMAKE_COMMAND} -E remove_directory ${SHARED_DIR}  # Delete the shared directory
+  COMMAND ${CMAKE_COMMAND} -E echo "Recreating shared directory..."
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${SHARED_DIR}   # Recreate the shared directory
+)
+
 foreach(folder bin IN ZIP_LISTS CMAKE_SOURCE_SHARED CMAKE_BIN_SHARED)
   message(${folder} " : " ${bin})
   if (EXISTS ${CMAKE_SOURCE_DIR}/modules/${folder})
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${bin}> ${CMAKE_BINARY_DIR}/shared)
+    add_custom_command(TARGET copy_shared
+      COMMAND ${CMAKE_COMMAND} -E echo "Copying" ${bin} "to shared directory..."
+      COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${bin}> ${SHARED_DIR})
   else ()
     message(${folder} " not found")
   endif()

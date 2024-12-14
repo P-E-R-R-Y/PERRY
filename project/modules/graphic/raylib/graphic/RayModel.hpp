@@ -26,16 +26,16 @@ class RayModel : public graphic::IModel {
 
     public:
         RayModel() {
-            _position = {-1, -1, -1};
-            _scale = {1, 1, 1};
+            _position = {0, 0, 0};
+            _size = {1, 1, 1};
         }
 
-        ~RayModel() {
-        }
+        ~RayModel() = default;
 
         __v3f_t getPosition() const override {
             return {_position.x, _position.y, _position.z};
         }
+
         void setPosition(__v3f_t position) override {
             _position = {float(position.x), float(position.y), float(position.z)};
         }
@@ -44,8 +44,7 @@ class RayModel : public graphic::IModel {
 
     private:
         Vector3 _position;
-        Vector3 _scale;
-        //your variables here
+        Vector3 _size;
 };
 
 #endif /* !RAYMODEL_HPP_ */

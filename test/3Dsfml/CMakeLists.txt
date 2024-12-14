@@ -14,13 +14,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(sfml)
 
-#FetchContent_GetProperties(sfml)
-#if(NOT sfml_POPULATED)
-#    FetchContent_Populate(sfml)
-#    add_subdirectory(${sfml_SOURCE_DIR} ${sfml_BINARY_DIR})
-#endif()
-
-set(SOURCE_FILES Main.cpp)
+set(SOURCE_FILES main.cpp)
 
 add_compile_definitions(_HAS_AUTO_PTR_ETC=1)
 
@@ -32,3 +26,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     sfml-window
 )
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall)
+
+if (APPLE)
+    target_link_libraries(${PROJECT_NAME} PRIVATE "-framework Cocoa")
+    target_link_libraries(${PROJECT_NAME} PRIVATE "-framework OpenGL")
+    target_link_libraries(${PROJECT_NAME} PRIVATE "-framework IOKit")
+    target_link_libraries(${PROJECT_NAME} PRIVATE "-framework CoreVideo")
+endif()

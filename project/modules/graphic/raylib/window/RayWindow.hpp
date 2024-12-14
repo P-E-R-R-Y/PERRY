@@ -39,10 +39,6 @@ class RayWindow : public graphic::IWindow {
 
         ~RayWindow() = default;
 
-        //event
-        void linkEvent(graphic::IEvent *event) override {
-        };
-        
         //GLOBAL
         bool isOpen() override {
             return !WindowShouldClose();
@@ -52,36 +48,10 @@ class RayWindow : public graphic::IWindow {
             CloseWindow();
         };
 
-        //TIME
-        void setFrameLimit(__int32_t limit) override {
-            SetTargetFPS(limit);
-        };
-
-        __int32_t getDelta() override {
-            return static_cast<__int32_t>(GetFrameTime() * 1000);
-        };
-
-        //DRAW
-        void beginDraw() override {
-            BeginDrawing();
-            ClearBackground(BLACK);
-        };
-
-        virtual void drawPoly(graphic::IPolygon *polygon) override;
-        virtual void drawSprite(graphic::ISprite *sprite) override;
-
-        void endDraw() override {
-            EndDrawing();
-        };
-
-        //Draw3 (Carve)
-        void beginMode3(graphic::ICamera *camera) override;
-        
-        virtual void drawModel(graphic::IModel *model) override;
-
-        void endMode3() override;
-
         //EVENT
+        void linkEvent(graphic::IEvent *event) override {
+        };
+        
         bool pollEvent() override {
             static bool firstCall = true;
             std::cout << "firstCall" << firstCall << std::endl;
@@ -91,10 +61,41 @@ class RayWindow : public graphic::IWindow {
 
         void eventClose() override {
         };
+        
+        //TIME
+        void setFrameLimit(__int32_t limit) override {
+            SetTargetFPS(limit);
+        };
+
+        __int32_t getDelta() override {
+            return static_cast<__int32_t>(GetFrameTime() * 1000);
+        };
+
+        //2D
+        void beginDraw() override {
+            BeginDrawing();
+            ClearBackground(BLACK);
+        };
+
+        void endDraw() override {
+            EndDrawing();
+        };
+
+        virtual void drawPoly(graphic::IPolygon *polygon) override;
+        virtual void drawSprite(graphic::ISprite *sprite) override;
+
+        //3D
+        //Draw3 (Carve)
+        void beginMode3(graphic::ICamera *camera) override;
+        
+        virtual void drawModel(graphic::IModel *model) override;
+
+        void endMode3() override;
 
     private:
 };
 
+//2D
 void RayWindow::drawPoly(graphic::IPolygon *polygon) {
     RayPolygon *rayPolygon = static_cast<RayPolygon *>(polygon);
     std::vector<graphic::triangle_t> triangles = rayPolygon->_triangles;
@@ -118,6 +119,8 @@ void RayWindow::drawSprite(graphic::ISprite *sprite) {
     DrawTexturePro(raysprite->_texture, raysprite->_crop, posSize, {0,0}, raysprite->_rotation, WHITE);
 };
 
+//3D
+
 void RayWindow::beginMode3(graphic::ICamera *camera) {
     RayCamera *raycamera = static_cast<RayCamera *>(camera);
 
@@ -127,9 +130,8 @@ void RayWindow::beginMode3(graphic::ICamera *camera) {
 void RayWindow::drawModel(graphic::IModel *model) {
     RayModel *raymodel = static_cast<RayModel *>(model);
 
-    DrawCubeV(raymodel->_position, raymodel->_scale, RED);
-    DrawCubeWiresV(raymodel->_position, raymodel->_scale, BLACK);
-    //DrawModel(raymodel->);
+    DrawCubeV(raymodel->_position, raymodel->_size, RED);
+    DrawCubeWiresV(raymodel->_position, raymodel->_size, BLACK);
 };
 
 void RayWindow::endMode3() {

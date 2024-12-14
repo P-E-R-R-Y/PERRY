@@ -25,6 +25,7 @@
 #include <vector>
 #include <iostream>
 #include <utility>
+#include <cmath>
 
 ///Interface
 #include "../../../../interfaces/graphic/window/IWindow.hpp"
@@ -88,33 +89,45 @@ class SfmlWindow : public graphic::IWindow {
         void beginMode3(graphic::ICamera *camera) override {
             _sfmlcamera = static_cast<SfmlCamera *>(camera);
         }
-        
+
         virtual void drawModel(graphic::IModel *model) override {
-            std::cout << "BBBB>" << _sfmlcamera->_position.x;
             if (_sfmlcamera == nullptr) {
                 throw std::runtime_error("begginMode3d not called");
             }
             //fov calculus from screen & camera
+            sf::Vector3f camPos = _sfmlcamera->_position;
             sf::Vector2u size = this->_window.getSize();
             sf::Vector2u center = sf::Vector2u(size.x / 2, size.y / 2);
             std::cout << "->" << size.x << " " << size.y << std::endl;
             std::cout << "->->" << center.x << " " << center.y << std::endl;
             float fovy = _sfmlcamera->_fovy;
+            //camera position & target to calculate the Quaternion
+            auto m = static_cast<SfmlModel *>(model);
 
-            sf::VertexArray triangle(sf::Triangles, 3);
+            std::vector<sf::Vector3f> cube = m->_meshes;
 
-            std::vector<sf::Vector3f> cube = {
-                {-1, 1, 1}, // left top back
-                {1, 1, 1}, // right top back
-                {1, -1, 1}, // right bottom back
-                {-1, -1, 1}, // left bottom back
+            for (int i = 0; i < cube.size(); i++) {
+                cube[i].x -= camPos.x;
+                cube[i].y -= camPos.y;
+                cube[i].z -= camPos.z;
+                std::array<double, 3> c = {cube[i].x, cube[i].y, cube[i].z};
+                std::array<double, 3> cr= _sfmlcamera->_quaternion.rotatePoint(c);
+                cube[i].x = cr[0];
+                cube[i].y = cr[1];
+                cube[i].z = cr[2];
 
-                {-1, 1, -1}, // left top front
-                {1, 1, -1}, // right top front
-                {1, -1, -1}, // right bottom front
-                {-1, -1, -1}, // left bottom front
-            };
+                cube[i].x += camPos.x;
+                cube[i].y += camPos.y;
+                cube[i].z += camPos.z;
+            }
+            
+
             float mult = 50;
+
+            sf::CircleShape point(1.0f);  // Radius of 1 to make it a small point
+            point.setFillColor(sf::Color::Red);  // Set the color of the point
+            point.setPosition(center.x, center.y);  // Set the position of the point
+            _window.draw(point);
             
             //draw
             for (int i = 0; i < 4; i++) {

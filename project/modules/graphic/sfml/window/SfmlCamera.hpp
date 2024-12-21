@@ -76,10 +76,10 @@ class SfmlCamera : public graphic::ICamera {
         friend class SfmlWindow;
 
         SfmlCamera(): _quaternion(0, 0, 0, 0) {
-            _position = {1.0f, 1.f, 1.0f };    // Camera position
-            _target = { 0.0f, 0.0f, 0.0f };      // Camera looking at point
+            _position = {0.0f, 2.0f, 1.f };    // Camera position
+            _target = { 0.0f, 0.0f, 0.f };      // Camera looking at point
             _up = { 0.f, 1.0f, 0.f };          // Camera up vector (rotation towards target)
-            _fovy = 60.0f;                                // Camera field-of-view Y
+            _fovy = 2.0f;                                // Camera field-of-view Y
             _projection = ICamera::ORTHOGRAPHIC;             // Camera projection type
             _mode = ICamera::FIRST_PERSON;
             // Calculate camera direction vector
@@ -89,8 +89,8 @@ class SfmlCamera : public graphic::ICamera {
             const auto tmpAngle = calculateEulerAngles({_direction.x, _direction.y, _direction.z});
             _eulerAngle = {static_cast<float>(tmpAngle[0] * 180.0f / M_PI), static_cast<float>(tmpAngle[1] * 180.0f / M_PI), static_cast<float>(tmpAngle[2] * 180.0f / M_PI)};
             std::cout << _eulerAngle.x << " " << _eulerAngle.y << " " << _eulerAngle.z << std::endl;
-
-            _quaternion = Quaternion::fromEulerAngles(_eulerAngle.x, _eulerAngle.y, 90);
+            
+            _quaternion = Quaternion::fromEulerAngles(_eulerAngle.x, _eulerAngle.y, 0);
         }
 
         ~SfmlCamera() {}

@@ -1,17 +1,67 @@
-/*#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <chrono>
 #include <thread>
 
 #include "Quaternion.hpp"
+#include "Object.hpp"
+#include "Camera.hpp"
+#include "Matrice.hpp"
+#include "Vector3f.hpp"
+
+void DrawPoint(sf::RenderWindow& window, const sf::Vector3f& point, Camera& camera) {
+    //make the camera the origin
+    sf::Vector3f relativePosition = point - camera.getPosition();
+
+    //rotate the object
+    sf::Vector3f relativeRotatedPosition = camera.getQuaternion().conjugate().rotate(relativePosition);
+
+    //Don't need to move the object back to its original position because the camera is the origin for perspective projection
+    sf::Vector3f rotatedPosition = relativeRotatedPosition;
+
+    //perspective projection
+    Matrice<float> projection = perspectiveProjection<float>(camera.getFov(), 800.0 / 600.0);
+
+
+//todo calculate the projection of the point
+//    std::array<float, 4> homogenCoord = {point.x, point.y, point.z, 1.f};
+//    std::array<float, 4> result;
+//
+//    for (int i = 0; i < 4; ++i) {
+//        for (int j = 0; j < 4; ++j) {
+//            result[i] += projection[i][j] * homogenCoord[j];
+//        }
+//    }
+//    
+//    Matrice<float> res = projection * vtom<float>(rotatedPosition);
+}
+
+void DrawObject(sf:: RenderWindow& window, Object& object, Camera& camera) {
+    // Rotate the object based on the inverse of the camera quaternion
+    Quaternion inverse = camera.getQuaternion().conjugate();
+
+    //make the camera the origin
+    sf::Vector3f relativePosition = object.getPosition() - camera.getPosition();
+
+    //rotate the object
+    sf::Vector3f relativeRotatedPosition = inverse.rotate(relativePosition);
+
+    //move the object back to its original position
+    sf::Vector3f rotatedPosition = relativeRotatedPosition + camera.getPosition();
+
+    // Draw the object
+    for (sf::Vector3f point : object.getVertices()) {
+        DrawPoint(window, point, camera);
+    }
+}
 
 int main()
 {
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
-    Cube c;
     sf::Clock clock;
-    Camera camera({8, 0, 8}, {0, 0, 0}, 200);
+    Object object;
+    Camera camera = Camera({0, 0, 0}, {0, 0, -1}, 90);
 
     clock.restart();
     uint fps = 60;
@@ -38,59 +88,11 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
-        // clear the window with black color
         window.clear(sf::Color::Black);
 
-        drawMesh(window, camera, c);
-        // end the current frame
+        DrawObject(window, object, camera);
+
         window.display();
     }
-    return 0;
-}*/
-
-#include <stdio.h>
-
-// Function for weak perspective projection
-void weak_perspective_projection(
-    float x, float y, float z, 
-    float fov, float window_width, float window_height, 
-    float *screen_x, float *screen_y
-) {
-    float epsilon = 0.0001f; // Small value to avoid division by zero
-
-    // Weak perspective projection
-    float x_proj = fov * x / (z + fov + epsilon);
-    float y_proj = fov * y / (z + fov + epsilon);
-
-    // Map to screen space
-    *screen_x = (window_width / 2.0f) + x_proj * (window_width / 2.0f);
-    *screen_y = (window_height / 2.0f) - y_proj * (window_height / 2.0f);
-}
-
-int main() {
-    // Parameters
-    float fov = 400.0f;
-    float window_width = 800.0f;
-    float window_height = 600.0f;
-
-    // Test points
-    float points[2][3] = {
-        {0.0f, 0.0f, 0.0f},  // Origin
-        {1.0f, 1.0f, 1.0f}   // Positive diagonal
-    };
-
-    // Iterate through points and project them
-    for (int i = 0; i < 2; i++) {
-        float screen_x, screen_y;
-        weak_perspective_projection(
-            points[i][0], points[i][1], points[i][2],
-            fov, window_width, window_height,
-            &screen_x, &screen_y
-        );
-        printf("3D Point (%f, %f, %f) => Screen Point (%f, %f)\n",
-               points[i][0], points[i][1], points[i][2], screen_x, screen_y);
-    }
-
     return 0;
 }

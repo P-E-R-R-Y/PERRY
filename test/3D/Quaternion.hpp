@@ -1,55 +1,99 @@
-#include <cmath>
-#include <array>
-#include <iostream>
+#pragma once
+
+#include <SFML/Graphics.hpp>
+#include "Vector3f.hpp"
 
 class Quaternion {
-public:
-    double w, x, y, z;
+    public:
+        Quaternion(): w(1), x(0), y(0), z(0) {}
+        
+        Quaternion(float w, float x, float y, float z) : w(w), x(x), y(y), z(z) {}
+        ~Quaternion() {}
 
-    Quaternion(double w, double x, double y, double z) : w(w), x(x), y(y), z(z) {}
+        static Quaternion identity() {
+            return Quaternion(1, 0, 0, 0);
+        }
 
-    // Create a quaternion from an axis and an angle
-    static Quaternion fromAxisAngle(const std::array<double, 3>& axis, double angle) {
-        double half_angle = angle / 2.0;
-        double s = std::sin(half_angle);
-        double c = std::cos(half_angle);
+        static Quaternion fromEulerAngles(float x, float y, float z) {
+            Quaternion q;
+            sf::Vector3f half = {x / 2, y / 2, z / 2};
 
-        // Normalize the axis
-        double magnitude = std::sqrt(axis[0] * axis[0] + axis[1] * axis[1] + axis[2] * axis[2]);
-        return Quaternion(c, axis[0] * s / magnitude, axis[1] * s / magnitude, axis[2] * s / magnitude);
-    }
+            q.w = std::cos(half.x) * std::cos(half.y) * std::cos(half.z) + std::sin(half.x) * std::sin(half.y) * std::sin(half.z);
+            q.x = std::sin(half.x) * std::cos(half.y) * std::cos(half.z) - std::cos(half.x) * std::sin(half.y) * std::sin(half.z);
+            q.y = std::cos(half.x) * std::sin(half.y) * std::cos(half.z) + std::sin(half.x) * std::cos(half.y) * std::sin(half.z);
+            q.z = std::cos(half.x) * std::cos(half.y) * std::sin(half.z) - std::sin(half.x) * std::sin(half.y) * std::cos(half.z);
+            return q;
+        }
 
-    static Quaternion fromEulerAngles(double x, double y, double z) {
-        // Convert degrees to radians if needed
-        double rx = x * M_PI / 180.0;
-        double ry = y * M_PI / 180.0;
-        double rz = z * M_PI / 180.0;
+        /**
+         * @brief fromAxisAngle will create a quaternion from an axis and an angle
+         * 
+         * @param angle 
+         * @param axis 
+         * @return Quaternion 
+         */
+        static Quaternion fromAxisAngle(float angle, sf::Vector3f axis) {
+            Quaternion q;
+            float half = angle / 2; 
 
-        // https://en.wikipedia.org/wiki/Flight_dynamics_(fixed-wing_aircraft)
-        // Compute half-angles
-        double cy = cos(rz * 0.5);
-        double sy = sin(rz * 0.5);
-        double cp = cos(ry * 0.5);
-        double sp = sin(ry * 0.5);
-        double cr = cos(rx * 0.5);
-        double sr = sin(rx * 0.5);
+            q.w = std::cos(half);
+            q.x = axis.x * std::sin(half);
+            q.y = axis.y * std::sin(half);
+            q.z = axis.z * std::sin(half);
+            return q;
+        }
 
-        // Quaternion product formula
-        return Quaternion(
-            cr * cp * cy + sr * sp * sy,  // w
-            sr * cp * cy - cr * sp * sy,  // x
-            cr * sp * cy + sr * cp * sy,  // y
-            cr * cp * sy - sr * sp * cy   // z
-        );
-    }
+        /**
+         * @brief quaterninon representing the rotation from one vector to another
+         * 
+         * @param v1
+         * @param v2
+         * @return Quaternion
+         */
+        static Quaternion fromVectors(const sf::Vector3f& v1, const sf::Vector3f& v2) {
+            // Normalize the vectors
+            sf::Vector3f u1 = normalize(v1);
+            sf::Vector3f u2 = normalize(v2);
 
-    // Create a quaternion from a vector
-    static Quaternion fromVector(const std::array<double, 3>& vector) {
-        return Quaternion(0, vector[0], vector[1], vector[2]);
-    }
+            // give 
+            float dot = dotProduct(u1, u2);
 
-    // Multiply two quaternions
-    Quaternion operator*(const Quaternion& other) const {
+            // Compute the axis of rotation (cross product) get axis of rotation
+            sf::Vector3f axis = crossProduct(u1, u2);
+
+            // Compute the angle of rotation
+            float angle = std::acos(dot);
+
+            // Calculate sin and cos of half the angle
+            float sinHalfAngle = std::sin(angle / 2.0f);
+            float cosHalfAngle = std::cos(angle / 2.0f);
+
+            // Create the quaternion
+            Quaternion q(
+                cosHalfAngle,
+                axis.x * sinHalfAngle,
+                axis.y * sinHalfAngle,
+                axis.z * sinHalfAngle
+            );
+
+            return {
+                cosHalfAngle,
+                axis.x * sinHalfAngle,
+                axis.y * sinHalfAngle,
+                axis.z * sinHalfAngle};
+        }
+
+        Quaternion conjugate() const {
+            return Quaternion(w, -x, -y, -z);
+        }
+
+        sf::Vector3f rotate(sf::Vector3f point, sf::Vector3f center = {0, 0, 0}) const {
+            Quaternion p(0, point.x - center.x, point.y - center.y, point.z - center.z);
+            Quaternion q = *this * p * conjugate();
+            return {q.x + center.x, q.y + center.y, q.z + center.z};
+        }
+
+        Quaternion operator*(const Quaternion& other) const {
         return Quaternion(
             w * other.w - x * other.x - y * other.y - z * other.z,
             w * other.x + x * other.w + y * other.z - z * other.y,
@@ -58,86 +102,6 @@ public:
         );
     }
 
-    Quaternion& operator*=(const Quaternion& other) {
-        double new_w = w * other.w - x * other.x - y * other.y - z * other.z;
-        double new_x = w * other.x + x * other.w + y * other.z - z * other.y;
-        double new_y = w * other.y - x * other.z + y * other.w + z * other.x;
-        double new_z = w * other.z + x * other.y - y * other.x + z * other.w;
-
-        w = new_w;
-        x = new_x;
-        y = new_y;
-        z = new_z;
-
-        return *this;
-    }
-
-    //normalize the quaternion
-    void normalize() {
-        const double magnitude = std::sqrt(w * w + x * x + y * y + z * z);
-        w /= magnitude;
-        x /= magnitude;
-        y /= magnitude;
-        z /= magnitude;
-    }
-
-    // Conjugate of the quaternion
-    Quaternion conjugate() const {
-        return Quaternion(w, -x, -y, -z);
-    }
-
-    // Rotate a point using the quaternion
-    std::array<double, 3> rotatePoint(const std::array<double, 3>& point) const {
-        Quaternion p(0, point[0], point[1], point[2]);
-        Quaternion rotated = (*this) * p * conjugate();
-        return {rotated.x, rotated.y, rotated.z};
-    }
-
-    static std::array<double, 3> slerp(std::array<double, 3>, Quaternion q, double factor) {
-        // Normalize the quaternion
-        q.normalize();
-
-        // Compute the angle between the two quaternions
-        //double dot = q.w * q.w + q.x * q.x + q.y * q.y + q.z * q.z;
-        double theta = std::acos(q.w) * 2.0;
-
-        // Compute the spherical linear interpolation
-        double s0 = std::sin((1.0 - factor) * theta) / std::sin(theta);
-        double s1 = std::sin(factor * theta) / std::sin(theta);
-
-        // Interpolate the quaternions
-        return {
-            s0 * q.x + s1 * q.x,
-            s0 * q.y + s1 * q.y,
-            s0 * q.z + s1 * q.z
-        };
-    }   
-
-    // Rotate a point around a center of rotation using Euler angles
-    static std::array<double, 3> rotate(
-        const std::array<double, 3>& point,
-        const std::array<double, 3>& angle,
-        const std::array<double, 3>& centerOfRotation
-    ) {
-        // Translate the point relative to the center of rotation
-        std::array<double, 3> translatedPoint = {
-            point[0] - centerOfRotation[0],
-            point[1] - centerOfRotation[1],
-            point[2] - centerOfRotation[2]
-        };
-
-        Quaternion rotation = Quaternion::fromEulerAngles(angle[0], angle[1], angle[2]);
-
-
-
-        // Rotate the translated point
-        std::array<double, 3> rotatedPoint = rotation.rotatePoint(translatedPoint);
-
-        // Translate the point back to its original position
-        return {
-            rotatedPoint[0] + centerOfRotation[0],
-            rotatedPoint[1] + centerOfRotation[1],
-            rotatedPoint[2] + centerOfRotation[2]
-        };
-    }
+    private:
+        float w, x, y, z;
 };

@@ -13,9 +13,8 @@ public:
     Matrice(const std::vector<std::vector<T>>& grid) : data(grid), rows(grid.size()), cols(grid[0].size()) {}
 
     // Accessor for matrix elements (row, col)
-    T& operator()(int row, int col) {
-        return data[row][col];
-    }
+    T& operator()(int row, int col) { return data[row][col]; }
+    const T& operator()(int row, int col) const { return data[row][col]; }
 
     //operator=
     Matrice<T> operator=(const Matrice<T>& other) {
@@ -25,10 +24,6 @@ public:
             cols = other.cols;
         }
         return *this;
-    }
-
-    std::vector<T> operator[](const int index) const {
-        return data[index];
     }
 
     // Getter for rows and cols
@@ -53,35 +48,26 @@ private:
 
 template <typename T>
 Matrice<T> operator*(const Matrice<T>& a, const Matrice<T>& b) {
-    int aRows = a.getRows();
-    int aCols = a.getCols();
-    int bRows = b.getRows();
-    int bCols = b.getCols();
-
-    // Ensure matrices are compatible for multiplication
-    if (aCols != bRows) {
+    if (a.getCols() != b.getRows()) {
         throw std::invalid_argument("Matrix dimensions must be compatible for multiplication!");
     }
 
-    // Create a result matrix of size aRows x bCols
-    Matrice<T> result(aRows, bCols);
+    int rows = a.getRows();
+    int cols = b.getCols();
+    int commonDim = a.getCols();
+
+    // Create result matrix
+    Matrice<T> result(rows, cols);
 
     // Matrix multiplication logic
-    for (int i = 0; i < aRows; ++i) {
-        for (int j = 0; j < bCols; ++j) {
-            T sum = T();  // Initialize to the default value (e.g., 0)
-            for (int k = 0; k < aCols; ++k) {
-                sum += a[i][k] * b[k][j];
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            T sum = T(); // Initialize sum to default value (e.g., 0 for numbers)
+            for (int k = 0; k < commonDim; ++k) {
+                sum += a(i, k) * b(k, j);
             }
             result(i, j) = sum;
         }
     }
-
     return result;
-}
-
-template <typename T>
-Matrice<T> operator*=(Matrice<T>& a, const Matrice<T>& b) {
-    a = a * b;
-    return a;
 }

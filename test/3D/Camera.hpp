@@ -55,7 +55,7 @@ Matrice<T> perspectiveProjection(T fov, T aspectRatio) {
     return Matrice<T>(proj);
 }
 
-/*template <typename T>
+template <typename T>
 Matrice<T> orthographicProjection(T left, T right, T bottom, T top, T nearPlane, T farPlane) {
     // Create the orthographic projection matrix
     std::array<std::array<T, 4>, 4> proj = {{
@@ -66,7 +66,7 @@ Matrice<T> orthographicProjection(T left, T right, T bottom, T top, T nearPlane,
     }};
 
     return Matrice<T>(proj);
-}*/
+}
 
 /**
  *  Up vector: (0, 1, 0)

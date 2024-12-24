@@ -127,7 +127,7 @@ class SfmlWindow : public graphic::IWindow {
             //Model
             auto sfmlmodel = static_cast<SfmlModel *>(model);
 
-            //!1.	Object Space define object position
+            //!1. Object Space define object position
                 //? Position
                 auto modelPoints = sfmlmodel->_meshes;
             std::cout << "1" << std::endl;

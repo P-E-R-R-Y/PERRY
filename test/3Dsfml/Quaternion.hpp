@@ -98,7 +98,7 @@ public:
         q.normalize();
 
         // Compute the angle between the two quaternions
-        double dot = q.w * q.w + q.x * q.x + q.y * q.y + q.z * q.z;
+        //double dot = q.w * q.w + q.x * q.x + q.y * q.y + q.z * q.z;
         double theta = std::acos(q.w) * 2.0;
 
         // Compute the spherical linear interpolation

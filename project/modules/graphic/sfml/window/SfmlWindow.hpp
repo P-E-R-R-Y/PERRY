@@ -41,8 +41,33 @@
 //window
 #include "SfmlCamera.hpp"
 
-class SfmlWindow : public graphic::IWindow {
+static sf::Vector2f weak_perspective_projection(sf::Vector3f point, float fov) {
+    float epsilon = 0.00001f; // Small value to avoid division by zero
+    // Weak perspective projection
+    return {(fov * point.x / (point.z + fov + epsilon)), 
+            (fov * point.y / (point.z + fov + epsilon))};
+}
 
+static sf::Vector2f format_to_screen(sf::Vector2f point, sf::Vector2f window_size) {
+    return { (window_size.x / 2.0f) + point.x * (window_size.y / 2.0f),
+             (window_size.y / 2.0f) - point.y * (window_size.y / 2.0f) };
+}
+
+// std::array<double, 3> to sf::vector3f
+sf::Vector3f a3tov3(const std::array<double, 3>& point) {
+    return sf::Vector3f(static_cast<float>(point[0]),
+                        static_cast<float>(point[1]),
+                        static_cast<float>(point[2]));
+}
+
+//sf::vector3f to std::array<double, 3>
+std::array<double, 3> v3toa3(sf::Vector3f point) {
+    return {static_cast<double>(point.x),
+            static_cast<double>(point.y),
+            static_cast<double>(point.z)};
+}
+
+class SfmlWindow : public graphic::IWindow {
     public:
         SfmlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title)
         : _window(sf::VideoMode(screenWidth, screenHeight), title), _event(nullptr), _deltaClock() {
@@ -94,78 +119,76 @@ class SfmlWindow : public graphic::IWindow {
             if (_sfmlcamera == nullptr) {
                 throw std::runtime_error("begginMode3d not called");
             }
-            //fov calculus from screen & camera
-            sf::Vector3f camPos = _sfmlcamera->_position;
-            sf::Vector2u size = this->_window.getSize();
-            sf::Vector2u center = sf::Vector2u(size.x / 2, size.y / 2);
-            std::cout << "->" << size.x << " " << size.y << std::endl;
-            std::cout << "->->" << center.x << " " << center.y << std::endl;
-            float fovy = _sfmlcamera->_fovy;
-            //camera position & target to calculate the Quaternion
-            auto m = static_cast<SfmlModel *>(model);
+            //Window
+            sf::Vector2u windowSize = _window.getSize();
+            sf::Vector2f windowCenter = sf::Vector2f(static_cast<float>(windowSize.x / 2), static_cast<float>(windowSize.y / 2));
+            //Camera
+            auto sfmlcamera = _sfmlcamera;
+            //Model
+            auto sfmlmodel = static_cast<SfmlModel *>(model);
 
-            std::vector<sf::Vector3f> cube = m->_meshes;
+            //!1. Object Space define object position
+                //? Position
+                auto modelPoints = sfmlmodel->_meshes;
+            std::cout << "1" << std::endl;
+            //!2. Camera Space 
+                //? Position & Rotation
+                    for (int i = 0; i < modelPoints.size(); i++) {
+                    // sub camera position to point
+                        modelPoints[i] = modelPoints[i] - sfmlcamera->_position;
+                    // rotate point inversed to camera rotation
+                        modelPoints[i] = a3tov3(sfmlcamera->_quaternion.rotatePoint(v3toa3(modelPoints[i])));
+                    }
+                    // add camera position to point
+            std::cout << "2" << std::endl;
+            //!3. Projection Space & Format to Screen
+                std::vector<sf::Vector2f> projectionPoints;
+                for (int i = 0; i < modelPoints.size(); i++) {
+                    //? Weak perspective projection (normalized device coordinates)
+                    //? Format to screen
+                    projectionPoints.push_back(
+                        format_to_screen(
+                            weak_perspective_projection(modelPoints[i], sfmlcamera->_fovy), 
+                                                        {static_cast<float>(windowSize.x), static_cast<float>(windowSize.y)}));
+                }
+            std::cout << "3" << std::endl;
+            //!4. Draw
+                //? Draw point
+                for (int i = 0; i < projectionPoints.size(); i++) {
+                    sf::CircleShape point(1.0f);  // Radius of 1 to make it a small point
+                    point.setFillColor(sf::Color::Green);  // Set the color of the point
+                    point.setPosition(projectionPoints[i].x, projectionPoints[i].y);  // Set the position of the point
+                    std::cout << projectionPoints[i].x << " " << projectionPoints[i].y << std::endl;
+                    _window.draw(point);
+                }
+            //!5 Draw line
+                for (int i = 0; i < 4; i++) {
+                    sf::Vertex line[] = {
+                        sf::Vertex(projectionPoints[i]),
+                        sf::Vertex(projectionPoints[((i+1) % 4)])
+                    };
+                    _window.draw(line, 2, sf::Lines);
+                }
+                for (int i = 4; i < 8; i++) {
+                    sf::Vertex line[] = {
+                        sf::Vertex(projectionPoints[i]),
+                        sf::Vertex(projectionPoints[((i+1) % 4) + 4])
+                    };
+                    _window.draw(line, 2, sf::Lines);
+                }
 
-            for (int i = 0; i < cube.size(); i++) {
-                cube[i].x -= camPos.x;
-                cube[i].y -= camPos.y;
-                cube[i].z -= camPos.z;
-                std::array<double, 3> c = {cube[i].x, cube[i].y, cube[i].z};
-                std::array<double, 3> cr= _sfmlcamera->_quaternion.rotatePoint(c);
-                cube[i].x = cr[0];
-                cube[i].y = cr[1];
-                cube[i].z = cr[2];
+                for (int i = 0; i < 4; i++) {
+                    sf::Vertex line[] = {
+                        sf::Vertex(projectionPoints[i]),
+                        sf::Vertex(projectionPoints[i + 4])
+                    };
+                    _window.draw(line, 2, sf::Lines);
+                }
 
-                cube[i].x += camPos.x;
-                cube[i].y += camPos.y;
-                cube[i].z += camPos.z;
-            }
-            
-
-            float mult = 50;
-
-            sf::CircleShape point(1.0f);  // Radius of 1 to make it a small point
-            point.setFillColor(sf::Color::Red);  // Set the color of the point
-            point.setPosition(center.x, center.y);  // Set the position of the point
-            _window.draw(point);
-            
-            //draw
-            for (int i = 0; i < 4; i++) {
-                sf::Vertex line [] = {
-                    sf::Vertex(sf::Vector2f(cube[i].x, cube[i].y)),
-                    sf::Vertex(sf::Vector2f(cube[(i + 1) % 4].x, cube[(i + 1) % 4].y))
-                };
-                line[0].position.x = line[0].position.x * mult + center.x;
-                line[0].position.y = line[0].position.y * mult + center.y;
-                line[1].position.x = line[1].position.x * mult + center.x;
-                line[1].position.y = line[1].position.y * mult + center.y;
-
-                _window.draw(line, 2, sf::Lines);
-            }
-            for (int i = 0; i < 4; i++) {
-                sf::Vertex line [] = {
-                    sf::Vertex(sf::Vector2f(cube[i].x, cube[i].y)),
-                    sf::Vertex(sf::Vector2f(cube[i + 4].x, cube[i + 4].y))
-                };
-                line[0].position.x = line[0].position.x * mult + center.x;
-                line[0].position.y = line[0].position.y * mult + center.y;
-                line[1].position.x = line[1].position.x * mult + center.x;
-                line[1].position.y = line[1].position.y * mult + center.y;
-            
-                _window.draw(line, 2, sf::Lines);
-            }
-            for (int i = 0; i < 4; i++) {
-                sf::Vertex line [] = {
-                    sf::Vertex(sf::Vector2f(cube[i + 4].x, cube[i + 4].y)),
-                    sf::Vertex(sf::Vector2f(cube[((i + 1) % 4) + 4].x, cube[((i + 1) % 4) + 4].y))
-                };
-                line[0].position.x = line[0].position.x * mult + center.x;
-                line[0].position.y = line[0].position.y * mult + center.y;
-                line[1].position.x = line[1].position.x * mult + center.x;
-                line[1].position.y = line[1].position.y * mult + center.y;
-            
-                _window.draw(line, 2, sf::Lines);
-            }
+            //sf::CircleShape point(1.0f);  // Radius of 1 to make it a small point
+            //point.setFillColor(sf::Color::Red);  // Set the color of the point
+            //point.setPosition(windowCenter.x, windowCenter.y);  // Set the position of the point
+            //_window.draw(point);
         }
 
         void endMode3() override {

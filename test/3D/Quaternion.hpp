@@ -52,8 +52,8 @@ class Quaternion {
          */
         static Quaternion fromVectors(const sf::Vector3f& v1, const sf::Vector3f& v2) {
             // Normalize the vectors
-            sf::Vector3f u1 = normalize(v1);
-            sf::Vector3f u2 = normalize(v2);
+            sf::Vector3f u1 = normaliseV3f(v1);
+            sf::Vector3f u2 = normaliseV3f(v2);
 
             // give 
             float dot = dotProduct(u1, u2);
@@ -87,21 +87,60 @@ class Quaternion {
             return Quaternion(w, -x, -y, -z);
         }
 
+        void normalize() {
+            float magnitude = std::sqrt(w * w + x * x + y * y + z * z);
+            if (magnitude == 0) {
+                w = 1;
+                x = 0;
+                y = 0;
+                z = 0;
+            } else {
+                w /= magnitude;
+                x /= magnitude;
+                y /= magnitude;
+                z /= magnitude;
+            }
+        }
+
+        void normalise() {
+            float magnitude = std::sqrt(w * w + x * x + y * y + z * z);
+            if (magnitude == 0) {
+                w = 1;
+                x = 0;
+                y = 0;
+                z = 0;
+            } else {
+                w /= magnitude;
+                x /= magnitude;
+                y /= magnitude;
+                z /= magnitude;
+            }
+        }
+
+        void enforceSign() {
+            if (w < 0) {
+                w = -w;
+                x = -x;
+                y = -y;
+                z = -z;
+            }
+        }
+
         sf::Vector3f rotate(sf::Vector3f point, sf::Vector3f center = {0, 0, 0}) const {
             Quaternion p(0, point.x - center.x, point.y - center.y, point.z - center.z);
-            Quaternion q = *this * p * conjugate();
+            Quaternion q = (*this * p) * conjugate();
             return {q.x + center.x, q.y + center.y, q.z + center.z};
         }
 
         Quaternion operator*(const Quaternion& other) const {
-        return Quaternion(
-            w * other.w - x * other.x - y * other.y - z * other.z,
-            w * other.x + x * other.w + y * other.z - z * other.y,
-            w * other.y - x * other.z + y * other.w + z * other.x,
-            w * other.z + x * other.y - y * other.x + z * other.w
-        );
-    }
+            Quaternion q(
+                w * other.w - x * other.x - y * other.y - z * other.z,
+                w * other.x + x * other.w + y * other.z - z * other.y,
+                w * other.y - x * other.z + y * other.w + z * other.x,
+                w * other.z + x * other.y - y * other.x + z * other.w
+            );
+            return q;
+        }
 
-    private:
-        float w, x, y, z;
+    float w, x, y, z;
 };

@@ -9,7 +9,7 @@ class Camera {
     public:
         Camera(sf::Vector3f pos = {0, 0, 0}, sf::Vector3f target = {0, 0, -1}, float fov = 90) : position(pos), up({0, 1, 0}), fov(fov) {
             sf::Vector3f usual = {0, 0, -1};
-            sf::Vector3f direction = normalize(target - position);
+            sf::Vector3f direction = normaliseV3f(target - position);
 
             quaternion = Quaternion::fromVectors(usual, direction);
         }
@@ -24,6 +24,27 @@ class Camera {
 
         Quaternion getConjugate() const {
             return quaternion.conjugate();
+        }
+
+        void rotateY( float angle) {
+            Quaternion q = Quaternion::fromAxisAngle(angle, {0, 1, 0});
+            quaternion = q * quaternion;
+            quaternion.normalise();
+            quaternion.enforceSign();
+        }
+
+        void rotateX( float angle) {
+            Quaternion q = Quaternion::fromAxisAngle(angle, {1, 0, 0});
+            quaternion = q * quaternion;
+            quaternion.normalise();
+            quaternion.enforceSign();
+        }
+
+        void rotateZ( float angle) {
+            Quaternion q = Quaternion::fromAxisAngle(angle, {0, 0, 1});
+            quaternion = q * quaternion;
+            quaternion.normalise();
+            quaternion.enforceSign();
         }
 
         float getFov() const {

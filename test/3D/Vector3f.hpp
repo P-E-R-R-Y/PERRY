@@ -26,7 +26,7 @@ sf::Vector3f crossProduct(sf::Vector3f a, sf::Vector3f b) {
  * @param vec 
  * @return sf::Vector3f 
  */
-sf::Vector3f normalize(sf::Vector3f vec) {
+sf::Vector3f normaliseV3f(const sf::Vector3f& vec) {
     float magnitude;
 
     if (vec.x == 0 && vec.y == 0 && vec.z == 0) {

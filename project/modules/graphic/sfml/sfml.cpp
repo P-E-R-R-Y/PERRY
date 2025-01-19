@@ -42,7 +42,7 @@ extern "C" void deleteWindow(graphic::IWindow *window) {
 }
 
 extern "C" graphic::ICamera *createCamera(__v3f_t position) {
-    return new SfmlCamera();
+    return new SfmlCamera({4, 4, 4}, {0, 0, 0}, 60);
 }
 
 extern "C" void deleteCamera(graphic::ICamera *camera) {

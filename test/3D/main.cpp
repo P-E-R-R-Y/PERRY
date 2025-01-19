@@ -74,7 +74,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
     sf::Clock clock;
     Object object;
-    Camera camera = Camera({0, 0, 2}, {0, 0, 0}, 90);
+    Camera camera = Camera({4, 4, 4}, {0, 0, 0}, 60);
 
     clock.restart();
     uint fps = 60;
@@ -102,11 +102,18 @@ int main()
                 window.close();
         }
         window.clear(sf::Color::Black);
-
+        
         DrawObject(window, object, camera);
         std::cout << "==========================================" << std::endl;
         std::cout << "----- w:" << camera.getQuaternion().w << " x: " << camera.getQuaternion().x << " y: " << camera.getQuaternion().y << " z: " << camera.getQuaternion().z << std::endl;
-        camera.rotateY(degreestoRadians(1 / 60.f));
+
+        // Draw the point
+        sf::CircleShape circle(4);
+        circle.setPosition(window.getView().getCenter());
+        circle.setFillColor(sf::Color::Red);
+        window.draw(circle);
+        camera.rotateY(0.0001);
+
 
         window.display();
     }

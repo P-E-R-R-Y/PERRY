@@ -32,7 +32,7 @@ class RayCamera : public graphic::ICamera {
             _camera.up = (Vector3){ 0.f, 1.f, 0.0f };          // Camera up vector (rotation towards target)
             _camera.fovy = 60.0f;                                // Camera field-of-view Y
             _camera.projection = CAMERA_PERSPECTIVE;             // Camera projection type
-            _mode = CAMERA_FIRST_PERSON;
+            _mode = CAMERA_FREE;
         }
 
         ~RayCamera() {}

@@ -97,6 +97,18 @@ int main()
                 if (event.key.code == sf::Keyboard::Escape) {
                     window.close();
                 }
+                if (event.key.code == sf::Keyboard::Z) {
+                    camera.rotateX(-1/180.0 * M_PI);
+                }
+                if (event.key.code == sf::Keyboard::S) {
+                    camera.rotateX(1/180.0 * M_PI);
+                }
+                if (event.key.code == sf::Keyboard::Q) {
+                    camera.rotateY(-1/180.0 * M_PI);
+                }
+                if (event.key.code == sf::Keyboard::D) {
+                    camera.rotateY(1/180.0 * M_PI);
+                }
             }
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -112,7 +124,7 @@ int main()
         circle.setPosition(window.getView().getCenter());
         circle.setFillColor(sf::Color::Red);
         window.draw(circle);
-        camera.rotateY(0.0001);
+        //camera.rotateY(0.0001);
 
 
         window.display();

@@ -55,32 +55,26 @@ class Quaternion {
             sf::Vector3f u1 = normaliseV3f(v1);
             sf::Vector3f u2 = normaliseV3f(v2);
 
-            // give 
             float dot = dotProduct(u1, u2);
 
-            // Compute the axis of rotation (cross product) get axis of rotation
+            //todo: check if this check is indeed working well with 180° rotation
+            if (dot > 0.999999) {
+                return Quaternion(1, 0, 0, 0);
+            } else if (dot < -0.999999) {
+                sf::Vector3f axis = crossProduct({1, 0, 0}, u1);
+                if (axis.x == 0 && axis.y == 0 && axis.z == 0) {
+                    axis = crossProduct({0, 1, 0}, u1);
+                }
+                return Quaternion(0, axis.x, axis.y, axis.z);
+            }
+
             sf::Vector3f axis = crossProduct(u1, u2);
+            float u1Length = sqrt(u1.x * u1.x + u1.y * u1.y + u1.z * u1.z);
+            float u2Length = sqrt(u2.x * u2.x + u2.y * u2.y + u2.z * u2.z);
 
-            // Compute the angle of rotation
-            float angle = std::acos(dot);
-
-            // Calculate sin and cos of half the angle
-            float sinHalfAngle = std::sin(angle / 2.0f);
-            float cosHalfAngle = std::cos(angle / 2.0f);
-
-            // Create the quaternion
-            Quaternion q(
-                cosHalfAngle,
-                axis.x * sinHalfAngle,
-                axis.y * sinHalfAngle,
-                axis.z * sinHalfAngle
-            );
-
-            return {
-                cosHalfAngle,
-                axis.x * sinHalfAngle,
-                axis.y * sinHalfAngle,
-                axis.z * sinHalfAngle};
+            float w = sqrt((u1Length * u1Length) * (u2Length * u2Length)) + dot;
+            Quaternion q(w, axis.x, axis.y, axis.z);
+            return q;
         }
 
         Quaternion conjugate() const {

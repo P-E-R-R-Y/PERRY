@@ -1,7 +1,4 @@
-#ifndef REGISTRY_HPP
-#define REGISTRY_HPP
+#ifndef SYSTEM_HPP
+#define SYSTEM_HPP
 
-#include 
-
-
-#endif // REGISTRY_HPP
+#endif // SYSTEM_HPP

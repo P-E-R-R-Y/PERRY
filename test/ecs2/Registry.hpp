@@ -12,56 +12,27 @@
 #include <unordered_map>
 #include <vector>
 
-class Registry;
-using RegistryRef = Registry &;
-
 class Entity;
 
 class Registry {
     public:
-        /// @brief handling entities
+        /// @brief handling entities (define in Registry.cpp)
 
-        Entity createEntity() {
-          if (!killedEntities.empty()) {
-                Entity tmp = killedEntities.back();
-                killedEntities.pop_back();
-                return tmp;
-            } else {
-                ++_entitiesCount;
-                return Entity(_entitiesCount - 1, *this);
-            }
-        };
+        Entity createEntity();
 
-        Entity entityFromIndex(std::size_t idx) {
-            return Entity(idx, *this);
-        };
+        Entity entityFromIndex(std::size_t idx);
 
-        void killEntity(Entity const &e) {
-            killedEntities.push_back(e);
-            for (const auto &f: componentsRemoves) {
-                f(*this, e);
-            }
-        };
-        /// @brief handling components
+        void killEntity(Entity const &e);
+
+        /// @brief handling components (define in Registry_impl.hpp)
         template <class Component>
-        SparseArray<Component> &registerComponent() {
-            componentsArrays[std::type_index(typeid(Component))] = std::make_any<SparseArray<Component>>();
-            componentsRemoves.push_back([] (Registry &r, Entity const &e) { r.getComponents<Component>().erase(e._idx); } );
-            return std::any_cast<SparseArray<Component> &>(componentsArrays[std::type_index(typeid(Component))]);
-        };
+        SparseArray<Component> &registerComponent();
 
         template <class ... Components>
-        void registerComponents() {
-            (registerComponent<Components>(), ...);
-        };
+        void registerComponents();
 
         template <class Tuple>
-        void registerComponentsByExtraction() {
-            static_assert(is_tuple<Tuple>::value, "Extraction must a std::tuple of Components.");
-            std::apply([this](auto ... components) {
-                this->registerComponents<std::decay_t<decltype(components)>...>();
-            }, Tuple{});
-        }
+        void registerComponentsByExtraction();
 
 //        template <typename Tuple>
 //        void constexpr registerByExtractingComponents() {
@@ -95,48 +66,27 @@ class Registry {
     public:
 
         template <class Component>
-        SparseArray<Component> &getComponents() {
-            return std::any_cast<sparseArray<Component> &>(componentsArrays[std::type_index(typeid(Component))]); //
-        };
+        SparseArray<Component> &getComponents();
 
         template <class Component>
-        const SparseArray<Component> &getComponents() const {
-            return std::any_cast<sparseArray<Component> &>(componentsArrays.at(std::type_index(typeid(Component))));
-        };
+        const SparseArray<Component> &getComponents() const;
 
         template <typename Component>
-        typename SparseArray<Component>::reference_type addComponent(Entity const &to, Component &&c) {
-            getComponents<Component>().emplaceAt(to._idx, c);
-            return getComponents<Component>()[to._idx];
-        };
+        typename SparseArray<Component>::reference_type addComponent(Entity const &to, Component &&c);
 
         template <typename Component, typename ... Params>
-        typename SparseArray <Component>::reference_type emplaceComponent(Entity const &to, Params &&... p) {
-            getComponents<Component>().emplaceAt(to._idx, p...);
-            return getComponents<Component>()[to._idx];
-        };
+        typename SparseArray <Component>::reference_type emplaceComponent(Entity const &to, Params &&... p);
 
         template <typename Component>
-        void removeComponent(Entity const &from) {
-            getComponents<Component>().erase(from._idx);
-        };
+        void removeComponent(Entity const &from);
 
         /// @brief handling systems
 
-        size_t addSystem(std::function<void(Registry &)> f) {
-            systems.push_back(f);
-            return systems.size() - 1;
-        };
+        size_t addSystem(std::function<void(Registry &)> f);
 
-        void removeSystem(size_t idx) {
-            systems.erase(systems.begin() + idx);
-        };
+        void removeSystem(size_t idx);
 
-        void update() {
-            for (auto &f: systems) {
-                f(*this);
-            }
-        };
+        void update();
 
     private :
         size_t _entitiesCount = 0;

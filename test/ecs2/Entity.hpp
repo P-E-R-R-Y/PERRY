@@ -2,10 +2,12 @@
 #define ENTITY_HPP
 
 //local
-#include "Registry.hpp"
 
 //global
 #include <cstddef>
+
+class Registry;
+using RegistryRef = Registry &;
 
 class Entity {
     public:
@@ -18,18 +20,14 @@ class Entity {
         ~Entity() = default;
 
         template <class Component>
-        void addComponent(Component&& c) {
-            _ecs.addComponent<Component>(*this, std::forward<Component>(c));
-        }
+        void addComponent(Component&& c);
 
         template <class Component>
-        void removeComponent() {
-            _ecs.removeComponent<Component>(*this);
-        }
+        void removeComponent();
 
     private:
 
-        explicit Entity(size_t idx, RegistryRef ecs): _idx(idx), _ecs(ecs) {};
+        explicit Entity(size_t idx, RegistryRef ecs);
 
     private:
         size_t _idx;

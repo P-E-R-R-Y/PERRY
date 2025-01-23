@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(SOURCE_FILES
   main.cpp
 
+  Registry.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})

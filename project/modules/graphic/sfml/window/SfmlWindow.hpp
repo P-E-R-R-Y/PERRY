@@ -41,25 +41,6 @@
 //window
 #include "SfmlCamera.hpp"
 
-static sf::Vector2f weak_perspective_projection(sf::Vector3f point, float fov) {
-    float epsilon = 0.00001f; // Small value to avoid division by zero
-    // Weak perspective projection
-    return {(fov * point.x / (point.z + fov + epsilon)), 
-            (fov * point.y / (point.z + fov + epsilon))};
-}
-
-static sf::Vector2f format_to_screen(sf::Vector2f point, sf::Vector2f window_size) {
-    return { (window_size.x / 2.0f) + point.x * (window_size.y / 2.0f),
-             (window_size.y / 2.0f) - point.y * (window_size.y / 2.0f) };
-}
-
-// std::array<double, 3> to sf::vector3f
-sf::Vector3f a3tov3(const std::array<double, 3>& point) {
-    return sf::Vector3f(static_cast<float>(point[0]),
-                        static_cast<float>(point[1]),
-                        static_cast<float>(point[2]));
-}
-
 //sf::vector3f to std::array<double, 3>
 std::array<double, 3> v3toa3(sf::Vector3f point) {
     return {static_cast<double>(point.x),
@@ -111,84 +92,70 @@ class SfmlWindow : public graphic::IWindow {
         };
 
         //Draw3 (Carve)
-        void beginMode3(graphic::ICamera *camera) override {
-            _sfmlcamera = static_cast<SfmlCamera *>(camera);
+        void beginMode3(graphic::ICamera *cam) override {
+            if (_camera == nullptr && cam != nullptr) {
+                _camera = static_cast<SfmlCamera *>(cam);
+            }
         }
 
-        virtual void drawModel(graphic::IModel *model) override {
-            if (_sfmlcamera == nullptr) {
+        void drawPoint(const sf::Vector3f& point) {
+
+            //!make the camera the origin
+            sf::Vector3f relativePosition = point - _camera->_position;
+
+            std::cout << "relativePosition: " << relativePosition.x << " " << relativePosition.y << " " << relativePosition.z << std::endl;
+
+            //!rotate the object
+            sf::Vector3f relativeRotatedPosition = _camera->_quaternion.conjugate().rotate(relativePosition);
+
+            if (relativeRotatedPosition.z >= 0) {
+                return; //skip drawing points that are behind the camera
+            }
+
+            //Don't need to move the object back to its original position because the camera is the origin for perspective projection
+            sf::Vector3f rotatedPosition = relativeRotatedPosition;
+            std::cout << "points: " << rotatedPosition.x << " " << rotatedPosition.y << " " << rotatedPosition.z << std::endl;
+            //!perspective projection
+            sf::Vector2f screen = _window.getView().getSize();
+
+            Matrice<float> projection = perspectiveProjection<float>(_camera->_fov, screen.x / screen.y);
+            Matrice<float> vtom = Matrice<float>({{rotatedPosition.x}, {rotatedPosition.y}, {rotatedPosition.z}, {1.f}});
+            Matrice<float> res = projection * vtom;
+            //!homogeneous division// convert to normalized device coordinates
+            float x_ndc = res(0, 0) / res(3, 0);
+            float y_ndc = res(1, 0) / res(3, 0);
+
+            if (x_ndc < -1 || x_ndc > 1 || y_ndc < -1 || y_ndc > 1) {
+                return; //skip drawing points that are outside the screen
+            }
+
+            //NDC to screen coordinates
+            float screenX = (x_ndc + 1.0f) * 0.5f * screen.x;
+            float screenY = (1.0f - y_ndc) * 0.5f * screen.y;
+            
+            // Draw the point
+            sf::CircleShape circle(1);
+            circle.setPosition(screenX, screenY);
+            circle.setFillColor(sf::Color::White);
+            circle.setOutlineColor(sf::Color::White);
+            circle.setOutlineThickness(1);
+            _window.draw(circle);
+
+            return;
+        }
+
+        void drawModel(graphic::IModel *model) override {
+            if (_camera == nullptr) {
                 throw std::runtime_error("begginMode3d not called");
             }
-            //Window
-            sf::Vector2u windowSize = _window.getSize();
-            sf::Vector2f windowCenter = sf::Vector2f(static_cast<float>(windowSize.x / 2), static_cast<float>(windowSize.y / 2));
-            //Camera
-            auto sfmlcamera = _sfmlcamera;
-            //Model
-            auto sfmlmodel = static_cast<SfmlModel *>(model);
 
-            //!1. Object Space define object position
-                //? Position
-                auto modelPoints = sfmlmodel->_meshes;
-            std::cout << "1" << std::endl;
-            //!2. Camera Space 
-                //? Position & Rotation
-                    for (int i = 0; i < modelPoints.size(); i++) {
-                    // sub camera position to point
-                        modelPoints[i] = modelPoints[i] - sfmlcamera->_position;
-                    // rotate point inversed to camera rotation
-                        modelPoints[i] = a3tov3(sfmlcamera->_quaternion.rotatePoint(v3toa3(modelPoints[i])));
-                    }
-                    // add camera position to point
-            std::cout << "2" << std::endl;
-            //!3. Projection Space & Format to Screen
-                std::vector<sf::Vector2f> projectionPoints;
-                for (int i = 0; i < modelPoints.size(); i++) {
-                    //? Weak perspective projection (normalized device coordinates)
-                    //? Format to screen
-                    projectionPoints.push_back(
-                        format_to_screen(
-                            weak_perspective_projection(modelPoints[i], sfmlcamera->_fovy), 
-                                                        {static_cast<float>(windowSize.x), static_cast<float>(windowSize.y)}));
-                }
-            std::cout << "3" << std::endl;
-            //!4. Draw
-                //? Draw point
-                for (int i = 0; i < projectionPoints.size(); i++) {
-                    sf::CircleShape point(1.0f);  // Radius of 1 to make it a small point
-                    point.setFillColor(sf::Color::Green);  // Set the color of the point
-                    point.setPosition(projectionPoints[i].x, projectionPoints[i].y);  // Set the position of the point
-                    std::cout << projectionPoints[i].x << " " << projectionPoints[i].y << std::endl;
-                    _window.draw(point);
-                }
-            //!5 Draw line
-                for (int i = 0; i < 4; i++) {
-                    sf::Vertex line[] = {
-                        sf::Vertex(projectionPoints[i]),
-                        sf::Vertex(projectionPoints[((i+1) % 4)])
-                    };
-                    _window.draw(line, 2, sf::Lines);
-                }
-                for (int i = 4; i < 8; i++) {
-                    sf::Vertex line[] = {
-                        sf::Vertex(projectionPoints[i]),
-                        sf::Vertex(projectionPoints[((i+1) % 4) + 4])
-                    };
-                    _window.draw(line, 2, sf::Lines);
-                }
+            SfmlModel *sfmlModel = static_cast<SfmlModel *>(model);
 
-                for (int i = 0; i < 4; i++) {
-                    sf::Vertex line[] = {
-                        sf::Vertex(projectionPoints[i]),
-                        sf::Vertex(projectionPoints[i + 4])
-                    };
-                    _window.draw(line, 2, sf::Lines);
-                }
+            for (sf::Vector3f point : sfmlModel->vertices) {
+                std::cout << ">>>" << point.x << " " << point.y << " " << point.z << std::endl;
+                drawPoint(point);
 
-            //sf::CircleShape point(1.0f);  // Radius of 1 to make it a small point
-            //point.setFillColor(sf::Color::Red);  // Set the color of the point
-            //point.setPosition(windowCenter.x, windowCenter.y);  // Set the position of the point
-            //_window.draw(point);
+            }
         }
 
         void endMode3() override {
@@ -207,7 +174,7 @@ class SfmlWindow : public graphic::IWindow {
     private:
         sf::RenderWindow _window;
         SfmlEvent *_event;
-        SfmlCamera *_sfmlcamera;
+        SfmlCamera *_camera;
 
         //time
         sf::Clock _deltaClock;

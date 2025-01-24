@@ -10,7 +10,7 @@
 
 //interface 
 #include "interfaces/InfoSharedLoader.hpp"
-
+ 
 //  graphic
 #include "interfaces/graphic/GraphicSharedLoader.hpp"
 #include "interfaces/serial/SerialSharedLoader.hpp"
@@ -144,5 +144,6 @@ int main() {
         Game game(map["graphic"][i]);
         game.start();
     }
+
     return 0;
 }

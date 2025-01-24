@@ -20,10 +20,6 @@ sf::Vector3f crossProduct(sf::Vector3f a, sf::Vector3f b) {
     };
 }
 
-float length(const sf::Vector3f& vec) {
-    return std::sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-}
-
 /**
  * @brief convert a vector to a unit vector
  * 

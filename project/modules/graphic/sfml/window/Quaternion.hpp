@@ -6,7 +6,7 @@
 class Quaternion {
     public:
         Quaternion(): w(1), x(0), y(0), z(0) {}
-        
+ 
         Quaternion(float w, float x, float y, float z) : w(w), x(x), y(y), z(z) {}
         ~Quaternion() {}
 
@@ -50,8 +50,7 @@ class Quaternion {
          * @param v2
          * @return Quaternion
          */
-        static Quaternion fromVectors(const sf::Vector3f v1, const sf::Vector3f v2, const sf::Vector3f referenceUp = {0.0f, 1.0f, 0.0f}) {
-            //!NEW
+        static Quaternion fromVectors(const sf::Vector3f& v1, const sf::Vector3f& v2) {
             // Normalize the vectors
             sf::Vector3f u1 = normaliseV3f(v1);
             sf::Vector3f u2 = normaliseV3f(v2);
@@ -76,7 +75,7 @@ class Quaternion {
             float w = sqrt((u1Length * u1Length) * (u2Length * u2Length)) + dot;
             Quaternion q(w, axis.x, axis.y, axis.z);
             return q;
-}
+        }
 
         Quaternion conjugate() const {
             return Quaternion(w, -x, -y, -z);

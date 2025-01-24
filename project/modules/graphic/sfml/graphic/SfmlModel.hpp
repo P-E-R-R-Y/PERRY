@@ -18,59 +18,56 @@
 
 //Interface
 #include "../../../interfaces/graphic/graphic/IModel.hpp"
-#include "../../../interfaces/graphic/graphic/Quaternion.hpp"
 
 //SFML
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
+//Encapsulation
+#include "../window/Quaternion.hpp"
+
 class SfmlModel : public graphic::IModel {
 
     public:
-        SfmlModel() {
-            _position = {0, 0, 0};
-            _size = {1, 1, 1};
-            sf::Vector3f half = _size * 0.5f;
-            _meshes = {
-                sf::Vector3f(-half.x, half.y, half.z), // left top back
-                sf::Vector3f(half.x, half.y, half.z), // right top back
-                sf::Vector3f(half.x, -half.y, half.z), // right bottom back
-                sf::Vector3f(-half.x, -half.y, half.z), // left bottom back
-                //
-                sf::Vector3f(-half.x, half.y, -half.z), // left top front
-                sf::Vector3f(half.x, half.y, -half.z), // right top front
-                sf::Vector3f(half.x, -half.y, -half.z), // right bottom front
-                sf::Vector3f(-half.x, -half.y, -half.z), // left bottom front
-            };
+        SfmlModel():
+            position({0, 0, 0}),
+            rotation(Quaternion::identity()),
+            vertices({
+              {-0.5, -0.5, 0.5},
+              {-0.5, -0.5, -0.5},
+              {-0.5, 0.5, 0.5},
+              {-0.5, 0.5, -0.5},
+              {0.5, -0.5, 0.5},
+              {0.5, -0.5, -0.5},
+              {0.5, 0.5, 0.5},
+              {0.5, 0.5, -0.5},
+            }) {
+
         }
 
         ~SfmlModel() {
         }
 
         __v3f_t getPosition() const override {
-            return {_position.x, _position.y, _position.z};
+            return {position.x, position.y, position.z};
         }
-        void setPosition(__v3f_t position) override {
-            _position = {float(position.x), float(position.y), float(position.z)};
+        void setPosition(__v3f_t pos) override {
+            position = {float(pos.x), float(pos.y), float(pos.z)};
+        }
+        
+        std::vector<sf::Vector3f> getVertices() {
+            return vertices;
         }
 
     protected:
         void rotate(sf::Vector3f angle, sf::Vector3f center = {0, 0, 0}) {
-            for (int i = 0; i < _meshes.size(); i++) {
-                std::array<double, 3> p = {_meshes[i].x, _meshes[i].y, _meshes[i].z};
-                std::array<double, 3> a = {angle.x, angle.y, angle.z};
-                std::array<double, 3> cor = {center.x, center.y, center.z};
-                std::array<double, 3> result = Quaternion::rotate(p, a, cor);
-                _meshes[i].x = result[0];
-                _meshes[i].y = result[1];
-                _meshes[i].z = result[2];
-            }
+            std::cout << "SfmlModel::rotate not implemented" << std::endl;
         }
-        
-        sf::Vector3f _position;
-        sf::Vector3f _size;
-        std::vector<sf::Vector3f> _meshes;
+
+        sf::Vector3f position;
+        Quaternion rotation;
+        std::vector<sf::Vector3f> vertices;
         //your variables here
     public:
         friend class SfmlWindow;

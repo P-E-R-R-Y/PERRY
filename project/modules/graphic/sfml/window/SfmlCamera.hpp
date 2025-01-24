@@ -20,7 +20,8 @@
 #include "../../../../interfaces/graphic/window/ICamera.hpp"
 
 #include "../../../../libraries/system/type.hpp"
-#include "../../../interfaces/graphic/graphic/Quaternion.hpp"
+#include "./Quaternion.hpp"
+#include "./Matrice.hpp"
 
 #include <iostream>
 #include <array>
@@ -28,69 +29,17 @@
 
 class SfmlCamera : public graphic::ICamera {
     private:
-        std::array<double, 3> crossProduct(const std::array<double, 3>& A, const std::array<double, 3>& B) {
-            return {
-                A[1] * B[2] - A[2] * B[1],
-                A[2] * B[0] - A[0] * B[2],
-                A[0] * B[1] - A[1] * B[0]
-            };
-        }
 
-        // Function to calculate the normalized direction vector
-        std::array<double, 3> calculateDirection(const std::array<double, 3>& position, const std::array<double, 3>& target) {
-            std::array<double, 3> direction = {
-                target[0] - position[0],
-                target[1] - position[1],
-                target[2] - position[2]
-            };
-
-            // Normalize the direction vector
-            double magnitude = std::sqrt(direction[0] * direction[0] +
-                                        direction[1] * direction[1] +
-                                        direction[2] * direction[2]);
-            if (magnitude == 0.0) {
-                throw std::invalid_argument("Position and target cannot be the same.");
-            }
-
-            return {direction[0] / magnitude, direction[1] / magnitude, direction[2] / magnitude};
-        }
-
-        // Function to calculate Euler angles (yaw and pitch)
-        std::array<double, 3> calculateEulerAngles(const std::array<double, 3>& direction, const std::array<double, 3>& up = {0, 1, 0}) {
-            // Yaw: rotation about the Y-axis
-            double yaw = std::atan2(direction[0], direction[2]);
-
-            // Pitch: rotation about the X-axis
-            double pitch = std::asin(-direction[1]);
-
-            // Roll: rotation about the Z-axis
-             std::array<double, 3> rightVector = crossProduct(up, direction);
-            double roll = std::atan2(rightVector[1], rightVector[0]);
-            
-
-
-            return {yaw, pitch, roll};
-        }      
 
     public:
         friend class SfmlWindow;
 
-        SfmlCamera(): _quaternion(0, 0, 0, 0) {
-            _position = {0.0f, 2.0f, 1.f };    // Camera position
-            _target = { 0.0f, 0.0f, 0.f };      // Camera looking at point
-            _up = { 0.f, 1.0f, 0.f };          // Camera up vector (rotation towards target)
-            _fovy = 2.0f;                                // Camera field-of-view Y
-            _projection = ICamera::ORTHOGRAPHIC;             // Camera projection type
-            _mode = ICamera::FIRST_PERSON;
-            // Calculate camera direction vector
-            const auto tmpDirection = calculateDirection({_position.x, _position.y, _position.z}, {_target.x, _target.y, _target.z});
-            _direction = {static_cast<float>(tmpDirection[0]), static_cast<float>(tmpDirection[1]), static_cast<float>(tmpDirection[2])};
+        SfmlCamera(sf::Vector3f pos = {0.f, 0.0f, 0.0f}, sf::Vector3f target = {0, 0, -1}, float fov = 90) : _position(pos), _up({0, 1, 0}), _fov(fov) {
+            sf::Vector3f usual = {0, 0, -1};
+            sf::Vector3f direction = normaliseV3f(target - _position);
+            _projection = Projection::PERSPECTIVE;             // Camera projection type
 
-            const auto tmpAngle = calculateEulerAngles({_direction.x, _direction.y, _direction.z});
-            _eulerAngle = {static_cast<float>(tmpAngle[0] * 180.0f / M_PI), static_cast<float>(tmpAngle[1] * 180.0f / M_PI), static_cast<float>(tmpAngle[2] * 180.0f / M_PI)};
-            std::cout << _eulerAngle.x << " " << _eulerAngle.y << " " << _eulerAngle.z << std::endl;
-            
-            _quaternion = Quaternion::fromEulerAngles(_eulerAngle.x, _eulerAngle.y, 0);
+            _quaternion = Quaternion::fromVectors(usual, direction);
         }
 
         ~SfmlCamera() {}
@@ -115,11 +64,11 @@ class SfmlCamera : public graphic::ICamera {
         
         //p
         __v3f_t getPosition() const override {
-            std::cout << "SfmlCamera::getPosition not implemented" << std::endl;
-            return {0, 0, 0};
+            return {_position.x, _position.y, _position.z};
         }
+
         void setPosition(__v3f_t position) override {
-            std::cout << "SfmlCamera::setPosition not implemented" << std::endl;
+            _position = {float(position.x), float(position.y), float(position.z)};
         }
         
         ICamera::Projection getProjection() const override {
@@ -132,6 +81,7 @@ class SfmlCamera : public graphic::ICamera {
 
         //t
           __v3f_t getTarget() const override {
+            std::cout << "SfmlCamera::getTarget not implemented" << std::endl;
             return {0, 0, 0};
         }
         void setTarget(__v3f_t target) override {
@@ -150,18 +100,43 @@ class SfmlCamera : public graphic::ICamera {
 
     protected:
         sf::Vector3f _position;
-        sf::Vector3f _target;
-        sf::Vector3f _direction;
-        sf::Vector3f _eulerAngle = {0.0f, 0.0f, 0.0f};
-        Quaternion _quaternion;
-        // upX -> depth: z, vertical: x, horizontal: z
-        // upY -> depth: z, vertical y, horizontal: x (default)
-        // upZ -> depth: y, vertical: z, horizontal: x
         sf::Vector3f _up;
-        float _fovy;
-        ICamera::Projection _projection;
-        ICamera::Mode _mode;
-            //your variables here
+        Quaternion _quaternion;
+        Projection _projection;
+        Mode _mode;
+        float _fov;
 };
+
+
+template <typename T>
+Matrice<T> perspectiveProjection(T fov, T aspectRatio) {
+    // Convert FOV from degrees to radians
+    T fovRad = fov * M_PI / 180.0;
+    T nearPlane = 0.001;
+    T farPlane = 1000.0;
+
+    // Create the perspective projection matrix
+    std::vector<std::vector<T>> proj = {{
+        {1.0f / (aspectRatio * tan(fovRad / 2.f)), 0.f, 0.f, 0.f},
+        {0.f, 1.f / tan(fovRad / 2.f), 0.f, 0.f},
+        {0.f, 0.f, (farPlane + nearPlane) / (nearPlane - farPlane), (2 * farPlane * nearPlane) / (nearPlane - farPlane)},
+        {0.f, 0.f, -1.f, 0.f}
+    }};
+
+    return Matrice<T>(proj);
+}
+
+template <typename T>
+Matrice<T> orthographicProjection(T left, T right, T bottom, T top, T nearPlane, T farPlane) {
+    // Create the orthographic projection matrix
+    std::array<std::array<T, 4>, 4> proj = {{
+        {2.0 / (right - left), 0, 0, -(right + left) / (right - left)},
+        {0, 2.0 / (top - bottom), 0, -(top + bottom) / (top - bottom)},
+        {0, 0, -2.0 / (farPlane - nearPlane), -(farPlane + nearPlane) / (farPlane - nearPlane)},
+        {0, 0, 0, 1}
+    }};
+
+    return Matrice<T>(proj);
+}
 
 #endif /* !RAYMODEL2_HPP_ */

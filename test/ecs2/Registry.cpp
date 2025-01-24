@@ -24,20 +24,3 @@ void Registry::killEntity(Entity const &e) {
         f(*this, e);
     }
 };
-
-/// @brief handling components
-
-size_t Registry::addSystem(std::function<void(Registry &)> f) {
-    systems.push_back(f);
-    return systems.size() - 1;
-};
-
-void Registry::removeSystem(size_t idx) {
-    systems.erase(systems.begin() + idx);
-};
-
-void Registry::update() {
-    for (auto &f: systems) {
-        f(*this);
-    }
-};

@@ -144,5 +144,6 @@ int main() {
         Game game(map["graphic"][i]);
         game.start();
     }
+
     return 0;
 }

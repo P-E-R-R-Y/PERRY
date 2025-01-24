@@ -3,7 +3,6 @@
 
 //local
 #include "SparseArray.hpp"
-#include "System.hpp"
 
 //global
 #include <any>
@@ -11,11 +10,20 @@
 #include <typeindex>
 #include <unordered_map>
 #include <vector>
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <typeindex>
+#include <memory>
+
 
 class Entity;
+class System;
 
 class Registry {
+
     public:
+
         /// @brief handling entities (define in Registry.cpp)
 
         Entity createEntity();
@@ -25,6 +33,7 @@ class Registry {
         void killEntity(Entity const &e);
 
         /// @brief handling components (define in Registry_impl.hpp)
+
         template <class Component>
         SparseArray<Component> &registerComponent();
 
@@ -33,37 +42,6 @@ class Registry {
 
         template <class Tuple>
         void registerComponentsByExtraction();
-
-//        template <typename Tuple>
-//        void constexpr registerByExtractingComponents() {
-//            static_assert(is_tuple<Tuple>::value, "Input must be a std::tuple");
-//
-//            for  (size_t i = 0; i < std::tuple_size_v<Tuple>; ++i) {
-//                using CurrentType = std::tuple_element_t<Index, Tuple>;
-//                myFunction<CurrentType>();  // Call the function for the current type
-//            }
-//        }
-
-//        template <typename Tuple, std::size_t Index = 0>
-//        void registerByExtractingComponents() {
-//            static_assert(is_tuple<Tuple>::value, "Input must be a std::tuple");
-//
-//            if constexpr (Index < std::tuple_size_v<Tuple>) {
-//                using CurrentType = std::tuple_element_t<Index, Tuple>;
-//                myFunction<CurrentType>();  // Call the function for the current type
-//                registerByExtractingComponents<Tuple, Index + 1>();  // Recurse for the next type
-//            }
-//        }
-
-    private:
-
-        template <typename T>
-        struct is_tuple : std::false_type {};
-
-        template <typename... Args>
-        struct is_tuple<std::tuple<Args...>> : std::true_type {};
-
-    public:
 
         template <class Component>
         SparseArray<Component> &getComponents();
@@ -82,13 +60,30 @@ class Registry {
 
         /// @brief handling systems
 
-        size_t addSystem(std::function<void(Registry &)> f);
+        template <typename T, typename... Args>
+        size_t addSystem(Args&&... args);
 
-        void removeSystem(size_t idx);
+        template <typename T>
+        size_t addSystem(std::unique_ptr<T> existingSystem);
 
-        void update();
+        template <typename T>
+        void removeSystem();
 
-    private :
+        template <typename T>
+        void callSystem();
+
+        void updateSystem();
+
+    private:
+
+        template <typename T>
+        struct is_tuple : std::false_type {};
+
+        template <typename... Args>
+        struct is_tuple<std::tuple<Args...>> : std::true_type {};
+
+    private:
+
         size_t _entitiesCount = 0;
         std::vector<Entity> killedEntities;
 
@@ -97,8 +92,7 @@ class Registry {
 
         std::vector<std::function<void(Registry &, Entity const &)>> componentsRemoves;
 
-        std::vector<std::function<void(Registry &)>> systems;
-
+        std::unordered_map<std::type_index, std::unique_ptr<System>> systems;
 };
 
 #endif // REGISTRY_HPP

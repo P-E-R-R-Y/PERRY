@@ -5,6 +5,8 @@
 #include "Entity.hpp"
 #include "SparseArray.hpp"
 
+#include "System.hpp"
+
 /// @brief handling components
 template <class Component>
 SparseArray<Component> &Registry::registerComponent() {
@@ -52,5 +54,38 @@ template <typename Component>
 void Registry::removeComponent(Entity const &from) {
     getComponents<Component>().erase(from._idx);
 };
+
+/// @brief handling systems
+
+template <typename T, typename... Args>
+size_t Registry::addSystem(Args&&... args) {
+    static_assert(std::is_base_of<System, T>::value, "T must derive from System");
+    systems[std::type_index(typeid(T))] = std::make_unique<T>(std::forward<Args>(args)...);
+    return systems.size();
+}
+
+template <typename T>
+size_t Registry::addSystem(std::unique_ptr<T> existingSystem) {
+    static_assert(std::is_base_of<System, T>::value, "T must derive from System");
+    systems[std::type_index(typeid(T))] = std::move(existingSystem);
+    return systems.size();
+}
+
+template <typename T>
+void Registry::removeSystem() {
+    auto type = std::type_index(typeid(T));
+    systems.erase(type);
+}
+
+template <typename T>
+void Registry::callSystem() {
+    systems[std::type_index(typeid(T))]->lambda(*this);
+}
+
+void Registry::updateSystem() {
+    for (auto& [type, system] : systems) {
+        system->lambda(*this);
+    }
+}
 
 #endif // REGISTRY_IMPL_HPP

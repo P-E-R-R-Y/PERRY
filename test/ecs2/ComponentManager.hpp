@@ -1,29 +1,11 @@
-#ifndef COMPONENT_MANAGER_HPP
-#define COMPONENT_MANAGER_HPP
-
-//global
-#include <iostream>
-
-struct Position {
-    float x;
-    float y;
+#ifndef COMPONENT_MANAGER_HPP_
+    #define COMPONENT_MANAGER_HPP_
+    
+    #include <tuple>
+    #include "Component.hpp"
+    
+struct config {
+    using components_list = std::tuple<Position, Velocity>;
 };
 
-std::ostream& operator<<(std::ostream& os, Position const &p) {
-    os << "Position(" << p.x << ", " << p.y << ")";
-    return os;
-}
-
-struct Velocity {
-    float x;
-    float y;
-};
-
-std::ostream& operator<<(std::ostream& os, Velocity const &v) {
-    os << "Velocity(" << v.x << ", " << v.y << ")";
-    return os;
-}
-
-using config = std::tuple<Position, Velocity>;
-
-#endif // COMPONENT_MANAGER_HPP
+#endif /* !COMPONENT_MANAGER_HPP_ */

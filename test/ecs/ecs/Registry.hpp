@@ -72,7 +72,7 @@ class Registry {
         template <typename T>
         void callSystem();
 
-        void updateSystem();
+        void callSystems();
 
     private:
 

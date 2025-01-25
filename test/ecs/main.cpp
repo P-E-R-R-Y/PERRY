@@ -1,50 +1,26 @@
-/**
- * @brief file with main function
- * @author @Perry-chouteau
- */
+#include "Ecs.hpp"
+#include "ComponentManager.hpp"
 
-#include "ECS.hpp"
-#include "Component.hpp"
-#include "System.hpp"
-
-#include <unistd.h>
+#include "Systems.hpp"
 
 int main() {
-    registry reg;
-    //reg.registerComponent<Position>();
-    //reg.registerComponent<Velocity>();
+    Registry r;
+    Math m = Math();
 
-    //reg.registerComponents<Position, Velocity>();
-    reg.registerComponentsByExtraction<std::tuple<Position, Velocity>>();
+    r.registerComponentsByExtraction<config::components_list>();
+    auto e = r.createEntity();
 
-    entity_t boat = reg.spawnEntity();
-    entity_t car = reg.spawnEntity();
+    e.addComponent<Position>({0.0f, 0.0f});
+    e.addComponent<Velocity>({1.0f, 2.0f});
 
-//    boat.addComponent<Position>(Position{.x = 1}, reg);
-//    boat.addComponent<Velocity>(Velocity{.x = 4}, reg);
-//
-//    car.addComponent<Position>(Position{.x = 2}, reg);
-//    car.addComponent<Velocity>(Velocity{.x = 8}, reg);
+    r.addSystem<MovementSystem>("Move");
+    r.addSystem<DisplaySystem>(m);
 
-    reg.addComponent(boat, Position{.x = 1});
-    reg.addComponent(boat, Velocity{.x = 1});
-
-    reg.addComponent(car, Position{.x = 2});
-    reg.addComponent(car, Velocity{.x = 2});
-
-    reg.addSystem(movementSystem);
-    reg.addSystem(displaySystem);
-
-    while (true) {
-
-        reg.update();
-
-        auto positions = reg.getComponents<Position>();
-
-        positions.display();
-
-        usleep(1000000);
-    }
+    std::cout << "----------------" << std::endl;
+    r.callSystem<DisplaySystem>();
+    r.callSystem<MovementSystem>();
+    r.callSystem<DisplaySystem>();
+    std::cout << "----------------" << std::endl;
 
     return 0;
 }

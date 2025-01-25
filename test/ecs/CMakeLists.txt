@@ -10,11 +10,18 @@ set(SOURCE_FILES
   main.cpp
 )
 
+## ----------- Subdirectory CMake -----------
+add_subdirectory(ecs)
+
+## ----------- Executable -----------
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+## ----------- Library -----------
+target_link_libraries(${PROJECT_NAME} PUBLIC ecs)
 
 ## ----------- Include -----------
 target_include_directories(${PROJECT_NAME} PUBLIC
-  .
+  include/
 )
 
 ## ----------- Compile Options -----------

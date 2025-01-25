@@ -15,6 +15,11 @@
 #include "interfaces/graphic/GraphicSharedLoader.hpp"
 #include "interfaces/serial/SerialSharedLoader.hpp"
 
+//ecs
+#include "modules/core/ecs/Ecs.hpp"
+#include "includes/Component.hpp"
+#include "includes/Systems.hpp"
+
 class Game: public CustomisableEngine<GraphicSharedLoader> {
     public:
         //todo change vector to variadic template
@@ -139,6 +144,26 @@ int main() {
             std::cout << "\t" << file << std::endl;
         }
     }
+
+    Registry r;
+    Math m = Math();
+
+    r.registerComponentsByExtraction<config::components>();
+    auto e = r.createEntity();
+
+    e.addComponent<Position>({0.0f, 0.0f});
+    e.addComponent<Velocity>({1.0f, 2.0f});
+
+    r.addSystem<MovementSystem>("Move");
+    r.addSystem<DisplaySystem>(m);
+
+    std::cout << "----------------" << std::endl;
+    r.callSystem<DisplaySystem>();
+    r.callSystem<MovementSystem>();
+    r.callSystem<DisplaySystem>();
+    std::cout << "----------------" << std::endl;
+
+    return 0;
 
     for (int i = 0; i < 3; ++i) {
         Game game(map["graphic"][i]);

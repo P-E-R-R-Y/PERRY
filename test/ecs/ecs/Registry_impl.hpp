@@ -82,7 +82,7 @@ void Registry::callSystem() {
     systems[std::type_index(typeid(T))]->lambda(*this);
 }
 
-void Registry::updateSystem() {
+void Registry::callSystems() {
     for (auto& [type, system] : systems) {
         system->lambda(*this);
     }

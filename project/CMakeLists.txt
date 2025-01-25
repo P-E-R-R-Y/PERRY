@@ -17,16 +17,22 @@ list(APPEND CMAKE_SOURCE_SHARED
   graphic/raylib
   graphic/sfml
   graphic/sdl
+
   serial/json
   serial/yaml
+
+  core/ecs
 )
 
 list(APPEND CMAKE_BIN_SHARED
   raylibgraphic 
   sfmlgraphic
   sdlgraphic
+
   jsonserial
   yamlserial
+
+  ecs
 )
 
 ## ----------- Subdirectory CMake -----------
@@ -51,6 +57,12 @@ set(SOURCE_FILES
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
+## ----------- Include -----------
+
+target_include_directories(${PROJECT_NAME} PUBLIC
+  include
+)
+
 ## ----------- Linking -----------
 
 #interfaces
@@ -62,6 +74,8 @@ endforeach()
 foreach(bin IN LISTS CMAKE_BIN_STATIC)
   target_link_libraries(${PROJECT_NAME} PUBLIC ${bin})
 endforeach()
+
+target_link_libraries(${PROJECT_NAME} PUBLIC ecs)
 
 #modules
 set(SHARED_DIR ${CMAKE_BINARY_DIR}/shared)

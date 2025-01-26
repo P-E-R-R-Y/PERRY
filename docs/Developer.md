@@ -13,7 +13,7 @@ This file will help you work with me on PERRY_ORG
   </tr>
   <tr>
     <td>PERRY</td>
-    <td>En cours</td>
+    <td colspan="2">En cours</td>
   </tr>
   <tr>
     <th>Author</th>
@@ -21,13 +21,13 @@ This file will help you work with me on PERRY_ORG
   </tr>
   <tr>
     <td rowspan="5">Perry Chouteau</td>
-    <td>07/03/2023</td>
+    <td colspan="2">07/03/2023</td>
 
   </tr>
     <th colspan="2">Type de docs</th>
   </tr>
   <tr>
-    <td>markdown</td>
+    <td colspan="2">markdown</td>
   </tr>
   </tr>
     <th>Langue</th>
@@ -44,17 +44,11 @@ This file will help you work with me on PERRY_ORG
 | Date       | Author         | Purpose |
 |------------|--------------- | - |
 | 12/03/2023 | Perry Chouteau | basics of the document |
+| 26/01/2025 | Perry Chouteau | edit Infos |
 
 # Summary
 
-- [ ] [Header](#header)
-- [ ] [Icon](#icon)
-
-# Header
-
-For `Vscode` use the `Extension` psioniq File Header
-
-# Icon
-
-For `Vscode` use the `Extension` Material Icon Theme
-
+- CMake
+- Interface & Modules
+- Engine
+- Doxygen

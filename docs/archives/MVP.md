@@ -1,17 +1,18 @@
 #
 
 - [ ] MVP
-  - [ ] Core
-    - [x] Modules
-    - [x] Interface
-  - [ ] Libraries
+  - [ ] Interface - Module - Library
     - [x] Engine
+      - [x] ECS
+      - [ ] CBD
     - [x] Graphic
     - [x] Serial
     - [ ] Network
     - [ ] Physics
-  - [ ] Other
-    - [x] CrossPlateform
-    - [ ] Generator
+  - [ ] Generator
+  - [ ] CrossPlateform
+    - [x] Macos
+    - [x] Linux
+    - [ ] Window
   - [ ] Example
-    - [ ] AimTrainer Game
+    - [ ] gAimTrainer

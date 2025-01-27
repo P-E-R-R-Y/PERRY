@@ -6,7 +6,6 @@
 
 I want to implement: engine, multimedia library, serialisation, network, event ...
 
-## Info
 
 <table>
   <tr>
@@ -55,6 +54,7 @@ I want to implement: engine, multimedia library, serialisation, network, event .
 ## Summary
 
 - [ ] [Plan](#action-plan)
+- [X] [Documentation](#documentation)
 - [x] [Developer](#developer)
 - [x] [Setup](#setup)
 - [x] [Credit](#credits-thanks-for-feeding-my-brains-with-features)
@@ -65,6 +65,10 @@ I want to implement: engine, multimedia library, serialisation, network, event .
 - [x] [Poc V2](archives/2024%20PoC.md)
 - [ ] [v1.0 Jan 2025 (no_release)](archives/2025%20V1.md)
 - [ ] [MVP (push to later)](archives/MVP.md)
+
+## Documentation
+
+### [P-E-R-R-Y/Perry.html](html/index.html)
 
 ## Developer
 
@@ -80,4 +84,4 @@ Secondly if you want to install the library to build your game you should folow 
 - [0xMemoryGrinder](https://github.com/0xMemoryGrinder)
 - [HelifeWasTaken](https://github.com/HelifeWasTaken)
 
-Secondly, like Newton said `I'm standing on the shoulders of giants`
+Finally, like Newton said `I'm standing on the shoulders of giants.`

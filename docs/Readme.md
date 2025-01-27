@@ -24,18 +24,18 @@ I want to implement: engine, multimedia library, serialisation, network, event .
     <td rowspan="5">Perry Chouteau</td>
     <td colspan="2">26/01/2025</td>
   </tr>
-  <th colspan="2">Type</th>
+  <tr>
+    <th colspan="2">Type</th>
   </tr>
   <tr>
-    <td colspan="2">markdown</td>
-  </tr>
-  </tr>
-    <th>Language</th>
-    <th>Nombre de sections</th>
+    <td colspan="2">Documentation</td>
   </tr>
   <tr>
-    <td>English</td>
-    <td>3</td>
+    <th colspan="2">Language</th>
+  </tr>
+  <tr>
+    <td colspan="1">English</td>
+    <td colspan="1">French</td>
   </tr>
 </table>
 
@@ -68,7 +68,7 @@ I want to implement: engine, multimedia library, serialisation, network, event .
 
 ## Documentation
 
-### [P-E-R-R-Y/Perry.html](html/index.html)
+### [P-E-R-R-Y/Perry.html](https://p-e-r-r-y.github.io/PERRY/html/index.html)
 
 ## Developer
 

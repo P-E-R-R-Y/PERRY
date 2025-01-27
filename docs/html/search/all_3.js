@@ -12,7 +12,8 @@ var searchData=
   ['createpolygon_9',['createPolygon',['../class_graphic_shared_loader.html#a582be52fdc787408430c097aaf25d948',1,'GraphicSharedLoader']]],
   ['createserial_10',['createSerial',['../class_serial_shared_loader.html#a20d1f6de3e664d1dcfd549024a761a40',1,'SerialSharedLoader']]],
   ['createwindow_11',['createWindow',['../class_graphic_shared_loader.html#a3a056f9c3176e8883cca547731a7dfd9',1,'GraphicSharedLoader']]],
-  ['customengine_12',['CustomEngine',['../class_custom_engine.html',1,'']]],
-  ['customisableengine_13',['CustomisableEngine',['../class_customisable_engine.html',1,'']]],
-  ['customisableengine_3c_20graphicsharedloader_2c_20registry_20_3e_14',['CustomisableEngine&lt; GraphicSharedLoader, Registry &gt;',['../class_customisable_engine.html',1,'']]]
+  ['credits_20thanks_20for_20feeding_20my_20brains_20with_20features_12',['Credits (Thanks for feeding my brains with features)',['../index.html#autotoc_md9',1,'']]],
+  ['customengine_13',['CustomEngine',['../class_custom_engine.html',1,'']]],
+  ['customisableengine_14',['CustomisableEngine',['../class_customisable_engine.html',1,'']]],
+  ['customisableengine_3c_20graphicsharedloader_2c_20registry_20_3e_15',['CustomisableEngine&lt; GraphicSharedLoader, Registry &gt;',['../class_customisable_engine.html',1,'']]]
 ];

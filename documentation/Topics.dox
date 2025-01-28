@@ -1,0 +1,30 @@
+/*!
+ * \page Topics Project Topics
+ * \brief Overview of all major components in the project.
+ * 
+ * This page outlines the key namespaces, classes, and functionalities
+ * within the project.
+ * 
+ * ### Topics:
+ * - @ref namespace_files "Files Namespace"
+ * - @ref module_math "Mathematical Utilities"
+ * - @ref page_getting_started "Getting Started"
+ * 
+ * ---
+ * 
+ * \section Overview Project Overview
+ * 
+ * The project consists of the following major components:
+ * 
+ * 1. **Files Namespace**:
+ *    Provides tools for file management, such as reading, writing, and directory handling.
+ * 
+ * 2. **Mathematical Utilities**:
+ *    Includes basic mathematical operations, such as addition, multiplication, and trigonometry.
+ * 
+ * ---
+ * 
+ * \section GettingStarted Getting Started
+ * 
+ * For setup instructions, see the @ref page_getting_started "Getting Started Guide".
+ */

@@ -1,0 +1,300 @@
+\doxysection{Sdl\+Keyboard Class Reference}
+\hypertarget{class_sdl_keyboard}{}\label{class_sdl_keyboard}\index{SdlKeyboard@{SdlKeyboard}}
+
+
+{\ttfamily \#include $<$Sdl\+Keyboard.\+hpp$>$}
+
+Inheritance diagram for Sdl\+Keyboard\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sdl_keyboard}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sdl_keyboard_a5c563c53e800993cbc03d605b4ab37e7}\label{class_sdl_keyboard_a5c563c53e800993cbc03d605b4ab37e7} 
+{\bfseries Sdl\+Keyboard} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}} $>$ \mbox{\hyperlink{class_sdl_keyboard_aa6205979772be8f77e971c1a701c5de8}{which\+Key}} () const override
+\begin{DoxyCompactList}\small\item\em Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it\textquotesingle{}s not recommended to use this function in a loop, use \doxylink{class_sdl_keyboard_a069134bbcb14fc76dcc5000e020f7a1d}{is\+Key\+Pressed()} instead. it\textquotesingle{}s efficient for key detection \& binding. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sdl_keyboard_a069134bbcb14fc76dcc5000e020f7a1d}{is\+Key\+Pressed}} (\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sdl_keyboard_a410519587b9a9b5ca0160689c70976e1}{is\+Key\+Down}} (\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is down. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sdl_keyboard_ac1eacb70083fc831c4e6e18ae0fdcf1f}{is\+Key\+Released}} (\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is released. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sdl_keyboard_a7d40f98c4ac6a155662d75b89cf9140b}{is\+Key\+Up}} (\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_keyboard_ab340de968136a78c5bfc2b63d193db4a}{update}} () override
+\begin{DoxyCompactList}\small\item\em Update the keyboard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IKeyboard} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_keyboard}{IKeyboard} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sdl_keyboard_affd9d0def6a8d70eccca33d3a1b4feec}\label{class_sdl_keyboard_affd9d0def6a8d70eccca33d3a1b4feec} 
+\mbox{\hyperlink{class_sdl_event}{Sdl\+Event}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+event}
+\item 
+\Hypertarget{class_sdl_keyboard_ad85c45361d513b7ecde9f06cdf62354e}\label{class_sdl_keyboard_ad85c45361d513b7ecde9f06cdf62354e} 
+const std\+::unordered\+\_\+map$<$ IKeyboard\+::\+Keys, int $>$ {\bfseries \+\_\+keys}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}} \{ \newline
+{\bfseries KEY\+\_\+\+UNKNOWN} = -\/1
+, \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2a27a663d6aa78095a1196587e634de498}{KEY\+\_\+\+ESCAPE}}
+, {\bfseries KEY\+\_\+\+F1}
+, {\bfseries KEY\+\_\+\+F2}
+, \newline
+{\bfseries KEY\+\_\+\+F3}
+, {\bfseries KEY\+\_\+\+F4}
+, {\bfseries KEY\+\_\+\+F5}
+, {\bfseries KEY\+\_\+\+F6}
+, \newline
+{\bfseries KEY\+\_\+\+F7}
+, {\bfseries KEY\+\_\+\+F8}
+, {\bfseries KEY\+\_\+\+F9}
+, {\bfseries KEY\+\_\+\+F10}
+, \newline
+{\bfseries KEY\+\_\+\+F11}
+, {\bfseries KEY\+\_\+\+F12}
+, \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2a32c0015a1fef3b614047ebb6733ef7ac}{KEY\+\_\+1}}
+, {\bfseries KEY\+\_\+2}
+, \newline
+{\bfseries KEY\+\_\+3}
+, {\bfseries KEY\+\_\+4}
+, {\bfseries KEY\+\_\+5}
+, {\bfseries KEY\+\_\+6}
+, \newline
+{\bfseries KEY\+\_\+7}
+, {\bfseries KEY\+\_\+8}
+, {\bfseries KEY\+\_\+9}
+, {\bfseries KEY\+\_\+0}
+, \newline
+{\bfseries KEY\+\_\+\+MINUS}
+, {\bfseries KEY\+\_\+\+EQUAL}
+, {\bfseries KEY\+\_\+\+BACKSPACE}
+, \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2ace06806f8c824e87ac0f60b6ec89a9a1}{KEY\+\_\+\+TAB}}
+, \newline
+{\bfseries KEY\+\_\+Q}
+, {\bfseries KEY\+\_\+W}
+, {\bfseries KEY\+\_\+E}
+, {\bfseries KEY\+\_\+R}
+, \newline
+{\bfseries KEY\+\_\+T}
+, {\bfseries KEY\+\_\+Y}
+, {\bfseries KEY\+\_\+U}
+, {\bfseries KEY\+\_\+I}
+, \newline
+{\bfseries KEY\+\_\+O}
+, {\bfseries KEY\+\_\+P}
+, {\bfseries KEY\+\_\+\+LEFT\+\_\+\+BRACKET}
+, {\bfseries KEY\+\_\+\+RIGHT\+\_\+\+BRACKET}
+, \newline
+\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2ae0eb476ec3b3e22394e156871b4115aa}{KEY\+\_\+\+CAPS\+\_\+\+LOCK}}
+, {\bfseries KEY\+\_\+\+LEFT\+\_\+\+CONTROL}
+, {\bfseries KEY\+\_\+A}
+, {\bfseries KEY\+\_\+S}
+, \newline
+{\bfseries KEY\+\_\+D}
+, {\bfseries KEY\+\_\+F}
+, {\bfseries KEY\+\_\+G}
+, {\bfseries KEY\+\_\+H}
+, \newline
+{\bfseries KEY\+\_\+J}
+, {\bfseries KEY\+\_\+K}
+, {\bfseries KEY\+\_\+L}
+, {\bfseries KEY\+\_\+\+SEMICOLON}
+, \newline
+{\bfseries KEY\+\_\+\+APOSTROPHE}
+, {\bfseries BACK\+\_\+\+TICK}
+, {\bfseries KEY\+\_\+\+ENTER}
+, \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2a5668da55ec2a6b3b5004e5baaf6271f0}{KEY\+\_\+\+LEFT\+\_\+\+SHIFT}}
+, \newline
+{\bfseries KEY\+\_\+\+BACKSLASH}
+, {\bfseries KEY\+\_\+Z}
+, {\bfseries KEY\+\_\+X}
+, {\bfseries KEY\+\_\+C}
+, \newline
+{\bfseries KEY\+\_\+V}
+, {\bfseries KEY\+\_\+B}
+, {\bfseries KEY\+\_\+N}
+, {\bfseries KEY\+\_\+M}
+, \newline
+{\bfseries KEY\+\_\+\+COMMA}
+, {\bfseries KEY\+\_\+\+PERIOD}
+, {\bfseries KEY\+\_\+\+DOT}
+, {\bfseries KEY\+\_\+\+SLASH}
+, \newline
+{\bfseries KEY\+\_\+\+RIGHT\+\_\+\+SHIFT}
+, \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2adfadd109727c2b58f8d7573155500fc1}{KEY\+\_\+\+LEFT\+\_\+\+ALT}}
+, {\bfseries KEY\+\_\+\+SPACE}
+, {\bfseries KEY\+\_\+\+RIGHT\+\_\+\+ALT}
+, \newline
+{\bfseries KEY\+\_\+\+RIGHT\+\_\+\+CONTROL}
+, \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2ad03c11055a2db337da287d95a9279ddb}{KEY\+\_\+\+PAD\+\_\+0}}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+1}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+2}
+, \newline
+{\bfseries KEY\+\_\+\+PAD\+\_\+3}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+4}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+5}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+6}
+, \newline
+{\bfseries KEY\+\_\+\+PAD\+\_\+7}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+8}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+9}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+\+MINUS}
+, \newline
+{\bfseries KEY\+\_\+\+PAD\+\_\+\+PLUS}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+\+DOT}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+\+ENTER}
+, \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2a2587aa5deb284fdb06a9c51f0efbb1b4}{KEY\+\_\+\+UP}}
+, \newline
+{\bfseries KEY\+\_\+\+DOWN}
+, {\bfseries KEY\+\_\+\+LEFT}
+, {\bfseries KEY\+\_\+\+RIGHT}
+, {\bfseries KEY\+\_\+\+LENGTH}
+ \}
+\begin{DoxyCompactList}\small\item\em Scan codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}}}
+\begin{DoxyCompactItemize}
+\item 
+static const int {\bfseries MAX\+\_\+\+KEYS} = 87
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+@ Author\+: Perry Chouteau @ Create Time\+: 2024-\/05-\/10 19\+:59\+:08 @ Modified by\+: Perry Chouteau @ Modified time\+: 2024-\/11-\/11 12\+:16\+:55 @ Description\+: Raylib Encapsulation for IMouse 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sdl_keyboard_a410519587b9a9b5ca0160689c70976e1}\index{SdlKeyboard@{SdlKeyboard}!isKeyDown@{isKeyDown}}
+\index{isKeyDown@{isKeyDown}!SdlKeyboard@{SdlKeyboard}}
+\doxysubsubsection{\texorpdfstring{isKeyDown()}{isKeyDown()}}
+{\footnotesize\ttfamily \label{class_sdl_keyboard_a410519587b9a9b5ca0160689c70976e1} 
+bool Sdl\+Keyboard\+::is\+Key\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the key is down. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a6e849bccb3ca838a94e796d0146b7e51}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{class_sdl_keyboard_a069134bbcb14fc76dcc5000e020f7a1d}\index{SdlKeyboard@{SdlKeyboard}!isKeyPressed@{isKeyPressed}}
+\index{isKeyPressed@{isKeyPressed}!SdlKeyboard@{SdlKeyboard}}
+\doxysubsubsection{\texorpdfstring{isKeyPressed()}{isKeyPressed()}}
+{\footnotesize\ttfamily \label{class_sdl_keyboard_a069134bbcb14fc76dcc5000e020f7a1d} 
+bool Sdl\+Keyboard\+::is\+Key\+Pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the key is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_keyboard_adb4994513e13c607bd8548ed7a87095d}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{class_sdl_keyboard_ac1eacb70083fc831c4e6e18ae0fdcf1f}\index{SdlKeyboard@{SdlKeyboard}!isKeyReleased@{isKeyReleased}}
+\index{isKeyReleased@{isKeyReleased}!SdlKeyboard@{SdlKeyboard}}
+\doxysubsubsection{\texorpdfstring{isKeyReleased()}{isKeyReleased()}}
+{\footnotesize\ttfamily \label{class_sdl_keyboard_ac1eacb70083fc831c4e6e18ae0fdcf1f} 
+bool Sdl\+Keyboard\+::is\+Key\+Released (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the key is released. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a2a134a18af129f75ae772429b1c05800}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{class_sdl_keyboard_a7d40f98c4ac6a155662d75b89cf9140b}\index{SdlKeyboard@{SdlKeyboard}!isKeyUp@{isKeyUp}}
+\index{isKeyUp@{isKeyUp}!SdlKeyboard@{SdlKeyboard}}
+\doxysubsubsection{\texorpdfstring{isKeyUp()}{isKeyUp()}}
+{\footnotesize\ttfamily \label{class_sdl_keyboard_a7d40f98c4ac6a155662d75b89cf9140b} 
+bool Sdl\+Keyboard\+::is\+Key\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the key is up. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a720d845d0442e6c4a6a7444b6fc4c9d4}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{class_sdl_keyboard_ab340de968136a78c5bfc2b63d193db4a}\index{SdlKeyboard@{SdlKeyboard}!update@{update}}
+\index{update@{update}!SdlKeyboard@{SdlKeyboard}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_sdl_keyboard_ab340de968136a78c5bfc2b63d193db4a} 
+void Sdl\+Keyboard\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Update the keyboard. 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a1681260f7fa5502cfc353fe139c072f3}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{class_sdl_keyboard_aa6205979772be8f77e971c1a701c5de8}\index{SdlKeyboard@{SdlKeyboard}!whichKey@{whichKey}}
+\index{whichKey@{whichKey}!SdlKeyboard@{SdlKeyboard}}
+\doxysubsubsection{\texorpdfstring{whichKey()}{whichKey()}}
+{\footnotesize\ttfamily \label{class_sdl_keyboard_aa6205979772be8f77e971c1a701c5de8} 
+std\+::vector$<$ \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}} $>$ Sdl\+Keyboard\+::which\+Key (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it\textquotesingle{}s not recommended to use this function in a loop, use \doxylink{class_sdl_keyboard_a069134bbcb14fc76dcc5000e020f7a1d}{is\+Key\+Pressed()} instead. it\textquotesingle{}s efficient for key detection \& binding. 
+
+\begin{DoxyReturn}{Returns}
+Keys\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_keyboard_a3f85d3034fdc48e70ab3de24d8e141f3}{graphic\+::\+IKeyboard}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/event/Sdl\+Keyboard.\+hpp\end{DoxyCompactItemize}

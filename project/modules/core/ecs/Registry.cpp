@@ -2,6 +2,8 @@
 #include "Registry.hpp"
 #include "Entity.hpp"
 
+using namespace ecs;
+
 /// @brief handling entities
 Entity Registry::createEntity() {
   if (!killedEntities.empty()) {

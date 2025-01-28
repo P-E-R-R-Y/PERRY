@@ -1,0 +1,132 @@
+\doxysection{Quaternion.\+hpp}
+\hypertarget{_quaternion_8hpp_source}{}\label{_quaternion_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/Quaternion.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/Quaternion.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Vector3f.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }Quaternion\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ Quaternion():\ w(1),\ x(0),\ y(0),\ z(0)\ \{\}}
+\DoxyCodeLine{00009\ \ }
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ Quaternion(\textcolor{keywordtype}{float}\ w,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ z)\ :\ w(w),\ x(x),\ y(y),\ z(z)\ \{\}}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \string~Quaternion()\ \{\}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ identity()\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(1,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ fromEulerAngles(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ z)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ Quaternion\ q;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ half\ =\ \{x\ /\ 2,\ y\ /\ 2,\ z\ /\ 2\};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ q.w\ =\ std::cos(half.x)\ *\ std::cos(half.y)\ *\ std::cos(half.z)\ +\ std::sin(half.x)\ *\ std::sin(half.y)\ *\ std::sin(half.z);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ q.x\ =\ std::sin(half.x)\ *\ std::cos(half.y)\ *\ std::cos(half.z)\ -\/\ std::cos(half.x)\ *\ std::sin(half.y)\ *\ std::sin(half.z);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ q.y\ =\ std::cos(half.x)\ *\ std::sin(half.y)\ *\ std::cos(half.z)\ +\ std::sin(half.x)\ *\ std::cos(half.y)\ *\ std::sin(half.z);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ q.z\ =\ std::cos(half.x)\ *\ std::cos(half.y)\ *\ std::sin(half.z)\ -\/\ std::sin(half.x)\ *\ std::sin(half.y)\ *\ std::cos(half.z);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ q;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ \mbox{\hyperlink{class_quaternion_ab2329cfaf48acccd1ee0c8e9622e1f1e}{fromAxisAngle}}(\textcolor{keywordtype}{float}\ angle,\ sf::Vector3f\ axis)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ Quaternion\ q;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ half\ =\ angle\ /\ 2;\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ q.w\ =\ std::cos(half);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ q.x\ =\ axis.x\ *\ std::sin(half);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ q.y\ =\ axis.y\ *\ std::sin(half);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ q.z\ =\ axis.z\ *\ std::sin(half);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ q;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ \mbox{\hyperlink{class_quaternion_a9fcfa9ff4a12d1cab07d561ab904e240}{fromVectors}}(\textcolor{keyword}{const}\ sf::Vector3f\&\ v1,\ \textcolor{keyword}{const}\ sf::Vector3f\&\ v2)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Normalize\ the\ vectors}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ u1\ =\ normaliseV3f(v1);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ u2\ =\ normaliseV3f(v2);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dot\ =\ dotProduct(u1,\ u2);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//todo:\ check\ if\ this\ check\ is\ indeed\ working\ well\ with\ 180°\ rotation}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dot\ >\ 0.999999)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(1,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dot\ <\ -\/0.999999)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ axis\ =\ crossProduct(\{1,\ 0,\ 0\},\ u1);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (axis.x\ ==\ 0\ \&\&\ axis.y\ ==\ 0\ \&\&\ axis.z\ ==\ 0)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ axis\ =\ crossProduct(\{0,\ 1,\ 0\},\ u1);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(0,\ axis.x,\ axis.y,\ axis.z);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ axis\ =\ crossProduct(u1,\ u2);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ u1Length\ =\ sqrt(u1.x\ *\ u1.x\ +\ u1.y\ *\ u1.y\ +\ u1.z\ *\ u1.z);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ u2Length\ =\ sqrt(u2.x\ *\ u2.x\ +\ u2.y\ *\ u2.y\ +\ u2.z\ *\ u2.z);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ sqrt((u1Length\ *\ u1Length)\ *\ (u2Length\ *\ u2Length))\ +\ dot;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ Quaternion\ q(w,\ axis.x,\ axis.y,\ axis.z);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ q;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ conjugate()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_quaternion}{Quaternion}}(w,\ -\/x,\ -\/y,\ -\/z);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ normalize()\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ magnitude\ =\ std::sqrt(w\ *\ w\ +\ x\ *\ x\ +\ y\ *\ y\ +\ z\ *\ z);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (magnitude\ ==\ 0)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ =\ 1;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ 0;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ 0;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ 0;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ /=\ magnitude;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ /=\ magnitude;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ /=\ magnitude;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ /=\ magnitude;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ normalise()\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ magnitude\ =\ std::sqrt(w\ *\ w\ +\ x\ *\ x\ +\ y\ *\ y\ +\ z\ *\ z);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (magnitude\ ==\ 0)\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ =\ 1;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ 0;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ 0;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ 0;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ /=\ magnitude;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ /=\ magnitude;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ /=\ magnitude;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ /=\ magnitude;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ enforceSign()\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (w\ <\ 0)\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ =\ -\/w;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ -\/x;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ -\/y;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ -\/z;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ sf::Vector3f\ rotate(sf::Vector3f\ point,\ sf::Vector3f\ center\ =\ \{0,\ 0,\ 0\})\ \textcolor{keyword}{const}\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ Quaternion\ p(0,\ point.x\ -\/\ center.x,\ point.y\ -\/\ center.y,\ point.z\ -\/\ center.z);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ Quaternion\ q\ =\ (*\textcolor{keyword}{this}\ *\ p)\ *\ conjugate();}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{q.x\ +\ center.x,\ q.y\ +\ center.y,\ q.z\ +\ center.z\};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ Quaternion\ operator*(\textcolor{keyword}{const}\ Quaternion\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ Quaternion\ q(}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ *\ other.w\ -\/\ x\ *\ other.x\ -\/\ y\ *\ other.y\ -\/\ z\ *\ other.z,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ *\ other.x\ +\ x\ *\ other.w\ +\ y\ *\ other.z\ -\/\ z\ *\ other.y,}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ *\ other.y\ -\/\ x\ *\ other.z\ +\ y\ *\ other.w\ +\ z\ *\ other.x,}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\ *\ other.z\ +\ x\ *\ other.y\ -\/\ y\ *\ other.x\ +\ z\ *\ other.w}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ q;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{float}\ w,\ x,\ y,\ z;}
+\DoxyCodeLine{00140\ \};}
+
+\end{DoxyCode}

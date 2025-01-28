@@ -10,12 +10,12 @@
 #define RESET "\033[0m"
 
 //class
-class MovementSystem: public System {
+class MovementSystem: public ecs::System {
     public:
         MovementSystem(std::string name): _name(name) {};
         ~MovementSystem() = default;
 
-        void lambda(Registry &r) override {
+        void lambda(ecs::Registry &r) override {
             std::cout << "----- " << _name << " Move Begin -----" << std::endl;
             auto& positions = r.getComponents<Position>();
             auto& velocities = r.getComponents<Velocity>();
@@ -43,12 +43,12 @@ class Math {
         }
 };
 
-class DisplaySystem: public System {
+class DisplaySystem: public ecs::System {
     public:
         DisplaySystem(Math& math): _math(math) {};
         ~DisplaySystem() = default;
 
-        void lambda(Registry &r) override {
+        void lambda(ecs::Registry &r) override {
             std::cout << "----- Display Begin -----" << std::endl;
             auto& positions = r.getComponents<Position>();
             auto& velocities = r.getComponents<Velocity>();

@@ -1,0 +1,312 @@
+\doxysection{raylib\+::Ray\+Camera Class Reference}
+\hypertarget{classraylib_1_1_ray_camera}{}\label{classraylib_1_1_ray_camera}\index{raylib::RayCamera@{raylib::RayCamera}}
+
+
+Raylib Camera class.  
+
+
+
+
+{\ttfamily \#include $<$Ray\+Camera.\+hpp$>$}
+
+Inheritance diagram for raylib\+::Ray\+Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classraylib_1_1_ray_camera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classraylib_1_1_ray_camera_a785eb74ebc8b8b9743380355197dac57}\label{classraylib_1_1_ray_camera_a785eb74ebc8b8b9743380355197dac57} 
+{\bfseries Ray\+Camera} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Ray Camera object. \end{DoxyCompactList}\item 
+\Hypertarget{classraylib_1_1_ray_camera_a7e96dd68774fc254108ad2d26ed33412}\label{classraylib_1_1_ray_camera_a7e96dd68774fc254108ad2d26ed33412} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Ray\+Camera} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Ray Camera object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classraylib_1_1_ray_camera_a77c3b5a6e85e347bcd50525a3efecb91}{get\+Fov}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Fov object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classraylib_1_1_ray_camera_a2b2e98c54e612de8e6a25960f53301a8}{set\+Fov}} (float fov) override
+\begin{DoxyCompactList}\small\item\em Set the Fov object. \end{DoxyCompactList}\item 
+ICamera\+::\+Mode \mbox{\hyperlink{classraylib_1_1_ray_camera_a0031a74770c3cd2b461afd446d5405c8}{get\+Mode}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Mode object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classraylib_1_1_ray_camera_a383fcaf6ee1715a06fb0991e853f2994}{set\+Mode}} (ICamera\+::\+Mode mode) override
+\begin{DoxyCompactList}\small\item\em Set the Mode object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{classraylib_1_1_ray_camera_a5807dc8c171719e845b44ec5ea30b684}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classraylib_1_1_ray_camera_a5db51af4af2fe844318e527dcb8fffa3}{set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+ICamera\+::\+Projection \mbox{\hyperlink{classraylib_1_1_ray_camera_a5e1d191fb38877ccfa3791222431c56b}{get\+Projection}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Projection object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classraylib_1_1_ray_camera_a8acdd50111664b93c32aa1f764809f09}{set\+Projection}} (ICamera\+::\+Projection projection) override
+\begin{DoxyCompactList}\small\item\em Set the Projection object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{classraylib_1_1_ray_camera_ae2cab92fd79a07db3f713386077e0123}{get\+Target}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Target object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classraylib_1_1_ray_camera_aeaad4bcad9abe35b6cfe412c58aedc25}{set\+Target}} (\+\_\+\+\_\+v3f\+\_\+t target) override
+\begin{DoxyCompactList}\small\item\em Set the Target object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{classraylib_1_1_ray_camera_afe5745cd07be041ef4e49cca4d36b12b}{get\+Up}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Up object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classraylib_1_1_ray_camera_af96fa9cc44fda988498d5b1594f734e8}{set\+Up}} (\+\_\+\+\_\+v3f\+\_\+t up) override
+\begin{DoxyCompactList}\small\item\em Set the Up object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ICamera} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_camera}{ICamera} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_af460a0f126d44121fe3a4e1e3814afab}{set\+Mode}} (Mode mode)=0
+\begin{DoxyCompactList}\small\item\em Set the mode. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_a4a47bba4a97863daabe50f1bd600245d}{set\+Projection}} (Projection projection)=0
+\begin{DoxyCompactList}\small\item\em Set the Projection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classraylib_1_1_ray_camera_aad1fe048a7b823b6bc3bcdc72b006d7c}\label{classraylib_1_1_ray_camera_aad1fe048a7b823b6bc3bcdc72b006d7c} 
+Camera {\bfseries \+\_\+camera}
+\item 
+\Hypertarget{classraylib_1_1_ray_camera_ab24ace5f1a9967b7ac8868d42a01dc7e}\label{classraylib_1_1_ray_camera_ab24ace5f1a9967b7ac8868d42a01dc7e} 
+Camera\+Mode {\bfseries \+\_\+mode}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classraylib_1_1_ray_camera_a852295199caa10afeb7325536eef4353}\label{classraylib_1_1_ray_camera_a852295199caa10afeb7325536eef4353} 
+class {\bfseries Ray\+Window}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgraphic_1_1_i_camera_a559dbe934f065df061e9d4fd5a8d19bb}\label{classgraphic_1_1_i_camera_a559dbe934f065df061e9d4fd5a8d19bb} 
+enum {\bfseries Projection} \{ {\bfseries PERSPECTIVE}
+, {\bfseries ORTHOGRAPHIC}
+ \}
+\item 
+\Hypertarget{classgraphic_1_1_i_camera_a2ec72397f3e9f07ad246289590d9ad5d}\label{classgraphic_1_1_i_camera_a2ec72397f3e9f07ad246289590d9ad5d} 
+enum {\bfseries Mode} \{ \newline
+{\bfseries CUSTOM} = 0
+, {\bfseries FREE}
+, {\bfseries ORBITAL}
+, {\bfseries FIRST\+\_\+\+PERSON}
+, \newline
+{\bfseries THIRD\+\_\+\+PERSON}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Raylib Camera class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classraylib_1_1_ray_camera_a77c3b5a6e85e347bcd50525a3efecb91}\index{raylib::RayCamera@{raylib::RayCamera}!getFov@{getFov}}
+\index{getFov@{getFov}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{getFov()}{getFov()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_a77c3b5a6e85e347bcd50525a3efecb91} 
+float raylib\+::\+Ray\+Camera\+::get\+Fov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Fov object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_ae547aa0df8d893f3affd2168c47c8104}{graphic\+::\+ICamera}}.
+
+\Hypertarget{classraylib_1_1_ray_camera_a0031a74770c3cd2b461afd446d5405c8}\index{raylib::RayCamera@{raylib::RayCamera}!getMode@{getMode}}
+\index{getMode@{getMode}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_a0031a74770c3cd2b461afd446d5405c8} 
+ICamera\+::\+Mode raylib\+::\+Ray\+Camera\+::get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Mode object. 
+
+\begin{DoxyReturn}{Returns}
+ICamera\+::\+Mode 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a0959591edf9737198660a710a2c5b05d}{graphic\+::\+ICamera}}.
+
+\Hypertarget{classraylib_1_1_ray_camera_a5807dc8c171719e845b44ec5ea30b684}\index{raylib::RayCamera@{raylib::RayCamera}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_a5807dc8c171719e845b44ec5ea30b684} 
+\+\_\+\+\_\+v3f\+\_\+t raylib\+::\+Ray\+Camera\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a61f352cffda9db4d7ef180a308a5afc3}{graphic\+::\+ICamera}}.
+
+\Hypertarget{classraylib_1_1_ray_camera_a5e1d191fb38877ccfa3791222431c56b}\index{raylib::RayCamera@{raylib::RayCamera}!getProjection@{getProjection}}
+\index{getProjection@{getProjection}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{getProjection()}{getProjection()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_a5e1d191fb38877ccfa3791222431c56b} 
+ICamera\+::\+Projection raylib\+::\+Ray\+Camera\+::get\+Projection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Projection object. 
+
+\begin{DoxyReturn}{Returns}
+ICamera\+::\+Projection 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a5e1a3887d3b97ff9d3d8ed4888ab5bb0}{graphic\+::\+ICamera}}.
+
+\Hypertarget{classraylib_1_1_ray_camera_ae2cab92fd79a07db3f713386077e0123}\index{raylib::RayCamera@{raylib::RayCamera}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_ae2cab92fd79a07db3f713386077e0123} 
+\+\_\+\+\_\+v3f\+\_\+t raylib\+::\+Ray\+Camera\+::get\+Target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Target object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a05a871222f25ad3bece5c37e463232a9}{graphic\+::\+ICamera}}.
+
+\Hypertarget{classraylib_1_1_ray_camera_afe5745cd07be041ef4e49cca4d36b12b}\index{raylib::RayCamera@{raylib::RayCamera}!getUp@{getUp}}
+\index{getUp@{getUp}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{getUp()}{getUp()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_afe5745cd07be041ef4e49cca4d36b12b} 
+\+\_\+\+\_\+v3f\+\_\+t raylib\+::\+Ray\+Camera\+::get\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Up object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a3d05345df858197dd715c84314541f10}{graphic\+::\+ICamera}}.
+
+\Hypertarget{classraylib_1_1_ray_camera_a2b2e98c54e612de8e6a25960f53301a8}\index{raylib::RayCamera@{raylib::RayCamera}!setFov@{setFov}}
+\index{setFov@{setFov}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{setFov()}{setFov()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_a2b2e98c54e612de8e6a25960f53301a8} 
+void raylib\+::\+Ray\+Camera\+::set\+Fov (\begin{DoxyParamCaption}\item[{float}]{fov}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Fov object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a1e5464620aa2329fd69799638a96cf6e}{graphic\+::\+ICamera}}.
+
+\Hypertarget{classraylib_1_1_ray_camera_a383fcaf6ee1715a06fb0991e853f2994}\index{raylib::RayCamera@{raylib::RayCamera}!setMode@{setMode}}
+\index{setMode@{setMode}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_a383fcaf6ee1715a06fb0991e853f2994} 
+void raylib\+::\+Ray\+Camera\+::set\+Mode (\begin{DoxyParamCaption}\item[{ICamera\+::\+Mode}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Set the Mode object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classraylib_1_1_ray_camera_a5db51af4af2fe844318e527dcb8fffa3}\index{raylib::RayCamera@{raylib::RayCamera}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_a5db51af4af2fe844318e527dcb8fffa3} 
+void raylib\+::\+Ray\+Camera\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_aa10fb5fa8b569969cdafdf998bfba1b8}{graphic\+::\+ICamera}}.
+
+\Hypertarget{classraylib_1_1_ray_camera_a8acdd50111664b93c32aa1f764809f09}\index{raylib::RayCamera@{raylib::RayCamera}!setProjection@{setProjection}}
+\index{setProjection@{setProjection}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{setProjection()}{setProjection()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_a8acdd50111664b93c32aa1f764809f09} 
+void raylib\+::\+Ray\+Camera\+::set\+Projection (\begin{DoxyParamCaption}\item[{ICamera\+::\+Projection}]{projection}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Set the Projection object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em projection} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classraylib_1_1_ray_camera_aeaad4bcad9abe35b6cfe412c58aedc25}\index{raylib::RayCamera@{raylib::RayCamera}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_aeaad4bcad9abe35b6cfe412c58aedc25} 
+void raylib\+::\+Ray\+Camera\+::set\+Target (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Target object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a46fd28a7b9f9837462eff3de8d6454a0}{graphic\+::\+ICamera}}.
+
+\Hypertarget{classraylib_1_1_ray_camera_af96fa9cc44fda988498d5b1594f734e8}\index{raylib::RayCamera@{raylib::RayCamera}!setUp@{setUp}}
+\index{setUp@{setUp}!raylib::RayCamera@{raylib::RayCamera}}
+\doxysubsubsection{\texorpdfstring{setUp()}{setUp()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_camera_af96fa9cc44fda988498d5b1594f734e8} 
+void raylib\+::\+Ray\+Camera\+::set\+Up (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{up}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Up object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em up} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a3cf381163e3e13e119654f776a0f0c9c}{graphic\+::\+ICamera}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/raylib/window/Ray\+Camera.\+hpp\end{DoxyCompactItemize}

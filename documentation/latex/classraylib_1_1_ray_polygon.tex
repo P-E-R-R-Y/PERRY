@@ -1,0 +1,166 @@
+\doxysection{raylib\+::Ray\+Polygon Class Reference}
+\hypertarget{classraylib_1_1_ray_polygon}{}\label{classraylib_1_1_ray_polygon}\index{raylib::RayPolygon@{raylib::RayPolygon}}
+Inheritance diagram for raylib\+::Ray\+Polygon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classraylib_1_1_ray_polygon}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classraylib_1_1_ray_polygon_ac2ea720ecd020797587003c0cf5f3e44}\label{classraylib_1_1_ray_polygon_ac2ea720ecd020797587003c0cf5f3e44} 
+{\bfseries Ray\+Polygon} (std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ points)
+\item 
+bool \mbox{\hyperlink{classraylib_1_1_ray_polygon_a06840f06101dfb3a1c4f04904a1a7087}{is\+Ready}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{classraylib_1_1_ray_polygon_af667cba9a60edd645869152227075c9d}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classraylib_1_1_ray_polygon_a78d9501abc5859341ee084294fe95789}{set\+Position}} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} \mbox{\hyperlink{classraylib_1_1_ray_polygon_a024b70ad2bbc1c2eda22cfedb9b8e1bf}{get\+Color}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Color object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classraylib_1_1_ray_polygon_a477c1329e366e4e2d52db5f0cf35c78a}{set\+Color}} (\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} color) override
+\begin{DoxyCompactList}\small\item\em Set the Color object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ \mbox{\hyperlink{classraylib_1_1_ray_polygon_a3d59930a9660f9ef80c072b3f6f0c85c}{get\+Points}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Points object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPolygon} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_polygon}{IPolygon} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classraylib_1_1_ray_polygon_acbf3854c8328030b8bd5e2a024296630}\label{classraylib_1_1_ray_polygon_acbf3854c8328030b8bd5e2a024296630} 
+Color {\bfseries \+\_\+color}
+\item 
+\Hypertarget{classraylib_1_1_ray_polygon_a7515f45088f92b358ae6f4c3135ec993}\label{classraylib_1_1_ray_polygon_a7515f45088f92b358ae6f4c3135ec993} 
+Vector2 {\bfseries \+\_\+position}
+\item 
+\Hypertarget{classraylib_1_1_ray_polygon_a160b4491bb1888371311534eee64ddae}\label{classraylib_1_1_ray_polygon_a160b4491bb1888371311534eee64ddae} 
+std\+::vector$<$ Vector2 $>$ {\bfseries \+\_\+points}
+\item 
+\Hypertarget{classraylib_1_1_ray_polygon_ae5301fe2a048e7aa7314b472a277b34a}\label{classraylib_1_1_ray_polygon_ae5301fe2a048e7aa7314b472a277b34a} 
+std\+::vector$<$ \mbox{\hyperlink{namespacegraphic_a054df66adc001dc941f2a6de03dc6b4f}{graphic\+::triangle\+\_\+t}} $>$ {\bfseries \+\_\+triangles}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classraylib_1_1_ray_polygon_a852295199caa10afeb7325536eef4353}\label{classraylib_1_1_ray_polygon_a852295199caa10afeb7325536eef4353} 
+class {\bfseries Ray\+Window}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classraylib_1_1_ray_polygon_a024b70ad2bbc1c2eda22cfedb9b8e1bf}\index{raylib::RayPolygon@{raylib::RayPolygon}!getColor@{getColor}}
+\index{getColor@{getColor}!raylib::RayPolygon@{raylib::RayPolygon}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_polygon_a024b70ad2bbc1c2eda22cfedb9b8e1bf} 
+\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} raylib\+::\+Ray\+Polygon\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Color object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+color\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a58c4bd60aee98dedd69415f941372259}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{classraylib_1_1_ray_polygon_a3d59930a9660f9ef80c072b3f6f0c85c}\index{raylib::RayPolygon@{raylib::RayPolygon}!getPoints@{getPoints}}
+\index{getPoints@{getPoints}!raylib::RayPolygon@{raylib::RayPolygon}}
+\doxysubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_polygon_a3d59930a9660f9ef80c072b3f6f0c85c} 
+std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ raylib\+::\+Ray\+Polygon\+::get\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Points object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+\_\+\+\_\+v2f\+\_\+t$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_ad23528f502d73a90ddaa56726ff50e57}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{classraylib_1_1_ray_polygon_af667cba9a60edd645869152227075c9d}\index{raylib::RayPolygon@{raylib::RayPolygon}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!raylib::RayPolygon@{raylib::RayPolygon}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_polygon_af667cba9a60edd645869152227075c9d} 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} raylib\+::\+Ray\+Polygon\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_ab3fb8842141a3543208c6f71800abd4f}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{classraylib_1_1_ray_polygon_a06840f06101dfb3a1c4f04904a1a7087}\index{raylib::RayPolygon@{raylib::RayPolygon}!isReady@{isReady}}
+\index{isReady@{isReady}!raylib::RayPolygon@{raylib::RayPolygon}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_polygon_a06840f06101dfb3a1c4f04904a1a7087} 
+bool raylib\+::\+Ray\+Polygon\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0467688a616b36424ddbc8adbeba0544}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{classraylib_1_1_ray_polygon_a477c1329e366e4e2d52db5f0cf35c78a}\index{raylib::RayPolygon@{raylib::RayPolygon}!setColor@{setColor}}
+\index{setColor@{setColor}!raylib::RayPolygon@{raylib::RayPolygon}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_polygon_a477c1329e366e4e2d52db5f0cf35c78a} 
+void raylib\+::\+Ray\+Polygon\+::set\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Color object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0a0a5e87e3d64afc16c30d26c13cf33b}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{classraylib_1_1_ray_polygon_a78d9501abc5859341ee084294fe95789}\index{raylib::RayPolygon@{raylib::RayPolygon}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!raylib::RayPolygon@{raylib::RayPolygon}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{classraylib_1_1_ray_polygon_a78d9501abc5859341ee084294fe95789} 
+void raylib\+::\+Ray\+Polygon\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a230ab253cc42e8c2028106b0af038fdd}{graphic\+::\+IPolygon}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/raylib/graphic/Ray\+Polygon.\+hpp\end{DoxyCompactItemize}

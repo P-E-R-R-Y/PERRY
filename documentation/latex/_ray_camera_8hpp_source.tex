@@ -1,0 +1,106 @@
+\doxysection{Ray\+Camera.\+hpp}
+\hypertarget{_ray_camera_8hpp_source}{}\label{_ray_camera_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/window/RayCamera.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/window/RayCamera.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ RAYCAMERA\_HPP\_}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ RAYCAMERA\_HPP\_}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../../../../interfaces/graphic/window/ICamera.hpp"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//Raylib}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <raylib.h>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceraylib}{raylib}}\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classraylib_1_1_ray_camera_a785eb74ebc8b8b9743380355197dac57}{RayCamera}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ \{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classraylib_1_1_ray_camera_a785eb74ebc8b8b9743380355197dac57}{RayCamera}}()\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera\ =\ \{\ 0\ \};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.position\ =\ (Vector3)\{\ 4.0f,\ 4.0f,\ 4.0f\ \};\ \ \ \ \textcolor{comment}{//\ Camera\ position}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.target\ =\ (Vector3)\{\ 0.0f,\ 0.0f,\ 0.0f\ \};\ \ \ \ \ \ \textcolor{comment}{//\ Camera\ looking\ at\ point}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.up\ =\ (Vector3)\{\ 0.f,\ 1.f,\ 0.0f\ \};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Camera\ up\ vector\ (rotation\ towards\ target)}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.fovy\ =\ 60.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Camera\ field-\/of-\/view\ Y}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.projection\ =\ CAMERA\_PERSPECTIVE;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Camera\ projection\ type}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mode\ =\ CAMERA\_FREE;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classraylib_1_1_ray_camera_a7e96dd68774fc254108ad2d26ed33412}{\string~RayCamera}}()\ \{\}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classraylib_1_1_ray_camera_a77c3b5a6e85e347bcd50525a3efecb91}{getFov}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_camera.fovy;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_camera_a2b2e98c54e612de8e6a25960f53301a8}{setFov}}(\textcolor{keywordtype}{float}\ fov)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.fovy\ =\ fov;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ ICamera::Mode\ \mbox{\hyperlink{classraylib_1_1_ray_camera_a0031a74770c3cd2b461afd446d5405c8}{getMode}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::Mode(\_mode);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_camera_a383fcaf6ee1715a06fb0991e853f2994}{setMode}}(ICamera::Mode\ mode)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mode\ =\ CameraMode(mode);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{classraylib_1_1_ray_camera_a5807dc8c171719e845b44ec5ea30b684}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\_camera.position.x,\ \_camera.position.y,\ \_camera.position.z\};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_camera_a5db51af4af2fe844318e527dcb8fffa3}{setPosition}}(\_\_v3f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera\ =\ \{float(position.x),\ float(position.y),\ float(position.z)\};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ ICamera::Projection\ \mbox{\hyperlink{classraylib_1_1_ray_camera_a5e1d191fb38877ccfa3791222431c56b}{getProjection}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(\_camera.projection)\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ PERSPECTIVE:}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::PERSPECTIVE;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CAMERA\_ORTHOGRAPHIC:}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::ORTHOGRAPHIC;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::PERSPECTIVE;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_camera_a8acdd50111664b93c32aa1f764809f09}{setProjection}}(ICamera::Projection\ projection)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(projection)\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ICamera::PERSPECTIVE:}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.projection\ =\ CAMERA\_PERSPECTIVE;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ICamera::ORTHOGRAPHIC:}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.projection\ =\ CAMERA\_ORTHOGRAPHIC;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.projection\ =\ projection;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{classraylib_1_1_ray_camera_ae2cab92fd79a07db3f713386077e0123}{getTarget}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\_camera.target.x,\ \_camera.target.y,\ \_camera.target.z\};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_camera_aeaad4bcad9abe35b6cfe412c58aedc25}{setTarget}}(\_\_v3f\_t\ target)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera\ =\ \{float(target.x),\ float(target.y),\ float(target.z)\};}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{classraylib_1_1_ray_camera_afe5745cd07be041ef4e49cca4d36b12b}{getUp}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\_camera.up.x,\ \_camera.up.y,\ \_camera.up.z\};}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_camera_af96fa9cc44fda988498d5b1594f734e8}{setUp}}(\_\_v3f\_t\ up)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.up\ =\ \{float(up.x),\ float(up.y),\ float(up.z)\};}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classraylib_1_1_ray_window}{RayWindow}};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ Camera\ \_camera;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ CameraMode\ \_mode;}
+\DoxyCodeLine{00177\ \ \ \ \ \};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !RAYMODEL2\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

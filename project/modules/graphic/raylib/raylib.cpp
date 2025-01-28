@@ -1,16 +1,13 @@
 /**
- *
- * File: raylib.cpp (header.v2)
- * Created Date: Tue 14/03/2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Sat 18/03/2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
+ * @file raylib.cpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief graphic shared library for raylib implementation
+ * @version 0.1
+ * @date 2025-01-27
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 
 #ifndef RAYLIB_CPP_
 #define RAYLIB_CPP_
@@ -24,7 +21,16 @@
 #include "event/RayMouse.hpp"
 #include "event/RayEvent.hpp"
 
-///Windowing
+using namespace raylib;
+
+/**
+ * @brief %graphic/raylib
+ * @namespace raylib
+ */
+
+/**
+ * @brief create a window
+ */
 extern "C" graphic::IWindow *createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
     return new RayWindow(screenWidth, screenHeight, std::string("Raylib " + title));
 }

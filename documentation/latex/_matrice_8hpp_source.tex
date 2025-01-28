@@ -1,0 +1,79 @@
+\doxysection{Matrice.\+hpp}
+\hypertarget{_matrice_8hpp_source}{}\label{_matrice_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/Matrice.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/Matrice.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }Matrice\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{comment}{//\ Constructor\ to\ create\ a\ matrix\ with\ the\ given\ number\ of\ rows\ and\ columns}}
+\DoxyCodeLine{00010\ \ \ \ \ Matrice(\textcolor{keywordtype}{int}\ rows,\ \textcolor{keywordtype}{int}\ cols)\ :\ data(rows,\ std::vector<T>(cols)),\ rows(rows),\ cols(cols)\ \{\}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{comment}{//\ Constructor\ to\ initialize\ the\ matrix\ with\ a\ 2D\ vector}}
+\DoxyCodeLine{00013\ \ \ \ \ Matrice(\textcolor{keyword}{const}\ std::vector<std::vector<T>>\&\ grid)\ :\ data(grid),\ rows(grid.size()),\ cols(grid[0].size())\ \{\}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//\ Accessor\ for\ matrix\ elements\ (row,\ col)}}
+\DoxyCodeLine{00016\ \ \ \ \ T\&\ operator()(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col)\ \{\ \textcolor{keywordflow}{return}\ data[row][col];\ \}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{const}\ T\&\ operator()(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ data[row][col];\ \}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//operator=}}
+\DoxyCodeLine{00020\ \ \ \ \ Matrice<T>\ operator=(\textcolor{keyword}{const}\ Matrice<T>\&\ other)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ other.data;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ rows\ =\ other.rows;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ cols\ =\ other.cols;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Getter\ for\ rows\ and\ cols}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ getRows()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ rows;\ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ getCols()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ cols;\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Print\ matrix\ (for\ debugging\ purposes)}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ print()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ rows;\ ++i)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ cols;\ ++j)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ data[i][j]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ std::vector<std::vector<T>>\ data;\ \ \textcolor{comment}{//\ 2D\ vector\ to\ store\ matrix\ data}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ rows;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ cols;}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00050\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}\ operator*(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}\&\ b)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (a.getCols()\ !=\ b.getRows())\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Matrix\ dimensions\ must\ be\ compatible\ for\ multiplication!"{}});}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ rows\ =\ a.getRows();}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ cols\ =\ b.getCols();}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ commonDim\ =\ a.getCols();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Create\ result\ matrix}}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_matrice}{Matrice<T>}}\ result(rows,\ cols);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Matrix\ multiplication\ logic}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ rows;\ ++i)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ cols;\ ++j)\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ T\ sum\ =\ T();\ \textcolor{comment}{//\ Initialize\ sum\ to\ default\ value\ (e.g.,\ 0\ for\ numbers)}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ commonDim;\ ++k)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sum\ +=\ a(i,\ k)\ *\ b(k,\ j);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ result(i,\ j)\ =\ sum;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00073\ \}}
+
+\end{DoxyCode}

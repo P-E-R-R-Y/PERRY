@@ -1,0 +1,238 @@
+\doxysection{Sdl\+Mouse Class Reference}
+\hypertarget{class_sdl_mouse}{}\label{class_sdl_mouse}\index{SdlMouse@{SdlMouse}}
+
+
+{\ttfamily \#include $<$Sdl\+Mouse.\+hpp$>$}
+
+Inheritance diagram for Sdl\+Mouse\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sdl_mouse}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sdl_mouse_aafa76797bd1078e4b552d29165448038}\label{class_sdl_mouse_aafa76797bd1078e4b552d29165448038} 
+{\bfseries Sdl\+Mouse} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\item 
+bool \mbox{\hyperlink{class_sdl_mouse_a4c0700d20c6bb17258122949b093bf02}{is\+Button\+Pressed}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is pressed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sdl_mouse_a78d1216fc3c78eb6a0f4d2a6c762905c}{is\+Button\+Down}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is down \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sdl_mouse_aa3f194fc86ed25c083fe13d16dcca800}{is\+Button\+Released}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is released \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sdl_mouse_aa5edac30acd48135eb7df43ab4fc4b50}{is\+Button\+Up}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is up \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{class_sdl_mouse_a4d66a150db63eeb156d5edcf37fc3e5d}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em get the position of the mouse \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_mouse_a8f4c5b8eb4303e9776d7e1e132dad987}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em set the position of the mouse \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sdl_mouse_a90a0264525a1d0e85645fa9697fde004}{Get\+Mouse\+Wheel\+Move}} () const override
+\begin{DoxyCompactList}\small\item\em get the mouse wheel move \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_mouse_afe0af04452988961c526e636d174983b}{update}} () override
+\begin{DoxyCompactList}\small\item\em set the mouse wheel move \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IMouse} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_mouse}{IMouse} interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sdl_mouse_a7eb39b86278b8803ed0dd2e3ec2ad12d}\label{class_sdl_mouse_a7eb39b86278b8803ed0dd2e3ec2ad12d} 
+\mbox{\hyperlink{class_sdl_event}{Sdl\+Event}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+event}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgraphic_1_1_i_mouse_a18ae44dcdc8753386db91545cfb83aa1}\label{classgraphic_1_1_i_mouse_a18ae44dcdc8753386db91545cfb83aa1} 
+enum {\bfseries Buttons} \{ \newline
+{\bfseries BUTTON\+\_\+\+LEFT}
+, {\bfseries BUTTON\+\_\+\+RIGHT}
+, {\bfseries BUTTON\+\_\+\+MIDDLE}
+, {\bfseries EXTRA\+\_\+\+BUTTON\+\_\+1}
+, \newline
+{\bfseries EXTRA\+\_\+\+BUTTON\+\_\+2}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+@ Author\+: Perry Chouteau @ Create Time\+: 2024-\/05-\/10 19\+:59\+:08 @ Modified by\+: Perry Chouteau @ Modified time\+: 2024-\/11-\/11 12\+:16\+:51 @ Description\+: Raylib Encapsulation for IMouse 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sdl_mouse_a90a0264525a1d0e85645fa9697fde004}\index{SdlMouse@{SdlMouse}!GetMouseWheelMove@{GetMouseWheelMove}}
+\index{GetMouseWheelMove@{GetMouseWheelMove}!SdlMouse@{SdlMouse}}
+\doxysubsubsection{\texorpdfstring{GetMouseWheelMove()}{GetMouseWheelMove()}}
+{\footnotesize\ttfamily \label{class_sdl_mouse_a90a0264525a1d0e85645fa9697fde004} 
+float Sdl\+Mouse\+::\+Get\+Mouse\+Wheel\+Move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get the mouse wheel move 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_mouse_a5d886845b95237eceebe384df90b05b5}{graphic\+::\+IMouse}}.
+
+\Hypertarget{class_sdl_mouse_a4d66a150db63eeb156d5edcf37fc3e5d}\index{SdlMouse@{SdlMouse}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!SdlMouse@{SdlMouse}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{class_sdl_mouse_a4d66a150db63eeb156d5edcf37fc3e5d} 
+\+\_\+\+\_\+v2f\+\_\+t Sdl\+Mouse\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get the position of the mouse 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_mouse_a4634bb19c29588e97688f2816be3b3a8}{graphic\+::\+IMouse}}.
+
+\Hypertarget{class_sdl_mouse_a78d1216fc3c78eb6a0f4d2a6c762905c}\index{SdlMouse@{SdlMouse}!isButtonDown@{isButtonDown}}
+\index{isButtonDown@{isButtonDown}!SdlMouse@{SdlMouse}}
+\doxysubsubsection{\texorpdfstring{isButtonDown()}{isButtonDown()}}
+{\footnotesize\ttfamily \label{class_sdl_mouse_a78d1216fc3c78eb6a0f4d2a6c762905c} 
+bool Sdl\+Mouse\+::is\+Button\+Down (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if a button is down 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_mouse_addb497afb0c9af10f0e05d416bc8345a}{graphic\+::\+IMouse}}.
+
+\Hypertarget{class_sdl_mouse_a4c0700d20c6bb17258122949b093bf02}\index{SdlMouse@{SdlMouse}!isButtonPressed@{isButtonPressed}}
+\index{isButtonPressed@{isButtonPressed}!SdlMouse@{SdlMouse}}
+\doxysubsubsection{\texorpdfstring{isButtonPressed()}{isButtonPressed()}}
+{\footnotesize\ttfamily \label{class_sdl_mouse_a4c0700d20c6bb17258122949b093bf02} 
+bool Sdl\+Mouse\+::is\+Button\+Pressed (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if a button is pressed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_mouse_afd8ef257d34f4195838cbc758860df1f}{graphic\+::\+IMouse}}.
+
+\Hypertarget{class_sdl_mouse_aa3f194fc86ed25c083fe13d16dcca800}\index{SdlMouse@{SdlMouse}!isButtonReleased@{isButtonReleased}}
+\index{isButtonReleased@{isButtonReleased}!SdlMouse@{SdlMouse}}
+\doxysubsubsection{\texorpdfstring{isButtonReleased()}{isButtonReleased()}}
+{\footnotesize\ttfamily \label{class_sdl_mouse_aa3f194fc86ed25c083fe13d16dcca800} 
+bool Sdl\+Mouse\+::is\+Button\+Released (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if a button is released 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_mouse_a1b1620f7a9cd866f543172ce711f8d96}{graphic\+::\+IMouse}}.
+
+\Hypertarget{class_sdl_mouse_aa5edac30acd48135eb7df43ab4fc4b50}\index{SdlMouse@{SdlMouse}!isButtonUp@{isButtonUp}}
+\index{isButtonUp@{isButtonUp}!SdlMouse@{SdlMouse}}
+\doxysubsubsection{\texorpdfstring{isButtonUp()}{isButtonUp()}}
+{\footnotesize\ttfamily \label{class_sdl_mouse_aa5edac30acd48135eb7df43ab4fc4b50} 
+bool Sdl\+Mouse\+::is\+Button\+Up (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if a button is up 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_mouse_afa52d70cdd08910cc7eb7b4084b8adfe}{graphic\+::\+IMouse}}.
+
+\Hypertarget{class_sdl_mouse_a8f4c5b8eb4303e9776d7e1e132dad987}\index{SdlMouse@{SdlMouse}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!SdlMouse@{SdlMouse}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{class_sdl_mouse_a8f4c5b8eb4303e9776d7e1e132dad987} 
+void Sdl\+Mouse\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the position of the mouse 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_mouse_a365cbd8e5b9bd47abdd15ddd157dcb1e}{graphic\+::\+IMouse}}.
+
+\Hypertarget{class_sdl_mouse_afe0af04452988961c526e636d174983b}\index{SdlMouse@{SdlMouse}!update@{update}}
+\index{update@{update}!SdlMouse@{SdlMouse}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_sdl_mouse_afe0af04452988961c526e636d174983b} 
+void Sdl\+Mouse\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the mouse wheel move 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_mouse_a87cc9ca9ea63bb88e083700c74acba74}{graphic\+::\+IMouse}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/event/Sdl\+Mouse.\+hpp\end{DoxyCompactItemize}

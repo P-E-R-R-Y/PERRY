@@ -1,0 +1,284 @@
+\doxysection{graphic\+::ICamera Interface Reference}
+\hypertarget{classgraphic_1_1_i_camera}{}\label{classgraphic_1_1_i_camera}\index{graphic::ICamera@{graphic::ICamera}}
+
+
+Camera interface.  
+
+
+
+
+{\ttfamily \#include $<$ICamera.\+hpp$>$}
+
+Inheritance diagram for graphic\+::ICamera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgraphic_1_1_i_camera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgraphic_1_1_i_camera_a559dbe934f065df061e9d4fd5a8d19bb}\label{classgraphic_1_1_i_camera_a559dbe934f065df061e9d4fd5a8d19bb} 
+enum {\bfseries Projection} \{ {\bfseries PERSPECTIVE}
+, {\bfseries ORTHOGRAPHIC}
+ \}
+\item 
+\Hypertarget{classgraphic_1_1_i_camera_a2ec72397f3e9f07ad246289590d9ad5d}\label{classgraphic_1_1_i_camera_a2ec72397f3e9f07ad246289590d9ad5d} 
+enum {\bfseries Mode} \{ \newline
+{\bfseries CUSTOM} = 0
+, {\bfseries FREE}
+, {\bfseries ORBITAL}
+, {\bfseries FIRST\+\_\+\+PERSON}
+, \newline
+{\bfseries THIRD\+\_\+\+PERSON}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgraphic_1_1_i_camera_a1dd8c5e182aeae7bc5875f12c1647746}\label{classgraphic_1_1_i_camera_a1dd8c5e182aeae7bc5875f12c1647746} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ICamera} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_camera}{ICamera} object. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{classgraphic_1_1_i_camera_ae547aa0df8d893f3affd2168c47c8104}{get\+Fov}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the FOV. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_a1e5464620aa2329fd69799638a96cf6e}{set\+Fov}} (float fov)=0
+\begin{DoxyCompactList}\small\item\em Set the FOV. \end{DoxyCompactList}\item 
+virtual Mode \mbox{\hyperlink{classgraphic_1_1_i_camera_a0959591edf9737198660a710a2c5b05d}{get\+Mode}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the mode. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_af460a0f126d44121fe3a4e1e3814afab}{set\+Mode}} (Mode mode)=0
+\begin{DoxyCompactList}\small\item\em Set the mode. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{classgraphic_1_1_i_camera_a61f352cffda9db4d7ef180a308a5afc3}{get\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the position. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_aa10fb5fa8b569969cdafdf998bfba1b8}{set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t position)=0
+\begin{DoxyCompactList}\small\item\em Set the position. \end{DoxyCompactList}\item 
+virtual Projection \mbox{\hyperlink{classgraphic_1_1_i_camera_a5e1a3887d3b97ff9d3d8ed4888ab5bb0}{get\+Projection}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Projection. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_a4a47bba4a97863daabe50f1bd600245d}{set\+Projection}} (Projection projection)=0
+\begin{DoxyCompactList}\small\item\em Set the Projection. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{classgraphic_1_1_i_camera_a05a871222f25ad3bece5c37e463232a9}{get\+Target}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the target. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_a46fd28a7b9f9837462eff3de8d6454a0}{set\+Target}} (\+\_\+\+\_\+v3f\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Set the target. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{classgraphic_1_1_i_camera_a3d05345df858197dd715c84314541f10}{get\+Up}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the up vector. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_a3cf381163e3e13e119654f776a0f0c9c}{set\+Up}} (\+\_\+\+\_\+v3f\+\_\+t up)=0
+\begin{DoxyCompactList}\small\item\em Set the up vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Camera interface. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classgraphic_1_1_i_camera_ae547aa0df8d893f3affd2168c47c8104}\index{graphic::ICamera@{graphic::ICamera}!getFov@{getFov}}
+\index{getFov@{getFov}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{getFov()}{getFov()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_ae547aa0df8d893f3affd2168c47c8104} 
+virtual float graphic\+::\+ICamera\+::get\+Fov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the FOV. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_a77c3b5a6e85e347bcd50525a3efecb91}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_a169b5eefc0b5e5b1cce85a347948daa1}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_ad11678907097a3d73687808039ee1d42}{Sfml\+Camera}}.
+
+\Hypertarget{classgraphic_1_1_i_camera_a0959591edf9737198660a710a2c5b05d}\index{graphic::ICamera@{graphic::ICamera}!getMode@{getMode}}
+\index{getMode@{getMode}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_a0959591edf9737198660a710a2c5b05d} 
+virtual Mode graphic\+::\+ICamera\+::get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the mode. 
+
+\begin{DoxyReturn}{Returns}
+Mode 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_a0031a74770c3cd2b461afd446d5405c8}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_a96ef897c4e3cd8907dea31949f0d2736}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_a951d66286e7960dd2f5ca4793b0cb370}{Sfml\+Camera}}.
+
+\Hypertarget{classgraphic_1_1_i_camera_a61f352cffda9db4d7ef180a308a5afc3}\index{graphic::ICamera@{graphic::ICamera}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_a61f352cffda9db4d7ef180a308a5afc3} 
+virtual \+\_\+\+\_\+v3f\+\_\+t graphic\+::\+ICamera\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the position. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_a5807dc8c171719e845b44ec5ea30b684}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_add69b85774af62667a63f8d8f529ac9a}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_a905167efe03f026b0d84441ad0b202bb}{Sfml\+Camera}}.
+
+\Hypertarget{classgraphic_1_1_i_camera_a5e1a3887d3b97ff9d3d8ed4888ab5bb0}\index{graphic::ICamera@{graphic::ICamera}!getProjection@{getProjection}}
+\index{getProjection@{getProjection}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{getProjection()}{getProjection()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_a5e1a3887d3b97ff9d3d8ed4888ab5bb0} 
+virtual Projection graphic\+::\+ICamera\+::get\+Projection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Projection. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_a5e1d191fb38877ccfa3791222431c56b}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_a33fd59f1783566ce6e6a162ff6dc84b4}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_a2fb9f5ab1287515a9805468ee29104fe}{Sfml\+Camera}}.
+
+\Hypertarget{classgraphic_1_1_i_camera_a05a871222f25ad3bece5c37e463232a9}\index{graphic::ICamera@{graphic::ICamera}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_a05a871222f25ad3bece5c37e463232a9} 
+virtual \+\_\+\+\_\+v3f\+\_\+t graphic\+::\+ICamera\+::get\+Target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the target. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_ae2cab92fd79a07db3f713386077e0123}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_aa5afb72e250b62488d6df33e8b680499}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_ac9b4abc33f5e1433ca8b375c9d8048ca}{Sfml\+Camera}}.
+
+\Hypertarget{classgraphic_1_1_i_camera_a3d05345df858197dd715c84314541f10}\index{graphic::ICamera@{graphic::ICamera}!getUp@{getUp}}
+\index{getUp@{getUp}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{getUp()}{getUp()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_a3d05345df858197dd715c84314541f10} 
+virtual \+\_\+\+\_\+v3f\+\_\+t graphic\+::\+ICamera\+::get\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the up vector. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_afe5745cd07be041ef4e49cca4d36b12b}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_a05c8351efd771c7dca962d316e61df6c}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_a81292302e8e35571d8cff3a4556dfee9}{Sfml\+Camera}}.
+
+\Hypertarget{classgraphic_1_1_i_camera_a1e5464620aa2329fd69799638a96cf6e}\index{graphic::ICamera@{graphic::ICamera}!setFov@{setFov}}
+\index{setFov@{setFov}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{setFov()}{setFov()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_a1e5464620aa2329fd69799638a96cf6e} 
+virtual void graphic\+::\+ICamera\+::set\+Fov (\begin{DoxyParamCaption}\item[{float}]{fov}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the FOV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_a2b2e98c54e612de8e6a25960f53301a8}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_ac2755fb30b07ffa2a973c0f3588cce93}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_a8883151f4d4ee9dc9e263f9c095df511}{Sfml\+Camera}}.
+
+\Hypertarget{classgraphic_1_1_i_camera_af460a0f126d44121fe3a4e1e3814afab}\index{graphic::ICamera@{graphic::ICamera}!setMode@{setMode}}
+\index{setMode@{setMode}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_af460a0f126d44121fe3a4e1e3814afab} 
+virtual void graphic\+::\+ICamera\+::set\+Mode (\begin{DoxyParamCaption}\item[{Mode}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classgraphic_1_1_i_camera_aa10fb5fa8b569969cdafdf998bfba1b8}\index{graphic::ICamera@{graphic::ICamera}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_aa10fb5fa8b569969cdafdf998bfba1b8} 
+virtual void graphic\+::\+ICamera\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_a5db51af4af2fe844318e527dcb8fffa3}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_a4ca762114e7814b7b8f3f3a9a6cfcb69}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_aea1805f2eeb6da5dfe0f5e1188765d18}{Sfml\+Camera}}.
+
+\Hypertarget{classgraphic_1_1_i_camera_a4a47bba4a97863daabe50f1bd600245d}\index{graphic::ICamera@{graphic::ICamera}!setProjection@{setProjection}}
+\index{setProjection@{setProjection}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{setProjection()}{setProjection()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_a4a47bba4a97863daabe50f1bd600245d} 
+virtual void graphic\+::\+ICamera\+::set\+Projection (\begin{DoxyParamCaption}\item[{Projection}]{projection}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Projection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em projection} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classgraphic_1_1_i_camera_a46fd28a7b9f9837462eff3de8d6454a0}\index{graphic::ICamera@{graphic::ICamera}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_a46fd28a7b9f9837462eff3de8d6454a0} 
+virtual void graphic\+::\+ICamera\+::set\+Target (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_aeaad4bcad9abe35b6cfe412c58aedc25}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_a654cd8318ceceae621652ba004621525}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_acfda052fa04fa82d3b30ead5bdf35b32}{Sfml\+Camera}}.
+
+\Hypertarget{classgraphic_1_1_i_camera_a3cf381163e3e13e119654f776a0f0c9c}\index{graphic::ICamera@{graphic::ICamera}!setUp@{setUp}}
+\index{setUp@{setUp}!graphic::ICamera@{graphic::ICamera}}
+\doxysubsubsection{\texorpdfstring{setUp()}{setUp()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_camera_a3cf381163e3e13e119654f776a0f0c9c} 
+virtual void graphic\+::\+ICamera\+::set\+Up (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{up}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the up vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em up} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_camera_af96fa9cc44fda988498d5b1594f734e8}{raylib\+::\+Ray\+Camera}}, \mbox{\hyperlink{class_sdl_camera_a94086203b6a232ad169d187f9558332e}{Sdl\+Camera}}, and \mbox{\hyperlink{class_sfml_camera_ab0bb3576dd49509dcfb9ede61be3b487}{Sfml\+Camera}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/interfaces/graphic/window/ICamera.\+hpp\end{DoxyCompactItemize}

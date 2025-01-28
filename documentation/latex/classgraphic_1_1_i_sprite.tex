@@ -1,0 +1,215 @@
+\doxysection{graphic\+::ISprite Interface Reference}
+\hypertarget{classgraphic_1_1_i_sprite}{}\label{classgraphic_1_1_i_sprite}\index{graphic::ISprite@{graphic::ISprite}}
+
+
+Sprite interface.  
+
+
+
+
+{\ttfamily \#include $<$ISprite.\+hpp$>$}
+
+Inheritance diagram for graphic\+::ISprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgraphic_1_1_i_sprite}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgraphic_1_1_i_sprite_a786a8188a66a935e299d2cf489156241}\label{classgraphic_1_1_i_sprite_a786a8188a66a935e299d2cf489156241} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ISprite} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_sprite}{ISprite} object. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classgraphic_1_1_i_sprite_a8088e103ac1733993812764debae1e5e}{is\+Ready}} () const =0
+\begin{DoxyCompactList}\small\item\em notice if the sprite is ready \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v4f\+\_\+t \mbox{\hyperlink{classgraphic_1_1_i_sprite_a00a5af5a26c11991f3fe24d268778f85}{get\+Bounds}} () const =0
+\begin{DoxyCompactList}\small\item\em give the bounds of the sprite \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_sprite_a56dad5536d7c8f370a17842b966a9813}{set\+Crop}} (\+\_\+\+\_\+v4f\+\_\+t rect)=0
+\begin{DoxyCompactList}\small\item\em Crop the sprite with a rectangle. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{classgraphic_1_1_i_sprite_a8cc0af533b60b32dc093a7cda5b50cdc}{get\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_sprite_a7da368451eae7bdc6919d238387f416a}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position)=0
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{classgraphic_1_1_i_sprite_a7d03f2782d06584062b096f74120e9e8}{get\+Rotation}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_sprite_a5706582ed7b81bee47577c05c8d44f12}{set\+Rotation}} (float angle, bool is\+Rad=false)=0
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{classgraphic_1_1_i_sprite_a53f82fa3b8aaf11d8fd52645bbb9d7db}{get\+Size}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Sprite size. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_sprite_a487198bf197d8880aecd8a237e07c9fd}{set\+Size}} (\+\_\+\+\_\+v2f\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Set the Sprite size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sprite interface. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classgraphic_1_1_i_sprite_a00a5af5a26c11991f3fe24d268778f85}\index{graphic::ISprite@{graphic::ISprite}!getBounds@{getBounds}}
+\index{getBounds@{getBounds}!graphic::ISprite@{graphic::ISprite}}
+\doxysubsubsection{\texorpdfstring{getBounds()}{getBounds()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_sprite_a00a5af5a26c11991f3fe24d268778f85} 
+virtual \+\_\+\+\_\+v4f\+\_\+t graphic\+::\+ISprite\+::get\+Bounds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+give the bounds of the sprite 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v4f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_sprite_a35f3ed731bc7301c137df896fbd2bead}{raylib\+::\+Ray\+Sprite}}, \mbox{\hyperlink{class_sdl_sprite_ad1e4a114e5429fd2d16176a06cfec5a9}{Sdl\+Sprite}}, and \mbox{\hyperlink{class_sfml_sprite_a1b6814799269cbec3f07427965df97a6}{Sfml\+Sprite}}.
+
+\Hypertarget{classgraphic_1_1_i_sprite_a8cc0af533b60b32dc093a7cda5b50cdc}\index{graphic::ISprite@{graphic::ISprite}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!graphic::ISprite@{graphic::ISprite}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_sprite_a8cc0af533b60b32dc093a7cda5b50cdc} 
+virtual \+\_\+\+\_\+v2f\+\_\+t graphic\+::\+ISprite\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_sprite_a52e6edf2f1b49eb3235ed321ef37f865}{raylib\+::\+Ray\+Sprite}}, \mbox{\hyperlink{class_sdl_sprite_ae879b10bff2c390395e8bfd02bec9226}{Sdl\+Sprite}}, and \mbox{\hyperlink{class_sfml_sprite_a56ce6dba47ee9764d2e780f6ef2a4729}{Sfml\+Sprite}}.
+
+\Hypertarget{classgraphic_1_1_i_sprite_a7d03f2782d06584062b096f74120e9e8}\index{graphic::ISprite@{graphic::ISprite}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!graphic::ISprite@{graphic::ISprite}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_sprite_a7d03f2782d06584062b096f74120e9e8} 
+virtual float graphic\+::\+ISprite\+::get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Rotation object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_sprite_a5d91c0c25158f6d1802a2d7653ad5219}{raylib\+::\+Ray\+Sprite}}, \mbox{\hyperlink{class_sdl_sprite_af798061665fefe8897a57def03881740}{Sdl\+Sprite}}, and \mbox{\hyperlink{class_sfml_sprite_aacf999c674358e524f41fd302479be98}{Sfml\+Sprite}}.
+
+\Hypertarget{classgraphic_1_1_i_sprite_a53f82fa3b8aaf11d8fd52645bbb9d7db}\index{graphic::ISprite@{graphic::ISprite}!getSize@{getSize}}
+\index{getSize@{getSize}!graphic::ISprite@{graphic::ISprite}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_sprite_a53f82fa3b8aaf11d8fd52645bbb9d7db} 
+virtual \+\_\+\+\_\+v2f\+\_\+t graphic\+::\+ISprite\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Sprite size. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_sprite_a29e6daccdd71c9ca47fc1fc6e3e2ae20}{raylib\+::\+Ray\+Sprite}}, \mbox{\hyperlink{class_sdl_sprite_a23fab9c56752a7a30cfd8ae772262650}{Sdl\+Sprite}}, and \mbox{\hyperlink{class_sfml_sprite_adc048e63cab334b7b73e4b416220374b}{Sfml\+Sprite}}.
+
+\Hypertarget{classgraphic_1_1_i_sprite_a8088e103ac1733993812764debae1e5e}\index{graphic::ISprite@{graphic::ISprite}!isReady@{isReady}}
+\index{isReady@{isReady}!graphic::ISprite@{graphic::ISprite}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_sprite_a8088e103ac1733993812764debae1e5e} 
+virtual bool graphic\+::\+ISprite\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+notice if the sprite is ready 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_sprite_aba8839df09023a1e4b1bff5fd1fd6df2}{raylib\+::\+Ray\+Sprite}}, \mbox{\hyperlink{class_sdl_sprite_a6688eb190b28738eed5ef45453e57cc1}{Sdl\+Sprite}}, and \mbox{\hyperlink{class_sfml_sprite_a43587aab7d5762108568c65232e31fb8}{Sfml\+Sprite}}.
+
+\Hypertarget{classgraphic_1_1_i_sprite_a56dad5536d7c8f370a17842b966a9813}\index{graphic::ISprite@{graphic::ISprite}!setCrop@{setCrop}}
+\index{setCrop@{setCrop}!graphic::ISprite@{graphic::ISprite}}
+\doxysubsubsection{\texorpdfstring{setCrop()}{setCrop()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_sprite_a56dad5536d7c8f370a17842b966a9813} 
+virtual void graphic\+::\+ISprite\+::set\+Crop (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v4f\+\_\+t}]{rect}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Crop the sprite with a rectangle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_sfml_sprite_a7e44b19b49e74f7525a9026df19f1947}{Sfml\+Sprite}}.
+
+\Hypertarget{classgraphic_1_1_i_sprite_a7da368451eae7bdc6919d238387f416a}\index{graphic::ISprite@{graphic::ISprite}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!graphic::ISprite@{graphic::ISprite}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_sprite_a7da368451eae7bdc6919d238387f416a} 
+virtual void graphic\+::\+ISprite\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_sfml_sprite_afa785fd42ef4de9aab70eff27ba8aacc}{Sfml\+Sprite}}.
+
+\Hypertarget{classgraphic_1_1_i_sprite_a5706582ed7b81bee47577c05c8d44f12}\index{graphic::ISprite@{graphic::ISprite}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!graphic::ISprite@{graphic::ISprite}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_sprite_a5706582ed7b81bee47577c05c8d44f12} 
+virtual void graphic\+::\+ISprite\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{angle}{, }\item[{bool}]{is\+Rad}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+{\em is\+Rad} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_sprite_a8744b356842acf9f7692f20c5f544379}{raylib\+::\+Ray\+Sprite}}, \mbox{\hyperlink{class_sdl_sprite_a7e1842820bff16d36ebbed60eadbbdb1}{Sdl\+Sprite}}, and \mbox{\hyperlink{class_sfml_sprite_ac80478281cd7c3386dad009cee9ac42f}{Sfml\+Sprite}}.
+
+\Hypertarget{classgraphic_1_1_i_sprite_a487198bf197d8880aecd8a237e07c9fd}\index{graphic::ISprite@{graphic::ISprite}!setSize@{setSize}}
+\index{setSize@{setSize}!graphic::ISprite@{graphic::ISprite}}
+\doxysubsubsection{\texorpdfstring{setSize()}{setSize()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_sprite_a487198bf197d8880aecd8a237e07c9fd} 
+virtual void graphic\+::\+ISprite\+::set\+Size (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Sprite size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_sfml_sprite_aaac0ec9ad459089e2fab0c484d8544bb}{Sfml\+Sprite}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/interfaces/graphic/graphic/ISprite.\+hpp\end{DoxyCompactItemize}

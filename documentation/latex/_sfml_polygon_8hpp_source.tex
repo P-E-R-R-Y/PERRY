@@ -1,0 +1,112 @@
+\doxysection{Sfml\+Polygon.\+hpp}
+\hypertarget{_sfml_polygon_8hpp_source}{}\label{_sfml_polygon_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/graphic/SfmlPolygon.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/graphic/SfmlPolygon.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ SFMLPOLYGON\_HPP\_}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ SFMLPOLYGON\_HPP\_}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/graphic/IPolygon.hpp"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//Sfml}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }SfmlPolygon\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ \{}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ SfmlPolygon(std::vector<\_\_v2f\_t>\ points)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_color\ =\ sf::Color\{255,\ 0,\ 0,\ 255\};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ \{0,\ 0\};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_points\ =\ \{\};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_triangles\ =\ \{\};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<\_\_v2f\_t>\ tmp\ =\ \{\};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ point\ :\ points)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_points.push\_back(sf::Vertex(sf::Vector2f\{float(point.x),\ float(point.y)\},\ \_color));}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp.push\_back(\_\_v2f\_t\{double(point.x),\ double(point.y)\});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ tmp.size()\ >=\ 3;\ i++)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ tmp.size()\ <<\ std::endl;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_v2f\_t\ pointA\ =\ tmp[i\ \%\ tmp.size()];}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_v2f\_t\ pointB\ =\ tmp[(i+1)\ \%\ tmp.size()];}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_v2f\_t\ pointC\ =\ tmp[(i+2)\ \%\ tmp.size()];}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_convex(pointA,\ pointB,\ pointC))\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isEar\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ tmp.size();\ j++)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ ==\ i\ \%\ tmp.size()\ ||\ j\ ==\ (i+1)\ \%\ tmp.size()\ ||\ j\ ==\ (i+2)\ \%\ tmp.size())\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_inside\_triangle(tmp[j],\ pointA,\ pointB,\ pointC))\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isEar\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isEar)\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}ear"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_triangles.push\_back(\mbox{\hyperlink{namespacegraphic_a054df66adc001dc941f2a6de03dc6b4f}{graphic::triangle\_t}}\{pointA,\ pointB,\ pointC\});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp.erase(tmp.begin()\ +\ (i+1)\ \%\ tmp.size());}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_triangles.size();\ i++)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}triangle:\ "{}}\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ \_triangles[i].A.x\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ \_triangles[i].A.y\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ \_triangles[i].B.x\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ \_triangles[i].B.y\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ \_triangles[i].C.x\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ \_triangles[i].C.y\ <<\ std::endl;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlPolygon\ created"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \string~SfmlPolygon()\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sfml_polygon_a8c2db5edcd6be4ac71475a09844f9c88}{isReady}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{class_sfml_polygon_a952cdcf59f314b3a8b738d9c5d1f103d}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\_position.x,\ \_position.y\};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setPosition(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ \{float(position.x),\ float(position.y)\};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \_\_color\_t\ \mbox{\hyperlink{class_sfml_polygon_af965e46ad7b2c334506788b128a45c98}{getColor}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_color\_t\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.r),}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.g),}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.b),}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.a)\};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setColor(\_\_color\_t\ color)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \_color\ =\ sf::Color\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(color.r),}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(color.g),}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(color.b),}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(color.a)\};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::vector<\_\_v2f\_t>\ \mbox{\hyperlink{class_sfml_polygon_a2990becc3a91765498d757215321a665}{getPoints}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<\_\_v2f\_t>\ points;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ point\ :\ \_points)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ points.push\_back(\{point.position.x,\ point.position.y\});}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ points;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sfml_window}{SfmlWindow}};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ sf::Color\ \_color;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ sf::Vector2f\ \_position;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ std::vector<sf::Vertex>\ \_points;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ std::vector<graphic::triangle\_t>\ \_triangles;}
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SFMLPOLYGON\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

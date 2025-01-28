@@ -1,0 +1,116 @@
+\doxysection{type.\+hpp}
+\hypertarget{type_8hpp_source}{}\label{type_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/libraries/system/type.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/libraries/system/type.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ TYPE\_HPP\_}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#define\ TYPE\_HPP\_}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ \_WIN32}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ OS\ "{}Windows"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#elif\ \_\_APPLE\_\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ OS\ "{}macOS"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <sys/types.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <string>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//use\ \_\_int32\_t}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//use\ float}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \#else\ }\textcolor{comment}{//if\ \_\_linux\_\_}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ OS\ "{}Linux"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <sys/types.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <string>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \#include\ <vector>}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{namespace\ }type\ \{}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_\_v1i\_t\ \_\_int32\_t}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_\_v1f\_t\ float}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//int32}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____v2u__s}{\_\_v2u\_s}}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \_\_uint32\_t\ x;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \_\_uint32\_t\ y;}
+\DoxyCodeLine{00045\ \ \ \ \ \}\ \_\_v2u\_t;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____v3u__s}{\_\_v3u\_s}}\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \_\_uint32\_t\ x;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \_\_uint32\_t\ y;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \_\_uint32\_t\ z;}
+\DoxyCodeLine{00051\ \ \ \ \ \}\ \_\_v3u\_t;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____v4u__s}{\_\_v4u\_s}}\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \_\_uint32\_t\ x;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \_\_uint32\_t\ y;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \_\_uint32\_t\ w;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \_\_uint32\_t\ h;}
+\DoxyCodeLine{00058\ \ \ \ \ \}\ \_\_v4u\_t;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____v2i__s}{\_\_v2i\_s}}\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \_\_int32\_t\ x;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \_\_int32\_t\ y;}
+\DoxyCodeLine{00063\ \ \ \ \ \}\ \_\_v2i\_t;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____v3i__s}{\_\_v3i\_s}}\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \_\_int32\_t\ x;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \_\_int32\_t\ y;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \_\_int32\_t\ z;}
+\DoxyCodeLine{00069\ \ \ \ \ \}\ \_\_v3i\_t;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____v4i__s}{\_\_v4i\_s}}\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \_\_int32\_t\ x;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \_\_int32\_t\ y;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \_\_int32\_t\ w;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \_\_int32\_t\ h;}
+\DoxyCodeLine{00076\ \ \ \ \ \}\ \_\_v4i\_t;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//double}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____v2f__s}{\_\_v2f\_s}}\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y;}
+\DoxyCodeLine{00082\ \ \ \ \ \}\ \_\_v2f\_t;}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____v3f__s}{\_\_v3f\_s}}\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ z;}
+\DoxyCodeLine{00088\ \ \ \ \ \}\ \_\_v3f\_t;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____v4f__s}{\_\_v4f\_s}}\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ w;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ h;}
+\DoxyCodeLine{00095\ \ \ \ \ \}\ \_\_v4f\_t;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____color__s}{\_\_color\_s}}\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ r;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ g;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ b;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ a;}
+\DoxyCodeLine{00102\ \ \ \ \ \}\ \_\_color\_t;}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1____zone__s}{\_\_zone\_s}}\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ top;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ left;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ front;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ bottom;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ right;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ back;}
+\DoxyCodeLine{00111\ \ \ \ \ \}\ \_\_zone\_t;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtype_1_1__quaternion__s}{\_quaternion\_s}}\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ y;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ z;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ w;}
+\DoxyCodeLine{00118\ \ \ \ \ \}\ \_quaternion\_t;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \}\ \textcolor{comment}{//\ namespace\ type}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !TYPE\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

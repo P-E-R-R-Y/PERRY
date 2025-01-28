@@ -4,6 +4,8 @@
   #include <iostream>
   #include "../system/type.hpp" 
 
+using namespace type;
+
 double cross_product(__v2f_t a, __v2f_t b) {
     //cross product formula
     return a.x * b.y - a.y * b.x;

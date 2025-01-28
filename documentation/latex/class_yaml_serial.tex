@@ -1,0 +1,85 @@
+\doxysection{Yaml\+Serial Class Reference}
+\hypertarget{class_yaml_serial}{}\label{class_yaml_serial}\index{YamlSerial@{YamlSerial}}
+Inheritance diagram for Yaml\+Serial\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_yaml_serial}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_yaml_serial_aa8a4eed5b881afe3712b112b5ed650ee}{load}} (const std\+::string \&path) override
+\item 
+bool \mbox{\hyperlink{class_yaml_serial_a6622a8423378c56464f3bb90e0f9a537}{is\+Loaded}} () override
+\item 
+void \mbox{\hyperlink{class_yaml_serial_a27b4e6e7913a48076aaf46150dd31c9f}{close}} () override
+\item 
+\mbox{\hyperlink{class_node}{Node}} \mbox{\hyperlink{class_yaml_serial_ad0cc24a096c9aac49878de5d99954f00}{get\+Root}} () override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_yaml_serial_ae1245eb105d694126f2d3265e2406840}\label{class_yaml_serial_ae1245eb105d694126f2d3265e2406840} 
+\mbox{\hyperlink{class_node}{Node}} {\bfseries yaml\+\_\+converter} (YAML\+::\+Node node)
+\item 
+\Hypertarget{class_yaml_serial_ae256bb323ffec5be0e6a57f8560180a5}\label{class_yaml_serial_ae256bb323ffec5be0e6a57f8560180a5} 
+{\footnotesize template$<$typename T$>$ }\\bool {\bfseries is} (const YAML\+::\+Node \&node)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_yaml_serial_ae27bf71cf61d56df3388ba9b90c520f2}\label{class_yaml_serial_ae27bf71cf61d56df3388ba9b90c520f2} 
+\mbox{\hyperlink{class_node}{Node}} {\bfseries node}
+\item 
+\Hypertarget{class_yaml_serial_a763865b3b587238b1f56568e30b26b2b}\label{class_yaml_serial_a763865b3b587238b1f56568e30b26b2b} 
+bool {\bfseries loaded}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_yaml_serial_a27b4e6e7913a48076aaf46150dd31c9f}\index{YamlSerial@{YamlSerial}!close@{close}}
+\index{close@{close}!YamlSerial@{YamlSerial}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{class_yaml_serial_a27b4e6e7913a48076aaf46150dd31c9f} 
+void Yaml\+Serial\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_serial}{ISerial}}.
+
+\Hypertarget{class_yaml_serial_ad0cc24a096c9aac49878de5d99954f00}\index{YamlSerial@{YamlSerial}!getRoot@{getRoot}}
+\index{getRoot@{getRoot}!YamlSerial@{YamlSerial}}
+\doxysubsubsection{\texorpdfstring{getRoot()}{getRoot()}}
+{\footnotesize\ttfamily \label{class_yaml_serial_ad0cc24a096c9aac49878de5d99954f00} 
+\mbox{\hyperlink{class_node}{Node}} Yaml\+Serial\+::get\+Root (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_serial}{ISerial}}.
+
+\Hypertarget{class_yaml_serial_a6622a8423378c56464f3bb90e0f9a537}\index{YamlSerial@{YamlSerial}!isLoaded@{isLoaded}}
+\index{isLoaded@{isLoaded}!YamlSerial@{YamlSerial}}
+\doxysubsubsection{\texorpdfstring{isLoaded()}{isLoaded()}}
+{\footnotesize\ttfamily \label{class_yaml_serial_a6622a8423378c56464f3bb90e0f9a537} 
+bool Yaml\+Serial\+::is\+Loaded (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_serial}{ISerial}}.
+
+\Hypertarget{class_yaml_serial_aa8a4eed5b881afe3712b112b5ed650ee}\index{YamlSerial@{YamlSerial}!load@{load}}
+\index{load@{load}!YamlSerial@{YamlSerial}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily \label{class_yaml_serial_aa8a4eed5b881afe3712b112b5ed650ee} 
+void Yaml\+Serial\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_serial}{ISerial}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/serial/yaml/Yaml\+Serial.\+hpp\end{DoxyCompactItemize}

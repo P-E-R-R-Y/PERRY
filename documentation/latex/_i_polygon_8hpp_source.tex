@@ -1,0 +1,47 @@
+\doxysection{IPolygon.\+hpp}
+\hypertarget{_i_polygon_8hpp_source}{}\label{_i_polygon_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/graphic/graphic/IPolygon.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/graphic/graphic/IPolygon.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ IPOLYGON\_HPP\_}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#define\ IPOLYGON\_HPP\_}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../../../libraries/system/type.hpp"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../../../libraries/maths/geometry.hpp"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../window/IWindow.hpp"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{using\ namespace\ }type;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegraphic}{graphic}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgraphic_1_1triangle__s}{triangle\_s}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ A;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ B;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ C;}
+\DoxyCodeLine{00033\ \ \ \ \ \}\ \mbox{\hyperlink{namespacegraphic_a054df66adc001dc941f2a6de03dc6b4f}{triangle\_t}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgraphic_1_1_i_polygon}{IPolygon}}\ \{}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classgraphic_1_1_i_polygon_ae0d966a02dd57510caf2f7f48b167303}{\string~IPolygon}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \_\_color\_t\ \mbox{\hyperlink{classgraphic_1_1_i_polygon_a58c4bd60aee98dedd69415f941372259}{getColor}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0a0a5e87e3d64afc16c30d26c13cf33b}{setColor}}(\_\_color\_t\ position)\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0467688a616b36424ddbc8adbeba0544}{isReady}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \_\_v2f\_t\ \mbox{\hyperlink{classgraphic_1_1_i_polygon_ab3fb8842141a3543208c6f71800abd4f}{getPosition}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_polygon_a230ab253cc42e8c2028106b0af038fdd}{setPosition}}(\_\_v2f\_t\ position)\ =\ 0;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<\_\_v2f\_t>\ \mbox{\hyperlink{classgraphic_1_1_i_polygon_ad23528f502d73a90ddaa56726ff50e57}{getPoints}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00089\ \ \ \ \ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \}\ \textcolor{comment}{//\ namespace\ graphic}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !IPOLYGON\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

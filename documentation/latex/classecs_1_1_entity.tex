@@ -1,0 +1,113 @@
+\doxysection{ecs\+::Entity Class Reference}
+\hypertarget{classecs_1_1_entity}{}\label{classecs_1_1_entity}\index{ecs::Entity@{ecs::Entity}}
+
+
+\doxylink{classecs_1_1_entity}{Entity} class from ECS.  
+
+
+
+
+{\ttfamily \#include $<$Entity.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classecs_1_1_entity_a159ef845aeeb887c211527cf0cfa9541}\label{classecs_1_1_entity_a159ef845aeeb887c211527cf0cfa9541} 
+{\bfseries Entity} ()=delete
+\begin{DoxyCompactList}\small\item\em Deleted default constructor, use \doxylink{classecs_1_1_registry_a3542ce7e9d41bfae77f5ad1a514be917}{Registry\+::create\+Entity()} instead. \end{DoxyCompactList}\item 
+\Hypertarget{classecs_1_1_entity_acf9322786b327ff9257a17e68024b886}\label{classecs_1_1_entity_acf9322786b327ff9257a17e68024b886} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Entity} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classecs_1_1_entity}{Entity} object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class \mbox{\hyperlink{class_component}{Component}}$>$ }\\void \mbox{\hyperlink{classecs_1_1_entity_a34620bca8b2e55bdcc942f294c54afb3}{add\+Component}} (\mbox{\hyperlink{class_component}{Component}} \&\&c)
+\begin{DoxyCompactList}\small\item\em add a component to the entity using the registry\+Ref method add\+Component \end{DoxyCompactList}\item 
+{\footnotesize template$<$class \mbox{\hyperlink{class_component}{Component}}$>$ }\\void \mbox{\hyperlink{classecs_1_1_entity_a30056c776dc8e57264e3fc83658e3198}{remove\+Component}} ()
+\begin{DoxyCompactList}\small\item\em remove a component from the entity using the registry\+Ref method remove\+Component \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classecs_1_1_entity_af1114627c19152bcd230363678945c44}\label{classecs_1_1_entity_af1114627c19152bcd230363678945c44} 
+friend {\bfseries Registry}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classecs_1_1_entity_a3a0d891c78a02b587445829af9a6db94}{Entity}} (size\+\_\+t idx, \mbox{\hyperlink{classecs_1_1_registry}{Registry\+Ref}} ecs)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classecs_1_1_entity}{Entity} object with the given index and registry reference. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classecs_1_1_entity_ade9c482372e7edd02807837986407237}\label{classecs_1_1_entity_ade9c482372e7edd02807837986407237} 
+size\+\_\+t {\bfseries \+\_\+idx}
+\item 
+\Hypertarget{classecs_1_1_entity_a6bbd39f7cc1a0f2c52dabf025649bea9}\label{classecs_1_1_entity_a6bbd39f7cc1a0f2c52dabf025649bea9} 
+\mbox{\hyperlink{classecs_1_1_registry}{Registry\+Ref}} {\bfseries \+\_\+ecs}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classecs_1_1_entity}{Entity} class from ECS. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classecs_1_1_entity_a3a0d891c78a02b587445829af9a6db94}\index{ecs::Entity@{ecs::Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!ecs::Entity@{ecs::Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}}
+{\footnotesize\ttfamily \label{classecs_1_1_entity_a3a0d891c78a02b587445829af9a6db94} 
+ecs\+::\+Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{idx}{, }\item[{\mbox{\hyperlink{classecs_1_1_registry}{Registry\+Ref}}}]{ecs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [private]}}
+
+
+
+Construct a new \doxylink{classecs_1_1_entity}{Entity} object with the given index and registry reference. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & \\
+\hline
+{\em ecs} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classecs_1_1_entity_a34620bca8b2e55bdcc942f294c54afb3}\index{ecs::Entity@{ecs::Entity}!addComponent@{addComponent}}
+\index{addComponent@{addComponent}!ecs::Entity@{ecs::Entity}}
+\doxysubsubsection{\texorpdfstring{addComponent()}{addComponent()}}
+{\footnotesize\ttfamily \label{classecs_1_1_entity_a34620bca8b2e55bdcc942f294c54afb3} 
+template$<$class \mbox{\hyperlink{class_component}{Component}}$>$ \\
+void ecs\+::\+Entity\+::add\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_component}{Component}} \&\&}]{c}{}\end{DoxyParamCaption})}
+
+
+
+add a component to the entity using the registry\+Ref method add\+Component 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_component}{Component}} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classecs_1_1_entity_a30056c776dc8e57264e3fc83658e3198}\index{ecs::Entity@{ecs::Entity}!removeComponent@{removeComponent}}
+\index{removeComponent@{removeComponent}!ecs::Entity@{ecs::Entity}}
+\doxysubsubsection{\texorpdfstring{removeComponent()}{removeComponent()}}
+{\footnotesize\ttfamily \label{classecs_1_1_entity_a30056c776dc8e57264e3fc83658e3198} 
+template$<$class \mbox{\hyperlink{class_component}{Component}}$>$ \\
+void ecs\+::\+Entity\+::remove\+Component (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+remove a component from the entity using the registry\+Ref method remove\+Component 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em \doxylink{class_component}{Component}} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/core/ecs/\mbox{\hyperlink{_entity_8hpp}{Entity.\+hpp}}\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/core/ecs/\mbox{\hyperlink{_entity__impl_8hpp}{Entity\+\_\+impl.\+hpp}}\end{DoxyCompactItemize}

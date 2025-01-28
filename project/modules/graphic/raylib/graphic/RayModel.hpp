@@ -22,29 +22,40 @@
 //Raylib
 #include <raylib.h>
 
-class RayModel : public graphic::IModel {
+namespace raylib {
 
-    public:
-        RayModel() {
-            _position = {0, 0, 0};
-            _size = {1, 1, 1};
-        }
+    /**
+     * @brief Raylib Model class
+     */
+    class RayModel : public graphic::IModel {
 
-        ~RayModel() = default;
+        public:
 
-        __v3f_t getPosition() const override {
-            return {_position.x, _position.y, _position.z};
-        }
+            /**
+             * @brief Construct a new Ray Model object
+             */
+            RayModel() {
+                _position = {0, 0, 0};
+                _size = {1, 1, 1};
+            }
 
-        void setPosition(__v3f_t position) override {
-            _position = {float(position.x), float(position.y), float(position.z)};
-        }
+            ~RayModel() = default;
 
-        friend class RayWindow;
+            __v3f_t getPosition() const override {
+                return {_position.x, _position.y, _position.z};
+            }
 
-    private:
-        Vector3 _position;
-        Vector3 _size;
-};
+            void setPosition(__v3f_t position) override {
+                _position = {float(position.x), float(position.y), float(position.z)};
+            }
+
+            friend class RayWindow;
+
+        private:
+            Vector3 _position;
+            Vector3 _size;
+    };
+
+} // namespace ray
 
 #endif /* !RAYMODEL_HPP_ */

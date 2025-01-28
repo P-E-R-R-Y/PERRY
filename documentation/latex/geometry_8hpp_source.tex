@@ -1,0 +1,57 @@
+\doxysection{geometry.\+hpp}
+\hypertarget{geometry_8hpp_source}{}\label{geometry_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/libraries/maths/geometry.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/libraries/maths/geometry.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MATH\_HPP\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ MATH\_HPP\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \#include\ "{}../system/type.hpp"{}}\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }type;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{double}\ cross\_product(\_\_v2f\_t\ a,\ \_\_v2f\_t\ b)\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//cross\ product\ formula}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{return}\ a.x\ *\ b.y\ -\/\ a.y\ *\ b.x;}
+\DoxyCodeLine{00012\ \}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{bool}\ is\_inside\_triangle(\_\_v2f\_t\ P,\ \_\_v2f\_t\ A,\ \_\_v2f\_t\ B,\ \_\_v2f\_t\ C)\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//To\ calculate\ the\ area\ of\ a\ triangle\ given\ three\ points\ (x,\ y),\ you\ can\ use\ the\ formula\ for\ the\ area\ of\ a\ triangle\ formed\ by\ three\ vertices\ (x1,\ y1),\ (x2,\ y2),\ and\ (x3,\ y3):}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//Area\ =\ 0.5\ *\ |(x1(y2\ -\/\ y3)\ +\ x2(y3\ -\/\ y1)\ +\ x3(y1\ -\/\ y2))|}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ abc\ =\ 0.5\ *\ abs(A.x\ *\ (B.y\ -\/\ C.y)\ +\ B.x\ *\ (C.y\ -\/\ A.y)\ +\ C.x\ *\ (A.y\ -\/\ B.y));}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{double}\ abp\ =\ 0.5\ *\ abs(A.x\ *\ (B.y\ -\/\ P.y)\ +\ B.x\ *\ (P.y\ -\/\ A.y)\ +\ P.x\ *\ (A.y\ -\/\ B.y));}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{double}\ bcp\ =\ 0.5\ *\ abs(B.x\ *\ (C.y\ -\/\ P.y)\ +\ C.x\ *\ (P.y\ -\/\ B.y)\ +\ P.x\ *\ (B.y\ -\/\ C.y));}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ cap\ =\ 0.5\ *\ abs(C.x\ *\ (A.y\ -\/\ P.y)\ +\ A.x\ *\ (P.y\ -\/\ C.y)\ +\ P.x\ *\ (C.y\ -\/\ A.y));}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//if\ sum\ of\ abp,\ bcp,\ cap\ is\ equal\ to\ abc,\ then\ the\ point\ is\ inside\ the\ triangle,\ otherwise\ it's\ outside.}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{return}\ abc\ ==\ abp\ +\ bcp\ +\ cap;}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{bool}\ is\_convex(\_\_v2f\_t\ A,\ \_\_v2f\_t\ B,\ \_\_v2f\_t\ C,\ \textcolor{keywordtype}{bool}\ clockwise\ =\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//calculate\ the\ vector\ from\ B\ to\ A\ and\ B\ to\ C}}
+\DoxyCodeLine{00030\ \ \ \ \ \_\_v2f\_t\ BA\ =\ \{A.x\ -\/\ B.x,\ A.y\ -\/\ B.y\};}
+\DoxyCodeLine{00031\ \ \ \ \ \_\_v2f\_t\ BC\ =\ \{C.x\ -\/\ B.x,\ C.y\ -\/\ B.y\};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//calculate\ the\ cross\ product\ of\ BA\ and\ BC}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{double}\ cross\ =\ BA.x\ *\ BC.y\ -\/\ BA.y\ *\ BC.x;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ 1.\ if\ it's\ a\ clockwise\ direction,\ then\ the\ cross\ product\ should\ be\ negative\ to\ be\ a\ convex\ angle}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ 2.\ if\ it's\ a\ counter\ clockwise\ direction,\ then\ the\ cross\ product\ should\ be\ positive\ to\ be\ a\ convex\ angle}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ 180\ degree\ in\ this\ case\ is\ an\ exception,\ it's\ neither\ convex\ nor\ concave,\ but\ we\ can\ consider\ it\ as\ concave.}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (clockwise)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cross\ <\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cross\ >\ 0;}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{bool}\ is\_concave(\_\_v2f\_t\ A,\ \_\_v2f\_t\ B,\ \_\_v2f\_t\ C,\ \textcolor{keywordtype}{bool}\ clockwise\ =\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//if\ it's\ not\ convex,\ then\ it's\ concave}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//prefere\ to\ inverse\ clockwise\ rather\ than\ inverse\ the\ result\ of\ is\_convex\ to\ handle\ the\ 180\ degree\ case}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{return}\ is\_convex(A,\ B,\ C,\ !clockwise);}
+\DoxyCodeLine{00049\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !MATH\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

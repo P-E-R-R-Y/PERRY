@@ -1,0 +1,71 @@
+\doxysection{Vector3f.\+hpp}
+\hypertarget{_vector3f_8hpp_source}{}\label{_vector3f_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/Vector3f.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/Vector3f.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/System/Vector3.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/System/Vector2.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cmath>}\ \textcolor{comment}{//todo:\ check\ if\ adding\ this\ lib\ for\ just\ sqrt\ is\ necessary\ or\ not\ (optimization\ purpose)}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ sf::Vector3f\ crossProduct(sf::Vector3f\ a,\ sf::Vector3f\ b)\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{return}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ a.y\ *\ b.z\ -\/\ a.z\ *\ b.y,\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ a.z\ *\ b.x\ -\/\ a.x\ *\ b.z,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ a.x\ *\ b.y\ -\/\ a.y\ *\ b.x}
+\DoxyCodeLine{00020\ \ \ \ \ \};}
+\DoxyCodeLine{00021\ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00029\ sf::Vector3f\ normaliseV3f(\textcolor{keyword}{const}\ sf::Vector3f\&\ vec)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ magnitude;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{if}\ (vec.x\ ==\ 0\ \&\&\ vec.y\ ==\ 0\ \&\&\ vec.z\ ==\ 0)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vec;}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ magnitude\ =\ std::sqrt(vec.x\ *\ vec.x\ +\ vec.y\ *\ vec.y\ +\ vec.z\ *\ vec.z);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \{vec.x\ /\ magnitude,\ vec.y\ /\ magnitude,\ vec.z\ /\ magnitude\};}
+\DoxyCodeLine{00037\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{float}\ dotProduct(sf::Vector3f\ a,\ sf::Vector3f\ b)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{return}\ a.x\ *\ b.x\ +\ a.y\ *\ b.y\ +\ a.z\ *\ b.z;}
+\DoxyCodeLine{00053\ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ sf::Vector3f\ viewFromUp(\textcolor{keyword}{const}\ sf::Vector3f\ up)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (up.z\ ==\ 1)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 1,\ 0\};}
+\DoxyCodeLine{00064\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0,\ -\/1\};}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{comment}{/*sf::Vector2f\ project(sf::Vector3f\ point,\ float\ fov,\ sf::Vector2u\ windowSize)\ \{}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ \ float\ aspectRatio\ =\ windowSize.x\ /\ windowSize.y;}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ \ float\ fovRad\ =\ fov\ *\ 3.14159265\ /\ 180;}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ \ float\ tanHalfFov\ =\ std::tan(fovRad\ /\ 2);}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ float\ z\ =\ point.z;}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ float\ x\ =\ point.x;}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ \ float\ y\ =\ point.y;}}
+\DoxyCodeLine{00076\ \textcolor{comment}{}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ \ float\ xProjected\ =\ x\ /\ (z\ *\ tanHalfFov\ *\ aspectRatio);}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ \ float\ yProjected\ =\ y\ /\ (z\ *\ tanHalfFov);}}
+\DoxyCodeLine{00079\ \textcolor{comment}{}}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ \ \ \ return\ \{xProjected,\ yProjected\};}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00082\ \textcolor{comment}{}}
+\DoxyCodeLine{00083\ \textcolor{comment}{template\ <typename\ T>}}
+\DoxyCodeLine{00084\ \textcolor{comment}{Matrice<T>\ vtom(const\ sf::Vector3f\&\ v)\ \{}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ return\ Matrice<T>(\{}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{v.x\},}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{v.y\},}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{v.z\},}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{1\}}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ \ \});}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00092\ \textcolor{comment}{}}
+\DoxyCodeLine{00093\ \textcolor{comment}{template\ <typename\ T>}}
+\DoxyCodeLine{00094\ \textcolor{comment}{sf::Vector2<T>\ mtoV(const\ Matrice<T>\&\ m)\ \{}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ return\ \{m[0][0]\ *\ m[3][0],\ m[1][0]*\ m[3][0]\};}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\}*/}}
+
+\end{DoxyCode}

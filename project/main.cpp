@@ -20,7 +20,7 @@
 #include "includes/Component.hpp"
 #include "includes/Systems.hpp"
 
-class Game: public CustomisableEngine<GraphicSharedLoader, Registry> {
+class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registry> {
     public:
         //todo change vector to variadic template
         Game(std::string graphic): CustomisableEngine(graphic, nullptr) {};

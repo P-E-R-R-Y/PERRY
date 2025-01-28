@@ -1,3 +1,14 @@
+/**
+ * @file Entity.hpp
+ * @author @Perry-chouteau
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-27
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef ENTITY_HPP
 #define ENTITY_HPP
 
@@ -6,32 +17,65 @@
 //global
 #include <cstddef>
 
-class Registry;
-using RegistryRef = Registry &;
+namespace ecs {
 
-class Entity {
-    public:
+    class Registry;
+    using RegistryRef = Registry &;
 
-        friend Registry;
+    /**
+     * @brief Entity class from ECS
+     * @class Entity
+     */
+    class Entity {
+        public:
 
-    public:
+            friend Registry;
 
-        Entity() = delete;
-        ~Entity() = default;
+        public:
 
-        template <class Component>
-        void addComponent(Component&& c);
+            /**
+             * @brief Deleted default constructor, use Registry::createEntity() instead
+             */
+            Entity() = delete;
+            
+            /**
+             * @brief Destroy the Entity object
+             * 
+             */
+            ~Entity() = default;
 
-        template <class Component>
-        void removeComponent();
+            /**
+             * @brief add a component to the entity using the registryRef method addComponent
+             * 
+             * @tparam Component 
+             * @param c 
+             */
+            template <class Component>
+            void addComponent(Component&& c);
 
-    private:
+            /**
+             * @brief remove a component from the entity using the registryRef method removeComponent
+             * 
+             * @tparam Component 
+             */
+            template <class Component>
+            void removeComponent();
 
-        explicit Entity(size_t idx, RegistryRef ecs);
+        private:
 
-    private:
-        size_t _idx;
-        RegistryRef _ecs;
-};
+            /**
+             * @brief Construct a new Entity object with the given index and registry reference
+             * 
+             * @param idx 
+             * @param ecs 
+             */
+            explicit Entity(size_t idx, RegistryRef ecs);
+
+        private:
+
+            size_t _idx;
+            RegistryRef _ecs;
+    };
+}
 
 #endif // ENTITY_HPP

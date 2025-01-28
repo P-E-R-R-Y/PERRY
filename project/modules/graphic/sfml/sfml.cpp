@@ -1,16 +1,12 @@
 /**
- *
- * File: sfml.cpp (header.v2)
- * Created Date: Tue 14/03/2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Sat 18/03/2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
+ * @file sfml.cpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief shared graphic/sfml library symbols 
+ * @version 0.1
+ * @date 2025-01-27
+ * 
+ * @copyright Copyright (c) 2025
+ */
 
 #ifndef SFML_CPP_
 #define SFML_CPP_
@@ -29,13 +25,17 @@
 #include <string>
 
 /**
- * @brief Window
+ * @brief create Sfml window
  * 
  */
 extern "C" graphic::IWindow *createWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {
     std::cout << "creatingWindow" << std::endl;
     return new SfmlWindow(screenWidth, screenHeight, "Sfml " + title);
 }
+
+/**
+ * @brief 
+ */
 
 extern "C" void deleteWindow(graphic::IWindow *window) {
     delete window;

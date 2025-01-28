@@ -1,0 +1,102 @@
+\doxysection{Quaternion Class Reference}
+\hypertarget{class_quaternion}{}\label{class_quaternion}\index{Quaternion@{Quaternion}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_quaternion_ab13d6ced50c96438115b30cb91fc7d6c}\label{class_quaternion_ab13d6ced50c96438115b30cb91fc7d6c} 
+{\bfseries Quaternion} (float w, float x, float y, float z)
+\item 
+\Hypertarget{class_quaternion_a23fa21eb2e14c5207f90e840787c348a}\label{class_quaternion_a23fa21eb2e14c5207f90e840787c348a} 
+\mbox{\hyperlink{class_quaternion}{Quaternion}} {\bfseries conjugate} () const
+\item 
+\Hypertarget{class_quaternion_a48e6bafb249c895ed25f29dc9170e11e}\label{class_quaternion_a48e6bafb249c895ed25f29dc9170e11e} 
+void {\bfseries normalize} ()
+\item 
+\Hypertarget{class_quaternion_abcb5d53d3312eca0f169d625f5d56dac}\label{class_quaternion_abcb5d53d3312eca0f169d625f5d56dac} 
+void {\bfseries normalise} ()
+\item 
+\Hypertarget{class_quaternion_ab59d8e7a42209711197ba93369100d26}\label{class_quaternion_ab59d8e7a42209711197ba93369100d26} 
+void {\bfseries enforce\+Sign} ()
+\item 
+\Hypertarget{class_quaternion_a3951a01ed2a4f599fbb2ce2b3e8cd767}\label{class_quaternion_a3951a01ed2a4f599fbb2ce2b3e8cd767} 
+sf\+::\+Vector3f {\bfseries rotate} (sf\+::\+Vector3f point, sf\+::\+Vector3f center=\{0, 0, 0\}) const
+\item 
+\Hypertarget{class_quaternion_a757ec55f9f361fcd8b518abaec05b29b}\label{class_quaternion_a757ec55f9f361fcd8b518abaec05b29b} 
+\mbox{\hyperlink{class_quaternion}{Quaternion}} {\bfseries operator\texorpdfstring{$\ast$}{*}} (const \mbox{\hyperlink{class_quaternion}{Quaternion}} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_quaternion_a472e10e2718d8cf659ebe7a59fe7b0fa}\label{class_quaternion_a472e10e2718d8cf659ebe7a59fe7b0fa} 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} {\bfseries identity} ()
+\item 
+\Hypertarget{class_quaternion_affdd38ae8856d7ec854a90853a054ca1}\label{class_quaternion_affdd38ae8856d7ec854a90853a054ca1} 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} {\bfseries from\+Euler\+Angles} (float x, float y, float z)
+\item 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} \mbox{\hyperlink{class_quaternion_ab2329cfaf48acccd1ee0c8e9622e1f1e}{from\+Axis\+Angle}} (float angle, sf\+::\+Vector3f axis)
+\begin{DoxyCompactList}\small\item\em from\+Axis\+Angle will create a quaternion from an axis and an angle \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} \mbox{\hyperlink{class_quaternion_a9fcfa9ff4a12d1cab07d561ab904e240}{from\+Vectors}} (const sf\+::\+Vector3f \&v1, const sf\+::\+Vector3f \&v2)
+\begin{DoxyCompactList}\small\item\em quaterninon representing the rotation from one vector to another \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}\label{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad} 
+float {\bfseries w}
+\item 
+\Hypertarget{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}\label{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb} 
+float {\bfseries x}
+\item 
+\Hypertarget{class_quaternion_a3bd3f270462944423611f44e19d2511b}\label{class_quaternion_a3bd3f270462944423611f44e19d2511b} 
+float {\bfseries y}
+\item 
+\Hypertarget{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}\label{class_quaternion_a625cb732d8ff3083e7852b86b736ab29} 
+float {\bfseries z}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_quaternion_ab2329cfaf48acccd1ee0c8e9622e1f1e}\index{Quaternion@{Quaternion}!fromAxisAngle@{fromAxisAngle}}
+\index{fromAxisAngle@{fromAxisAngle}!Quaternion@{Quaternion}}
+\doxysubsubsection{\texorpdfstring{fromAxisAngle()}{fromAxisAngle()}}
+{\footnotesize\ttfamily \label{class_quaternion_ab2329cfaf48acccd1ee0c8e9622e1f1e} 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} Quaternion\+::from\+Axis\+Angle (\begin{DoxyParamCaption}\item[{float}]{angle}{, }\item[{sf\+::\+Vector3f}]{axis}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+from\+Axis\+Angle will create a quaternion from an axis and an angle 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+{\em axis} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_quaternion}{Quaternion} 
+\end{DoxyReturn}
+\Hypertarget{class_quaternion_a9fcfa9ff4a12d1cab07d561ab904e240}\index{Quaternion@{Quaternion}!fromVectors@{fromVectors}}
+\index{fromVectors@{fromVectors}!Quaternion@{Quaternion}}
+\doxysubsubsection{\texorpdfstring{fromVectors()}{fromVectors()}}
+{\footnotesize\ttfamily \label{class_quaternion_a9fcfa9ff4a12d1cab07d561ab904e240} 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} Quaternion\+::from\+Vectors (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector3f \&}]{v1}{, }\item[{const sf\+::\+Vector3f \&}]{v2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+quaterninon representing the rotation from one vector to another 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v1} & \\
+\hline
+{\em v2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_quaternion}{Quaternion} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sfml/window/Quaternion.\+hpp\end{DoxyCompactItemize}

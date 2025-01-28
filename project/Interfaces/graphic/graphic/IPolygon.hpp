@@ -19,35 +19,75 @@
     #include "../../../libraries/maths/geometry.hpp"
     #include "../window/IWindow.hpp"
 
+using namespace type;
+
 namespace graphic {
     
+    /**
+     * @brief Triangle structure
+     */
     typedef struct triangle_s {
         __v2f_t A;
         __v2f_t B;
         __v2f_t C;
     } triangle_t;
 
+    /**
+     * @brief Polygon interface
+     * @interface IPolygon 
+     */
     class IPolygon {
 
         public:
-            //constructor
+            
+            /**
+             * @brief Destroy the IPolygon object
+             */
             virtual ~IPolygon() = default;
-            //c
+            
+            /**
+             * @brief Get the Color object
+             * 
+             * @return __color_t 
+             */
             virtual __color_t getColor() const = 0;
-            virtual void setColor(__color_t position) = 0;
-            //is
-            virtual bool isReady() const = 0;
-            //p
-            virtual __v2f_t getPosition() const = 0;
-            virtual void setPosition(__v2f_t position) = 0;
-            //v
-            virtual std::vector<__v2f_t> getPoints() const = 0;
 
-        private:
-            //your variables here
+            /**
+             * @brief Set the Color object
+             * 
+             * @param position 
+             */
+            virtual void setColor(__color_t position) = 0;
+            
+            /**
+             * @brief Get the Position object
+             * 
+             * @return __v2f_t 
+             */
+            virtual bool isReady() const = 0;
+            
+            /**
+             * @brief Get the Position object
+             * 
+             * @return __v2f_t 
+             */
+            virtual __v2f_t getPosition() const = 0;
+            
+            /**
+             * @brief Set the Position object
+             * 
+             * @param position 
+             */
+            virtual void setPosition(__v2f_t position) = 0;
+            
+            /**
+             * @brief Get the Points object
+             * 
+             * @return std::vector<__v2f_t> 
+             */
+            virtual std::vector<__v2f_t> getPoints() const = 0;
     };
 
-} // namespace graphic3
-
+} // namespace graphic
 
 #endif /* !IPOLYGON_HPP_ */

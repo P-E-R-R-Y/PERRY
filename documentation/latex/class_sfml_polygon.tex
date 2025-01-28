@@ -1,0 +1,145 @@
+\doxysection{Sfml\+Polygon Class Reference}
+\hypertarget{class_sfml_polygon}{}\label{class_sfml_polygon}\index{SfmlPolygon@{SfmlPolygon}}
+
+
+{\ttfamily \#include $<$Sfml\+Polygon.\+hpp$>$}
+
+Inheritance diagram for Sfml\+Polygon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sfml_polygon}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sfml_polygon_a296cf94d12cf33c0a05bf5e4348c4d78}\label{class_sfml_polygon_a296cf94d12cf33c0a05bf5e4348c4d78} 
+{\bfseries Sfml\+Polygon} (std\+::vector$<$ \+\_\+\+\_\+v2f\+\_\+t $>$ points)
+\item 
+bool \mbox{\hyperlink{class_sfml_polygon_a8c2db5edcd6be4ac71475a09844f9c88}{is\+Ready}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{class_sfml_polygon_a952cdcf59f314b3a8b738d9c5d1f103d}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_sfml_polygon_ad19e684383ddd37dfc241bb4af04f2a7}\label{class_sfml_polygon_ad19e684383ddd37dfc241bb4af04f2a7} 
+void {\bfseries set\+Position} (\+\_\+\+\_\+v2f\+\_\+t position) override
+\item 
+\+\_\+\+\_\+color\+\_\+t \mbox{\hyperlink{class_sfml_polygon_af965e46ad7b2c334506788b128a45c98}{get\+Color}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Color object. \end{DoxyCompactList}\item 
+\Hypertarget{class_sfml_polygon_a17e4d3fb8d685939292bb917ec1d4a2a}\label{class_sfml_polygon_a17e4d3fb8d685939292bb917ec1d4a2a} 
+void {\bfseries set\+Color} (\+\_\+\+\_\+color\+\_\+t color) override
+\item 
+std\+::vector$<$ \+\_\+\+\_\+v2f\+\_\+t $>$ \mbox{\hyperlink{class_sfml_polygon_a2990becc3a91765498d757215321a665}{get\+Points}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Points object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPolygon} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_polygon}{IPolygon} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0a0a5e87e3d64afc16c30d26c13cf33b}{set\+Color}} (\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} position)=0
+\begin{DoxyCompactList}\small\item\em Set the Color object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_polygon_a230ab253cc42e8c2028106b0af038fdd}{set\+Position}} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} position)=0
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sfml_polygon_ac5dc75dea2ccbab71ae4e8f77cd683ee}\label{class_sfml_polygon_ac5dc75dea2ccbab71ae4e8f77cd683ee} 
+sf\+::\+Color {\bfseries \+\_\+color}
+\item 
+\Hypertarget{class_sfml_polygon_a19912d39e3643b7fa09cbc8fb05c017e}\label{class_sfml_polygon_a19912d39e3643b7fa09cbc8fb05c017e} 
+sf\+::\+Vector2f {\bfseries \+\_\+position}
+\item 
+\Hypertarget{class_sfml_polygon_aeaddc3ca9e02c9801d37feb20410d346}\label{class_sfml_polygon_aeaddc3ca9e02c9801d37feb20410d346} 
+std\+::vector$<$ sf\+::\+Vertex $>$ {\bfseries \+\_\+points}
+\item 
+\Hypertarget{class_sfml_polygon_afede48400d2db38ca7114d8fffb30d05}\label{class_sfml_polygon_afede48400d2db38ca7114d8fffb30d05} 
+std\+::vector$<$ \mbox{\hyperlink{namespacegraphic_a054df66adc001dc941f2a6de03dc6b4f}{graphic\+::triangle\+\_\+t}} $>$ {\bfseries \+\_\+triangles}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sfml_polygon_ae0b58c2104bb6fe805f93db75b13c82c}\label{class_sfml_polygon_ae0b58c2104bb6fe805f93db75b13c82c} 
+class {\bfseries Sfml\+Window}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File\+: Ray\+Model2.\+hpp Created Date\+: Fr Mar 2023 Project\+: PERRY Author\+: Perry Chouteau
+
+Last Modified\+: Fri Mar 10 2023 Modified By\+: Perry Chouteau
+
+Copyright (c) 2023-\/2033 Perry Chouteau 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sfml_polygon_af965e46ad7b2c334506788b128a45c98}\index{SfmlPolygon@{SfmlPolygon}!getColor@{getColor}}
+\index{getColor@{getColor}!SfmlPolygon@{SfmlPolygon}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{class_sfml_polygon_af965e46ad7b2c334506788b128a45c98} 
+\+\_\+\+\_\+color\+\_\+t Sfml\+Polygon\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Color object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+color\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a58c4bd60aee98dedd69415f941372259}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{class_sfml_polygon_a2990becc3a91765498d757215321a665}\index{SfmlPolygon@{SfmlPolygon}!getPoints@{getPoints}}
+\index{getPoints@{getPoints}!SfmlPolygon@{SfmlPolygon}}
+\doxysubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
+{\footnotesize\ttfamily \label{class_sfml_polygon_a2990becc3a91765498d757215321a665} 
+std\+::vector$<$ \+\_\+\+\_\+v2f\+\_\+t $>$ Sfml\+Polygon\+::get\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Points object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+\_\+\+\_\+v2f\+\_\+t$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_ad23528f502d73a90ddaa56726ff50e57}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{class_sfml_polygon_a952cdcf59f314b3a8b738d9c5d1f103d}\index{SfmlPolygon@{SfmlPolygon}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!SfmlPolygon@{SfmlPolygon}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{class_sfml_polygon_a952cdcf59f314b3a8b738d9c5d1f103d} 
+\+\_\+\+\_\+v2f\+\_\+t Sfml\+Polygon\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_ab3fb8842141a3543208c6f71800abd4f}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{class_sfml_polygon_a8c2db5edcd6be4ac71475a09844f9c88}\index{SfmlPolygon@{SfmlPolygon}!isReady@{isReady}}
+\index{isReady@{isReady}!SfmlPolygon@{SfmlPolygon}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily \label{class_sfml_polygon_a8c2db5edcd6be4ac71475a09844f9c88} 
+bool Sfml\+Polygon\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0467688a616b36424ddbc8adbeba0544}{graphic\+::\+IPolygon}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sfml/graphic/Sfml\+Polygon.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,117 @@
+\doxysection{Sdl\+Camera.\+hpp}
+\hypertarget{_sdl_camera_8hpp_source}{}\label{_sdl_camera_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sdl/window/SdlCamera.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sdl/window/SdlCamera.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ SDLCAMERA\_HPP\_}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ SDLCAMERA\_HPP\_}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../../../../interfaces/graphic/window/ICamera.hpp"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//Sdl}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }SdlCamera\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ SdlCamera()\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlCamera\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera\ =\ \{\ 0\ \};}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera.position\ =\ (Vector3)\{\ 1.0f,\ 1.0f,\ 1.0f\ \};\ \ \ \ //\ Camera\ position}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera.target\ =\ (Vector3)\{\ 0.0f,\ 0.0f,\ 0.0f\ \};\ \ \ \ \ \ //\ Camera\ looking\ at\ point}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera.up\ =\ (Vector3)\{\ 0.f,\ 1.0f,\ 0.f\ \};\ \ \ \ \ \ \ \ \ \ //\ Camera\ up\ vector\ (rotation\ towards\ target)}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera.fovy\ =\ 60.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Camera\ field-\/of-\/view\ Y}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera.projection\ =\ CAMERA\_PERSPECTIVE;\ \ \ \ \ \ \ \ \ \ \ \ \ //\ Camera\ projection\ type}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_mode\ =\ CAMERA\_FIRST\_PERSON;}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \string~SdlCamera()\ \{\}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//f}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_sdl_camera_a169b5eefc0b5e5b1cce85a347948daa1}{getFov}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sdl_camera_ac2755fb30b07ffa2a973c0f3588cce93}{setFov}}(\textcolor{keywordtype}{float}\ fov)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}setFov\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera.fovy\ =\ fov;}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//m}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ ICamera::Mode\ \mbox{\hyperlink{class_sdl_camera_a96ef897c4e3cd8907dea31949f0d2736}{getMode}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}getMode\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::Mode::CUSTOM;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ ICamera::Mode(\_mode);}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setMode(ICamera::Mode\ mode)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}setMode\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//p}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{class_sdl_camera_add69b85774af62667a63f8d8f529ac9a}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}getPosition\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0,\ 0\};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sdl_camera_a4ca762114e7814b7b8f3f3a9a6cfcb69}{setPosition}}(\_\_v3f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}setPosition\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera\ =\ \{float(position.x),\ float(position.y),\ float(position.z)\};}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ ICamera::Projection\ \mbox{\hyperlink{class_sdl_camera_a33fd59f1783566ce6e6a162ff6dc84b4}{getProjection}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}getProjection\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::PERSPECTIVE;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//switch(\_camera.projection)\ \{}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ case\ PERSPECTIVE:}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ ICamera::PERSPECTIVE;}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ case\ CAMERA\_ORTHOGRAPHIC:}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ ICamera::ORTHOGRAPHIC;}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setProjection(ICamera::Projection\ projection)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}setProjection\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ switch(projection)\ \{}}
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ ICamera::PERSPECTIVE:}}
+\DoxyCodeLine{00085\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.projection\ =\ CAMERA\_PERSPECTIVE;}}
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ ICamera::ORTHOGRAPHIC:}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera.projection\ =\ CAMERA\_ORTHOGRAPHIC;}}
+\DoxyCodeLine{00088\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \_camera.projection\ =\ projection;}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{//t}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{class_sdl_camera_aa5afb72e250b62488d6df33e8b680499}{getTarget}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}getTarget\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0,\ 0\};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ \{\_camera.target.x,\ \_camera.target.y,\ \_camera.target.z\};}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sdl_camera_a654cd8318ceceae621652ba004621525}{setTarget}}(\_\_v3f\_t\ target)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}setTarget\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera\ =\ \{float(target.x),\ float(target.y),\ float(target.z)\};}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//u}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{class_sdl_camera_a05c8351efd771c7dca962d316e61df6c}{getUp}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}getUp\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0,\ 0\};}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ \{\_camera.up.x,\ \_camera.up.y,\ \_camera.up.z\};}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sdl_camera_a94086203b6a232ad169d187f9558332e}{setUp}}(\_\_v3f\_t\ up)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}setUp\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_camera.up\ =\ \{float(up.x),\ float(up.y),\ float(up.z)\};}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sdl_window}{SdlWindow}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00118\ \textcolor{comment}{//\ \ \ \ \ \ \ \ Camera\ \_camera;}}
+\DoxyCodeLine{00119\ \textcolor{comment}{//\ \ \ \ \ \ \ \ CameraMode\ \_mode;}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//your\ variables\ here}}
+\DoxyCodeLine{00121\ \};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SDLMODEL2\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

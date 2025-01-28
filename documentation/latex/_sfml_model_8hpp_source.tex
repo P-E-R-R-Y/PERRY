@@ -1,0 +1,71 @@
+\doxysection{Sfml\+Model.\+hpp}
+\hypertarget{_sfml_model_8hpp_source}{}\label{_sfml_model_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/graphic/SfmlModel.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/graphic/SfmlModel.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ SFMLMODEL\_HPP\_}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ SFMLMODEL\_HPP\_}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/graphic/IModel.hpp"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//SFML}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//Encapsulation}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}../window/Quaternion.hpp"{}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }SfmlModel\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ \{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ SfmlModel():}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ position(\{0,\ 0,\ 0\}),}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ rotation(Quaternion::identity()),}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ vertices(\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{-\/0.5,\ -\/0.5,\ 0.5\},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{-\/0.5,\ -\/0.5,\ -\/0.5\},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{-\/0.5,\ 0.5,\ 0.5\},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{-\/0.5,\ 0.5,\ -\/0.5\},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0.5,\ -\/0.5,\ 0.5\},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0.5,\ -\/0.5,\ -\/0.5\},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0.5,\ 0.5,\ 0.5\},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0.5,\ 0.5,\ -\/0.5\},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \})\ \{}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \string~SfmlModel()\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \_\_v3f\_t\ getPosition()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{position.x,\ position.y,\ position.z\};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setPosition(\_\_v3f\_t\ pos)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ position\ =\ \{float(pos.x),\ float(pos.y),\ float(pos.z)\};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ std::vector<sf::Vector3f>\ getVertices()\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vertices;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ rotate(sf::Vector3f\ angle,\ sf::Vector3f\ center\ =\ \{0,\ 0,\ 0\})\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlModel::rotate\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ sf::Vector3f\ position;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ rotation;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ std::vector<sf::Vector3f>\ vertices;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//your\ variables\ here}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }SfmlWindow;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }SfmlCamera;}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SFMLMODEL\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

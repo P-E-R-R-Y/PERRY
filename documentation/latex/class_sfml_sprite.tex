@@ -1,0 +1,240 @@
+\doxysection{Sfml\+Sprite Class Reference}
+\hypertarget{class_sfml_sprite}{}\label{class_sfml_sprite}\index{SfmlSprite@{SfmlSprite}}
+
+
+{\ttfamily \#include $<$Sfml\+Sprite.\+hpp$>$}
+
+Inheritance diagram for Sfml\+Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sfml_sprite}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sfml_sprite_a4dee9a5402ae6f2cb11c2a6e40e852b7}\label{class_sfml_sprite_a4dee9a5402ae6f2cb11c2a6e40e852b7} 
+{\bfseries Sfml\+Sprite} (std\+::string path)
+\item 
+bool \mbox{\hyperlink{class_sfml_sprite_a43587aab7d5762108568c65232e31fb8}{is\+Ready}} () const override
+\begin{DoxyCompactList}\small\item\em notice if the sprite is ready \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v4f\+\_\+t \mbox{\hyperlink{class_sfml_sprite_a1b6814799269cbec3f07427965df97a6}{get\+Bounds}} () const override
+\begin{DoxyCompactList}\small\item\em give the bounds of the sprite \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_sprite_a7e44b19b49e74f7525a9026df19f1947}{set\+Crop}} (\+\_\+\+\_\+v4f\+\_\+t rect) override
+\begin{DoxyCompactList}\small\item\em Crop the sprite with a rectangle. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{class_sfml_sprite_a56ce6dba47ee9764d2e780f6ef2a4729}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_sprite_afa785fd42ef4de9aab70eff27ba8aacc}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sfml_sprite_aacf999c674358e524f41fd302479be98}{get\+Rotation}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_sprite_ac80478281cd7c3386dad009cee9ac42f}{set\+Rotation}} (float angle, bool is\+Rad=false) override
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{class_sfml_sprite_adc048e63cab334b7b73e4b416220374b}{get\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Sprite size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_sprite_aaac0ec9ad459089e2fab0c484d8544bb}{set\+Size}} (\+\_\+\+\_\+v2f\+\_\+t size) override
+\begin{DoxyCompactList}\small\item\em Set the Sprite size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ISprite} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_sprite}{ISprite} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sfml_sprite_a8a6f9bab65c40f509d1bea95878c9e4f}\label{class_sfml_sprite_a8a6f9bab65c40f509d1bea95878c9e4f} 
+sf\+::\+Texture {\bfseries \+\_\+texture}
+\item 
+\Hypertarget{class_sfml_sprite_a6bf1cd07f46d36624f270df23914b9dc}\label{class_sfml_sprite_a6bf1cd07f46d36624f270df23914b9dc} 
+sf\+::\+Sprite {\bfseries \+\_\+sprite}
+\item 
+\Hypertarget{class_sfml_sprite_a8b53872e5d0acc4c228ffaf1da691f45}\label{class_sfml_sprite_a8b53872e5d0acc4c228ffaf1da691f45} 
+sf\+::\+Vector2f {\bfseries \+\_\+position}
+\item 
+\Hypertarget{class_sfml_sprite_af7e5d955f7ca1f9aa5fa41103ba6c681}\label{class_sfml_sprite_af7e5d955f7ca1f9aa5fa41103ba6c681} 
+sf\+::\+Vector2f {\bfseries \+\_\+scale}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sfml_sprite_ae0b58c2104bb6fe805f93db75b13c82c}\label{class_sfml_sprite_ae0b58c2104bb6fe805f93db75b13c82c} 
+class {\bfseries Sfml\+Window}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File\+: Ray\+Model2.\+hpp Created Date\+: Fr Mar 2023 Project\+: PERRY Author\+: Perry Chouteau
+
+Last Modified\+: Fri Mar 10 2023 Modified By\+: Perry Chouteau
+
+Copyright (c) 2023-\/2033 Perry Chouteau 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sfml_sprite_a1b6814799269cbec3f07427965df97a6}\index{SfmlSprite@{SfmlSprite}!getBounds@{getBounds}}
+\index{getBounds@{getBounds}!SfmlSprite@{SfmlSprite}}
+\doxysubsubsection{\texorpdfstring{getBounds()}{getBounds()}}
+{\footnotesize\ttfamily \label{class_sfml_sprite_a1b6814799269cbec3f07427965df97a6} 
+\+\_\+\+\_\+v4f\+\_\+t Sfml\+Sprite\+::get\+Bounds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+give the bounds of the sprite 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v4f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a00a5af5a26c11991f3fe24d268778f85}{graphic\+::\+ISprite}}.
+
+\Hypertarget{class_sfml_sprite_a56ce6dba47ee9764d2e780f6ef2a4729}\index{SfmlSprite@{SfmlSprite}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!SfmlSprite@{SfmlSprite}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{class_sfml_sprite_a56ce6dba47ee9764d2e780f6ef2a4729} 
+\+\_\+\+\_\+v2f\+\_\+t Sfml\+Sprite\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a8cc0af533b60b32dc093a7cda5b50cdc}{graphic\+::\+ISprite}}.
+
+\Hypertarget{class_sfml_sprite_aacf999c674358e524f41fd302479be98}\index{SfmlSprite@{SfmlSprite}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!SfmlSprite@{SfmlSprite}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily \label{class_sfml_sprite_aacf999c674358e524f41fd302479be98} 
+float Sfml\+Sprite\+::get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Rotation object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a7d03f2782d06584062b096f74120e9e8}{graphic\+::\+ISprite}}.
+
+\Hypertarget{class_sfml_sprite_adc048e63cab334b7b73e4b416220374b}\index{SfmlSprite@{SfmlSprite}!getSize@{getSize}}
+\index{getSize@{getSize}!SfmlSprite@{SfmlSprite}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{class_sfml_sprite_adc048e63cab334b7b73e4b416220374b} 
+\+\_\+\+\_\+v2f\+\_\+t Sfml\+Sprite\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Sprite size. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a53f82fa3b8aaf11d8fd52645bbb9d7db}{graphic\+::\+ISprite}}.
+
+\Hypertarget{class_sfml_sprite_a43587aab7d5762108568c65232e31fb8}\index{SfmlSprite@{SfmlSprite}!isReady@{isReady}}
+\index{isReady@{isReady}!SfmlSprite@{SfmlSprite}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily \label{class_sfml_sprite_a43587aab7d5762108568c65232e31fb8} 
+bool Sfml\+Sprite\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if the sprite is ready 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a8088e103ac1733993812764debae1e5e}{graphic\+::\+ISprite}}.
+
+\Hypertarget{class_sfml_sprite_a7e44b19b49e74f7525a9026df19f1947}\index{SfmlSprite@{SfmlSprite}!setCrop@{setCrop}}
+\index{setCrop@{setCrop}!SfmlSprite@{SfmlSprite}}
+\doxysubsubsection{\texorpdfstring{setCrop()}{setCrop()}}
+{\footnotesize\ttfamily \label{class_sfml_sprite_a7e44b19b49e74f7525a9026df19f1947} 
+void Sfml\+Sprite\+::set\+Crop (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v4f\+\_\+t}]{rect}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Crop the sprite with a rectangle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a56dad5536d7c8f370a17842b966a9813}{graphic\+::\+ISprite}}.
+
+\Hypertarget{class_sfml_sprite_afa785fd42ef4de9aab70eff27ba8aacc}\index{SfmlSprite@{SfmlSprite}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!SfmlSprite@{SfmlSprite}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{class_sfml_sprite_afa785fd42ef4de9aab70eff27ba8aacc} 
+void Sfml\+Sprite\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a7da368451eae7bdc6919d238387f416a}{graphic\+::\+ISprite}}.
+
+\Hypertarget{class_sfml_sprite_ac80478281cd7c3386dad009cee9ac42f}\index{SfmlSprite@{SfmlSprite}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!SfmlSprite@{SfmlSprite}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{class_sfml_sprite_ac80478281cd7c3386dad009cee9ac42f} 
+void Sfml\+Sprite\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{angle}{, }\item[{bool}]{is\+Rad}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+{\em is\+Rad} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a5706582ed7b81bee47577c05c8d44f12}{graphic\+::\+ISprite}}.
+
+\Hypertarget{class_sfml_sprite_aaac0ec9ad459089e2fab0c484d8544bb}\index{SfmlSprite@{SfmlSprite}!setSize@{setSize}}
+\index{setSize@{setSize}!SfmlSprite@{SfmlSprite}}
+\doxysubsubsection{\texorpdfstring{setSize()}{setSize()}}
+{\footnotesize\ttfamily \label{class_sfml_sprite_aaac0ec9ad459089e2fab0c484d8544bb} 
+void Sfml\+Sprite\+::set\+Size (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Sprite size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a487198bf197d8880aecd8a237e07c9fd}{graphic\+::\+ISprite}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sfml/graphic/Sfml\+Sprite.\+hpp\end{DoxyCompactItemize}

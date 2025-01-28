@@ -2,7 +2,7 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-04-14 13:23:25
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-12-05 12:45:31
+ * @ Modified time: 2025-01-28 00:30:53
  * @ Description: Interface for Model
  */
 
@@ -14,9 +14,12 @@
     #include "../../../libraries/system/type.hpp"
     #include "../window/IWindow.hpp"
 
-    //class IWindow;
 namespace graphic {
 
+    /**
+     * @brief Model interface
+     * @interface IModel 
+     */
     class IModel {
 
         public:

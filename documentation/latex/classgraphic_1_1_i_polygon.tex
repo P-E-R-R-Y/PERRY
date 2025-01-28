@@ -1,0 +1,152 @@
+\doxysection{graphic\+::IPolygon Interface Reference}
+\hypertarget{classgraphic_1_1_i_polygon}{}\label{classgraphic_1_1_i_polygon}\index{graphic::IPolygon@{graphic::IPolygon}}
+
+
+Polygon interface.  
+
+
+
+
+{\ttfamily \#include $<$IPolygon.\+hpp$>$}
+
+Inheritance diagram for graphic\+::IPolygon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgraphic_1_1_i_polygon}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgraphic_1_1_i_polygon_ae0d966a02dd57510caf2f7f48b167303}\label{classgraphic_1_1_i_polygon_ae0d966a02dd57510caf2f7f48b167303} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPolygon} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_polygon}{IPolygon} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} \mbox{\hyperlink{classgraphic_1_1_i_polygon_a58c4bd60aee98dedd69415f941372259}{get\+Color}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Color object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0a0a5e87e3d64afc16c30d26c13cf33b}{set\+Color}} (\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} position)=0
+\begin{DoxyCompactList}\small\item\em Set the Color object. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0467688a616b36424ddbc8adbeba0544}{is\+Ready}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{classgraphic_1_1_i_polygon_ab3fb8842141a3543208c6f71800abd4f}{get\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_polygon_a230ab253cc42e8c2028106b0af038fdd}{set\+Position}} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} position)=0
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ \mbox{\hyperlink{classgraphic_1_1_i_polygon_ad23528f502d73a90ddaa56726ff50e57}{get\+Points}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Points object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Polygon interface. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classgraphic_1_1_i_polygon_a58c4bd60aee98dedd69415f941372259}\index{graphic::IPolygon@{graphic::IPolygon}!getColor@{getColor}}
+\index{getColor@{getColor}!graphic::IPolygon@{graphic::IPolygon}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_polygon_a58c4bd60aee98dedd69415f941372259} 
+virtual \mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} graphic\+::\+IPolygon\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Color object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+color\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_polygon_a024b70ad2bbc1c2eda22cfedb9b8e1bf}{raylib\+::\+Ray\+Polygon}}, \mbox{\hyperlink{class_sdl_polygon_aa2318c7c47b8ffa339805c41333ee6c8}{Sdl\+Polygon}}, and \mbox{\hyperlink{class_sfml_polygon_af965e46ad7b2c334506788b128a45c98}{Sfml\+Polygon}}.
+
+\Hypertarget{classgraphic_1_1_i_polygon_ad23528f502d73a90ddaa56726ff50e57}\index{graphic::IPolygon@{graphic::IPolygon}!getPoints@{getPoints}}
+\index{getPoints@{getPoints}!graphic::IPolygon@{graphic::IPolygon}}
+\doxysubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_polygon_ad23528f502d73a90ddaa56726ff50e57} 
+virtual std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ graphic\+::\+IPolygon\+::get\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Points object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+\_\+\+\_\+v2f\+\_\+t$>$ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_polygon_a3d59930a9660f9ef80c072b3f6f0c85c}{raylib\+::\+Ray\+Polygon}}, \mbox{\hyperlink{class_sdl_polygon_a7776840ca7c8331e39023b6b02e9dac6}{Sdl\+Polygon}}, and \mbox{\hyperlink{class_sfml_polygon_a2990becc3a91765498d757215321a665}{Sfml\+Polygon}}.
+
+\Hypertarget{classgraphic_1_1_i_polygon_ab3fb8842141a3543208c6f71800abd4f}\index{graphic::IPolygon@{graphic::IPolygon}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!graphic::IPolygon@{graphic::IPolygon}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_polygon_ab3fb8842141a3543208c6f71800abd4f} 
+virtual \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} graphic\+::\+IPolygon\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_polygon_af667cba9a60edd645869152227075c9d}{raylib\+::\+Ray\+Polygon}}, \mbox{\hyperlink{class_sdl_polygon_a6c77e095888b6d9f9a295c6042138fc6}{Sdl\+Polygon}}, and \mbox{\hyperlink{class_sfml_polygon_a952cdcf59f314b3a8b738d9c5d1f103d}{Sfml\+Polygon}}.
+
+\Hypertarget{classgraphic_1_1_i_polygon_a0467688a616b36424ddbc8adbeba0544}\index{graphic::IPolygon@{graphic::IPolygon}!isReady@{isReady}}
+\index{isReady@{isReady}!graphic::IPolygon@{graphic::IPolygon}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_polygon_a0467688a616b36424ddbc8adbeba0544} 
+virtual bool graphic\+::\+IPolygon\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_polygon_a06840f06101dfb3a1c4f04904a1a7087}{raylib\+::\+Ray\+Polygon}}, \mbox{\hyperlink{class_sdl_polygon_a4789b439c0a4796b081731b901f65435}{Sdl\+Polygon}}, and \mbox{\hyperlink{class_sfml_polygon_a8c2db5edcd6be4ac71475a09844f9c88}{Sfml\+Polygon}}.
+
+\Hypertarget{classgraphic_1_1_i_polygon_a0a0a5e87e3d64afc16c30d26c13cf33b}\index{graphic::IPolygon@{graphic::IPolygon}!setColor@{setColor}}
+\index{setColor@{setColor}!graphic::IPolygon@{graphic::IPolygon}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_polygon_a0a0a5e87e3d64afc16c30d26c13cf33b} 
+virtual void graphic\+::\+IPolygon\+::set\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Color object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_polygon_a477c1329e366e4e2d52db5f0cf35c78a}{raylib\+::\+Ray\+Polygon}}, and \mbox{\hyperlink{class_sdl_polygon_a561712ec4a1d70f4c9ead43d23d2b7be}{Sdl\+Polygon}}.
+
+\Hypertarget{classgraphic_1_1_i_polygon_a230ab253cc42e8c2028106b0af038fdd}\index{graphic::IPolygon@{graphic::IPolygon}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!graphic::IPolygon@{graphic::IPolygon}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_polygon_a230ab253cc42e8c2028106b0af038fdd} 
+virtual void graphic\+::\+IPolygon\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classraylib_1_1_ray_polygon_a78d9501abc5859341ee084294fe95789}{raylib\+::\+Ray\+Polygon}}, and \mbox{\hyperlink{class_sdl_polygon_a6a40b6fc99987136011e061ff1a02180}{Sdl\+Polygon}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/interfaces/graphic/graphic/IPolygon.\+hpp\end{DoxyCompactItemize}

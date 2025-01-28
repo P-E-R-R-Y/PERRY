@@ -1,0 +1,328 @@
+\doxysection{Sdl\+Window Class Reference}
+\hypertarget{class_sdl_window}{}\label{class_sdl_window}\index{SdlWindow@{SdlWindow}}
+
+
+{\ttfamily \#include $<$Sdl\+Window.\+hpp$>$}
+
+Inheritance diagram for Sdl\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sdl_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sdl_window_a977f564355412e0852d8415f237a9ef5}\label{class_sdl_window_a977f564355412e0852d8415f237a9ef5} 
+{\bfseries Sdl\+Window} (\+\_\+\+\_\+int32\+\_\+t screen\+Width, \+\_\+\+\_\+int32\+\_\+t screen\+Height, std\+::string title)
+\item 
+void \mbox{\hyperlink{class_sdl_window_a658eab0bf038cd1775e73e920a71b80b}{link\+Event}} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em link an event to the window \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sdl_window_ae7881c13fde6af610cb7efb5ab342317}{is\+Open}} () override
+\begin{DoxyCompactList}\small\item\em notice if the window is open \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_window_ac1d006b6e87818f90e3042ab8772dec1}{close}} () override
+\begin{DoxyCompactList}\small\item\em close the window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_window_a776361f77ae5b82c8bbd20d05c1dc45e}{set\+Frame\+Limit}} (\+\_\+\+\_\+int32\+\_\+t limit) override
+\begin{DoxyCompactList}\small\item\em Set the Frame Limit object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+int32\+\_\+t \mbox{\hyperlink{class_sdl_window_acc7c25e238e5528a77e38ebb7dc160d9}{get\+Delta}} () override
+\begin{DoxyCompactList}\small\item\em Get the Delta object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_window_a7c566894f7432dfcfd51faee1d239a5d}{begin\+Draw}} () override
+\begin{DoxyCompactList}\small\item\em allowing to draw 2D on the window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_window_a8e1a79f993c7424831754404c32f3684}{draw\+Poly}} (\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}polygon) override
+\begin{DoxyCompactList}\small\item\em draw a polygon \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_window_a4de650f1f3712087a4a5bca3aa2a5f0e}{draw\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite) override
+\begin{DoxyCompactList}\small\item\em draw a sprite \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_window_a9c0bf1ab0a9b4917ead4ad8fc3c697ff}{end\+Draw}} () override
+\begin{DoxyCompactList}\small\item\em end the 2D drawing \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_window_aa540228a558fee3510a05e29f629220b}{begin\+Mode3}} (\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}camera) override
+\begin{DoxyCompactList}\small\item\em allowing to draw 3D on the window \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_sdl_window_a304a33df6d466985e50c192b8fc8a25a}{draw\+Model}} (\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model) override
+\begin{DoxyCompactList}\small\item\em draw a model \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_window_a4de0baf2dcd722e8fa4ce169420216c0}{end\+Mode3}} () override
+\begin{DoxyCompactList}\small\item\em end the 3D drawing \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sdl_window_a3ea7d97069a1522b951696a9c9da2ddf}{poll\+Event}} () override
+\begin{DoxyCompactList}\small\item\em poll the event \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_window_a27db59127c8c517c420afb80b27b38d2}{event\+Close}} () override
+\begin{DoxyCompactList}\small\item\em update the window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IWindow} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_window}{IWindow} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sdl_window_a3ae917986807a47eb33088826681d709}\label{class_sdl_window_a3ae917986807a47eb33088826681d709} 
+bool {\bfseries is\+\_\+open}
+\item 
+\Hypertarget{class_sdl_window_a677db36072426313885afece983d9a2a}\label{class_sdl_window_a677db36072426313885afece983d9a2a} 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+window}
+\item 
+\Hypertarget{class_sdl_window_ad6690063e66b666ce0ec1dd2815a79b5}\label{class_sdl_window_ad6690063e66b666ce0ec1dd2815a79b5} 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+renderer}
+\item 
+\Hypertarget{class_sdl_window_aa26ef07cfffcc18eda06cca44415daed}\label{class_sdl_window_aa26ef07cfffcc18eda06cca44415daed} 
+\mbox{\hyperlink{class_sdl_event}{Sdl\+Event}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+event}
+\item 
+\Hypertarget{class_sdl_window_a884920883ecfbafbbdcf99d80438e9d4}\label{class_sdl_window_a884920883ecfbafbbdcf99d80438e9d4} 
+\+\_\+\+\_\+int32\+\_\+t {\bfseries \+\_\+frame\+Limit}
+\item 
+\Hypertarget{class_sdl_window_abd66a40fcb7db5fd2a01c3e7bcea282a}\label{class_sdl_window_abd66a40fcb7db5fd2a01c3e7bcea282a} 
+\+\_\+\+\_\+uint64\+\_\+t {\bfseries \+\_\+start}
+\item 
+\Hypertarget{class_sdl_window_ada1176354f198c6891ae3f21c4e97e31}\label{class_sdl_window_ada1176354f198c6891ae3f21c4e97e31} 
+\+\_\+\+\_\+uint64\+\_\+t {\bfseries \+\_\+end}
+\item 
+\Hypertarget{class_sdl_window_ab783c2b8d3e928351d889132df591580}\label{class_sdl_window_ab783c2b8d3e928351d889132df591580} 
+float {\bfseries \+\_\+delta}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File\+: \doxylink{_ray_window_8hpp_source}{Ray\+Window.\+hpp} (header.\+v2) Created Date\+: Tue 14/03/2023 Project\+: PERRY Author\+: Perry Chouteau
+
+Last Modified\+: Sat 18/03/2023 Modified By\+: Perry Chouteau
+
+Copyright (c) 2023-\/2033 Perry Chouteau 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sdl_window_a7c566894f7432dfcfd51faee1d239a5d}\index{SdlWindow@{SdlWindow}!beginDraw@{beginDraw}}
+\index{beginDraw@{beginDraw}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{beginDraw()}{beginDraw()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a7c566894f7432dfcfd51faee1d239a5d} 
+void Sdl\+Window\+::begin\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+allowing to draw 2D on the window 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a37ccabdf7852fe8ff579f5de5ae29976}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_aa540228a558fee3510a05e29f629220b}\index{SdlWindow@{SdlWindow}!beginMode3@{beginMode3}}
+\index{beginMode3@{beginMode3}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{beginMode3()}{beginMode3()}}
+{\footnotesize\ttfamily \label{class_sdl_window_aa540228a558fee3510a05e29f629220b} 
+void Sdl\+Window\+::begin\+Mode3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}}]{camera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+allowing to draw 3D on the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a44bfe77f58f2825edb1e7cb5304b8177}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_ac1d006b6e87818f90e3042ab8772dec1}\index{SdlWindow@{SdlWindow}!close@{close}}
+\index{close@{close}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{class_sdl_window_ac1d006b6e87818f90e3042ab8772dec1} 
+void Sdl\+Window\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+close the window 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a6eb555bdae7c6fa247a35b9147da8c7e}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_a304a33df6d466985e50c192b8fc8a25a}\index{SdlWindow@{SdlWindow}!drawModel@{drawModel}}
+\index{drawModel@{drawModel}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{drawModel()}{drawModel()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a304a33df6d466985e50c192b8fc8a25a} 
+void Sdl\+Window\+::draw\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw a model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a973287c1dd916f230234e9a557181dd9}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_a8e1a79f993c7424831754404c32f3684}\index{SdlWindow@{SdlWindow}!drawPoly@{drawPoly}}
+\index{drawPoly@{drawPoly}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{drawPoly()}{drawPoly()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a8e1a79f993c7424831754404c32f3684} 
+void Sdl\+Window\+::draw\+Poly (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}}]{polygon}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw a polygon 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_afe1c61041fa847fe80c0fbc5585a4de3}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_a4de650f1f3712087a4a5bca3aa2a5f0e}\index{SdlWindow@{SdlWindow}!drawSprite@{drawSprite}}
+\index{drawSprite@{drawSprite}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{drawSprite()}{drawSprite()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a4de650f1f3712087a4a5bca3aa2a5f0e} 
+void Sdl\+Window\+::draw\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw a sprite 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a0b6d9dc647ea8fa561630424bb4b5db0}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_a9c0bf1ab0a9b4917ead4ad8fc3c697ff}\index{SdlWindow@{SdlWindow}!endDraw@{endDraw}}
+\index{endDraw@{endDraw}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{endDraw()}{endDraw()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a9c0bf1ab0a9b4917ead4ad8fc3c697ff} 
+void Sdl\+Window\+::end\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+end the 2D drawing 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_afeee676648888ac355a58f7fb90b62a6}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_a4de0baf2dcd722e8fa4ce169420216c0}\index{SdlWindow@{SdlWindow}!endMode3@{endMode3}}
+\index{endMode3@{endMode3}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{endMode3()}{endMode3()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a4de0baf2dcd722e8fa4ce169420216c0} 
+void Sdl\+Window\+::end\+Mode3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+end the 3D drawing 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_ad064bd5a6aeafa259e0e629cf6cf82c1}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_a27db59127c8c517c420afb80b27b38d2}\index{SdlWindow@{SdlWindow}!eventClose@{eventClose}}
+\index{eventClose@{eventClose}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{eventClose()}{eventClose()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a27db59127c8c517c420afb80b27b38d2} 
+void Sdl\+Window\+::event\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+update the window 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a6687f79bdb04698ea020aa85e72f3941}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_acc7c25e238e5528a77e38ebb7dc160d9}\index{SdlWindow@{SdlWindow}!getDelta@{getDelta}}
+\index{getDelta@{getDelta}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{getDelta()}{getDelta()}}
+{\footnotesize\ttfamily \label{class_sdl_window_acc7c25e238e5528a77e38ebb7dc160d9} 
+\+\_\+\+\_\+int32\+\_\+t Sdl\+Window\+::get\+Delta (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Delta object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+int32\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_ac081cce8b211b1b3f027a7bae33cef61}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_ae7881c13fde6af610cb7efb5ab342317}\index{SdlWindow@{SdlWindow}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{isOpen()}{isOpen()}}
+{\footnotesize\ttfamily \label{class_sdl_window_ae7881c13fde6af610cb7efb5ab342317} 
+bool Sdl\+Window\+::is\+Open (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if the window is open 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_ae17a137c8ad8da0c414782e27f4c5dfc}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_a658eab0bf038cd1775e73e920a71b80b}\index{SdlWindow@{SdlWindow}!linkEvent@{linkEvent}}
+\index{linkEvent@{linkEvent}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{linkEvent()}{linkEvent()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a658eab0bf038cd1775e73e920a71b80b} 
+void Sdl\+Window\+::link\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+link an event to the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_ad95ff6150837ebf658a520a4a932b5c3}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_a3ea7d97069a1522b951696a9c9da2ddf}\index{SdlWindow@{SdlWindow}!pollEvent@{pollEvent}}
+\index{pollEvent@{pollEvent}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{pollEvent()}{pollEvent()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a3ea7d97069a1522b951696a9c9da2ddf} 
+bool Sdl\+Window\+::poll\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+poll the event 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a4a40f63b3c53f89a6ce684e7d2a92428}{graphic\+::\+IWindow}}.
+
+\Hypertarget{class_sdl_window_a776361f77ae5b82c8bbd20d05c1dc45e}\index{SdlWindow@{SdlWindow}!setFrameLimit@{setFrameLimit}}
+\index{setFrameLimit@{setFrameLimit}!SdlWindow@{SdlWindow}}
+\doxysubsubsection{\texorpdfstring{setFrameLimit()}{setFrameLimit()}}
+{\footnotesize\ttfamily \label{class_sdl_window_a776361f77ae5b82c8bbd20d05c1dc45e} 
+void Sdl\+Window\+::set\+Frame\+Limit (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+int32\+\_\+t}]{limit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Frame Limit object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a6b0e75f9c978eef8aca095144420f5af}{graphic\+::\+IWindow}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/window/Sdl\+Window.\+hpp\end{DoxyCompactItemize}

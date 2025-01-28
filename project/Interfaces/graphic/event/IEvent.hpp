@@ -2,7 +2,7 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-05-13 00:01:34
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-05-25 19:11:17
+ * @ Modified time: 2025-01-28 00:29:03
  * @ Description:
  */
 
@@ -12,6 +12,10 @@
 
 namespace graphic {
 
+  /**
+   * @brief Event interface
+   * @interface IEvent
+   */
   class IEvent {
     public:
       virtual ~IEvent() = default;

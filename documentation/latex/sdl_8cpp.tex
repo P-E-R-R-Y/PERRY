@@ -1,0 +1,360 @@
+\doxysection{/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/sdl.cpp File Reference}
+\hypertarget{sdl_8cpp}{}\label{sdl_8cpp}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sdl/sdl.cpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sdl/sdl.cpp}}
+
+
+shared graphic/sdl library symbols  
+
+
+{\ttfamily \#include "{}window/\+Sdl\+Window.\+hpp"{}}\newline
+{\ttfamily \#include "{}window/\+Sdl\+Camera.\+hpp"{}}\newline
+{\ttfamily \#include "{}event/\+Sdl\+Event.\+hpp"{}}\newline
+{\ttfamily \#include "{}event/\+Sdl\+Keyboard.\+hpp"{}}\newline
+{\ttfamily \#include "{}event/\+Sdl\+Mouse.\+hpp"{}}\newline
+{\ttfamily \#include "{}graphic/\+Sdl\+Polygon.\+hpp"{}}\newline
+{\ttfamily \#include "{}graphic/\+Sdl\+Model.\+hpp"{}}\newline
+{\ttfamily \#include "{}graphic/\+Sdl\+Sprite.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_a1c8429ad724706c80c8a31c10f953130}{create\+Window}} (\+\_\+\+\_\+int32\+\_\+t screen\+Width, \+\_\+\+\_\+int32\+\_\+t screen\+Height, std\+::string title)
+\begin{DoxyCompactList}\small\item\em create Sdl window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sdl_8cpp_af74872ef6611df6d20e97538bb453cbf}{delete\+Window}} (\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}} \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em delete Sdl window \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_a63d25ddc6ccbcd49a4a88b31d439a519}{create\+Camera}} (\mbox{\hyperlink{structtype_1_1____v3f__s}{\+\_\+\+\_\+v3f\+\_\+t}} position)
+\begin{DoxyCompactList}\small\item\em create Sdl camera \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sdl_8cpp_a6278647529e2aa6aa0688aed30f954dc}{delete\+Camera}} (\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}camera)
+\begin{DoxyCompactList}\small\item\em delete Sdl camera \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_a180d8e8dfb641bfde4dbdaf97e4e575b}{create\+Event}} ()
+\begin{DoxyCompactList}\small\item\em Event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sdl_8cpp_a29ca5d5a86f222a68b80406e739472e9}{delete\+Event}} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em delete Sdl event \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_a50616b536976706f89a7132ca27e0635}{create\+Keyboard}} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Keyboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sdl_8cpp_a471e5eea8485f7f427c552dbe1f6e229}{delete\+Keyboard}} (\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}} \texorpdfstring{$\ast$}{*}keyboard)
+\begin{DoxyCompactList}\small\item\em delete Sdl keyboard \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_ad76069785343b7e4a6e0c0ea08900fe3}{create\+Mouse}} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em Mouse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sdl_8cpp_ac3ad2af27ce2bf1e4e1813a9b637d3fe}{delete\+Mouse}} (\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*}mouse)
+\begin{DoxyCompactList}\small\item\em delete Sdl mouse \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_af338b09682123b06a23f16dd0e79eea7}{create\+Polygon}} (std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ points)
+\begin{DoxyCompactList}\small\item\em create Sdl polygon \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sdl_8cpp_a634a535acef8fb288ed32dc07ff92322}{delete\+Polygon}} (\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}polygon)
+\begin{DoxyCompactList}\small\item\em delete Sdl polygon \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_a506cb890964ba5935395d5995f1230ca}{create\+Sprite}} (std\+::string sprite)
+\begin{DoxyCompactList}\small\item\em create Sdl sprite \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sdl_8cpp_a7ac2d74301041e22c583cf1a5e2a4024}{delete\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite)
+\begin{DoxyCompactList}\small\item\em delete Sdl sprite \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_ad84e5fbd85db7969676a38ac10819452}{create\+Model}} ()
+\begin{DoxyCompactList}\small\item\em create Sdl model \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sdl_8cpp_a86f4defa19eab58adaf4ae8c058898c5}{delete\+Model}} (\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model)
+\begin{DoxyCompactList}\small\item\em delete Sdl model \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_a1b612f3670f20ad2c7ed3d7a21acc6b5}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em get the name of the library \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{sdl_8cpp_a5a9e1cf52200ed570b486bf1df100e08}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em get the type of the library \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+shared graphic/sdl library symbols 
+
+\begin{DoxyAuthor}{Author}
+@\+Perry-\/Chouteau (\href{mailto:perry.chouteau@outlook.com}{\texttt{ perry.\+chouteau@outlook.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/01-\/27
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sdl_8cpp_a63d25ddc6ccbcd49a4a88b31d439a519}\index{sdl.cpp@{sdl.cpp}!createCamera@{createCamera}}
+\index{createCamera@{createCamera}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{createCamera()}{createCamera()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a63d25ddc6ccbcd49a4a88b31d439a519} 
+\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*} create\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtype_1_1____v3f__s}{\+\_\+\+\_\+v3f\+\_\+t}}}]{position}{}\end{DoxyParamCaption})}
+
+
+
+create Sdl camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{sdl_8cpp_a180d8e8dfb641bfde4dbdaf97e4e575b}\index{sdl.cpp@{sdl.cpp}!createEvent@{createEvent}}
+\index{createEvent@{createEvent}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{createEvent()}{createEvent()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a180d8e8dfb641bfde4dbdaf97e4e575b} 
+\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*} create\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Event. 
+
+create Sdl event
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{sdl_8cpp_a50616b536976706f89a7132ca27e0635}\index{sdl.cpp@{sdl.cpp}!createKeyboard@{createKeyboard}}
+\index{createKeyboard@{createKeyboard}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{createKeyboard()}{createKeyboard()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a50616b536976706f89a7132ca27e0635} 
+\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}} \texorpdfstring{$\ast$}{*} create\+Keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Keyboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{sdl_8cpp_ad84e5fbd85db7969676a38ac10819452}\index{sdl.cpp@{sdl.cpp}!createModel@{createModel}}
+\index{createModel@{createModel}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{createModel()}{createModel()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_ad84e5fbd85db7969676a38ac10819452} 
+\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*} create\+Model (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+create Sdl model 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classgraphic_1_1_i_model}{graphic\+::\+IModel}\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{sdl_8cpp_ad76069785343b7e4a6e0c0ea08900fe3}\index{sdl.cpp@{sdl.cpp}!createMouse@{createMouse}}
+\index{createMouse@{createMouse}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{createMouse()}{createMouse()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_ad76069785343b7e4a6e0c0ea08900fe3} 
+\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*} create\+Mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{sdl_8cpp_af338b09682123b06a23f16dd0e79eea7}\index{sdl.cpp@{sdl.cpp}!createPolygon@{createPolygon}}
+\index{createPolygon@{createPolygon}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{createPolygon()}{createPolygon()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_af338b09682123b06a23f16dd0e79eea7} 
+\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*} create\+Polygon (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$}]{points}{}\end{DoxyParamCaption})}
+
+
+
+create Sdl polygon 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{sdl_8cpp_a506cb890964ba5935395d5995f1230ca}\index{sdl.cpp@{sdl.cpp}!createSprite@{createSprite}}
+\index{createSprite@{createSprite}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{createSprite()}{createSprite()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a506cb890964ba5935395d5995f1230ca} 
+\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*} create\+Sprite (\begin{DoxyParamCaption}\item[{std\+::string}]{sprite}{}\end{DoxyParamCaption})}
+
+
+
+create Sdl sprite 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{sdl_8cpp_a1c8429ad724706c80c8a31c10f953130}\index{sdl.cpp@{sdl.cpp}!createWindow@{createWindow}}
+\index{createWindow@{createWindow}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{createWindow()}{createWindow()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a1c8429ad724706c80c8a31c10f953130} 
+\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}} \texorpdfstring{$\ast$}{*} create\+Window (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+int32\+\_\+t}]{screen\+Width}{, }\item[{\+\_\+\+\_\+int32\+\_\+t}]{screen\+Height}{, }\item[{std\+::string}]{title}{}\end{DoxyParamCaption})}
+
+
+
+create Sdl window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Width} & \\
+\hline
+{\em screen\+Height} & \\
+\hline
+{\em title} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{sdl_8cpp_a6278647529e2aa6aa0688aed30f954dc}\index{sdl.cpp@{sdl.cpp}!deleteCamera@{deleteCamera}}
+\index{deleteCamera@{deleteCamera}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{deleteCamera()}{deleteCamera()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a6278647529e2aa6aa0688aed30f954dc} 
+void delete\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}}]{camera}{}\end{DoxyParamCaption})}
+
+
+
+delete Sdl camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sdl_8cpp_a29ca5d5a86f222a68b80406e739472e9}\index{sdl.cpp@{sdl.cpp}!deleteEvent@{deleteEvent}}
+\index{deleteEvent@{deleteEvent}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{deleteEvent()}{deleteEvent()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a29ca5d5a86f222a68b80406e739472e9} 
+void delete\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})}
+
+
+
+delete Sdl event 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sdl_8cpp_a471e5eea8485f7f427c552dbe1f6e229}\index{sdl.cpp@{sdl.cpp}!deleteKeyboard@{deleteKeyboard}}
+\index{deleteKeyboard@{deleteKeyboard}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{deleteKeyboard()}{deleteKeyboard()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a471e5eea8485f7f427c552dbe1f6e229} 
+void delete\+Keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}} \texorpdfstring{$\ast$}{*}}]{keyboard}{}\end{DoxyParamCaption})}
+
+
+
+delete Sdl keyboard 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyboard} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sdl_8cpp_a86f4defa19eab58adaf4ae8c058898c5}\index{sdl.cpp@{sdl.cpp}!deleteModel@{deleteModel}}
+\index{deleteModel@{deleteModel}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{deleteModel()}{deleteModel()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a86f4defa19eab58adaf4ae8c058898c5} 
+void delete\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})}
+
+
+
+delete Sdl model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sdl_8cpp_ac3ad2af27ce2bf1e4e1813a9b637d3fe}\index{sdl.cpp@{sdl.cpp}!deleteMouse@{deleteMouse}}
+\index{deleteMouse@{deleteMouse}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{deleteMouse()}{deleteMouse()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_ac3ad2af27ce2bf1e4e1813a9b637d3fe} 
+void delete\+Mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*}}]{mouse}{}\end{DoxyParamCaption})}
+
+
+
+delete Sdl mouse 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sdl_8cpp_a634a535acef8fb288ed32dc07ff92322}\index{sdl.cpp@{sdl.cpp}!deletePolygon@{deletePolygon}}
+\index{deletePolygon@{deletePolygon}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{deletePolygon()}{deletePolygon()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a634a535acef8fb288ed32dc07ff92322} 
+void delete\+Polygon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}}]{polygon}{}\end{DoxyParamCaption})}
+
+
+
+delete Sdl polygon 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sdl_8cpp_a7ac2d74301041e22c583cf1a5e2a4024}\index{sdl.cpp@{sdl.cpp}!deleteSprite@{deleteSprite}}
+\index{deleteSprite@{deleteSprite}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{deleteSprite()}{deleteSprite()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a7ac2d74301041e22c583cf1a5e2a4024} 
+void delete\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{}\end{DoxyParamCaption})}
+
+
+
+delete Sdl sprite 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sdl_8cpp_af74872ef6611df6d20e97538bb453cbf}\index{sdl.cpp@{sdl.cpp}!deleteWindow@{deleteWindow}}
+\index{deleteWindow@{deleteWindow}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{deleteWindow()}{deleteWindow()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_af74872ef6611df6d20e97538bb453cbf} 
+void delete\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}} \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})}
+
+
+
+delete Sdl window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sdl_8cpp_a1b612f3670f20ad2c7ed3d7a21acc6b5}\index{sdl.cpp@{sdl.cpp}!getName@{getName}}
+\index{getName@{getName}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a1b612f3670f20ad2c7ed3d7a21acc6b5} 
+const char \texorpdfstring{$\ast$}{*} get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+get the name of the library 
+
+\begin{DoxyReturn}{Returns}
+const char\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{sdl_8cpp_a5a9e1cf52200ed570b486bf1df100e08}\index{sdl.cpp@{sdl.cpp}!getType@{getType}}
+\index{getType@{getType}!sdl.cpp@{sdl.cpp}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{sdl_8cpp_a5a9e1cf52200ed570b486bf1df100e08} 
+const char \texorpdfstring{$\ast$}{*} get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+get the type of the library 
+
+\begin{DoxyReturn}{Returns}
+const char\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}

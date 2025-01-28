@@ -1,3 +1,14 @@
+/**
+ * @file Registry.hpp
+ * @author @Perry-chouteau (perry.chouteau@outook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-27
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef REGISTRY_HPP
 #define REGISTRY_HPP
 
@@ -16,83 +27,191 @@
 #include <typeindex>
 #include <memory>
 
+namespace ecs {
 
-class Entity;
-class System;
+    class Entity;
+    class System;
 
-class Registry {
+    /**
+     * @brief Component is a template define in Registry. (not a class) 
+     * @class Component
+     */
+    
+    /**
+     * @brief define the Registry class
+     *
+     * @class Registry
+     */
+    class Registry {
 
-    public:
+        public:
 
-        /// @brief handling entities (define in Registry.cpp)
+            /// @brief handling entities (define in Registry.cpp)
 
-        Entity createEntity();
+            /**
+             * @brief Create a Entity object
+             * 
+             * @return Entity 
+             */
+            Entity createEntity();
 
-        Entity entityFromIndex(std::size_t idx);
+            /**
+             * @brief Create a Entity object from an index
+             * 
+             * @param idx 
+             * @return Entity 
+             */
+            Entity entityFromIndex(std::size_t idx);
 
-        void killEntity(Entity const &e);
+            /**
+             * @brief Kill the given entity
+             * 
+             * @param e 
+             */
+            void killEntity(Entity const &e);
 
-        /// @brief handling components (define in Registry_impl.hpp)
+            /// @brief handling components (define in Registry_impl.hpp)
 
-        template <class Component>
-        SparseArray<Component> &registerComponent();
+            /**
+             * @brief register a component
+             * 
+             * @tparam Component 
+             * @return SparseArray<Component>& 
+             */
+            template <class Component>
+            SparseArray<Component> &registerComponent();
 
-        template <class ... Components>
-        void registerComponents();
+            /**
+             * @brief register a list of components
+             * 
+             * @tparam Components 
+             */
+            template <class ... Components>
+            void registerComponents();
 
-        template <class Tuple>
-        void registerComponentsByExtraction();
+            /**
+             * @brief register every components by extraction from a tuple
+             * 
+             * @tparam Tuple 
+             */
+            template <class Tuple>
+            void registerComponentsByExtraction();
 
-        template <class Component>
-        SparseArray<Component> &getComponents();
+            /**
+             * @brief get components of a given type
+             * 
+             * @tparam Component 
+             * @return SparseArray<Component>&
+             */
+            template <class Component>
+            SparseArray<Component> &getComponents();
 
-        template <class Component>
-        const SparseArray<Component> &getComponents() const;
+            /**
+             * @brief get immutable components of a given type
+             * 
+             * @tparam Component 
+             * @return const SparseArray<Component>&
+             */
+            template <class Component>
+            const SparseArray<Component> &getComponents() const;
 
-        template <typename Component>
-        typename SparseArray<Component>::reference_type addComponent(Entity const &to, Component &&c);
+            /**
+             * @brief 
+             * 
+             * @tparam add a component to the given entity 
+             * @param to 
+             * @param c
+             * @return SparseArray<Component>::reference_type 
+             */
+            template <typename Component>
+            typename SparseArray<Component>::reference_type addComponent(Entity const &to, Component &&c);
 
-        template <typename Component, typename ... Params>
-        typename SparseArray <Component>::reference_type emplaceComponent(Entity const &to, Params &&... p);
+            /**
+             * @brief emplace a component to the given entity
+             * 
+             * @tparam Component 
+             * @tparam Params 
+             * @param to 
+             * @param p 
+             * @return SparseArray <Component>::reference_type 
+             */
+            template <typename Component, typename ... Params>
+            typename SparseArray <Component>::reference_type emplaceComponent(Entity const &to, Params &&... p);
 
-        template <typename Component>
-        void removeComponent(Entity const &from);
+            /**
+             * @brief remove a component from the given entity
+             * 
+             * @tparam Component 
+             * @param from 
+             */
+            template <typename Component>
+            void removeComponent(Entity const &from);
 
-        /// @brief handling systems
+            /// @brief handling systems
 
-        template <typename T, typename... Args>
-        size_t addSystem(Args&&... args);
+            /**
+             * @brief add a system to the registry
+             * 
+             * @tparam T 
+             * @tparam Args 
+             * @param args 
+             * @return size_t 
+             */
+            template <typename T, typename... Args>
+            size_t addSystem(Args&&... args);
 
-        template <typename T>
-        size_t addSystem(std::unique_ptr<T> existingSystem);
+            /**
+             * @brief add a system to the registry
+             * 
+             * @tparam T 
+             * @param existingSystem 
+             * @return size_t 
+             */
+            template <typename T>
+            size_t addSystem(std::unique_ptr<T> existingSystem);
 
-        template <typename T>
-        void removeSystem();
+            /**
+             * @brief remove a system from the registry
+             * 
+             * @tparam T 
+             */
+            template <typename T>
+            void removeSystem();
 
-        template <typename T>
-        void callSystem();
+            /**
+             * @brief call a system
+             * 
+             * @tparam T 
+             */
+            template <typename T>
+            void callSystem();
 
-        void callSystems();
+            /**
+             * @brief call all systems
+             */
+            void callSystems();
 
-    private:
+        private:
 
-        template <typename T>
-        struct is_tuple : std::false_type {};
+            template <typename T>
+            struct is_tuple : std::false_type {};
 
-        template <typename... Args>
-        struct is_tuple<std::tuple<Args...>> : std::true_type {};
+            template <typename... Args>
+            struct is_tuple<std::tuple<Args...>> : std::true_type {};
 
-    private:
+        private:
 
-        size_t _entitiesCount = 0;
-        std::vector<Entity> killedEntities;
+            size_t _entitiesCount = 0;
+            std::vector<Entity> killedEntities;
 
-        std::unordered_map<std::type_index, std::any> componentsArrays;
-        std::unordered_map<std::type_index, std::any> systemsArrays;
+            std::unordered_map<std::type_index, std::any> componentsArrays;
+            std::unordered_map<std::type_index, std::any> systemsArrays;
 
-        std::vector<std::function<void(Registry &, Entity const &)>> componentsRemoves;
+            std::vector<std::function<void(Registry &, Entity const &)>> componentsRemoves;
 
-        std::unordered_map<std::type_index, std::unique_ptr<System>> systems;
-};
+            std::unordered_map<std::type_index, std::unique_ptr<System>> systems;
+    };
+
+}
 
 #endif // REGISTRY_HPP

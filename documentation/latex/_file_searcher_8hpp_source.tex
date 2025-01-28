@@ -1,0 +1,128 @@
+\doxysection{File\+Searcher.\+hpp}
+\hypertarget{_file_searcher_8hpp_source}{}\label{_file_searcher_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/libraries/finder/FileSearcher.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/libraries/finder/FileSearcher.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }FileSearcher\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ FileSearcher()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \string~FileSearcher()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ displayFiles(std::string\ folder)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }stat\ \_sb;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ path;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(folder.c\_str(),\ \&\_sb)\ ==\ 0)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ std::filesystem::directory\_iterator(folder))\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path\ =\ entry.path().string();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(path.c\_str(),\ \&\_sb)\ ==\ 0\ \&\&\ !(\_sb.st\_mode\ \&\ S\_IFDIR)\ \&\&\ path.find(\textcolor{stringliteral}{"{}.so"{}})\ !=\ path.size())}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std\ ::cout\ <<\ path.substr(folder.size()\ +\ (folder.back()\ !=\ \textcolor{charliteral}{'/'}))\ <<\ std::endl;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ displayFiles(std::string\ folder,\ std::string\ extension)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }stat\ \_sb;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ path;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(folder.c\_str(),\ \&\_sb)\ ==\ 0)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ std::filesystem::directory\_iterator(folder))\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path\ =\ entry.path().string();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(path.c\_str(),\ \&\_sb)\ ==\ 0\ \&\&\ !(\_sb.st\_mode\ \&\ S\_IFDIR)\ \&\&\ path.find(\textcolor{stringliteral}{"{}."{}}\ +\ extension)\ !=\ path.size())}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std\ ::cout\ <<\ path.substr(folder.size()\ +\ (folder.back()\ !=\ \textcolor{charliteral}{'/'}))\ <<\ std::endl;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ searchFiles(std::string\ folder)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }stat\ \_sb;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ path;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ res;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(folder.c\_str(),\ \&\_sb)\ ==\ 0)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ std::filesystem::directory\_iterator(folder))\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path\ =\ entry.path().string();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(path.c\_str(),\ \&\_sb)\ ==\ 0\ \&\&\ !(\_sb.st\_mode\ \&\ S\_IFDIR))}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res.push\_back(path.substr(folder.size()\ +\ (folder.back()\ !=\ \textcolor{charliteral}{'/'})));}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ res.size();\ i++)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ res[i]\ <<\ std::endl;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ searchFiles(std::string\ folder,\ std::string\ extension)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }stat\ \_sb;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ path;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ res;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(folder.c\_str(),\ \&\_sb)\ ==\ 0)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ std::filesystem::directory\_iterator(folder))\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path\ =\ entry.path().string();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(path.c\_str(),\ \&\_sb)\ ==\ 0\ \&\&\ !(\_sb.st\_mode\ \&\ S\_IFDIR)\ \&\&\ path.find(\textcolor{stringliteral}{"{}."{}}\ +\ extension)\ !=\ path.npos)}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res.push\_back(path.substr(folder.size()\ +\ (folder.back()\ !=\ \textcolor{charliteral}{'/'})));}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ SHARED\_LIB,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ STATIC\_LIB,}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}\ lib\_e;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ searchSharedLibraries(std::string\ folder,\ \textcolor{keywordtype}{bool}\ sub\_directory\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ extension;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#if\ defined(\_\_APPLE\_\_)}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ extension\ =\ \textcolor{stringliteral}{"{}dylib"{}};}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#elif\ defined(\_\_linux\_\_)}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ extension\ =\ \textcolor{stringliteral}{"{}so"{}};}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#elif\ defined(\_WIN32)}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ extension\ =\ \textcolor{stringliteral}{"{}dll"{}};}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ searchPathFiles(folder,\ extension,\ sub\_directory);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ searchPathFiles(std::string\ folder,\ std::string\ extension,\ \textcolor{keywordtype}{bool}\ sub\_directory\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }stat\ \_sb;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ path;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ res;}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(folder.c\_str(),\ \&\_sb)\ ==\ 0)\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ std::filesystem::directory\_iterator(folder))\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path\ =\ entry.path().string();}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entry.is\_directory()\ \&\&\ !entry.is\_symlink()\ \&\&\ sub\_directory)\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ tmp\ =\ searchPathFiles(path,\ extension);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res.insert(res.end(),\ tmp.begin(),\ tmp.end());}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stat(path.c\_str(),\ \&\_sb)\ ==\ 0\ \&\&\ !(\_sb.st\_mode\ \&\ S\_IFDIR)\ \&\&\ path.find(\textcolor{stringliteral}{"{}."{}}\ +\ extension)\ !=\ path.npos)}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res.push\_back(path);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00134\ \};}
+
+\end{DoxyCode}

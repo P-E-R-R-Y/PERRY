@@ -1,0 +1,37 @@
+\doxysection{Entity\+\_\+impl.\+hpp}
+\hypertarget{_entity__impl_8hpp_source}{}\label{_entity__impl_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/core/ecs/Entity\_impl.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/core/ecs/Entity\_impl.hpp}}
+\mbox{\hyperlink{_entity__impl_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ ENTITY\_IMPL\_HPP}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ENTITY\_IMPL\_HPP}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//local}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entity_8hpp}{Entity.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_registry_8hpp}{Registry.hpp}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//global}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceecs}{ecs}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classecs_1_1_registry}{Registry}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{using\ }RegistryRef\ =\ \mbox{\hyperlink{classecs_1_1_registry}{Registry}}\ \&;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Component>}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_entity_a34620bca8b2e55bdcc942f294c54afb3}{Entity::addComponent}}(\mbox{\hyperlink{class_component}{Component}}\&\&\ c)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \_ecs.\mbox{\hyperlink{classecs_1_1_registry_a8e797453b35215930781240c41bdd828}{addComponent}}<\mbox{\hyperlink{class_component}{Component}}>(*\textcolor{keyword}{this},\ std::forward<Component>(c));}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Component>}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_entity_a30056c776dc8e57264e3fc83658e3198}{Entity::removeComponent}}()\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \_ecs.removeComponent<\mbox{\hyperlink{class_component}{Component}}>(*this);}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classecs_1_1_entity_a159ef845aeeb887c211527cf0cfa9541}{Entity::Entity}}(\textcolor{keywordtype}{size\_t}\ idx,\ RegistryRef\ \mbox{\hyperlink{namespaceecs}{ecs}}):\ \_idx(idx),\ \_ecs(\mbox{\hyperlink{namespaceecs}{ecs}})\ \{\};}
+\DoxyCodeLine{00038\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ENTITY\_IMPL\_HPP}}
+
+\end{DoxyCode}

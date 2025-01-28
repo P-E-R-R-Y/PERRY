@@ -1,0 +1,50 @@
+\doxysection{Entity.\+hpp}
+\hypertarget{_entity_8hpp_source}{}\label{_entity_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/core/ecs/Entity.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/core/ecs/Entity.hpp}}
+\mbox{\hyperlink{_entity_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ ENTITY\_HPP}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ENTITY\_HPP}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//local}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//global}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceecs}{ecs}}\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classecs_1_1_registry}{Registry}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{using\ }RegistryRef\ =\ \mbox{\hyperlink{classecs_1_1_registry}{Registry}}\ \&;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classecs_1_1_entity_a159ef845aeeb887c211527cf0cfa9541}{Entity}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ Registry;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classecs_1_1_entity_a159ef845aeeb887c211527cf0cfa9541}{Entity}}()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classecs_1_1_entity_acf9322786b327ff9257a17e68024b886}{\string~Entity}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Component>}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_entity_a34620bca8b2e55bdcc942f294c54afb3}{addComponent}}(\mbox{\hyperlink{class_component}{Component}}\&\&\ c);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Component>}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_entity_a30056c776dc8e57264e3fc83658e3198}{removeComponent}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classecs_1_1_entity_a159ef845aeeb887c211527cf0cfa9541}{Entity}}(\textcolor{keywordtype}{size\_t}\ idx,\ RegistryRef\ \mbox{\hyperlink{namespaceecs}{ecs}});}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \_idx;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ RegistryRef\ \_ecs;}
+\DoxyCodeLine{00078\ \ \ \ \ \};}
+\DoxyCodeLine{00079\ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ENTITY\_HPP}}
+
+\end{DoxyCode}

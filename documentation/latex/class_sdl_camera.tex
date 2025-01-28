@@ -1,0 +1,268 @@
+\doxysection{Sdl\+Camera Class Reference}
+\hypertarget{class_sdl_camera}{}\label{class_sdl_camera}\index{SdlCamera@{SdlCamera}}
+
+
+{\ttfamily \#include $<$Sdl\+Camera.\+hpp$>$}
+
+Inheritance diagram for Sdl\+Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sdl_camera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_sdl_camera_a169b5eefc0b5e5b1cce85a347948daa1}{get\+Fov}} () const override
+\begin{DoxyCompactList}\small\item\em Get the FOV. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_camera_ac2755fb30b07ffa2a973c0f3588cce93}{set\+Fov}} (float fov) override
+\begin{DoxyCompactList}\small\item\em Set the FOV. \end{DoxyCompactList}\item 
+ICamera\+::\+Mode \mbox{\hyperlink{class_sdl_camera_a96ef897c4e3cd8907dea31949f0d2736}{get\+Mode}} () const override
+\begin{DoxyCompactList}\small\item\em Get the mode. \end{DoxyCompactList}\item 
+\Hypertarget{class_sdl_camera_a8dcf821bef14f2055591162392eab121}\label{class_sdl_camera_a8dcf821bef14f2055591162392eab121} 
+void {\bfseries set\+Mode} (ICamera\+::\+Mode mode) override
+\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{class_sdl_camera_add69b85774af62667a63f8d8f529ac9a}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_camera_a4ca762114e7814b7b8f3f3a9a6cfcb69}{set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the position. \end{DoxyCompactList}\item 
+ICamera\+::\+Projection \mbox{\hyperlink{class_sdl_camera_a33fd59f1783566ce6e6a162ff6dc84b4}{get\+Projection}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Projection. \end{DoxyCompactList}\item 
+\Hypertarget{class_sdl_camera_a69bb8924591325d9bd302b244ece8942}\label{class_sdl_camera_a69bb8924591325d9bd302b244ece8942} 
+void {\bfseries set\+Projection} (ICamera\+::\+Projection projection) override
+\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{class_sdl_camera_aa5afb72e250b62488d6df33e8b680499}{get\+Target}} () const override
+\begin{DoxyCompactList}\small\item\em Get the target. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_camera_a654cd8318ceceae621652ba004621525}{set\+Target}} (\+\_\+\+\_\+v3f\+\_\+t target) override
+\begin{DoxyCompactList}\small\item\em Set the target. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{class_sdl_camera_a05c8351efd771c7dca962d316e61df6c}{get\+Up}} () const override
+\begin{DoxyCompactList}\small\item\em Get the up vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sdl_camera_a94086203b6a232ad169d187f9558332e}{set\+Up}} (\+\_\+\+\_\+v3f\+\_\+t up) override
+\begin{DoxyCompactList}\small\item\em Set the up vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ICamera} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_camera}{ICamera} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_af460a0f126d44121fe3a4e1e3814afab}{set\+Mode}} (Mode mode)=0
+\begin{DoxyCompactList}\small\item\em Set the mode. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_a4a47bba4a97863daabe50f1bd600245d}{set\+Projection}} (Projection projection)=0
+\begin{DoxyCompactList}\small\item\em Set the Projection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sdl_camera_a7747034efc5e3e0e55a5defe817fc3e3}\label{class_sdl_camera_a7747034efc5e3e0e55a5defe817fc3e3} 
+class {\bfseries Sdl\+Window}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgraphic_1_1_i_camera_a559dbe934f065df061e9d4fd5a8d19bb}\label{classgraphic_1_1_i_camera_a559dbe934f065df061e9d4fd5a8d19bb} 
+enum {\bfseries Projection} \{ {\bfseries PERSPECTIVE}
+, {\bfseries ORTHOGRAPHIC}
+ \}
+\item 
+\Hypertarget{classgraphic_1_1_i_camera_a2ec72397f3e9f07ad246289590d9ad5d}\label{classgraphic_1_1_i_camera_a2ec72397f3e9f07ad246289590d9ad5d} 
+enum {\bfseries Mode} \{ \newline
+{\bfseries CUSTOM} = 0
+, {\bfseries FREE}
+, {\bfseries ORBITAL}
+, {\bfseries FIRST\+\_\+\+PERSON}
+, \newline
+{\bfseries THIRD\+\_\+\+PERSON}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File\+: \doxylink{_i_window_8hpp_source}{IWindow.\+hpp} Created Date\+: Fr Mar 2023 Project\+: PERRY Author\+: Perry Chouteau
+
+Last Modified\+: Fri Mar 10 2023 Modified By\+: Perry Chouteau
+
+Copyright (c) 2023-\/2033 Perry Chouteau 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sdl_camera_a169b5eefc0b5e5b1cce85a347948daa1}\index{SdlCamera@{SdlCamera}!getFov@{getFov}}
+\index{getFov@{getFov}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{getFov()}{getFov()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_a169b5eefc0b5e5b1cce85a347948daa1} 
+float Sdl\+Camera\+::get\+Fov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the FOV. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_ae547aa0df8d893f3affd2168c47c8104}{graphic\+::\+ICamera}}.
+
+\Hypertarget{class_sdl_camera_a96ef897c4e3cd8907dea31949f0d2736}\index{SdlCamera@{SdlCamera}!getMode@{getMode}}
+\index{getMode@{getMode}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_a96ef897c4e3cd8907dea31949f0d2736} 
+ICamera\+::\+Mode Sdl\+Camera\+::get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the mode. 
+
+\begin{DoxyReturn}{Returns}
+Mode 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a0959591edf9737198660a710a2c5b05d}{graphic\+::\+ICamera}}.
+
+\Hypertarget{class_sdl_camera_add69b85774af62667a63f8d8f529ac9a}\index{SdlCamera@{SdlCamera}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_add69b85774af62667a63f8d8f529ac9a} 
+\+\_\+\+\_\+v3f\+\_\+t Sdl\+Camera\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the position. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a61f352cffda9db4d7ef180a308a5afc3}{graphic\+::\+ICamera}}.
+
+\Hypertarget{class_sdl_camera_a33fd59f1783566ce6e6a162ff6dc84b4}\index{SdlCamera@{SdlCamera}!getProjection@{getProjection}}
+\index{getProjection@{getProjection}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{getProjection()}{getProjection()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_a33fd59f1783566ce6e6a162ff6dc84b4} 
+ICamera\+::\+Projection Sdl\+Camera\+::get\+Projection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Projection. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a5e1a3887d3b97ff9d3d8ed4888ab5bb0}{graphic\+::\+ICamera}}.
+
+\Hypertarget{class_sdl_camera_aa5afb72e250b62488d6df33e8b680499}\index{SdlCamera@{SdlCamera}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_aa5afb72e250b62488d6df33e8b680499} 
+\+\_\+\+\_\+v3f\+\_\+t Sdl\+Camera\+::get\+Target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the target. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a05a871222f25ad3bece5c37e463232a9}{graphic\+::\+ICamera}}.
+
+\Hypertarget{class_sdl_camera_a05c8351efd771c7dca962d316e61df6c}\index{SdlCamera@{SdlCamera}!getUp@{getUp}}
+\index{getUp@{getUp}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{getUp()}{getUp()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_a05c8351efd771c7dca962d316e61df6c} 
+\+\_\+\+\_\+v3f\+\_\+t Sdl\+Camera\+::get\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the up vector. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a3d05345df858197dd715c84314541f10}{graphic\+::\+ICamera}}.
+
+\Hypertarget{class_sdl_camera_ac2755fb30b07ffa2a973c0f3588cce93}\index{SdlCamera@{SdlCamera}!setFov@{setFov}}
+\index{setFov@{setFov}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{setFov()}{setFov()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_ac2755fb30b07ffa2a973c0f3588cce93} 
+void Sdl\+Camera\+::set\+Fov (\begin{DoxyParamCaption}\item[{float}]{fov}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the FOV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a1e5464620aa2329fd69799638a96cf6e}{graphic\+::\+ICamera}}.
+
+\Hypertarget{class_sdl_camera_a4ca762114e7814b7b8f3f3a9a6cfcb69}\index{SdlCamera@{SdlCamera}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_a4ca762114e7814b7b8f3f3a9a6cfcb69} 
+void Sdl\+Camera\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_aa10fb5fa8b569969cdafdf998bfba1b8}{graphic\+::\+ICamera}}.
+
+\Hypertarget{class_sdl_camera_a654cd8318ceceae621652ba004621525}\index{SdlCamera@{SdlCamera}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_a654cd8318ceceae621652ba004621525} 
+void Sdl\+Camera\+::set\+Target (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a46fd28a7b9f9837462eff3de8d6454a0}{graphic\+::\+ICamera}}.
+
+\Hypertarget{class_sdl_camera_a94086203b6a232ad169d187f9558332e}\index{SdlCamera@{SdlCamera}!setUp@{setUp}}
+\index{setUp@{setUp}!SdlCamera@{SdlCamera}}
+\doxysubsubsection{\texorpdfstring{setUp()}{setUp()}}
+{\footnotesize\ttfamily \label{class_sdl_camera_a94086203b6a232ad169d187f9558332e} 
+void Sdl\+Camera\+::set\+Up (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{up}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the up vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em up} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a3cf381163e3e13e119654f776a0f0c9c}{graphic\+::\+ICamera}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/window/Sdl\+Camera.\+hpp\end{DoxyCompactItemize}

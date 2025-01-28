@@ -3,11 +3,20 @@
 
 #include "Registry.hpp"
 
-class System {
-    public:
-        virtual ~System() = default;
+namespace ecs {
 
-        virtual void lambda(Registry &) = 0;
-};
+    /**
+     * @brief System class
+     * 
+     * @class System
+     */
+    class System {
+        public:
+            virtual ~System() = default;
+
+            virtual void lambda(Registry &) = 0;
+    };
+
+}
 
 #endif // SYSTEM_HPP

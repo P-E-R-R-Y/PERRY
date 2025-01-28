@@ -20,10 +20,19 @@
 #include <string>
 
 //todo make the switchlibcore use dynamicCore and not simple core to auto define simple function;
+/**
+ * @brief Use to dynamicaly load Any shared library
+ * 
+ */
 class InfoSharedLoader {
     public:
         using Params = std::string;
 
+        /**
+         * @brief Construct a new Info Shared Loader object with every symbols from the shared library
+         * 
+         * @param file 
+         */
         InfoSharedLoader(std::string file): dl(file) {
             if (!dl.isReady()) {
                 std::cerr << "Failed to retrieve " << file << " info." << std::endl;
@@ -37,6 +46,10 @@ class InfoSharedLoader {
             getName = reinterpret_cast<const char *(*)()>(dl.findSymbol("getName"));
             std::cout << "Constructor>> " << file << std::endl;
         }
+
+        /**
+         * @brief Destroy the Info Shared Loader object
+         */
         ~InfoSharedLoader() = default;
 
         /**

@@ -1,0 +1,139 @@
+\doxysection{Ray\+Window.\+hpp}
+\hypertarget{_ray_window_8hpp_source}{}\label{_ray_window_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/window/RayWindow.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/window/RayWindow.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ RAYWINDOW\_HPP\_}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ RAYWINDOW\_HPP\_}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//Raylib}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <raylib.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}../../../../interfaces/graphic/window/IWindow.hpp"{}}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//encapsulation}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}../graphic/RayPolygon.hpp"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}../graphic/RaySprite.hpp"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}../graphic/RayModel.hpp"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}RayCamera.hpp"{}}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceraylib}{raylib}}\ \{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{class\ }RayWindow\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ \{}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ RayWindow(\_\_int32\_t\ screenWidth,\ \_\_int32\_t\ screenHeight,\ std::string\ title)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ InitWindow(screenWidth,\ screenHeight,\ title.c\_str());}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ SetWindowState(FLAG\_WINDOW\_RESIZABLE);}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ SetWindowMinSize(800,\ 600);}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ SetWindowMaxSize(1920,\ 1080);}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \string~RayWindow()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//GLOBAL}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a048a279de887a3d2873e2d067c91c96c}{isOpen}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !WindowShouldClose();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_adc25e46a176f1eda2c5220cc6d40f754}{close}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CloseWindow();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//EVENT}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_abb0d86563c25745db1e67606bf9a90da}{linkEvent}}(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_window_adefe97d3ac524f07d47e1bfcd229330e}{pollEvent}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ firstCall\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}firstCall"{}}\ <<\ firstCall\ <<\ std::endl;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ firstCall\ =\ !firstCall;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !firstCall;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_ae7b187eeb9ab665c1c8e3d0a8d7308f4}{eventClose}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//TIME}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a2b02794ed97f6126669175f1828423f9}{setFrameLimit}}(\_\_int32\_t\ limit)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetTargetFPS(limit);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_int32\_t\ \mbox{\hyperlink{classraylib_1_1_ray_window_a2f85ab2f4642ce4ddf15a94215969a74}{getDelta}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\_\_int32\_t\textcolor{keyword}{>}(GetFrameTime()\ *\ 1000);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//2D}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a77b1f26e5ab2656c67cc7e1aefcf2103}{beginDraw}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BeginDrawing();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ClearBackground(BLACK);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a6adf82a47418e81a4851003578ef1185}{endDraw}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EndDrawing();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a1b8aafa614583ebc559702e2dbec79a6}{drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a071921a5c86e103041d9870ac2861075}{drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//3D}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Draw3\ (Carve)}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a49bb159d72dcc5a455e5a9b280a8ed54}{beginMode3}}(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a8a9a46baae5e9d5aae659b395ab6a12f}{drawModel}}(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_adeb41560b4af0a892a01337e69d41058}{endMode3}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00101\ \ \ \ \ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//2D}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a1b8aafa614583ebc559702e2dbec79a6}{RayWindow::drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classraylib_1_1_ray_polygon}{RayPolygon}}\ *rayPolygon\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classraylib_1_1_ray_polygon}{RayPolygon}}\ *\textcolor{keyword}{>}(polygon);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ std::vector<graphic::triangle\_t>\ triangles\ =\ rayPolygon-\/>\_triangles;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}StartDraw"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ triangles.size();\ i++)\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//raylib\ ask\ for\ counter\ clockwise\ it's\ why\ I\ reverse\ the\ order}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ DrawTriangle(\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].C.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].C.y)\},}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].B.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].B.y)\},}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].A.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].A.y)\},}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Color\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(rand()\%255),\ 0,\ 0,\ 255\});}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}EndDraw"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00117\ \ \ \ \ \};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a071921a5c86e103041d9870ac2861075}{RayWindow::drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite)\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classraylib_1_1_ray_sprite}{RaySprite}}\ *raysprite\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classraylib_1_1_ray_sprite}{RaySprite}}\ *\textcolor{keyword}{>}(sprite);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ Rectangle\ posSize\ =\ \{float(raysprite-\/>\mbox{\hyperlink{classraylib_1_1_ray_sprite_a52e6edf2f1b49eb3235ed321ef37f865}{getPosition}}().x),\ float(raysprite-\/>\mbox{\hyperlink{classraylib_1_1_ray_sprite_a52e6edf2f1b49eb3235ed321ef37f865}{getPosition}}().y),}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ float(raysprite-\/>\mbox{\hyperlink{classraylib_1_1_ray_sprite_a29e6daccdd71c9ca47fc1fc6e3e2ae20}{getSize}}().x),\ float(raysprite-\/>\mbox{\hyperlink{classraylib_1_1_ray_sprite_a29e6daccdd71c9ca47fc1fc6e3e2ae20}{getSize}}().y)\ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ DrawTexturePro(raysprite-\/>\_texture,\ raysprite-\/>\_crop,\ posSize,\ \{0,0\},\ raysprite-\/>\_rotation,\ WHITE);}
+\DoxyCodeLine{00125\ \ \ \ \ \};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//3D}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a49bb159d72dcc5a455e5a9b280a8ed54}{RayWindow::beginMode3}}(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera)\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classraylib_1_1_ray_camera}{RayCamera}}\ *raycamera\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classraylib_1_1_ray_camera}{RayCamera}}\ *\textcolor{keyword}{>}(camera);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ BeginMode3D(raycamera-\/>\_camera);}
+\DoxyCodeLine{00133\ \ \ \ \ \};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_a8a9a46baae5e9d5aae659b395ab6a12f}{RayWindow::drawModel}}(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model)\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classraylib_1_1_ray_model}{RayModel}}\ *raymodel\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classraylib_1_1_ray_model}{RayModel}}\ *\textcolor{keyword}{>}(model);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ DrawCubeV(raymodel-\/>\_position,\ raymodel-\/>\_size,\ RED);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ DrawCubeWiresV(raymodel-\/>\_position,\ raymodel-\/>\_size,\ BLACK);}
+\DoxyCodeLine{00140\ \ \ \ \ \};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_window_adeb41560b4af0a892a01337e69d41058}{RayWindow::endMode3}}()\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ EndMode3D();}
+\DoxyCodeLine{00144\ \ \ \ \ \};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \}\ \textcolor{comment}{//\ namespace\ ray}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !RAYWINDOW\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

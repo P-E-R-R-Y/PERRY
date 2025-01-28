@@ -1,0 +1,195 @@
+\doxysection{Sfml\+Window.\+hpp}
+\hypertarget{_sfml_window_8hpp_source}{}\label{_sfml_window_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/SfmlWindow.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/SfmlWindow.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ SFMLWINDOW\_HPP\_}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ SFMLWINDOW\_HPP\_}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <SFML/Window.hpp>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <SFML/Audio.hpp>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <SFML/Network.hpp>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}../../../../interfaces/graphic/window/IWindow.hpp"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}../../../../libraries/maths/geometry.hpp"{}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{//graphic}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}../graphic/SfmlPolygon.hpp"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}../graphic/SfmlSprite.hpp"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}../graphic/SfmlModel.hpp"{}}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//event}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}../event/SfmlEvent.hpp"{}}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//window}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}SfmlCamera.hpp"{}}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//sf::vector3f\ to\ std::array<double,\ 3>}}
+\DoxyCodeLine{00045\ std::array<double,\ 3>\ v3toa3(sf::Vector3f\ point)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(point.x),}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(point.y),}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(point.z)\};}
+\DoxyCodeLine{00049\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }SfmlWindow\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ SfmlWindow(\_\_int32\_t\ screenWidth,\ \_\_int32\_t\ screenHeight,\ std::string\ title)}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ :\ \_window(sf::VideoMode(screenWidth,\ screenHeight),\ title),\ \_event(\textcolor{keyword}{nullptr}),\ \_deltaClock()\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \string~SfmlWindow()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//EVENT}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_acf62f02f63e55c1416671d224897e576}{linkEvent}}(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \_event\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sfml_event}{SfmlEvent}}\ *\textcolor{keyword}{>}(event);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//GLOBAL}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sfml_window_a4bc70711286f774951a94fb931a7cccb}{isOpen}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_window.isOpen();}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_a67bf5ca3f1e8ae018deea07ea57a24cb}{close}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \_window.close();}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//TIME}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_afba623299ffbaf990f5ddff3a8242c0e}{setFrameLimit}}(\_\_int32\_t\ limit)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \_window.setFramerateLimit(limit);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \_\_int32\_t\ \mbox{\hyperlink{class_sfml_window_af6ec8bc5848f2028d54dc04e8bca1751}{getDelta}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\_\_int32\_t\textcolor{keyword}{>}(\_deltaTime.asMilliseconds());}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//DRAW}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_a4117ec121b2c8df9637d816240b52a3b}{beginDraw}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \_window.clear();}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_ad410b78abbed2711df65fc02151bb442}{drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_a82469fd2fc0296594bb4aee76243b1cd}{drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_a98b1ec88cfc0a22b8360dc816741ad64}{endDraw}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \_window.display();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \_deltaTime\ =\ \_deltaClock.restart();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Draw3\ (Carve)}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_ae5f1dcb0a9be6bea099ab239cf91c20b}{beginMode3}}(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *cam)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_camera\ ==\ \textcolor{keyword}{nullptr}\ \&\&\ cam\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_camera\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sfml_camera}{SfmlCamera}}\ *\textcolor{keyword}{>}(cam);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_ae39bda4673d9da3bc8c829af9205a20f}{drawPoint}}(\textcolor{keyword}{const}\ sf::Vector3f\&\ point)\ \{}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ relativePosition\ =\ point\ -\/\ \_camera-\/>\_position;}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}relativePosition:\ "{}}\ <<\ relativePosition.x\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ relativePosition.y\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ relativePosition.z\ <<\ std::endl;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ relativeRotatedPosition\ =\ \_camera-\/>\_quaternion.conjugate().rotate(relativePosition);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (relativeRotatedPosition.z\ >=\ 0)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//skip\ drawing\ points\ that\ are\ behind\ the\ camera}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Don't\ need\ to\ move\ the\ object\ back\ to\ its\ original\ position\ because\ the\ camera\ is\ the\ origin\ for\ perspective\ projection}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ rotatedPosition\ =\ relativeRotatedPosition;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}points:\ "{}}\ <<\ rotatedPosition.x\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ rotatedPosition.y\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ rotatedPosition.z\ <<\ std::endl;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ screen\ =\ \_window.getView().getSize();}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_matrice}{Matrice<float>}}\ projection\ =\ perspectiveProjection<float>(\_camera-\/>\_fov,\ screen.x\ /\ screen.y);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_matrice}{Matrice<float>}}\ vtom\ =\ \mbox{\hyperlink{class_matrice}{Matrice<float>}}(\{\{rotatedPosition.x\},\ \{rotatedPosition.y\},\ \{rotatedPosition.z\},\ \{1.f\}\});}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_matrice}{Matrice<float>}}\ res\ =\ projection\ *\ vtom;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\_ndc\ =\ res(0,\ 0)\ /\ res(3,\ 0);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\_ndc\ =\ res(1,\ 0)\ /\ res(3,\ 0);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\_ndc\ <\ -\/1\ ||\ x\_ndc\ >\ 1\ ||\ y\_ndc\ <\ -\/1\ ||\ y\_ndc\ >\ 1)\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//skip\ drawing\ points\ that\ are\ outside\ the\ screen}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//NDC\ to\ screen\ coordinates}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ screenX\ =\ (x\_ndc\ +\ 1.0f)\ *\ 0.5f\ *\ screen.x;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ screenY\ =\ (1.0f\ -\/\ y\_ndc)\ *\ 0.5f\ *\ screen.y;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ point}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ sf::CircleShape\ circle(1);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ circle.setPosition(screenX,\ screenY);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ circle.setFillColor(sf::Color::White);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ circle.setOutlineColor(sf::Color::White);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ circle.setOutlineThickness(1);}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \_window.draw(circle);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_a3f211071e81f033d1a48ae8aada09182}{drawModel}}(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_camera\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}begginMode3d\ not\ called"{}});}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sfml_model}{SfmlModel}}\ *sfmlModel\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sfml_model}{SfmlModel}}\ *\textcolor{keyword}{>}(model);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (sf::Vector3f\ point\ :\ sfmlModel-\/>vertices)\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}>>>"{}}\ <<\ point.x\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ point.y\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ point.z\ <<\ std::endl;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sfml_window_ae39bda4673d9da3bc8c829af9205a20f}{drawPoint}}(point);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_a6cf2d05732e578608f60cdbdc944cf79}{endMode3}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{comment}{//EVENT}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sfml_window_af5dab2c2f96830b6a0926de4e1ef57a6}{pollEvent}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_window.pollEvent(\_event-\/>\_event);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_abe5637e4298c08ee8dd7fd5277b62c48}{eventClose}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_event-\/>\_event.type\ ==\ sf::Event::Closed\ ||\ sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_window.close();}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ sf::RenderWindow\ \_window;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sfml_event}{SfmlEvent}}\ *\_event;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sfml_camera}{SfmlCamera}}\ *\_camera;}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{comment}{//time}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ sf::Clock\ \_deltaClock;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ sf::Time\ \_deltaTime;}
+\DoxyCodeLine{00182\ \};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_ad410b78abbed2711df65fc02151bb442}{SfmlWindow::drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon)\ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \mbox{\hyperlink{class_sfml_polygon}{SfmlPolygon}}\ *sfmlPolygon\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sfml_polygon}{SfmlPolygon}}\ *\textcolor{keyword}{>}(polygon);}
+\DoxyCodeLine{00186\ \ \ \ \ std::vector<graphic::triangle\_t>\ triangles\ =\ sfmlPolygon-\/>\_triangles;}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}StartDraw"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ triangles.size();\ i++)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ sf::ConvexShape\ cpolygon;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ cpolygon.setPointCount(3);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ cpolygon.setPoint(0,\ sf::Vector2f(triangles[i].A.x,\ triangles[i].A.y));}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ cpolygon.setPoint(1,\ sf::Vector2f(triangles[i].B.x,\ triangles[i].B.y));}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ cpolygon.setPoint(2,\ sf::Vector2f(triangles[i].C.x,\ triangles[i].C.y));}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ cpolygon.setFillColor(sf::Color\{\textcolor{keyword}{static\_cast<}sf::Uint8\textcolor{keyword}{>}(rand()\%255),\ 0,\ 0,\ 255\});}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ cpolygon.setPosition(0,\ 0);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \_window.draw(cpolygon);}
+\DoxyCodeLine{00199\ \ \ \ \ \}}
+\DoxyCodeLine{00200\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}EndDraw"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00201\ \};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_window_a82469fd2fc0296594bb4aee76243b1cd}{SfmlWindow::drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite)\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \mbox{\hyperlink{class_sfml_sprite}{SfmlSprite}}\ *sfmlsprite\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sfml_sprite}{SfmlSprite}}\ *\textcolor{keyword}{>}(sprite);}
+\DoxyCodeLine{00205\ \ \ \ \ \_window.draw(sfmlsprite-\/>\_sprite);}
+\DoxyCodeLine{00206\ \};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SFMLWINDOW\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

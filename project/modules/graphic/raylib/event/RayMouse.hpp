@@ -2,7 +2,7 @@
  * @ Author: Perry Chouteau
  * @ Create Time: 2024-05-10 19:59:08
  * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-11-11 12:49:03
+ * @ Modified time: 2025-01-28 02:05:53
  * @ Description: Raylib Encapsulation for IMouse
  */
 
@@ -16,42 +16,49 @@
 //Raylib
 #include <raylib.h>
 
-class RayMouse : public graphic::IMouse {
+namespace raylib {
 
-    public:
-        RayMouse(graphic::IEvent *event) {
-        }
+    /**
+     * @brief Raylib Mouse class
+     */
+    class RayMouse : public graphic::IMouse {
 
-        ~RayMouse() {
-        }
+        public:
+            RayMouse(graphic::IEvent *event) {
+            }
 
-        bool isButtonPressed(Buttons key) const override {
-            return IsMouseButtonPressed(key);
-        }
-        bool isButtonDown(Buttons key) const override {
-            return IsMouseButtonDown(key);
-        }
-        bool isButtonReleased(Buttons key) const override {
-            return IsMouseButtonReleased(key);
-        }
-        bool isButtonUp(Buttons key) const override {
-            return IsMouseButtonUp(key);
-        }
-        
-        __v2f_t getPosition() const override {
-            return {float(GetMouseX()), float(GetMouseY())};
-        }
-        void setPosition(__v2f_t position) override {
-            SetMousePosition(int(position.x), int(position.y));
-        }
+            ~RayMouse() {
+            }
 
-        float GetMouseWheelMove() const override {
-            return GetMouseWheelMove();
-        }
+            bool isButtonPressed(Buttons key) const override {
+                return IsMouseButtonPressed(key);
+            }
+            bool isButtonDown(Buttons key) const override {
+                return IsMouseButtonDown(key);
+            }
+            bool isButtonReleased(Buttons key) const override {
+                return IsMouseButtonReleased(key);
+            }
+            bool isButtonUp(Buttons key) const override {
+                return IsMouseButtonUp(key);
+            }
+            
+            __v2f_t getPosition() const override {
+                return {float(GetMouseX()), float(GetMouseY())};
+            }
+            void setPosition(__v2f_t position) override {
+                SetMousePosition(int(position.x), int(position.y));
+            }
 
-        void update() override {};
+            float GetMouseWheelMove() const override {
+                return GetMouseWheelMove();
+            }
 
-    private:
-};
+            void update() override {};
+
+        private:
+    };
+
+} // namespace ray
 
 #endif /* !RAYMOUSE_HPP_ */

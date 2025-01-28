@@ -1,0 +1,99 @@
+\doxysection{Registry\+\_\+impl.\+hpp}
+\hypertarget{_registry__impl_8hpp_source}{}\label{_registry__impl_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/core/ecs/Registry\_impl.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/core/ecs/Registry\_impl.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ REGISTRY\_IMPL\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ REGISTRY\_IMPL\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_registry_8hpp}{Registry.hpp}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_entity_8hpp}{Entity.hpp}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sparse_array_8hpp}{SparseArray.hpp}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}System.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceecs}{ecs}}\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Component>}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classecs_1_1_sparse_array}{SparseArray<Component>}}\ \&\mbox{\hyperlink{classecs_1_1_registry_a8ae60d5b07b673167b3bdcf4dd36c627}{Registry::registerComponent}}()\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ componentsArrays[std::type\_index(\textcolor{keyword}{typeid}(\mbox{\hyperlink{class_component}{Component}}))]\ =\ std::make\_any<SparseArray<Component>>();}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ componentsRemoves.push\_back([]\ (\mbox{\hyperlink{classecs_1_1_registry}{Registry}}\ \&r,\ \mbox{\hyperlink{classecs_1_1_entity}{Entity}}\ \textcolor{keyword}{const}\ \&e)\ \{\ r.\mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents}}<\mbox{\hyperlink{class_component}{Component}}>().erase(e.\_idx);\ \}\ );}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::any\_cast<SparseArray<Component>\ \&>(componentsArrays[std::type\_index(\textcolor{keyword}{typeid}(\mbox{\hyperlink{class_component}{Component}}))]);}
+\DoxyCodeLine{00017\ \ \ \ \ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class\ }...\ Components>}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_registry_a85267c79d43567eb563452e47802b306}{Registry::registerComponents}}()\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{classecs_1_1_registry_a8ae60d5b07b673167b3bdcf4dd36c627}{registerComponent<Components>}}(),\ ...);}
+\DoxyCodeLine{00022\ \ \ \ \ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Tuple>}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_registry_acf03f85797c2d65adfbe11638bd8589a}{Registry::registerComponentsByExtraction}}()\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(\mbox{\hyperlink{structecs_1_1_registry_1_1is__tuple}{is\_tuple<Tuple>::value}},\ \textcolor{stringliteral}{"{}Extraction\ must\ a\ std::tuple\ of\ Components."{}});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::apply([\textcolor{keyword}{this}](\textcolor{keyword}{auto}\ ...\ components)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classecs_1_1_registry_a85267c79d43567eb563452e47802b306}{registerComponents}}<std::decay\_t<\textcolor{keyword}{decltype}(components)>...>();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \},\ Tuple\{\});}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Component>}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classecs_1_1_sparse_array}{SparseArray<Component>}}\ \&\mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{Registry::getComponents}}()\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::any\_cast<SparseArray<Component>\ \&>(componentsArrays[std::type\_index(\textcolor{keyword}{typeid}(\mbox{\hyperlink{class_component}{Component}}))]);\ \textcolor{comment}{//}}
+\DoxyCodeLine{00035\ \ \ \ \ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Component>}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classecs_1_1_sparse_array}{SparseArray<Component>}}\ \&\mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{Registry::getComponents}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::any\_cast<SparseArray<Component>\ \&>(componentsArrays.at(std::type\_index(\textcolor{keyword}{typeid}(\mbox{\hyperlink{class_component}{Component}}))));}
+\DoxyCodeLine{00040\ \ \ \ \ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Component>}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{typename}\ SparseArray<Component>::reference\_type\ \mbox{\hyperlink{classecs_1_1_registry_a8e797453b35215930781240c41bdd828}{Registry::addComponent}}(\mbox{\hyperlink{classecs_1_1_entity}{Entity}}\ \textcolor{keyword}{const}\ \&to,\ \mbox{\hyperlink{class_component}{Component}}\ \&\&c)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents<Component>}}().emplaceAt(to.\_idx,\ c);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents<Component>}}()[to.\_idx];}
+\DoxyCodeLine{00046\ \ \ \ \ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ \mbox{\hyperlink{class_component}{Component}},\ \textcolor{keyword}{typename}\ ...\ Params>}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{typename}\ SparseArray\ <Component>::reference\_type\ \mbox{\hyperlink{classecs_1_1_registry_a80f912dbc29509aea730b6195bf671b8}{Registry::emplaceComponent}}(\mbox{\hyperlink{classecs_1_1_entity}{Entity}}\ \textcolor{keyword}{const}\ \&to,\ Params\ \&\&...\ p)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents<Component>}}().emplaceAt(to.\_idx,\ p...);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents<Component>}}()[to.\_idx];}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Component>}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_registry_a99a1b5411ada253846bff2ced94e4f95}{Registry::removeComponent}}(\mbox{\hyperlink{classecs_1_1_entity}{Entity}}\ \textcolor{keyword}{const}\ \&from)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents<Component>}}().erase(from.\_idx);}
+\DoxyCodeLine{00057\ \ \ \ \ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classecs_1_1_registry_a410688619405dfd148c17e09346324aa}{Registry::addSystem}}(Args\&\&...\ args)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<System,\ T>::value,\ \textcolor{stringliteral}{"{}T\ must\ derive\ from\ System"{}});}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ systems[std::type\_index(\textcolor{keyword}{typeid}(T))]\ =\ std::make\_unique<T>(std::forward<Args>(args)...);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ systems.size();}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classecs_1_1_registry_a410688619405dfd148c17e09346324aa}{Registry::addSystem}}(std::unique\_ptr<T>\ existingSystem)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<System,\ T>::value,\ \textcolor{stringliteral}{"{}T\ must\ derive\ from\ System"{}});}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ systems[std::type\_index(\textcolor{keyword}{typeid}(T))]\ =\ std::move(existingSystem);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ systems.size();}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_registry_a05a9ad3d377d1f0b731e112245ac165c}{Registry::removeSystem}}()\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ type\ =\ std::type\_index(\textcolor{keyword}{typeid}(T));}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ systems.erase(type);}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_registry_accd1d0b1eecbcd3d7280d1ad497c4019}{Registry::callSystem}}()\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ systems[std::type\_index(\textcolor{keyword}{typeid}(T))]-\/>lambda(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classecs_1_1_registry_a491406d0af5f7d0d751aa71b78f2da5e}{Registry::callSystems}}()\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [type,\ system]\ :\ systems)\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ system-\/>lambda(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REGISTRY\_IMPL\_HPP}}
+
+\end{DoxyCode}

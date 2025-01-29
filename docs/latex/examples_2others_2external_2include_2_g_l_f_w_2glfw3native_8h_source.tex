@@ -1,0 +1,189 @@
+\doxysection{glfw3native.\+h}
+\hypertarget{examples_2others_2external_2include_2_g_l_f_w_2glfw3native_8h_source}{}\label{examples_2others_2external_2include_2_g_l_f_w_2glfw3native_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/examples/others/external/include/GLFW/glfw3native.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/examples/others/external/include/GLFW/glfw3native.h}}
+\mbox{\hyperlink{examples_2others_2external_2include_2_g_l_f_w_2glfw3native_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ GLFW\ 3.3\ -\/\ www.glfw.org}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ A\ library\ for\ OpenGL,\ window\ and\ input}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2002-\/2006\ Marcus\ Geelnard}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2006-\/2018\ Camilla\ Löwy\ <elmindreda@glfw.org>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ warranty.\ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ \ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ \ \ \ be\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ \ \ \ distribution.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *************************************************************************/}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifndef\ \_glfw3\_native\_h\_}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ \_glfw3\_native\_h\_}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ *\ Doxygen\ documentation}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ *************************************************************************/}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ *\ System\ headers\ and\ types}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ *************************************************************************/}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#if\ !defined(GLFW\_NATIVE\_INCLUDE\_NONE)}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\ \#if\ defined(GLFW\_EXPOSE\_NATIVE\_WIN32)\ ||\ defined(GLFW\_EXPOSE\_NATIVE\_WGL)}}
+\DoxyCodeLine{00097\ \ \ \textcolor{comment}{/*\ This\ is\ a\ workaround\ for\ the\ fact\ that\ glfw3.h\ needs\ to\ export\ APIENTRY\ (for}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ \ \ *\ example\ to\ allow\ applications\ to\ correctly\ declare\ a\ GL\_KHR\_debug\ callback)}}
+\DoxyCodeLine{00099\ \textcolor{comment}{\ \ \ *\ but\ windows.h\ assumes\ no\ one\ will\ define\ APIENTRY\ before\ it\ does}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ \#if\ defined(GLFW\_APIENTRY\_DEFINED)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ \ \#undef\ APIENTRY}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \#undef\ GLFW\_APIENTRY\_DEFINED}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \#include\ <windows.h>}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\ \#elif\ defined(GLFW\_EXPOSE\_NATIVE\_COCOA)\ ||\ defined(GLFW\_EXPOSE\_NATIVE\_NSGL)}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ \#if\ defined(\_\_OBJC\_\_)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\ \ \ \#import\ <Cocoa/Cocoa.h>}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\ \ \#else}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\ \ \ \#include\ <ApplicationServices/ApplicationServices.h>}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\ \ \ \#include\ <objc/objc.h>}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\ \#elif\ defined(GLFW\_EXPOSE\_NATIVE\_X11)\ ||\ defined(GLFW\_EXPOSE\_NATIVE\_GLX)}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\ \ \#include\ <X11/Xlib.h>}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\ \ \#include\ <X11/extensions/Xrandr.h>}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\ \#elif\ defined(GLFW\_EXPOSE\_NATIVE\_WAYLAND)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \#include\ <wayland-\/client.h>}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\ \#endif}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\ \#if\ defined(GLFW\_EXPOSE\_NATIVE\_WGL)}}
+\DoxyCodeLine{00121\ \ \ \textcolor{comment}{/*\ WGL\ is\ declared\ by\ windows.h\ */}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\ \#endif}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\ \#if\ defined(GLFW\_EXPOSE\_NATIVE\_NSGL)}}
+\DoxyCodeLine{00124\ \ \ \textcolor{comment}{/*\ NSGL\ is\ declared\ by\ Cocoa.h\ */}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\ \#endif}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\ \#if\ defined(GLFW\_EXPOSE\_NATIVE\_GLX)}}
+\DoxyCodeLine{00127\ \ \ \textcolor{comment}{/*\ This\ is\ a\ workaround\ for\ the\ fact\ that\ glfw3.h\ defines\ GLAPIENTRY\ because\ by}}
+\DoxyCodeLine{00128\ \textcolor{comment}{\ \ \ *\ default\ it\ also\ acts\ as\ an\ OpenGL\ header}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ \ \ *\ However,\ glx.h\ will\ include\ gl.h,\ which\ will\ define\ it\ unconditionally}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\ \ \#if\ defined(GLFW\_GLAPIENTRY\_DEFINED)}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\ \ \ \#undef\ GLAPIENTRY}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ \ \#undef\ GLFW\_GLAPIENTRY\_DEFINED}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\ \ \#include\ <GL/glx.h>}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \#endif}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\ \#if\ defined(GLFW\_EXPOSE\_NATIVE\_EGL)}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\ \ \#include\ <EGL/egl.h>}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \#endif}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \#if\ defined(GLFW\_EXPOSE\_NATIVE\_OSMESA)}}
+\DoxyCodeLine{00141\ \ \ \textcolor{comment}{/*\ This\ is\ a\ workaround\ for\ the\ fact\ that\ glfw3.h\ defines\ GLAPIENTRY\ because\ by}}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ \ \ *\ default\ it\ also\ acts\ as\ an\ OpenGL\ header}}
+\DoxyCodeLine{00143\ \textcolor{comment}{\ \ \ *\ However,\ osmesa.h\ will\ include\ gl.h,\ which\ will\ define\ it\ unconditionally}}
+\DoxyCodeLine{00144\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \#if\ defined(GLFW\_GLAPIENTRY\_DEFINED)}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\ \ \ \#undef\ GLAPIENTRY}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\ \ \ \#undef\ GLFW\_GLAPIENTRY\_DEFINED}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\ \ \#include\ <GL/osmesa.h>}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\ \#endif}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*GLFW\_NATIVE\_INCLUDE\_NONE*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{comment}{/*************************************************************************}}
+\DoxyCodeLine{00156\ \textcolor{comment}{\ *\ Functions}}
+\DoxyCodeLine{00157\ \textcolor{comment}{\ *************************************************************************/}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#if\ defined(GLFW\_EXPOSE\_NATIVE\_WIN32)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00175\ GLFWAPI\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ glfwGetWin32Adapter(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ monitor);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00192\ GLFWAPI\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ glfwGetWin32Monitor(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ monitor);}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00216\ GLFWAPI\ HWND\ glfwGetWin32Window(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#if\ defined(GLFW\_EXPOSE\_NATIVE\_WGL)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00243\ GLFWAPI\ HGLRC\ glfwGetWGLContext(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\#if\ defined(GLFW\_EXPOSE\_NATIVE\_COCOA)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00261\ GLFWAPI\ CGDirectDisplayID\ glfwGetCocoaMonitor(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ monitor);}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00277\ GLFWAPI\ \textcolor{keywordtype}{id}\ glfwGetCocoaWindow(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00278\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \textcolor{preprocessor}{\#if\ defined(GLFW\_EXPOSE\_NATIVE\_NSGL)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00296\ GLFWAPI\ \textcolor{keywordtype}{id}\ glfwGetNSGLContext(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00297\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \textcolor{preprocessor}{\#if\ defined(GLFW\_EXPOSE\_NATIVE\_X11)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00314\ GLFWAPI\ Display*\ glfwGetX11Display(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00330\ GLFWAPI\ RRCrtc\ glfwGetX11Adapter(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ monitor);}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00346\ GLFWAPI\ RROutput\ glfwGetX11Monitor(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ monitor);}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00362\ GLFWAPI\ Window\ glfwGetX11Window(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00384\ GLFWAPI\ \textcolor{keywordtype}{void}\ glfwSetX11SelectionString(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keywordtype}{string});}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00412\ GLFWAPI\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ glfwGetX11SelectionString(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00413\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ \textcolor{preprocessor}{\#if\ defined(GLFW\_EXPOSE\_NATIVE\_GLX)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00431\ GLFWAPI\ GLXContext\ glfwGetGLXContext(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00432\ }
+\DoxyCodeLine{00448\ GLFWAPI\ GLXWindow\ glfwGetGLXWindow(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00449\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00450\ }
+\DoxyCodeLine{00451\ \textcolor{preprocessor}{\#if\ defined(GLFW\_EXPOSE\_NATIVE\_WAYLAND)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00466\ GLFWAPI\ \textcolor{keyword}{struct\ }wl\_display*\ glfwGetWaylandDisplay(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00482\ GLFWAPI\ \textcolor{keyword}{struct\ }wl\_output*\ glfwGetWaylandMonitor(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ monitor);}
+\DoxyCodeLine{00483\ }
+\DoxyCodeLine{00498\ GLFWAPI\ \textcolor{keyword}{struct\ }wl\_surface*\ glfwGetWaylandWindow(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00499\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00501\ \textcolor{preprocessor}{\#if\ defined(GLFW\_EXPOSE\_NATIVE\_EGL)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00519\ GLFWAPI\ EGLDisplay\ glfwGetEGLDisplay(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00520\ }
+\DoxyCodeLine{00536\ GLFWAPI\ EGLContext\ glfwGetEGLContext(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00537\ }
+\DoxyCodeLine{00553\ GLFWAPI\ EGLSurface\ glfwGetEGLSurface(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00554\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00555\ }
+\DoxyCodeLine{00556\ \textcolor{preprocessor}{\#if\ defined(GLFW\_EXPOSE\_NATIVE\_OSMESA)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00579\ GLFWAPI\ \textcolor{keywordtype}{int}\ glfwGetOSMesaColorBuffer(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ width,\ \textcolor{keywordtype}{int}*\ height,\ \textcolor{keywordtype}{int}*\ format,\ \textcolor{keywordtype}{void}**\ \mbox{\hyperlink{structbuffer}{buffer}});}
+\DoxyCodeLine{00580\ }
+\DoxyCodeLine{00603\ GLFWAPI\ \textcolor{keywordtype}{int}\ glfwGetOSMesaDepthBuffer(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ width,\ \textcolor{keywordtype}{int}*\ height,\ \textcolor{keywordtype}{int}*\ bytesPerValue,\ \textcolor{keywordtype}{void}**\ \mbox{\hyperlink{structbuffer}{buffer}});}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00620\ GLFWAPI\ OSMesaContext\ glfwGetOSMesaContext(\mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window);}
+\DoxyCodeLine{00621\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00622\ }
+\DoxyCodeLine{00623\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00624\ \}}
+\DoxyCodeLine{00625\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00626\ }
+\DoxyCodeLine{00627\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_glfw3\_native\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00628\ }
+
+\end{DoxyCode}

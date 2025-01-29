@@ -1,3 +1,14 @@
+/**
+ * @file Component.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup user
+ * @{
+ */
+
 #ifndef COMPONENT_HPP_
     #define COMPONENT_HPP_
     

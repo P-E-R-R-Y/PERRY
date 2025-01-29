@@ -1,0 +1,1771 @@
+\doxysubsection{SFML}
+\hypertarget{group___s_f_m_l}{}\label{group___s_f_m_l}\index{SFML@{SFML}}
+\doxysubsubsubsection*{Topics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__sfml__extra}{extra}}
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_sfml_event}{Sfml\+Event}}
+\item 
+class \mbox{\hyperlink{class_sfml_keyboard}{Sfml\+Keyboard}}
+\item 
+class \mbox{\hyperlink{class_sfml_mouse}{Sfml\+Mouse}}
+\item 
+class \mbox{\hyperlink{class_sfml_model}{Sfml\+Model}}
+\begin{DoxyCompactList}\small\item\em Sfml Model class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_sfml_polygon}{Sfml\+Polygon}}
+\begin{DoxyCompactList}\small\item\em allow use to draw polygons \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_sfml_sprite}{Sfml\+Sprite}}
+\begin{DoxyCompactList}\small\item\em Used to handle images. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_quaternion}{Quaternion}}
+\begin{DoxyCompactList}\small\item\em quaternion are four-\/dimensional vector that can be used to represent rotations in 3D space. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_sfml_camera}{Sfml\+Camera}}
+\item 
+class \mbox{\hyperlink{class_sfml_window}{Sfml\+Window}}
+\begin{DoxyCompactList}\small\item\em define sfml window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___s_f_m_l_ga38aa15809926ae556fe885920011fc8d}\label{group___s_f_m_l_ga38aa15809926ae556fe885920011fc8d} 
+{\bfseries Sfml\+Keyboard\+::\+Sfml\+Keyboard} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} $>$ \mbox{\hyperlink{group___s_f_m_l_gabf6df290e75ecb2e538845dcf3643d73}{Sfml\+Keyboard\+::which\+Key}} () const override
+\begin{DoxyCompactList}\small\item\em Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it\textquotesingle{}s not recommended to use this function in a loop, use \doxylink{group___s_f_m_l_ga92ad7947c3f90cb08a340568190845e0}{is\+Key\+Pressed()} instead. it\textquotesingle{}s efficient for key detection \& binding. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_ga92ad7947c3f90cb08a340568190845e0}{Sfml\+Keyboard\+::is\+Key\+Pressed}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_ga8bd9add9397f7d0d753538d2570d282f}{Sfml\+Keyboard\+::is\+Key\+Down}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is down. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_ga0912fa8cce798bd65acd7afda66f1461}{Sfml\+Keyboard\+::is\+Key\+Released}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is released. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_gaf955588917011f16f63e0530ff4b6b6b}{Sfml\+Keyboard\+::is\+Key\+Up}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga025eacd7df470b64542db212a21d1860}{Sfml\+Keyboard\+::update}} () override
+\begin{DoxyCompactList}\small\item\em Update the keyboard. \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga76d68bad1953cb3707963b784510a1f6}\label{group___s_f_m_l_ga76d68bad1953cb3707963b784510a1f6} 
+{\bfseries Sfml\+Mouse\+::\+Sfml\+Mouse} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\item 
+bool \mbox{\hyperlink{group___s_f_m_l_ga5b9a63574efc220ec963df1f312b78fd}{Sfml\+Mouse\+::is\+Button\+Pressed}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is pressed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_ga8525563a7db58d7674fbc8867cf90249}{Sfml\+Mouse\+::is\+Button\+Down}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is down \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_gac29f9ce04fa6821c39ee64aba7a072e0}{Sfml\+Mouse\+::is\+Button\+Released}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is released \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_gaa02ce805d4f597394a83200f4ee8c0b5}{Sfml\+Mouse\+::is\+Button\+Up}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is up \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga2fc4314abc4305e0d1ebb83d83817ac7}{Sfml\+Mouse\+::get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em get the position of the mouse \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga7fcee9e689f8fe1c359185f0d0d14e13}{Sfml\+Mouse\+::set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em set the position of the mouse \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___s_f_m_l_ga764f4ad5591e0868e1e9009d2a931f76}{Sfml\+Mouse\+::\+Get\+Mouse\+Wheel\+Move}} () const override
+\begin{DoxyCompactList}\small\item\em get the mouse wheel move \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gab4474d824ce2e9cf2ac4ede8d91e73fa}{Sfml\+Mouse\+::update}} () override
+\begin{DoxyCompactList}\small\item\em set the mouse wheel move \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga6e5ff56619f20ab1018c1ffc79ec41ce}\label{group___s_f_m_l_ga6e5ff56619f20ab1018c1ffc79ec41ce} 
+{\bfseries Sfml\+Model\+::\+Sfml\+Model} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Sfml Model object. \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gae35038b59bf5b62486c51ed7770cd938}\label{group___s_f_m_l_gae35038b59bf5b62486c51ed7770cd938} 
+{\bfseries Sfml\+Model\+::\texorpdfstring{$\sim$}{\string~}\+Sfml\+Model} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Sfml Model object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_gaac71166b0cac6cc93c7139221036b424}{Sfml\+Model\+::get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga7e6e525af91ab137b7de22598e6c6bed}{Sfml\+Model\+::set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t pos) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \mbox{\hyperlink{group___s_f_m_l_gac7ac6dae07fdb82af505899fb8857793}{Sfml\+Model\+::get\+Vertices}} ()
+\begin{DoxyCompactList}\small\item\em Get the Vertices object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga337fb163813cf7ffa67f2257244dba42}{Sfml\+Model\+::rotate}} (sf\+::\+Vector3f angle, sf\+::\+Vector3f center=\{0, 0, 0\})
+\begin{DoxyCompactList}\small\item\em rotate will rotate the model \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___s_f_m_l_ga296cf94d12cf33c0a05bf5e4348c4d78}{Sfml\+Polygon\+::\+Sfml\+Polygon}} (std\+::vector$<$ \+\_\+\+\_\+v2f\+\_\+t $>$ points)
+\begin{DoxyCompactList}\small\item\em Construct a new Sfml Polygon object. \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gadbb7f7ed9b5cc7c7a59dd937fd54c263}\label{group___s_f_m_l_gadbb7f7ed9b5cc7c7a59dd937fd54c263} 
+{\bfseries Sfml\+Polygon\+::\texorpdfstring{$\sim$}{\string~}\+Sfml\+Polygon} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Sfml Polygon object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_ga8c2db5edcd6be4ac71475a09844f9c88}{Sfml\+Polygon\+::is\+Ready}} () const override
+\begin{DoxyCompactList}\small\item\em check if the polygon is ready \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga952cdcf59f314b3a8b738d9c5d1f103d}{Sfml\+Polygon\+::get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gad19e684383ddd37dfc241bb4af04f2a7}{Sfml\+Polygon\+::set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+color\+\_\+t \mbox{\hyperlink{group___s_f_m_l_gaf965e46ad7b2c334506788b128a45c98}{Sfml\+Polygon\+::get\+Color}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Color object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga17e4d3fb8d685939292bb917ec1d4a2a}{Sfml\+Polygon\+::set\+Color}} (\+\_\+\+\_\+color\+\_\+t color) override
+\begin{DoxyCompactList}\small\item\em Set the Color object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \+\_\+\+\_\+v2f\+\_\+t $>$ \mbox{\hyperlink{group___s_f_m_l_ga2990becc3a91765498d757215321a665}{Sfml\+Polygon\+::get\+Points}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Points object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___s_f_m_l_ga4dee9a5402ae6f2cb11c2a6e40e852b7}{Sfml\+Sprite\+::\+Sfml\+Sprite}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Construct a new Sfml Sprite object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_ga43587aab7d5762108568c65232e31fb8}{Sfml\+Sprite\+::is\+Ready}} () const override
+\begin{DoxyCompactList}\small\item\em check if the sprite is ready \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v4f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga1b6814799269cbec3f07427965df97a6}{Sfml\+Sprite\+::get\+Bounds}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Bounds object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga7e44b19b49e74f7525a9026df19f1947}{Sfml\+Sprite\+::set\+Crop}} (\+\_\+\+\_\+v4f\+\_\+t rect) override
+\begin{DoxyCompactList}\small\item\em Set the Crop object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga56ce6dba47ee9764d2e780f6ef2a4729}{Sfml\+Sprite\+::get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gafa785fd42ef4de9aab70eff27ba8aacc}{Sfml\+Sprite\+::set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___s_f_m_l_gaacf999c674358e524f41fd302479be98}{Sfml\+Sprite\+::get\+Rotation}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gac80478281cd7c3386dad009cee9ac42f}{Sfml\+Sprite\+::set\+Rotation}} (float angle, bool is\+Rad=false) override
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_gadc048e63cab334b7b73e4b416220374b}{Sfml\+Sprite\+::get\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Size object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gaaac0ec9ad459089e2fab0c484d8544bb}{Sfml\+Sprite\+::set\+Size}} (\+\_\+\+\_\+v2f\+\_\+t size) override
+\begin{DoxyCompactList}\small\item\em Set the Size object. \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga1c8429ad724706c80c8a31c10f953130}\label{group___s_f_m_l_ga1c8429ad724706c80c8a31c10f953130} 
+\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Window} (\+\_\+\+\_\+int32\+\_\+t screen\+Width, \+\_\+\+\_\+int32\+\_\+t screen\+Height, std\+::string title)
+\begin{DoxyCompactList}\small\item\em create Sfml window \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gaf74872ef6611df6d20e97538bb453cbf}\label{group___s_f_m_l_gaf74872ef6611df6d20e97538bb453cbf} 
+void {\bfseries delete\+Window} (\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}} \texorpdfstring{$\ast$}{*}window)
+\begin{DoxyCompactList}\small\item\em destroy Sfml window \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga63d25ddc6ccbcd49a4a88b31d439a519}\label{group___s_f_m_l_ga63d25ddc6ccbcd49a4a88b31d439a519} 
+\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Camera} (\mbox{\hyperlink{structtype_1_1____v3f__s}{\+\_\+\+\_\+v3f\+\_\+t}} position)
+\begin{DoxyCompactList}\small\item\em create Sfml camera \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga6278647529e2aa6aa0688aed30f954dc}\label{group___s_f_m_l_ga6278647529e2aa6aa0688aed30f954dc} 
+void {\bfseries delete\+Camera} (\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}camera)
+\begin{DoxyCompactList}\small\item\em destroy Sfml camera \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga180d8e8dfb641bfde4dbdaf97e4e575b}\label{group___s_f_m_l_ga180d8e8dfb641bfde4dbdaf97e4e575b} 
+\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Event} ()
+\begin{DoxyCompactList}\small\item\em create Sfml event \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga29ca5d5a86f222a68b80406e739472e9}\label{group___s_f_m_l_ga29ca5d5a86f222a68b80406e739472e9} 
+void {\bfseries delete\+Event} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em destroy Sfml event \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga50616b536976706f89a7132ca27e0635}\label{group___s_f_m_l_ga50616b536976706f89a7132ca27e0635} 
+\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Keyboard} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em create Sfml keyboard \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga471e5eea8485f7f427c552dbe1f6e229}\label{group___s_f_m_l_ga471e5eea8485f7f427c552dbe1f6e229} 
+void {\bfseries delete\+Keyboard} (\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}} \texorpdfstring{$\ast$}{*}keyboard)
+\begin{DoxyCompactList}\small\item\em destroy Sfml keyboard \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gad76069785343b7e4a6e0c0ea08900fe3}\label{group___s_f_m_l_gad76069785343b7e4a6e0c0ea08900fe3} 
+\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Mouse} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\begin{DoxyCompactList}\small\item\em create Sfml mouse \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gac3ad2af27ce2bf1e4e1813a9b637d3fe}\label{group___s_f_m_l_gac3ad2af27ce2bf1e4e1813a9b637d3fe} 
+void {\bfseries delete\+Mouse} (\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*}mouse)
+\begin{DoxyCompactList}\small\item\em destroy Sfml mouse \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gaf338b09682123b06a23f16dd0e79eea7}\label{group___s_f_m_l_gaf338b09682123b06a23f16dd0e79eea7} 
+\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Polygon} (std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ points)
+\begin{DoxyCompactList}\small\item\em create Sfml polygon \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga634a535acef8fb288ed32dc07ff92322}\label{group___s_f_m_l_ga634a535acef8fb288ed32dc07ff92322} 
+void {\bfseries delete\+Polygon} (\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}polygon)
+\begin{DoxyCompactList}\small\item\em destroy Sfml polygon \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga506cb890964ba5935395d5995f1230ca}\label{group___s_f_m_l_ga506cb890964ba5935395d5995f1230ca} 
+\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Sprite} (std\+::string sprite)
+\begin{DoxyCompactList}\small\item\em create Sfml sprite \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga7ac2d74301041e22c583cf1a5e2a4024}\label{group___s_f_m_l_ga7ac2d74301041e22c583cf1a5e2a4024} 
+void {\bfseries delete\+Sprite} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite)
+\begin{DoxyCompactList}\small\item\em destroy Sfml sprite \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gad84e5fbd85db7969676a38ac10819452}\label{group___s_f_m_l_gad84e5fbd85db7969676a38ac10819452} 
+\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Model} ()
+\begin{DoxyCompactList}\small\item\em create Sfml model \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga86f4defa19eab58adaf4ae8c058898c5}\label{group___s_f_m_l_ga86f4defa19eab58adaf4ae8c058898c5} 
+void {\bfseries delete\+Model} (\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model)
+\begin{DoxyCompactList}\small\item\em destroy Sfml model \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga1b612f3670f20ad2c7ed3d7a21acc6b5}\label{group___s_f_m_l_ga1b612f3670f20ad2c7ed3d7a21acc6b5} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries get\+Name} ()
+\begin{DoxyCompactList}\small\item\em get the name of the library \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga5a9e1cf52200ed570b486bf1df100e08}\label{group___s_f_m_l_ga5a9e1cf52200ed570b486bf1df100e08} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries get\+Type} ()
+\begin{DoxyCompactList}\small\item\em get the type of the library \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gabcc01358aada56ea5f0db4da18aaf77d}\label{group___s_f_m_l_gabcc01358aada56ea5f0db4da18aaf77d} 
+{\bfseries Quaternion\+::\+Quaternion} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_quaternion}{Quaternion} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___s_f_m_l_gab13d6ced50c96438115b30cb91fc7d6c}{Quaternion\+::\+Quaternion}} (float w, float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_quaternion}{Quaternion} object. \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga5f834c2ca469cd71edc8a23fdc3f56e8}\label{group___s_f_m_l_ga5f834c2ca469cd71edc8a23fdc3f56e8} 
+{\bfseries Quaternion\+::\texorpdfstring{$\sim$}{\string~}\+Quaternion} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_quaternion}{Quaternion} object. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} \mbox{\hyperlink{group___s_f_m_l_ga472e10e2718d8cf659ebe7a59fe7b0fa}{Quaternion\+::identity}} ()
+\begin{DoxyCompactList}\small\item\em return the identity quaternion \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} \mbox{\hyperlink{group___s_f_m_l_gaffdd38ae8856d7ec854a90853a054ca1}{Quaternion\+::from\+Euler\+Angles}} (float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em from\+Euler\+Angles will create a quaternion from euler angles \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} \mbox{\hyperlink{group___s_f_m_l_gab2329cfaf48acccd1ee0c8e9622e1f1e}{Quaternion\+::from\+Axis\+Angle}} (float angle, sf\+::\+Vector3f axis)
+\begin{DoxyCompactList}\small\item\em from\+Axis\+Angle will create a quaternion from an axis and an angle \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} \mbox{\hyperlink{group___s_f_m_l_ga9fcfa9ff4a12d1cab07d561ab904e240}{Quaternion\+::from\+Vectors}} (const sf\+::\+Vector3f \&v1, const sf\+::\+Vector3f \&v2)
+\begin{DoxyCompactList}\small\item\em quaterninon representing the rotation from one vector to another \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_quaternion}{Quaternion}} \mbox{\hyperlink{group___s_f_m_l_ga23fa21eb2e14c5207f90e840787c348a}{Quaternion\+::conjugate}} () const
+\begin{DoxyCompactList}\small\item\em conjugate will return the conjugate of the quaternion \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga48e6bafb249c895ed25f29dc9170e11e}\label{group___s_f_m_l_ga48e6bafb249c895ed25f29dc9170e11e} 
+void {\bfseries Quaternion\+::normalize} ()
+\begin{DoxyCompactList}\small\item\em normalize will normalize the quaternion \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gab59d8e7a42209711197ba93369100d26}\label{group___s_f_m_l_gab59d8e7a42209711197ba93369100d26} 
+void {\bfseries Quaternion\+::enforce\+Sign} ()
+\begin{DoxyCompactList}\small\item\em enforce\+Sign will enforce the sign of the quaternion \end{DoxyCompactList}\item 
+sf\+::\+Vector3f \mbox{\hyperlink{group___s_f_m_l_ga3951a01ed2a4f599fbb2ce2b3e8cd767}{Quaternion\+::rotate}} (sf\+::\+Vector3f point, sf\+::\+Vector3f center=\{0, 0, 0\}) const
+\begin{DoxyCompactList}\small\item\em rotate will rotate a point around a center \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_quaternion}{Quaternion}} \mbox{\hyperlink{group___s_f_m_l_ga757ec55f9f361fcd8b518abaec05b29b}{Quaternion\+::operator\texorpdfstring{$\ast$}{*}}} (const \mbox{\hyperlink{class_quaternion}{Quaternion}} \&other) const
+\begin{DoxyCompactList}\small\item\em operator\texorpdfstring{$\ast$}{*} will multiply two quaternions \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___s_f_m_l_ga99c0349ff93a7b007d3830e48305c626}{Sfml\+Camera\+::\+Sfml\+Camera}} (sf\+::\+Vector3f pos=\{0.f, 0.\+0f, 0.\+0f\}, sf\+::\+Vector3f target=\{0, 0, -\/1\}, float fov=90)
+\begin{DoxyCompactList}\small\item\em Construct a new Sfml Camera object. \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_ga1e3ea763b4acd5fbf466d15c08907b57}\label{group___s_f_m_l_ga1e3ea763b4acd5fbf466d15c08907b57} 
+{\bfseries Sfml\+Camera\+::\texorpdfstring{$\sim$}{\string~}\+Sfml\+Camera} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Sfml Camera object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___s_f_m_l_gad11678907097a3d73687808039ee1d42}{Sfml\+Camera\+::get\+Fov}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Fov object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga8883151f4d4ee9dc9e263f9c095df511}{Sfml\+Camera\+::set\+Fov}} (float fov) override
+\begin{DoxyCompactList}\small\item\em Set the Fov object. \end{DoxyCompactList}\item 
+ICamera\+::\+Mode \mbox{\hyperlink{group___s_f_m_l_ga951d66286e7960dd2f5ca4793b0cb370}{Sfml\+Camera\+::get\+Mode}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Mode object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga38cbc9ece85daf00dbac5a776cda380c}{Sfml\+Camera\+::set\+Mode}} (ICamera\+::\+Mode mode) override
+\begin{DoxyCompactList}\small\item\em Set the Mode object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga905167efe03f026b0d84441ad0b202bb}{Sfml\+Camera\+::get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gaea1805f2eeb6da5dfe0f5e1188765d18}{Sfml\+Camera\+::set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+ICamera\+::\+Projection \mbox{\hyperlink{group___s_f_m_l_ga2fb9f5ab1287515a9805468ee29104fe}{Sfml\+Camera\+::get\+Projection}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Projection object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga542ca15a2bd57ee4ea25c7069a9562d7}{Sfml\+Camera\+::set\+Projection}} (ICamera\+::\+Projection projection) override
+\begin{DoxyCompactList}\small\item\em Set the Projection object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_gac9b4abc33f5e1433ca8b375c9d8048ca}{Sfml\+Camera\+::get\+Target}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Target object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gacfda052fa04fa82d3b30ead5bdf35b32}{Sfml\+Camera\+::set\+Target}} (\+\_\+\+\_\+v3f\+\_\+t target) override
+\begin{DoxyCompactList}\small\item\em Set the Target object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga81292302e8e35571d8cff3a4556dfee9}{Sfml\+Camera\+::get\+Up}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Up object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gab0bb3576dd49509dcfb9ede61be3b487}{Sfml\+Camera\+::set\+Up}} (\+\_\+\+\_\+v3f\+\_\+t up) override
+\begin{DoxyCompactList}\small\item\em Set the Up object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \mbox{\hyperlink{group___s_f_m_l_ga7a6d6c1298835eed6dc2a42b8fae5681}{perspective\+Projection}} (T fov, T aspect\+Ratio)
+\begin{DoxyCompactList}\small\item\em perspective\+Projection will create a perspective projection matrix \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \mbox{\hyperlink{group___s_f_m_l_ga157982865c73fefadf30a7b8739c890c}{orthographic\+Projection}} (T left, T right, T bottom, T top, T near\+Plane, T far\+Plane)
+\begin{DoxyCompactList}\small\item\em orthographic\+Projection will create an orthographic projection matrix \end{DoxyCompactList}\item 
+std\+::array$<$ double, 3 $>$ \mbox{\hyperlink{group___s_f_m_l_gaa3d5662923d68c97cdcdd24d9052b1d9}{v3toa3}} (sf\+::\+Vector3f point)
+\begin{DoxyCompactList}\small\item\em SFML. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group___s_f_m_l_ga7477ebff1d20fcc14c3a20847936a658}{Sfml\+Window\+::\+Sfml\+Window}} (\+\_\+\+\_\+int32\+\_\+t screen\+Width, \+\_\+\+\_\+int32\+\_\+t screen\+Height, std\+::string title)
+\begin{DoxyCompactList}\small\item\em Construct a new Sfml Window object. \end{DoxyCompactList}\item 
+\Hypertarget{group___s_f_m_l_gac75aa54ecc17fb297ddd57a780b463ce}\label{group___s_f_m_l_gac75aa54ecc17fb297ddd57a780b463ce} 
+{\bfseries Sfml\+Window\+::\texorpdfstring{$\sim$}{\string~}\+Sfml\+Window} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the Sfml Window object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gacf62f02f63e55c1416671d224897e576}{Sfml\+Window\+::link\+Event}} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em link an event to the window \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_ga4bc70711286f774951a94fb931a7cccb}{Sfml\+Window\+::is\+Open}} () override
+\begin{DoxyCompactList}\small\item\em notice if the window is open \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga67bf5ca3f1e8ae018deea07ea57a24cb}{Sfml\+Window\+::close}} () override
+\begin{DoxyCompactList}\small\item\em close the window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gafba623299ffbaf990f5ddff3a8242c0e}{Sfml\+Window\+::set\+Frame\+Limit}} (\+\_\+\+\_\+int32\+\_\+t limit) override
+\begin{DoxyCompactList}\small\item\em Set the Frame Limit object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+int32\+\_\+t \mbox{\hyperlink{group___s_f_m_l_gaf6ec8bc5848f2028d54dc04e8bca1751}{Sfml\+Window\+::get\+Delta}} () override
+\begin{DoxyCompactList}\small\item\em Get the Delta object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga4117ec121b2c8df9637d816240b52a3b}{Sfml\+Window\+::begin\+Draw}} () override
+\begin{DoxyCompactList}\small\item\em allowing to draw 2D on the window \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group___s_f_m_l_gad410b78abbed2711df65fc02151bb442}{Sfml\+Window\+::draw\+Poly}} (\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}polygon) override
+\begin{DoxyCompactList}\small\item\em draw a polygon \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group___s_f_m_l_ga82469fd2fc0296594bb4aee76243b1cd}{Sfml\+Window\+::draw\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite) override
+\begin{DoxyCompactList}\small\item\em draw a sprite \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga98b1ec88cfc0a22b8360dc816741ad64}{Sfml\+Window\+::end\+Draw}} () override
+\begin{DoxyCompactList}\small\item\em end the drawing \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gae5f1dcb0a9be6bea099ab239cf91c20b}{Sfml\+Window\+::begin\+Mode3}} (\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}cam) override
+\begin{DoxyCompactList}\small\item\em allowing to draw 3D on the window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gae39bda4673d9da3bc8c829af9205a20f}{Sfml\+Window\+::draw\+Point}} (const sf\+::\+Vector3f \&point)
+\begin{DoxyCompactList}\small\item\em draw a point \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga3f211071e81f033d1a48ae8aada09182}{Sfml\+Window\+::draw\+Model}} (\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model) override
+\begin{DoxyCompactList}\small\item\em draw a model \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga6cf2d05732e578608f60cdbdc944cf79}{Sfml\+Window\+::end\+Mode3}} () override
+\begin{DoxyCompactList}\small\item\em end the 3D drawing \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_f_m_l_gaf5dab2c2f96830b6a0926de4e1ef57a6}{Sfml\+Window\+::poll\+Event}} () override
+\begin{DoxyCompactList}\small\item\em poll the event \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gabe5637e4298c08ee8dd7fd5277b62c48}{Sfml\+Window\+::event\+Close}} () override
+\begin{DoxyCompactList}\small\item\em close the window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___s_f_m_l_ga9b2cb9a5da9f307b4472c80ff13ceffc}\label{group___s_f_m_l_ga9b2cb9a5da9f307b4472c80ff13ceffc} 
+sf\+::\+Event {\bfseries Sfml\+Event\+::\+\_\+event}
+\item 
+\Hypertarget{group___s_f_m_l_gaa98c0d3d28167d31b19234f9c6625654}\label{group___s_f_m_l_gaa98c0d3d28167d31b19234f9c6625654} 
+const std\+::unordered\+\_\+map$<$ IKeyboard\+::\+Keys, sf\+::\+Keyboard\+::\+Key $>$ {\bfseries Sfml\+Keyboard\+::\+\_\+keys}
+\item 
+\Hypertarget{group___s_f_m_l_gaefff7e3abf030e14054b0831ad252eda}\label{group___s_f_m_l_gaefff7e3abf030e14054b0831ad252eda} 
+\mbox{\hyperlink{class_sfml_event}{Sfml\+Event}} \texorpdfstring{$\ast$}{*} {\bfseries Sfml\+Mouse\+::\+\_\+event}
+\item 
+\Hypertarget{group___s_f_m_l_ga5a7f5b2b24b759efb0e5d04350de2245}\label{group___s_f_m_l_ga5a7f5b2b24b759efb0e5d04350de2245} 
+sf\+::\+Vector3f {\bfseries Sfml\+Model\+::position}
+\item 
+\Hypertarget{group___s_f_m_l_gae9a31f9d54c233db07649ad49da59984}\label{group___s_f_m_l_gae9a31f9d54c233db07649ad49da59984} 
+\mbox{\hyperlink{class_quaternion}{Quaternion}} {\bfseries Sfml\+Model\+::rotation}
+\item 
+\Hypertarget{group___s_f_m_l_gaabd52e67ea94b9843982d1035d330d68}\label{group___s_f_m_l_gaabd52e67ea94b9843982d1035d330d68} 
+std\+::vector$<$ sf\+::\+Vector3f $>$ {\bfseries Sfml\+Model\+::vertices}
+\item 
+\Hypertarget{group___s_f_m_l_gac5dc75dea2ccbab71ae4e8f77cd683ee}\label{group___s_f_m_l_gac5dc75dea2ccbab71ae4e8f77cd683ee} 
+sf\+::\+Color {\bfseries Sfml\+Polygon\+::\+\_\+color}
+\item 
+\Hypertarget{group___s_f_m_l_ga19912d39e3643b7fa09cbc8fb05c017e}\label{group___s_f_m_l_ga19912d39e3643b7fa09cbc8fb05c017e} 
+sf\+::\+Vector2f {\bfseries Sfml\+Polygon\+::\+\_\+position}
+\item 
+\Hypertarget{group___s_f_m_l_gaeaddc3ca9e02c9801d37feb20410d346}\label{group___s_f_m_l_gaeaddc3ca9e02c9801d37feb20410d346} 
+std\+::vector$<$ sf\+::\+Vertex $>$ {\bfseries Sfml\+Polygon\+::\+\_\+points}
+\item 
+\Hypertarget{group___s_f_m_l_gafede48400d2db38ca7114d8fffb30d05}\label{group___s_f_m_l_gafede48400d2db38ca7114d8fffb30d05} 
+std\+::vector$<$ \mbox{\hyperlink{group__graphic_ga054df66adc001dc941f2a6de03dc6b4f}{graphic\+::triangle\+\_\+t}} $>$ {\bfseries Sfml\+Polygon\+::\+\_\+triangles}
+\item 
+\Hypertarget{group___s_f_m_l_ga8a6f9bab65c40f509d1bea95878c9e4f}\label{group___s_f_m_l_ga8a6f9bab65c40f509d1bea95878c9e4f} 
+sf\+::\+Texture {\bfseries Sfml\+Sprite\+::\+\_\+texture}
+\item 
+\Hypertarget{group___s_f_m_l_ga6bf1cd07f46d36624f270df23914b9dc}\label{group___s_f_m_l_ga6bf1cd07f46d36624f270df23914b9dc} 
+sf\+::\+Sprite {\bfseries Sfml\+Sprite\+::\+\_\+sprite}
+\item 
+\Hypertarget{group___s_f_m_l_ga8b53872e5d0acc4c228ffaf1da691f45}\label{group___s_f_m_l_ga8b53872e5d0acc4c228ffaf1da691f45} 
+sf\+::\+Vector2f {\bfseries Sfml\+Sprite\+::\+\_\+position}
+\item 
+\Hypertarget{group___s_f_m_l_gaf7e5d955f7ca1f9aa5fa41103ba6c681}\label{group___s_f_m_l_gaf7e5d955f7ca1f9aa5fa41103ba6c681} 
+sf\+::\+Vector2f {\bfseries Sfml\+Sprite\+::\+\_\+scale}
+\item 
+\Hypertarget{group___s_f_m_l_gaa44a65ab99e36f6ab8771030eed8a7ad}\label{group___s_f_m_l_gaa44a65ab99e36f6ab8771030eed8a7ad} 
+float {\bfseries Quaternion\+::w}
+\item 
+\Hypertarget{group___s_f_m_l_ga8b80f191a3155cc0158d2b4f4d50b2cb}\label{group___s_f_m_l_ga8b80f191a3155cc0158d2b4f4d50b2cb} 
+float {\bfseries Quaternion\+::x}
+\item 
+\Hypertarget{group___s_f_m_l_ga3bd3f270462944423611f44e19d2511b}\label{group___s_f_m_l_ga3bd3f270462944423611f44e19d2511b} 
+float {\bfseries Quaternion\+::y}
+\item 
+\Hypertarget{group___s_f_m_l_ga625cb732d8ff3083e7852b86b736ab29}\label{group___s_f_m_l_ga625cb732d8ff3083e7852b86b736ab29} 
+float {\bfseries Quaternion\+::z}
+\item 
+\Hypertarget{group___s_f_m_l_ga1f67ee4655d6ef86714db768b0a34fd7}\label{group___s_f_m_l_ga1f67ee4655d6ef86714db768b0a34fd7} 
+sf\+::\+Vector3f {\bfseries Sfml\+Camera\+::\+\_\+position}
+\item 
+\Hypertarget{group___s_f_m_l_ga4741d41f882a6c955ef0f91b91abc795}\label{group___s_f_m_l_ga4741d41f882a6c955ef0f91b91abc795} 
+sf\+::\+Vector3f {\bfseries Sfml\+Camera\+::\+\_\+up}
+\item 
+\Hypertarget{group___s_f_m_l_gacfcb93e0900c799d41aa6051c426eea8}\label{group___s_f_m_l_gacfcb93e0900c799d41aa6051c426eea8} 
+\mbox{\hyperlink{class_quaternion}{Quaternion}} {\bfseries Sfml\+Camera\+::\+\_\+quaternion}
+\item 
+\Hypertarget{group___s_f_m_l_ga70fbf409c9922bfde2ab96b07be945ff}\label{group___s_f_m_l_ga70fbf409c9922bfde2ab96b07be945ff} 
+Projection {\bfseries Sfml\+Camera\+::\+\_\+projection}
+\item 
+\Hypertarget{group___s_f_m_l_ga36e7b93346cb819ba43beb3975a9a004}\label{group___s_f_m_l_ga36e7b93346cb819ba43beb3975a9a004} 
+Mode {\bfseries Sfml\+Camera\+::\+\_\+mode}
+\item 
+\Hypertarget{group___s_f_m_l_ga774b21b74e939316662b0ef0e3f47522}\label{group___s_f_m_l_ga774b21b74e939316662b0ef0e3f47522} 
+float {\bfseries Sfml\+Camera\+::\+\_\+fov}
+\item 
+\Hypertarget{group___s_f_m_l_gab1ca1488fdd2d4b35734edb246d2f63f}\label{group___s_f_m_l_gab1ca1488fdd2d4b35734edb246d2f63f} 
+sf\+::\+Render\+Window {\bfseries Sfml\+Window\+::\+\_\+window}
+\item 
+\Hypertarget{group___s_f_m_l_ga1b4df1cff7a5955c663b29e80f731923}\label{group___s_f_m_l_ga1b4df1cff7a5955c663b29e80f731923} 
+\mbox{\hyperlink{class_sfml_event}{Sfml\+Event}} \texorpdfstring{$\ast$}{*} {\bfseries Sfml\+Window\+::\+\_\+event}
+\item 
+\Hypertarget{group___s_f_m_l_ga389c7286950957af3358d3549176e62c}\label{group___s_f_m_l_ga389c7286950957af3358d3549176e62c} 
+\mbox{\hyperlink{class_sfml_camera}{Sfml\+Camera}} \texorpdfstring{$\ast$}{*} {\bfseries Sfml\+Window\+::\+\_\+camera}
+\item 
+\Hypertarget{group___s_f_m_l_ga34006c7ad43d0849c4f555a5fe03c4cc}\label{group___s_f_m_l_ga34006c7ad43d0849c4f555a5fe03c4cc} 
+sf\+::\+Clock {\bfseries Sfml\+Window\+::\+\_\+delta\+Clock}
+\item 
+\Hypertarget{group___s_f_m_l_ga33dfa7f4133db4a3f977f987007592cf}\label{group___s_f_m_l_ga33dfa7f4133db4a3f977f987007592cf} 
+sf\+::\+Time {\bfseries Sfml\+Window\+::\+\_\+delta\+Time}
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___s_f_m_l_gae0b58c2104bb6fe805f93db75b13c82c}\label{group___s_f_m_l_gae0b58c2104bb6fe805f93db75b13c82c} 
+class {\bfseries Sfml\+Window}
+\item 
+\Hypertarget{group___s_f_m_l_ga351eb018a1262928063dfe7d70c3fc13}\label{group___s_f_m_l_ga351eb018a1262928063dfe7d70c3fc13} 
+class {\bfseries Sfml\+Keyboard}
+\item 
+\Hypertarget{group___s_f_m_l_gad65a4acc594c848222d10188a6d0c141}\label{group___s_f_m_l_gad65a4acc594c848222d10188a6d0c141} 
+class {\bfseries Sfml\+Mouse}
+\item 
+\Hypertarget{group___s_f_m_l_gae0b58c2104bb6fe805f93db75b13c82c}\label{group___s_f_m_l_gae0b58c2104bb6fe805f93db75b13c82c} 
+class {\bfseries Sfml\+Window}
+\item 
+\Hypertarget{group___s_f_m_l_gaf1654e188010637d1f860604b0b05bdc}\label{group___s_f_m_l_gaf1654e188010637d1f860604b0b05bdc} 
+class {\bfseries Sfml\+Camera}
+\item 
+\Hypertarget{group___s_f_m_l_gae0b58c2104bb6fe805f93db75b13c82c}\label{group___s_f_m_l_gae0b58c2104bb6fe805f93db75b13c82c} 
+class {\bfseries Sfml\+Window}
+\item 
+\Hypertarget{group___s_f_m_l_gae0b58c2104bb6fe805f93db75b13c82c}\label{group___s_f_m_l_gae0b58c2104bb6fe805f93db75b13c82c} 
+class {\bfseries Sfml\+Window}
+\item 
+\Hypertarget{group___s_f_m_l_gaaf4632a093be9ee39d1a4276e2d7ca69}\label{group___s_f_m_l_gaaf4632a093be9ee39d1a4276e2d7ca69} 
+class {\bfseries Sfml\+Window}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___s_f_m_l_ga4117ec121b2c8df9637d816240b52a3b}\index{SFML@{SFML}!beginDraw@{beginDraw}}
+\index{beginDraw@{beginDraw}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{beginDraw()}{beginDraw()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga4117ec121b2c8df9637d816240b52a3b} 
+void Sfml\+Window\+::begin\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+allowing to draw 2D on the window 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga37ccabdf7852fe8ff579f5de5ae29976}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_gae5f1dcb0a9be6bea099ab239cf91c20b}\index{SFML@{SFML}!beginMode3@{beginMode3}}
+\index{beginMode3@{beginMode3}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{beginMode3()}{beginMode3()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gae5f1dcb0a9be6bea099ab239cf91c20b} 
+void Sfml\+Window\+::begin\+Mode3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}}]{cam}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+allowing to draw 3D on the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cam} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga44bfe77f58f2825edb1e7cb5304b8177}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_ga67bf5ca3f1e8ae018deea07ea57a24cb}\index{SFML@{SFML}!close@{close}}
+\index{close@{close}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga67bf5ca3f1e8ae018deea07ea57a24cb} 
+void Sfml\+Window\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+close the window 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga6eb555bdae7c6fa247a35b9147da8c7e}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_ga23fa21eb2e14c5207f90e840787c348a}\index{SFML@{SFML}!conjugate@{conjugate}}
+\index{conjugate@{conjugate}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{conjugate()}{conjugate()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga23fa21eb2e14c5207f90e840787c348a} 
+\mbox{\hyperlink{class_quaternion}{Quaternion}} Quaternion\+::conjugate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+conjugate will return the conjugate of the quaternion 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_quaternion}{Quaternion} 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_ga3f211071e81f033d1a48ae8aada09182}\index{SFML@{SFML}!drawModel@{drawModel}}
+\index{drawModel@{drawModel}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{drawModel()}{drawModel()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga3f211071e81f033d1a48ae8aada09182} 
+void Sfml\+Window\+::draw\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw a model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga973287c1dd916f230234e9a557181dd9}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_gae39bda4673d9da3bc8c829af9205a20f}\index{SFML@{SFML}!drawPoint@{drawPoint}}
+\index{drawPoint@{drawPoint}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{drawPoint()}{drawPoint()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gae39bda4673d9da3bc8c829af9205a20f} 
+void Sfml\+Window\+::draw\+Point (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector3f \&}]{point}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+draw a point 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & \\
+\hline
+\end{DoxyParams}
+make the camera the origin
+
+rotate the object
+
+perspective projection
+
+homogeneous division// convert to normalized device coordinates\Hypertarget{group___s_f_m_l_gad410b78abbed2711df65fc02151bb442}\index{SFML@{SFML}!drawPoly@{drawPoly}}
+\index{drawPoly@{drawPoly}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{drawPoly()}{drawPoly()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gad410b78abbed2711df65fc02151bb442} 
+void Sfml\+Window\+::draw\+Poly (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}}]{polygon}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw a polygon 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_gafe1c61041fa847fe80c0fbc5585a4de3}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_ga82469fd2fc0296594bb4aee76243b1cd}\index{SFML@{SFML}!drawSprite@{drawSprite}}
+\index{drawSprite@{drawSprite}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{drawSprite()}{drawSprite()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga82469fd2fc0296594bb4aee76243b1cd} 
+void Sfml\+Window\+::draw\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}}]{sprite}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw a sprite 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga0b6d9dc647ea8fa561630424bb4b5db0}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_ga98b1ec88cfc0a22b8360dc816741ad64}\index{SFML@{SFML}!endDraw@{endDraw}}
+\index{endDraw@{endDraw}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{endDraw()}{endDraw()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga98b1ec88cfc0a22b8360dc816741ad64} 
+void Sfml\+Window\+::end\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+end the drawing 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_gafeee676648888ac355a58f7fb90b62a6}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_ga6cf2d05732e578608f60cdbdc944cf79}\index{SFML@{SFML}!endMode3@{endMode3}}
+\index{endMode3@{endMode3}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{endMode3()}{endMode3()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga6cf2d05732e578608f60cdbdc944cf79} 
+void Sfml\+Window\+::end\+Mode3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+end the 3D drawing 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_gad064bd5a6aeafa259e0e629cf6cf82c1}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_gabe5637e4298c08ee8dd7fd5277b62c48}\index{SFML@{SFML}!eventClose@{eventClose}}
+\index{eventClose@{eventClose}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{eventClose()}{eventClose()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gabe5637e4298c08ee8dd7fd5277b62c48} 
+void Sfml\+Window\+::event\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+close the window 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga6687f79bdb04698ea020aa85e72f3941}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_gab2329cfaf48acccd1ee0c8e9622e1f1e}\index{SFML@{SFML}!fromAxisAngle@{fromAxisAngle}}
+\index{fromAxisAngle@{fromAxisAngle}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{fromAxisAngle()}{fromAxisAngle()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gab2329cfaf48acccd1ee0c8e9622e1f1e} 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} Quaternion\+::from\+Axis\+Angle (\begin{DoxyParamCaption}\item[{float}]{angle}{, }\item[{sf\+::\+Vector3f}]{axis}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+from\+Axis\+Angle will create a quaternion from an axis and an angle 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+{\em axis} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_quaternion}{Quaternion} 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_gaffdd38ae8856d7ec854a90853a054ca1}\index{SFML@{SFML}!fromEulerAngles@{fromEulerAngles}}
+\index{fromEulerAngles@{fromEulerAngles}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{fromEulerAngles()}{fromEulerAngles()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaffdd38ae8856d7ec854a90853a054ca1} 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} Quaternion\+::from\+Euler\+Angles (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{float}]{z}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+from\+Euler\+Angles will create a quaternion from euler angles 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em z} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_quaternion}{Quaternion} 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_ga9fcfa9ff4a12d1cab07d561ab904e240}\index{SFML@{SFML}!fromVectors@{fromVectors}}
+\index{fromVectors@{fromVectors}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{fromVectors()}{fromVectors()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga9fcfa9ff4a12d1cab07d561ab904e240} 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} Quaternion\+::from\+Vectors (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector3f \&}]{v1}{, }\item[{const sf\+::\+Vector3f \&}]{v2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+quaterninon representing the rotation from one vector to another 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v1} & \\
+\hline
+{\em v2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_quaternion}{Quaternion} 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_ga1b6814799269cbec3f07427965df97a6}\index{SFML@{SFML}!getBounds@{getBounds}}
+\index{getBounds@{getBounds}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getBounds()}{getBounds()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga1b6814799269cbec3f07427965df97a6} 
+\+\_\+\+\_\+v4f\+\_\+t Sfml\+Sprite\+::get\+Bounds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Bounds object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v4f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga00a5af5a26c11991f3fe24d268778f85}{graphic\+::\+ISprite}}.
+
+\Hypertarget{group___s_f_m_l_gaf965e46ad7b2c334506788b128a45c98}\index{SFML@{SFML}!getColor@{getColor}}
+\index{getColor@{getColor}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaf965e46ad7b2c334506788b128a45c98} 
+\+\_\+\+\_\+color\+\_\+t Sfml\+Polygon\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Color object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+color\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga58c4bd60aee98dedd69415f941372259}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{group___s_f_m_l_gaf6ec8bc5848f2028d54dc04e8bca1751}\index{SFML@{SFML}!getDelta@{getDelta}}
+\index{getDelta@{getDelta}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getDelta()}{getDelta()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaf6ec8bc5848f2028d54dc04e8bca1751} 
+\+\_\+\+\_\+int32\+\_\+t Sfml\+Window\+::get\+Delta (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Delta object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+int32\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_gac081cce8b211b1b3f027a7bae33cef61}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_gad11678907097a3d73687808039ee1d42}\index{SFML@{SFML}!getFov@{getFov}}
+\index{getFov@{getFov}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getFov()}{getFov()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gad11678907097a3d73687808039ee1d42} 
+float Sfml\+Camera\+::get\+Fov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Fov object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_gae547aa0df8d893f3affd2168c47c8104}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_ga951d66286e7960dd2f5ca4793b0cb370}\index{SFML@{SFML}!getMode@{getMode}}
+\index{getMode@{getMode}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga951d66286e7960dd2f5ca4793b0cb370} 
+ICamera\+::\+Mode Sfml\+Camera\+::get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Mode object. 
+
+\begin{DoxyReturn}{Returns}
+ICamera\+::\+Mode 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga0959591edf9737198660a710a2c5b05d}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_ga764f4ad5591e0868e1e9009d2a931f76}\index{SFML@{SFML}!GetMouseWheelMove@{GetMouseWheelMove}}
+\index{GetMouseWheelMove@{GetMouseWheelMove}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{GetMouseWheelMove()}{GetMouseWheelMove()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga764f4ad5591e0868e1e9009d2a931f76} 
+float Sfml\+Mouse\+::\+Get\+Mouse\+Wheel\+Move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get the mouse wheel move 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga5d886845b95237eceebe384df90b05b5}{graphic\+::\+IMouse}}.
+
+\Hypertarget{group___s_f_m_l_ga2990becc3a91765498d757215321a665}\index{SFML@{SFML}!getPoints@{getPoints}}
+\index{getPoints@{getPoints}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga2990becc3a91765498d757215321a665} 
+std\+::vector$<$ \+\_\+\+\_\+v2f\+\_\+t $>$ Sfml\+Polygon\+::get\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Points object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+\_\+\+\_\+v2f\+\_\+t$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_gad23528f502d73a90ddaa56726ff50e57}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{group___s_f_m_l_ga905167efe03f026b0d84441ad0b202bb}\index{SFML@{SFML}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga905167efe03f026b0d84441ad0b202bb} 
+\+\_\+\+\_\+v3f\+\_\+t Sfml\+Camera\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga61f352cffda9db4d7ef180a308a5afc3}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_gaac71166b0cac6cc93c7139221036b424}\index{SFML@{SFML}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaac71166b0cac6cc93c7139221036b424} 
+\+\_\+\+\_\+v3f\+\_\+t Sfml\+Model\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}}.
+
+\Hypertarget{group___s_f_m_l_ga2fc4314abc4305e0d1ebb83d83817ac7}\index{SFML@{SFML}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga2fc4314abc4305e0d1ebb83d83817ac7} 
+\+\_\+\+\_\+v2f\+\_\+t Sfml\+Mouse\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get the position of the mouse 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga4634bb19c29588e97688f2816be3b3a8}{graphic\+::\+IMouse}}.
+
+\Hypertarget{group___s_f_m_l_ga952cdcf59f314b3a8b738d9c5d1f103d}\index{SFML@{SFML}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga952cdcf59f314b3a8b738d9c5d1f103d} 
+\+\_\+\+\_\+v2f\+\_\+t Sfml\+Polygon\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_gab3fb8842141a3543208c6f71800abd4f}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{group___s_f_m_l_ga56ce6dba47ee9764d2e780f6ef2a4729}\index{SFML@{SFML}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga56ce6dba47ee9764d2e780f6ef2a4729} 
+\+\_\+\+\_\+v2f\+\_\+t Sfml\+Sprite\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga8cc0af533b60b32dc093a7cda5b50cdc}{graphic\+::\+ISprite}}.
+
+\Hypertarget{group___s_f_m_l_ga2fb9f5ab1287515a9805468ee29104fe}\index{SFML@{SFML}!getProjection@{getProjection}}
+\index{getProjection@{getProjection}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getProjection()}{getProjection()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga2fb9f5ab1287515a9805468ee29104fe} 
+ICamera\+::\+Projection Sfml\+Camera\+::get\+Projection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Projection object. 
+
+\begin{DoxyReturn}{Returns}
+ICamera\+::\+Projection 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga5e1a3887d3b97ff9d3d8ed4888ab5bb0}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_gaacf999c674358e524f41fd302479be98}\index{SFML@{SFML}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaacf999c674358e524f41fd302479be98} 
+float Sfml\+Sprite\+::get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Rotation object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga7d03f2782d06584062b096f74120e9e8}{graphic\+::\+ISprite}}.
+
+\Hypertarget{group___s_f_m_l_gadc048e63cab334b7b73e4b416220374b}\index{SFML@{SFML}!getSize@{getSize}}
+\index{getSize@{getSize}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gadc048e63cab334b7b73e4b416220374b} 
+\+\_\+\+\_\+v2f\+\_\+t Sfml\+Sprite\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Size object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga53f82fa3b8aaf11d8fd52645bbb9d7db}{graphic\+::\+ISprite}}.
+
+\Hypertarget{group___s_f_m_l_gac9b4abc33f5e1433ca8b375c9d8048ca}\index{SFML@{SFML}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gac9b4abc33f5e1433ca8b375c9d8048ca} 
+\+\_\+\+\_\+v3f\+\_\+t Sfml\+Camera\+::get\+Target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Target object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga05a871222f25ad3bece5c37e463232a9}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_ga81292302e8e35571d8cff3a4556dfee9}\index{SFML@{SFML}!getUp@{getUp}}
+\index{getUp@{getUp}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getUp()}{getUp()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga81292302e8e35571d8cff3a4556dfee9} 
+\+\_\+\+\_\+v3f\+\_\+t Sfml\+Camera\+::get\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Up object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga3d05345df858197dd715c84314541f10}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_gac7ac6dae07fdb82af505899fb8857793}\index{SFML@{SFML}!getVertices@{getVertices}}
+\index{getVertices@{getVertices}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{getVertices()}{getVertices()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gac7ac6dae07fdb82af505899fb8857793} 
+std\+::vector$<$ sf\+::\+Vector3f $>$ Sfml\+Model\+::get\+Vertices (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Vertices object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$sf\+::\+Vector3f$>$ 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_ga472e10e2718d8cf659ebe7a59fe7b0fa}\index{SFML@{SFML}!identity@{identity}}
+\index{identity@{identity}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{identity()}{identity()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga472e10e2718d8cf659ebe7a59fe7b0fa} 
+static \mbox{\hyperlink{class_quaternion}{Quaternion}} Quaternion\+::identity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+return the identity quaternion 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_quaternion}{Quaternion} 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_ga8525563a7db58d7674fbc8867cf90249}\index{SFML@{SFML}!isButtonDown@{isButtonDown}}
+\index{isButtonDown@{isButtonDown}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isButtonDown()}{isButtonDown()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga8525563a7db58d7674fbc8867cf90249} 
+bool Sfml\+Mouse\+::is\+Button\+Down (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if a button is down 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_gaddb497afb0c9af10f0e05d416bc8345a}{graphic\+::\+IMouse}}.
+
+\Hypertarget{group___s_f_m_l_ga5b9a63574efc220ec963df1f312b78fd}\index{SFML@{SFML}!isButtonPressed@{isButtonPressed}}
+\index{isButtonPressed@{isButtonPressed}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isButtonPressed()}{isButtonPressed()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga5b9a63574efc220ec963df1f312b78fd} 
+bool Sfml\+Mouse\+::is\+Button\+Pressed (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if a button is pressed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_gafd8ef257d34f4195838cbc758860df1f}{graphic\+::\+IMouse}}.
+
+\Hypertarget{group___s_f_m_l_gac29f9ce04fa6821c39ee64aba7a072e0}\index{SFML@{SFML}!isButtonReleased@{isButtonReleased}}
+\index{isButtonReleased@{isButtonReleased}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isButtonReleased()}{isButtonReleased()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gac29f9ce04fa6821c39ee64aba7a072e0} 
+bool Sfml\+Mouse\+::is\+Button\+Released (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if a button is released 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga1b1620f7a9cd866f543172ce711f8d96}{graphic\+::\+IMouse}}.
+
+\Hypertarget{group___s_f_m_l_gaa02ce805d4f597394a83200f4ee8c0b5}\index{SFML@{SFML}!isButtonUp@{isButtonUp}}
+\index{isButtonUp@{isButtonUp}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isButtonUp()}{isButtonUp()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaa02ce805d4f597394a83200f4ee8c0b5} 
+bool Sfml\+Mouse\+::is\+Button\+Up (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if a button is up 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_gafa52d70cdd08910cc7eb7b4084b8adfe}{graphic\+::\+IMouse}}.
+
+\Hypertarget{group___s_f_m_l_ga8bd9add9397f7d0d753538d2570d282f}\index{SFML@{SFML}!isKeyDown@{isKeyDown}}
+\index{isKeyDown@{isKeyDown}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isKeyDown()}{isKeyDown()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga8bd9add9397f7d0d753538d2570d282f} 
+bool Sfml\+Keyboard\+::is\+Key\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the key is down. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga6e849bccb3ca838a94e796d0146b7e51}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{group___s_f_m_l_ga92ad7947c3f90cb08a340568190845e0}\index{SFML@{SFML}!isKeyPressed@{isKeyPressed}}
+\index{isKeyPressed@{isKeyPressed}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isKeyPressed()}{isKeyPressed()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga92ad7947c3f90cb08a340568190845e0} 
+bool Sfml\+Keyboard\+::is\+Key\+Pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the key is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_gadb4994513e13c607bd8548ed7a87095d}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{group___s_f_m_l_ga0912fa8cce798bd65acd7afda66f1461}\index{SFML@{SFML}!isKeyReleased@{isKeyReleased}}
+\index{isKeyReleased@{isKeyReleased}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isKeyReleased()}{isKeyReleased()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga0912fa8cce798bd65acd7afda66f1461} 
+bool Sfml\+Keyboard\+::is\+Key\+Released (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the key is released. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga2a134a18af129f75ae772429b1c05800}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{group___s_f_m_l_gaf955588917011f16f63e0530ff4b6b6b}\index{SFML@{SFML}!isKeyUp@{isKeyUp}}
+\index{isKeyUp@{isKeyUp}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isKeyUp()}{isKeyUp()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaf955588917011f16f63e0530ff4b6b6b} 
+bool Sfml\+Keyboard\+::is\+Key\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if the key is up. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga720d845d0442e6c4a6a7444b6fc4c9d4}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{group___s_f_m_l_ga4bc70711286f774951a94fb931a7cccb}\index{SFML@{SFML}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isOpen()}{isOpen()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga4bc70711286f774951a94fb931a7cccb} 
+bool Sfml\+Window\+::is\+Open (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if the window is open 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_gae17a137c8ad8da0c414782e27f4c5dfc}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_ga8c2db5edcd6be4ac71475a09844f9c88}\index{SFML@{SFML}!isReady@{isReady}}
+\index{isReady@{isReady}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isReady()}{isReady()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga8c2db5edcd6be4ac71475a09844f9c88} 
+bool Sfml\+Polygon\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+check if the polygon is ready 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga0467688a616b36424ddbc8adbeba0544}{graphic\+::\+IPolygon}}.
+
+\Hypertarget{group___s_f_m_l_ga43587aab7d5762108568c65232e31fb8}\index{SFML@{SFML}!isReady@{isReady}}
+\index{isReady@{isReady}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{isReady()}{isReady()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga43587aab7d5762108568c65232e31fb8} 
+bool Sfml\+Sprite\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+check if the sprite is ready 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga8088e103ac1733993812764debae1e5e}{graphic\+::\+ISprite}}.
+
+\Hypertarget{group___s_f_m_l_gacf62f02f63e55c1416671d224897e576}\index{SFML@{SFML}!linkEvent@{linkEvent}}
+\index{linkEvent@{linkEvent}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{linkEvent()}{linkEvent()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gacf62f02f63e55c1416671d224897e576} 
+void Sfml\+Window\+::link\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+link an event to the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_gad95ff6150837ebf658a520a4a932b5c3}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_ga757ec55f9f361fcd8b518abaec05b29b}\index{SFML@{SFML}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga757ec55f9f361fcd8b518abaec05b29b} 
+\mbox{\hyperlink{class_quaternion}{Quaternion}} Quaternion\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_quaternion}{Quaternion}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+operator\texorpdfstring{$\ast$}{*} will multiply two quaternions 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_quaternion}{Quaternion} 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_ga157982865c73fefadf30a7b8739c890c}\index{SFML@{SFML}!orthographicProjection@{orthographicProjection}}
+\index{orthographicProjection@{orthographicProjection}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{orthographicProjection()}{orthographicProjection()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga157982865c73fefadf30a7b8739c890c} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ orthographic\+Projection (\begin{DoxyParamCaption}\item[{T}]{left}{, }\item[{T}]{right}{, }\item[{T}]{bottom}{, }\item[{T}]{top}{, }\item[{T}]{near\+Plane}{, }\item[{T}]{far\+Plane}{}\end{DoxyParamCaption})}
+
+
+
+orthographic\+Projection will create an orthographic projection matrix 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em left} & \\
+\hline
+{\em right} & \\
+\hline
+{\em bottom} & \\
+\hline
+{\em top} & \\
+\hline
+{\em near\+Plane} & \\
+\hline
+{\em far\+Plane} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_matrice}{Matrice$<$\+T$>$} 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_ga7a6d6c1298835eed6dc2a42b8fae5681}\index{SFML@{SFML}!perspectiveProjection@{perspectiveProjection}}
+\index{perspectiveProjection@{perspectiveProjection}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{perspectiveProjection()}{perspectiveProjection()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga7a6d6c1298835eed6dc2a42b8fae5681} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ perspective\+Projection (\begin{DoxyParamCaption}\item[{T}]{fov}{, }\item[{T}]{aspect\+Ratio}{}\end{DoxyParamCaption})}
+
+
+
+perspective\+Projection will create a perspective projection matrix 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & \\
+\hline
+{\em aspect\+Ratio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_matrice}{Matrice$<$\+T$>$} 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_gaf5dab2c2f96830b6a0926de4e1ef57a6}\index{SFML@{SFML}!pollEvent@{pollEvent}}
+\index{pollEvent@{pollEvent}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{pollEvent()}{pollEvent()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaf5dab2c2f96830b6a0926de4e1ef57a6} 
+bool Sfml\+Window\+::poll\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+poll the event 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga4a40f63b3c53f89a6ce684e7d2a92428}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_gab13d6ced50c96438115b30cb91fc7d6c}\index{SFML@{SFML}!Quaternion@{Quaternion}}
+\index{Quaternion@{Quaternion}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{Quaternion()}{Quaternion()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gab13d6ced50c96438115b30cb91fc7d6c} 
+Quaternion\+::\+Quaternion (\begin{DoxyParamCaption}\item[{float}]{w}{, }\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{float}]{z}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_quaternion}{Quaternion} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em z} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_ga3951a01ed2a4f599fbb2ce2b3e8cd767}\index{SFML@{SFML}!rotate@{rotate}}
+\index{rotate@{rotate}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{rotate()}{rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga3951a01ed2a4f599fbb2ce2b3e8cd767} 
+sf\+::\+Vector3f Quaternion\+::rotate (\begin{DoxyParamCaption}\item[{sf\+::\+Vector3f}]{point}{, }\item[{sf\+::\+Vector3f}]{center}{ = {\ttfamily \{0,~0,~0\}}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+rotate will rotate a point around a center 
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & \\
+\hline
+{\em center} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector3f 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_ga337fb163813cf7ffa67f2257244dba42}\index{SFML@{SFML}!rotate@{rotate}}
+\index{rotate@{rotate}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{rotate()}{rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga337fb163813cf7ffa67f2257244dba42} 
+void Sfml\+Model\+::rotate (\begin{DoxyParamCaption}\item[{sf\+::\+Vector3f}]{angle}{, }\item[{sf\+::\+Vector3f}]{center}{ = {\ttfamily \{0,~0,~0\}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+rotate will rotate the model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+{\em center} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_ga17e4d3fb8d685939292bb917ec1d4a2a}\index{SFML@{SFML}!setColor@{setColor}}
+\index{setColor@{setColor}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga17e4d3fb8d685939292bb917ec1d4a2a} 
+void Sfml\+Polygon\+::set\+Color (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+color\+\_\+t}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Set the Color object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_ga7e44b19b49e74f7525a9026df19f1947}\index{SFML@{SFML}!setCrop@{setCrop}}
+\index{setCrop@{setCrop}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setCrop()}{setCrop()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga7e44b19b49e74f7525a9026df19f1947} 
+void Sfml\+Sprite\+::set\+Crop (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v4f\+\_\+t}]{rect}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Crop object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga56dad5536d7c8f370a17842b966a9813}{graphic\+::\+ISprite}}.
+
+\Hypertarget{group___s_f_m_l_ga8883151f4d4ee9dc9e263f9c095df511}\index{SFML@{SFML}!setFov@{setFov}}
+\index{setFov@{setFov}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setFov()}{setFov()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga8883151f4d4ee9dc9e263f9c095df511} 
+void Sfml\+Camera\+::set\+Fov (\begin{DoxyParamCaption}\item[{float}]{fov}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Fov object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga1e5464620aa2329fd69799638a96cf6e}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_gafba623299ffbaf990f5ddff3a8242c0e}\index{SFML@{SFML}!setFrameLimit@{setFrameLimit}}
+\index{setFrameLimit@{setFrameLimit}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setFrameLimit()}{setFrameLimit()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gafba623299ffbaf990f5ddff3a8242c0e} 
+void Sfml\+Window\+::set\+Frame\+Limit (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+int32\+\_\+t}]{limit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Frame Limit object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga6b0e75f9c978eef8aca095144420f5af}{graphic\+::\+IWindow}}.
+
+\Hypertarget{group___s_f_m_l_ga38cbc9ece85daf00dbac5a776cda380c}\index{SFML@{SFML}!setMode@{setMode}}
+\index{setMode@{setMode}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga38cbc9ece85daf00dbac5a776cda380c} 
+void Sfml\+Camera\+::set\+Mode (\begin{DoxyParamCaption}\item[{ICamera\+::\+Mode}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Set the Mode object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_gaea1805f2eeb6da5dfe0f5e1188765d18}\index{SFML@{SFML}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaea1805f2eeb6da5dfe0f5e1188765d18} 
+void Sfml\+Camera\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_gaa10fb5fa8b569969cdafdf998bfba1b8}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_ga7e6e525af91ab137b7de22598e6c6bed}\index{SFML@{SFML}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga7e6e525af91ab137b7de22598e6c6bed} 
+void Sfml\+Model\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{pos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_ga7fcee9e689f8fe1c359185f0d0d14e13}\index{SFML@{SFML}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga7fcee9e689f8fe1c359185f0d0d14e13} 
+void Sfml\+Mouse\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the position of the mouse 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga365cbd8e5b9bd47abdd15ddd157dcb1e}{graphic\+::\+IMouse}}.
+
+\Hypertarget{group___s_f_m_l_gad19e684383ddd37dfc241bb4af04f2a7}\index{SFML@{SFML}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gad19e684383ddd37dfc241bb4af04f2a7} 
+void Sfml\+Polygon\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_gafa785fd42ef4de9aab70eff27ba8aacc}\index{SFML@{SFML}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gafa785fd42ef4de9aab70eff27ba8aacc} 
+void Sfml\+Sprite\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga7da368451eae7bdc6919d238387f416a}{graphic\+::\+ISprite}}.
+
+\Hypertarget{group___s_f_m_l_ga542ca15a2bd57ee4ea25c7069a9562d7}\index{SFML@{SFML}!setProjection@{setProjection}}
+\index{setProjection@{setProjection}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setProjection()}{setProjection()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga542ca15a2bd57ee4ea25c7069a9562d7} 
+void Sfml\+Camera\+::set\+Projection (\begin{DoxyParamCaption}\item[{ICamera\+::\+Projection}]{projection}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}}
+
+
+
+Set the Projection object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em projection} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_gac80478281cd7c3386dad009cee9ac42f}\index{SFML@{SFML}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gac80478281cd7c3386dad009cee9ac42f} 
+void Sfml\+Sprite\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{angle}{, }\item[{bool}]{is\+Rad}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+{\em is\+Rad} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga5706582ed7b81bee47577c05c8d44f12}{graphic\+::\+ISprite}}.
+
+\Hypertarget{group___s_f_m_l_gaaac0ec9ad459089e2fab0c484d8544bb}\index{SFML@{SFML}!setSize@{setSize}}
+\index{setSize@{setSize}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setSize()}{setSize()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaaac0ec9ad459089e2fab0c484d8544bb} 
+void Sfml\+Sprite\+::set\+Size (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Size object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga487198bf197d8880aecd8a237e07c9fd}{graphic\+::\+ISprite}}.
+
+\Hypertarget{group___s_f_m_l_gacfda052fa04fa82d3b30ead5bdf35b32}\index{SFML@{SFML}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gacfda052fa04fa82d3b30ead5bdf35b32} 
+void Sfml\+Camera\+::set\+Target (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Target object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga46fd28a7b9f9837462eff3de8d6454a0}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_gab0bb3576dd49509dcfb9ede61be3b487}\index{SFML@{SFML}!setUp@{setUp}}
+\index{setUp@{setUp}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{setUp()}{setUp()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gab0bb3576dd49509dcfb9ede61be3b487} 
+void Sfml\+Camera\+::set\+Up (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{up}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Up object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em up} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga3cf381163e3e13e119654f776a0f0c9c}{graphic\+::\+ICamera}}.
+
+\Hypertarget{group___s_f_m_l_ga99c0349ff93a7b007d3830e48305c626}\index{SFML@{SFML}!SfmlCamera@{SfmlCamera}}
+\index{SfmlCamera@{SfmlCamera}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{SfmlCamera()}{SfmlCamera()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga99c0349ff93a7b007d3830e48305c626} 
+Sfml\+Camera\+::\+Sfml\+Camera (\begin{DoxyParamCaption}\item[{sf\+::\+Vector3f}]{pos}{ = {\ttfamily \{0.f,~0.0f,~0.0f\}}, }\item[{sf\+::\+Vector3f}]{target}{ = {\ttfamily \{0,~0,~-\/1\}}, }\item[{float}]{fov}{ = {\ttfamily 90}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Sfml Camera object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+{\em target} & \\
+\hline
+{\em fov} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_ga296cf94d12cf33c0a05bf5e4348c4d78}\index{SFML@{SFML}!SfmlPolygon@{SfmlPolygon}}
+\index{SfmlPolygon@{SfmlPolygon}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{SfmlPolygon()}{SfmlPolygon()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga296cf94d12cf33c0a05bf5e4348c4d78} 
+Sfml\+Polygon\+::\+Sfml\+Polygon (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \+\_\+\+\_\+v2f\+\_\+t $>$}]{points}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Sfml Polygon object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_ga4dee9a5402ae6f2cb11c2a6e40e852b7}\index{SFML@{SFML}!SfmlSprite@{SfmlSprite}}
+\index{SfmlSprite@{SfmlSprite}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{SfmlSprite()}{SfmlSprite()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga4dee9a5402ae6f2cb11c2a6e40e852b7} 
+Sfml\+Sprite\+::\+Sfml\+Sprite (\begin{DoxyParamCaption}\item[{std\+::string}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Sfml Sprite object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_ga7477ebff1d20fcc14c3a20847936a658}\index{SFML@{SFML}!SfmlWindow@{SfmlWindow}}
+\index{SfmlWindow@{SfmlWindow}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{SfmlWindow()}{SfmlWindow()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga7477ebff1d20fcc14c3a20847936a658} 
+Sfml\+Window\+::\+Sfml\+Window (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+int32\+\_\+t}]{screen\+Width}{, }\item[{\+\_\+\+\_\+int32\+\_\+t}]{screen\+Height}{, }\item[{std\+::string}]{title}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Sfml Window object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Width} & \\
+\hline
+{\em screen\+Height} & \\
+\hline
+{\em title} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group___s_f_m_l_ga025eacd7df470b64542db212a21d1860}\index{SFML@{SFML}!update@{update}}
+\index{update@{update}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_ga025eacd7df470b64542db212a21d1860} 
+void Sfml\+Keyboard\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Update the keyboard. 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga1681260f7fa5502cfc353fe139c072f3}{graphic\+::\+IKeyboard}}.
+
+\Hypertarget{group___s_f_m_l_gab4474d824ce2e9cf2ac4ede8d91e73fa}\index{SFML@{SFML}!update@{update}}
+\index{update@{update}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gab4474d824ce2e9cf2ac4ede8d91e73fa} 
+void Sfml\+Mouse\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the mouse wheel move 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga87cc9ca9ea63bb88e083700c74acba74}{graphic\+::\+IMouse}}.
+
+\Hypertarget{group___s_f_m_l_gaa3d5662923d68c97cdcdd24d9052b1d9}\index{SFML@{SFML}!v3toa3@{v3toa3}}
+\index{v3toa3@{v3toa3}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{v3toa3()}{v3toa3()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gaa3d5662923d68c97cdcdd24d9052b1d9} 
+std\+::array$<$ double, 3 $>$ v3toa3 (\begin{DoxyParamCaption}\item[{sf\+::\+Vector3f}]{point}{}\end{DoxyParamCaption})}
+
+
+
+SFML. 
+
+Interface Abstract
+
+turns a sf\+::\+Vector3f into a std\+::array$<$double, 3$>$
+
+
+\begin{DoxyParams}{Parameters}
+{\em point} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::array$<$double, 3$>$ 
+\end{DoxyReturn}
+\Hypertarget{group___s_f_m_l_gabf6df290e75ecb2e538845dcf3643d73}\index{SFML@{SFML}!whichKey@{whichKey}}
+\index{whichKey@{whichKey}!SFML@{SFML}}
+\doxysubsubsubsection{\texorpdfstring{whichKey()}{whichKey()}}
+{\footnotesize\ttfamily \label{group___s_f_m_l_gabf6df290e75ecb2e538845dcf3643d73} 
+std\+::vector$<$ \mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} $>$ Sfml\+Keyboard\+::which\+Key (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it\textquotesingle{}s not recommended to use this function in a loop, use \doxylink{group___s_f_m_l_ga92ad7947c3f90cb08a340568190845e0}{is\+Key\+Pressed()} instead. it\textquotesingle{}s efficient for key detection \& binding. 
+
+\begin{DoxyReturn}{Returns}
+Keys\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga3f85d3034fdc48e70ab3de24d8e141f3}{graphic\+::\+IKeyboard}}.
+
+\input{group__sfml__extra}

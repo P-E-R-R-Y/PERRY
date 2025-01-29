@@ -2,6 +2,11 @@
 \hypertarget{class_sdl_polygon}{}\label{class_sdl_polygon}\index{SdlPolygon@{SdlPolygon}}
 
 
+handle a polygon  
+
+
+
+
 {\ttfamily \#include $<$Sdl\+Polygon.\+hpp$>$}
 
 Inheritance diagram for Sdl\+Polygon\+:\begin{figure}[H]
@@ -13,20 +18,21 @@ Inheritance diagram for Sdl\+Polygon\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sdl_polygon_ae6b989fd94e3a5d42e6c5f2e3bede0e6}\label{class_sdl_polygon_ae6b989fd94e3a5d42e6c5f2e3bede0e6} 
-{\bfseries Sdl\+Polygon} (std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ points)
-\item 
-bool \mbox{\hyperlink{class_sdl_polygon_a4789b439c0a4796b081731b901f65435}{is\+Ready}} () const override
+\mbox{\hyperlink{group___s_d_l_gae6b989fd94e3a5d42e6c5f2e3bede0e6}{Sdl\+Polygon}} (std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ points)
+\begin{DoxyCompactList}\small\item\em Construct a new Sdl Polygon object. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Sdl\+Polygon} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Sdl Polygon object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_d_l_ga4789b439c0a4796b081731b901f65435}{is\+Ready}} () const override
+\begin{DoxyCompactList}\small\item\em check if the polygon is ready \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{group___s_d_l_ga6c77e095888b6d9f9a295c6042138fc6}{get\+Position}} () const override
 \begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{class_sdl_polygon_a6c77e095888b6d9f9a295c6042138fc6}{get\+Position}} () const override
-\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_sdl_polygon_a6a40b6fc99987136011e061ff1a02180}{set\+Position}} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} position) override
+void \mbox{\hyperlink{group___s_d_l_ga6a40b6fc99987136011e061ff1a02180}{set\+Position}} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} position) override
 \begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} \mbox{\hyperlink{class_sdl_polygon_aa2318c7c47b8ffa339805c41333ee6c8}{get\+Color}} () const override
+\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} \mbox{\hyperlink{group___s_d_l_gaa2318c7c47b8ffa339805c41333ee6c8}{get\+Color}} () const override
 \begin{DoxyCompactList}\small\item\em Get the Color object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_sdl_polygon_a561712ec4a1d70f4c9ead43d23d2b7be}{set\+Color}} (\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} color) override
+void \mbox{\hyperlink{group___s_d_l_ga561712ec4a1d70f4c9ead43d23d2b7be}{set\+Color}} (\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} color) override
 \begin{DoxyCompactList}\small\item\em Set the Color object. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ \mbox{\hyperlink{class_sdl_polygon_a7776840ca7c8331e39023b6b02e9dac6}{get\+Points}} () const override
+std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ \mbox{\hyperlink{group___s_d_l_ga7776840ca7c8331e39023b6b02e9dac6}{get\+Points}} () const override
 \begin{DoxyCompactList}\small\item\em Get the Points object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}}}
 \begin{DoxyCompactItemize}
@@ -36,142 +42,24 @@ virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IPolygon} ()=default
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sdl_polygon_a2357e99c3efdcad7dbe62b00f732fa60}\label{class_sdl_polygon_a2357e99c3efdcad7dbe62b00f732fa60} 
 \mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} {\bfseries \+\_\+color}
 \item 
-\Hypertarget{class_sdl_polygon_adbf15485c6a2e0c5099b29204cc1a2d6}\label{class_sdl_polygon_adbf15485c6a2e0c5099b29204cc1a2d6} 
 \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} {\bfseries \+\_\+position}
 \item 
-\Hypertarget{class_sdl_polygon_a9744dea7942a180b3676a458784288c4}\label{class_sdl_polygon_a9744dea7942a180b3676a458784288c4} 
 std\+::vector$<$ SDL\+\_\+\+Vertex $>$ {\bfseries \+\_\+points}
 \item 
-\Hypertarget{class_sdl_polygon_a106f845b7a9b2964a26b68901e1242dd}\label{class_sdl_polygon_a106f845b7a9b2964a26b68901e1242dd} 
-std\+::vector$<$ \mbox{\hyperlink{namespacegraphic_a054df66adc001dc941f2a6de03dc6b4f}{graphic\+::triangle\+\_\+t}} $>$ {\bfseries \+\_\+triangles}
+std\+::vector$<$ \mbox{\hyperlink{group__graphic_ga054df66adc001dc941f2a6de03dc6b4f}{graphic\+::triangle\+\_\+t}} $>$ {\bfseries \+\_\+triangles}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sdl_polygon_a7747034efc5e3e0e55a5defe817fc3e3}\label{class_sdl_polygon_a7747034efc5e3e0e55a5defe817fc3e3} 
 class {\bfseries Sdl\+Window}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-File\+: \doxylink{_sdl_polygon_8hpp_source}{Sdl\+Polygon.\+hpp} Created Date\+: Fr Mar 2023 Project\+: PERRY Author\+: Perry Chouteau
-
-Last Modified\+: Fri Mar 10 2023 Modified By\+: Perry Chouteau
-
-Copyright (c) 2023-\/2033 Perry Chouteau 
-
-\doxysubsection{Member Function Documentation}
-\Hypertarget{class_sdl_polygon_aa2318c7c47b8ffa339805c41333ee6c8}\index{SdlPolygon@{SdlPolygon}!getColor@{getColor}}
-\index{getColor@{getColor}!SdlPolygon@{SdlPolygon}}
-\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
-{\footnotesize\ttfamily \label{class_sdl_polygon_aa2318c7c47b8ffa339805c41333ee6c8} 
-\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} Sdl\+Polygon\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the Color object. 
-
-\begin{DoxyReturn}{Returns}
-\+\_\+\+\_\+color\+\_\+t 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a58c4bd60aee98dedd69415f941372259}{graphic\+::\+IPolygon}}.
-
-\Hypertarget{class_sdl_polygon_a7776840ca7c8331e39023b6b02e9dac6}\index{SdlPolygon@{SdlPolygon}!getPoints@{getPoints}}
-\index{getPoints@{getPoints}!SdlPolygon@{SdlPolygon}}
-\doxysubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
-{\footnotesize\ttfamily \label{class_sdl_polygon_a7776840ca7c8331e39023b6b02e9dac6} 
-std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ Sdl\+Polygon\+::get\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the Points object. 
-
-\begin{DoxyReturn}{Returns}
-std\+::vector$<$\+\_\+\+\_\+v2f\+\_\+t$>$ 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_ad23528f502d73a90ddaa56726ff50e57}{graphic\+::\+IPolygon}}.
-
-\Hypertarget{class_sdl_polygon_a6c77e095888b6d9f9a295c6042138fc6}\index{SdlPolygon@{SdlPolygon}!getPosition@{getPosition}}
-\index{getPosition@{getPosition}!SdlPolygon@{SdlPolygon}}
-\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
-{\footnotesize\ttfamily \label{class_sdl_polygon_a6c77e095888b6d9f9a295c6042138fc6} 
-\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} Sdl\+Polygon\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the \doxylink{struct_position}{Position} object. 
-
-\begin{DoxyReturn}{Returns}
-\+\_\+\+\_\+v2f\+\_\+t 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_ab3fb8842141a3543208c6f71800abd4f}{graphic\+::\+IPolygon}}.
-
-\Hypertarget{class_sdl_polygon_a4789b439c0a4796b081731b901f65435}\index{SdlPolygon@{SdlPolygon}!isReady@{isReady}}
-\index{isReady@{isReady}!SdlPolygon@{SdlPolygon}}
-\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
-{\footnotesize\ttfamily \label{class_sdl_polygon_a4789b439c0a4796b081731b901f65435} 
-bool Sdl\+Polygon\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the \doxylink{struct_position}{Position} object. 
-
-\begin{DoxyReturn}{Returns}
-\+\_\+\+\_\+v2f\+\_\+t 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0467688a616b36424ddbc8adbeba0544}{graphic\+::\+IPolygon}}.
-
-\Hypertarget{class_sdl_polygon_a561712ec4a1d70f4c9ead43d23d2b7be}\index{SdlPolygon@{SdlPolygon}!setColor@{setColor}}
-\index{setColor@{setColor}!SdlPolygon@{SdlPolygon}}
-\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
-{\footnotesize\ttfamily \label{class_sdl_polygon_a561712ec4a1d70f4c9ead43d23d2b7be} 
-void Sdl\+Polygon\+::set\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Set the Color object. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em position} & \\
-\hline
-\end{DoxyParams}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a0a0a5e87e3d64afc16c30d26c13cf33b}{graphic\+::\+IPolygon}}.
-
-\Hypertarget{class_sdl_polygon_a6a40b6fc99987136011e061ff1a02180}\index{SdlPolygon@{SdlPolygon}!setPosition@{setPosition}}
-\index{setPosition@{setPosition}!SdlPolygon@{SdlPolygon}}
-\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
-{\footnotesize\ttfamily \label{class_sdl_polygon_a6a40b6fc99987136011e061ff1a02180} 
-void Sdl\+Polygon\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Set the \doxylink{struct_position}{Position} object. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em position} & \\
-\hline
-\end{DoxyParams}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_polygon_a230ab253cc42e8c2028106b0af038fdd}{graphic\+::\+IPolygon}}.
-
-
+handle a polygon 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/graphic/Sdl\+Polygon.\+hpp\end{DoxyCompactItemize}
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/graphic/\mbox{\hyperlink{_sdl_polygon_8hpp}{Sdl\+Polygon.\+hpp}}\end{DoxyCompactItemize}

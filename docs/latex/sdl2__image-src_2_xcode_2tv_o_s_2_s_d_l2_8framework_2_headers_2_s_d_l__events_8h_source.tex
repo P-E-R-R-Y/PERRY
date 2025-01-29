@@ -1,0 +1,602 @@
+\doxysection{SDL\+\_\+events.\+h}
+\hypertarget{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_source}{}\label{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/tvOS/SDL2.framework/Headers/SDL\_events.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/tvOS/SDL2.framework/Headers/SDL\_events.h}}
+\mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2022\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ SDL\_events\_h\_}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SDL\_events\_h\_}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL2/SDL\_stdinc.h}}>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__error_8h}{SDL2/SDL\_error.h}}>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__video_8h}{SDL2/SDL\_video.h}}>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h}{SDL2/SDL\_keyboard.h}}>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h}{SDL2/SDL\_mouse.h}}>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h}{SDL2/SDL\_joystick.h}}>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h}{SDL2/SDL\_gamecontroller.h}}>}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__quit_8h}{SDL2/SDL\_quit.h}}>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gesture_8h}{SDL2/SDL\_gesture.h}}>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__touch_8h}{SDL2/SDL\_touch.h}}>}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{SDL2/begin\_code.h}}>}}
+\DoxyCodeLine{00043\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{/*\ General\ keyboard/mouse\ state\ definitions\ */}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ SDL\_RELEASED\ \ \ \ 0}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ SDL\_PRESSED\ 1}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00056\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaafd64b483c47e93576b91bf5b227d04c2}{SDL\_FIRSTEVENT}}\ \ \ \ \ =\ 0,\ \ \ \ \ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{/*\ Application\ events\ */}}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa31acc5fdafc86ebe2c1f5c3cae48d603}{SDL\_QUIT}}\ \ \ \ \ \ \ \ \ \ \ =\ 0x100,\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{/*\ These\ application\ events\ have\ special\ meaning\ on\ iOS,\ see\ README-\/ios.md\ for\ details\ */}}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaac9c2c9870db9d109959ae68ec64cf67e}{SDL\_APP\_TERMINATING}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa32bc310f9370245fa086e42c69d76c40}{SDL\_APP\_LOWMEMORY}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaaa0c6280f19f3c307fd2e0c7b1d5f5461}{SDL\_APP\_WILLENTERBACKGROUND}},\ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaab2a804d0e9d91a604f4a03e49f5ab7c1}{SDL\_APP\_DIDENTERBACKGROUND}},\ }
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa406151c433bc968c46591bde396c987f}{SDL\_APP\_WILLENTERFOREGROUND}},\ }
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa964e90265b0910f3a52619cc460699d7}{SDL\_APP\_DIDENTERFOREGROUND}},\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa758ba7218366518e82ffe0e0f4a5e691}{SDL\_LOCALECHANGED}},\ \ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{/*\ Display\ events\ */}}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa825818ce6265316146d7288601fd5974}{SDL\_DISPLAYEVENT}}\ \ \ =\ 0x150,\ \ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{/*\ Window\ events\ */}}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa5ff4e41f0d8b5def11cfe6a69ec0b698}{SDL\_WINDOWEVENT}}\ \ \ \ =\ 0x200,\ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa73749d735a18ce6ef17a09ee70d5dbe7}{SDL\_SYSWMEVENT}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{/*\ Keyboard\ events\ */}}
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaacaf8cfd53c985cdbf6a90c811d51a1fc}{SDL\_KEYDOWN}}\ \ \ \ \ \ \ \ =\ 0x300,\ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaadefb8866b9d28be21c2c33c35cc66c4b}{SDL\_KEYUP}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa1b80c465df69c0b6d06f026ce7a230e3}{SDL\_TEXTEDITING}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa4fa2570088f6b9cbd109ae91b511368f}{SDL\_TEXTINPUT}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaacd473484a07dfdc628c4a02fbf9f83c9}{SDL\_KEYMAPCHANGED}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa82b00114dac2216df84b4c5cc6fe9c88}{SDL\_TEXTEDITING\_EXT}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{/*\ Mouse\ events\ */}}
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa04c436ef80fef38fb77a89e0e9124c30}{SDL\_MOUSEMOTION}}\ \ \ \ =\ 0x400,\ }
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa9267166e1536dfa8b0daa98c0afa9052}{SDL\_MOUSEBUTTONDOWN}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa4ab85278398d29b9e50f500aad2b952b}{SDL\_MOUSEBUTTONUP}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa63135c2e0aea2286f05066f3c0bc5c4e}{SDL\_MOUSEWHEEL}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{/*\ Joystick\ events\ */}}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaaf0803b3f8a12de3d85f81ebd7b514cd1}{SDL\_JOYAXISMOTION}}\ \ =\ 0x600,\ }
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa78f859489cfd565c305c7f6f9d5b25c1}{SDL\_JOYBALLMOTION}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaafba4080bfbad335e520097b2024f0dff}{SDL\_JOYHATMOTION}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa386ac978bc145a45883fe0adab70710b}{SDL\_JOYBUTTONDOWN}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa76f91c81110f012e3a47cbbc0449e3c3}{SDL\_JOYBUTTONUP}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa0500c4e830a1822e6d0a90294c3f1393}{SDL\_JOYDEVICEADDED}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa4e2d7a1067dc56abeee393d46309ecd0}{SDL\_JOYDEVICEREMOVED}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{/*\ Game\ controller\ events\ */}}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaaca6330126f4126f6a45454fa046c25f3}{SDL\_CONTROLLERAXISMOTION}}\ \ =\ 0x650,\ }
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaaafe044d5f92ac9608ded473218569474}{SDL\_CONTROLLERBUTTONDOWN}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa8cb5a10b1ae0e185ef69a321d3d2d1be}{SDL\_CONTROLLERBUTTONUP}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa9642de478348da1aba4fb5791e8c5314}{SDL\_CONTROLLERDEVICEADDED}},\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaae00ac6995dfb7b92bfae68b9f47ae07a}{SDL\_CONTROLLERDEVICEREMOVED}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaaeca87c7b5bb21915d444298449a78ee6}{SDL\_CONTROLLERDEVICEREMAPPED}},\ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa156ec1564f07159355de8137bdab406d}{SDL\_CONTROLLERTOUCHPADDOWN}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa6652ad594ff8306ded63b2e16a0d507f}{SDL\_CONTROLLERTOUCHPADMOTION}},\ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaae94c3ab09ae94c2b83c386eae4e56810}{SDL\_CONTROLLERTOUCHPADUP}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaafa7a5589ea54330547713f4c80b4437e}{SDL\_CONTROLLERSENSORUPDATE}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{/*\ Touch\ events\ */}}
+\DoxyCodeLine{00135\ \ \ \ \ SDL\_FINGERDOWN\ \ \ \ \ \ =\ 0x700,}
+\DoxyCodeLine{00136\ \ \ \ \ SDL\_FINGERUP,}
+\DoxyCodeLine{00137\ \ \ \ \ SDL\_FINGERMOTION,}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{/*\ Gesture\ events\ */}}
+\DoxyCodeLine{00140\ \ \ \ \ SDL\_DOLLARGESTURE\ \ \ =\ 0x800,}
+\DoxyCodeLine{00141\ \ \ \ \ SDL\_DOLLARRECORD,}
+\DoxyCodeLine{00142\ \ \ \ \ SDL\_MULTIGESTURE,}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{/*\ Clipboard\ events\ */}}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa6ba1fed7d9fec95993eeb74abd96f64a}{SDL\_CLIPBOARDUPDATE}}\ =\ 0x900,\ }
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{/*\ Drag\ and\ drop\ events\ */}}
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaad9238862d7aeaebff88be6453ee0fbab}{SDL\_DROPFILE}}\ \ \ \ \ \ \ \ =\ 0x1000,\ }
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa1d97f901333e40b0ccc4dff1a319213f}{SDL\_DROPTEXT}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa0809886c132aaf734fff6f2abf466912}{SDL\_DROPBEGIN}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaaa83e80a89d5c4ff14889d07dddc402ef}{SDL\_DROPCOMPLETE}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{/*\ Audio\ hotplug\ events\ */}}
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaadb3154654baf003910e75d74b507a82b}{SDL\_AUDIODEVICEADDED}}\ =\ 0x1100,\ }
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaad56f8934fe24ee4c0cd9329e3c57c0c2}{SDL\_AUDIODEVICEREMOVED}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{/*\ Sensor\ events\ */}}
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa1536ed6dfb1cdb20da84b7e2c602c022}{SDL\_SENSORUPDATE}}\ =\ 0x1200,\ \ \ \ \ }
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{/*\ Render\ events\ */}}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaae8971f362076f4844d953ea57702108a}{SDL\_RENDER\_TARGETS\_RESET}}\ =\ 0x2000,\ }
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa88e4a52a73047416133b179ba0fd7db0}{SDL\_RENDER\_DEVICE\_RESET}},\ }
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{/*\ Internal\ events\ */}}
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa3f831e6423f957738190a8c5e180124a}{SDL\_POLLSENTINEL}}\ =\ 0x7F00,\ }
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00170\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaa4364c23f54802309e83fdb9b1c07c719}{SDL\_USEREVENT}}\ \ \ \ =\ 0x8000,}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fccaaffeac40a4ff366717c0ebc74118ea2ae}{SDL\_LASTEVENT}}\ \ \ \ =\ 0xFFFF}
+\DoxyCodeLine{00176\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a3b589e89be6b35c02e0dd34a55f3fcca}{SDL\_EventType}};}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00181\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___common_event}{SDL\_CommonEvent}}}
+\DoxyCodeLine{00182\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ Uint32\ type;}
+\DoxyCodeLine{00184\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___common_event_a7d9046abb021ffc88dd5d32978289e65}{timestamp}};\ \ \ }
+\DoxyCodeLine{00185\ \}\ \mbox{\hyperlink{struct_s_d_l___common_event}{SDL\_CommonEvent}};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00190\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___display_event}{SDL\_DisplayEvent}}}
+\DoxyCodeLine{00191\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___display_event_a5f4993ce9c5289a2ac046ae7a6dff544}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00193\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___display_event_a6c4cd9f63a2ff62032602193c9bf605d}{timestamp}};\ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___display_event_af7159e813fb168a2fdfe5070e6026a39}{display}};\ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___display_event_a4850a90c06e18146d6a2ac235cdd7336}{event}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00197\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00198\ \ \ \ \ Uint8\ padding3;}
+\DoxyCodeLine{00199\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___display_event_a4feb7329af16a060cc16d539e5cb13b5}{data1}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ \}\ \mbox{\hyperlink{struct_s_d_l___display_event}{SDL\_DisplayEvent}};}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00205\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___window_event}{SDL\_WindowEvent}}}
+\DoxyCodeLine{00206\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___window_event_a01c8c8fbe8564e690f958d2db560f657}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___window_event_a7b0bf569b20cfa4e3fb76e3301d616f9}{timestamp}};\ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___window_event_a4b31796ffc84fbb7f6e9ba33e127619a}{windowID}};\ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___window_event_a485cd1f07f0f22fdb9f4c4bf214011dc}{event}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00211\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00212\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00213\ \ \ \ \ Uint8\ padding3;}
+\DoxyCodeLine{00214\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___window_event_a01da0025428d3434c80021f3e4089fec}{data1}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00215\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___window_event_af6cd0a21bc9ecadfee42f6a0147d7171}{data2}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00216\ \}\ \mbox{\hyperlink{struct_s_d_l___window_event}{SDL\_WindowEvent}};}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00221\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___keyboard_event}{SDL\_KeyboardEvent}}}
+\DoxyCodeLine{00222\ \{}
+\DoxyCodeLine{00223\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___keyboard_event_ae0b2f2aace6f80c1f47e5a14350d409a}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___keyboard_event_a3da1d8f6892e7f6ee28d9eafdb5e7d02}{timestamp}};\ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___keyboard_event_a56efb6780b96acd5b50d8f797efb3546}{windowID}};\ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___keyboard_event_a110558eb96c113c86cfa31a7018c2346}{state}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00227\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___keyboard_event_a3edac3b36304812d533795c9df4ed4c1}{repeat}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00228\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00229\ \ \ \ \ Uint8\ padding3;}
+\DoxyCodeLine{00230\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_a074ae08acbe79dba712775b95267f4d2}{SDL\_Keysym}}\ \mbox{\hyperlink{struct_s_d_l___keyboard_event_a2a57ba820a298f2c02ad5d41fd2b1aa8}{keysym}};\ \ }
+\DoxyCodeLine{00231\ \}\ \mbox{\hyperlink{struct_s_d_l___keyboard_event}{SDL\_KeyboardEvent}};}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ SDL\_TEXTEDITINGEVENT\_TEXT\_SIZE\ (32)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00237\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___text_editing_event}{SDL\_TextEditingEvent}}}
+\DoxyCodeLine{00238\ \{}
+\DoxyCodeLine{00239\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_event_a198e6df194a3bf12cf5f82553e84c7cb}{type}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00240\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_event_afc164f40abee6fd8e72e01b589210c75}{timestamp}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00241\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_event_a23b3e414cf7a7ccc547b7595ca930049}{windowID}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_s_d_l___text_editing_event_a1958926585189f459190e115e58d73a6}{text}}[SDL\_TEXTEDITINGEVENT\_TEXT\_SIZE];\ \ }
+\DoxyCodeLine{00243\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_event_ac6c6a00835d92b12c0ba5b78b5ad676d}{start}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00244\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_event_adca95505c0bf212834930df58f6d1aa5}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00245\ \}\ \mbox{\hyperlink{struct_s_d_l___text_editing_event}{SDL\_TextEditingEvent}};}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00251\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___text_editing_ext_event}{SDL\_TextEditingExtEvent}}}
+\DoxyCodeLine{00252\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_ext_event_a476ffaedf535eb226bb2e405a1672a1e}{type}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00254\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_ext_event_a34e0f54b5388da54bcf946b103e93711}{timestamp}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00255\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_ext_event_ab8ab98c13bf8e4528f6734d5db37731a}{windowID}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_s_d_l___text_editing_ext_event_a75ca6f7e96a472503a13fe4431ce1128}{text}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00257\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_ext_event_a404d784703abd48fb71e1099bde114a3}{start}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___text_editing_ext_event_afd96e3974e222f777383ce8558e9e4ce}{length}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00259\ \}\ \mbox{\hyperlink{struct_s_d_l___text_editing_ext_event}{SDL\_TextEditingExtEvent}};}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#define\ SDL\_TEXTINPUTEVENT\_TEXT\_SIZE\ (32)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00265\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___text_input_event}{SDL\_TextInputEvent}}}
+\DoxyCodeLine{00266\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___text_input_event_a90576be2ea52e694deff40d0586654f5}{type}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00268\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___text_input_event_a20b190a96494918690ea7f99187be948}{timestamp}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___text_input_event_aeb4f7a939353990ca40261ffbfbeb3d0}{windowID}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_s_d_l___text_input_event_a52e2bd1ebacbf62b1c5f6ad140d7a965}{text}}[SDL\_TEXTINPUTEVENT\_TEXT\_SIZE];\ \ }
+\DoxyCodeLine{00271\ \}\ \mbox{\hyperlink{struct_s_d_l___text_input_event}{SDL\_TextInputEvent}};}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00276\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___mouse_motion_event}{SDL\_MouseMotionEvent}}}
+\DoxyCodeLine{00277\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event_a431dd28cd6db6a7335cf633dbeb80cfb}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00279\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event_af530bc0ef327ea6d497c5b1da119841c}{timestamp}};\ \ \ }
+\DoxyCodeLine{00280\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event_aa9976725242ada93a9e18e7fdf5796e6}{windowID}};\ \ \ \ }
+\DoxyCodeLine{00281\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event_a6f04c17b4305683915e2fd2dc3c36dbc}{which}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00282\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event_a3f6e9bad9d959b824881ba09e05b7024}{state}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00283\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event_a36398bb4a5308446a262b0bfc8baa80a}{x}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00284\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event_a7e6a7b1f8713d1968dc913908e8ea448}{y}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00285\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event_a1c01d9aba2a20778fb45a15dca39ef58}{xrel}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00286\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event_a7674c8b92d039ab948f671a180fa7b30}{yrel}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00287\ \}\ \mbox{\hyperlink{struct_s_d_l___mouse_motion_event}{SDL\_MouseMotionEvent}};}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00292\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___mouse_button_event}{SDL\_MouseButtonEvent}}}
+\DoxyCodeLine{00293\ \{}
+\DoxyCodeLine{00294\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event_af64cb09ea68b8081ecc8ee498552e3d7}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00295\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event_ab05e8a454692608ff56c502e95799c56}{timestamp}};\ \ \ }
+\DoxyCodeLine{00296\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event_ab3b855d4b543b5d02fcf5d56e4421393}{windowID}};\ \ \ \ }
+\DoxyCodeLine{00297\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event_a366aef59a0f393afc8a3561e741825df}{which}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00298\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event_a1a4680e19ae06d02d2093f0bcba1b24c}{button}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00299\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event_a8809cef85cfffad4f2059f2ba4fc6a3d}{state}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00300\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event_aa606bebcbc3ffc7e932016039c2a36a1}{clicks}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00301\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00302\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event_a5bb9c61b86e999f58637511e32e3a076}{x}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00303\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event_a7ccb5c55a7ddadce723f4ea6d5269540}{y}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00304\ \}\ \mbox{\hyperlink{struct_s_d_l___mouse_button_event}{SDL\_MouseButtonEvent}};}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00309\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___mouse_wheel_event}{SDL\_MouseWheelEvent}}}
+\DoxyCodeLine{00310\ \{}
+\DoxyCodeLine{00311\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event_aa6b741e99df708c6f9550ee0f520fb70}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00312\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event_a83ad52c80ff49a8e75dc6c33bba65fa0}{timestamp}};\ \ \ }
+\DoxyCodeLine{00313\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event_ab45eb1895217214ecb773fc555e08f6c}{windowID}};\ \ \ \ }
+\DoxyCodeLine{00314\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event_a014dc767d52e8b75ba26a5f12e1704e8}{which}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00315\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event_a6d904eef474ea45a5b1828fcb5b0f859}{x}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00316\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event_a53fdf77a464426bc8b30e629795f044b}{y}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00317\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event_a9fc46552d116499e5b8ca89d66df932c}{direction}};\ \ \ }
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event_af3ac35797c76ffd8fce0fe917d3cba50}{preciseX}};\ \ \ \ \ }
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event_a64b89ea00f054854f0fef03efc60d332}{preciseY}};\ \ \ \ \ }
+\DoxyCodeLine{00320\ \}\ \mbox{\hyperlink{struct_s_d_l___mouse_wheel_event}{SDL\_MouseWheelEvent}};}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00325\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___joy_axis_event}{SDL\_JoyAxisEvent}}}
+\DoxyCodeLine{00326\ \{}
+\DoxyCodeLine{00327\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_axis_event_aed1c873fb90ba58194e65f972933c67d}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00328\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_axis_event_a60ecfc70df9eeef8e33b5dd7dc060389}{timestamp}};\ \ \ }
+\DoxyCodeLine{00329\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h_a3c3d32500cb08f76ee8077983912c0bd}{SDL\_JoystickID}}\ \mbox{\hyperlink{struct_s_d_l___joy_axis_event_a965719f4703a7091bcc5f07f79fcf7e1}{which}};\ }
+\DoxyCodeLine{00330\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___joy_axis_event_a0beac2fb161e45771c424bd0b6daeabb}{axis}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00331\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00332\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00333\ \ \ \ \ Uint8\ padding3;}
+\DoxyCodeLine{00334\ \ \ \ \ Sint16\ \mbox{\hyperlink{struct_s_d_l___joy_axis_event_a53ee73e7c367934dd6edb69963be5556}{value}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00335\ \ \ \ \ Uint16\ padding4;}
+\DoxyCodeLine{00336\ \}\ \mbox{\hyperlink{struct_s_d_l___joy_axis_event}{SDL\_JoyAxisEvent}};}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00341\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___joy_ball_event}{SDL\_JoyBallEvent}}}
+\DoxyCodeLine{00342\ \{}
+\DoxyCodeLine{00343\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_ball_event_a0b192b95a043cb494b27ed9b27e84db1}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00344\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_ball_event_aa8e4fb91af62e316bb9a3219ab76148d}{timestamp}};\ \ \ }
+\DoxyCodeLine{00345\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h_a3c3d32500cb08f76ee8077983912c0bd}{SDL\_JoystickID}}\ \mbox{\hyperlink{struct_s_d_l___joy_ball_event_a4e2e185717d529167cd0bea21093c454}{which}};\ }
+\DoxyCodeLine{00346\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___joy_ball_event_add4eb0daeaf95ae56e8c7cfcec560242}{ball}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00347\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00348\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00349\ \ \ \ \ Uint8\ padding3;}
+\DoxyCodeLine{00350\ \ \ \ \ Sint16\ \mbox{\hyperlink{struct_s_d_l___joy_ball_event_a959a8473aa1964e5e1778c27a9ffd261}{xrel}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00351\ \ \ \ \ Sint16\ \mbox{\hyperlink{struct_s_d_l___joy_ball_event_a28ad48a9eb7a5d3ff62ccba09fcead76}{yrel}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00352\ \}\ \mbox{\hyperlink{struct_s_d_l___joy_ball_event}{SDL\_JoyBallEvent}};}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00357\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___joy_hat_event}{SDL\_JoyHatEvent}}}
+\DoxyCodeLine{00358\ \{}
+\DoxyCodeLine{00359\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_hat_event_ac583dafab46c44354e210a542aff57cc}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00360\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_hat_event_ade58ecb3e75aad4ef9809f040519a021}{timestamp}};\ \ \ }
+\DoxyCodeLine{00361\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h_a3c3d32500cb08f76ee8077983912c0bd}{SDL\_JoystickID}}\ \mbox{\hyperlink{struct_s_d_l___joy_hat_event_ac9d9bb179f9116d16b3da47cacd74b55}{which}};\ }
+\DoxyCodeLine{00362\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___joy_hat_event_ab1b54a6d1091e583e856f86b5af1e2f6}{hat}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00363\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___joy_hat_event_a52b179a34407449941b61d988ca72ef4}{value}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00370\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00371\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00372\ \}\ \mbox{\hyperlink{struct_s_d_l___joy_hat_event}{SDL\_JoyHatEvent}};}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00377\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___joy_button_event}{SDL\_JoyButtonEvent}}}
+\DoxyCodeLine{00378\ \{}
+\DoxyCodeLine{00379\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_button_event_a8f3312a046d37fa2884b93f69c4cb655}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00380\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_button_event_ab50b6f7d1ab3ac53df69fc2d6cf5fa2a}{timestamp}};\ \ \ }
+\DoxyCodeLine{00381\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h_a3c3d32500cb08f76ee8077983912c0bd}{SDL\_JoystickID}}\ \mbox{\hyperlink{struct_s_d_l___joy_button_event_a1679049adad7242b28420948fdc79044}{which}};\ }
+\DoxyCodeLine{00382\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___joy_button_event_a73ebe4261cf80564052af9c1af737a4d}{button}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00383\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___joy_button_event_ad3b6f8d9aa2c5e694f664b97d12bcd2b}{state}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00384\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00385\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00386\ \}\ \mbox{\hyperlink{struct_s_d_l___joy_button_event}{SDL\_JoyButtonEvent}};}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00391\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___joy_device_event}{SDL\_JoyDeviceEvent}}}
+\DoxyCodeLine{00392\ \{}
+\DoxyCodeLine{00393\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_device_event_a51f060ba1dd5669b458e9c97aece667e}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00394\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___joy_device_event_a5c4a9271bfff5d5c2e09a0dc732df8f3}{timestamp}};\ \ \ }
+\DoxyCodeLine{00395\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___joy_device_event_af9b295798f033b799ebbda7de6cb5a7e}{which}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00396\ \}\ \mbox{\hyperlink{struct_s_d_l___joy_device_event}{SDL\_JoyDeviceEvent}};}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00402\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___controller_axis_event}{SDL\_ControllerAxisEvent}}}
+\DoxyCodeLine{00403\ \{}
+\DoxyCodeLine{00404\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_axis_event_aa904b61e4763d28d887cf8afcc3cbb7c}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00405\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_axis_event_afc92dba0b4d1652a1ecf9e85606d1f14}{timestamp}};\ \ \ }
+\DoxyCodeLine{00406\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h_a3c3d32500cb08f76ee8077983912c0bd}{SDL\_JoystickID}}\ \mbox{\hyperlink{struct_s_d_l___controller_axis_event_a07087f68ea9d64b50047d65312ee7b94}{which}};\ }
+\DoxyCodeLine{00407\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___controller_axis_event_aba6543c143521aebce06a41a8cf79db0}{axis}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00408\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00409\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00410\ \ \ \ \ Uint8\ padding3;}
+\DoxyCodeLine{00411\ \ \ \ \ Sint16\ \mbox{\hyperlink{struct_s_d_l___controller_axis_event_a1ed7f14255ed01b982d40a38791d475a}{value}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00412\ \ \ \ \ Uint16\ padding4;}
+\DoxyCodeLine{00413\ \}\ \mbox{\hyperlink{struct_s_d_l___controller_axis_event}{SDL\_ControllerAxisEvent}};}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00419\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___controller_button_event}{SDL\_ControllerButtonEvent}}}
+\DoxyCodeLine{00420\ \{}
+\DoxyCodeLine{00421\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_button_event_a09869d792031e47a88673d85915c209f}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00422\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_button_event_a73003712734c4d2f966db3d7c2ce826b}{timestamp}};\ \ \ }
+\DoxyCodeLine{00423\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h_a3c3d32500cb08f76ee8077983912c0bd}{SDL\_JoystickID}}\ \mbox{\hyperlink{struct_s_d_l___controller_button_event_a98777e88b5d5cae83eef16ffd4bcacc1}{which}};\ }
+\DoxyCodeLine{00424\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___controller_button_event_a039da6cd31c3c62e62a3ae17cc64d0db}{button}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00425\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___controller_button_event_a00c46683f86674c2a4f74404ee3e857c}{state}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00426\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00427\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00428\ \}\ \mbox{\hyperlink{struct_s_d_l___controller_button_event}{SDL\_ControllerButtonEvent}};}
+\DoxyCodeLine{00429\ }
+\DoxyCodeLine{00430\ }
+\DoxyCodeLine{00434\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___controller_device_event}{SDL\_ControllerDeviceEvent}}}
+\DoxyCodeLine{00435\ \{}
+\DoxyCodeLine{00436\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_device_event_a45b3807eaf70a5f5cf712455da277536}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00437\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_device_event_a62945795fc17f5000fddc80e2cf921b8}{timestamp}};\ \ \ }
+\DoxyCodeLine{00438\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___controller_device_event_accb80de1619c1e790cffb6c888c915db}{which}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00439\ \}\ \mbox{\hyperlink{struct_s_d_l___controller_device_event}{SDL\_ControllerDeviceEvent}};}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00444\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___controller_touchpad_event}{SDL\_ControllerTouchpadEvent}}}
+\DoxyCodeLine{00445\ \{}
+\DoxyCodeLine{00446\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_touchpad_event_ac33536046a3481953246b22a0371c109}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00447\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_touchpad_event_a2b80663393965edfc666f364f07631da}{timestamp}};\ \ \ }
+\DoxyCodeLine{00448\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h_a3c3d32500cb08f76ee8077983912c0bd}{SDL\_JoystickID}}\ \mbox{\hyperlink{struct_s_d_l___controller_touchpad_event_a0eccc1247f8924b2e495a2afd4f2daf4}{which}};\ }
+\DoxyCodeLine{00449\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___controller_touchpad_event_a47ebc5c7897b57bda7fe7c2fa553eb7f}{touchpad}};\ \ \ \ }
+\DoxyCodeLine{00450\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___controller_touchpad_event_a0e88fa90ee264c841170cf199a4e57c9}{finger}};\ \ \ \ \ \ }
+\DoxyCodeLine{00451\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___controller_touchpad_event_adb5d612ba132f5dc0278a27da9f2e310}{x}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___controller_touchpad_event_a7d7bb07fbb017e8d832f04a0bb80c333}{y}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00453\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___controller_touchpad_event_a63f7ea4e43a032d8a64c2022761ba5e1}{pressure}};\ \ \ \ \ }
+\DoxyCodeLine{00454\ \}\ \mbox{\hyperlink{struct_s_d_l___controller_touchpad_event}{SDL\_ControllerTouchpadEvent}};}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00459\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___controller_sensor_event}{SDL\_ControllerSensorEvent}}}
+\DoxyCodeLine{00460\ \{}
+\DoxyCodeLine{00461\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_sensor_event_a553d55d13d9b118679a3f208c41e96cb}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00462\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___controller_sensor_event_a67f4b70a91f347130928f1c91d120e95}{timestamp}};\ \ \ }
+\DoxyCodeLine{00463\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h_a3c3d32500cb08f76ee8077983912c0bd}{SDL\_JoystickID}}\ \mbox{\hyperlink{struct_s_d_l___controller_sensor_event_acf40e0528d7147725dfc94cc96618d4d}{which}};\ }
+\DoxyCodeLine{00464\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___controller_sensor_event_aac19e4034212a30d64066a122d5db2a8}{sensor}};\ \ \ \ \ \ }
+\DoxyCodeLine{00465\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___controller_sensor_event_ad273371014658b56addcd576352bd8ac}{data}}[3];\ \ \ \ \ \ }
+\DoxyCodeLine{00466\ \}\ \mbox{\hyperlink{struct_s_d_l___controller_sensor_event}{SDL\_ControllerSensorEvent}};}
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00471\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___audio_device_event}{SDL\_AudioDeviceEvent}}}
+\DoxyCodeLine{00472\ \{}
+\DoxyCodeLine{00473\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___audio_device_event_ae68c3bd49b49608711a17395c7cbfe58}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00474\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___audio_device_event_aa471680486a6103eafc9af569016df57}{timestamp}};\ \ \ }
+\DoxyCodeLine{00475\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___audio_device_event_ac91d70fd4e1dd596185fed061388896c}{which}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00476\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___audio_device_event_a1482dcd50b47046ef8e9bfa7cc7457d9}{iscapture}};\ \ \ \ }
+\DoxyCodeLine{00477\ \ \ \ \ Uint8\ padding1;}
+\DoxyCodeLine{00478\ \ \ \ \ Uint8\ padding2;}
+\DoxyCodeLine{00479\ \ \ \ \ Uint8\ padding3;}
+\DoxyCodeLine{00480\ \}\ \mbox{\hyperlink{struct_s_d_l___audio_device_event}{SDL\_AudioDeviceEvent}};}
+\DoxyCodeLine{00481\ }
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00486\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___touch_finger_event}{SDL\_TouchFingerEvent}}}
+\DoxyCodeLine{00487\ \{}
+\DoxyCodeLine{00488\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event_a3883218fa3426065ca66086c100edbfa}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00489\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event_abde2ab5cb013bbd21e37a65e2f8fa666}{timestamp}};\ \ \ }
+\DoxyCodeLine{00490\ \ \ \ \ SDL\_TouchID\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event_ad7a6f39ec9af1bf47b160d18314edd70}{touchId}};\ }
+\DoxyCodeLine{00491\ \ \ \ \ SDL\_FingerID\ fingerId;}
+\DoxyCodeLine{00492\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event_a0ce44b1342220fa17e9b9b4a77c2c906}{x}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00493\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event_ac2bb8af638d2927a8e13f6ffe8f9384e}{y}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00494\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event_ac6acac209d6e2bd659fdb6760081393d}{dx}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00495\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event_a9c0320c5f18a6b9d10da657e166608c9}{dy}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00496\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event_ab4fca822d0807b5748dbae8d3cc56524}{pressure}};\ \ \ \ \ }
+\DoxyCodeLine{00497\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event_a3dd6c668612f197dcb1e2b69d8c5e0e7}{windowID}};\ \ \ \ }
+\DoxyCodeLine{00498\ \}\ \mbox{\hyperlink{struct_s_d_l___touch_finger_event}{SDL\_TouchFingerEvent}};}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00504\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___multi_gesture_event}{SDL\_MultiGestureEvent}}}
+\DoxyCodeLine{00505\ \{}
+\DoxyCodeLine{00506\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___multi_gesture_event_ab0c7adc9a3f71cc3532bfe0ff8cc6120}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00507\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___multi_gesture_event_a7e99a98debf3ce11f6d2a2fbb3637175}{timestamp}};\ \ \ }
+\DoxyCodeLine{00508\ \ \ \ \ SDL\_TouchID\ \mbox{\hyperlink{struct_s_d_l___multi_gesture_event_aa15d1201559a3c9277082af71a972dc1}{touchId}};\ }
+\DoxyCodeLine{00509\ \ \ \ \ \textcolor{keywordtype}{float}\ dTheta;}
+\DoxyCodeLine{00510\ \ \ \ \ \textcolor{keywordtype}{float}\ dDist;}
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00512\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00513\ \ \ \ \ Uint16\ numFingers;}
+\DoxyCodeLine{00514\ \ \ \ \ Uint16\ padding;}
+\DoxyCodeLine{00515\ \}\ \mbox{\hyperlink{struct_s_d_l___multi_gesture_event}{SDL\_MultiGestureEvent}};}
+\DoxyCodeLine{00516\ }
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00521\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___dollar_gesture_event}{SDL\_DollarGestureEvent}}}
+\DoxyCodeLine{00522\ \{}
+\DoxyCodeLine{00523\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___dollar_gesture_event_ac7f6948754a1b2eb36edde043bf75ce9}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00524\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___dollar_gesture_event_a3bccd8ebdf30b79c0f4074f6471ec583}{timestamp}};\ \ \ }
+\DoxyCodeLine{00525\ \ \ \ \ SDL\_TouchID\ \mbox{\hyperlink{struct_s_d_l___dollar_gesture_event_a40402f6911ed0dba48e6b23aa02bd83d}{touchId}};\ }
+\DoxyCodeLine{00526\ \ \ \ \ SDL\_GestureID\ gestureId;}
+\DoxyCodeLine{00527\ \ \ \ \ Uint32\ numFingers;}
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{keywordtype}{float}\ error;}
+\DoxyCodeLine{00529\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___dollar_gesture_event_a9888449bd8842ed96494b4db16a6097b}{x}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00530\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___dollar_gesture_event_a293b2303acc1cfc63c167c5525e6eab5}{y}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00531\ \}\ \mbox{\hyperlink{struct_s_d_l___dollar_gesture_event}{SDL\_DollarGestureEvent}};}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00533\ }
+\DoxyCodeLine{00539\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___drop_event}{SDL\_DropEvent}}}
+\DoxyCodeLine{00540\ \{}
+\DoxyCodeLine{00541\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___drop_event_a5ea27cfaa5f8d4940e9a69b68b3cc035}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00542\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___drop_event_a02d2c81bb22db632a40cd0021ff751ab}{timestamp}};\ \ \ }
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_s_d_l___drop_event_adf3eb48d332665a6546e262f33d8e15f}{file}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00544\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___drop_event_a8cecd2178cdc04118bf852e7cf7bf647}{windowID}};\ \ \ \ }
+\DoxyCodeLine{00545\ \}\ \mbox{\hyperlink{struct_s_d_l___drop_event}{SDL\_DropEvent}};}
+\DoxyCodeLine{00546\ }
+\DoxyCodeLine{00547\ }
+\DoxyCodeLine{00551\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___sensor_event}{SDL\_SensorEvent}}}
+\DoxyCodeLine{00552\ \{}
+\DoxyCodeLine{00553\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___sensor_event_a0173d64fbe5299cad956298faf3fb0f9}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00554\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___sensor_event_a7de6c2b4d4791f5553b5de225293ceb5}{timestamp}};\ \ \ }
+\DoxyCodeLine{00555\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___sensor_event_aa1c130192bad9b316f811f2d138b3b22}{which}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00556\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_l___sensor_event_adae98331cfb8d4c917d0fad967ea2f29}{data}}[6];\ \ \ \ \ \ }
+\DoxyCodeLine{00557\ \}\ \mbox{\hyperlink{struct_s_d_l___sensor_event}{SDL\_SensorEvent}};}
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00562\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___quit_event}{SDL\_QuitEvent}}}
+\DoxyCodeLine{00563\ \{}
+\DoxyCodeLine{00564\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___quit_event_a51ab0279e6de40249ba93971a8757cf0}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00565\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___quit_event_a7acd4fa42ca96da8edac146baaa0b433}{timestamp}};\ \ \ }
+\DoxyCodeLine{00566\ \}\ \mbox{\hyperlink{struct_s_d_l___quit_event}{SDL\_QuitEvent}};}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00571\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___o_s_event}{SDL\_OSEvent}}}
+\DoxyCodeLine{00572\ \{}
+\DoxyCodeLine{00573\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___o_s_event_a85a600619ebebc8db007fc757b3895a5}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00574\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___o_s_event_a8b2480eefadad9f3f8c94f8e550b7fb0}{timestamp}};\ \ \ }
+\DoxyCodeLine{00575\ \}\ \mbox{\hyperlink{struct_s_d_l___o_s_event}{SDL\_OSEvent}};}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00580\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___user_event}{SDL\_UserEvent}}}
+\DoxyCodeLine{00581\ \{}
+\DoxyCodeLine{00582\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___user_event_ab7afa8b98dbd7b52bef41155e10f7340}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00583\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___user_event_adbf1d34c73138a0c549310e5d4ad0c35}{timestamp}};\ \ \ }
+\DoxyCodeLine{00584\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___user_event_abccefa10e0e0e3a0801bc6d836a08da7}{windowID}};\ \ \ \ }
+\DoxyCodeLine{00585\ \ \ \ \ Sint32\ \mbox{\hyperlink{struct_s_d_l___user_event_aef47976781ee82b527a353c5acfa0a34}{code}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00586\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{struct_s_d_l___user_event_a754603ee8030d486b86b30cac48b63bd}{data1}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{struct_s_d_l___user_event_a0375c97c4505401f3eede04b73420fa9}{data2}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00588\ \}\ \mbox{\hyperlink{struct_s_d_l___user_event}{SDL\_UserEvent}};}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ }
+\DoxyCodeLine{00591\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___sys_w_mmsg}{SDL\_SysWMmsg}};}
+\DoxyCodeLine{00592\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___sys_w_mmsg}{SDL\_SysWMmsg}}\ \mbox{\hyperlink{struct_s_d_l___sys_w_mmsg}{SDL\_SysWMmsg}};}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00600\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___sys_w_m_event}{SDL\_SysWMEvent}}}
+\DoxyCodeLine{00601\ \{}
+\DoxyCodeLine{00602\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___sys_w_m_event_a84697e96cb16bf6a570e10b5bfdcd392}{type}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00603\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___sys_w_m_event_a5d3cb97006d99b620c2671c27bd82c06}{timestamp}};\ \ \ }
+\DoxyCodeLine{00604\ \ \ \ \ SDL\_SysWMmsg\ *\mbox{\hyperlink{struct_s_d_l___sys_w_m_event_a90250ea9b87c21044da19adeadb5c847}{msg}};\ \ }
+\DoxyCodeLine{00605\ \}\ \mbox{\hyperlink{struct_s_d_l___sys_w_m_event}{SDL\_SysWMEvent}};}
+\DoxyCodeLine{00606\ }
+\DoxyCodeLine{00610\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}}}
+\DoxyCodeLine{00611\ \{}
+\DoxyCodeLine{00612\ \ \ \ \ Uint32\ \mbox{\hyperlink{union_s_d_l___event_a237648bec242d2d5835f1a4250ddfa46}{type}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00613\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a737d360b5df89c7c8a13a8fefb0aa321}{SDL\_CommonEvent}}\ \mbox{\hyperlink{union_s_d_l___event_abe5cb8767f93de55163c8ddd4562a7f2}{common}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00614\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a4d37917cad4c24f3d886a064102b666b}{SDL\_DisplayEvent}}\ \mbox{\hyperlink{union_s_d_l___event_afe513d46e191a9791988b9adab705ef6}{display}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00615\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_aa19383df47bc131f64ea1adc49d3530b}{SDL\_WindowEvent}}\ \mbox{\hyperlink{union_s_d_l___event_a826936b3275406d857bc6654669fae71}{window}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00616\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a0ac4af376ea5f04b1c099923b17aabcc}{SDL\_KeyboardEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ab99927835cc77a9b6bb50b419b4a27df}{key}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00617\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a5cc9a3eec4f311d076f2f9e29eca9c3a}{SDL\_TextEditingEvent}}\ \mbox{\hyperlink{union_s_d_l___event_a9a7e3b67b2654d4c5fc509676c6a7183}{edit}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00618\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a2d625e2a888e6b6e21dcfdda571ff6d5}{SDL\_TextEditingExtEvent}}\ \mbox{\hyperlink{union_s_d_l___event_aba47e2f2bb21424ef153f484b6ce02bd}{editExt}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00619\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a078aa3712873c5ec13e17c42f9f394a0}{SDL\_TextInputEvent}}\ \mbox{\hyperlink{union_s_d_l___event_aa4fc65c559d69f33c057c0c23d8414b8}{text}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00620\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a47fa051bc75e8216caa65d1d3358b7ae}{SDL\_MouseMotionEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ac3c89e190faacbe84280cd539453bab6}{motion}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00621\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a07c8c7d7bde4b2d43e6647a595754d36}{SDL\_MouseButtonEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ab6da2fa2687e5f849f270adecc64785f}{button}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00622\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a14c0794d5e8d6768fde5e4bb8bb6dea5}{SDL\_MouseWheelEvent}}\ \mbox{\hyperlink{union_s_d_l___event_a267d3f550715519ec90a81ccd0e6cbda}{wheel}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00623\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_abf2328076a9820b8f2f906392680153c}{SDL\_JoyAxisEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ac4611acd0e9c675e67dc20919f0accb4}{jaxis}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00624\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_ab4f00b9e50d6256932b1d2e42a1d8768}{SDL\_JoyBallEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ae433f511e3383d17f8fe02df745ee8f8}{jball}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00625\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_acc126973445bf3de581f5b21fcdd9f34}{SDL\_JoyHatEvent}}\ \mbox{\hyperlink{union_s_d_l___event_a421b40e0f8e01f181c8d5548cff1dd1d}{jhat}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00626\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_ac5a4678f070c2c2820a184dd8d2dc3fe}{SDL\_JoyButtonEvent}}\ \mbox{\hyperlink{union_s_d_l___event_a591104d64903ae1cf70874fb5d3124ff}{jbutton}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00627\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a823e4ba13b863419abc37c82445749c1}{SDL\_JoyDeviceEvent}}\ \mbox{\hyperlink{union_s_d_l___event_a17514dc19a846ea1b5fbe44123700c4c}{jdevice}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00628\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a9b12bc8c4cfa09f0c385b583f15bbf3f}{SDL\_ControllerAxisEvent}}\ \mbox{\hyperlink{union_s_d_l___event_aa8f6df0f2716fae56204b12ab4a4c289}{caxis}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00629\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a04d2d1528e21ae733a88f0895cf2a11f}{SDL\_ControllerButtonEvent}}\ \mbox{\hyperlink{union_s_d_l___event_aee2b5671c8dcdb447023715cc21593cb}{cbutton}};\ \ \ \ \ \ }
+\DoxyCodeLine{00630\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a9e9263b2b62bec155b03edc2e9480857}{SDL\_ControllerDeviceEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ad3beed01e690b885728e0b0e1d636378}{cdevice}};\ \ \ \ \ \ }
+\DoxyCodeLine{00631\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a13d736c13be4ec8764c0edaa30e3356f}{SDL\_ControllerTouchpadEvent}}\ \mbox{\hyperlink{union_s_d_l___event_af380462bb505815bd9cb19c2d9c5a61c}{ctouchpad}};\ \ }
+\DoxyCodeLine{00632\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a62f889a8116b32e07411a799bb99c467}{SDL\_ControllerSensorEvent}}\ \mbox{\hyperlink{union_s_d_l___event_adcfd6caae4067c338ddd6570ddb37417}{csensor}};\ \ \ \ \ \ }
+\DoxyCodeLine{00633\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a64524ac8fed2cb0cadafa09560dff210}{SDL\_AudioDeviceEvent}}\ \mbox{\hyperlink{union_s_d_l___event_a111e01fcac4fd8e251a6058ff9f17e72}{adevice}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00634\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a05670281251b800e3b450f21680e1ea6}{SDL\_SensorEvent}}\ \mbox{\hyperlink{union_s_d_l___event_af0da8e4a59228360984595125062eb2f}{sensor}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00635\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a276c50ba90bfed63c8c3129551c65a43}{SDL\_QuitEvent}}\ \mbox{\hyperlink{union_s_d_l___event_a102a3008afe67a1c02ae7504e232dcef}{quit}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00636\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a8103cd8a0899ff3fb8648dc5a47a8a82}{SDL\_UserEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ab7c394e3ce7bf1e4f8d68bc0e9f1b042}{user}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00637\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_af028372f0833c630b96a1472899a0369}{SDL\_SysWMEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ab3b2eaf5348d4c50a51b1f297fdef537}{syswm}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00638\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a7147e3df7940e4e43a997dc99e0611eb}{SDL\_TouchFingerEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ab18d7d60794cb056948ffa58541bc3c5}{tfinger}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00639\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_ab6e6d25815e6d1b48a2777b2bddf695c}{SDL\_MultiGestureEvent}}\ \mbox{\hyperlink{union_s_d_l___event_ac19b3c6a6b5181a51eb4fbe2cbe726a9}{mgesture}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00640\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_adf06d9167ed17ff913e20ef7cdacba34}{SDL\_DollarGestureEvent}}\ \mbox{\hyperlink{union_s_d_l___event_a4481167b9f8549aeb254e97ca812e74d}{dgesture}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00641\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__events_8h_a4c88d1d54b64b3f2b5c7a18984614f85}{SDL\_DropEvent}}\ \mbox{\hyperlink{union_s_d_l___event_acff77bccbca65abbb876360a3f5209c9}{drop}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00642\ }
+\DoxyCodeLine{00643\ \ \ \ \ \textcolor{comment}{/*\ This\ is\ necessary\ for\ ABI\ compatibility\ between\ Visual\ C++\ and\ GCC.}}
+\DoxyCodeLine{00644\ \textcolor{comment}{\ \ \ \ \ \ \ Visual\ C++\ will\ respect\ the\ push\ pack\ pragma\ and\ use\ 52\ bytes\ (size\ of}}
+\DoxyCodeLine{00645\ \textcolor{comment}{\ \ \ \ \ \ \ SDL\_TextEditingEvent,\ the\ largest\ structure\ for\ 32-\/bit\ and\ 64-\/bit}}
+\DoxyCodeLine{00646\ \textcolor{comment}{\ \ \ \ \ \ \ architectures)\ for\ this\ union,\ and\ GCC\ will\ use\ the\ alignment\ of\ the}}
+\DoxyCodeLine{00647\ \textcolor{comment}{\ \ \ \ \ \ \ largest\ datatype\ within\ the\ union,\ which\ is\ 8\ bytes\ on\ 64-\/bit}}
+\DoxyCodeLine{00648\ \textcolor{comment}{\ \ \ \ \ \ \ architectures.}}
+\DoxyCodeLine{00649\ \textcolor{comment}{}}
+\DoxyCodeLine{00650\ \textcolor{comment}{\ \ \ \ \ \ \ So...\ we'll\ add\ padding\ to\ force\ the\ size\ to\ be\ 56\ bytes\ for\ both.}}
+\DoxyCodeLine{00651\ \textcolor{comment}{}}
+\DoxyCodeLine{00652\ \textcolor{comment}{\ \ \ \ \ \ \ On\ architectures\ where\ pointers\ are\ 16\ bytes,\ this\ needs\ rounding\ up\ to}}
+\DoxyCodeLine{00653\ \textcolor{comment}{\ \ \ \ \ \ \ the\ next\ multiple\ of\ 16,\ 64,\ and\ on\ architectures\ where\ pointers\ are}}
+\DoxyCodeLine{00654\ \textcolor{comment}{\ \ \ \ \ \ \ even\ larger\ the\ size\ of\ SDL\_UserEvent\ will\ dominate\ as\ being\ 3\ pointers.}}
+\DoxyCodeLine{00655\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00656\ \ \ \ \ Uint8\ padding[\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{void}\ *)\ <=\ 8\ ?\ 56\ :\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{void}\ *)\ ==\ 16\ ?\ 64\ :\ 3\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{void}\ *)];}
+\DoxyCodeLine{00657\ \}\ \mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}};}
+\DoxyCodeLine{00658\ }
+\DoxyCodeLine{00659\ \textcolor{comment}{/*\ Make\ sure\ we\ haven't\ broken\ binary\ compatibility\ */}}
+\DoxyCodeLine{00660\ SDL\_COMPILE\_TIME\_ASSERT(\mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}},\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}})\ ==\ \textcolor{keyword}{sizeof}(((\mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}}\ *)NULL)-\/>padding));}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ }
+\DoxyCodeLine{00663\ \textcolor{comment}{/*\ Function\ prototypes\ */}}
+\DoxyCodeLine{00664\ }
+\DoxyCodeLine{00687\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_aa15403d1c8fc341cd9cf750e27a66d19}{SDL\_PumpEvents}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00688\ }
+\DoxyCodeLine{00689\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00690\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00691\ \{}
+\DoxyCodeLine{00692\ \ \ \ \ SDL\_ADDEVENT,}
+\DoxyCodeLine{00693\ \ \ \ \ SDL\_PEEKEVENT,}
+\DoxyCodeLine{00694\ \ \ \ \ SDL\_GETEVENT}
+\DoxyCodeLine{00695\ \}\ SDL\_eventaction;}
+\DoxyCodeLine{00696\ }
+\DoxyCodeLine{00735\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_PeepEvents(\mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}}\ *\ events,\ \textcolor{keywordtype}{int}\ numevents,}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_eventaction\ action,}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint32\ minType,\ Uint32\ maxType);}
+\DoxyCodeLine{00738\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{00739\ }
+\DoxyCodeLine{00754\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_HasEvent(Uint32\ type);}
+\DoxyCodeLine{00755\ }
+\DoxyCodeLine{00756\ }
+\DoxyCodeLine{00773\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_HasEvents(Uint32\ minType,\ Uint32\ maxType);}
+\DoxyCodeLine{00774\ }
+\DoxyCodeLine{00795\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_FlushEvent(Uint32\ type);}
+\DoxyCodeLine{00796\ }
+\DoxyCodeLine{00820\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_FlushEvents(Uint32\ minType,\ Uint32\ maxType);}
+\DoxyCodeLine{00821\ }
+\DoxyCodeLine{00867\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_PollEvent(\mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}}\ *\ event);}
+\DoxyCodeLine{00868\ }
+\DoxyCodeLine{00889\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_WaitEvent(\mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}}\ *\ event);}
+\DoxyCodeLine{00890\ }
+\DoxyCodeLine{00915\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_WaitEventTimeout(\mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}}\ *\ event,}
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ timeout);}
+\DoxyCodeLine{00917\ }
+\DoxyCodeLine{00950\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_PushEvent(\mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}}\ *\ event);}
+\DoxyCodeLine{00951\ }
+\DoxyCodeLine{00964\ \textcolor{keyword}{typedef}\ int\ (SDLCALL\ *\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a8f371e5b06361baa576bdb1289595d95}{SDL\_EventFilter}})\ (\textcolor{keywordtype}{void}\ *userdata,\ \mbox{\hyperlink{union_s_d_l___event}{SDL\_Event}}\ *\ event);}
+\DoxyCodeLine{00965\ }
+\DoxyCodeLine{01008\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_SetEventFilter(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a8f371e5b06361baa576bdb1289595d95}{SDL\_EventFilter}}\ filter,}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *userdata);}
+\DoxyCodeLine{01010\ }
+\DoxyCodeLine{01026\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_GetEventFilter(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a8f371e5b06361baa576bdb1289595d95}{SDL\_EventFilter}}\ *\ filter,}
+\DoxyCodeLine{01027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ **userdata);}
+\DoxyCodeLine{01028\ }
+\DoxyCodeLine{01055\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_AddEventWatch(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a8f371e5b06361baa576bdb1289595d95}{SDL\_EventFilter}}\ filter,}
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *userdata);}
+\DoxyCodeLine{01057\ }
+\DoxyCodeLine{01071\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_DelEventWatch(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a8f371e5b06361baa576bdb1289595d95}{SDL\_EventFilter}}\ filter,}
+\DoxyCodeLine{01072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *userdata);}
+\DoxyCodeLine{01073\ }
+\DoxyCodeLine{01090\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_FilterEvents(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__events_8h_a8f371e5b06361baa576bdb1289595d95}{SDL\_EventFilter}}\ filter,}
+\DoxyCodeLine{01091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *userdata);}
+\DoxyCodeLine{01092\ }
+\DoxyCodeLine{01093\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{01094\ \textcolor{preprocessor}{\#define\ SDL\_QUERY\ \ \ -\/1}}
+\DoxyCodeLine{01095\ \textcolor{preprocessor}{\#define\ SDL\_IGNORE\ \ \ 0}}
+\DoxyCodeLine{01096\ \textcolor{preprocessor}{\#define\ SDL\_DISABLE\ \ 0}}
+\DoxyCodeLine{01097\ \textcolor{preprocessor}{\#define\ SDL\_ENABLE\ \ \ 1}}
+\DoxyCodeLine{01098\ }
+\DoxyCodeLine{01118\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint8\ SDLCALL\ SDL\_EventState(Uint32\ type,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structstate}{state}});}
+\DoxyCodeLine{01119\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{01120\ \textcolor{preprocessor}{\#define\ SDL\_GetEventState(type)\ SDL\_EventState(type,\ SDL\_QUERY)}}
+\DoxyCodeLine{01121\ }
+\DoxyCodeLine{01140\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint32\ SDLCALL\ SDL\_RegisterEvents(\textcolor{keywordtype}{int}\ numevents);}
+\DoxyCodeLine{01141\ }
+\DoxyCodeLine{01142\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{01143\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{01144\ \}}
+\DoxyCodeLine{01145\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01146\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{SDL2/close\_code.h}}>}}
+\DoxyCodeLine{01147\ }
+\DoxyCodeLine{01148\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_events\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01149\ }
+\DoxyCodeLine{01150\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

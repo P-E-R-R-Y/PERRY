@@ -1,0 +1,110 @@
+\doxysection{SDL.\+h}
+\hypertarget{sdl-src_2include_2_s_d_l_8h_source}{}\label{sdl-src_2include_2_s_d_l_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL.h}}
+\mbox{\hyperlink{sdl-src_2include_2_s_d_l_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifndef\ SDL\_h\_}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ SDL\_h\_}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__main_8h}{SDL\_main.h}}"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__stdinc_8h}{SDL\_stdinc.h}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}SDL\_assert.h"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__atomic_8h}{SDL\_atomic.h}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__audio_8h}{SDL\_audio.h}}"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__clipboard_8h}{SDL\_clipboard.h}}"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__cpuinfo_8h}{SDL\_cpuinfo.h}}"{}}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__endian_8h}{SDL\_endian.h}}"{}}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__error_8h}{SDL\_error.h}}"{}}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__events_8h}{SDL\_events.h}}"{}}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__filesystem_8h}{SDL\_filesystem.h}}"{}}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__gamecontroller_8h}{SDL\_gamecontroller.h}}"{}}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__guid_8h}{SDL\_guid.h}}"{}}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__haptic_8h}{SDL\_haptic.h}}"{}}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__hidapi_8h}{SDL\_hidapi.h}}"{}}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__hints_8h}{SDL\_hints.h}}"{}}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__joystick_8h}{SDL\_joystick.h}}"{}}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__loadso_8h}{SDL\_loadso.h}}"{}}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__log_8h}{SDL\_log.h}}"{}}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}SDL\_messagebox.h"{}}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__metal_8h}{SDL\_metal.h}}"{}}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__mutex_8h}{SDL\_mutex.h}}"{}}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__power_8h}{SDL\_power.h}}"{}}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__render_8h}{SDL\_render.h}}"{}}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__rwops_8h}{SDL\_rwops.h}}"{}}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__sensor_8h}{SDL\_sensor.h}}"{}}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__shape_8h}{SDL\_shape.h}}"{}}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__system_8h}{SDL\_system.h}}"{}}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__thread_8h}{SDL\_thread.h}}"{}}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__timer_8h}{SDL\_timer.h}}"{}}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__version_8h}{SDL\_version.h}}"{}}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__video_8h}{SDL\_video.h}}"{}}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__locale_8h}{SDL\_locale.h}}"{}}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__misc_8h}{SDL\_misc.h}}"{}}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00068\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00070\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{comment}{/*\ As\ of\ version\ 0.5,\ SDL\ is\ loaded\ dynamically\ into\ the\ application\ */}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_TIMER\ \ \ \ \ \ \ \ \ \ 0x00000001u}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_AUDIO\ \ \ \ \ \ \ \ \ \ 0x00000010u}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_VIDEO\ \ \ \ \ \ \ \ \ \ 0x00000020u\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_JOYSTICK\ \ \ \ \ \ \ 0x00000200u\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_HAPTIC\ \ \ \ \ \ \ \ \ 0x00001000u}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_GAMECONTROLLER\ 0x00002000u\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_EVENTS\ \ \ \ \ \ \ \ \ 0x00004000u}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_SENSOR\ \ \ \ \ \ \ \ \ 0x00008000u}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_NOPARACHUTE\ \ \ \ 0x00100000u\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ SDL\_INIT\_EVERYTHING\ (\ \(\backslash\)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_INIT\_TIMER\ |\ SDL\_INIT\_AUDIO\ |\ SDL\_INIT\_VIDEO\ |\ SDL\_INIT\_EVENTS\ |\ \(\backslash\)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_INIT\_JOYSTICK\ |\ SDL\_INIT\_HAPTIC\ |\ SDL\_INIT\_GAMECONTROLLER\ |\ SDL\_INIT\_SENSOR\ \(\backslash\)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{00095\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00144\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_Init(Uint32\ flags);}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_InitSubSystem(Uint32\ flags);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00183\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_QuitSubSystem(Uint32\ flags);}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00199\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint32\ SDLCALL\ SDL\_WasInit(Uint32\ flags);}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00223\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l_8h_afdabaf714781099083592051f2d9ac11}{SDL\_Quit}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00227\ \}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

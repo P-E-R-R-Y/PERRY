@@ -1,0 +1,165 @@
+\doxysection{Core}
+\hypertarget{group__core}{}\label{group__core}\index{Core@{Core}}
+\doxysubsubsection*{Topics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__ecs}{Ecs}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{class_i_core}{ICore}}
+\begin{DoxyCompactList}\small\item\em define the core interface \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{class_engine}{Engine}}
+\begin{DoxyCompactList}\small\item\em define the engine interface \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_customisable_engine}{Customisable\+Engine$<$ Parents $>$}}
+\begin{DoxyCompactList}\small\item\em define the customisable engine \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_customisable_engine_1_1has__params}{Customisable\+Engine$<$ Parents $>$\+::has\+\_\+params$<$ T, typename $>$}}
+\item 
+struct \mbox{\hyperlink{struct_customisable_engine_1_1has__params_3_01_t_00_01std_1_1void__t_3_01typename_01_t_1_1_params_01_4_01_4}{Customisable\+Engine$<$ Parents $>$\+::has\+\_\+params$<$ T, std\+::void\+\_\+t$<$ typename T\+::\+Params $>$ $>$}}
+\item 
+struct \mbox{\hyperlink{struct_customisable_engine_1_1is__specialization__of__tuple}{Customisable\+Engine$<$ Parents $>$\+::is\+\_\+specialization\+\_\+of\+\_\+tuple$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{struct_customisable_engine_1_1is__specialization__of__tuple_3_01std_1_1tuple_3_01_args_8_8_8_01_4_01_4}{Customisable\+Engine$<$ Parents $>$\+::is\+\_\+specialization\+\_\+of\+\_\+tuple$<$ std\+::tuple$<$ Args... $>$ $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \mbox{\hyperlink{group__core_gadc86df10439cb7f066c033a1013d15c0}{ICore\+::start}} ()=0
+\item 
+virtual void \mbox{\hyperlink{group__core_ga853dc6c896374f2cb13f25a57b0a4e37}{Engine\+::init\+Handler}} ()=0
+\item 
+virtual void \mbox{\hyperlink{group__core_ga17137313edf27e26469e7a682d3d17c0}{Engine\+::destroy\+Handler}} ()=0
+\item 
+virtual void \mbox{\hyperlink{group__core_gaccbc1a464f230a71d858b929246ea111}{Engine\+::event\+Handler}} ()=0
+\item 
+virtual void \mbox{\hyperlink{group__core_ga9a31683b43108bd7db4ee3518b575ee6}{Engine\+::update\+Handler}} ()=0
+\item 
+virtual void \mbox{\hyperlink{group__core_gad48a7536e584523aec9513cc02c9d8ce}{Engine\+::display\+Handler}} ()=0
+\item 
+{\footnotesize template$<$typename... Args$>$ }\\\mbox{\hyperlink{group__core_ga2c3c0d359b77ad86e7b485295c795386}{Customisable\+Engine$<$ Parents $>$\+::\+Customisable\+Engine}} (Args... params)
+\begin{DoxyCompactList}\small\item\em Construct a new Customisable \doxylink{class_engine}{Engine} object (Accepts parameters for each parent class) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Parent, typename Arg$>$ }\\static Parent \mbox{\hyperlink{group__core_ga65645c8eb74b16175b1d8dead1cfd90d}{Customisable\+Engine$<$ Parents $>$\+::construct\+Parent}} (Arg \&\&arg)
+\begin{DoxyCompactList}\small\item\em Construct a Parent object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__core_ga9571ab1ae2e1c07d6e9cdb3dfb94b124}\label{group__core_ga9571ab1ae2e1c07d6e9cdb3dfb94b124} 
+{\footnotesize template$<$typename T$>$ }\\static constexpr bool {\bfseries Customisable\+Engine$<$ Parents $>$\+::has\+\_\+params\+\_\+v} = \mbox{\hyperlink{struct_customisable_engine_1_1has__params}{has\+\_\+params}}$<$T$>$\+::value
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__core_ga65645c8eb74b16175b1d8dead1cfd90d}\index{Core@{Core}!constructParent@{constructParent}}
+\index{constructParent@{constructParent}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{constructParent()}{constructParent()}}
+{\footnotesize\ttfamily \label{group__core_ga65645c8eb74b16175b1d8dead1cfd90d} 
+template$<$typename... Parents$>$ \\
+template$<$typename Parent, typename Arg$>$ \\
+static Parent \mbox{\hyperlink{class_customisable_engine}{Customisable\+Engine}}$<$ Parents $>$\+::construct\+Parent (\begin{DoxyParamCaption}\item[{Arg \&\&}]{arg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Construct a Parent object. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Parent} & \\
+\hline
+{\em Arg} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Parent 
+\end{DoxyReturn}
+\Hypertarget{group__core_ga2c3c0d359b77ad86e7b485295c795386}\index{Core@{Core}!CustomisableEngine@{CustomisableEngine}}
+\index{CustomisableEngine@{CustomisableEngine}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{CustomisableEngine()}{CustomisableEngine()}}
+{\footnotesize\ttfamily \label{group__core_ga2c3c0d359b77ad86e7b485295c795386} 
+template$<$typename... Parents$>$ \\
+template$<$typename... Args$>$ \\
+\mbox{\hyperlink{class_customisable_engine}{Customisable\+Engine}}$<$ Parents $>$\mbox{\hyperlink{class_customisable_engine}{\+::\+Customisable\+Engine}} (\begin{DoxyParamCaption}\item[{Args...}]{params}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Customisable \doxylink{class_engine}{Engine} object (Accepts parameters for each parent class) 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Args} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em params} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__core_ga17137313edf27e26469e7a682d3d17c0}\index{Core@{Core}!destroyHandler@{destroyHandler}}
+\index{destroyHandler@{destroyHandler}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{destroyHandler()}{destroyHandler()}}
+{\footnotesize\ttfamily \label{group__core_ga17137313edf27e26469e7a682d3d17c0} 
+virtual void Engine\+::destroy\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{group__user_ga6fb2e8ff41ee39919c4d1cf2ca94e386}{Game}}.
+
+\Hypertarget{group__core_gad48a7536e584523aec9513cc02c9d8ce}\index{Core@{Core}!displayHandler@{displayHandler}}
+\index{displayHandler@{displayHandler}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{displayHandler()}{displayHandler()}}
+{\footnotesize\ttfamily \label{group__core_gad48a7536e584523aec9513cc02c9d8ce} 
+virtual void Engine\+::display\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{group__user_gac0fe7d3741b704aa570fabb04b1b2e86}{Game}}.
+
+\Hypertarget{group__core_gaccbc1a464f230a71d858b929246ea111}\index{Core@{Core}!eventHandler@{eventHandler}}
+\index{eventHandler@{eventHandler}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{eventHandler()}{eventHandler()}}
+{\footnotesize\ttfamily \label{group__core_gaccbc1a464f230a71d858b929246ea111} 
+virtual void Engine\+::event\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{group__user_gab91c97b4267eab6d3b2501ed20da716e}{Game}}.
+
+\Hypertarget{group__core_ga853dc6c896374f2cb13f25a57b0a4e37}\index{Core@{Core}!initHandler@{initHandler}}
+\index{initHandler@{initHandler}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{initHandler()}{initHandler()}}
+{\footnotesize\ttfamily \label{group__core_ga853dc6c896374f2cb13f25a57b0a4e37} 
+virtual void Engine\+::init\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{group__user_ga424dd77894f8d22029600cb0c49292f5}{Game}}.
+
+\Hypertarget{group__core_gadc86df10439cb7f066c033a1013d15c0}\index{Core@{Core}!start@{start}}
+\index{start@{start}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \label{group__core_gadc86df10439cb7f066c033a1013d15c0} 
+virtual int ICore\+::start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{group__user_ga0192ea1783bbb31a85f08afb7853e49e}{Game}}.
+
+\Hypertarget{group__core_ga9a31683b43108bd7db4ee3518b575ee6}\index{Core@{Core}!updateHandler@{updateHandler}}
+\index{updateHandler@{updateHandler}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{updateHandler()}{updateHandler()}}
+{\footnotesize\ttfamily \label{group__core_ga9a31683b43108bd7db4ee3518b575ee6} 
+virtual void Engine\+::update\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{group__user_ga2efddf1ff64dab689b4ec2dac3f138b3}{Game}}.
+
+\input{group__ecs}

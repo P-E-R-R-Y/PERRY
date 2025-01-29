@@ -1,61 +1,61 @@
 \doxysection{Sfml\+Mouse.\+hpp}
 \hypertarget{_sfml_mouse_8hpp_source}{}\label{_sfml_mouse_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/event/SfmlMouse.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/event/SfmlMouse.hpp}}
-
+\mbox{\hyperlink{_sfml_mouse_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ SFMLMOUSE\_HPP\_}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ SFMLMOUSE\_HPP\_}}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{comment}{//Interface}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../../../../interfaces/graphic/event/IMouse.hpp"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}SfmlEvent.hpp"{}}}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{comment}{//Sfml}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <SFML/Window/Mouse.hpp>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ SFMLMOUSE\_HPP\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ SFMLMOUSE\_HPP\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_mouse_8hpp}{../../../../interfaces/graphic/event/IMouse.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sfml_event_8hpp}{SfmlEvent.hpp}}"{}}}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }SfmlMouse\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ \{}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ SfmlMouse(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\ \{}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \_event\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sfml_event}{SfmlEvent}}\ *\textcolor{keyword}{>}(event);}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \string~SfmlMouse()\ \{}
+\DoxyCodeLine{00019\ \textcolor{comment}{//Sfml}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <SFML/Window/Mouse.hpp>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }SfmlMouse\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ SfmlMouse(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \_event\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sfml_event}{SfmlEvent}}\ *\textcolor{keyword}{>}(event);}
 \DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sfml_mouse_a5b9a63574efc220ec963df1f312b78fd}{isButtonPressed}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sfml_mouse_a8525563a7db58d7674fbc8867cf90249}{isButtonDown}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sfml_mouse_ac29f9ce04fa6821c39ee64aba7a072e0}{isButtonReleased}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_sfml_mouse_aa02ce805d4f597394a83200f4ee8c0b5}{isButtonUp}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{class_sfml_mouse_a2fc4314abc4305e0d1ebb83d83817ac7}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{float(0),\ float(0)\};}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_mouse_a7fcee9e689f8fe1c359185f0d0d14e13}{setPosition}}(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_sfml_mouse_a764f4ad5591e0868e1e9009d2a931f76}{GetMouseWheelMove}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_mouse_ab4474d824ce2e9cf2ac4ede8d91e73fa}{update}}()\textcolor{keyword}{\ override\ }\{\};}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sfml_event}{SfmlEvent}}\ *\_event;}
-\DoxyCodeLine{00059\ \};}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SFMLMOUSE\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \string~SfmlMouse()\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_f_m_l_ga5b9a63574efc220ec963df1f312b78fd}{isButtonPressed}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_f_m_l_ga8525563a7db58d7674fbc8867cf90249}{isButtonDown}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_f_m_l_gac29f9ce04fa6821c39ee64aba7a072e0}{isButtonReleased}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_f_m_l_gaa02ce805d4f597394a83200f4ee8c0b5}{isButtonUp}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{group___s_f_m_l_ga2fc4314abc4305e0d1ebb83d83817ac7}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{float(0),\ float(0)\};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_ga7fcee9e689f8fe1c359185f0d0d14e13}{setPosition}}(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group___s_f_m_l_ga764f4ad5591e0868e1e9009d2a931f76}{GetMouseWheelMove}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gab4474d824ce2e9cf2ac4ede8d91e73fa}{update}}()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sfml_event}{SfmlEvent}}\ *\_event;}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SFMLMOUSE\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

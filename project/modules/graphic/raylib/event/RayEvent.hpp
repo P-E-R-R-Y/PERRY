@@ -1,9 +1,12 @@
 /**
- * @ Author: Perry Chouteau
- * @ Create Time: 2024-05-13 11:09:33
- * @ Modified by: Perry Chouteau
- * @ Modified time: 2025-01-28 02:09:58
- * @ Description:
+ * @file RayEvent.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup Raylib
+ * @{
  */
 
 #ifndef RAYEVENT_HPP
@@ -15,25 +18,21 @@
 //Raylib
 #include <raylib.h>
 
-namespace raylib {
+/**
+ * @brief Raylib Event class
+ * @section graphic hello
+ */
+class RayEvent : public graphic::IEvent {
+  public:
+    friend class RayKeyboard;
+    friend class RayMouse;
+    friend class RayWindow;
 
-  /**
-   * @brief Raylib Event class
-   * @section graphic hello
-   */
-  class RayEvent : public graphic::IEvent {
-    public:
-      friend class RayKeyboard;
-      friend class RayMouse;
-      friend class RayWindow;
+    RayEvent() = default;
 
-      RayEvent() = default;
+    ~RayEvent() = default;
 
-      ~RayEvent() = default;
-
-    protected:    //your variables here
-  };
-
-}
+  protected:    //your variables here
+};
 
 #endif // RAYEVENT_HPP

@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -90,9 +91,12 @@ $(function(){ initResizable(false); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="class_sdl_model-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">SdlModel Class Reference</div></div>
+  <div class="headertitle"><div class="title">SdlModel Class Reference<div class="ingroups"><a class="el" href="group__graphic.html">Graphic</a> &raquo; <a class="el" href="group___s_d_l.html">SDL</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>handle 3d model  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_sdl_model_8hpp_source.html">SdlModel.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -107,77 +111,20 @@ Inheritance diagram for SdlModel:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6f04d1e31258dc129e88bce52d799118" id="r_a6f04d1e31258dc129e88bce52d799118"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f04d1e31258dc129e88bce52d799118">getPosition</a> () const override</td></tr>
-<tr class="separator:a6f04d1e31258dc129e88bce52d799118"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31e140bee0ea0c9865510c28f27fe943" id="r_a31e140bee0ea0c9865510c28f27fe943"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31e140bee0ea0c9865510c28f27fe943">setPosition</a> (<a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a> position) override</td></tr>
-<tr class="separator:a31e140bee0ea0c9865510c28f27fe943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6f04d1e31258dc129e88bce52d799118" id="r_ga6f04d1e31258dc129e88bce52d799118"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga6f04d1e31258dc129e88bce52d799118">getPosition</a> () const override</td></tr>
+<tr class="separator:ga6f04d1e31258dc129e88bce52d799118"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga31e140bee0ea0c9865510c28f27fe943" id="r_ga31e140bee0ea0c9865510c28f27fe943"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga31e140bee0ea0c9865510c28f27fe943">setPosition</a> (<a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a> position) override</td></tr>
+<tr class="separator:ga31e140bee0ea0c9865510c28f27fe943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a7747034efc5e3e0e55a5defe817fc3e3" id="r_a7747034efc5e3e0e55a5defe817fc3e3"><td class="memItemLeft" align="right" valign="top"><a id="a7747034efc5e3e0e55a5defe817fc3e3" name="a7747034efc5e3e0e55a5defe817fc3e3"></a>
+<tr class="memitem:ga7747034efc5e3e0e55a5defe817fc3e3" id="r_ga7747034efc5e3e0e55a5defe817fc3e3"><td class="memItemLeft" align="right" valign="top">
 class&#160;</td><td class="memItemRight" valign="bottom"><b>SdlWindow</b></td></tr>
-<tr class="separator:a7747034efc5e3e0e55a5defe817fc3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga7747034efc5e3e0e55a5defe817fc3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File: RayModel3.hpp Created Date: Fr Mar 2023 Project: PERRY Author: Perry Chouteau</p>
-<p>Last Modified: Fri Mar 10 2023 Modified By: Perry Chouteau</p>
-<p>Copyright (c) 2023-2033 Perry Chouteau </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6f04d1e31258dc129e88bce52d799118" name="a6f04d1e31258dc129e88bce52d799118"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f04d1e31258dc129e88bce52d799118">&#9670;&#160;</a></span>getPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a> SdlModel::getPosition </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a>.</p>
-
-</div>
-</div>
-<a id="a31e140bee0ea0c9865510c28f27fe943" name="a31e140bee0ea0c9865510c28f27fe943"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31e140bee0ea0c9865510c28f27fe943">&#9670;&#160;</a></span>setPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlModel::setPosition </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a></td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>handle 3d model </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sdl/graphic/<a class="el" href="_sdl_model_8hpp_source.html">SdlModel.hpp</a></li>
 </ul>
 </div><!-- contents -->

@@ -1,0 +1,74 @@
+\doxysection{Fuzzer\+Options.\+h}
+\hypertarget{_fuzzer_options_8h_source}{}\label{_fuzzer_options_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerOptions.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerOptions.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerOptions.h\ -\/\ Internal\ header\ for\ the\ Fuzzer\ -\/-\/-\/-\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ fuzzer::FuzzingOptions}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_OPTIONS\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_OPTIONS\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}FuzzerDefs.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfuzzer_1_1_fuzzing_options}{FuzzingOptions}}\ \{}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{int}\ Verbosity\ =\ 1;}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{size\_t}\ MaxLen\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{int}\ UnitTimeoutSec\ =\ 300;}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{int}\ TimeoutExitCode\ =\ 77;}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{int}\ ErrorExitCode\ =\ 77;}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{int}\ MaxTotalTimeSec\ =\ 0;}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{int}\ RssLimitMb\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{bool}\ DoCrossOver\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{int}\ MutateDepth\ =\ 5;}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{bool}\ UseCounters\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{bool}\ UseIndirCalls\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{bool}\ UseMemcmp\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{bool}\ UseMemmem\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{bool}\ UseCmp\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{bool}\ UseValueProfile\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{bool}\ Shrink\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{int}\ ReloadIntervalSec\ =\ 1;}
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{bool}\ ShuffleAtStartUp\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{bool}\ PreferSmall\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{size\_t}\ MaxNumberOfRuns\ =\ -\/1L;}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{int}\ ReportSlowUnits\ =\ 10;}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{bool}\ OnlyASCII\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ \ \ std::string\ OutputCorpus;}
+\DoxyCodeLine{00043\ \ \ std::string\ ArtifactPrefix\ =\ \textcolor{stringliteral}{"{}./"{}};}
+\DoxyCodeLine{00044\ \ \ std::string\ ExactArtifactPath;}
+\DoxyCodeLine{00045\ \ \ std::string\ ExitOnSrcPos;}
+\DoxyCodeLine{00046\ \ \ std::string\ ExitOnItem;}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{bool}\ SaveArtifacts\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{bool}\ PrintNEW\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Print\ a\ status\ line\ when\ new\ units\ are\ found;}}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{bool}\ OutputCSV\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{bool}\ PrintNewCovPcs\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{bool}\ PrintFinalStats\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{bool}\ PrintCorpusStats\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{bool}\ PrintCoverage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{bool}\ DumpCoverage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{bool}\ DetectLeaks\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{int}\ \ TraceMalloc\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{bool}\ HandleAbrt\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{bool}\ HandleBus\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{bool}\ HandleFpe\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{bool}\ HandleIll\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{bool}\ HandleInt\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{bool}\ HandleSegv\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{bool}\ HandleTerm\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \}\ \ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_OPTIONS\_H}}
+
+\end{DoxyCode}

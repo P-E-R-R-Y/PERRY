@@ -1,0 +1,65 @@
+\doxysection{Ray\+Mouse Class Reference}
+\hypertarget{class_ray_mouse}{}\label{class_ray_mouse}\index{RayMouse@{RayMouse}}
+
+
+Raylib Mouse class.  
+
+
+
+
+{\ttfamily \#include $<$Ray\+Mouse.\+hpp$>$}
+
+Inheritance diagram for Ray\+Mouse\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ray_mouse}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Ray\+Mouse} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\item 
+bool \mbox{\hyperlink{group___raylib_ga107a4a8e7331a21dcfcccda94c0dbb7b}{is\+Button\+Pressed}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is pressed \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___raylib_ga00d36086de90cabf14ebd2759591318f}{is\+Button\+Down}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is down \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___raylib_ga6f5cb2ee45513fb51d5d9dbdf09e7c43}{is\+Button\+Released}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is released \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___raylib_ga009166d7e3983f892390f80157536b46}{is\+Button\+Up}} (Buttons key) const override
+\begin{DoxyCompactList}\small\item\em notice if a button is up \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group___raylib_ga4a096691abf8d4e2d44609fe89bcc559}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em get the position of the mouse \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gafd996a7a4f42eab1200a0d51b83bbb6e}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em set the position of the mouse \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___raylib_gaafa50a5912ad674f14594fc49315fd8f}{Get\+Mouse\+Wheel\+Move}} () const override
+\begin{DoxyCompactList}\small\item\em get the mouse wheel move \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gaccffa820d2eb0898a42fe2f87b1eeeee}{update}} () override
+\begin{DoxyCompactList}\small\item\em set the mouse wheel move \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IMouse} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_mouse}{IMouse} interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__graphic_ga18ae44dcdc8753386db91545cfb83aa1}\label{group__graphic_ga18ae44dcdc8753386db91545cfb83aa1} 
+enum {\bfseries Buttons} \{ \newline
+{\bfseries BUTTON\+\_\+\+LEFT}
+, {\bfseries BUTTON\+\_\+\+RIGHT}
+, {\bfseries BUTTON\+\_\+\+MIDDLE}
+, {\bfseries EXTRA\+\_\+\+BUTTON\+\_\+1}
+, \newline
+{\bfseries EXTRA\+\_\+\+BUTTON\+\_\+2}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Raylib Mouse class. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/raylib/event/\mbox{\hyperlink{_ray_mouse_8hpp}{Ray\+Mouse.\+hpp}}\end{DoxyCompactItemize}

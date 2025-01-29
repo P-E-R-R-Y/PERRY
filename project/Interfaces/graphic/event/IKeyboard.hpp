@@ -1,9 +1,12 @@
 /**
- * @ Author: Perry Chouteau
- * @ Create Time: 2024-04-26 13:04:23
- * @ Modified by: Perry Chouteau
- * @ Modified time: 2025-01-28 00:29:28
- * @ Description: Interface for Keyboard
+ * @file IKeyboard.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup graphic
+ * @{
  */
 
 #ifndef IKEYBOARD_HPP

@@ -1,0 +1,165 @@
+\doxysection{is\+\_\+sax.\+hpp}
+\hypertarget{is__sax_8hpp_source}{}\label{is__sax_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/meta/is\_sax.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/meta/is\_sax.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstdint>}\ \textcolor{comment}{//\ size\_t}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <utility>}\ \textcolor{comment}{//\ declval}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}\ \textcolor{comment}{//\ string}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/abi\_macros.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/detected.hpp>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/type\_traits.hpp>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00024\ \textcolor{keyword}{using\ }null\_function\_t\ =\ \textcolor{keyword}{decltype}(std::declval<T\&>().null());}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00027\ \textcolor{keyword}{using\ }boolean\_function\_t\ =}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T\&>().boolean(std::declval<bool>()));}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Integer>}
+\DoxyCodeLine{00031\ \textcolor{keyword}{using\ }number\_integer\_function\_t\ =}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T\&>().number\_integer(std::declval<Integer>()));}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Un\textcolor{keywordtype}{signed}>}
+\DoxyCodeLine{00035\ \textcolor{keyword}{using\ }number\_unsigned\_function\_t\ =}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T\&>().number\_unsigned(std::declval<Unsigned>()));}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Float,\ \textcolor{keyword}{typename}\ String>}
+\DoxyCodeLine{00039\ \textcolor{keyword}{using\ }number\_float\_function\_t\ =\ \textcolor{keyword}{decltype}(std::declval<T\&>().number\_float(}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::declval<Float>(),\ std::declval<const\ String\&>()));}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ String>}
+\DoxyCodeLine{00043\ \textcolor{keyword}{using\ }string\_function\_t\ =}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T\&>().string(std::declval<String\&>()));}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Binary>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{using\ }binary\_function\_t\ =}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T\&>().binary(std::declval<Binary\&>()));}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00051\ \textcolor{keyword}{using\ }start\_object\_function\_t\ =}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T\&>().start\_object(std::declval<std::size\_t>()));}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ String>}
+\DoxyCodeLine{00055\ \textcolor{keyword}{using\ }key\_function\_t\ =}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T\&>().key(std::declval<String\&>()));}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00059\ \textcolor{keyword}{using\ }end\_object\_function\_t\ =\ \textcolor{keyword}{decltype}(std::declval<T\&>().end\_object());}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00062\ \textcolor{keyword}{using\ }start\_array\_function\_t\ =}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{decltype}(std::declval<T\&>().start\_array(std::declval<std::size\_t>()));}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00066\ \textcolor{keyword}{using\ }end\_array\_function\_t\ =\ \textcolor{keyword}{decltype}(std::declval<T\&>().end\_array());}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Exception>}
+\DoxyCodeLine{00069\ \textcolor{keyword}{using\ }parse\_error\_function\_t\ =\ \textcolor{keyword}{decltype}(std::declval<T\&>().parse\_error(}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ std::declval<std::size\_t>(),\ std::declval<const\ std::string\&>(),}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ std::declval<const\ Exception\&>()));}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ SAX,\ \textcolor{keyword}{typename}\ BasicJsonType>}
+\DoxyCodeLine{00074\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdetail_1_1is__sax}{is\_sax}}}
+\DoxyCodeLine{00075\ \{}
+\DoxyCodeLine{00076\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static\_assert}(\mbox{\hyperlink{structdetail_1_1is__basic__json}{is\_basic\_json<BasicJsonType>::value}},}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}BasicJsonType\ must\ be\ of\ type\ basic\_json<...>"{}});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{using\ }number\_integer\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::number\_integer\_t;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{using\ }number\_unsigned\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::number\_unsigned\_t;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{using\ }number\_float\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::number\_float\_t;}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{using\ }string\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::string\_t;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{using\ }binary\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::binary\_t;}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{using\ }exception\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::exception;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ value\ =}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ null\_function\_t,\ SAX>::value\ \&\&}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ boolean\_function\_t,\ SAX>::value\ \&\&}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ number\_integer\_function\_t,\ SAX,\ number\_integer\_t>::value\ \&\&}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ number\_unsigned\_function\_t,\ SAX,\ number\_unsigned\_t>::value\ \&\&}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ number\_float\_function\_t,\ SAX,\ number\_float\_t,\ string\_t>::value\ \&\&}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ string\_function\_t,\ SAX,\ string\_t>::value\ \&\&}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ binary\_function\_t,\ SAX,\ binary\_t>::value\ \&\&}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ start\_object\_function\_t,\ SAX>::value\ \&\&}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ key\_function\_t,\ SAX,\ string\_t>::value\ \&\&}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ end\_object\_function\_t,\ SAX>::value\ \&\&}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ start\_array\_function\_t,\ SAX>::value\ \&\&}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ end\_array\_function\_t,\ SAX>::value\ \&\&}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ parse\_error\_function\_t,\ SAX,\ exception\_t>::value;}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ SAX,\ \textcolor{keyword}{typename}\ BasicJsonType>}
+\DoxyCodeLine{00105\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdetail_1_1is__sax__static__asserts}{is\_sax\_static\_asserts}}}
+\DoxyCodeLine{00106\ \{}
+\DoxyCodeLine{00107\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{static\_assert}(\mbox{\hyperlink{structdetail_1_1is__basic__json}{is\_basic\_json<BasicJsonType>::value}},}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}BasicJsonType\ must\ be\ of\ type\ basic\_json<...>"{}});}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{using\ }number\_integer\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::number\_integer\_t;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{using\ }number\_unsigned\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::number\_unsigned\_t;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{using\ }number\_float\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::number\_float\_t;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{using\ }string\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::string\_t;}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{using\ }binary\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::binary\_t;}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{using\ }exception\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::exception;}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{static\_assert}(is\_detected\_exact<bool,\ null\_function\_t,\ SAX>::value,}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ null()"{}});}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{static\_assert}(is\_detected\_exact<bool,\ boolean\_function\_t,\ SAX>::value,}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ boolean(bool)"{}});}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{static\_assert}(is\_detected\_exact<bool,\ boolean\_function\_t,\ SAX>::value,}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ boolean(bool)"{}});}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{static\_assert}(}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ number\_integer\_function\_t,\ SAX,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ number\_integer\_t>::value,}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ number\_integer(number\_integer\_t)"{}});}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{static\_assert}(}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ number\_unsigned\_function\_t,\ SAX,}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ number\_unsigned\_t>::value,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ number\_unsigned(number\_unsigned\_t)"{}});}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{static\_assert}(is\_detected\_exact<bool,\ number\_float\_function\_t,\ SAX,}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ number\_float\_t,\ string\_t>::value,}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ number\_float(number\_float\_t,\ const\ string\_t\&)"{}});}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{static\_assert}(}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ string\_function\_t,\ SAX,\ string\_t>::value,}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ string(string\_t\&)"{}});}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{static\_assert}(}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ binary\_function\_t,\ SAX,\ binary\_t>::value,}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ binary(binary\_t\&)"{}});}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{static\_assert}(is\_detected\_exact<bool,\ start\_object\_function\_t,\ SAX>::value,}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ start\_object(std::size\_t)"{}});}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keyword}{static\_assert}(is\_detected\_exact<bool,\ key\_function\_t,\ SAX,\ string\_t>::value,}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ key(string\_t\&)"{}});}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{static\_assert}(is\_detected\_exact<bool,\ end\_object\_function\_t,\ SAX>::value,}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ end\_object()"{}});}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{static\_assert}(is\_detected\_exact<bool,\ start\_array\_function\_t,\ SAX>::value,}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ start\_array(std::size\_t)"{}});}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{static\_assert}(is\_detected\_exact<bool,\ end\_array\_function\_t,\ SAX>::value,}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ end\_array()"{}});}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keyword}{static\_assert}(}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ is\_detected\_exact<bool,\ parse\_error\_function\_t,\ SAX,\ exception\_t>::value,}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Missing/invalid\ function:\ bool\ parse\_error(std::size\_t,\ const\ "{}}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}std::string\&,\ const\ exception\&)"{}});}
+\DoxyCodeLine{00156\ \};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00159\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

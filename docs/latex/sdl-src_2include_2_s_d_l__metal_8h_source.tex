@@ -1,0 +1,61 @@
+\doxysection{SDL\+\_\+metal.\+h}
+\hypertarget{sdl-src_2include_2_s_d_l__metal_8h_source}{}\label{sdl-src_2include_2_s_d_l__metal_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_metal.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_metal.h}}
+\mbox{\hyperlink{sdl-src_2include_2_s_d_l__metal_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ SDL\_metal\_h\_}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SDL\_metal\_h\_}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__video_8h}{SDL\_video.h}}"{}}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__metal_8h_a0d6413e2d369fbf22f0a2e4ec15bf412}{SDL\_MetalView}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00049\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__metal_8h_a0d6413e2d369fbf22f0a2e4ec15bf412}{SDL\_MetalView}}\ SDLCALL\ SDL\_Metal\_CreateView(\mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}\ *\ window);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_Metal\_DestroyView(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__metal_8h_a0d6413e2d369fbf22f0a2e4ec15bf412}{SDL\_MetalView}}\ view);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ *SDLCALL\ SDL\_Metal\_GetLayer(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__metal_8h_a0d6413e2d369fbf22f0a2e4ec15bf412}{SDL\_MetalView}}\ view);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_Metal\_GetDrawableSize(\mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}*\ window,\ \textcolor{keywordtype}{int}\ *w,}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *h);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{comment}{/*\ @\}\ */}\textcolor{comment}{/*\ Metal\ support\ functions\ */}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00109\ \}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_metal\_h\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

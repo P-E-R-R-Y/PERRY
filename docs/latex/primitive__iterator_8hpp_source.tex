@@ -1,0 +1,133 @@
+\doxysection{primitive\+\_\+iterator.\+hpp}
+\hypertarget{primitive__iterator_8hpp_source}{}\label{primitive__iterator_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/iterators/primitive\_iterator.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/iterators/primitive\_iterator.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstddef>}\ \textcolor{comment}{//\ ptrdiff\_t}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <limits>}\ \ \textcolor{comment}{//\ numeric\_limits}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/macro\_scope.hpp>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00021\ \textcolor{comment}{@brief\ an\ iterator\ for\ primitive\ JSON\ types}}
+\DoxyCodeLine{00022\ \textcolor{comment}{}}
+\DoxyCodeLine{00023\ \textcolor{comment}{This\ class\ models\ an\ iterator\ for\ primitive\ JSON\ types\ (boolean,\ number,}}
+\DoxyCodeLine{00024\ \textcolor{comment}{string).\ It's\ only\ purpose\ is\ to\ allow\ the\ iterator/const\_iterator\ classes}}
+\DoxyCodeLine{00025\ \textcolor{comment}{to\ "{}iterate"{}\ over\ primitive\ values.\ Internally,\ the\ iterator\ is\ modeled\ by}}
+\DoxyCodeLine{00026\ \textcolor{comment}{a\ \`{}difference\_type`\ variable.\ Value\ begin\_value\ (`0`)\ models\ the\ begin,}}
+\DoxyCodeLine{00027\ \textcolor{comment}{end\_value\ (`1`)\ models\ past\ the\ end.}}
+\DoxyCodeLine{00028\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classdetail_1_1primitive__iterator__t}{primitive\_iterator\_t}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }difference\_type\ =\ std::ptrdiff\_t;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ difference\_type\ begin\_value\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ difference\_type\ end\_value\ =\ begin\_value\ +\ 1;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ JSON\_PRIVATE\_UNLESS\_TESTED:}
+\DoxyCodeLine{00038\ \ \ \ \ difference\_type\ m\_it\ =\ (std::numeric\_limits<std::ptrdiff\_t>::min)();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{constexpr}\ difference\_type\ get\_value()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_it;}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classdetail_1_1primitive__iterator__t_ae05402e355829cd46a9b31365a7b1a49}{set\_begin}}()\ noexcept}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ m\_it\ =\ begin\_value;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classdetail_1_1primitive__iterator__t_a761383c368d1c32f11bbeb31a04e6488}{set\_end}}()\ noexcept}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ m\_it\ =\ end\_value;}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classdetail_1_1primitive__iterator__t_a46f7197f0ba0ef7c1f24caf3f7f52d6b}{is\_begin}}()\ const\ noexcept}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_it\ ==\ begin\_value;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classdetail_1_1primitive__iterator__t_a9b8509ec7a7cbd4b1da3726be658f5a0}{is\_end}}()\ const\ noexcept}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_it\ ==\ end\_value;}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ operator==(\mbox{\hyperlink{classdetail_1_1primitive__iterator__t}{primitive\_iterator\_t}}\ lhs,\ \mbox{\hyperlink{classdetail_1_1primitive__iterator__t}{primitive\_iterator\_t}}\ rhs)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.m\_it\ ==\ rhs.m\_it;}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ operator<(primitive\_iterator\_t\ lhs,\ primitive\_iterator\_t\ rhs)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00076\ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.m\_it\ <\ rhs.m\_it;}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ primitive\_iterator\_t\ operator+(difference\_type\ n)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ result\ +=\ n;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{constexpr}\ difference\_type\ operator-\/(primitive\_iterator\_t\ lhs,\ primitive\_iterator\_t\ rhs)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00088\ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.m\_it\ -\/\ rhs.m\_it;}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ primitive\_iterator\_t\&\ operator++()\ noexcept}
+\DoxyCodeLine{00093\ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ ++m\_it;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ primitive\_iterator\_t\ operator++(\textcolor{keywordtype}{int})\&\ \textcolor{keyword}{noexcept}\ \textcolor{comment}{//\ NOLINT(cert-\/dcl21-\/cpp)}}
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ ++m\_it;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ primitive\_iterator\_t\&\ operator-\/-\/()\ noexcept}
+\DoxyCodeLine{00106\ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ -\/-\/m\_it;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ primitive\_iterator\_t\ operator-\/-\/(\textcolor{keywordtype}{int})\&\ \textcolor{keyword}{noexcept}\ \textcolor{comment}{//\ NOLINT(cert-\/dcl21-\/cpp)}}
+\DoxyCodeLine{00112\ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ -\/-\/m\_it;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ primitive\_iterator\_t\&\ operator+=(difference\_type\ n)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00119\ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ m\_it\ +=\ n;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ primitive\_iterator\_t\&\ operator-\/=(difference\_type\ n)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00125\ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ m\_it\ -\/=\ n;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00128\ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00132\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

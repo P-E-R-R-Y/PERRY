@@ -1,0 +1,148 @@
+\doxysection{output\+\_\+adapters.\+hpp}
+\hypertarget{output__adapters_8hpp_source}{}\label{output__adapters_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/output/output\_adapters.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/output/output\_adapters.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <algorithm>}\ \textcolor{comment}{//\ copy}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstddef>}\ \textcolor{comment}{//\ size\_t}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <iterator>}\ \textcolor{comment}{//\ back\_inserter}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}\ \textcolor{comment}{//\ shared\_ptr,\ make\_shared}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}\ \textcolor{comment}{//\ basic\_string}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vector>}\ \textcolor{comment}{//\ vector}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ JSON\_NO\_IO}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \#include\ <ios>}\ \ \ \ \ \ \textcolor{comment}{//\ streamsize}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#include\ <ostream>}\ \ \textcolor{comment}{//\ basic\_ostream}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ JSON\_NO\_IO}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/macro\_scope.hpp>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CharType>\ \textcolor{keyword}{struct\ }output\_adapter\_protocol}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ write\_character(CharType\ c)\ =\ 0;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ write\_characters(\textcolor{keyword}{const}\ CharType*\ s,\ std::size\_t\ length)\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~output\_adapter\_protocol()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ output\_adapter\_protocol()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ \ \ \ \ output\_adapter\_protocol(\textcolor{keyword}{const}\ output\_adapter\_protocol\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00038\ \ \ \ \ output\_adapter\_protocol(output\_adapter\_protocol\&\&)\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00039\ \ \ \ \ output\_adapter\_protocol\&\ operator=(\textcolor{keyword}{const}\ output\_adapter\_protocol\&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00040\ \ \ \ \ output\_adapter\_protocol\&\ operator=(output\_adapter\_protocol\&\&)\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CharType>}
+\DoxyCodeLine{00045\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacedetail_a558c0470e929e42aad8be2527da6c033}{output\_adapter\_t}}\ =\ std::shared\_ptr<output\_adapter\_protocol<CharType>>;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CharType,\ \textcolor{keyword}{typename}\ AllocatorType\ =\ std::allocator<CharType>>}
+\DoxyCodeLine{00049\ \textcolor{keyword}{class\ }output\_vector\_adapter\ :\ \textcolor{keyword}{public}\ output\_adapter\_protocol<CharType>}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{explicit}\ output\_vector\_adapter(std::vector<CharType,\ AllocatorType>\&\ vec)\ noexcept}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ :\ v(vec)}
+\DoxyCodeLine{00054\ \ \ \ \ \{\}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ write\_character(CharType\ c)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ v.push\_back(c);}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ JSON\_HEDLEY\_NON\_NULL(2)}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ write\_characters(\textcolor{keyword}{const}\ CharType*\ s,\ std::size\_t\ length)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00063\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ v.insert(v.end(),\ s,\ s\ +\ length);}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ \ \ \ \ std::vector<CharType,\ AllocatorType>\&\ v;}
+\DoxyCodeLine{00069\ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#ifndef\ JSON\_NO\_IO}}
+\DoxyCodeLine{00073\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CharType>}
+\DoxyCodeLine{00074\ \textcolor{keyword}{class\ }output\_stream\_adapter\ :\ \textcolor{keyword}{public}\ output\_adapter\_protocol<CharType>}
+\DoxyCodeLine{00075\ \{}
+\DoxyCodeLine{00076\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{explicit}\ output\_stream\_adapter(\mbox{\hyperlink{classstd_1_1basic__ostream}{std::basic\_ostream<CharType>}}\&\ s)\ noexcept}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ :\ stream(s)}
+\DoxyCodeLine{00079\ \ \ \ \ \{\}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ write\_character(CharType\ c)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00082\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ stream.put(c);}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ JSON\_HEDLEY\_NON\_NULL(2)}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ write\_characters(\textcolor{keyword}{const}\ CharType*\ s,\ std::size\_t\ length)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ stream.write(s,\ \textcolor{keyword}{static\_cast<}std::streamsize\textcolor{keyword}{>}(length));}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{classstd_1_1basic__ostream}{std::basic\_ostream<CharType>}}\&\ stream;}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ JSON\_NO\_IO}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CharType,\ \textcolor{keyword}{typename}\ StringType\ =\ std::basic\_\textcolor{keywordtype}{string}<CharType>>}
+\DoxyCodeLine{00099\ \textcolor{keyword}{class\ }output\_string\_adapter\ :\ \textcolor{keyword}{public}\ output\_adapter\_protocol<CharType>}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{explicit}\ output\_string\_adapter(StringType\&\ s)\ noexcept}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ :\ str(s)}
+\DoxyCodeLine{00104\ \ \ \ \ \{\}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ write\_character(CharType\ c)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00107\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ str.push\_back(c);}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ JSON\_HEDLEY\_NON\_NULL(2)}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ write\_characters(\textcolor{keyword}{const}\ CharType*\ s,\ std::size\_t\ length)\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00113\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ str.append(s,\ length);}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00118\ \ \ \ \ StringType\&\ str;}
+\DoxyCodeLine{00119\ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CharType,\ \textcolor{keyword}{typename}\ StringType\ =\ std::basic\_\textcolor{keywordtype}{string}<CharType>>}
+\DoxyCodeLine{00122\ \textcolor{keyword}{class\ }output\_adapter}
+\DoxyCodeLine{00123\ \{}
+\DoxyCodeLine{00124\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ AllocatorType\ =\ std::allocator<CharType>>}
+\DoxyCodeLine{00126\ \ \ \ \ output\_adapter(std::vector<CharType,\ AllocatorType>\&\ vec)}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ :\ oa(std::make\_shared<\mbox{\hyperlink{classdetail_1_1output__vector__adapter}{output\_vector\_adapter<CharType,\ AllocatorType>}}>(vec))\ \{\}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#ifndef\ JSON\_NO\_IO}}
+\DoxyCodeLine{00130\ \ \ \ \ output\_adapter(\mbox{\hyperlink{classstd_1_1basic__ostream}{std::basic\_ostream<CharType>}}\&\ s)}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ :\ oa(std::make\_shared<\mbox{\hyperlink{classdetail_1_1output__stream__adapter}{output\_stream\_adapter<CharType>}}>(s))\ \{\}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ JSON\_NO\_IO}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ output\_adapter(StringType\&\ s)}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ :\ oa(std::make\_shared<\mbox{\hyperlink{classdetail_1_1output__string__adapter}{output\_string\_adapter<CharType,\ StringType>}}>(s))\ \{\}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{operator}\ \mbox{\hyperlink{namespacedetail_a558c0470e929e42aad8be2527da6c033}{output\_adapter\_t<CharType>}}()}
+\DoxyCodeLine{00138\ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ oa;}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a558c0470e929e42aad8be2527da6c033}{output\_adapter\_t<CharType>}}\ oa\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00144\ \};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00147\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

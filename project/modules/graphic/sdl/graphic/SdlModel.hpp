@@ -1,17 +1,13 @@
 /**
- *
- * File: RayModel3.hpp
- * Created Date: Fr Mar 2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Fri Mar 10 2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
-
+ * @file SdlModel.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup SDL
+ * @{
+ */
 
 #ifndef SDLMODEL_HPP_
 #define SDLMODEL_HPP_
@@ -22,6 +18,9 @@
 //Sdl
 #include <SDL2/SDL.h>
 
+/**
+ * @brief handle 3d model
+ */
 class SdlModel : public graphic::IModel {
 
     public:

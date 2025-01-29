@@ -1,3 +1,16 @@
+/**
+ * @file YamlSerial.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup serial
+ * @{
+ * @addtogroup yaml
+ * @{
+ */
+
 #ifndef YAML_SERIAL_HPP
 #define YAML_SERIAL_HPP
 
@@ -7,6 +20,8 @@
 #include <map>
 #include <yaml-cpp/yaml.h>
 #include "ISerial.hpp"
+
+using namespace serial;
 
 class YamlSerial: public ISerial {
     public:

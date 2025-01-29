@@ -1,0 +1,30 @@
+\doxysection{void\+\_\+t.\+hpp}
+\hypertarget{void__t_8hpp_source}{}\label{void__t_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/meta/void\_t.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/meta/void\_t.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/abi\_macros.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdetail_1_1make__void}{make\_void}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{using\ }type\ =\ void;}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ...Ts>\ \textcolor{keyword}{using\ }void\_t\ =\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structdetail_1_1make__void}{make\_void}}<Ts...>::type;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00024\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

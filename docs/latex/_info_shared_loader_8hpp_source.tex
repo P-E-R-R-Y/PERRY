@@ -1,44 +1,44 @@
 \doxysection{Info\+Shared\+Loader.\+hpp}
 \hypertarget{_info_shared_loader_8hpp_source}{}\label{_info_shared_loader_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/InfoSharedLoader.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/InfoSharedLoader.hpp}}
-
+\mbox{\hyperlink{_info_shared_loader_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ INFO\_SHARED\_LOADER\_HPP}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ INFO\_SHARED\_LOADER\_HPP}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ INFO\_SHARED\_LOADER\_HPP}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ INFO\_SHARED\_LOADER\_HPP}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}../../../libraries/finder/DynamicLoader.hpp"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{comment}{//todo\ make\ the\ switchlibcore\ use\ dynamicCore\ and\ not\ simple\ core\ to\ auto\ define\ simple\ function;}}
-\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_info_shared_loader_a0ca457ddd9cf8ae8dce01fbabf22d3d4}{InfoSharedLoader}}\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Params\ =\ std::string;}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_info_shared_loader_a0ca457ddd9cf8ae8dce01fbabf22d3d4}{InfoSharedLoader}}(std::string\ file):\ \mbox{\hyperlink{class_info_shared_loader_a74377da9545c3d3c8796a8fb420011aa}{dl}}(file)\ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_info_shared_loader_a74377da9545c3d3c8796a8fb420011aa}{dl}}.isReady())\ \{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ retrieve\ "{}}\ <<\ file\ <<\ \textcolor{stringliteral}{"{}\ info."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return;}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Loaded:\ "{}}\ <<\ file\ <<\ std::endl;}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core}}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ getType\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *(*)()\textcolor{keyword}{>}(\mbox{\hyperlink{class_info_shared_loader_a74377da9545c3d3c8796a8fb420011aa}{dl}}.findSymbol(\textcolor{stringliteral}{"{}getType"{}}));}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ getName\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *(*)()\textcolor{keyword}{>}(\mbox{\hyperlink{class_info_shared_loader_a74377da9545c3d3c8796a8fb420011aa}{dl}}.findSymbol(\textcolor{stringliteral}{"{}getName"{}}));}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Constructor>>\ "{}}\ <<\ file\ <<\ std::endl;}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_info_shared_loader_a1321489133ffdf8d3dca19f4db1442ad}{\string~InfoSharedLoader}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dynamic_loader}{DynamicLoader}}\ \mbox{\hyperlink{class_info_shared_loader_a74377da9545c3d3c8796a8fb420011aa}{dl}};}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *(*getType)();}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *(*getName)();}
-\DoxyCodeLine{00063\ \};}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//INFO\_SHARED\_LOADER\_HPP}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../../../libraries/finder/DynamicLoader.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//todo\ make\ the\ switchlibcore\ use\ dynamicCore\ and\ not\ simple\ core\ to\ auto\ define\ simple\ function;}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{group__dynamic_ga0ca457ddd9cf8ae8dce01fbabf22d3d4}{InfoSharedLoader}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Params\ =\ std::string;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__dynamic_ga0ca457ddd9cf8ae8dce01fbabf22d3d4}{InfoSharedLoader}}(std::string\ file):\ \mbox{\hyperlink{group__dynamic_ga74377da9545c3d3c8796a8fb420011aa}{dl}}(file)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{group__dynamic_ga74377da9545c3d3c8796a8fb420011aa}{dl}}.isReady())\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ retrieve\ "{}}\ <<\ file\ <<\ \textcolor{stringliteral}{"{}\ info."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Loaded:\ "{}}\ <<\ file\ <<\ std::endl;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ getType\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *(*)()\textcolor{keyword}{>}(\mbox{\hyperlink{group__dynamic_ga74377da9545c3d3c8796a8fb420011aa}{dl}}.findSymbol(\textcolor{stringliteral}{"{}getType"{}}));}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ getName\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *(*)()\textcolor{keyword}{>}(\mbox{\hyperlink{group__dynamic_ga74377da9545c3d3c8796a8fb420011aa}{dl}}.findSymbol(\textcolor{stringliteral}{"{}getName"{}}));}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Constructor>>\ "{}}\ <<\ file\ <<\ std::endl;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__dynamic_ga1321489133ffdf8d3dca19f4db1442ad}{\string~InfoSharedLoader}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dynamic_loader}{DynamicLoader}}\ \mbox{\hyperlink{group__dynamic_ga74377da9545c3d3c8796a8fb420011aa}{dl}};}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *(*getType)();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *(*getName)();}
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//INFO\_SHARED\_LOADER\_HPP}}
 
 \end{DoxyCode}

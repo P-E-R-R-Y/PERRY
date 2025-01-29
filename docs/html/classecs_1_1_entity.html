@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -96,7 +97,7 @@ $(function(){ initResizable(false); });
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classecs_1_1_entity-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">ecs::Entity Class Reference</div></div>
+  <div class="headertitle"><div class="title">ecs::Entity Class Reference<div class="ingroups"><a class="el" href="group__core.html">Core</a> &raquo; <a class="el" href="group__ecs.html">Ecs</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -107,147 +108,47 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a159ef845aeeb887c211527cf0cfa9541" id="r_a159ef845aeeb887c211527cf0cfa9541"><td class="memItemLeft" align="right" valign="top"><a id="a159ef845aeeb887c211527cf0cfa9541" name="a159ef845aeeb887c211527cf0cfa9541"></a>
+<tr class="memitem:ga159ef845aeeb887c211527cf0cfa9541" id="r_ga159ef845aeeb887c211527cf0cfa9541"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> ()=delete</td></tr>
-<tr class="memdesc:a159ef845aeeb887c211527cf0cfa9541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted default constructor, use <a class="el" href="classecs_1_1_registry.html#a3542ce7e9d41bfae77f5ad1a514be917" title="handling entities (define in Registry.cpp)">Registry::createEntity()</a> instead. <br /></td></tr>
-<tr class="separator:a159ef845aeeb887c211527cf0cfa9541"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf9322786b327ff9257a17e68024b886" id="r_acf9322786b327ff9257a17e68024b886"><td class="memItemLeft" align="right" valign="top"><a id="acf9322786b327ff9257a17e68024b886" name="acf9322786b327ff9257a17e68024b886"></a>
+<tr class="memdesc:ga159ef845aeeb887c211527cf0cfa9541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted default constructor, use <a class="el" href="group__ecs.html#ga3542ce7e9d41bfae77f5ad1a514be917" title="handling entities (define in Registry.cpp)">Registry::createEntity()</a> instead. <br /></td></tr>
+<tr class="separator:ga159ef845aeeb887c211527cf0cfa9541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf9322786b327ff9257a17e68024b886" id="r_gacf9322786b327ff9257a17e68024b886"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>~Entity</b> ()=default</td></tr>
-<tr class="memdesc:acf9322786b327ff9257a17e68024b886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classecs_1_1_entity.html" title="Entity class from ECS.">Entity</a> object. <br /></td></tr>
-<tr class="separator:acf9322786b327ff9257a17e68024b886"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34620bca8b2e55bdcc942f294c54afb3" id="r_a34620bca8b2e55bdcc942f294c54afb3"><td class="memTemplParams" colspan="2">template&lt;class <a class="el" href="class_component.html">Component</a>&gt; </td></tr>
-<tr class="memitem:a34620bca8b2e55bdcc942f294c54afb3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a34620bca8b2e55bdcc942f294c54afb3">addComponent</a> (<a class="el" href="class_component.html">Component</a> &amp;&amp;c)</td></tr>
-<tr class="memdesc:a34620bca8b2e55bdcc942f294c54afb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a component to the entity using the registryRef method addComponent  <br /></td></tr>
-<tr class="separator:a34620bca8b2e55bdcc942f294c54afb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30056c776dc8e57264e3fc83658e3198" id="r_a30056c776dc8e57264e3fc83658e3198"><td class="memTemplParams" colspan="2">template&lt;class <a class="el" href="class_component.html">Component</a>&gt; </td></tr>
-<tr class="memitem:a30056c776dc8e57264e3fc83658e3198"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a30056c776dc8e57264e3fc83658e3198">removeComponent</a> ()</td></tr>
-<tr class="memdesc:a30056c776dc8e57264e3fc83658e3198"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove a component from the entity using the registryRef method removeComponent  <br /></td></tr>
-<tr class="separator:a30056c776dc8e57264e3fc83658e3198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:gacf9322786b327ff9257a17e68024b886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classecs_1_1_entity.html" title="Entity class from ECS.">Entity</a> object. <br /></td></tr>
+<tr class="separator:gacf9322786b327ff9257a17e68024b886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga34620bca8b2e55bdcc942f294c54afb3" id="r_ga34620bca8b2e55bdcc942f294c54afb3"><td class="memTemplParams" colspan="2">template&lt;class <a class="el" href="class_component.html">Component</a>&gt; </td></tr>
+<tr class="memitem:ga34620bca8b2e55bdcc942f294c54afb3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__ecs.html#ga34620bca8b2e55bdcc942f294c54afb3">addComponent</a> (<a class="el" href="class_component.html">Component</a> &amp;&amp;c)</td></tr>
+<tr class="memdesc:ga34620bca8b2e55bdcc942f294c54afb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">add a component to the entity using the registryRef method addComponent  <br /></td></tr>
+<tr class="separator:ga34620bca8b2e55bdcc942f294c54afb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga30056c776dc8e57264e3fc83658e3198" id="r_ga30056c776dc8e57264e3fc83658e3198"><td class="memTemplParams" colspan="2">template&lt;class <a class="el" href="class_component.html">Component</a>&gt; </td></tr>
+<tr class="memitem:ga30056c776dc8e57264e3fc83658e3198"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__ecs.html#ga30056c776dc8e57264e3fc83658e3198">removeComponent</a> ()</td></tr>
+<tr class="memdesc:ga30056c776dc8e57264e3fc83658e3198"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove a component from the entity using the registryRef method removeComponent  <br /></td></tr>
+<tr class="separator:ga30056c776dc8e57264e3fc83658e3198"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:af1114627c19152bcd230363678945c44" id="r_af1114627c19152bcd230363678945c44"><td class="memItemLeft" align="right" valign="top"><a id="af1114627c19152bcd230363678945c44" name="af1114627c19152bcd230363678945c44"></a>
+<tr class="memitem:gaf1114627c19152bcd230363678945c44" id="r_gaf1114627c19152bcd230363678945c44"><td class="memItemLeft" align="right" valign="top">
 friend&#160;</td><td class="memItemRight" valign="bottom"><b>Registry</b></td></tr>
-<tr class="separator:af1114627c19152bcd230363678945c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gaf1114627c19152bcd230363678945c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a3a0d891c78a02b587445829af9a6db94" id="r_a3a0d891c78a02b587445829af9a6db94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a0d891c78a02b587445829af9a6db94">Entity</a> (size_t idx, <a class="el" href="classecs_1_1_registry.html">RegistryRef</a> ecs)</td></tr>
-<tr class="memdesc:a3a0d891c78a02b587445829af9a6db94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classecs_1_1_entity.html" title="Entity class from ECS.">Entity</a> object with the given index and registry reference.  <br /></td></tr>
-<tr class="separator:a3a0d891c78a02b587445829af9a6db94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a0d891c78a02b587445829af9a6db94" id="r_ga3a0d891c78a02b587445829af9a6db94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ecs.html#ga3a0d891c78a02b587445829af9a6db94">Entity</a> (size_t idx, <a class="el" href="classecs_1_1_registry.html">RegistryRef</a> ecs)</td></tr>
+<tr class="memdesc:ga3a0d891c78a02b587445829af9a6db94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classecs_1_1_entity.html" title="Entity class from ECS.">Entity</a> object with the given index and registry reference.  <br /></td></tr>
+<tr class="separator:ga3a0d891c78a02b587445829af9a6db94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ade9c482372e7edd02807837986407237" id="r_ade9c482372e7edd02807837986407237"><td class="memItemLeft" align="right" valign="top"><a id="ade9c482372e7edd02807837986407237" name="ade9c482372e7edd02807837986407237"></a>
+<tr class="memitem:gade9c482372e7edd02807837986407237" id="r_gade9c482372e7edd02807837986407237"><td class="memItemLeft" align="right" valign="top">
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_idx</b></td></tr>
-<tr class="separator:ade9c482372e7edd02807837986407237"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bbd39f7cc1a0f2c52dabf025649bea9" id="r_a6bbd39f7cc1a0f2c52dabf025649bea9"><td class="memItemLeft" align="right" valign="top"><a id="a6bbd39f7cc1a0f2c52dabf025649bea9" name="a6bbd39f7cc1a0f2c52dabf025649bea9"></a>
+<tr class="separator:gade9c482372e7edd02807837986407237"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6bbd39f7cc1a0f2c52dabf025649bea9" id="r_ga6bbd39f7cc1a0f2c52dabf025649bea9"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="classecs_1_1_registry.html">RegistryRef</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_ecs</b></td></tr>
-<tr class="separator:a6bbd39f7cc1a0f2c52dabf025649bea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga6bbd39f7cc1a0f2c52dabf025649bea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classecs_1_1_entity.html" title="Entity class from ECS.">Entity</a> class from ECS. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3a0d891c78a02b587445829af9a6db94" name="a3a0d891c78a02b587445829af9a6db94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a0d891c78a02b587445829af9a6db94">&#9670;&#160;</a></span>Entity()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ecs::Entity::Entity </td>
-          <td>(</td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>idx</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classecs_1_1_registry.html">RegistryRef</a></td>          <td class="paramname"><span class="paramname"><em>ecs</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel explicit">explicit</span><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Construct a new <a class="el" href="classecs_1_1_entity.html" title="Entity class from ECS.">Entity</a> object with the given index and registry reference. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">idx</td><td></td></tr>
-    <tr><td class="paramname">ecs</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a34620bca8b2e55bdcc942f294c54afb3" name="a34620bca8b2e55bdcc942f294c54afb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34620bca8b2e55bdcc942f294c54afb3">&#9670;&#160;</a></span>addComponent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class <a class="el" href="class_component.html">Component</a>&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void ecs::Entity::addComponent </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_component.html">Component</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>c</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>add a component to the entity using the registryRef method addComponent </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname"><a class="el" href="class_component.html" title="Component is a template define in Registry. (not a class)">Component</a></td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">c</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a30056c776dc8e57264e3fc83658e3198" name="a30056c776dc8e57264e3fc83658e3198"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30056c776dc8e57264e3fc83658e3198">&#9670;&#160;</a></span>removeComponent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class <a class="el" href="class_component.html">Component</a>&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void ecs::Entity::removeComponent </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>remove a component from the entity using the registryRef method removeComponent </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname"><a class="el" href="class_component.html" title="Component is a template define in Registry. (not a class)">Component</a></td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/core/ecs/<a class="el" href="_entity_8hpp_source.html">Entity.hpp</a></li>
 <li>/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/core/ecs/<a class="el" href="_entity__impl_8hpp_source.html">Entity_impl.hpp</a></li>
 </ul>

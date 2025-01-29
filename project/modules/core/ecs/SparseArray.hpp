@@ -5,8 +5,8 @@
  * @version 0.1
  * @date 2025-01-27
  * 
- * @copyright Copyright (c) 2025
- * 
+ * @addtogroup ecs
+ * @{
  */
 
 #ifndef SPARSE_ARRAY_HPP

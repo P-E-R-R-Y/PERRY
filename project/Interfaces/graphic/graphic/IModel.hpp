@@ -1,9 +1,12 @@
 /**
- * @ Author: Perry Chouteau
- * @ Create Time: 2024-04-14 13:23:25
- * @ Modified by: Perry Chouteau
- * @ Modified time: 2025-01-28 00:30:53
- * @ Description: Interface for Model
+ * @file IModel.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup graphic
+ * @{
  */
 
 

@@ -1,0 +1,188 @@
+\doxysection{Fuzzer\+Internal.\+h}
+\hypertarget{_fuzzer_internal_8h_source}{}\label{_fuzzer_internal_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerInternal.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerInternal.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerInternal.h\ -\/\ Internal\ header\ for\ the\ Fuzzer\ -\/-\/-\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Define\ the\ main\ class\ fuzzer::Fuzzer\ and\ most\ functions.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_INTERNAL\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_INTERNAL\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}FuzzerDefs.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}FuzzerExtFunctions.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}FuzzerInterface.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}FuzzerOptions.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}FuzzerSHA1.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}FuzzerValueBitMap.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <climits>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{using\ namespace\ }std::chrono;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }Fuzzer\ \{}
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \textcolor{comment}{//\ Aggregates\ all\ available\ coverage\ measurements.}}
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{struct\ }Coverage\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ Coverage()\ \{\ Reset();\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ Reset()\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ BlockCoverage\ =\ 0;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ CallerCalleeCoverage\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ CounterBitmapBits\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ CounterBitmap.clear();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ VPMap.Reset();}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ BlockCoverage;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ CallerCalleeCoverage;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ Precalculated\ number\ of\ bits\ in\ CounterBitmap.}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ CounterBitmapBits;}
+\DoxyCodeLine{00051\ \ \ \ \ std::vector<uint8\_t>\ CounterBitmap;}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{structfuzzer_1_1_value_bit_map}{ValueBitMap}}\ VPMap;}
+\DoxyCodeLine{00053\ \ \ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ Fuzzer(UserCallback\ CB,\ \mbox{\hyperlink{classfuzzer_1_1_input_corpus}{InputCorpus}}\ \&Corpus,\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher}{MutationDispatcher}}\ \&MD,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfuzzer_1_1_fuzzing_options}{FuzzingOptions}}\ Options);}
+\DoxyCodeLine{00057\ \ \ \string~Fuzzer();}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ Loop();}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{void}\ MinimizeCrashLoop(\textcolor{keyword}{const}\ Unit\ \&U);}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{void}\ ShuffleAndMinimize(UnitVector\ *V);}
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{void}\ InitializeTraceState();}
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ RereadOutputCorpus(\textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{size\_t}\ secondsSinceProcessStartUp()\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{return}\ duration\_cast<seconds>(system\_clock::now()\ -\/\ ProcessStartTime)}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ .count();}
+\DoxyCodeLine{00067\ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{bool}\ TimedOut()\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_options}{Options}}.MaxTotalTimeSec\ >\ 0\ \&\&}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ secondsSinceProcessStartUp()\ >}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\mbox{\hyperlink{struct_options}{Options}}.MaxTotalTimeSec);}
+\DoxyCodeLine{00073\ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{size\_t}\ execPerSec()\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Seconds\ =\ secondsSinceProcessStartUp();}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ Seconds\ ?\ TotalNumberOfRuns\ /\ Seconds\ :\ 0;}
+\DoxyCodeLine{00078\ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{size\_t}\ getTotalNumberOfRuns()\ \{\ \textcolor{keywordflow}{return}\ TotalNumberOfRuns;\ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ StaticAlarmCallback();}
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ StaticCrashSignalCallback();}
+\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ StaticInterruptCallback();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{void}\ ExecuteCallback(\textcolor{keyword}{const}\ uint8\_t\ *Data,\ \textcolor{keywordtype}{size\_t}\ Size);}
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{size\_t}\ RunOne(\textcolor{keyword}{const}\ uint8\_t\ *Data,\ \textcolor{keywordtype}{size\_t}\ Size);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \textcolor{comment}{//\ Merge\ Corpora[1:]\ into\ Corpora[0].}}
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{void}\ Merge(\textcolor{keyword}{const}\ std::vector<std::string>\ \&Corpora);}
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{void}\ CrashResistantMerge(\textcolor{keyword}{const}\ std::vector<std::string>\ \&Args,}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&Corpora);}
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{void}\ CrashResistantMergeInternalStep(\textcolor{keyword}{const}\ std::string\ \&ControlFilePath);}
+\DoxyCodeLine{00094\ \ \ \textcolor{comment}{//\ Returns\ a\ subset\ of\ 'Extra'\ that\ adds\ coverage\ to\ 'Initial'.}}
+\DoxyCodeLine{00095\ \ \ UnitVector\ FindExtraUnits(\textcolor{keyword}{const}\ UnitVector\ \&Initial,\ \textcolor{keyword}{const}\ UnitVector\ \&Extra);}
+\DoxyCodeLine{00096\ \ \ MutationDispatcher\ \&GetMD()\ \{\ \textcolor{keywordflow}{return}\ MD;\ \}}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{void}\ PrintFinalStats();}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{void}\ SetMaxInputLen(\textcolor{keywordtype}{size\_t}\ MaxInputLen);}
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{void}\ SetMaxMutationLen(\textcolor{keywordtype}{size\_t}\ MaxMutationLen);}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{void}\ RssLimitCallback();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \textcolor{comment}{//\ Public\ for\ tests.}}
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{void}\ ResetCoverage();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{bool}\ InFuzzingThread()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ IsMyThread;\ \}}
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{size\_t}\ GetCurrentUnitInFuzzingThead(\textcolor{keyword}{const}\ uint8\_t\ **Data)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{void}\ TryDetectingAMemoryLeak(\textcolor{keyword}{const}\ uint8\_t\ *Data,\ \textcolor{keywordtype}{size\_t}\ Size,}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ DuringInitialCorpusExecution);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \textcolor{keywordtype}{void}\ HandleMalloc(\textcolor{keywordtype}{size\_t}\ Size);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ AlarmCallback();}
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{void}\ CrashCallback();}
+\DoxyCodeLine{00115\ \ \ \textcolor{keywordtype}{void}\ InterruptCallback();}
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ MutateAndTestOne();}
+\DoxyCodeLine{00117\ \ \ \textcolor{keywordtype}{void}\ ReportNewCoverage(InputInfo\ *II,\ \textcolor{keyword}{const}\ Unit\ \&U);}
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{size\_t}\ RunOne(\textcolor{keyword}{const}\ Unit\ \&U)\ \{\ \textcolor{keywordflow}{return}\ RunOne(U.data(),\ U.size());\ \}}
+\DoxyCodeLine{00119\ \ \ \textcolor{keywordtype}{void}\ WriteToOutputCorpus(\textcolor{keyword}{const}\ Unit\ \&U);}
+\DoxyCodeLine{00120\ \ \ \textcolor{keywordtype}{void}\ WriteUnitToFileWithPrefix(\textcolor{keyword}{const}\ Unit\ \&U,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *Prefix);}
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{void}\ PrintStats(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *Where,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *End\ =\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}},\ \textcolor{keywordtype}{size\_t}\ Units\ =\ 0);}
+\DoxyCodeLine{00122\ \ \ \textcolor{keywordtype}{void}\ PrintStatusForNewUnit(\textcolor{keyword}{const}\ Unit\ \&U);}
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{void}\ ShuffleCorpus(UnitVector\ *V);}
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordtype}{void}\ AddToCorpus(\textcolor{keyword}{const}\ Unit\ \&U);}
+\DoxyCodeLine{00125\ \ \ \textcolor{keywordtype}{void}\ CheckExitOnSrcPosOrItem();}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \textcolor{comment}{//\ Trace-\/based\ fuzzing:\ we\ run\ a\ unit\ with\ some\ kind\ of\ tracing}}
+\DoxyCodeLine{00128\ \ \ \textcolor{comment}{//\ enabled\ and\ record\ potentially\ useful\ mutations.\ Then}}
+\DoxyCodeLine{00129\ \ \ \textcolor{comment}{//\ We\ apply\ these\ mutations\ one\ by\ one\ to\ the\ unit\ and\ run\ it\ again.}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \textcolor{comment}{//\ Start\ tracing;\ forget\ all\ previously\ proposed\ mutations.}}
+\DoxyCodeLine{00132\ \ \ \textcolor{keywordtype}{void}\ StartTraceRecording();}
+\DoxyCodeLine{00133\ \ \ \textcolor{comment}{//\ Stop\ tracing.}}
+\DoxyCodeLine{00134\ \ \ \textcolor{keywordtype}{void}\ StopTraceRecording();}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \textcolor{keywordtype}{void}\ SetDeathCallback();}
+\DoxyCodeLine{00137\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ StaticDeathCallback();}
+\DoxyCodeLine{00138\ \ \ \textcolor{keywordtype}{void}\ DumpCurrentUnit(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *Prefix);}
+\DoxyCodeLine{00139\ \ \ \textcolor{keywordtype}{void}\ DeathCallback();}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \textcolor{keywordtype}{void}\ ResetEdgeCoverage();}
+\DoxyCodeLine{00142\ \ \ \textcolor{keywordtype}{void}\ ResetCounters();}
+\DoxyCodeLine{00143\ \ \ \textcolor{keywordtype}{void}\ PrepareCounters(Fuzzer::Coverage\ *C);}
+\DoxyCodeLine{00144\ \ \ \textcolor{keywordtype}{bool}\ RecordMaxCoverage(Fuzzer::Coverage\ *C);}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \textcolor{keywordtype}{void}\ AllocateCurrentUnitData();}
+\DoxyCodeLine{00147\ \ \ uint8\_t\ *CurrentUnitData\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00148\ \ \ std::atomic<size\_t>\ CurrentUnitSize;}
+\DoxyCodeLine{00149\ \ \ uint8\_t\ BaseSha1[kSHA1NumBytes];\ \ \textcolor{comment}{//\ Checksum\ of\ the\ base\ unit.}}
+\DoxyCodeLine{00150\ \ \ \textcolor{keywordtype}{bool}\ RunningCB\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \textcolor{keywordtype}{size\_t}\ TotalNumberOfRuns\ =\ 0;}
+\DoxyCodeLine{00153\ \ \ \textcolor{keywordtype}{size\_t}\ NumberOfNewUnitsAdded\ =\ 0;}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \textcolor{keywordtype}{bool}\ HasMoreMallocsThanFrees\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00156\ \ \ \textcolor{keywordtype}{size\_t}\ NumberOfLeakDetectionAttempts\ =\ 0;}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ UserCallback\ CB;}
+\DoxyCodeLine{00159\ \ \ InputCorpus\ \&Corpus;}
+\DoxyCodeLine{00160\ \ \ MutationDispatcher\ \&MD;}
+\DoxyCodeLine{00161\ \ \ FuzzingOptions\ Options;}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ system\_clock::time\_point\ ProcessStartTime\ =\ system\_clock::now();}
+\DoxyCodeLine{00164\ \ \ system\_clock::time\_point\ UnitStartTime,\ UnitStopTime;}
+\DoxyCodeLine{00165\ \ \ \textcolor{keywordtype}{long}\ TimeOfLongestUnitInSeconds\ =\ 0;}
+\DoxyCodeLine{00166\ \ \ \textcolor{keywordtype}{long}\ EpochOfLastReadOfOutputCorpus\ =\ 0;}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \textcolor{comment}{//\ Maximum\ recorded\ coverage.}}
+\DoxyCodeLine{00169\ \ \ \mbox{\hyperlink{structfuzzer_1_1_fuzzer_1_1_coverage}{Coverage}}\ MaxCoverage;}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \textcolor{keywordtype}{size\_t}\ MaxInputLen\ =\ 0;}
+\DoxyCodeLine{00172\ \ \ \textcolor{keywordtype}{size\_t}\ MaxMutationLen\ =\ 0;}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \textcolor{comment}{//\ Need\ to\ know\ our\ own\ thread.}}
+\DoxyCodeLine{00175\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{thread\_local}\ \textcolor{keywordtype}{bool}\ IsMyThread;}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \textcolor{keywordtype}{bool}\ InMergeMode\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00178\ \};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \};\ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LLVM\_FUZZER\_INTERNAL\_H}}
+
+\end{DoxyCode}

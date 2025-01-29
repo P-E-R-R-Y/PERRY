@@ -1,0 +1,600 @@
+\doxysection{platform.\+h}
+\hypertarget{sdl2__image-src_2external_2libjxl_2third__party_2brotli_2c_2common_2platform_8h_source}{}\label{sdl2__image-src_2external_2libjxl_2third__party_2brotli_2c_2common_2platform_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/libjxl/third\_party/brotli/c/common/platform.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/libjxl/third\_party/brotli/c/common/platform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ 2016\ Google\ Inc.\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ Distributed\ under\ MIT\ license.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ See\ file\ LICENSE\ for\ detail\ or\ copy\ at\ https://opensource.org/licenses/MIT}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{/*\ Macros\ for\ compiler\ /\ platform\ specific\ features\ and\ build\ options.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ Build\ options\ are:}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ \ \ *\ BROTLI\_BUILD\_32\_BIT\ disables\ 64-\/bit\ optimizations}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ *\ BROTLI\_BUILD\_64\_BIT\ forces\ to\ use\ 64-\/bit\ optimizations}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ \ *\ BROTLI\_BUILD\_BIG\_ENDIAN\ forces\ to\ use\ big-\/endian\ optimizations}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ \ *\ BROTLI\_BUILD\_ENDIAN\_NEUTRAL\ disables\ endian-\/aware\ optimizations}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ *\ BROTLI\_BUILD\_LITTLE\_ENDIAN\ forces\ to\ use\ little-\/endian\ optimizations}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ *\ BROTLI\_BUILD\_PORTABLE\ disables\ dangerous\ optimizations,\ like\ unaligned}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ \ read\ and\ overlapping\ memcpy;\ this\ reduces\ decompression\ speed\ by\ 5\%}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ \ *\ BROTLI\_BUILD\_NO\_RBIT\ disables\ "{}rbit"{}\ optimization\ for\ ARM\ CPUs}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ *\ BROTLI\_DEBUG\ dumps\ file\ name\ and\ line\ number\ when\ decoder\ detects\ stream}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ \ \ or\ memory\ error}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ *\ BROTLI\_ENABLE\_LOG\ enables\ asserts\ and\ dumps\ various\ state\ information}}
+\DoxyCodeLine{00021\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#ifndef\ BROTLI\_COMMON\_PLATFORM\_H\_}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ BROTLI\_COMMON\_PLATFORM\_H\_}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <string.h>}\ \ \textcolor{comment}{/*\ memcpy\ */}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <brotli/port.h>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{external_2libjxl_2third__party_2brotli_2c_2include_2brotli_2types_8h}{brotli/types.h}}>}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#if\ defined(OS\_LINUX)\ ||\ defined(OS\_CYGWIN)\ ||\ defined(\_\_EMSCRIPTEN\_\_)}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <endian.h>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#elif\ defined(OS\_FREEBSD)}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <machine/endian.h>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#elif\ defined(OS\_MACOSX)}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <machine/endian.h>}}
+\DoxyCodeLine{00037\ \textcolor{comment}{/*\ Let's\ try\ and\ follow\ the\ Linux\ convention\ */}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ BROTLI\_X\_BYTE\_ORDER\ BYTE\_ORDER}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ BROTLI\_X\_LITTLE\_ENDIAN\ LITTLE\_ENDIAN}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ BROTLI\_X\_BIG\_ENDIAN\ BIG\_ENDIAN}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#if\ BROTLI\_MSVC\_VERSION\_CHECK(12,\ 0,\ 0)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ <intrin.h>}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_ENABLE\_LOG)\ ||\ defined(BROTLI\_DEBUG)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{/*\ The\ following\ macros\ were\ borrowed\ from\ https://github.com/nemequ/hedley}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ *\ with\ permission\ of\ original\ author\ -\/\ Evan\ Nemerson\ <evan@nemerson.com>\ */}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{/*\ >>>\ >>>\ >>>\ hedley\ macros\ */}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{comment}{/*\ Define\ "{}BROTLI\_PREDICT\_TRUE"{}\ and\ "{}BROTLI\_PREDICT\_FALSE"{}\ macros\ for\ capable}}
+\DoxyCodeLine{00058\ \textcolor{comment}{\ \ \ compilers.}}
+\DoxyCodeLine{00059\ \textcolor{comment}{}}
+\DoxyCodeLine{00060\ \textcolor{comment}{To\ apply\ compiler\ hint,\ enclose\ the\ branching\ condition\ into\ macros,\ like\ this:}}
+\DoxyCodeLine{00061\ \textcolor{comment}{}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ \ if\ (BROTLI\_PREDICT\_TRUE(zero\ ==\ 0))\ \{}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ \ //\ main\ execution\ path}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \}\ else\ \{}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ \ //\ compiler\ should\ place\ this\ code\ outside\ of\ main\ execution\ path}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \}}}
+\DoxyCodeLine{00067\ \textcolor{comment}{}}
+\DoxyCodeLine{00068\ \textcolor{comment}{OR:}}
+\DoxyCodeLine{00069\ \textcolor{comment}{}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ if\ (BROTLI\_PREDICT\_FALSE(something\_rare\_or\_unexpected\_happens))\ \{}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ \ //\ compiler\ should\ place\ this\ code\ outside\ of\ main\ execution\ path}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \}}}
+\DoxyCodeLine{00073\ \textcolor{comment}{}}
+\DoxyCodeLine{00074\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#if\ BROTLI\_GNUC\_HAS\_BUILTIN(\_\_builtin\_expect,\ 3,\ 0,\ 0)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_INTEL\_VERSION\_CHECK(16,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_SUNPRO\_VERSION\_CHECK(5,\ 15,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_ARM\_VERSION\_CHECK(4,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_IBM\_VERSION\_CHECK(10,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_TI\_VERSION\_CHECK(7,\ 3,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_TINYC\_VERSION\_CHECK(0,\ 9,\ 27)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ BROTLI\_PREDICT\_TRUE(x)\ (\_\_builtin\_expect(!!(x),\ 1))}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ BROTLI\_PREDICT\_FALSE(x)\ (\_\_builtin\_expect(x,\ 0))}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ BROTLI\_PREDICT\_FALSE(x)\ (x)}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ BROTLI\_PREDICT\_TRUE(x)\ (x)}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#if\ defined(\_\_STDC\_VERSION\_\_)\ \&\&\ (\_\_STDC\_VERSION\_\_\ >=\ 199901L)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ !defined(\_\_cplusplus)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ BROTLI\_RESTRICT\ restrict}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#elif\ BROTLI\_GNUC\_VERSION\_CHECK(3,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_MSVC\_VERSION\_CHECK(14,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_INTEL\_VERSION\_CHECK(16,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_ARM\_VERSION\_CHECK(4,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_IBM\_VERSION\_CHECK(10,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_PGI\_VERSION\_CHECK(17,\ 10,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_TI\_VERSION\_CHECK(8,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_IAR\_VERSION\_CHECK(8,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\ \ \ \ (BROTLI\_SUNPRO\_VERSION\_CHECK(5,\ 14,\ 0)\ \&\&\ defined(\_\_cplusplus))}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ BROTLI\_RESTRICT\ \_\_restrict}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#elif\ BROTLI\_SUNPRO\_VERSION\_CHECK(5,\ 3,\ 0)\ \&\&\ !defined(\_\_cplusplus)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ BROTLI\_RESTRICT\ \_Restrict}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ BROTLI\_RESTRICT}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#if\ (defined(\_\_STDC\_VERSION\_\_)\ \&\&\ (\_\_STDC\_VERSION\_\_\ >=\ 199901L))\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\ \ \ \ (defined(\_\_cplusplus)\ \&\&\ (\_\_cplusplus\ >=\ 199711L))}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ BROTLI\_MAYBE\_INLINE\ inline}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#elif\ defined(\_\_GNUC\_STDC\_INLINE\_\_)\ ||\ defined(\_\_GNUC\_GNU\_INLINE\_\_)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_ARM\_VERSION\_CHECK(6,\ 2,\ 0)}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ BROTLI\_MAYBE\_INLINE\ \_\_inline\_\_}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#elif\ BROTLI\_MSVC\_VERSION\_CHECK(12,\ 0,\ 0)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_ARM\_VERSION\_CHECK(4,\ 1,\ 0)\ ||\ BROTLI\_TI\_VERSION\_CHECK(8,\ 0,\ 0)}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ BROTLI\_MAYBE\_INLINE\ \_\_inline}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ BROTLI\_MAYBE\_INLINE}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#if\ BROTLI\_GNUC\_HAS\_ATTRIBUTE(always\_inline,\ 4,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_INTEL\_VERSION\_CHECK(16,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_SUNPRO\_VERSION\_CHECK(5,\ 11,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_ARM\_VERSION\_CHECK(4,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_IBM\_VERSION\_CHECK(10,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_TI\_VERSION\_CHECK(8,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\ \ \ \ (BROTLI\_TI\_VERSION\_CHECK(7,\ 3,\ 0)\ \&\&\ defined(\_\_TI\_GNU\_ATTRIBUTE\_SUPPORT\_\_))}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ BROTLI\_INLINE\ BROTLI\_MAYBE\_INLINE\ \_\_attribute\_\_((\_\_always\_inline\_\_))}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#elif\ BROTLI\_MSVC\_VERSION\_CHECK(12,\ 0,\ 0)}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ BROTLI\_INLINE\ BROTLI\_MAYBE\_INLINE\ \_\_forceinline}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#elif\ BROTLI\_TI\_VERSION\_CHECK(7,\ 0,\ 0)\ \&\&\ defined(\_\_cplusplus)}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ BROTLI\_INLINE\ BROTLI\_MAYBE\_INLINE\ \_Pragma("{}FUNC\_ALWAYS\_INLINE;"{})}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#elif\ BROTLI\_IAR\_VERSION\_CHECK(8,\ 0,\ 0)}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ BROTLI\_INLINE\ BROTLI\_MAYBE\_INLINE\ \_Pragma("{}inline=forced"{})}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#define\ BROTLI\_INLINE\ BROTLI\_MAYBE\_INLINE}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#if\ BROTLI\_GNUC\_HAS\_ATTRIBUTE(noinline,\ 4,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_INTEL\_VERSION\_CHECK(16,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_SUNPRO\_VERSION\_CHECK(5,\ 11,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_ARM\_VERSION\_CHECK(4,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_IBM\_VERSION\_CHECK(10,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_TI\_VERSION\_CHECK(8,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ (BROTLI\_TI\_VERSION\_CHECK(7,\ 3,\ 0)\ \&\&\ defined(\_\_TI\_GNU\_ATTRIBUTE\_SUPPORT\_\_))}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ BROTLI\_NOINLINE\ \_\_attribute\_\_((\_\_noinline\_\_))}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#elif\ BROTLI\_MSVC\_VERSION\_CHECK(13,\ 10,\ 0)}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ BROTLI\_NOINLINE\ \_\_declspec(noinline)}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#elif\ BROTLI\_PGI\_VERSION\_CHECK(10,\ 2,\ 0)}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#define\ BROTLI\_NOINLINE\ \_Pragma("{}noinline"{})}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#elif\ BROTLI\_TI\_VERSION\_CHECK(6,\ 0,\ 0)\ \&\&\ defined(\_\_cplusplus)}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ BROTLI\_NOINLINE\ \_Pragma("{}FUNC\_CANNOT\_INLINE;"{})}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#elif\ BROTLI\_IAR\_VERSION\_CHECK(8,\ 0,\ 0)}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ BROTLI\_NOINLINE\ \_Pragma("{}inline=never"{})}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ BROTLI\_NOINLINE}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{comment}{/*\ BROTLI\_INTERNAL\ could\ be\ defined\ to\ override\ visibility,\ e.g.\ for\ tests.\ */}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#if\ !defined(BROTLI\_INTERNAL)}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)\ ||\ defined(\_\_CYGWIN\_\_)}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ BROTLI\_INTERNAL}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#elif\ BROTLI\_GNUC\_VERSION\_CHECK(3,\ 3,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_TI\_VERSION\_CHECK(8,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_INTEL\_VERSION\_CHECK(16,\ 0,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_ARM\_VERSION\_CHECK(4,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_IBM\_VERSION\_CHECK(13,\ 1,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_SUNPRO\_VERSION\_CHECK(5,\ 11,\ 0)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\ \ \ \ (BROTLI\_TI\_VERSION\_CHECK(7,\ 3,\ 0)\ \&\&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\ \ \ \ \ defined(\_\_TI\_GNU\_ATTRIBUTE\_SUPPORT\_\_)\ \&\&\ defined(\_\_TI\_EABI\_\_))}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#define\ BROTLI\_INTERNAL\ \_\_attribute\_\_\ ((visibility\ ("{}hidden"{})))}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ BROTLI\_INTERNAL}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \textcolor{comment}{/*\ <<<\ <<<\ <<<\ end\ of\ hedley\ macros.\ */}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#if\ BROTLI\_GNUC\_HAS\_ATTRIBUTE(unused,\ 2,\ 7,\ 0)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_INTEL\_VERSION\_CHECK(16,\ 0,\ 0)}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ BROTLI\_UNUSED\_FUNCTION\ static\ BROTLI\_INLINE\ \_\_attribute\_\_\ ((unused))}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#define\ BROTLI\_UNUSED\_FUNCTION\ static\ BROTLI\_INLINE}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#if\ BROTLI\_GNUC\_HAS\_ATTRIBUTE(aligned,\ 2,\ 7,\ 0)}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ BROTLI\_ALIGNED(N)\ \_\_attribute\_\_((aligned(N)))}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#define\ BROTLI\_ALIGNED(N)}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#if\ (defined(\_\_ARM\_ARCH)\ \&\&\ (\_\_ARM\_ARCH\ ==\ 7))\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\ \ \ \ (defined(M\_ARM)\ \&\&\ (M\_ARM\ ==\ 7))}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ BROTLI\_TARGET\_ARMV7}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ ARMv7\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#if\ (defined(\_\_ARM\_ARCH)\ \&\&\ (\_\_ARM\_ARCH\ ==\ 8))\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\ \ \ \ defined(\_\_aarch64\_\_)\ ||\ defined(\_\_ARM64\_ARCH\_8\_\_)}}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#define\ BROTLI\_TARGET\_ARMV8\_ANY}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#if\ defined(\_\_ARM\_32BIT\_STATE)}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#define\ BROTLI\_TARGET\_ARMV8\_32}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#elif\ defined(\_\_ARM\_64BIT\_STATE)}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#define\ BROTLI\_TARGET\_ARMV8\_64}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ ARMv8\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#if\ defined(\_\_ARM\_NEON\_\_)\ ||\ defined(\_\_ARM\_NEON)}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ BROTLI\_TARGET\_NEON}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#if\ defined(\_\_i386)\ ||\ defined(\_M\_IX86)}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ BROTLI\_TARGET\_X86}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#if\ defined(\_\_x86\_64\_\_)\ ||\ defined(\_M\_X64)}}
+\DoxyCodeLine{00218\ \textcolor{preprocessor}{\#define\ BROTLI\_TARGET\_X64}}
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#if\ defined(\_\_PPC64\_\_)}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#define\ BROTLI\_TARGET\_POWERPC64}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#if\ defined(\_\_riscv)\ \&\&\ defined(\_\_riscv\_xlen)\ \&\&\ \_\_riscv\_xlen\ ==\ 64}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#define\ BROTLI\_TARGET\_RISCV64}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_BUILD\_64\_BIT)}}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#define\ BROTLI\_64\_BITS\ 1}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#elif\ defined(BROTLI\_BUILD\_32\_BIT)}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#define\ BROTLI\_64\_BITS\ 0}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#elif\ defined(BROTLI\_TARGET\_X64)\ ||\ defined(BROTLI\_TARGET\_ARMV8\_64)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\ \ \ \ defined(BROTLI\_TARGET\_POWERPC64)\ ||\ defined(BROTLI\_TARGET\_RISCV64)}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#define\ BROTLI\_64\_BITS\ 1}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\#define\ BROTLI\_64\_BITS\ 0}}
+\DoxyCodeLine{00238\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#if\ (BROTLI\_64\_BITS)}}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#define\ brotli\_reg\_t\ uint64\_t}}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#define\ brotli\_reg\_t\ uint32\_t}}
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_BUILD\_BIG\_ENDIAN)}}
+\DoxyCodeLine{00247\ \textcolor{preprocessor}{\#define\ BROTLI\_BIG\_ENDIAN\ 1}}
+\DoxyCodeLine{00248\ \textcolor{preprocessor}{\#elif\ defined(BROTLI\_BUILD\_LITTLE\_ENDIAN)}}
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\#define\ BROTLI\_LITTLE\_ENDIAN\ 1}}
+\DoxyCodeLine{00250\ \textcolor{preprocessor}{\#elif\ defined(BROTLI\_BUILD\_ENDIAN\_NEUTRAL)}}
+\DoxyCodeLine{00251\ \textcolor{comment}{/*\ Just\ break\ elif\ chain.\ */}}
+\DoxyCodeLine{00252\ \textcolor{preprocessor}{\#elif\ defined(\_\_BYTE\_ORDER\_\_)\ \&\&\ (\_\_BYTE\_ORDER\_\_\ ==\ \_\_ORDER\_LITTLE\_ENDIAN\_\_)}}
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\#define\ BROTLI\_LITTLE\_ENDIAN\ 1}}
+\DoxyCodeLine{00254\ \textcolor{preprocessor}{\#elif\ defined(\_WIN32)\ ||\ defined(BROTLI\_TARGET\_X64)}}
+\DoxyCodeLine{00255\ \textcolor{comment}{/*\ Win32\ \&\ x64\ can\ currently\ always\ be\ assumed\ to\ be\ little\ endian\ */}}
+\DoxyCodeLine{00256\ \textcolor{preprocessor}{\#define\ BROTLI\_LITTLE\_ENDIAN\ 1}}
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\#elif\ defined(\_\_BYTE\_ORDER\_\_)\ \&\&\ (\_\_BYTE\_ORDER\_\_\ ==\ \_\_ORDER\_BIG\_ENDIAN\_\_)}}
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#define\ BROTLI\_BIG\_ENDIAN\ 1}}
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\#elif\ defined(BROTLI\_X\_BYTE\_ORDER)}}
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\#if\ BROTLI\_X\_BYTE\_ORDER\ ==\ BROTLI\_X\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#define\ BROTLI\_LITTLE\_ENDIAN\ 1}}
+\DoxyCodeLine{00262\ \textcolor{preprocessor}{\#elif\ BROTLI\_X\_BYTE\_ORDER\ ==\ BROTLI\_X\_BIG\_ENDIAN}}
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\#define\ BROTLI\_BIG\_ENDIAN\ 1}}
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_X\_BYTE\_ORDER\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \textcolor{preprocessor}{\#if\ !defined(BROTLI\_LITTLE\_ENDIAN)}}
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#define\ BROTLI\_LITTLE\_ENDIAN\ 0}}
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#if\ !defined(BROTLI\_BIG\_ENDIAN)}}
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\#define\ BROTLI\_BIG\_ENDIAN\ 0}}
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_X\_BYTE\_ORDER)}}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#undef\ BROTLI\_X\_BYTE\_ORDER}}
+\DoxyCodeLine{00277\ \textcolor{preprocessor}{\#undef\ BROTLI\_X\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00278\ \textcolor{preprocessor}{\#undef\ BROTLI\_X\_BIG\_ENDIAN}}
+\DoxyCodeLine{00279\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_BUILD\_PORTABLE)}}
+\DoxyCodeLine{00282\ \textcolor{preprocessor}{\#define\ BROTLI\_ALIGNED\_READ\ (!!1)}}
+\DoxyCodeLine{00283\ \textcolor{preprocessor}{\#elif\ defined(BROTLI\_TARGET\_X86)\ ||\ defined(BROTLI\_TARGET\_X64)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00284\ \textcolor{preprocessor}{\ \ \ \ defined(BROTLI\_TARGET\_ARMV7)\ ||\ defined(BROTLI\_TARGET\_ARMV8\_ANY)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00285\ \textcolor{preprocessor}{\ \ \ \ defined(BROTLI\_TARGET\_RISCV64)}}
+\DoxyCodeLine{00286\ \textcolor{comment}{/*\ Allow\ unaligned\ read\ only\ for\ white-\/listed\ CPUs.\ */}}
+\DoxyCodeLine{00287\ \textcolor{preprocessor}{\#define\ BROTLI\_ALIGNED\_READ\ (!!0)}}
+\DoxyCodeLine{00288\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00289\ \textcolor{preprocessor}{\#define\ BROTLI\_ALIGNED\_READ\ (!!1)}}
+\DoxyCodeLine{00290\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \textcolor{preprocessor}{\#if\ BROTLI\_ALIGNED\_READ}}
+\DoxyCodeLine{00293\ \textcolor{comment}{/*\ Portable\ unaligned\ memory\ access:\ read\ /\ write\ values\ via\ memcpy.\ */}}
+\DoxyCodeLine{00294\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint16\_t\ BrotliUnalignedRead16(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00295\ \ \ uint16\_t\ t;}
+\DoxyCodeLine{00296\ \ \ memcpy(\&t,\ p,\ \textcolor{keyword}{sizeof}\ t);}
+\DoxyCodeLine{00297\ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{00298\ \}}
+\DoxyCodeLine{00299\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint32\_t\ BrotliUnalignedRead32(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00300\ \ \ uint32\_t\ t;}
+\DoxyCodeLine{00301\ \ \ memcpy(\&t,\ p,\ \textcolor{keyword}{sizeof}\ t);}
+\DoxyCodeLine{00302\ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{00303\ \}}
+\DoxyCodeLine{00304\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint64\_t\ BrotliUnalignedRead64(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00305\ \ \ uint64\_t\ t;}
+\DoxyCodeLine{00306\ \ \ memcpy(\&t,\ p,\ \textcolor{keyword}{sizeof}\ t);}
+\DoxyCodeLine{00307\ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{00308\ \}}
+\DoxyCodeLine{00309\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ \textcolor{keywordtype}{void}\ BrotliUnalignedWrite64(\textcolor{keywordtype}{void}*\ p,\ uint64\_t\ v)\ \{}
+\DoxyCodeLine{00310\ \ \ memcpy(p,\ \&v,\ \textcolor{keyword}{sizeof}\ v);}
+\DoxyCodeLine{00311\ \}}
+\DoxyCodeLine{00312\ \textcolor{preprocessor}{\#else\ \ }\textcolor{comment}{/*\ BROTLI\_ALIGNED\_READ\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00313\ \textcolor{comment}{/*\ Unaligned\ memory\ access\ is\ allowed:\ just\ cast\ pointer\ to\ requested\ type.\ */}}
+\DoxyCodeLine{00314\ \textcolor{preprocessor}{\#if\ BROTLI\_SANITIZED}}
+\DoxyCodeLine{00315\ \textcolor{comment}{/*\ Consider\ we\ have\ an\ unaligned\ load/store\ of\ 4\ bytes\ from\ address\ 0x...05.}}
+\DoxyCodeLine{00316\ \textcolor{comment}{\ \ \ AddressSanitizer\ will\ treat\ it\ as\ a\ 3-\/byte\ access\ to\ the\ range\ 05:07\ and}}
+\DoxyCodeLine{00317\ \textcolor{comment}{\ \ \ will\ miss\ a\ bug\ if\ 08\ is\ the\ first\ unaddressable\ byte.}}
+\DoxyCodeLine{00318\ \textcolor{comment}{\ \ \ ThreadSanitizer\ will\ also\ treat\ this\ as\ a\ 3-\/byte\ access\ to\ 05:07\ and\ will}}
+\DoxyCodeLine{00319\ \textcolor{comment}{\ \ \ miss\ a\ race\ between\ this\ access\ and\ some\ other\ accesses\ to\ 08.}}
+\DoxyCodeLine{00320\ \textcolor{comment}{\ \ \ MemorySanitizer\ will\ correctly\ propagate\ the\ shadow\ on\ unaligned\ stores}}
+\DoxyCodeLine{00321\ \textcolor{comment}{\ \ \ and\ correctly\ report\ bugs\ on\ unaligned\ loads,\ but\ it\ may\ not\ properly}}
+\DoxyCodeLine{00322\ \textcolor{comment}{\ \ \ update\ and\ report\ the\ origin\ of\ the\ uninitialized\ memory.}}
+\DoxyCodeLine{00323\ \textcolor{comment}{\ \ \ For\ all\ three\ tools,\ replacing\ an\ unaligned\ access\ with\ a\ tool-\/specific}}
+\DoxyCodeLine{00324\ \textcolor{comment}{\ \ \ callback\ solves\ the\ problem.\ */}}
+\DoxyCodeLine{00325\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)}}
+\DoxyCodeLine{00326\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00327\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00328\ \ \ uint16\_t\ \_\_sanitizer\_unaligned\_load16(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p);}
+\DoxyCodeLine{00329\ \ \ uint32\_t\ \_\_sanitizer\_unaligned\_load32(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p);}
+\DoxyCodeLine{00330\ \ \ uint64\_t\ \_\_sanitizer\_unaligned\_load64(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p);}
+\DoxyCodeLine{00331\ \ \ \textcolor{keywordtype}{void}\ \_\_sanitizer\_unaligned\_store64(\textcolor{keywordtype}{void}*\ p,\ uint64\_t\ v);}
+\DoxyCodeLine{00332\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)}}
+\DoxyCodeLine{00333\ \}\ \ \textcolor{comment}{/*\ extern\ "{}C"{}\ */}}
+\DoxyCodeLine{00334\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00335\ \textcolor{preprocessor}{\#define\ BrotliUnalignedRead16\ \_\_sanitizer\_unaligned\_load16}}
+\DoxyCodeLine{00336\ \textcolor{preprocessor}{\#define\ BrotliUnalignedRead32\ \_\_sanitizer\_unaligned\_load32}}
+\DoxyCodeLine{00337\ \textcolor{preprocessor}{\#define\ BrotliUnalignedRead64\ \_\_sanitizer\_unaligned\_load64}}
+\DoxyCodeLine{00338\ \textcolor{preprocessor}{\#define\ BrotliUnalignedWrite64\ \_\_sanitizer\_unaligned\_store64}}
+\DoxyCodeLine{00339\ \textcolor{preprocessor}{\#else\ \ }\textcolor{comment}{/*\ BROTLI\_SANITIZED\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00340\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint16\_t\ BrotliUnalignedRead16(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00341\ \ \ \textcolor{keywordflow}{return}\ *(\textcolor{keyword}{const}\ uint16\_t*)p;}
+\DoxyCodeLine{00342\ \}}
+\DoxyCodeLine{00343\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint32\_t\ BrotliUnalignedRead32(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00344\ \ \ \textcolor{keywordflow}{return}\ *(\textcolor{keyword}{const}\ uint32\_t*)p;}
+\DoxyCodeLine{00345\ \}}
+\DoxyCodeLine{00346\ \textcolor{preprocessor}{\#if\ (BROTLI\_64\_BITS)}}
+\DoxyCodeLine{00347\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint64\_t\ BrotliUnalignedRead64(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00348\ \ \ \textcolor{keywordflow}{return}\ *(\textcolor{keyword}{const}\ uint64\_t*)p;}
+\DoxyCodeLine{00349\ \}}
+\DoxyCodeLine{00350\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ \textcolor{keywordtype}{void}\ BrotliUnalignedWrite64(\textcolor{keywordtype}{void}*\ p,\ uint64\_t\ v)\ \{}
+\DoxyCodeLine{00351\ \ \ *(uint64\_t*)p\ =\ v;}
+\DoxyCodeLine{00352\ \}}
+\DoxyCodeLine{00353\ \textcolor{preprocessor}{\#else\ \ }\textcolor{comment}{/*\ BROTLI\_64\_BITS\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00354\ \textcolor{comment}{/*\ Avoid\ emitting\ LDRD\ /\ STRD,\ which\ require\ properly\ aligned\ address.\ */}}
+\DoxyCodeLine{00355\ \textcolor{comment}{/*\ If\ \_\_attribute\_\_(aligned)\ is\ available,\ use\ that.\ Otherwise,\ memcpy.\ */}}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \textcolor{preprocessor}{\#if\ BROTLI\_GNUC\_HAS\_ATTRIBUTE(aligned,\ 2,\ 7,\ 0)}}
+\DoxyCodeLine{00358\ \textcolor{keyword}{typedef}\ BROTLI\_ALIGNED(1)\ uint64\_t\ brotli\_unaligned\_uint64\_t;}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ static\ BROTLI\_INLINE\ uint64\_t\ BrotliUnalignedRead64(const\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00361\ \ \ \textcolor{keywordflow}{return}\ (uint64\_t)\ ((\textcolor{keyword}{const}\ brotli\_unaligned\_uint64\_t*)\ p)[0];}
+\DoxyCodeLine{00362\ \}}
+\DoxyCodeLine{00363\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ \textcolor{keywordtype}{void}\ BrotliUnalignedWrite64(\textcolor{keywordtype}{void}*\ p,\ uint64\_t\ v)\ \{}
+\DoxyCodeLine{00364\ \ \ brotli\_unaligned\_uint64\_t*\ dwords\ =\ (brotli\_unaligned\_uint64\_t*)\ p;}
+\DoxyCodeLine{00365\ \ \ dwords[0]\ =\ (brotli\_unaligned\_uint64\_t)\ v;}
+\DoxyCodeLine{00366\ \}}
+\DoxyCodeLine{00367\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{/*\ BROTLI\_GNUC\_HAS\_ATTRIBUTE(aligned,\ 2,\ 7,\ 0)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00368\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint64\_t\ BrotliUnalignedRead64(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00369\ \ \ uint64\_t\ v;}
+\DoxyCodeLine{00370\ \ \ memcpy(\&v,\ p,\ \textcolor{keyword}{sizeof}(uint64\_t));}
+\DoxyCodeLine{00371\ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{00372\ \}}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ \textcolor{keywordtype}{void}\ BrotliUnalignedWrite64(\textcolor{keywordtype}{void}*\ p,\ uint64\_t\ v)\ \{}
+\DoxyCodeLine{00375\ \ \ memcpy(p,\ \&v,\ \textcolor{keyword}{sizeof}(uint64\_t));}
+\DoxyCodeLine{00376\ \}}
+\DoxyCodeLine{00377\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_GNUC\_HAS\_ATTRIBUTE(aligned,\ 2,\ 7,\ 0)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00378\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_64\_BITS\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00379\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_SANITIZED\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00380\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_ALIGNED\_READ\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00382\ \textcolor{preprocessor}{\#if\ BROTLI\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00383\ \textcolor{comment}{/*\ Straight\ endianness.\ Just\ read\ /\ write\ values.\ */}}
+\DoxyCodeLine{00384\ \textcolor{preprocessor}{\#define\ BROTLI\_UNALIGNED\_LOAD16LE\ BrotliUnalignedRead16}}
+\DoxyCodeLine{00385\ \textcolor{preprocessor}{\#define\ BROTLI\_UNALIGNED\_LOAD32LE\ BrotliUnalignedRead32}}
+\DoxyCodeLine{00386\ \textcolor{preprocessor}{\#define\ BROTLI\_UNALIGNED\_LOAD64LE\ BrotliUnalignedRead64}}
+\DoxyCodeLine{00387\ \textcolor{preprocessor}{\#define\ BROTLI\_UNALIGNED\_STORE64LE\ BrotliUnalignedWrite64}}
+\DoxyCodeLine{00388\ \textcolor{preprocessor}{\#elif\ BROTLI\_BIG\_ENDIAN\ \ }\textcolor{comment}{/*\ BROTLI\_LITTLE\_ENDIAN\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00389\ \textcolor{comment}{/*\ Explain\ compiler\ to\ byte-\/swap\ values.\ */}}
+\DoxyCodeLine{00390\ \textcolor{preprocessor}{\#define\ BROTLI\_BSWAP16\_(V)\ ((uint16\_t)(\ \(\backslash\)}}
+\DoxyCodeLine{00391\ \textcolor{preprocessor}{\ \ (((V)\ \&\ 0xFFU)\ <<\ 8)\ |\ \(\backslash\)}}
+\DoxyCodeLine{00392\ \textcolor{preprocessor}{\ \ (((V)\ >>\ 8)\ \&\ 0xFFU)))}}
+\DoxyCodeLine{00393\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint16\_t\ BROTLI\_UNALIGNED\_LOAD16LE(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00394\ \ \ uint16\_t\ value\ =\ BrotliUnalignedRead16(p);}
+\DoxyCodeLine{00395\ \ \ \textcolor{keywordflow}{return}\ BROTLI\_BSWAP16\_(value);}
+\DoxyCodeLine{00396\ \}}
+\DoxyCodeLine{00397\ \textcolor{preprocessor}{\#define\ BROTLI\_BSWAP32\_(V)\ (\ \(\backslash\)}}
+\DoxyCodeLine{00398\ \textcolor{preprocessor}{\ \ (((V)\ \&\ 0xFFU)\ <<\ 24)\ |\ (((V)\ \&\ 0xFF00U)\ <<\ 8)\ |\ \(\backslash\)}}
+\DoxyCodeLine{00399\ \textcolor{preprocessor}{\ \ (((V)\ >>\ 8)\ \&\ 0xFF00U)\ |\ (((V)\ >>\ 24)\ \&\ 0xFFU))}}
+\DoxyCodeLine{00400\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint32\_t\ BROTLI\_UNALIGNED\_LOAD32LE(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00401\ \ \ uint32\_t\ value\ =\ BrotliUnalignedRead32(p);}
+\DoxyCodeLine{00402\ \ \ \textcolor{keywordflow}{return}\ BROTLI\_BSWAP32\_(value);}
+\DoxyCodeLine{00403\ \}}
+\DoxyCodeLine{00404\ \textcolor{preprocessor}{\#define\ BROTLI\_BSWAP64\_(V)\ (\ \(\backslash\)}}
+\DoxyCodeLine{00405\ \textcolor{preprocessor}{\ \ (((V)\ \&\ 0xFFU)\ <<\ 56)\ |\ (((V)\ \&\ 0xFF00U)\ <<\ 40)\ |\ \(\backslash\)}}
+\DoxyCodeLine{00406\ \textcolor{preprocessor}{\ \ (((V)\ \&\ 0xFF0000U)\ <<\ 24)\ |\ (((V)\ \&\ 0xFF000000U)\ <<\ 8)\ |\ \(\backslash\)}}
+\DoxyCodeLine{00407\ \textcolor{preprocessor}{\ \ (((V)\ >>\ 8)\ \&\ 0xFF000000U)\ |\ (((V)\ >>\ 24)\ \&\ 0xFF0000U)\ |\ \(\backslash\)}}
+\DoxyCodeLine{00408\ \textcolor{preprocessor}{\ \ (((V)\ >>\ 40)\ \&\ 0xFF00U)\ |\ (((V)\ >>\ 56)\ \&\ 0xFFU))}}
+\DoxyCodeLine{00409\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint64\_t\ BROTLI\_UNALIGNED\_LOAD64LE(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00410\ \ \ uint64\_t\ value\ =\ BrotliUnalignedRead64(p);}
+\DoxyCodeLine{00411\ \ \ \textcolor{keywordflow}{return}\ BROTLI\_BSWAP64\_(value);}
+\DoxyCodeLine{00412\ \}}
+\DoxyCodeLine{00413\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ \textcolor{keywordtype}{void}\ BROTLI\_UNALIGNED\_STORE64LE(\textcolor{keywordtype}{void}*\ p,\ uint64\_t\ v)\ \{}
+\DoxyCodeLine{00414\ \ \ uint64\_t\ value\ =\ BROTLI\_BSWAP64\_(v);}
+\DoxyCodeLine{00415\ \ \ BrotliUnalignedWrite64(p,\ value);}
+\DoxyCodeLine{00416\ \}}
+\DoxyCodeLine{00417\ \textcolor{preprocessor}{\#else\ \ }\textcolor{comment}{/*\ BROTLI\_LITTLE\_ENDIAN\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00418\ \textcolor{comment}{/*\ Read\ /\ store\ values\ byte-\/wise;\ hopefully\ compiler\ will\ understand.\ */}}
+\DoxyCodeLine{00419\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint16\_t\ BROTLI\_UNALIGNED\_LOAD16LE(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00420\ \ \ \textcolor{keyword}{const}\ uint8\_t*\ in\ =\ (\textcolor{keyword}{const}\ uint8\_t*)p;}
+\DoxyCodeLine{00421\ \ \ \textcolor{keywordflow}{return}\ (uint16\_t)(in[0]\ |\ (in[1]\ <<\ 8));}
+\DoxyCodeLine{00422\ \}}
+\DoxyCodeLine{00423\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint32\_t\ BROTLI\_UNALIGNED\_LOAD32LE(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00424\ \ \ \textcolor{keyword}{const}\ uint8\_t*\ in\ =\ (\textcolor{keyword}{const}\ uint8\_t*)p;}
+\DoxyCodeLine{00425\ \ \ uint32\_t\ value\ =\ (uint32\_t)(in[0]);}
+\DoxyCodeLine{00426\ \ \ value\ |=\ (uint32\_t)(in[1])\ <<\ 8;}
+\DoxyCodeLine{00427\ \ \ value\ |=\ (uint32\_t)(in[2])\ <<\ 16;}
+\DoxyCodeLine{00428\ \ \ value\ |=\ (uint32\_t)(in[3])\ <<\ 24;}
+\DoxyCodeLine{00429\ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{00430\ \}}
+\DoxyCodeLine{00431\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint64\_t\ BROTLI\_UNALIGNED\_LOAD64LE(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ p)\ \{}
+\DoxyCodeLine{00432\ \ \ \textcolor{keyword}{const}\ uint8\_t*\ in\ =\ (\textcolor{keyword}{const}\ uint8\_t*)p;}
+\DoxyCodeLine{00433\ \ \ uint64\_t\ value\ =\ (uint64\_t)(in[0]);}
+\DoxyCodeLine{00434\ \ \ value\ |=\ (uint64\_t)(in[1])\ <<\ 8;}
+\DoxyCodeLine{00435\ \ \ value\ |=\ (uint64\_t)(in[2])\ <<\ 16;}
+\DoxyCodeLine{00436\ \ \ value\ |=\ (uint64\_t)(in[3])\ <<\ 24;}
+\DoxyCodeLine{00437\ \ \ value\ |=\ (uint64\_t)(in[4])\ <<\ 32;}
+\DoxyCodeLine{00438\ \ \ value\ |=\ (uint64\_t)(in[5])\ <<\ 40;}
+\DoxyCodeLine{00439\ \ \ value\ |=\ (uint64\_t)(in[6])\ <<\ 48;}
+\DoxyCodeLine{00440\ \ \ value\ |=\ (uint64\_t)(in[7])\ <<\ 56;}
+\DoxyCodeLine{00441\ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{00442\ \}}
+\DoxyCodeLine{00443\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ \textcolor{keywordtype}{void}\ BROTLI\_UNALIGNED\_STORE64LE(\textcolor{keywordtype}{void}*\ p,\ uint64\_t\ v)\ \{}
+\DoxyCodeLine{00444\ \ \ uint8\_t*\ out\ =\ (uint8\_t*)p;}
+\DoxyCodeLine{00445\ \ \ out[0]\ =\ (uint8\_t)v;}
+\DoxyCodeLine{00446\ \ \ out[1]\ =\ (uint8\_t)(v\ >>\ 8);}
+\DoxyCodeLine{00447\ \ \ out[2]\ =\ (uint8\_t)(v\ >>\ 16);}
+\DoxyCodeLine{00448\ \ \ out[3]\ =\ (uint8\_t)(v\ >>\ 24);}
+\DoxyCodeLine{00449\ \ \ out[4]\ =\ (uint8\_t)(v\ >>\ 32);}
+\DoxyCodeLine{00450\ \ \ out[5]\ =\ (uint8\_t)(v\ >>\ 40);}
+\DoxyCodeLine{00451\ \ \ out[6]\ =\ (uint8\_t)(v\ >>\ 48);}
+\DoxyCodeLine{00452\ \ \ out[7]\ =\ (uint8\_t)(v\ >>\ 56);}
+\DoxyCodeLine{00453\ \}}
+\DoxyCodeLine{00454\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_LITTLE\_ENDIAN\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \textcolor{comment}{/*\ BROTLI\_IS\_CONSTANT\ macros\ returns\ true\ for\ compile-\/time\ constants.\ */}}
+\DoxyCodeLine{00457\ \textcolor{preprocessor}{\#if\ BROTLI\_GNUC\_HAS\_BUILTIN(\_\_builtin\_constant\_p,\ 3,\ 0,\ 1)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00458\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_INTEL\_VERSION\_CHECK(16,\ 0,\ 0)}}
+\DoxyCodeLine{00459\ \textcolor{preprocessor}{\#define\ BROTLI\_IS\_CONSTANT(x)\ (!!\_\_builtin\_constant\_p(x))}}
+\DoxyCodeLine{00460\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00461\ \textcolor{preprocessor}{\#define\ BROTLI\_IS\_CONSTANT(x)\ (!!0)}}
+\DoxyCodeLine{00462\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00464\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_TARGET\_ARMV7)\ ||\ defined(BROTLI\_TARGET\_ARMV8\_ANY)}}
+\DoxyCodeLine{00465\ \textcolor{preprocessor}{\#define\ BROTLI\_HAS\_UBFX\ (!!1)}}
+\DoxyCodeLine{00466\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00467\ \textcolor{preprocessor}{\#define\ BROTLI\_HAS\_UBFX\ (!!0)}}
+\DoxyCodeLine{00468\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00469\ }
+\DoxyCodeLine{00470\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_ENABLE\_LOG)}}
+\DoxyCodeLine{00471\ \textcolor{preprocessor}{\#define\ BROTLI\_LOG(x)\ printf\ x}}
+\DoxyCodeLine{00472\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00473\ \textcolor{preprocessor}{\#define\ BROTLI\_LOG(x)}}
+\DoxyCodeLine{00474\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_DEBUG)\ ||\ defined(BROTLI\_ENABLE\_LOG)}}
+\DoxyCodeLine{00477\ \textcolor{preprocessor}{\#define\ BROTLI\_DCHECK(x)\ assert(x)}}
+\DoxyCodeLine{00478\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ \textcolor{keywordtype}{void}\ BrotliDump(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ f,\ \textcolor{keywordtype}{int}\ l,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fn)\ \{}
+\DoxyCodeLine{00479\ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}\%s:\%d\ (\%s)\(\backslash\)n"{}},\ f,\ l,\ fn);}
+\DoxyCodeLine{00480\ \ \ fflush(stderr);}
+\DoxyCodeLine{00481\ \}}
+\DoxyCodeLine{00482\ \textcolor{preprocessor}{\#define\ BROTLI\_DUMP()\ BrotliDump(\_\_FILE\_\_,\ \_\_LINE\_\_,\ \_\_FUNCTION\_\_)}}
+\DoxyCodeLine{00483\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00484\ \textcolor{preprocessor}{\#define\ BROTLI\_DCHECK(x)}}
+\DoxyCodeLine{00485\ \textcolor{preprocessor}{\#define\ BROTLI\_DUMP()\ (void)(0)}}
+\DoxyCodeLine{00486\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00488\ \textcolor{comment}{/*\ TODO:\ add\ appropriate\ icc/sunpro/arm/ibm/ti\ checks.\ */}}
+\DoxyCodeLine{00489\ \textcolor{preprocessor}{\#if\ (BROTLI\_GNUC\_VERSION\_CHECK(3,\ 0,\ 0)\ ||\ defined(\_\_llvm\_\_))\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00490\ \textcolor{preprocessor}{\ \ \ \ !defined(BROTLI\_BUILD\_NO\_RBIT)}}
+\DoxyCodeLine{00491\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_TARGET\_ARMV7)\ ||\ defined(BROTLI\_TARGET\_ARMV8\_ANY)}}
+\DoxyCodeLine{00492\ \textcolor{comment}{/*\ TODO:\ detect\ ARMv6T2\ and\ enable\ this\ code\ for\ it.\ */}}
+\DoxyCodeLine{00493\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ brotli\_reg\_t\ BrotliRBit(brotli\_reg\_t\ input)\ \{}
+\DoxyCodeLine{00494\ \ \ brotli\_reg\_t\ output;}
+\DoxyCodeLine{00495\ \ \ \_\_asm\_\_(\textcolor{stringliteral}{"{}rbit\ \%0,\ \%1\(\backslash\)n"{}}\ :\ \textcolor{stringliteral}{"{}=r"{}}(output)\ :\ \textcolor{stringliteral}{"{}r"{}}(input));}
+\DoxyCodeLine{00496\ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00497\ \}}
+\DoxyCodeLine{00498\ \textcolor{preprocessor}{\#define\ BROTLI\_RBIT(x)\ BrotliRBit(x)}}
+\DoxyCodeLine{00499\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ armv7\ /\ armv8\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00500\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ gcc\ ||\ clang\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00501\ \textcolor{preprocessor}{\#if\ !defined(BROTLI\_RBIT)}}
+\DoxyCodeLine{00502\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ \textcolor{keywordtype}{void}\ BrotliRBit(\textcolor{keywordtype}{void})\ \{\ \textcolor{comment}{/*\ Should\ break\ build\ if\ used.\ */}\ \}}
+\DoxyCodeLine{00503\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_RBIT\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00504\ }
+\DoxyCodeLine{00505\ \textcolor{preprocessor}{\#define\ BROTLI\_REPEAT(N,\ X)\ \{\ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00506\ \textcolor{preprocessor}{\ \ if\ ((N\ \&\ 1)\ !=\ 0)\ \{X;\}\ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00507\ \textcolor{preprocessor}{\ \ if\ ((N\ \&\ 2)\ !=\ 0)\ \{X;\ X;\}\ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00508\ \textcolor{preprocessor}{\ \ if\ ((N\ \&\ 4)\ !=\ 0)\ \{X;\ X;\ X;\ X;\}\ \(\backslash\)}}
+\DoxyCodeLine{00509\ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00511\ \textcolor{preprocessor}{\#define\ BROTLI\_UNUSED(X)\ (void)(X)}}
+\DoxyCodeLine{00512\ }
+\DoxyCodeLine{00513\ \textcolor{preprocessor}{\#define\ BROTLI\_MIN\_MAX(T)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00514\ \textcolor{preprocessor}{\ \ static\ BROTLI\_INLINE\ T\ brotli\_min\_\ \#\#\ T\ (T\ a,\ T\ b)\ \{\ return\ a\ <\ b\ ?\ a\ :\ b;\ \}\ \(\backslash\)}}
+\DoxyCodeLine{00515\ \textcolor{preprocessor}{\ \ static\ BROTLI\_INLINE\ T\ brotli\_max\_\ \#\#\ T\ (T\ a,\ T\ b)\ \{\ return\ a\ >\ b\ ?\ a\ :\ b;\ \}}}
+\DoxyCodeLine{00516\ BROTLI\_MIN\_MAX(\textcolor{keywordtype}{double})\ BROTLI\_MIN\_MAX(\textcolor{keywordtype}{float})\ BROTLI\_MIN\_MAX(\textcolor{keywordtype}{int})}
+\DoxyCodeLine{00517\ BROTLI\_MIN\_MAX(\textcolor{keywordtype}{size\_t})\ BROTLI\_MIN\_MAX(uint32\_t)\ BROTLI\_MIN\_MAX(uint8\_t)}
+\DoxyCodeLine{00518\ \textcolor{preprocessor}{\#undef\ BROTLI\_MIN\_MAX}}
+\DoxyCodeLine{00519\ \textcolor{preprocessor}{\#define\ BROTLI\_MIN(T,\ A,\ B)\ (brotli\_min\_\ \#\#\ T((A),\ (B)))}}
+\DoxyCodeLine{00520\ \textcolor{preprocessor}{\#define\ BROTLI\_MAX(T,\ A,\ B)\ (brotli\_max\_\ \#\#\ T((A),\ (B)))}}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00522\ \textcolor{preprocessor}{\#define\ BROTLI\_SWAP(T,\ A,\ I,\ J)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00523\ \textcolor{preprocessor}{\ \ T\ \_\_brotli\_swap\_tmp\ =\ (A)[(I)];\ \(\backslash\)}}
+\DoxyCodeLine{00524\ \textcolor{preprocessor}{\ \ (A)[(I)]\ =\ (A)[(J)];\ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00525\ \textcolor{preprocessor}{\ \ (A)[(J)]\ =\ \_\_brotli\_swap\_tmp;\ \ \ \(\backslash\)}}
+\DoxyCodeLine{00526\ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00527\ }
+\DoxyCodeLine{00528\ \textcolor{preprocessor}{\#if\ BROTLI\_64\_BITS}}
+\DoxyCodeLine{00529\ \textcolor{preprocessor}{\#if\ BROTLI\_GNUC\_HAS\_BUILTIN(\_\_builtin\_ctzll,\ 3,\ 4,\ 0)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00530\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_INTEL\_VERSION\_CHECK(16,\ 0,\ 0)}}
+\DoxyCodeLine{00531\ \textcolor{preprocessor}{\#define\ BROTLI\_TZCNT64\ \_\_builtin\_ctzll}}
+\DoxyCodeLine{00532\ \textcolor{preprocessor}{\#elif\ BROTLI\_MSVC\_VERSION\_CHECK(12,\ 0,\ 0)}}
+\DoxyCodeLine{00533\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_TARGET\_X64)}}
+\DoxyCodeLine{00534\ \textcolor{preprocessor}{\#define\ BROTLI\_TZCNT64\ \_tzcnt\_u64}}
+\DoxyCodeLine{00535\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{/*\ BROTLI\_TARGET\_X64\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00536\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint32\_t\ BrotliBsf64Msvc(uint64\_t\ x)\ \{}
+\DoxyCodeLine{00537\ \ \ uint32\_t\ lsb;}
+\DoxyCodeLine{00538\ \ \ \_BitScanForward64(\&lsb,\ x);}
+\DoxyCodeLine{00539\ \ \ \textcolor{keywordflow}{return}\ lsb;}
+\DoxyCodeLine{00540\ \}}
+\DoxyCodeLine{00541\ \textcolor{preprocessor}{\#define\ BROTLI\_TZCNT64\ BrotliBsf64Msvc}}
+\DoxyCodeLine{00542\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ BROTLI\_TARGET\_X64\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00543\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_builtin\_ctzll\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00544\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ BROTLI\_64\_BITS\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00546\ \textcolor{preprocessor}{\#if\ BROTLI\_GNUC\_HAS\_BUILTIN(\_\_builtin\_clz,\ 3,\ 4,\ 0)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00547\ \textcolor{preprocessor}{\ \ \ \ BROTLI\_INTEL\_VERSION\_CHECK(16,\ 0,\ 0)}}
+\DoxyCodeLine{00548\ \textcolor{preprocessor}{\#define\ BROTLI\_BSR32(x)\ (31u\ \string^\ (uint32\_t)\_\_builtin\_clz(x))}}
+\DoxyCodeLine{00549\ \textcolor{preprocessor}{\#elif\ BROTLI\_MSVC\_VERSION\_CHECK(12,\ 0,\ 0)}}
+\DoxyCodeLine{00550\ \textcolor{keyword}{static}\ BROTLI\_INLINE\ uint32\_t\ BrotliBsr32Msvc(uint32\_t\ x)\ \{}
+\DoxyCodeLine{00551\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ msb;}
+\DoxyCodeLine{00552\ \ \ \_BitScanReverse(\&msb,\ x);}
+\DoxyCodeLine{00553\ \ \ \textcolor{keywordflow}{return}\ (uint32\_t)msb;}
+\DoxyCodeLine{00554\ \}}
+\DoxyCodeLine{00555\ \textcolor{preprocessor}{\#define\ BROTLI\_BSR32\ BrotliBsr32Msvc}}
+\DoxyCodeLine{00556\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_builtin\_clz\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00558\ \textcolor{comment}{/*\ Default\ brotli\_alloc\_func\ */}}
+\DoxyCodeLine{00559\ BROTLI\_COMMON\_API\ \textcolor{keywordtype}{void}*\ BrotliDefaultAllocFunc(\textcolor{keywordtype}{void}*\ opaque,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00560\ }
+\DoxyCodeLine{00561\ \textcolor{comment}{/*\ Default\ brotli\_free\_func\ */}}
+\DoxyCodeLine{00562\ BROTLI\_COMMON\_API\ \textcolor{keywordtype}{void}\ BrotliDefaultFreeFunc(\textcolor{keywordtype}{void}*\ opaque,\ \textcolor{keywordtype}{void}*\ address);}
+\DoxyCodeLine{00563\ }
+\DoxyCodeLine{00564\ BROTLI\_UNUSED\_FUNCTION\ \textcolor{keywordtype}{void}\ BrotliSuppressUnusedFunctions(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00565\ \ \ BROTLI\_UNUSED(\&BrotliSuppressUnusedFunctions);}
+\DoxyCodeLine{00566\ \ \ BROTLI\_UNUSED(\&BrotliUnalignedRead16);}
+\DoxyCodeLine{00567\ \ \ BROTLI\_UNUSED(\&BrotliUnalignedRead32);}
+\DoxyCodeLine{00568\ \ \ BROTLI\_UNUSED(\&BrotliUnalignedRead64);}
+\DoxyCodeLine{00569\ \ \ BROTLI\_UNUSED(\&BrotliUnalignedWrite64);}
+\DoxyCodeLine{00570\ \ \ BROTLI\_UNUSED(\&BROTLI\_UNALIGNED\_LOAD16LE);}
+\DoxyCodeLine{00571\ \ \ BROTLI\_UNUSED(\&BROTLI\_UNALIGNED\_LOAD32LE);}
+\DoxyCodeLine{00572\ \ \ BROTLI\_UNUSED(\&BROTLI\_UNALIGNED\_LOAD64LE);}
+\DoxyCodeLine{00573\ \ \ BROTLI\_UNUSED(\&BROTLI\_UNALIGNED\_STORE64LE);}
+\DoxyCodeLine{00574\ \ \ BROTLI\_UNUSED(\&BrotliRBit);}
+\DoxyCodeLine{00575\ \ \ BROTLI\_UNUSED(\&brotli\_min\_double);}
+\DoxyCodeLine{00576\ \ \ BROTLI\_UNUSED(\&brotli\_max\_double);}
+\DoxyCodeLine{00577\ \ \ BROTLI\_UNUSED(\&brotli\_min\_float);}
+\DoxyCodeLine{00578\ \ \ BROTLI\_UNUSED(\&brotli\_max\_float);}
+\DoxyCodeLine{00579\ \ \ BROTLI\_UNUSED(\&brotli\_min\_int);}
+\DoxyCodeLine{00580\ \ \ BROTLI\_UNUSED(\&brotli\_max\_int);}
+\DoxyCodeLine{00581\ \ \ BROTLI\_UNUSED(\&brotli\_min\_size\_t);}
+\DoxyCodeLine{00582\ \ \ BROTLI\_UNUSED(\&brotli\_max\_size\_t);}
+\DoxyCodeLine{00583\ \ \ BROTLI\_UNUSED(\&brotli\_min\_uint32\_t);}
+\DoxyCodeLine{00584\ \ \ BROTLI\_UNUSED(\&brotli\_max\_uint32\_t);}
+\DoxyCodeLine{00585\ \ \ BROTLI\_UNUSED(\&brotli\_min\_uint8\_t);}
+\DoxyCodeLine{00586\ \ \ BROTLI\_UNUSED(\&brotli\_max\_uint8\_t);}
+\DoxyCodeLine{00587\ \ \ BROTLI\_UNUSED(\&BrotliDefaultAllocFunc);}
+\DoxyCodeLine{00588\ \ \ BROTLI\_UNUSED(\&BrotliDefaultFreeFunc);}
+\DoxyCodeLine{00589\ \textcolor{preprocessor}{\#if\ defined(BROTLI\_DEBUG)\ ||\ defined(BROTLI\_ENABLE\_LOG)}}
+\DoxyCodeLine{00590\ \ \ BROTLI\_UNUSED(\&BrotliDump);}
+\DoxyCodeLine{00591\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00592\ \}}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00594\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ BROTLI\_COMMON\_PLATFORM\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

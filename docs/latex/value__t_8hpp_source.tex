@@ -1,0 +1,85 @@
+\doxysection{value\+\_\+t.\+hpp}
+\hypertarget{value__t_8hpp_source}{}\label{value__t_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/value\_t.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/value\_t.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <array>}\ \textcolor{comment}{//\ array}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstddef>}\ \textcolor{comment}{//\ size\_t}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cstdint>}\ \textcolor{comment}{//\ uint8\_t}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}\ \textcolor{comment}{//\ string}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/macro\_scope.hpp>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#if\ JSON\_HAS\_THREE\_WAY\_COMPARISON}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#include\ <compare>}\ \textcolor{comment}{//\ partial\_ordering}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ JSON\ type\ enumeration\ //}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\_t}}\ :\ std::uint8\_t}
+\DoxyCodeLine{00054\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{null}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{object}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{array}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{string}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{boolean}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{number\_integer}},\ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{number\_unsigned}},\ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{number\_float}},\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{binary}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{discarded}}\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#if\ JSON\_HAS\_THREE\_WAY\_COMPARISON}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{inline}\ std::partial\_ordering\ operator<=>(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\_t}}\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\_t}}\ rhs)\ \textcolor{keyword}{noexcept}\ \textcolor{comment}{//\ *NOPAD*}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacedetail_aac7ca91589afb0bad68baec5949daaa2}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\_t}}\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\_t}}\ rhs)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00085\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ std::array<std::uint8\_t,\ 9>\ order\ =\ \{\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \textcolor{comment}{/*\ null\ */},\ 3\ \textcolor{comment}{/*\ object\ */},\ 4\ \textcolor{comment}{/*\ array\ */},\ 5\ \textcolor{comment}{/*\ string\ */},}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ 1\ \textcolor{comment}{/*\ boolean\ */},\ 2\ \textcolor{comment}{/*\ integer\ */},\ 2\ \textcolor{comment}{/*\ unsigned\ */},\ 2\ \textcolor{comment}{/*\ float\ */},}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ 6\ \textcolor{comment}{/*\ binary\ */}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ l\_index\ =\ \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(lhs);}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ r\_index\ =\ \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(rhs);}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#if\ JSON\_HAS\_THREE\_WAY\_COMPARISON}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{if}\ (l\_index\ <\ order.size()\ \&\&\ r\_index\ <\ order.size())}
+\DoxyCodeLine{00097\ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ order[l\_index]\ <=>\ order[r\_index];\ \textcolor{comment}{//\ *NOPAD*}}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{return}\ std::partial\_ordering::unordered;}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordflow}{return}\ l\_index\ <\ order.size()\ \&\&\ r\_index\ <\ order.size()\ \&\&\ order[l\_index]\ <\ order[r\_index];}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00104\ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{comment}{//\ GCC\ selects\ the\ built-\/in\ operator<\ over\ an\ operator\ rewritten\ from}}
+\DoxyCodeLine{00107\ \textcolor{comment}{//\ a\ user-\/defined\ spaceship\ operator}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ Clang,\ MSVC,\ and\ ICC\ select\ the\ rewritten\ candidate}}
+\DoxyCodeLine{00109\ \textcolor{comment}{//\ (see\ GCC\ bug\ https://gcc.gnu.org/bugzilla/show\_bug.cgi?id=105200)}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#if\ JSON\_HAS\_THREE\_WAY\_COMPARISON\ \&\&\ defined(\_\_GNUC\_\_)}}
+\DoxyCodeLine{00111\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacedetail_aac7ca91589afb0bad68baec5949daaa2}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\_t}}\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632}{value\_t}}\ rhs)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00112\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{return}\ std::is\_lt(lhs\ <=>\ rhs);\ \textcolor{comment}{//\ *NOPAD*}}
+\DoxyCodeLine{00114\ \}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00118\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

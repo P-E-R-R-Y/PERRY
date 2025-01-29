@@ -8,7 +8,7 @@ var searchData=
   ['sdlpolygon_5',['SdlPolygon',['../class_sdl_polygon.html',1,'']]],
   ['sdlsprite_6',['SdlSprite',['../class_sdl_sprite.html',1,'']]],
   ['sdlwindow_7',['SdlWindow',['../class_sdl_window.html',1,'']]],
-  ['serialsharedloader_8',['SerialSharedLoader',['../class_serial_shared_loader.html',1,'']]],
+  ['serialsharedloader_8',['SerialSharedLoader',['../classserial_1_1_serial_shared_loader.html',1,'serial']]],
   ['sfmlcamera_9',['SfmlCamera',['../class_sfml_camera.html',1,'']]],
   ['sfmlevent_10',['SfmlEvent',['../class_sfml_event.html',1,'']]],
   ['sfmlkeyboard_11',['SfmlKeyboard',['../class_sfml_keyboard.html',1,'']]],

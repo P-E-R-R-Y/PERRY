@@ -1,9 +1,12 @@
 /**
- * @ Author: Perry Chouteau
- * @ Create Time: 2024-05-13 11:09:33
- * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-11-22 20:46:28
- * @ Description:
+ * @file SfmlEvent.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup SFML
+ * @{
  */
 
 #ifndef SFMLEVENT_HPP

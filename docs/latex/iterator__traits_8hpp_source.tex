@@ -1,0 +1,67 @@
+\doxysection{iterator\+\_\+traits.\+hpp}
+\hypertarget{iterator__traits_8hpp_source}{}\label{iterator__traits_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/iterators/iterator\_traits.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/iterators/iterator\_traits.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iterator>}\ \textcolor{comment}{//\ random\_access\_iterator\_tag}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/abi\_macros.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/void\_t.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/cpp\_future.hpp>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ It,\ \textcolor{keyword}{typename}\ =\ \textcolor{keywordtype}{void}>}
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdetail_1_1iterator__types}{iterator\_types}}\ \{\};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ It>}
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdetail_1_1iterator__types}{iterator\_types}}\ <}
+\DoxyCodeLine{00026\ \ \ \ \ It,}
+\DoxyCodeLine{00027\ \ \ \ \ void\_t<typename\ It::difference\_type,\ typename\ It::value\_type,\ typename\ It::pointer,}
+\DoxyCodeLine{00028\ \ \ \ \ typename\ It::reference,\ typename\ It::iterator\_category\ >>}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{using\ }difference\_type\ =\ \textcolor{keyword}{typename}\ It::difference\_type;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ =\ \textcolor{keyword}{typename}\ It::value\_type;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ =\ \textcolor{keyword}{typename}\ It::pointer;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{using\ }reference\ =\ \textcolor{keyword}{typename}\ It::reference;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{using\ }iterator\_category\ =\ \textcolor{keyword}{typename}\ It::iterator\_category;}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ This\ is\ required\ as\ some\ compilers\ implement\ std::iterator\_traits\ in\ a\ way\ that}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ doesn't\ work\ with\ SFINAE.\ See\ https://github.com/nlohmann/json/issues/1341.}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ \textcolor{keywordtype}{void}>}
+\DoxyCodeLine{00040\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdetail_1_1iterator__traits}{iterator\_traits}}}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00045\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdetail_1_1iterator__traits}{iterator\_traits}}\ <\ T,\ enable\_if\_t\ <\ !std::is\_pointer<T>::value\ >>}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structdetail_1_1iterator__types}{iterator\_types}}<T>}
+\DoxyCodeLine{00047\ \{}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00051\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdetail_1_1iterator__traits}{iterator\_traits}}<T*,\ enable\_if\_t<std::is\_object<T>::value>>}
+\DoxyCodeLine{00052\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{using\ }iterator\_category\ =\ std::random\_access\_iterator\_tag;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ =\ T;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{using\ }difference\_type\ =\ ptrdiff\_t;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ =\ T*;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{using\ }reference\ =\ T\&;}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00061\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

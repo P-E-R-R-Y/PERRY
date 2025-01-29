@@ -1,0 +1,54 @@
+\doxysection{adl\+\_\+serializer.\+hpp}
+\hypertarget{adl__serializer_8hpp_source}{}\label{adl__serializer_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/adl\_serializer.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/adl\_serializer.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/abi\_macros.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/conversions/from\_json.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/conversions/to\_json.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/identity\_tag.hpp>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ ValueType,\ \textcolor{keyword}{typename}>}
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structadl__serializer}{adl\_serializer}}}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ BasicJsonType,\ \textcolor{keyword}{typename}\ TargetType\ =\ ValueType>}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structadl__serializer_a5645c63fe43bd9b4ebc9917f9c99d0fd}{from\_json}}(BasicJsonType\ \&\&\ j,\ TargetType\&\ val)\ \textcolor{keyword}{noexcept}(}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(::nlohmann::from\_json(std::forward<BasicJsonType>(j),\ val)))}
+\DoxyCodeLine{00029\ \ \ \ \ -\/>\ \textcolor{keyword}{decltype}(::nlohmann::from\_json(std::forward<BasicJsonType>(j),\ val),\ \textcolor{keywordtype}{void}())}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ ::nlohmann::from\_json(std::forward<BasicJsonType>(j),\ val);}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ BasicJsonType,\ \textcolor{keyword}{typename}\ TargetType\ =\ ValueType>}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structadl__serializer_a1e06f0bcb63296fc306dbe4162a0f2a3}{from\_json}}(BasicJsonType\ \&\&\ j)\ \textcolor{keyword}{noexcept}(}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{noexcept}(::nlohmann::from\_json(std::forward<BasicJsonType>(j),\ \mbox{\hyperlink{structdetail_1_1identity__tag}{detail::identity\_tag<TargetType>}}\ \{\})))}
+\DoxyCodeLine{00039\ \ \ \ \ -\/>\ \textcolor{keyword}{decltype}(::nlohmann::from\_json(std::forward<BasicJsonType>(j),\ \mbox{\hyperlink{structdetail_1_1identity__tag}{detail::identity\_tag<TargetType>}}\ \{\}))}
+\DoxyCodeLine{00040\ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ return\ ::nlohmann::from\_json(std::forward<BasicJsonType>(j),\ detail::identity\_tag<TargetType>\ \{\});}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ BasicJsonType,\ \textcolor{keyword}{typename}\ TargetType\ =\ ValueType>}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structadl__serializer_a0216149429fe899cf45cbf14e08e2166}{to\_json}}(BasicJsonType\&\ j,\ TargetType\ \&\&\ val)\ \textcolor{keyword}{noexcept}(}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{noexcept}(::nlohmann::to\_json(j,\ std::forward<TargetType>(val))))}
+\DoxyCodeLine{00049\ \ \ \ \ -\/>\ \textcolor{keyword}{decltype}(::nlohmann::to\_json(j,\ std::forward<TargetType>(val)),\ \textcolor{keywordtype}{void}())}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ ::nlohmann::to\_json(j,\ std::forward<TargetType>(val));}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

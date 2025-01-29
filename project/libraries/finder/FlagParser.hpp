@@ -1,22 +1,23 @@
 /**
- *
- * File: FlagParser.hpp (header.v2)
- * Created Date: Wed 15/03/2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Sat 18/03/2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
+ * @file FlagParser.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup utility
+ * @{
+ */
 
 #include <map>
 #include <vector>
 #include <string>
 #include <iostream>
 
+/**
+ * @brief 
+ * 
+ */
 class FlagParser {
     public:
 
@@ -55,12 +56,6 @@ class FlagParser {
                 res.push_back(it);
             return res;
         }
-
-    private:
-
-//        void strToFlags(int ac, char **av, std::string &str) {
-////            str.substr(0, str.find(...));
-//        }
 
     private:
         std::map<std::string, std::vector<std::string>> _keyValue;

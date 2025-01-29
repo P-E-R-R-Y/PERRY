@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -95,7 +96,7 @@ $(function(){ initResizable(false); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classgraphic_1_1_i_keyboard-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">graphic::IKeyboard Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">graphic::IKeyboard Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span><div class="ingroups"><a class="el" href="group__graphic.html">Graphic</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -109,17 +110,17 @@ Inheritance diagram for graphic::IKeyboard:</div>
  <div class="center">
   <img src="classgraphic_1_1_i_keyboard.png" usemap="#graphic::IKeyboard_map" alt=""/>
   <map id="graphic::IKeyboard_map" name="graphic::IKeyboard_map">
-<area href="class_sdl_keyboard.html" alt="SdlKeyboard" shape="rect" coords="0,56,127,80"/>
-<area href="class_sfml_keyboard.html" alt="SfmlKeyboard" shape="rect" coords="137,56,264,80"/>
-<area href="classraylib_1_1_ray_keyboard.html" alt="raylib::RayKeyboard" shape="rect" coords="274,56,401,80"/>
+<area href="class_ray_keyboard.html" alt="RayKeyboard" shape="rect" coords="0,56,119,80"/>
+<area href="class_sdl_keyboard.html" title="Sdl Keyboard class." alt="SdlKeyboard" shape="rect" coords="129,56,248,80"/>
+<area href="class_sfml_keyboard.html" alt="SfmlKeyboard" shape="rect" coords="258,56,377,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a8c628bac8cbea382161df60d48db1ca2" id="r_a8c628bac8cbea382161df60d48db1ca2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a> { <br />
+<tr class="memitem:ga8c628bac8cbea382161df60d48db1ca2" id="r_ga8c628bac8cbea382161df60d48db1ca2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga8c628bac8cbea382161df60d48db1ca2">Keys</a> { <br />
 &#160;&#160;<b>KEY_UNKNOWN</b> = -1
-, <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2a27a663d6aa78095a1196587e634de498">KEY_ESCAPE</a>
+, <a class="el" href="group__graphic.html#gga8c628bac8cbea382161df60d48db1ca2a27a663d6aa78095a1196587e634de498">KEY_ESCAPE</a>
 , <b>KEY_F1</b>
 , <b>KEY_F2</b>
 , <br />
@@ -135,7 +136,7 @@ Public Types</h2></td></tr>
 , <br />
 &#160;&#160;<b>KEY_F11</b>
 , <b>KEY_F12</b>
-, <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2a32c0015a1fef3b614047ebb6733ef7ac">KEY_1</a>
+, <a class="el" href="group__graphic.html#gga8c628bac8cbea382161df60d48db1ca2a32c0015a1fef3b614047ebb6733ef7ac">KEY_1</a>
 , <b>KEY_2</b>
 , <br />
 &#160;&#160;<b>KEY_3</b>
@@ -151,7 +152,7 @@ Public Types</h2></td></tr>
 &#160;&#160;<b>KEY_MINUS</b>
 , <b>KEY_EQUAL</b>
 , <b>KEY_BACKSPACE</b>
-, <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2ace06806f8c824e87ac0f60b6ec89a9a1">KEY_TAB</a>
+, <a class="el" href="group__graphic.html#gga8c628bac8cbea382161df60d48db1ca2ace06806f8c824e87ac0f60b6ec89a9a1">KEY_TAB</a>
 , <br />
 &#160;&#160;<b>KEY_Q</b>
 , <b>KEY_W</b>
@@ -168,7 +169,7 @@ Public Types</h2></td></tr>
 , <b>KEY_LEFT_BRACKET</b>
 , <b>KEY_RIGHT_BRACKET</b>
 , <br />
-&#160;&#160;<a class="el" href="#a8c628bac8cbea382161df60d48db1ca2ae0eb476ec3b3e22394e156871b4115aa">KEY_CAPS_LOCK</a>
+&#160;&#160;<a class="el" href="group__graphic.html#gga8c628bac8cbea382161df60d48db1ca2ae0eb476ec3b3e22394e156871b4115aa">KEY_CAPS_LOCK</a>
 , <b>KEY_LEFT_CONTROL</b>
 , <b>KEY_A</b>
 , <b>KEY_S</b>
@@ -186,7 +187,7 @@ Public Types</h2></td></tr>
 &#160;&#160;<b>KEY_APOSTROPHE</b>
 , <b>BACK_TICK</b>
 , <b>KEY_ENTER</b>
-, <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2a5668da55ec2a6b3b5004e5baaf6271f0">KEY_LEFT_SHIFT</a>
+, <a class="el" href="group__graphic.html#gga8c628bac8cbea382161df60d48db1ca2a5668da55ec2a6b3b5004e5baaf6271f0">KEY_LEFT_SHIFT</a>
 , <br />
 &#160;&#160;<b>KEY_BACKSLASH</b>
 , <b>KEY_Z</b>
@@ -204,12 +205,12 @@ Public Types</h2></td></tr>
 , <b>KEY_SLASH</b>
 , <br />
 &#160;&#160;<b>KEY_RIGHT_SHIFT</b>
-, <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2adfadd109727c2b58f8d7573155500fc1">KEY_LEFT_ALT</a>
+, <a class="el" href="group__graphic.html#gga8c628bac8cbea382161df60d48db1ca2adfadd109727c2b58f8d7573155500fc1">KEY_LEFT_ALT</a>
 , <b>KEY_SPACE</b>
 , <b>KEY_RIGHT_ALT</b>
 , <br />
 &#160;&#160;<b>KEY_RIGHT_CONTROL</b>
-, <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2ad03c11055a2db337da287d95a9279ddb">KEY_PAD_0</a>
+, <a class="el" href="group__graphic.html#gga8c628bac8cbea382161df60d48db1ca2ad03c11055a2db337da287d95a9279ddb">KEY_PAD_0</a>
 , <b>KEY_PAD_1</b>
 , <b>KEY_PAD_2</b>
 , <br />
@@ -226,7 +227,7 @@ Public Types</h2></td></tr>
 &#160;&#160;<b>KEY_PAD_PLUS</b>
 , <b>KEY_PAD_DOT</b>
 , <b>KEY_PAD_ENTER</b>
-, <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2a2587aa5deb284fdb06a9c51f0efbb1b4">KEY_UP</a>
+, <a class="el" href="group__graphic.html#gga8c628bac8cbea382161df60d48db1ca2a2587aa5deb284fdb06a9c51f0efbb1b4">KEY_UP</a>
 , <br />
 &#160;&#160;<b>KEY_DOWN</b>
 , <b>KEY_LEFT</b>
@@ -234,282 +235,43 @@ Public Types</h2></td></tr>
 , <b>KEY_LENGTH</b>
 <br />
  }</td></tr>
-<tr class="memdesc:a8c628bac8cbea382161df60d48db1ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan codes.  <a href="#a8c628bac8cbea382161df60d48db1ca2">More...</a><br /></td></tr>
-<tr class="separator:a8c628bac8cbea382161df60d48db1ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga8c628bac8cbea382161df60d48db1ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan codes.  <a href="group__graphic.html#ga8c628bac8cbea382161df60d48db1ca2">More...</a><br /></td></tr>
+<tr class="separator:ga8c628bac8cbea382161df60d48db1ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac349d0e927a09a75383dc69efcb1b1d5" id="r_ac349d0e927a09a75383dc69efcb1b1d5"><td class="memItemLeft" align="right" valign="top"><a id="ac349d0e927a09a75383dc69efcb1b1d5" name="ac349d0e927a09a75383dc69efcb1b1d5"></a>
+<tr class="memitem:gac349d0e927a09a75383dc69efcb1b1d5" id="r_gac349d0e927a09a75383dc69efcb1b1d5"><td class="memItemLeft" align="right" valign="top">
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IKeyboard</b> ()</td></tr>
-<tr class="memdesc:ac349d0e927a09a75383dc69efcb1b1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_keyboard.html" title="Keyboard interface.">IKeyboard</a> object. <br /></td></tr>
-<tr class="separator:ac349d0e927a09a75383dc69efcb1b1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f85d3034fdc48e70ab3de24d8e141f3" id="r_a3f85d3034fdc48e70ab3de24d8e141f3"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f85d3034fdc48e70ab3de24d8e141f3">whichKey</a> () const =0</td></tr>
-<tr class="memdesc:a3f85d3034fdc48e70ab3de24d8e141f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it's not recommended to use this function in a loop, use <a class="el" href="#adb4994513e13c607bd8548ed7a87095d" title="Check if the key is pressed.">isKeyPressed()</a> instead. it's efficient for key detection &amp; binding.  <br /></td></tr>
-<tr class="separator:a3f85d3034fdc48e70ab3de24d8e141f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb4994513e13c607bd8548ed7a87095d" id="r_adb4994513e13c607bd8548ed7a87095d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb4994513e13c607bd8548ed7a87095d">isKeyPressed</a> (<a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a> key) const =0</td></tr>
-<tr class="memdesc:adb4994513e13c607bd8548ed7a87095d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the key is pressed.  <br /></td></tr>
-<tr class="separator:adb4994513e13c607bd8548ed7a87095d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a134a18af129f75ae772429b1c05800" id="r_a2a134a18af129f75ae772429b1c05800"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a134a18af129f75ae772429b1c05800">isKeyReleased</a> (<a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a> key) const =0</td></tr>
-<tr class="memdesc:a2a134a18af129f75ae772429b1c05800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the key is released.  <br /></td></tr>
-<tr class="separator:a2a134a18af129f75ae772429b1c05800"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e849bccb3ca838a94e796d0146b7e51" id="r_a6e849bccb3ca838a94e796d0146b7e51"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e849bccb3ca838a94e796d0146b7e51">isKeyDown</a> (<a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a> key) const =0</td></tr>
-<tr class="memdesc:a6e849bccb3ca838a94e796d0146b7e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the key is down.  <br /></td></tr>
-<tr class="separator:a6e849bccb3ca838a94e796d0146b7e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a720d845d0442e6c4a6a7444b6fc4c9d4" id="r_a720d845d0442e6c4a6a7444b6fc4c9d4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a720d845d0442e6c4a6a7444b6fc4c9d4">isKeyUp</a> (<a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a> key) const =0</td></tr>
-<tr class="memdesc:a720d845d0442e6c4a6a7444b6fc4c9d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the key is up.  <br /></td></tr>
-<tr class="separator:a720d845d0442e6c4a6a7444b6fc4c9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1681260f7fa5502cfc353fe139c072f3" id="r_a1681260f7fa5502cfc353fe139c072f3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1681260f7fa5502cfc353fe139c072f3">update</a> ()=0</td></tr>
-<tr class="memdesc:a1681260f7fa5502cfc353fe139c072f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the keyboard.  <br /></td></tr>
-<tr class="separator:a1681260f7fa5502cfc353fe139c072f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:gac349d0e927a09a75383dc69efcb1b1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_keyboard.html" title="Keyboard interface.">IKeyboard</a> object. <br /></td></tr>
+<tr class="separator:gac349d0e927a09a75383dc69efcb1b1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f85d3034fdc48e70ab3de24d8e141f3" id="r_ga3f85d3034fdc48e70ab3de24d8e141f3"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="group__graphic.html#ga8c628bac8cbea382161df60d48db1ca2">Keys</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga3f85d3034fdc48e70ab3de24d8e141f3">whichKey</a> () const =0</td></tr>
+<tr class="memdesc:ga3f85d3034fdc48e70ab3de24d8e141f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it's not recommended to use this function in a loop, use <a class="el" href="group__graphic.html#gadb4994513e13c607bd8548ed7a87095d" title="Check if the key is pressed.">isKeyPressed()</a> instead. it's efficient for key detection &amp; binding.  <br /></td></tr>
+<tr class="separator:ga3f85d3034fdc48e70ab3de24d8e141f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb4994513e13c607bd8548ed7a87095d" id="r_gadb4994513e13c607bd8548ed7a87095d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#gadb4994513e13c607bd8548ed7a87095d">isKeyPressed</a> (<a class="el" href="group__graphic.html#ga8c628bac8cbea382161df60d48db1ca2">Keys</a> key) const =0</td></tr>
+<tr class="memdesc:gadb4994513e13c607bd8548ed7a87095d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the key is pressed.  <br /></td></tr>
+<tr class="separator:gadb4994513e13c607bd8548ed7a87095d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a134a18af129f75ae772429b1c05800" id="r_ga2a134a18af129f75ae772429b1c05800"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga2a134a18af129f75ae772429b1c05800">isKeyReleased</a> (<a class="el" href="group__graphic.html#ga8c628bac8cbea382161df60d48db1ca2">Keys</a> key) const =0</td></tr>
+<tr class="memdesc:ga2a134a18af129f75ae772429b1c05800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the key is released.  <br /></td></tr>
+<tr class="separator:ga2a134a18af129f75ae772429b1c05800"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6e849bccb3ca838a94e796d0146b7e51" id="r_ga6e849bccb3ca838a94e796d0146b7e51"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga6e849bccb3ca838a94e796d0146b7e51">isKeyDown</a> (<a class="el" href="group__graphic.html#ga8c628bac8cbea382161df60d48db1ca2">Keys</a> key) const =0</td></tr>
+<tr class="memdesc:ga6e849bccb3ca838a94e796d0146b7e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the key is down.  <br /></td></tr>
+<tr class="separator:ga6e849bccb3ca838a94e796d0146b7e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga720d845d0442e6c4a6a7444b6fc4c9d4" id="r_ga720d845d0442e6c4a6a7444b6fc4c9d4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga720d845d0442e6c4a6a7444b6fc4c9d4">isKeyUp</a> (<a class="el" href="group__graphic.html#ga8c628bac8cbea382161df60d48db1ca2">Keys</a> key) const =0</td></tr>
+<tr class="memdesc:ga720d845d0442e6c4a6a7444b6fc4c9d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the key is up.  <br /></td></tr>
+<tr class="separator:ga720d845d0442e6c4a6a7444b6fc4c9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1681260f7fa5502cfc353fe139c072f3" id="r_ga1681260f7fa5502cfc353fe139c072f3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga1681260f7fa5502cfc353fe139c072f3">update</a> ()=0</td></tr>
+<tr class="memdesc:ga1681260f7fa5502cfc353fe139c072f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the keyboard.  <br /></td></tr>
+<tr class="separator:ga1681260f7fa5502cfc353fe139c072f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a1110963cd934835610029c4f2740a3d5" id="r_a1110963cd934835610029c4f2740a3d5"><td class="memItemLeft" align="right" valign="top"><a id="a1110963cd934835610029c4f2740a3d5" name="a1110963cd934835610029c4f2740a3d5"></a>
+<tr class="memitem:ga1110963cd934835610029c4f2740a3d5" id="r_ga1110963cd934835610029c4f2740a3d5"><td class="memItemLeft" align="right" valign="top">
 static const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_KEYS</b> = 87</td></tr>
-<tr class="separator:a1110963cd934835610029c4f2740a3d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga1110963cd934835610029c4f2740a3d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Keyboard interface. </p>
-</div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="a8c628bac8cbea382161df60d48db1ca2" name="a8c628bac8cbea382161df60d48db1ca2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c628bac8cbea382161df60d48db1ca2">&#9670;&#160;</a></span>Keys</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">graphic::IKeyboard::Keys</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Scan codes. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8c628bac8cbea382161df60d48db1ca2a27a663d6aa78095a1196587e634de498" name="a8c628bac8cbea382161df60d48db1ca2a27a663d6aa78095a1196587e634de498"></a>KEY_ESCAPE&#160;</td><td class="fielddoc"><p>Line 0. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a8c628bac8cbea382161df60d48db1ca2a32c0015a1fef3b614047ebb6733ef7ac" name="a8c628bac8cbea382161df60d48db1ca2a32c0015a1fef3b614047ebb6733ef7ac"></a>KEY_1&#160;</td><td class="fielddoc"><p>Line 1. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a8c628bac8cbea382161df60d48db1ca2ace06806f8c824e87ac0f60b6ec89a9a1" name="a8c628bac8cbea382161df60d48db1ca2ace06806f8c824e87ac0f60b6ec89a9a1"></a>KEY_TAB&#160;</td><td class="fielddoc"><p>Line 2. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a8c628bac8cbea382161df60d48db1ca2ae0eb476ec3b3e22394e156871b4115aa" name="a8c628bac8cbea382161df60d48db1ca2ae0eb476ec3b3e22394e156871b4115aa"></a>KEY_CAPS_LOCK&#160;</td><td class="fielddoc"><p>Line 3. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a8c628bac8cbea382161df60d48db1ca2a5668da55ec2a6b3b5004e5baaf6271f0" name="a8c628bac8cbea382161df60d48db1ca2a5668da55ec2a6b3b5004e5baaf6271f0"></a>KEY_LEFT_SHIFT&#160;</td><td class="fielddoc"><p>Line 4. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a8c628bac8cbea382161df60d48db1ca2adfadd109727c2b58f8d7573155500fc1" name="a8c628bac8cbea382161df60d48db1ca2adfadd109727c2b58f8d7573155500fc1"></a>KEY_LEFT_ALT&#160;</td><td class="fielddoc"><p>Line 5. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a8c628bac8cbea382161df60d48db1ca2ad03c11055a2db337da287d95a9279ddb" name="a8c628bac8cbea382161df60d48db1ca2ad03c11055a2db337da287d95a9279ddb"></a>KEY_PAD_0&#160;</td><td class="fielddoc"><p>KEYPAD. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a8c628bac8cbea382161df60d48db1ca2a2587aa5deb284fdb06a9c51f0efbb1b4" name="a8c628bac8cbea382161df60d48db1ca2a2587aa5deb284fdb06a9c51f0efbb1b4"></a>KEY_UP&#160;</td><td class="fielddoc"><p>ARROWS. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6e849bccb3ca838a94e796d0146b7e51" name="a6e849bccb3ca838a94e796d0146b7e51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e849bccb3ca838a94e796d0146b7e51">&#9670;&#160;</a></span>isKeyDown()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual bool graphic::IKeyboard::isKeyDown </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Check if the key is down. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">key</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_keyboard.html#ae735d640e60ad2dddbd2bab6ce58c1bc">raylib::RayKeyboard</a>, <a class="el" href="class_sdl_keyboard.html#a410519587b9a9b5ca0160689c70976e1">SdlKeyboard</a>, and <a class="el" href="class_sfml_keyboard.html#a8bd9add9397f7d0d753538d2570d282f">SfmlKeyboard</a>.</p>
-
-</div>
-</div>
-<a id="adb4994513e13c607bd8548ed7a87095d" name="adb4994513e13c607bd8548ed7a87095d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb4994513e13c607bd8548ed7a87095d">&#9670;&#160;</a></span>isKeyPressed()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual bool graphic::IKeyboard::isKeyPressed </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Check if the key is pressed. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">key</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_keyboard.html#afd285d5020646c997f4699f6a85a6f26">raylib::RayKeyboard</a>, <a class="el" href="class_sdl_keyboard.html#a069134bbcb14fc76dcc5000e020f7a1d">SdlKeyboard</a>, and <a class="el" href="class_sfml_keyboard.html#a92ad7947c3f90cb08a340568190845e0">SfmlKeyboard</a>.</p>
-
-</div>
-</div>
-<a id="a2a134a18af129f75ae772429b1c05800" name="a2a134a18af129f75ae772429b1c05800"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a134a18af129f75ae772429b1c05800">&#9670;&#160;</a></span>isKeyReleased()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual bool graphic::IKeyboard::isKeyReleased </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Check if the key is released. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">key</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_keyboard.html#a53d12fbcc333ffdac2eff12092ebd894">raylib::RayKeyboard</a>, <a class="el" href="class_sdl_keyboard.html#ac1eacb70083fc831c4e6e18ae0fdcf1f">SdlKeyboard</a>, and <a class="el" href="class_sfml_keyboard.html#a0912fa8cce798bd65acd7afda66f1461">SfmlKeyboard</a>.</p>
-
-</div>
-</div>
-<a id="a720d845d0442e6c4a6a7444b6fc4c9d4" name="a720d845d0442e6c4a6a7444b6fc4c9d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a720d845d0442e6c4a6a7444b6fc4c9d4">&#9670;&#160;</a></span>isKeyUp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual bool graphic::IKeyboard::isKeyUp </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a></td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Check if the key is up. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">key</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_keyboard.html#a9e17957d366fce6f0ce5b3d0390945c5">raylib::RayKeyboard</a>, <a class="el" href="class_sdl_keyboard.html#a7d40f98c4ac6a155662d75b89cf9140b">SdlKeyboard</a>, and <a class="el" href="class_sfml_keyboard.html#af955588917011f16f63e0530ff4b6b6b">SfmlKeyboard</a>.</p>
-
-</div>
-</div>
-<a id="a1681260f7fa5502cfc353fe139c072f3" name="a1681260f7fa5502cfc353fe139c072f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1681260f7fa5502cfc353fe139c072f3">&#9670;&#160;</a></span>update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void graphic::IKeyboard::update </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Update the keyboard. </p>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_keyboard.html#a15e08f671d7ada386c34d7a25d19a201">raylib::RayKeyboard</a>, <a class="el" href="class_sdl_keyboard.html#ab340de968136a78c5bfc2b63d193db4a">SdlKeyboard</a>, and <a class="el" href="class_sfml_keyboard.html#a025eacd7df470b64542db212a21d1860">SfmlKeyboard</a>.</p>
-
-</div>
-</div>
-<a id="a3f85d3034fdc48e70ab3de24d8e141f3" name="a3f85d3034fdc48e70ab3de24d8e141f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f85d3034fdc48e70ab3de24d8e141f3">&#9670;&#160;</a></span>whichKey()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual std::vector&lt; <a class="el" href="#a8c628bac8cbea382161df60d48db1ca2">Keys</a> &gt; graphic::IKeyboard::whichKey </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it's not recommended to use this function in a loop, use <a class="el" href="#adb4994513e13c607bd8548ed7a87095d" title="Check if the key is pressed.">isKeyPressed()</a> instead. it's efficient for key detection &amp; binding. </p>
-<dl class="section return"><dt>Returns</dt><dd>Keys* </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_keyboard.html#a333362bdedbb4f66f7030ab9df73c38e">raylib::RayKeyboard</a>, <a class="el" href="class_sdl_keyboard.html#aa6205979772be8f77e971c1a701c5de8">SdlKeyboard</a>, and <a class="el" href="class_sfml_keyboard.html#abf6df290e75ecb2e538845dcf3643d73">SfmlKeyboard</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this interface was generated from the following file:<ul>
+</div><hr/>The documentation for this interface was generated from the following file:<ul>
 <li>/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/graphic/event/<a class="el" href="_i_keyboard_8hpp_source.html">IKeyboard.hpp</a></li>
 </ul>
 </div><!-- contents -->

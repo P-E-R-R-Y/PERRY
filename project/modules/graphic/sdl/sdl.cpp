@@ -5,6 +5,11 @@
  * @version 0.1
  * @date 2025-01-27
  * 
+ * @addtogroup graphic
+ * @{
+ * @addtogroup SDL
+ * @{
+ * 
  * @copyright Copyright (c) 2025
  */
 

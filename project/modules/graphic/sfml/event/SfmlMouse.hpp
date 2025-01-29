@@ -1,9 +1,12 @@
 /**
- * @ Author: Perry Chouteau
- * @ Create Time: 2024-05-10 19:59:08
- * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-11-22 20:46:44
- * @ Description: Raylib Encapsulation for IMouse
+ * @file SfmlMouse.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+
+ * @addtogroup SFML
+ * @{
  */
 
 #ifndef SFMLMOUSE_HPP_

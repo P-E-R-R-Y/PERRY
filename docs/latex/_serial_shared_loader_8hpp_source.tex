@@ -1,44 +1,46 @@
 \doxysection{Serial\+Shared\+Loader.\+hpp}
 \hypertarget{_serial_shared_loader_8hpp_source}{}\label{_serial_shared_loader_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/serial/SerialSharedLoader.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/serial/SerialSharedLoader.hpp}}
-
+\mbox{\hyperlink{_serial_shared_loader_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ SERIAL\_SHARED\_LOADER\_HPP}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ SERIAL\_SHARED\_LOADER\_HPP}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}ISerial.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ SERIAL\_SHARED\_LOADER\_HPP}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ SERIAL\_SHARED\_LOADER\_HPP}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_serial_8hpp}{ISerial.hpp}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../../../libraries/finder/DynamicLoader.hpp"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_info_shared_loader_8hpp}{../InfoSharedLoader.hpp}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <typeinfo>}}
 \DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../../../libraries/finder/DynamicLoader.hpp"{}}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}../InfoSharedLoader.hpp"{}}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <typeinfo>}}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{comment}{//todo\ make\ the\ switchlibcore\ use\ dynamicCore\ and\ not\ simple\ core\ to\ auto\ define\ simple\ function;}}
-\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }SerialSharedLoader\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Params\ =\ std::string;}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ SerialSharedLoader(Params\ file)\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dynamic_loader}{DynamicLoader}}\ dl(file);}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ shared\ library\ is\ a\ graphic\ library}}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dl.isReady()\ ||\ std::string(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}getType"{}}))())\ !=\ std::string(\textcolor{stringliteral}{"{}serial"{}}))\ \{}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ load:\ "{}}\ <<\ file\ <<\ std::endl;}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core}}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_serial_shared_loader_a20d1f6de3e664d1dcfd549024a761a40}{createSerial}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{class_i_serial}{ISerial}}\ *(*)(\_\_int32\_t,\ \_\_int32\_t,\ std::string)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createSerial"{}}));}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ deleteSerial\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{class_i_serial}{ISerial}}\ *serial)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteSerial"{}}));}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Loaded:\ "{}}\ <<\ file\ <<\ std::endl;}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \string~SerialSharedLoader()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_i_serial}{ISerial}}\ *(*createSerial)(int,\ int,\ std::string);}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ void\ (*deleteSerial)(\mbox{\hyperlink{class_i_serial}{ISerial}}\ *window);}
-\DoxyCodeLine{00051\ \};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GRAPHIC\_DYNAMIC\_LOADER\_HPP}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceserial}{serial}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{class\ }SerialSharedLoader\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Params\ =\ std::string;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ SerialSharedLoader(Params\ file)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dynamic_loader}{DynamicLoader}}\ dl(file);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ shared\ library\ is\ a\ graphic\ library}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dl.isReady()\ ||\ std::string(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}getType"{}}))())\ !=\ std::string(\textcolor{stringliteral}{"{}serial"{}}))\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ load:\ "{}}\ <<\ file\ <<\ std::endl;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__serial_ga3570443ffdb591950055a9696c7232ce}{createSerial}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}}\ *(*)(\_\_int32\_t,\ \_\_int32\_t,\ std::string)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createSerial"{}}));}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteSerial\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}}\ *\mbox{\hyperlink{namespaceserial}{serial}})\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteSerial"{}}));}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Loaded:\ "{}}\ <<\ file\ <<\ std::endl;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \string~SerialSharedLoader()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}}\ *(*createSerial)(int,\ int,\ std::string);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteSerial)(\mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}}\ *window);}
+\DoxyCodeLine{00054\ \ \ \ \ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GRAPHIC\_DYNAMIC\_LOADER\_HPP}}
 
 \end{DoxyCode}

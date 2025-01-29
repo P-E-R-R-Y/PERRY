@@ -48,7 +48,7 @@ PROJECT_NAME           = "PERRY"
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = "v0.1.0"
+PROJECT_NUMBER         = "v1.0.0"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewers a
@@ -61,7 +61,7 @@ PROJECT_BRIEF          = "P-E-R-R-Y/PERRY helps creating games with a bunch of t
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           =
+PROJECT_LOGO           = "assets/small-logo.png"
 
 # With the PROJECT_ICON tag one can specify an icon that is included in the tabs
 # when the HTML document is shown. Doxygen will copy the logo to the output
@@ -732,7 +732,7 @@ SORT_MEMBERS_CTORS_1ST = NO
 # appear in their defined order.
 # The default value is: NO.
 
-SORT_GROUP_NAMES       = NO
+SORT_GROUP_NAMES       = YES
 
 # If the SORT_BY_SCOPE_NAME tag is set to YES, the class list will be sorted by
 # fully-qualified names, including namespaces. If set to NO, the class list will
@@ -994,7 +994,6 @@ WARN_LOGFILE           =
 INPUT                  = README.md \
                         ../project/ \
 
-
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses
 # libiconv (or the iconv built into libc) for the transcoding. See the libiconv
@@ -1034,13 +1033,17 @@ INPUT_FILE_ENCODING    =
 # *.f18, *.f, *.for, *.vhd, *.vhdl, *.ucf, *.qsf and *.ice.
 
 FILE_PATTERNS          = *.c \
-                         *.h \
+                         *.cxx \
                          *.cpp \
                          *.c++ \
+                         *.c++m \
+                         *.h \
+                         *.hh \
+                         *.hxx \
                          *.hpp \
                          *.h++ \
-                         *.txt \
-                         *.cmake \
+                         *.markdown \
+                         *.md \
                          *.dox \
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
@@ -1072,7 +1075,7 @@ EXCLUDE_SYMLINKS       = NO
 # Note that the wildcards are matched against the file with absolute path, so to
 # exclude all test directories for example use the pattern */test/*
 
-EXCLUDE_PATTERNS       = */test/*/ */build/* */docs/*
+EXCLUDE_PATTERNS       = */test/*/ */build/*
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names
 # (namespaces, classes, functions, etc.) that should be excluded from the

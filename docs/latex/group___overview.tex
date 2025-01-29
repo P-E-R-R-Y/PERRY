@@ -1,0 +1,49 @@
+\doxysection{Project Overview}
+\hypertarget{group___overview}{}\label{group___overview}\index{Project Overview@{Project Overview}}
+\texorpdfstring{$\ast$}{*}/\hypertarget{group___overview_autotoc_md12}{}\doxysubsection{\texorpdfstring{ECS -\/ Systems implementation}{ECS -\/ Systems implementation}}\label{group___overview_autotoc_md12}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifndef\ SYSTEMS\_HPP}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ SYSTEMS\_HPP}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_registry_8hpp}{Registry.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Component.hpp"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}System.hpp"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{class\ }Math\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Math()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \string~Math()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sqrt(\textcolor{keywordtype}{int}\ a)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a\ *\ a;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{class\ }ExampleSystem:\ \textcolor{keyword}{public}\ System\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ExampleSystem(Math\&\ math):\ \_math(math)\ \{\};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \string~ExampleSystem()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ lambda(Registry\ \&r)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/\ Display\ Begin\ -\/-\/-\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ positions\ =\ r.getComponents<Position>();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ positions.size();\ ++i)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!positions[i])\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ \ <<\ \textcolor{stringliteral}{"{}sqrtPos\ .x:"{}}\ <<\ \ \_math.sqrt(positions[i]-\/>x)\ <<\ \textcolor{stringliteral}{"{}\ y:"{}}\ <<\ \_math.sqrt(positions[i]-\/>y)\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Math\&\ \_math;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SYSTEMS\_HPP}}
+
+\end{DoxyCode}
+ 

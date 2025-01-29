@@ -1,0 +1,78 @@
+\doxysection{Fuzzer\+Util.\+h}
+\hypertarget{_fuzzer_util_8h_source}{}\label{_fuzzer_util_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerUtil.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerUtil.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerUtil.h\ -\/\ Internal\ header\ for\ the\ Fuzzer\ Utils\ -\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Util\ functions.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_UTIL\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_UTIL\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}FuzzerDefs.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ PrintHexArray(\textcolor{keyword}{const}\ Unit\ \&U,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *PrintAfter\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ PrintHexArray(\textcolor{keyword}{const}\ uint8\_t\ *Data,\ \textcolor{keywordtype}{size\_t}\ Size,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *PrintAfter\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}\ PrintASCII(\textcolor{keyword}{const}\ uint8\_t\ *Data,\ \textcolor{keywordtype}{size\_t}\ Size,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *PrintAfter\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ PrintASCII(\textcolor{keyword}{const}\ Unit\ \&U,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *PrintAfter\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ Changes\ U\ to\ contain\ only\ ASCII\ (isprint+isspace)\ characters.}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ Returns\ true\ iff\ U\ has\ been\ changed.}}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{bool}\ ToASCII(uint8\_t\ *Data,\ \textcolor{keywordtype}{size\_t}\ Size);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{bool}\ IsASCII(\textcolor{keyword}{const}\ Unit\ \&U);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{bool}\ IsASCII(\textcolor{keyword}{const}\ uint8\_t\ *Data,\ \textcolor{keywordtype}{size\_t}\ Size);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ std::string\ Base64(\textcolor{keyword}{const}\ Unit\ \&U);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ PrintPC(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SymbolizedFMT,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *FallbackFMT,\ uintptr\_t\ PC);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ std::string\ DescribePC(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SymbolizedFMT,\ uintptr\_t\ PC);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{unsigned}\ NumberOfCpuCores();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{bool}\ ExecuteCommandAndReadOutput(\textcolor{keyword}{const}\ std::string\ \&Command,\ std::string\ *Out);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ Platform\ specific\ functions.}}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ SetSignalHandler(\textcolor{keyword}{const}\ \mbox{\hyperlink{structfuzzer_1_1_fuzzing_options}{FuzzingOptions}}\&\ Options);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ SleepSeconds(\textcolor{keywordtype}{int}\ Seconds);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ GetPid();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{size\_t}\ GetPeakRSSMb();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{int}\ ExecuteCommand(\textcolor{keyword}{const}\ std::string\ \&Command);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ FILE\ *OpenProcessPipe(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *Command,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *Mode);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *SearchMemory(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *haystack,\ \textcolor{keywordtype}{size\_t}\ haystacklen,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *needle,\ \textcolor{keywordtype}{size\_t}\ needlelen);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ std::string\ CloneArgsWithoutX(\textcolor{keyword}{const}\ std::vector<std::string>\ \&Args,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *X1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *X2);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{inline}\ std::string\ CloneArgsWithoutX(\textcolor{keyword}{const}\ std::vector<std::string>\ \&Args,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *X)\ \{}
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordflow}{return}\ CloneArgsWithoutX(Args,\ X,\ X);}
+\DoxyCodeLine{00068\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \}\ \ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_UTIL\_H}}
+
+\end{DoxyCode}

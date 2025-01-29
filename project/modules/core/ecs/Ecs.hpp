@@ -1,3 +1,16 @@
+/**
+ * @file Ecs.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup core
+ * @{
+ * @addtogroup ecs
+ * @{
+ */
+
 #ifndef ECS_HPP
 #define ECS_HPP
 

@@ -1,37 +1,39 @@
 \doxysection{Component.\+hpp}
 \hypertarget{_component_8hpp_source}{}\label{_component_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/includes/Component.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/includes/Component.hpp}}
-
+\mbox{\hyperlink{_component_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ COMPONENT\_HPP\_}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ COMPONENT\_HPP\_}}
-\DoxyCodeLine{00003\ \ \ \ \ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <ostream>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#include\ <tuple>}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_position}{Position}}\ \{}
-\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
-\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
-\DoxyCodeLine{00010\ \};}
+\DoxyCodeLine{00001\ }
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \mbox{\hyperlink{struct_position}{Position}}\ \textcolor{keyword}{const}\ \&c)}
-\DoxyCodeLine{00013\ \{}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{return}\ (os\ <<\ c.x\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ c.y);}
-\DoxyCodeLine{00015\ \}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_velocity}{Velocity}}\ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
-\DoxyCodeLine{00020\ \};}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \mbox{\hyperlink{struct_velocity}{Velocity}}\ \textcolor{keyword}{const}\ \&c)}
-\DoxyCodeLine{00023\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{return}\ (os\ <<\ c.x\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ c.y);}
-\DoxyCodeLine{00025\ \}}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structconfig}{config}}\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }components\ =\ std::tuple<Position,\ Velocity>;}
-\DoxyCodeLine{00033\ \};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !COMPONENT\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ COMPONENT\_HPP\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#define\ COMPONENT\_HPP\_}}
+\DoxyCodeLine{00014\ \ \ \ \ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ <ostream>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ <tuple>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_position}{Position}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00021\ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \mbox{\hyperlink{struct_position}{Position}}\ \textcolor{keyword}{const}\ \&c)}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{return}\ (os\ <<\ c.x\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ c.y);}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_velocity}{Velocity}}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ std::ostream\&\ operator<<(std::ostream\&\ os,\ \mbox{\hyperlink{struct_velocity}{Velocity}}\ \textcolor{keyword}{const}\ \&c)}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ (os\ <<\ c.x\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ c.y);}
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structconfig}{config}}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{using\ }components\ =\ std::tuple<Position,\ Velocity>;}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !COMPONENT\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

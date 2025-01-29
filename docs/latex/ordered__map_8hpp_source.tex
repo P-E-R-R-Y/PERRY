@@ -1,0 +1,363 @@
+\doxysection{ordered\+\_\+map.\+hpp}
+\hypertarget{ordered__map_8hpp_source}{}\label{ordered__map_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/ordered\_map.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/ordered\_map.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <functional>}\ \textcolor{comment}{//\ equal\_to,\ less}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <initializer\_list>}\ \textcolor{comment}{//\ initializer\_list}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <iterator>}\ \textcolor{comment}{//\ input\_iterator\_tag,\ iterator\_traits}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <memory>}\ \textcolor{comment}{//\ allocator}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdexcept>}\ \textcolor{comment}{//\ for\ out\_of\_range}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <type\_traits>}\ \textcolor{comment}{//\ enable\_if,\ is\_convertible}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <utility>}\ \textcolor{comment}{//\ pair}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}\ \textcolor{comment}{//\ vector}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/macro\_scope.hpp>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/type\_traits.hpp>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Key,\ \textcolor{keyword}{class}\ T,\ \textcolor{keyword}{class}\ IgnoredLess\ =\ std::less<Key>,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}\ Allocator\ =\ std::allocator<std::pair<const\ Key,\ T>>>}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structordered__map}{ordered\_map}}\ :\ std::vector<std::pair<const\ Key,\ T>,\ Allocator>}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{using\ }key\_type\ =\ Key;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{using\ }mapped\_type\ =\ T;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{using\ }Container\ =\ std::vector<std::pair<const\ Key,\ T>,\ Allocator>;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{using\ }iterator\ =\ \textcolor{keyword}{typename}\ Container::iterator;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{using\ }const\_iterator\ =\ \textcolor{keyword}{typename}\ Container::const\_iterator;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{using\ }size\_type\ =\ \textcolor{keyword}{typename}\ Container::size\_type;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ =\ \textcolor{keyword}{typename}\ Container::value\_type;}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifdef\ JSON\_HAS\_CPP\_14}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{using\ }key\_compare\ =\ std::equal\_to<>;}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{using\ }key\_compare\ =\ std::equal\_to<Key>;}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Explicit\ constructors\ instead\ of\ \`{}using\ Container::Container`}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ otherwise\ older\ compilers\ choke\ on\ it\ (GCC\ <=\ 5.5,\ xcode\ <=\ 9.4)}}
+\DoxyCodeLine{00046\ \ \ \ \ ordered\_map()\ noexcept(noexcept(Container()))\ :\ Container\{\}\ \{\}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{explicit}\ ordered\_map(\textcolor{keyword}{const}\ Allocator\&\ alloc)\ \textcolor{keyword}{noexcept}(\textcolor{keyword}{noexcept}(Container(alloc)))\ :\ Container\{alloc\}\ \{\}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ It>}
+\DoxyCodeLine{00049\ \ \ \ \ ordered\_map(It\ first,\ It\ last,\ \textcolor{keyword}{const}\ Allocator\&\ alloc\ =\ Allocator())}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ :\ Container\{first,\ last,\ alloc\}\ \{\}}
+\DoxyCodeLine{00051\ \ \ \ \ ordered\_map(std::initializer\_list<value\_type>\ init,\ \textcolor{keyword}{const}\ Allocator\&\ alloc\ =\ Allocator()\ )}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ :\ Container\{init,\ alloc\}\ \{\}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ std::pair<iterator,\ bool>\ emplace(\textcolor{keyword}{const}\ key\_type\&\ key,\ T\&\&\ t)}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{it,\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ Container::emplace\_back(key,\ std::forward<T>(t));}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{std::prev(this-\/>end()),\ \textcolor{keyword}{true}\};}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }KeyType,\ detail::enable\_if\_t<}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail::is\_usable\_as\_key\_type<key\_compare,\ key\_type,\ KeyType>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00069\ \ \ \ \ std::pair<iterator,\ bool>\ emplace(KeyType\ \&\&\ key,\ T\ \&\&\ t)}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{it,\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ Container::emplace\_back(std::forward<KeyType>(key),\ std::forward<T>(t));}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{std::prev(this-\/>end()),\ \textcolor{keyword}{true}\};}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ T\&\ operator[](\textcolor{keyword}{const}\ key\_type\&\ key)}
+\DoxyCodeLine{00083\ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ emplace(key,\ T\{\}).first-\/>second;}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }KeyType,\ detail::enable\_if\_t<}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail::is\_usable\_as\_key\_type<key\_compare,\ key\_type,\ KeyType>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00089\ \ \ \ \ T\ \&\ operator[](KeyType\ \&\&\ key)}
+\DoxyCodeLine{00090\ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ emplace(std::forward<KeyType>(key),\ T\{\}).first-\/>second;}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{const}\ T\&\ operator[](\textcolor{keyword}{const}\ key\_type\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00095\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ at(key);}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }KeyType,\ detail::enable\_if\_t<}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail::is\_usable\_as\_key\_type<key\_compare,\ key\_type,\ KeyType>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{const}\ T\ \&\ operator[](KeyType\ \&\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00102\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ at(std::forward<KeyType>(key));}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ T\&\ at(\textcolor{keyword}{const}\ key\_type\&\ key)}
+\DoxyCodeLine{00107\ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ JSON\_THROW(std::out\_of\_range(\textcolor{stringliteral}{"{}key\ not\ found"{}}));}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }KeyType,\ detail::enable\_if\_t<}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail::is\_usable\_as\_key\_type<key\_compare,\ key\_type,\ KeyType>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00121\ \ \ \ \ T\ \&\ at(KeyType\ \&\&\ key)\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/missing-\/std-\/forward)}}
+\DoxyCodeLine{00122\ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ JSON\_THROW(std::out\_of\_range(\textcolor{stringliteral}{"{}key\ not\ found"{}}));}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keyword}{const}\ T\&\ at(\textcolor{keyword}{const}\ key\_type\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00135\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ JSON\_THROW(std::out\_of\_range(\textcolor{stringliteral}{"{}key\ not\ found"{}}));}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }KeyType,\ detail::enable\_if\_t<}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail::is\_usable\_as\_key\_type<key\_compare,\ key\_type,\ KeyType>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{const}\ T\ \&\ at(KeyType\ \&\&\ key)\ \textcolor{keyword}{const}\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/missing-\/std-\/forward)}}
+\DoxyCodeLine{00150\ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ JSON\_THROW(std::out\_of\_range(\textcolor{stringliteral}{"{}key\ not\ found"{}}));}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ size\_type\ erase(\textcolor{keyword}{const}\ key\_type\&\ key)}
+\DoxyCodeLine{00163\ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Since\ we\ cannot\ move\ const\ Keys,\ re-\/construct\ them\ in\ place}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ next\ =\ it;\ ++next\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it-\/>\string~value\_type();\ \textcolor{comment}{//\ Destroy\ but\ keep\ allocation}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (\&*it)\ value\_type\{std::move(*next)\};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Container::pop\_back();}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00179\ \ \ \ \ \}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }KeyType,\ detail::enable\_if\_t<}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail::is\_usable\_as\_key\_type<key\_compare,\ key\_type,\ KeyType>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00183\ \ \ \ \ size\_type\ erase(KeyType\ \&\&\ key)\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/missing-\/std-\/forward)}}
+\DoxyCodeLine{00184\ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Since\ we\ cannot\ move\ const\ Keys,\ re-\/construct\ them\ in\ place}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ next\ =\ it;\ ++next\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it-\/>\string~value\_type();\ \textcolor{comment}{//\ Destroy\ but\ keep\ allocation}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (\&*it)\ value\_type\{std::move(*next)\};}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Container::pop\_back();}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ iterator\ erase(iterator\ pos)}
+\DoxyCodeLine{00203\ \ \ \ \ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ erase(pos,\ std::next(pos));}
+\DoxyCodeLine{00205\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ iterator\ erase(iterator\ first,\ iterator\ last)}
+\DoxyCodeLine{00208\ \ \ \ \ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\ ==\ last)}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ first;}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ elements\_affected\ =\ std::distance(first,\ last);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ offset\ =\ std::distance(Container::begin(),\ first);}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ is\ the\ start\ situation.\ We\ need\ to\ delete\ elements\_affected}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ elements\ (3\ in\ this\ example:\ e,\ f,\ g),\ and\ need\ to\ return\ an}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ iterator\ past\ the\ last\ deleted\ element\ (h\ in\ this\ example).}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Note\ that\ offset\ is\ the\ distance\ from\ the\ start\ of\ the\ vector}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ to\ first.\ We\ will\ need\ this\ later.}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [\ a,\ b,\ c,\ d,\ e,\ f,\ g,\ h,\ i,\ j\ ]}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\ \ \ \ \ \ \ \ \string^}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ first\ \ \ \ last}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Since\ we\ cannot\ move\ const\ Keys,\ we\ re-\/construct\ them\ in\ place.}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ start\ at\ first\ and\ re-\/construct\ (viz.\ copy)\ the\ elements\ from}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ back\ of\ the\ vector.\ Example\ for\ first\ iteration:}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,-\/-\/-\/-\/-\/-\/-\/-\/.}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v\ \ \ \ \ \ \ \ |\ \ \ destroy\ e\ and\ re-\/construct\ with\ h}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [\ a,\ b,\ c,\ d,\ e,\ f,\ g,\ h,\ i,\ j\ ]}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\ \ \ \ \ \ \ \ \string^}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it\ \ \ \ \ \ \ it\ +\ elements\_affected}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ first;\ std::next(it,\ elements\_affected)\ !=\ Container::end();\ ++it)}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ it-\/>\string~value\_type();\ \textcolor{comment}{//\ destroy\ but\ keep\ allocation}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (\&*it)\ value\_type\{std::move(*std::next(it,\ elements\_affected))\};\ \textcolor{comment}{//\ "{}move"{}\ next\ element\ to\ it}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [\ a,\ b,\ c,\ d,\ h,\ i,\ j,\ h,\ i,\ j\ ]}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\ \ \ \ \ \ \ \ \string^}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ first\ \ \ \ last}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ the\ unneeded\ elements\ at\ the\ end\ of\ the\ vector}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ Container::resize(this-\/>size()\ -\/\ \textcolor{keyword}{static\_cast<}size\_type\textcolor{keyword}{>}(elements\_affected));}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [\ a,\ b,\ c,\ d,\ h,\ i,\ j\ ]}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \string^\ \ \ \ \ \ \ \ \string^}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ first\ \ \ \ last}}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ first\ is\ now\ pointing\ past\ the\ last\ deleted\ element,\ but\ we\ cannot}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ use\ this\ iterator,\ because\ it\ may\ have\ been\ invalidated\ by\ the}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ resize\ call.\ Instead,\ we\ can\ return\ begin()\ +\ offset.}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Container::begin()\ +\ offset;}
+\DoxyCodeLine{00258\ \ \ \ \ \}}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \ \ size\_type\ count(\textcolor{keyword}{const}\ key\_type\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00261\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00270\ \ \ \ \ \}}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }KeyType,\ detail::enable\_if\_t<}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail::is\_usable\_as\_key\_type<key\_compare,\ key\_type,\ KeyType>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00274\ \ \ \ \ size\_type\ count(KeyType\ \&\&\ key)\ \textcolor{keyword}{const}\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/missing-\/std-\/forward)}}
+\DoxyCodeLine{00275\ \ \ \ \ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00284\ \ \ \ \ \}}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ iterator\ find(\textcolor{keyword}{const}\ key\_type\&\ key)}
+\DoxyCodeLine{00287\ \ \ \ \ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Container::end();}
+\DoxyCodeLine{00296\ \ \ \ \ \}}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }KeyType,\ detail::enable\_if\_t<}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ detail::is\_usable\_as\_key\_type<key\_compare,\ key\_type,\ KeyType>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00300\ \ \ \ \ iterator\ find(KeyType\ \&\&\ key)\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/missing-\/std-\/forward)}}
+\DoxyCodeLine{00301\ \ \ \ \ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Container::end();}
+\DoxyCodeLine{00310\ \ \ \ \ \}}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \ \ \ \ const\_iterator\ find(\textcolor{keyword}{const}\ key\_type\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00313\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ key))}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Container::end();}
+\DoxyCodeLine{00322\ \ \ \ \ \}}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \ \ \ \ std::pair<iterator,\ bool>\ insert(\ value\_type\&\&\ value\ )}
+\DoxyCodeLine{00325\ \ \ \ \ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ emplace(value.first,\ std::move(value.second));}
+\DoxyCodeLine{00327\ \ \ \ \ \}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \ \ \ \ std::pair<iterator,\ bool>\ insert(\ \textcolor{keyword}{const}\ value\_type\&\ value\ )}
+\DoxyCodeLine{00330\ \ \ \ \ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ this-\/>begin();\ it\ !=\ this-\/>end();\ ++it)}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_compare(it-\/>first,\ value.first))}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{it,\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ Container::push\_back(value);}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{-\/-\/this-\/>end(),\ \textcolor{keyword}{true}\};}
+\DoxyCodeLine{00340\ \ \ \ \ \}}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ InputIt>}
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keyword}{using\ }require\_input\_iter\ =\ \textcolor{keyword}{typename}\ std::enable\_if<std::is\_convertible<typename\ std::iterator\_traits<InputIt>::iterator\_category,}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ std::input\_iterator\_tag>::value>::type;}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ InputIt,\ \textcolor{keyword}{typename}\ =\ require\_input\_iter<InputIt>>}
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keywordtype}{void}\ insert(InputIt\ first,\ InputIt\ last)}
+\DoxyCodeLine{00348\ \ \ \ \ \{}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ first;\ it\ !=\ last;\ ++it)}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ insert(*it);}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00353\ \ \ \ \ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00356\ \ \ \ \ JSON\_NO\_UNIQUE\_ADDRESS\ key\_compare\ m\_compare\ =\ key\_compare();}
+\DoxyCodeLine{00357\ \};}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

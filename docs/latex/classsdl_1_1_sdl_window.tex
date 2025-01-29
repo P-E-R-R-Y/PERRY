@@ -1,0 +1,328 @@
+\doxysection{sdl\+::Sdl\+Window Class Reference}
+\hypertarget{classsdl_1_1_sdl_window}{}\label{classsdl_1_1_sdl_window}\index{sdl::SdlWindow@{sdl::SdlWindow}}
+
+
+Sdl Window class.  
+
+
+
+
+{\ttfamily \#include $<$Sdl\+Window.\+hpp$>$}
+
+Inheritance diagram for sdl\+::Sdl\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsdl_1_1_sdl_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__graphic_ga37a4853dfe1d376575845360ba8d3b10}{Sdl\+Window}} (\+\_\+\+\_\+int32\+\_\+t screen\+Width, \+\_\+\+\_\+int32\+\_\+t screen\+Height, std\+::string title)
+\begin{DoxyCompactList}\small\item\em Construct a new Sdl Window object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_ad8a1e68a0b1dddef3e68db62f42f0cb4}{link\+Event}} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em link an event to the window \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsdl_1_1_sdl_window_ab847d0cdf082df77bba6be1ad1964956}{is\+Open}} () override
+\begin{DoxyCompactList}\small\item\em notice if the window is open \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_af3caf9705856817877e01e3823374c5e}{close}} () override
+\begin{DoxyCompactList}\small\item\em close the window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_a71f090b2ca7c84de9c78986b60dc9843}{set\+Frame\+Limit}} (\+\_\+\+\_\+int32\+\_\+t limit) override
+\begin{DoxyCompactList}\small\item\em Set the Frame Limit object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+int32\+\_\+t \mbox{\hyperlink{classsdl_1_1_sdl_window_a74218ad95c0141a45371dc1e75a31f08}{get\+Delta}} () override
+\begin{DoxyCompactList}\small\item\em Get the Delta object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_a4d8d1930352dd64beab8b2dc77acf833}{begin\+Draw}} () override
+\begin{DoxyCompactList}\small\item\em allowing to draw 2D on the window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_a26347c7f0cbe4056778feb9092a18a10}{draw\+Poly}} (\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}polygon) override
+\begin{DoxyCompactList}\small\item\em draw a polygon \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_a1449fb4df1a00f2ea470818340ad610a}{draw\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite) override
+\begin{DoxyCompactList}\small\item\em draw a sprite \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_a8299d58fa39da80664eeddc7fa76f989}{end\+Draw}} () override
+\begin{DoxyCompactList}\small\item\em end the 2D drawing \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_a8a22b196991e7e4ca0f2b727cfb10cab}{begin\+Mode3}} (\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}camera) override
+\begin{DoxyCompactList}\small\item\em allowing to draw 3D on the window \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classsdl_1_1_sdl_window_a9ea09b71e4f172314c6f2e301280aa3d}{draw\+Model}} (\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model) override
+\begin{DoxyCompactList}\small\item\em draw a model \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_a15c7a6822c49968bc7e42258cf7c5751}{end\+Mode3}} () override
+\begin{DoxyCompactList}\small\item\em end the 3D drawing \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classsdl_1_1_sdl_window_a3da34faffb016eb00f1b34aea60972fe}{poll\+Event}} () override
+\begin{DoxyCompactList}\small\item\em poll the event \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_window_a609de9b149cafd50ebdd1f926a251929}{event\+Close}} () override
+\begin{DoxyCompactList}\small\item\em update the window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IWindow} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_window}{IWindow} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classsdl_1_1_sdl_window_a4f706084b203b8e6b12ed0649b06dc05}\label{classsdl_1_1_sdl_window_a4f706084b203b8e6b12ed0649b06dc05} 
+bool {\bfseries is\+\_\+open}
+\item 
+\Hypertarget{classsdl_1_1_sdl_window_a6f0b434dd71e9dc1f0c01dad809f0803}\label{classsdl_1_1_sdl_window_a6f0b434dd71e9dc1f0c01dad809f0803} 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+window}
+\item 
+\Hypertarget{classsdl_1_1_sdl_window_a07172f1832da1cf3dd88068ef0c808a4}\label{classsdl_1_1_sdl_window_a07172f1832da1cf3dd88068ef0c808a4} 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+renderer}
+\item 
+\Hypertarget{classsdl_1_1_sdl_window_ab74148f8949e81b7d80c8be30298737c}\label{classsdl_1_1_sdl_window_ab74148f8949e81b7d80c8be30298737c} 
+\mbox{\hyperlink{classsdl_1_1_sdl_event}{Sdl\+Event}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+event}
+\item 
+\Hypertarget{classsdl_1_1_sdl_window_a3063436fc79849d3bdb6233e3562b4c8}\label{classsdl_1_1_sdl_window_a3063436fc79849d3bdb6233e3562b4c8} 
+\+\_\+\+\_\+int32\+\_\+t {\bfseries \+\_\+frame\+Limit}
+\item 
+\Hypertarget{classsdl_1_1_sdl_window_a79511d732c2f9327b3a7ce66a7c67441}\label{classsdl_1_1_sdl_window_a79511d732c2f9327b3a7ce66a7c67441} 
+\+\_\+\+\_\+uint64\+\_\+t {\bfseries \+\_\+start}
+\item 
+\Hypertarget{classsdl_1_1_sdl_window_ab0fa7a34a5565cd4d5c929ee7fbffad0}\label{classsdl_1_1_sdl_window_ab0fa7a34a5565cd4d5c929ee7fbffad0} 
+\+\_\+\+\_\+uint64\+\_\+t {\bfseries \+\_\+end}
+\item 
+\Hypertarget{classsdl_1_1_sdl_window_a64d6756afa1422a2d397681763b41635}\label{classsdl_1_1_sdl_window_a64d6756afa1422a2d397681763b41635} 
+float {\bfseries \+\_\+delta}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sdl Window class. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsdl_1_1_sdl_window_a4d8d1930352dd64beab8b2dc77acf833}\index{sdl::SdlWindow@{sdl::SdlWindow}!beginDraw@{beginDraw}}
+\index{beginDraw@{beginDraw}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{beginDraw()}{beginDraw()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a4d8d1930352dd64beab8b2dc77acf833} 
+void sdl\+::\+Sdl\+Window\+::begin\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+allowing to draw 2D on the window 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a37ccabdf7852fe8ff579f5de5ae29976}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a8a22b196991e7e4ca0f2b727cfb10cab}\index{sdl::SdlWindow@{sdl::SdlWindow}!beginMode3@{beginMode3}}
+\index{beginMode3@{beginMode3}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{beginMode3()}{beginMode3()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a8a22b196991e7e4ca0f2b727cfb10cab} 
+void sdl\+::\+Sdl\+Window\+::begin\+Mode3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}}]{camera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+allowing to draw 3D on the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a44bfe77f58f2825edb1e7cb5304b8177}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_af3caf9705856817877e01e3823374c5e}\index{sdl::SdlWindow@{sdl::SdlWindow}!close@{close}}
+\index{close@{close}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_af3caf9705856817877e01e3823374c5e} 
+void sdl\+::\+Sdl\+Window\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+close the window 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a6eb555bdae7c6fa247a35b9147da8c7e}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a9ea09b71e4f172314c6f2e301280aa3d}\index{sdl::SdlWindow@{sdl::SdlWindow}!drawModel@{drawModel}}
+\index{drawModel@{drawModel}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{drawModel()}{drawModel()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a9ea09b71e4f172314c6f2e301280aa3d} 
+void sdl\+::\+Sdl\+Window\+::draw\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw a model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a973287c1dd916f230234e9a557181dd9}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a26347c7f0cbe4056778feb9092a18a10}\index{sdl::SdlWindow@{sdl::SdlWindow}!drawPoly@{drawPoly}}
+\index{drawPoly@{drawPoly}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{drawPoly()}{drawPoly()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a26347c7f0cbe4056778feb9092a18a10} 
+void sdl\+::\+Sdl\+Window\+::draw\+Poly (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}}]{polygon}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw a polygon 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_afe1c61041fa847fe80c0fbc5585a4de3}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a1449fb4df1a00f2ea470818340ad610a}\index{sdl::SdlWindow@{sdl::SdlWindow}!drawSprite@{drawSprite}}
+\index{drawSprite@{drawSprite}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{drawSprite()}{drawSprite()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a1449fb4df1a00f2ea470818340ad610a} 
+void sdl\+::\+Sdl\+Window\+::draw\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw a sprite 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a0b6d9dc647ea8fa561630424bb4b5db0}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a8299d58fa39da80664eeddc7fa76f989}\index{sdl::SdlWindow@{sdl::SdlWindow}!endDraw@{endDraw}}
+\index{endDraw@{endDraw}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{endDraw()}{endDraw()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a8299d58fa39da80664eeddc7fa76f989} 
+void sdl\+::\+Sdl\+Window\+::end\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+end the 2D drawing 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_afeee676648888ac355a58f7fb90b62a6}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a15c7a6822c49968bc7e42258cf7c5751}\index{sdl::SdlWindow@{sdl::SdlWindow}!endMode3@{endMode3}}
+\index{endMode3@{endMode3}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{endMode3()}{endMode3()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a15c7a6822c49968bc7e42258cf7c5751} 
+void sdl\+::\+Sdl\+Window\+::end\+Mode3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+end the 3D drawing 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_ad064bd5a6aeafa259e0e629cf6cf82c1}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a609de9b149cafd50ebdd1f926a251929}\index{sdl::SdlWindow@{sdl::SdlWindow}!eventClose@{eventClose}}
+\index{eventClose@{eventClose}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{eventClose()}{eventClose()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a609de9b149cafd50ebdd1f926a251929} 
+void sdl\+::\+Sdl\+Window\+::event\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+update the window 
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a6687f79bdb04698ea020aa85e72f3941}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a74218ad95c0141a45371dc1e75a31f08}\index{sdl::SdlWindow@{sdl::SdlWindow}!getDelta@{getDelta}}
+\index{getDelta@{getDelta}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{getDelta()}{getDelta()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a74218ad95c0141a45371dc1e75a31f08} 
+\+\_\+\+\_\+int32\+\_\+t sdl\+::\+Sdl\+Window\+::get\+Delta (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Delta object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+int32\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_ac081cce8b211b1b3f027a7bae33cef61}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_ab847d0cdf082df77bba6be1ad1964956}\index{sdl::SdlWindow@{sdl::SdlWindow}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{isOpen()}{isOpen()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_ab847d0cdf082df77bba6be1ad1964956} 
+bool sdl\+::\+Sdl\+Window\+::is\+Open (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if the window is open 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_ae17a137c8ad8da0c414782e27f4c5dfc}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_ad8a1e68a0b1dddef3e68db62f42f0cb4}\index{sdl::SdlWindow@{sdl::SdlWindow}!linkEvent@{linkEvent}}
+\index{linkEvent@{linkEvent}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{linkEvent()}{linkEvent()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_ad8a1e68a0b1dddef3e68db62f42f0cb4} 
+void sdl\+::\+Sdl\+Window\+::link\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+link an event to the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_ad95ff6150837ebf658a520a4a932b5c3}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a3da34faffb016eb00f1b34aea60972fe}\index{sdl::SdlWindow@{sdl::SdlWindow}!pollEvent@{pollEvent}}
+\index{pollEvent@{pollEvent}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{pollEvent()}{pollEvent()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a3da34faffb016eb00f1b34aea60972fe} 
+bool sdl\+::\+Sdl\+Window\+::poll\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+poll the event 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a4a40f63b3c53f89a6ce684e7d2a92428}{graphic\+::\+IWindow}}.
+
+\Hypertarget{classsdl_1_1_sdl_window_a71f090b2ca7c84de9c78986b60dc9843}\index{sdl::SdlWindow@{sdl::SdlWindow}!setFrameLimit@{setFrameLimit}}
+\index{setFrameLimit@{setFrameLimit}!sdl::SdlWindow@{sdl::SdlWindow}}
+\doxysubsubsection{\texorpdfstring{setFrameLimit()}{setFrameLimit()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_window_a71f090b2ca7c84de9c78986b60dc9843} 
+void sdl\+::\+Sdl\+Window\+::set\+Frame\+Limit (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+int32\+\_\+t}]{limit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Frame Limit object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_window_a6b0e75f9c978eef8aca095144420f5af}{graphic\+::\+IWindow}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/window/\mbox{\hyperlink{_sdl_window_8hpp}{Sdl\+Window.\+hpp}}\end{DoxyCompactItemize}

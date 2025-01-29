@@ -1,0 +1,39 @@
+\doxysection{Fuzzer\+SHA1.\+h}
+\hypertarget{_fuzzer_s_h_a1_8h_source}{}\label{_fuzzer_s_h_a1_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerSHA1.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerSHA1.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerSHA1.h\ -\/\ Internal\ header\ for\ the\ SHA1\ utils\ -\/-\/-\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ SHA1\ utils.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_SHA1\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_SHA1\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}FuzzerDefs.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Private\ copy\ of\ SHA1\ implementation.}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ kSHA1NumBytes\ =\ 20;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Computes\ SHA1\ hash\ of\ 'Len'\ bytes\ in\ 'Data',\ writes\ kSHA1NumBytes\ to\ 'Out'.}}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ ComputeSHA1(\textcolor{keyword}{const}\ uint8\_t\ *Data,\ \textcolor{keywordtype}{size\_t}\ Len,\ uint8\_t\ *Out);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ std::string\ Sha1ToString(\textcolor{keyword}{const}\ uint8\_t\ Sha1[kSHA1NumBytes]);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ std::string\ Hash(\textcolor{keyword}{const}\ Unit\ \&U);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \}\ \ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_SHA1\_H}}
+
+\end{DoxyCode}

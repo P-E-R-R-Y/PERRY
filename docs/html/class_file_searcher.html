@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -90,44 +91,45 @@ $(function(){ initResizable(false); });
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_file_searcher-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">FileSearcher Class Reference</div></div>
+  <div class="headertitle"><div class="title">FileSearcher Class Reference<div class="ingroups"><a class="el" href="group__utility.html">Utility</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>class to help handling files when working with shared libraries  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_file_searcher_8hpp_source.html">FileSearcher.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ab9f7d768cb5f7bbb8acb8f6cad3bafc1" id="r_ab9f7d768cb5f7bbb8acb8f6cad3bafc1"><td class="memItemLeft" align="right" valign="top"><a id="ab9f7d768cb5f7bbb8acb8f6cad3bafc1" name="ab9f7d768cb5f7bbb8acb8f6cad3bafc1"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>lib_e</b> { <b>SHARED_LIB</b>
+<tr class="memitem:gab9f7d768cb5f7bbb8acb8f6cad3bafc1" id="r_gab9f7d768cb5f7bbb8acb8f6cad3bafc1"><td class="memItemLeft" align="right" valign="top"><a id="gab9f7d768cb5f7bbb8acb8f6cad3bafc1" name="gab9f7d768cb5f7bbb8acb8f6cad3bafc1"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>lib_e</b> { <b>SHARED_LIB</b>
 , <b>STATIC_LIB</b>
  }</td></tr>
-<tr class="separator:ab9f7d768cb5f7bbb8acb8f6cad3bafc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gab9f7d768cb5f7bbb8acb8f6cad3bafc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a77504fcb06986e4f253c8280dc5efbd9" id="r_a77504fcb06986e4f253c8280dc5efbd9"><td class="memItemLeft" align="right" valign="top"><a id="a77504fcb06986e4f253c8280dc5efbd9" name="a77504fcb06986e4f253c8280dc5efbd9"></a>
+<tr class="memitem:ga77504fcb06986e4f253c8280dc5efbd9" id="r_ga77504fcb06986e4f253c8280dc5efbd9"><td class="memItemLeft" align="right" valign="top">
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>displayFiles</b> (std::string folder)</td></tr>
-<tr class="separator:a77504fcb06986e4f253c8280dc5efbd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6164aa62638f3d534fe8454df6fadb7" id="r_aa6164aa62638f3d534fe8454df6fadb7"><td class="memItemLeft" align="right" valign="top"><a id="aa6164aa62638f3d534fe8454df6fadb7" name="aa6164aa62638f3d534fe8454df6fadb7"></a>
+<tr class="separator:ga77504fcb06986e4f253c8280dc5efbd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa6164aa62638f3d534fe8454df6fadb7" id="r_gaa6164aa62638f3d534fe8454df6fadb7"><td class="memItemLeft" align="right" valign="top">
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>displayFiles</b> (std::string folder, std::string extension)</td></tr>
-<tr class="separator:aa6164aa62638f3d534fe8454df6fadb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70118377951b7efc2a4c548e03fb228c" id="r_a70118377951b7efc2a4c548e03fb228c"><td class="memItemLeft" align="right" valign="top"><a id="a70118377951b7efc2a4c548e03fb228c" name="a70118377951b7efc2a4c548e03fb228c"></a>
+<tr class="separator:gaa6164aa62638f3d534fe8454df6fadb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga70118377951b7efc2a4c548e03fb228c" id="r_ga70118377951b7efc2a4c548e03fb228c"><td class="memItemLeft" align="right" valign="top">
 static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>searchFiles</b> (std::string folder)</td></tr>
-<tr class="separator:a70118377951b7efc2a4c548e03fb228c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9b3812b0ce06da78c11c87a5eb8df9a" id="r_ab9b3812b0ce06da78c11c87a5eb8df9a"><td class="memItemLeft" align="right" valign="top"><a id="ab9b3812b0ce06da78c11c87a5eb8df9a" name="ab9b3812b0ce06da78c11c87a5eb8df9a"></a>
+<tr class="separator:ga70118377951b7efc2a4c548e03fb228c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab9b3812b0ce06da78c11c87a5eb8df9a" id="r_gab9b3812b0ce06da78c11c87a5eb8df9a"><td class="memItemLeft" align="right" valign="top">
 static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>searchFiles</b> (std::string folder, std::string extension)</td></tr>
-<tr class="separator:ab9b3812b0ce06da78c11c87a5eb8df9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46d39b6f32ec6d5e45bf7fdcc04e97bb" id="r_a46d39b6f32ec6d5e45bf7fdcc04e97bb"><td class="memItemLeft" align="right" valign="top"><a id="a46d39b6f32ec6d5e45bf7fdcc04e97bb" name="a46d39b6f32ec6d5e45bf7fdcc04e97bb"></a>
+<tr class="separator:gab9b3812b0ce06da78c11c87a5eb8df9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46d39b6f32ec6d5e45bf7fdcc04e97bb" id="r_ga46d39b6f32ec6d5e45bf7fdcc04e97bb"><td class="memItemLeft" align="right" valign="top">
 static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>searchSharedLibraries</b> (std::string folder, bool sub_directory=false)</td></tr>
-<tr class="separator:a46d39b6f32ec6d5e45bf7fdcc04e97bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ad8bfc92ad78a3c999284e89d3b380e" id="r_a3ad8bfc92ad78a3c999284e89d3b380e"><td class="memItemLeft" align="right" valign="top"><a id="a3ad8bfc92ad78a3c999284e89d3b380e" name="a3ad8bfc92ad78a3c999284e89d3b380e"></a>
+<tr class="separator:ga46d39b6f32ec6d5e45bf7fdcc04e97bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ad8bfc92ad78a3c999284e89d3b380e" id="r_ga3ad8bfc92ad78a3c999284e89d3b380e"><td class="memItemLeft" align="right" valign="top">
 static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>searchPathFiles</b> (std::string folder, std::string extension, bool sub_directory=false)</td></tr>
-<tr class="separator:a3ad8bfc92ad78a3c999284e89d3b380e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga3ad8bfc92ad78a3c999284e89d3b380e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File: <a class="el" href="_file_searcher_8hpp_source.html">FileSearcher.hpp</a> (header.v2) Created Date: Thu 16/03/2023 Project: PERRY Author: Perry Chouteau</p>
-<p>Last Modified: Sat 18/03/2023 Modified By: Perry Chouteau</p>
-<p>Copyright (c) 2023-2033 Perry Chouteau </p>
+<div class="textblock"><p>class to help handling files when working with shared libraries </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/perrychouteau/Documents/GitHub/PERRY/project/libraries/finder/<a class="el" href="_file_searcher_8hpp_source.html">FileSearcher.hpp</a></li>
 </ul>

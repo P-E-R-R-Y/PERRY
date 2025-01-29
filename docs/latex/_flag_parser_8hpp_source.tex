@@ -1,60 +1,55 @@
 \doxysection{Flag\+Parser.\+hpp}
 \hypertarget{_flag_parser_8hpp_source}{}\label{_flag_parser_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/libraries/finder/FlagParser.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/libraries/finder/FlagParser.hpp}}
-
+\mbox{\hyperlink{_flag_parser_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }FlagParser\ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ FlagParser(\textcolor{keywordtype}{int}\ ac,\ \textcolor{keywordtype}{char}\ **av)\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ flag\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ac;\ i++)\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::string(av[i]).find(\textcolor{stringliteral}{"{}-\/"{}})\ ==\ 0)}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ std::string(av[i]).substr(1);}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (flag\ !=\ \textcolor{stringliteral}{"{}"{}})}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_keyValue[flag].push\_back(av[i]);}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ display()\ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ \_keyValue)\ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ item.first\ <<\ std::endl;}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it:\ item.second)}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}}\ <<\ it\ <<\ std::endl;}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ display(std::string\ flag)\ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it:\ \_keyValue[flag])}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ it\ <<\ std::endl;}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::vector<std::string>>\ get()\ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_keyValue;}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ std::vector<std::string>\ get(std::string\ flag)\ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ res;}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it:\ \_keyValue[flag])}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res.push\_back(it);}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \textcolor{comment}{//\ \ \ \ \ \ \ \ void\ strToFlags(int\ ac,\ char\ **av,\ std::string\ \&str)\ \{}}
-\DoxyCodeLine{00063\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::vector<std::string>>\ \_keyValue;}
-\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }FlagParser\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ FlagParser(\textcolor{keywordtype}{int}\ ac,\ \textcolor{keywordtype}{char}\ **av)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ flag\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ac;\ i++)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::string(av[i]).find(\textcolor{stringliteral}{"{}-\/"{}})\ ==\ 0)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flag\ =\ std::string(av[i]).substr(1);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (flag\ !=\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_keyValue[flag].push\_back(av[i]);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ display()\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ item\ :\ \_keyValue)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ item.first\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it:\ item.second)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}}\ <<\ it\ <<\ std::endl;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ display(std::string\ flag)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it:\ \_keyValue[flag])}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ it\ <<\ std::endl;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::vector<std::string>>\ get()\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_keyValue;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ std::vector<std::string>\ get(std::string\ flag)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ res;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it:\ \_keyValue[flag])}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res.push\_back(it);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::map<std::string,\ std::vector<std::string>>\ \_keyValue;}
+\DoxyCodeLine{00062\ \};}
 
 \end{DoxyCode}

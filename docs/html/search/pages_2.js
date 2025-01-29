@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['r_20r_20y_20perry_0',['P.E.R.R.Y/PERRY',['../index.html',1,'']]],
-  ['r_20y_20perry_1',['P.E.R.R.Y/PERRY',['../index.html',1,'']]]
+  ['getting_20started_20📖_0',['Getting Started 📖',['../md__2_users_2perrychouteau_2_documents_2_git_hub_2_p_e_r_r_y_2project_2modules_2core_2cbd_2docs_2_c_b_d.html',1,'CBD - Getting Started 📖'],['../md__2_users_2perrychouteau_2_documents_2_git_hub_2_p_e_r_r_y_2project_2modules_2core_2ecs_2docs_2_ecs.html',1,'ECS - Getting Started 📖']]]
 ];

@@ -1,0 +1,476 @@
+\doxysection{fifo\+\_\+map.\+hpp}
+\hypertarget{fifo__map_8hpp_source}{}\label{fifo__map_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/fifo\_map/fifo\_map.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/fifo\_map/fifo\_map.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{The\ code\ is\ licensed\ under\ the\ MIT\ License\ <http://opensource.org/licenses/MIT>:}}
+\DoxyCodeLine{00003\ \textcolor{comment}{}}
+\DoxyCodeLine{00004\ \textcolor{comment}{Copyright\ (c)\ 2015-\/2017\ Niels\ Lohmann.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{}}
+\DoxyCodeLine{00006\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of}}
+\DoxyCodeLine{00007\ \textcolor{comment}{this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal\ in}}
+\DoxyCodeLine{00008\ \textcolor{comment}{the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to}}
+\DoxyCodeLine{00009\ \textcolor{comment}{use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell\ copies}}
+\DoxyCodeLine{00010\ \textcolor{comment}{of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do}}
+\DoxyCodeLine{00011\ \textcolor{comment}{so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{00014\ \textcolor{comment}{copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{}}
+\DoxyCodeLine{00016\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00017\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00018\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{00019\ \textcolor{comment}{AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00020\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00021\ \textcolor{comment}{OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{00022\ \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ NLOHMANN\_FIFO\_MAP\_HPP}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ NLOHMANN\_FIFO\_MAP\_HPP}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacenlohmann}{nlohmann}}}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Key>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_aab17e1040a1d3860c96aac6faf5c705c}{fifo\_map\_compare}}}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_aab17e1040a1d3860c96aac6faf5c705c}{fifo\_map\_compare}}(std::unordered\_map<Key,\ std::size\_t>*\ k)\ :\ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a08694accaf28b1381e55598acb6f34f3}{keys}}(k)\ \{\}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a148fc9007e182fe0646e919dc53c466a}{operator()}}(\textcolor{keyword}{const}\ Key\&\ lhs,\ \textcolor{keyword}{const}\ Key\&\ rhs)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00058\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ look\ up\ timestamps\ for\ both\ keys}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ timestamp\_lhs\ =\ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a08694accaf28b1381e55598acb6f34f3}{keys}}-\/>find(lhs);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ timestamp\_rhs\ =\ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a08694accaf28b1381e55598acb6f34f3}{keys}}-\/>find(rhs);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timestamp\_lhs\ ==\ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a08694accaf28b1381e55598acb6f34f3}{keys}}-\/>end())}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ timestamp\ for\ lhs\ not\ found\ -\/\ cannot\ be\ smaller\ than\ for\ rhs}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timestamp\_rhs\ ==\ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a08694accaf28b1381e55598acb6f34f3}{keys}}-\/>end())}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ timestamp\ for\ rhs\ not\ found\ -\/\ timestamp\ for\ lhs\ is\ smaller}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compare\ timestamps}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ timestamp\_lhs-\/>second\ <\ timestamp\_rhs-\/>second;}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_key(\textcolor{keyword}{const}\ Key\&\ key)}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a08694accaf28b1381e55598acb6f34f3}{keys}}-\/>insert(\{key,\ timestamp++\});}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ remove\_key(\textcolor{keyword}{const}\ Key\&\ key)}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a08694accaf28b1381e55598acb6f34f3}{keys}}-\/>erase(key);}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00091\ \ \ \ \ std::unordered\_map<Key,\ std::size\_t>*\ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a08694accaf28b1381e55598acb6f34f3}{keys}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare_a70c16e8ba861e67ab384b81b98de7704}{timestamp}}\ =\ 1;}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{template}\ <}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{class\ }Key,}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{class\ }T,}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{class\ }Compare\ =\ \mbox{\hyperlink{classnlohmann_1_1fifo__map__compare}{fifo\_map\_compare<Key>}},}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{class\ }Allocator\ =\ std::allocator<std::pair<const\ Key,\ T>>}
+\DoxyCodeLine{00102\ \ \ \ \ >\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/special-\/member-\/functions,hicpp-\/special-\/member-\/functions,-\/warnings-\/as-\/errors)}}
+\DoxyCodeLine{00103\ \{}
+\DoxyCodeLine{00104\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{using\ }key\_type\ =\ Key;}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{using\ }mapped\_type\ =\ T;}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ =\ std::pair<const\ Key,\ T>;}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{using\ }size\_type\ =\ std::size\_t;}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{using\ }difference\_type\ =\ std::ptrdiff\_t;}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{using\ }key\_compare\ =\ Compare;}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{using\ }allocator\_type\ =\ Allocator;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{using\ }reference\ =\ value\_type\&;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{using\ }const\_reference\ =\ \textcolor{keyword}{const}\ value\_type\&;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ =\ \textcolor{keyword}{typename}\ std::allocator\_traits<Allocator>::pointer;}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{using\ }const\_pointer\ =\ \textcolor{keyword}{typename}\ std::allocator\_traits<Allocator>::const\_pointer;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{using\ }internal\_map\_type\ =\ std::map<Key,\ T,\ Compare,\ Allocator>;}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{using\ }iterator\ =\ \textcolor{keyword}{typename}\ internal\_map\_type::iterator;}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{using\ }const\_iterator\ =\ \textcolor{keyword}{typename}\ internal\_map\_type::const\_iterator;}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{using\ }reverse\_iterator\ =\ \textcolor{keyword}{typename}\ internal\_map\_type::reverse\_iterator;}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{using\ }const\_reverse\_iterator\ =\ \textcolor{keyword}{typename}\ internal\_map\_type::const\_reverse\_iterator;}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}()\ :\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}}(),\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}(\&\mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}}),\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}(\mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}})\ \{\}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a5307d6c1a728169eb1833c5324b4f027}{fifo\_map}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\ \&f)\ :\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}}(f.\mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}}),\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}(\&\mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}}),\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}(f.\mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.\mbox{\hyperlink{classnlohmann_1_1fifo__map_a8ef3718b1b2c13b7f7d4352109450030}{begin}}(),\ f.\mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.\mbox{\hyperlink{classnlohmann_1_1fifo__map_a6800e5847cbc2ebd467f99898d0f456b}{end}}(),\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}})\ \{\}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ InputIterator>}
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a22f6a6b3310a253888495818bde0a632}{fifo\_map}}(InputIterator\ first,\ InputIterator\ last)}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}}(),\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}(\&\mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}}),\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}(\mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}})}
+\DoxyCodeLine{00135\ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ first;\ it\ !=\ last;\ ++it)}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a939e5300d694b8ac9841a0444b5f5466}{insert}}(*it);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_aaa74f2daf22f3d275305a0ec47f7d955}{fifo\_map}}(std::initializer\_list<value\_type>\ init)\ :\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}()}
+\DoxyCodeLine{00144\ \ \ \ \ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ x\ :\ init)}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a939e5300d694b8ac9841a0444b5f5466}{insert}}(x);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00153\ \textcolor{comment}{\ \ \ \ \ *\ Element\ access}}
+\DoxyCodeLine{00154\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00157\ \ \ \ \ T\&\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_afa6ff3b71b882a92ea3f9d190b2cfe41}{at}}(\textcolor{keyword}{const}\ Key\&\ key)}
+\DoxyCodeLine{00158\ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.at(key);}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{const}\ T\&\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a4af1bb54059fa8324e0fcafbc01af4dd}{at}}(\textcolor{keyword}{const}\ Key\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00164\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.at(key);}
+\DoxyCodeLine{00166\ \ \ \ \ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00169\ \ \ \ \ T\&\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6444989ff7bbadae905864bb273cced3}{operator[]}}(\textcolor{keyword}{const}\ Key\&\ key)}
+\DoxyCodeLine{00170\ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(key);}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}[key];}
+\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00176\ \ \ \ \ T\&\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a133ba42b1c988e88f315763057538942}{operator[]}}(Key\&\&\ key)}
+\DoxyCodeLine{00177\ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(key);}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}[key];}
+\DoxyCodeLine{00180\ \ \ \ \ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00184\ \textcolor{comment}{\ \ \ \ \ *\ Iterators}}
+\DoxyCodeLine{00185\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00188\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8ef3718b1b2c13b7f7d4352109450030}{begin}}()\ noexcept}
+\DoxyCodeLine{00189\ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.begin();}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00194\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6800e5847cbc2ebd467f99898d0f456b}{end}}()\ noexcept}
+\DoxyCodeLine{00195\ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.end();}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00200\ \ \ \ \ const\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a3e1e71204cff559affaca67352722942}{begin}}()\ const\ noexcept}
+\DoxyCodeLine{00201\ \ \ \ \ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.begin();}
+\DoxyCodeLine{00203\ \ \ \ \ \}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00206\ \ \ \ \ const\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a2c8a298241090856c45ad8eca607af0b}{end}}()\ const\ noexcept}
+\DoxyCodeLine{00207\ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.end();}
+\DoxyCodeLine{00209\ \ \ \ \ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00212\ \ \ \ \ const\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a7ec35bbb4a50420e72a1625dbdb91dda}{cbegin}}()\ const\ noexcept}
+\DoxyCodeLine{00213\ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.cbegin();}
+\DoxyCodeLine{00215\ \ \ \ \ \}}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00218\ \ \ \ \ const\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a4cc9e81db20978f5476679a2164117dd}{cend}}()\ const\ noexcept}
+\DoxyCodeLine{00219\ \ \ \ \ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.cend();}
+\DoxyCodeLine{00221\ \ \ \ \ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00224\ \ \ \ \ reverse\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_ada5312d58d54bf4551f61f0bf293418d}{rbegin}}()\ noexcept}
+\DoxyCodeLine{00225\ \ \ \ \ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.rbegin();}
+\DoxyCodeLine{00227\ \ \ \ \ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00230\ \ \ \ \ reverse\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a4eeb140aecc1e5530ed21eb2d961f8c7}{rend}}()\ noexcept}
+\DoxyCodeLine{00231\ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.rend();}
+\DoxyCodeLine{00233\ \ \ \ \ \}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00236\ \ \ \ \ const\_reverse\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_ae320b60e32a784fa8c173a9537eae40b}{rbegin}}()\ const\ noexcept}
+\DoxyCodeLine{00237\ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.rbegin();}
+\DoxyCodeLine{00239\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00242\ \ \ \ \ const\_reverse\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a2fbe02890aeaea614c284a7fba138f72}{rend}}()\ const\ noexcept}
+\DoxyCodeLine{00243\ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.rend();}
+\DoxyCodeLine{00245\ \ \ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00248\ \ \ \ \ const\_reverse\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a56e78316445e53e3645d2d5cf0f3df4a}{crbegin}}()\ const\ noexcept}
+\DoxyCodeLine{00249\ \ \ \ \ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.crbegin();}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00254\ \ \ \ \ const\_reverse\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a671c0849bc46f5255e059abda4fe3d9f}{crend}}()\ const\ noexcept}
+\DoxyCodeLine{00255\ \ \ \ \ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.crend();}
+\DoxyCodeLine{00257\ \ \ \ \ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00261\ \textcolor{comment}{\ \ \ \ \ *\ Capacity}}
+\DoxyCodeLine{00262\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a66c3efb7800225b954e2115b4ad86859}{empty}}()\ const\ noexcept}
+\DoxyCodeLine{00266\ \ \ \ \ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.empty();}
+\DoxyCodeLine{00268\ \ \ \ \ \}}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00271\ \ \ \ \ size\_type\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a1815eeca37314ce007fdb44695dc45e1}{size}}()\ const\ noexcept}
+\DoxyCodeLine{00272\ \ \ \ \ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.size();}
+\DoxyCodeLine{00274\ \ \ \ \ \}}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00277\ \ \ \ \ size\_type\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6537bd5a382817fb5b79d8262ec7513a}{max\_size}}()\ const\ noexcept}
+\DoxyCodeLine{00278\ \ \ \ \ \{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.max\_size();}
+\DoxyCodeLine{00280\ \ \ \ \ \}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00284\ \textcolor{comment}{\ \ \ \ \ *\ Modifiers}}
+\DoxyCodeLine{00285\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_add18cf1a5d19f707f185cec27d3094a1}{clear}}()\ noexcept}
+\DoxyCodeLine{00289\ \ \ \ \ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.clear();}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}}.clear();}
+\DoxyCodeLine{00292\ \ \ \ \ \}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00295\ \ \ \ \ std::pair<iterator,\ bool>\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a939e5300d694b8ac9841a0444b5f5466}{insert}}(\textcolor{keyword}{const}\ value\_type\&\ value)}
+\DoxyCodeLine{00296\ \ \ \ \ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(value.first);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.insert(value);}
+\DoxyCodeLine{00299\ \ \ \ \ \}}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ P>}
+\DoxyCodeLine{00303\ \ \ \ \ std::pair<iterator,\ bool>\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_abf5f38103ba0bdc37931743f44e6ea3a}{insert}}(\ P\&\&\ value\ )\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/missing-\/std-\/forward)}}
+\DoxyCodeLine{00304\ \ \ \ \ \{}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(value.first);}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.insert(value);}
+\DoxyCodeLine{00307\ \ \ \ \ \}}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00310\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a9c77dd46fd5c921687e501ff25c0e41a}{insert}}(const\_iterator\ hint,\ \textcolor{keyword}{const}\ value\_type\&\ value)}
+\DoxyCodeLine{00311\ \ \ \ \ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(value.first);}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.insert(hint,\ value);}
+\DoxyCodeLine{00314\ \ \ \ \ \}}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00317\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a420afb330229088b91c4b9e5fc7d78e9}{insert}}(const\_iterator\ hint,\ value\_type\&\&\ value)}
+\DoxyCodeLine{00318\ \ \ \ \ \{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(value.first);}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.insert(hint,\ value);}
+\DoxyCodeLine{00321\ \ \ \ \ \}}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ InputIt>}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_aa3073a34ba23f99ab7e143373130c8b5}{insert}}(InputIt\ first,\ InputIt\ last)}
+\DoxyCodeLine{00326\ \ \ \ \ \{}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (const\_iterator\ it\ =\ first;\ it\ !=\ last;\ ++it)}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(it-\/>first);}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.insert(first,\ last);}
+\DoxyCodeLine{00333\ \ \ \ \ \}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_ab4df1497b924971d1a90bdf4a403b61a}{insert}}(std::initializer\_list<value\_type>\ ilist)}
+\DoxyCodeLine{00337\ \ \ \ \ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ value\ :\ ilist)}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(value.first);}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.insert(ilist);}
+\DoxyCodeLine{00344\ \ \ \ \ \}}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Args>}
+\DoxyCodeLine{00348\ \ \ \ \ std::pair<iterator,\ bool>\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a733b60da65661a81258d6932b94cbb2e}{emplace}}(Args\&\&\ ...\ args)}
+\DoxyCodeLine{00349\ \ \ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ fifo\_map::value\_type\ value(std::forward<Args>(args)...);}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(value.first);}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.emplace(std::move(value));}
+\DoxyCodeLine{00353\ \ \ \ \ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Args>}
+\DoxyCodeLine{00357\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a955c9579b501d118aff1c0b28570be58}{emplace\_hint}}(const\_iterator\ hint,\ Args\&\&\ ...\ args)}
+\DoxyCodeLine{00358\ \ \ \ \ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ fifo\_map::value\_type\ value(std::forward<Args>(args)...);}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.add\_key(value.first);}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.emplace\_hint(hint,\ std::move(value));}
+\DoxyCodeLine{00362\ \ \ \ \ \}}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00365\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6bffbddc2d64e7f6d3a163ea4a5fad62}{erase}}(const\_iterator\ pos)}
+\DoxyCodeLine{00366\ \ \ \ \ \{}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.remove\_key(pos-\/>first);}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.erase(pos);}
+\DoxyCodeLine{00369\ \ \ \ \ \}}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00372\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a101ba3fe00458a7720311946c728df9b}{erase}}(const\_iterator\ first,\ const\_iterator\ last)}
+\DoxyCodeLine{00373\ \ \ \ \ \{}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (const\_iterator\ it\ =\ first;\ it\ !=\ last;\ ++it)}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.remove\_key(it-\/>first);}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.erase(first,\ last);}
+\DoxyCodeLine{00380\ \ \ \ \ \}}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00383\ \ \ \ \ size\_type\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a2bad6b413e84cfde21b8b50d138cef35}{erase}}(\textcolor{keyword}{const}\ key\_type\&\ key)}
+\DoxyCodeLine{00384\ \ \ \ \ \{}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ size\_type\ res\ =\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.erase(key);}
+\DoxyCodeLine{00386\ }
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (res\ >\ 0)}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}}.remove\_key(key);}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00393\ \ \ \ \ \}}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a16cfa1685d79157b91bb968440f3ed84}{swap}}(\mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ other)\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/noexcept-\/swap,performance-\/noexcept-\/swap)}}
+\DoxyCodeLine{00397\ \ \ \ \ \{}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ std::swap(\mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}},\ other.\mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}});}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ std::swap(\mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}},\ other.\mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}});}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ std::swap(\mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}},\ other.\mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}});}
+\DoxyCodeLine{00401\ \ \ \ \ \}}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00404\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00405\ \textcolor{comment}{\ \ \ \ \ *\ Lookup}}
+\DoxyCodeLine{00406\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00409\ \ \ \ \ size\_type\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_aee53920c97e28416e032b8abca54a587}{count}}(\textcolor{keyword}{const}\ Key\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00410\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.count(key);}
+\DoxyCodeLine{00412\ \ \ \ \ \}}
+\DoxyCodeLine{00413\ }
+\DoxyCodeLine{00415\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_ae46ce86c2f399fc2f1529e3ccf785568}{find}}(\textcolor{keyword}{const}\ Key\&\ key)}
+\DoxyCodeLine{00416\ \ \ \ \ \{}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.find(key);}
+\DoxyCodeLine{00418\ \ \ \ \ \}}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00421\ \ \ \ \ const\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a975d86476a70f816cff78dc616da25e3}{find}}(\textcolor{keyword}{const}\ Key\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00422\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.find(key);}
+\DoxyCodeLine{00424\ \ \ \ \ \}}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00427\ \ \ \ \ std::pair<iterator,\ iterator>\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a854a4829aacfe54d783e8c43dff12ad0}{equal\_range}}(\textcolor{keyword}{const}\ Key\&\ key)}
+\DoxyCodeLine{00428\ \ \ \ \ \{}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.equal\_range(key);}
+\DoxyCodeLine{00430\ \ \ \ \ \}}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00433\ \ \ \ \ std::pair<const\_iterator,\ const\_iterator>\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a20f06494a2c07e58341706d65084b09e}{equal\_range}}(\textcolor{keyword}{const}\ Key\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00434\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.equal\_range(key);}
+\DoxyCodeLine{00436\ \ \ \ \ \}}
+\DoxyCodeLine{00437\ }
+\DoxyCodeLine{00439\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a9b7b062adb8ac5e1e04f52b9bde6aaa5}{lower\_bound}}(\textcolor{keyword}{const}\ Key\&\ key)}
+\DoxyCodeLine{00440\ \ \ \ \ \{}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.lower\_bound(key);}
+\DoxyCodeLine{00442\ \ \ \ \ \}}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00445\ \ \ \ \ const\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_aa35d27c0d20d24ad9a72633c315eafb5}{lower\_bound}}(\textcolor{keyword}{const}\ Key\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00446\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.lower\_bound(key);}
+\DoxyCodeLine{00448\ \ \ \ \ \}}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00451\ \ \ \ \ iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a955be25a242b89ec424e5996ab377455}{upper\_bound}}(\textcolor{keyword}{const}\ Key\&\ key)}
+\DoxyCodeLine{00452\ \ \ \ \ \{}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.upper\_bound(key);}
+\DoxyCodeLine{00454\ \ \ \ \ \}}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00457\ \ \ \ \ const\_iterator\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a44254b03431082fedc69dc6b10fbb2dd}{upper\_bound}}(\textcolor{keyword}{const}\ Key\&\ key)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00458\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}.upper\_bound(key);}
+\DoxyCodeLine{00460\ \ \ \ \ \}}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00464\ \textcolor{comment}{\ \ \ \ \ *\ Observers}}
+\DoxyCodeLine{00465\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00468\ \ \ \ \ key\_compare\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8835cf75e45740f2aecd8a2a62fcfcb9}{key\_comp}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00469\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}};}
+\DoxyCodeLine{00471\ \ \ \ \ \}}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00473\ }
+\DoxyCodeLine{00474\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00475\ \textcolor{comment}{\ \ \ \ \ *\ Non-\/member\ functions}}
+\DoxyCodeLine{00476\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00478\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map}{fifo\_map}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map}{fifo\_map}}\&\ rhs)}
+\DoxyCodeLine{00479\ \ \ \ \ \{}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.\mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}}\ ==\ rhs.\mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}};}
+\DoxyCodeLine{00481\ \ \ \ \ \}}
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ rhs)}
+\DoxyCodeLine{00484\ \ \ \ \ \{}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.m\_map\ !=\ rhs.m\_map;}
+\DoxyCodeLine{00486\ \ \ \ \ \}}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ rhs)}
+\DoxyCodeLine{00489\ \ \ \ \ \{}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.m\_map\ <\ rhs.m\_map;}
+\DoxyCodeLine{00491\ \ \ \ \ \}}
+\DoxyCodeLine{00492\ }
+\DoxyCodeLine{00493\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator<=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ rhs)}
+\DoxyCodeLine{00494\ \ \ \ \ \{}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.m\_map\ <=\ rhs.m\_map;}
+\DoxyCodeLine{00496\ \ \ \ \ \}}
+\DoxyCodeLine{00497\ }
+\DoxyCodeLine{00498\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator>(\textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ rhs)}
+\DoxyCodeLine{00499\ \ \ \ \ \{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.m\_map\ >\ rhs.m\_map;}
+\DoxyCodeLine{00501\ \ \ \ \ \}}
+\DoxyCodeLine{00502\ }
+\DoxyCodeLine{00503\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{bool}\ operator>=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a8e3008839518611dd0e4bc958cc1c298}{fifo\_map}}\&\ rhs)}
+\DoxyCodeLine{00504\ \ \ \ \ \{}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs.m\_map\ >=\ rhs.m\_map;}
+\DoxyCodeLine{00506\ \ \ \ \ \}}
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00508\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00510\ \ \ \ \ std::unordered\_map<Key,\ std::size\_t>\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_ab1f1226eb05788913d4bbf7788896312}{m\_keys}};}
+\DoxyCodeLine{00512\ \ \ \ \ Compare\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a392a73ac26e6b37de572940aa989c786}{m\_compare}};}
+\DoxyCodeLine{00514\ \ \ \ \ internal\_map\_type\ \mbox{\hyperlink{classnlohmann_1_1fifo__map_a6d9fce04b9982e5b4b6c20a574c691b7}{m\_map}};}
+\DoxyCodeLine{00515\ \};}
+\DoxyCodeLine{00516\ }
+\DoxyCodeLine{00517\ \}\ \textcolor{comment}{//\ namespace\ nlohmann}}
+\DoxyCodeLine{00518\ }
+\DoxyCodeLine{00519\ \textcolor{comment}{//\ specialization\ of\ std::swap}}
+\DoxyCodeLine{00520\ \textcolor{keyword}{namespace\ }std\ \textcolor{comment}{//\ NOLINT(cert-\/dcl58-\/cpp,-\/warnings-\/as-\/errors)}}
+\DoxyCodeLine{00521\ \{}
+\DoxyCodeLine{00522\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Key,\ \textcolor{keyword}{class}\ T,\ \textcolor{keyword}{class}\ Compare,\ \textcolor{keyword}{class}\ Allocator>}
+\DoxyCodeLine{00523\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ swap(\mbox{\hyperlink{classnlohmann_1_1fifo__map}{nlohmann::fifo\_map<Key,\ T,\ Compare,\ Allocator>}}\&\ m1,\ \textcolor{comment}{//\ NOLINT(cert-\/dcl58-\/cpp,cppcoreguidelines-\/noexcept-\/swap,performance-\/noexcept-\/swap)}}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classnlohmann_1_1fifo__map}{nlohmann::fifo\_map<Key,\ T,\ Compare,\ Allocator>}}\&\ m2)}
+\DoxyCodeLine{00525\ \{}
+\DoxyCodeLine{00526\ \ \ \ \ m1.\mbox{\hyperlink{classnlohmann_1_1fifo__map_a16cfa1685d79157b91bb968440f3ed84}{swap}}(m2);}
+\DoxyCodeLine{00527\ \}}
+\DoxyCodeLine{00528\ \}\ \textcolor{comment}{//\ namespace\ std}}
+\DoxyCodeLine{00529\ }
+\DoxyCodeLine{00530\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -91,7 +92,6 @@ $(function(){ initResizable(false); });
 <div id="doc-content">
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">raylib.cpp File Reference</div></div>
@@ -100,86 +100,76 @@ $(function(){ initResizable(false); });
 
 <p>graphic shared library for raylib implementation  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;window/RayWindow.hpp&quot;</code><br />
-<code>#include &quot;graphic/RayPolygon.hpp&quot;</code><br />
-<code>#include &quot;graphic/RayModel.hpp&quot;</code><br />
-<code>#include &quot;window/RayCamera.hpp&quot;</code><br />
-<code>#include &quot;event/RayKeyboard.hpp&quot;</code><br />
-<code>#include &quot;event/RayMouse.hpp&quot;</code><br />
-<code>#include &quot;event/RayEvent.hpp&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_ray_window_8hpp_source.html">window/RayWindow.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_ray_polygon_8hpp_source.html">graphic/RayPolygon.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_ray_model_8hpp_source.html">graphic/RayModel.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_ray_camera_8hpp_source.html">window/RayCamera.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_ray_keyboard_8hpp_source.html">event/RayKeyboard.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_ray_mouse_8hpp_source.html">event/RayMouse.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_ray_event_8hpp_source.html">event/RayEvent.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceraylib.html">raylib</a></td></tr>
-<tr class="memdesc:namespaceraylib"><td class="mdescLeft">&#160;</td><td class="mdescRight">graphic/raylib <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1c8429ad724706c80c8a31c10f953130" id="r_a1c8429ad724706c80c8a31c10f953130"><td class="memItemLeft" align="right" valign="top"><a id="a1c8429ad724706c80c8a31c10f953130" name="a1c8429ad724706c80c8a31c10f953130"></a>
-<a class="el" href="classgraphic_1_1_i_window.html">graphic::IWindow</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createWindow</b> (__int32_t screenWidth, __int32_t screenHeight, std::string title)</td></tr>
-<tr class="memdesc:a1c8429ad724706c80c8a31c10f953130"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a window <br /></td></tr>
-<tr class="separator:a1c8429ad724706c80c8a31c10f953130"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af74872ef6611df6d20e97538bb453cbf" id="r_af74872ef6611df6d20e97538bb453cbf"><td class="memItemLeft" align="right" valign="top"><a id="af74872ef6611df6d20e97538bb453cbf" name="af74872ef6611df6d20e97538bb453cbf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteWindow</b> (<a class="el" href="classgraphic_1_1_i_window.html">graphic::IWindow</a> *window)</td></tr>
-<tr class="separator:af74872ef6611df6d20e97538bb453cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63d25ddc6ccbcd49a4a88b31d439a519" id="r_a63d25ddc6ccbcd49a4a88b31d439a519"><td class="memItemLeft" align="right" valign="top"><a id="a63d25ddc6ccbcd49a4a88b31d439a519" name="a63d25ddc6ccbcd49a4a88b31d439a519"></a>
-<a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createCamera</b> (<a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a> position)</td></tr>
-<tr class="separator:a63d25ddc6ccbcd49a4a88b31d439a519"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6278647529e2aa6aa0688aed30f954dc" id="r_a6278647529e2aa6aa0688aed30f954dc"><td class="memItemLeft" align="right" valign="top"><a id="a6278647529e2aa6aa0688aed30f954dc" name="a6278647529e2aa6aa0688aed30f954dc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteCamera</b> (<a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera)</td></tr>
-<tr class="separator:a6278647529e2aa6aa0688aed30f954dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a180d8e8dfb641bfde4dbdaf97e4e575b" id="r_a180d8e8dfb641bfde4dbdaf97e4e575b"><td class="memItemLeft" align="right" valign="top"><a id="a180d8e8dfb641bfde4dbdaf97e4e575b" name="a180d8e8dfb641bfde4dbdaf97e4e575b"></a>
-<a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createEvent</b> ()</td></tr>
-<tr class="memdesc:a180d8e8dfb641bfde4dbdaf97e4e575b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event. <br /></td></tr>
-<tr class="separator:a180d8e8dfb641bfde4dbdaf97e4e575b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29ca5d5a86f222a68b80406e739472e9" id="r_a29ca5d5a86f222a68b80406e739472e9"><td class="memItemLeft" align="right" valign="top"><a id="a29ca5d5a86f222a68b80406e739472e9" name="a29ca5d5a86f222a68b80406e739472e9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteEvent</b> (<a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event)</td></tr>
-<tr class="separator:a29ca5d5a86f222a68b80406e739472e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50616b536976706f89a7132ca27e0635" id="r_a50616b536976706f89a7132ca27e0635"><td class="memItemLeft" align="right" valign="top"><a id="a50616b536976706f89a7132ca27e0635" name="a50616b536976706f89a7132ca27e0635"></a>
-<a class="el" href="classgraphic_1_1_i_keyboard.html">graphic::IKeyboard</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createKeyboard</b> (<a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event)</td></tr>
-<tr class="separator:a50616b536976706f89a7132ca27e0635"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a471e5eea8485f7f427c552dbe1f6e229" id="r_a471e5eea8485f7f427c552dbe1f6e229"><td class="memItemLeft" align="right" valign="top"><a id="a471e5eea8485f7f427c552dbe1f6e229" name="a471e5eea8485f7f427c552dbe1f6e229"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteKeyboard</b> (<a class="el" href="classgraphic_1_1_i_keyboard.html">graphic::IKeyboard</a> *keyboard)</td></tr>
-<tr class="separator:a471e5eea8485f7f427c552dbe1f6e229"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad76069785343b7e4a6e0c0ea08900fe3" id="r_ad76069785343b7e4a6e0c0ea08900fe3"><td class="memItemLeft" align="right" valign="top"><a id="ad76069785343b7e4a6e0c0ea08900fe3" name="ad76069785343b7e4a6e0c0ea08900fe3"></a>
-<a class="el" href="classgraphic_1_1_i_mouse.html">graphic::IMouse</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createMouse</b> (<a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event)</td></tr>
-<tr class="separator:ad76069785343b7e4a6e0c0ea08900fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3ad2af27ce2bf1e4e1813a9b637d3fe" id="r_ac3ad2af27ce2bf1e4e1813a9b637d3fe"><td class="memItemLeft" align="right" valign="top"><a id="ac3ad2af27ce2bf1e4e1813a9b637d3fe" name="ac3ad2af27ce2bf1e4e1813a9b637d3fe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteMouse</b> (<a class="el" href="classgraphic_1_1_i_mouse.html">graphic::IMouse</a> *mouse)</td></tr>
-<tr class="separator:ac3ad2af27ce2bf1e4e1813a9b637d3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af338b09682123b06a23f16dd0e79eea7" id="r_af338b09682123b06a23f16dd0e79eea7"><td class="memItemLeft" align="right" valign="top"><a id="af338b09682123b06a23f16dd0e79eea7" name="af338b09682123b06a23f16dd0e79eea7"></a>
-<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createPolygon</b> (std::vector&lt; <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> &gt; points)</td></tr>
-<tr class="memdesc:af338b09682123b06a23f16dd0e79eea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphics. <br /></td></tr>
-<tr class="separator:af338b09682123b06a23f16dd0e79eea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a634a535acef8fb288ed32dc07ff92322" id="r_a634a535acef8fb288ed32dc07ff92322"><td class="memItemLeft" align="right" valign="top"><a id="a634a535acef8fb288ed32dc07ff92322" name="a634a535acef8fb288ed32dc07ff92322"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deletePolygon</b> (<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon)</td></tr>
-<tr class="separator:a634a535acef8fb288ed32dc07ff92322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a506cb890964ba5935395d5995f1230ca" id="r_a506cb890964ba5935395d5995f1230ca"><td class="memItemLeft" align="right" valign="top"><a id="a506cb890964ba5935395d5995f1230ca" name="a506cb890964ba5935395d5995f1230ca"></a>
-<a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createSprite</b> (std::string sprite)</td></tr>
-<tr class="separator:a506cb890964ba5935395d5995f1230ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ac2d74301041e22c583cf1a5e2a4024" id="r_a7ac2d74301041e22c583cf1a5e2a4024"><td class="memItemLeft" align="right" valign="top"><a id="a7ac2d74301041e22c583cf1a5e2a4024" name="a7ac2d74301041e22c583cf1a5e2a4024"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteSprite</b> (<a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite)</td></tr>
-<tr class="separator:a7ac2d74301041e22c583cf1a5e2a4024"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad84e5fbd85db7969676a38ac10819452" id="r_ad84e5fbd85db7969676a38ac10819452"><td class="memItemLeft" align="right" valign="top"><a id="ad84e5fbd85db7969676a38ac10819452" name="ad84e5fbd85db7969676a38ac10819452"></a>
-<a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createModel</b> ()</td></tr>
-<tr class="separator:ad84e5fbd85db7969676a38ac10819452"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86f4defa19eab58adaf4ae8c058898c5" id="r_a86f4defa19eab58adaf4ae8c058898c5"><td class="memItemLeft" align="right" valign="top"><a id="a86f4defa19eab58adaf4ae8c058898c5" name="a86f4defa19eab58adaf4ae8c058898c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteModel</b> (<a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model)</td></tr>
-<tr class="separator:a86f4defa19eab58adaf4ae8c058898c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b612f3670f20ad2c7ed3d7a21acc6b5" id="r_a1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="memItemLeft" align="right" valign="top"><a id="a1b612f3670f20ad2c7ed3d7a21acc6b5" name="a1b612f3670f20ad2c7ed3d7a21acc6b5"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> ()</td></tr>
-<tr class="separator:a1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a9e1cf52200ed570b486bf1df100e08" id="r_a5a9e1cf52200ed570b486bf1df100e08"><td class="memItemLeft" align="right" valign="top"><a id="a5a9e1cf52200ed570b486bf1df100e08" name="a5a9e1cf52200ed570b486bf1df100e08"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> ()</td></tr>
-<tr class="separator:a5a9e1cf52200ed570b486bf1df100e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c8429ad724706c80c8a31c10f953130" id="r_ga1c8429ad724706c80c8a31c10f953130"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_window.html">graphic::IWindow</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga1c8429ad724706c80c8a31c10f953130">createWindow</a> (__int32_t screenWidth, __int32_t screenHeight, std::string title)</td></tr>
+<tr class="memdesc:ga1c8429ad724706c80c8a31c10f953130"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a window  <br /></td></tr>
+<tr class="separator:ga1c8429ad724706c80c8a31c10f953130"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf74872ef6611df6d20e97538bb453cbf" id="r_gaf74872ef6611df6d20e97538bb453cbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#gaf74872ef6611df6d20e97538bb453cbf">deleteWindow</a> (<a class="el" href="classgraphic_1_1_i_window.html">graphic::IWindow</a> *window)</td></tr>
+<tr class="memdesc:gaf74872ef6611df6d20e97538bb453cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a window  <br /></td></tr>
+<tr class="separator:gaf74872ef6611df6d20e97538bb453cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63d25ddc6ccbcd49a4a88b31d439a519" id="r_ga63d25ddc6ccbcd49a4a88b31d439a519"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga63d25ddc6ccbcd49a4a88b31d439a519">createCamera</a> (<a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a> position)</td></tr>
+<tr class="memdesc:ga63d25ddc6ccbcd49a4a88b31d439a519"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a camera  <br /></td></tr>
+<tr class="separator:ga63d25ddc6ccbcd49a4a88b31d439a519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6278647529e2aa6aa0688aed30f954dc" id="r_ga6278647529e2aa6aa0688aed30f954dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga6278647529e2aa6aa0688aed30f954dc">deleteCamera</a> (<a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera)</td></tr>
+<tr class="memdesc:ga6278647529e2aa6aa0688aed30f954dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a camera  <br /></td></tr>
+<tr class="separator:ga6278647529e2aa6aa0688aed30f954dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga180d8e8dfb641bfde4dbdaf97e4e575b" id="r_ga180d8e8dfb641bfde4dbdaf97e4e575b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga180d8e8dfb641bfde4dbdaf97e4e575b">createEvent</a> ()</td></tr>
+<tr class="memdesc:ga180d8e8dfb641bfde4dbdaf97e4e575b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event.  <br /></td></tr>
+<tr class="separator:ga180d8e8dfb641bfde4dbdaf97e4e575b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29ca5d5a86f222a68b80406e739472e9" id="r_ga29ca5d5a86f222a68b80406e739472e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga29ca5d5a86f222a68b80406e739472e9">deleteEvent</a> (<a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event)</td></tr>
+<tr class="memdesc:ga29ca5d5a86f222a68b80406e739472e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete an event  <br /></td></tr>
+<tr class="separator:ga29ca5d5a86f222a68b80406e739472e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50616b536976706f89a7132ca27e0635" id="r_ga50616b536976706f89a7132ca27e0635"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_keyboard.html">graphic::IKeyboard</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga50616b536976706f89a7132ca27e0635">createKeyboard</a> (<a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event)</td></tr>
+<tr class="memdesc:ga50616b536976706f89a7132ca27e0635"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a keyboard  <br /></td></tr>
+<tr class="separator:ga50616b536976706f89a7132ca27e0635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga471e5eea8485f7f427c552dbe1f6e229" id="r_ga471e5eea8485f7f427c552dbe1f6e229"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga471e5eea8485f7f427c552dbe1f6e229">deleteKeyboard</a> (<a class="el" href="classgraphic_1_1_i_keyboard.html">graphic::IKeyboard</a> *keyboard)</td></tr>
+<tr class="memdesc:ga471e5eea8485f7f427c552dbe1f6e229"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a keyboard  <br /></td></tr>
+<tr class="separator:ga471e5eea8485f7f427c552dbe1f6e229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad76069785343b7e4a6e0c0ea08900fe3" id="r_gad76069785343b7e4a6e0c0ea08900fe3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_mouse.html">graphic::IMouse</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#gad76069785343b7e4a6e0c0ea08900fe3">createMouse</a> (<a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event)</td></tr>
+<tr class="memdesc:gad76069785343b7e4a6e0c0ea08900fe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a mouse  <br /></td></tr>
+<tr class="separator:gad76069785343b7e4a6e0c0ea08900fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac3ad2af27ce2bf1e4e1813a9b637d3fe" id="r_gac3ad2af27ce2bf1e4e1813a9b637d3fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#gac3ad2af27ce2bf1e4e1813a9b637d3fe">deleteMouse</a> (<a class="el" href="classgraphic_1_1_i_mouse.html">graphic::IMouse</a> *mouse)</td></tr>
+<tr class="memdesc:gac3ad2af27ce2bf1e4e1813a9b637d3fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a mouse  <br /></td></tr>
+<tr class="separator:gac3ad2af27ce2bf1e4e1813a9b637d3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf338b09682123b06a23f16dd0e79eea7" id="r_gaf338b09682123b06a23f16dd0e79eea7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#gaf338b09682123b06a23f16dd0e79eea7">createPolygon</a> (std::vector&lt; <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> &gt; points)</td></tr>
+<tr class="memdesc:gaf338b09682123b06a23f16dd0e79eea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphics.  <br /></td></tr>
+<tr class="separator:gaf338b09682123b06a23f16dd0e79eea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga634a535acef8fb288ed32dc07ff92322" id="r_ga634a535acef8fb288ed32dc07ff92322"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga634a535acef8fb288ed32dc07ff92322">deletePolygon</a> (<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon)</td></tr>
+<tr class="memdesc:ga634a535acef8fb288ed32dc07ff92322"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a polygon  <br /></td></tr>
+<tr class="separator:ga634a535acef8fb288ed32dc07ff92322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga506cb890964ba5935395d5995f1230ca" id="r_ga506cb890964ba5935395d5995f1230ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga506cb890964ba5935395d5995f1230ca">createSprite</a> (std::string sprite)</td></tr>
+<tr class="memdesc:ga506cb890964ba5935395d5995f1230ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a sprite  <br /></td></tr>
+<tr class="separator:ga506cb890964ba5935395d5995f1230ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7ac2d74301041e22c583cf1a5e2a4024" id="r_ga7ac2d74301041e22c583cf1a5e2a4024"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga7ac2d74301041e22c583cf1a5e2a4024">deleteSprite</a> (<a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite)</td></tr>
+<tr class="memdesc:ga7ac2d74301041e22c583cf1a5e2a4024"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a sprite  <br /></td></tr>
+<tr class="separator:ga7ac2d74301041e22c583cf1a5e2a4024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad84e5fbd85db7969676a38ac10819452" id="r_gad84e5fbd85db7969676a38ac10819452"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#gad84e5fbd85db7969676a38ac10819452">createModel</a> ()</td></tr>
+<tr class="memdesc:gad84e5fbd85db7969676a38ac10819452"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a model  <br /></td></tr>
+<tr class="separator:gad84e5fbd85db7969676a38ac10819452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86f4defa19eab58adaf4ae8c058898c5" id="r_ga86f4defa19eab58adaf4ae8c058898c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga86f4defa19eab58adaf4ae8c058898c5">deleteModel</a> (<a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model)</td></tr>
+<tr class="memdesc:ga86f4defa19eab58adaf4ae8c058898c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a model  <br /></td></tr>
+<tr class="separator:ga86f4defa19eab58adaf4ae8c058898c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b612f3670f20ad2c7ed3d7a21acc6b5" id="r_ga1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga1b612f3670f20ad2c7ed3d7a21acc6b5">getName</a> ()</td></tr>
+<tr class="memdesc:ga1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the name of the library  <br /></td></tr>
+<tr class="separator:ga1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5a9e1cf52200ed570b486bf1df100e08" id="r_ga5a9e1cf52200ed570b486bf1df100e08"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga5a9e1cf52200ed570b486bf1df100e08">getType</a> ()</td></tr>
+<tr class="memdesc:ga5a9e1cf52200ed570b486bf1df100e08"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the type of the library  <br /></td></tr>
+<tr class="separator:ga5a9e1cf52200ed570b486bf1df100e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>graphic shared library for raylib implementation </p>
 <dl class="section author"><dt>Author</dt><dd>@Perry-Chouteau (<a href="#" onclick="location.href='mai'+'lto:'+'per'+'ry'+'.ch'+'ou'+'tea'+'u@'+'out'+'lo'+'ok.'+'co'+'m'; return false;">perry<span class="obfuscator">.nosp@m.</span>.cho<span class="obfuscator">.nosp@m.</span>uteau<span class="obfuscator">.nosp@m.</span>@out<span class="obfuscator">.nosp@m.</span>look.<span class="obfuscator">.nosp@m.</span>com</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2025-01-27</dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-01-27 </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,9 +1,12 @@
 /**
- * @ Author: Perry Chouteau
- * @ Create Time: 2024-04-27 03:45:38
- * @ Modified by: Perry Chouteau
- * @ Modified time: 2025-01-28 00:30:38
- * @ Description:
+ * @file IMouse.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup graphic
+ * @{
  */
 
 #ifndef IMOUSE_HPP_

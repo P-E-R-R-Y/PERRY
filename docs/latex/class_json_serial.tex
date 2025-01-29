@@ -9,74 +9,33 @@ Inheritance diagram for Json\+Serial\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_json_serial_a2a00f269590167c661c249d1b18041bd}{load}} (const std\+::string \&path) override
+void \mbox{\hyperlink{group__json_ga2a00f269590167c661c249d1b18041bd}{load}} (const std\+::string \&path) override
+\begin{DoxyCompactList}\small\item\em virtual method to load a file \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__json_gae488c356c07d116778fbc6cf7114abca}{is\+Loaded}} () override
+\begin{DoxyCompactList}\small\item\em virtual method to know if the file is loaded \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__json_gad3ce46a0430880e403930e244c51dd24}{close}} () override
+\begin{DoxyCompactList}\small\item\em virtual method to close a file \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} \mbox{\hyperlink{group__json_ga37a58a2841346dddb51c2c0336be1918}{get\+Root}} () override
+\begin{DoxyCompactList}\small\item\em virtual method to get the root node \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classserial_1_1_i_serial}{serial\+::\+ISerial}}}
+\begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{class_json_serial_ae488c356c07d116778fbc6cf7114abca}{is\+Loaded}} () override
-\item 
-void \mbox{\hyperlink{class_json_serial_ad3ce46a0430880e403930e244c51dd24}{close}} () override
-\item 
-\mbox{\hyperlink{class_node}{Node}} \mbox{\hyperlink{class_json_serial_a37a58a2841346dddb51c2c0336be1918}{get\+Root}} () override
-\end{DoxyCompactItemize}
+virtual \mbox{\hyperlink{group__serial_ga2a42a8affb7842a3c56bd6a40fb5fff3}{\texorpdfstring{$\sim$}{\string~}\+ISerial}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classserial_1_1_i_serial}{ISerial} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_json_serial_ab40e859c006dbf0b83da671def9c3cbb}\label{class_json_serial_ab40e859c006dbf0b83da671def9c3cbb} 
-\mbox{\hyperlink{class_node}{Node}} {\bfseries json\+\_\+converter} (nlohmann\+::json json)
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries json\+\_\+converter} (nlohmann\+::json json)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_json_serial_a090c22c9bdaccc498d954ef5e7067bcd}\label{class_json_serial_a090c22c9bdaccc498d954ef5e7067bcd} 
-\mbox{\hyperlink{class_node}{Node}} {\bfseries node}
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries node}
 \item 
-\Hypertarget{class_json_serial_ae2013f571fa7987a42d4c0b57d84728b}\label{class_json_serial_ae2013f571fa7987a42d4c0b57d84728b} 
 bool {\bfseries loaded}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
-\Hypertarget{class_json_serial_ad3ce46a0430880e403930e244c51dd24}\index{JsonSerial@{JsonSerial}!close@{close}}
-\index{close@{close}!JsonSerial@{JsonSerial}}
-\doxysubsubsection{\texorpdfstring{close()}{close()}}
-{\footnotesize\ttfamily \label{class_json_serial_ad3ce46a0430880e403930e244c51dd24} 
-void Json\+Serial\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{class_i_serial}{ISerial}}.
-
-\Hypertarget{class_json_serial_a37a58a2841346dddb51c2c0336be1918}\index{JsonSerial@{JsonSerial}!getRoot@{getRoot}}
-\index{getRoot@{getRoot}!JsonSerial@{JsonSerial}}
-\doxysubsubsection{\texorpdfstring{getRoot()}{getRoot()}}
-{\footnotesize\ttfamily \label{class_json_serial_a37a58a2841346dddb51c2c0336be1918} 
-\mbox{\hyperlink{class_node}{Node}} Json\+Serial\+::get\+Root (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{class_i_serial}{ISerial}}.
-
-\Hypertarget{class_json_serial_ae488c356c07d116778fbc6cf7114abca}\index{JsonSerial@{JsonSerial}!isLoaded@{isLoaded}}
-\index{isLoaded@{isLoaded}!JsonSerial@{JsonSerial}}
-\doxysubsubsection{\texorpdfstring{isLoaded()}{isLoaded()}}
-{\footnotesize\ttfamily \label{class_json_serial_ae488c356c07d116778fbc6cf7114abca} 
-bool Json\+Serial\+::is\+Loaded (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{class_i_serial}{ISerial}}.
-
-\Hypertarget{class_json_serial_a2a00f269590167c661c249d1b18041bd}\index{JsonSerial@{JsonSerial}!load@{load}}
-\index{load@{load}!JsonSerial@{JsonSerial}}
-\doxysubsubsection{\texorpdfstring{load()}{load()}}
-{\footnotesize\ttfamily \label{class_json_serial_a2a00f269590167c661c249d1b18041bd} 
-void Json\+Serial\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{class_i_serial}{ISerial}}.
-
-
-
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/serial/json/Json\+Serial.\+hpp\end{DoxyCompactItemize}
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/serial/json/\mbox{\hyperlink{_json_serial_8hpp}{Json\+Serial.\+hpp}}\end{DoxyCompactItemize}

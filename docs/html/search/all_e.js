@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['node_0',['Node',['../class_node.html',1,'']]]
+  ['node_0',['Node',['../classserial_1_1_node.html',1,'serial']]],
+  ['normalisev3f_1',['normaliseV3f',['../group__sfml__extra.html#gaf2fb156d3650dd4a023012d7e490497a',1,'Vector3f.hpp']]],
+  ['normalize_2',['normalize',['../group___s_f_m_l.html#ga48e6bafb249c895ed25f29dc9170e11e',1,'Quaternion']]]
 ];

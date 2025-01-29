@@ -1,0 +1,62 @@
+\doxysection{SDL\+\_\+locale.\+h}
+\hypertarget{sdl2__image-src_2_xcode_2mac_o_s_2_s_d_l2_8framework_2_versions_2_a_2_headers_2_s_d_l__locale_8h_source}{}\label{sdl2__image-src_2_xcode_2mac_o_s_2_s_d_l2_8framework_2_versions_2_a_2_headers_2_s_d_l__locale_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/macOS/SDL2.framework/Versions/A/Headers/SDL\_locale.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/macOS/SDL2.framework/Versions/A/Headers/SDL\_locale.h}}
+\mbox{\hyperlink{sdl2__image-src_2_xcode_2mac_o_s_2_s_d_l2_8framework_2_versions_2_a_2_headers_2_s_d_l__locale_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2022\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ \_SDL\_locale\_h}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ \_SDL\_locale\_h}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL2/SDL\_stdinc.h}}>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__error_8h}{SDL2/SDL\_error.h}}>}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{SDL2/begin\_code.h}}>}}
+\DoxyCodeLine{00035\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00037\ \textcolor{comment}{/*\ *INDENT-\/OFF*\ */}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00039\ \textcolor{comment}{/*\ *INDENT-\/ON*\ */}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___locale}{SDL\_Locale}}}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_s_d_l___locale_ac5f34c7dab1bc3ed6e9d97505a64c198}{language}};\ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_s_d_l___locale_a5849a997d164207214a5fab4c31f22b3}{country}};\ \ }
+\DoxyCodeLine{00047\ \}\ \mbox{\hyperlink{struct_s_d_l___locale}{SDL\_Locale}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___locale}{SDL\_Locale}}\ *\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__locale_8h_a3a548844c2f24c9310f579eae7027165}{SDL\_GetPreferredLocales}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00095\ \textcolor{comment}{/*\ *INDENT-\/OFF*\ */}}
+\DoxyCodeLine{00096\ \}}
+\DoxyCodeLine{00097\ \textcolor{comment}{/*\ *INDENT-\/ON*\ */}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{SDL2/close\_code.h}}>}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_SDL\_locale\_h\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

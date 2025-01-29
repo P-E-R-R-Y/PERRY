@@ -1,0 +1,35 @@
+\doxysection{std\+\_\+fs.\+hpp}
+\hypertarget{std__fs_8hpp_source}{}\label{std__fs_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/meta/std\_fs.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/meta/std\_fs.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/macro\_scope.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#if\ JSON\_HAS\_EXPERIMENTAL\_FILESYSTEM}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <experimental/filesystem>}}
+\DoxyCodeLine{00015\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }std\_fs\ =\ std::experimental::filesystem;}
+\DoxyCodeLine{00019\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00020\ NLOHMANN\_JSON\_NAMESPACE\_END}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#elif\ JSON\_HAS\_FILESYSTEM}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00023\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }std\_fs\ =\ std::filesystem;}
+\DoxyCodeLine{00027\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00028\ NLOHMANN\_JSON\_NAMESPACE\_END}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,17 +1,13 @@
 /**
- *
- * File: IWindow.hpp
- * Created Date: Fr Mar 2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Fri Mar 10 2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
-
+ * @file SfmlCamera.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup SFML
+ * @{
+ */
 
 #ifndef SFMLCAMERA_HPP_
 #define SFMLCAMERA_HPP_
@@ -34,6 +30,13 @@ class SfmlCamera : public graphic::ICamera {
     public:
         friend class SfmlWindow;
 
+        /**
+         * @brief Construct a new Sfml Camera object
+         *
+         * @param pos 
+         * @param target 
+         * @param fov 
+         */
         SfmlCamera(sf::Vector3f pos = {0.f, 0.0f, 0.0f}, sf::Vector3f target = {0, 0, -1}, float fov = 90) : _position(pos), _up({0, 1, 0}), _fov(fov) {
             sf::Vector3f usual = {0, 0, -1};
             sf::Vector3f direction = normaliseV3f(target - _position);
@@ -42,56 +45,116 @@ class SfmlCamera : public graphic::ICamera {
             _quaternion = Quaternion::fromVectors(usual, direction);
         }
 
+        /**
+         * @brief Destroy the Sfml Camera object
+         */
         ~SfmlCamera() {}
 
-        //f
+        /**
+         * @brief Get the Fov object
+         * 
+         * @return float 
+         */
         float getFov() const override {
             return 0;
         }
 
+        /**
+         * @brief Set the Fov object
+         * 
+         * @param fov 
+         */
         void setFov(float fov) override {
             std::cout << "SfmlCamera::setFov not implemented" << std::endl;
         }
 
-        //m
+        /**
+         * @brief Get the Mode object
+         * 
+         * @return ICamera::Mode 
+         */
         ICamera::Mode getMode() const override {
             return ICamera::Mode::FIRST_PERSON;
         }
 
+        /**
+         * @brief Set the Mode object
+         * 
+         * @param mode 
+         */
         void setMode(ICamera::Mode mode) override {
             std::cout << "SfmlCamera::setMode not implemented" << std::endl;
         }
         
-        //p
+        /**
+         * @brief Get the Position object
+         * 
+         * @return __v3f_t 
+         */
         __v3f_t getPosition() const override {
             return {_position.x, _position.y, _position.z};
         }
 
+        /**
+         * @brief Set the Position object
+         * 
+         * @param position 
+         */
         void setPosition(__v3f_t position) override {
             _position = {float(position.x), float(position.y), float(position.z)};
         }
-        
+
+        /**
+         * @brief Get the Projection object
+         * 
+         * @return ICamera::Projection 
+         */
         ICamera::Projection getProjection() const override {
             return ICamera::PERSPECTIVE;
         }
 
+        /**
+         * @brief Set the Projection object
+         * 
+         * @param projection 
+         */
         void setProjection(ICamera::Projection projection) override {
             std::cout << "SfmlCamera::setProjection not implemented" << std::endl;
         }
 
-        //t
-          __v3f_t getTarget() const override {
+        /**
+         * @brief Get the Target object
+         * 
+         * @return __v3f_t 
+         */
+        __v3f_t getTarget() const override {
             std::cout << "SfmlCamera::getTarget not implemented" << std::endl;
             return {0, 0, 0};
         }
+
+        /**
+         * @brief Set the Target object
+         * 
+         * @param target 
+         */
         void setTarget(__v3f_t target) override {
             std::cout << "SfmlCamera::setTarget not implemented" << std::endl;
         }
 
-        //u
-          __v3f_t getUp() const override {
+        /**
+         * @brief Get the Up object
+         * 
+         * @return __v3f_t 
+         */
+        __v3f_t getUp() const override {
             return {0, 0, 0};
         }
+
+        /**
+         * @brief Set the Up object
+         * 
+         * @param up 
+         */
         void setUp(__v3f_t up) override {
             std::cout << "SfmlCamera::setUp not implemented" << std::endl;
         }
@@ -108,6 +171,14 @@ class SfmlCamera : public graphic::ICamera {
 };
 
 
+/**
+ * @brief perspectiveProjection will create a perspective projection matrix
+ * 
+ * @tparam T 
+ * @param fov 
+ * @param aspectRatio 
+ * @return Matrice<T> 
+ */
 template <typename T>
 Matrice<T> perspectiveProjection(T fov, T aspectRatio) {
     // Convert FOV from degrees to radians
@@ -126,6 +197,18 @@ Matrice<T> perspectiveProjection(T fov, T aspectRatio) {
     return Matrice<T>(proj);
 }
 
+/**
+ * @brief orthographicProjection will create an orthographic projection matrix
+ * 
+ * @tparam T 
+ * @param left 
+ * @param right 
+ * @param bottom 
+ * @param top 
+ * @param nearPlane 
+ * @param farPlane 
+ * @return Matrice<T> 
+ */
 template <typename T>
 Matrice<T> orthographicProjection(T left, T right, T bottom, T top, T nearPlane, T farPlane) {
     // Create the orthographic projection matrix

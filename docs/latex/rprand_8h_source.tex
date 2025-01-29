@@ -1,0 +1,311 @@
+\doxysection{rprand.\+h}
+\hypertarget{rprand_8h_source}{}\label{rprand_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/src/external/rprand.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/src/external/rprand.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**********************************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ \ \ rprand\ v1.0\ -\/\ A\ simple\ and\ easy-\/to-\/use\ pseudo-\/random\ numbers\ generator\ (PRNG)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ \ \ FEATURES:}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ \ \ \ \ \ \ -\/\ Pseudo-\/random\ values\ generation,\ 32\ bits:\ [0..4294967295]}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ \ \ \ \ \ \ -\/\ Sequence\ generation\ avoiding\ duplicate\ values}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*\ \ \ \ \ \ \ -\/\ Using\ standard\ and\ proven\ prng\ algorithm\ (Xoshiro128**)}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ \ \ \ \ \ \ -\/\ State\ initialized\ with\ a\ separate\ generator\ (SplitMix64)}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ \ \ LIMITATIONS:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ \ \ \ \ \ \ -\/\ No\ negative\ numbers,\ up\ to\ the\ user\ to\ manage\ them}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*\ \ \ POSSIBLE\ IMPROVEMENTS:}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*\ \ \ \ \ \ \ -\/\ Support\ 64\ bits\ generation}}
+\DoxyCodeLine{00016\ \textcolor{comment}{*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*\ \ \ ADDITIONAL\ NOTES:}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*\ \ \ \ \ This\ library\ implements\ two\ pseudo-\/random\ number\ generation\ algorithms:\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{*}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ -\/\ Xoshiro128**\ :\ https://prng.di.unimi.it/xoshiro128starstar.c}}
+\DoxyCodeLine{00021\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ -\/\ SplitMix64\ \ \ :\ https://prng.di.unimi.it/splitmix64.c}}
+\DoxyCodeLine{00022\ \textcolor{comment}{*}}
+\DoxyCodeLine{00023\ \textcolor{comment}{*\ \ \ \ \ SplitMix64\ is\ used\ to\ initialize\ the\ Xoshiro128**\ state,\ from\ a\ provided\ seed}}
+\DoxyCodeLine{00024\ \textcolor{comment}{*}}
+\DoxyCodeLine{00025\ \textcolor{comment}{*\ \ \ \ \ It's\ suggested\ to\ use\ SplitMix64\ to\ initialize\ the\ state\ of\ the\ generators\ starting\ from\ }}
+\DoxyCodeLine{00026\ \textcolor{comment}{*\ \ \ \ \ a\ 64-\/bit\ seed,\ as\ research\ has\ shown\ that\ initialization\ must\ be\ performed\ with\ a\ generator\ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{*\ \ \ \ \ radically\ different\ in\ nature\ from\ the\ one\ initialized\ to\ avoid\ correlation\ on\ similar\ seeds.}}
+\DoxyCodeLine{00028\ \textcolor{comment}{*}}
+\DoxyCodeLine{00029\ \textcolor{comment}{*\ \ \ CONFIGURATION:}}
+\DoxyCodeLine{00030\ \textcolor{comment}{*\ \ \ \ \ \ \ \#define\ RPRAND\_IMPLEMENTATION}}
+\DoxyCodeLine{00031\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ \ \ Generates\ the\ implementation\ of\ the\ library\ into\ the\ included\ file.}}
+\DoxyCodeLine{00032\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ \ \ If\ not\ defined,\ the\ library\ is\ in\ header\ only\ mode\ and\ can\ be\ included\ in\ other\ headers}}
+\DoxyCodeLine{00033\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ \ \ or\ source\ files\ without\ problems.\ But\ only\ ONE\ file\ should\ hold\ the\ implementation.}}
+\DoxyCodeLine{00034\ \textcolor{comment}{*\ }}
+\DoxyCodeLine{00035\ \textcolor{comment}{*\ \ \ DEPENDENCIES:\ none}}
+\DoxyCodeLine{00036\ \textcolor{comment}{*}}
+\DoxyCodeLine{00037\ \textcolor{comment}{*\ \ \ VERSIONS\ HISTORY:}}
+\DoxyCodeLine{00038\ \textcolor{comment}{*\ \ \ \ \ \ \ 1.0\ (01-\/Jun-\/2023)\ First\ version}}
+\DoxyCodeLine{00039\ \textcolor{comment}{*}}
+\DoxyCodeLine{00040\ \textcolor{comment}{*}}
+\DoxyCodeLine{00041\ \textcolor{comment}{*\ \ \ LICENSE:\ zlib/libpng}}
+\DoxyCodeLine{00042\ \textcolor{comment}{*}}
+\DoxyCodeLine{00043\ \textcolor{comment}{*\ \ \ Copyright\ (c)\ 2023\ Ramon\ Santamaria\ (@raysan5)}}
+\DoxyCodeLine{00044\ \textcolor{comment}{*}}
+\DoxyCodeLine{00045\ \textcolor{comment}{*\ \ \ This\ software\ is\ provided\ "{}as-\/is"{},\ without\ any\ express\ or\ implied\ warranty.\ In\ no\ event}}
+\DoxyCodeLine{00046\ \textcolor{comment}{*\ \ \ will\ the\ authors\ be\ held\ liable\ for\ any\ damages\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00047\ \textcolor{comment}{*}}
+\DoxyCodeLine{00048\ \textcolor{comment}{*\ \ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,\ including\ commercial}}
+\DoxyCodeLine{00049\ \textcolor{comment}{*\ \ \ applications,\ and\ to\ alter\ it\ and\ redistribute\ it\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00050\ \textcolor{comment}{*}}
+\DoxyCodeLine{00051\ \textcolor{comment}{*\ \ \ \ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not\ claim\ that\ you}}
+\DoxyCodeLine{00052\ \textcolor{comment}{*\ \ \ \ \ wrote\ the\ original\ software.\ If\ you\ use\ this\ software\ in\ a\ product,\ an\ acknowledgment}}
+\DoxyCodeLine{00053\ \textcolor{comment}{*\ \ \ \ \ in\ the\ product\ documentation\ would\ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00054\ \textcolor{comment}{*}}
+\DoxyCodeLine{00055\ \textcolor{comment}{*\ \ \ \ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be\ misrepresented}}
+\DoxyCodeLine{00056\ \textcolor{comment}{*\ \ \ \ \ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00057\ \textcolor{comment}{*}}
+\DoxyCodeLine{00058\ \textcolor{comment}{*\ \ \ \ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00059\ \textcolor{comment}{*}}
+\DoxyCodeLine{00060\ \textcolor{comment}{**********************************************************************************************/}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#ifndef\ RPRAND\_H}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ RPRAND\_H}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ RPRAND\_VERSION\ \ \ \ "{}1.0"{}}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ Function\ specifiers\ in\ case\ library\ is\ build/used\ as\ a\ shared\ library\ (Windows)}}
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ NOTE:\ Microsoft\ specifiers\ to\ tell\ compiler\ that\ symbols\ are\ imported/exported\ from\ a\ .dll}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(BUILD\_LIBTYPE\_SHARED)}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ RPRAND\ \_\_declspec(dllexport)\ \ \ \ \ }\textcolor{comment}{//\ We\ are\ building\ the\ library\ as\ a\ Win32\ shared\ library\ (.dll)}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\ \ \ \ \#elif\ defined(USE\_LIBTYPE\_SHARED)}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ RPRAND\ \_\_declspec(dllimport)\ \ \ \ \ }\textcolor{comment}{//\ We\ are\ using\ the\ library\ as\ a\ Win32\ shared\ library\ (.dll)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ Function\ specifiers\ definition}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#ifndef\ RPRANDAPI}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\ \ \ \ \#define\ RPRANDAPI\ \ \ \ \ \ \ }\textcolor{comment}{//\ Functions\ defined\ as\ 'extern'\ by\ default\ (implicit\ specifiers)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ Defines\ and\ Macros}}
+\DoxyCodeLine{00084\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00085\ \textcolor{comment}{//\ Allow\ custom\ memory\ allocators}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#ifndef\ RPRAND\_CALLOC}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\ \ \ \ \#define\ RPRAND\_CALLOC(ptr,sz)\ \ \ \ \ calloc(ptr,sz)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#ifndef\ RPRAND\_FREE}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ \#define\ RPRAND\_FREE(ptr)\ \ \ \ \ \ \ \ \ \ free(ptr)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ Simple\ log\ system\ to\ avoid\ RPNG\_LOG()\ calls\ if\ required}}
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ NOTE:\ Avoiding\ those\ calls,\ also\ avoids\ const\ strings\ memory\ usage}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ RPRAND\_SHOW\_LOG\_INFO}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#if\ defined(RPNG\_SHOW\_LOG\_INFO)}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\ \ \#define\ RPRAND\_LOG(...)\ printf(\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \#define\ RPRAND\_LOG(...)}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ Types\ and\ Structures\ Definition}}
+\DoxyCodeLine{00104\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00105\ \textcolor{comment}{//...}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00108\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Prevents\ name\ mangling\ of\ functions}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00112\ \textcolor{comment}{//\ Global\ Variables\ Definition}}
+\DoxyCodeLine{00113\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00114\ \textcolor{comment}{//...}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00117\ \textcolor{comment}{//\ Module\ Functions\ Declaration}}
+\DoxyCodeLine{00118\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00119\ RPRANDAPI\ \textcolor{keywordtype}{void}\ rprand\_set\_seed(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ seed);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ rprand\_state\ for\ Xoshiro128**,\ seed\ is\ 64bit}}
+\DoxyCodeLine{00120\ RPRANDAPI\ \textcolor{keywordtype}{int}\ rprand\_get\_value(\textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ random\ value\ within\ a\ range,\ min\ and\ max\ included}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ RPRANDAPI\ \textcolor{keywordtype}{int}\ *rprand\_load\_sequence(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ count,\ \textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max);\ \textcolor{comment}{//\ Load\ pseudo-\/random\ numbers\ sequence\ with\ no\ duplicates}}
+\DoxyCodeLine{00123\ RPRANDAPI\ \textcolor{keywordtype}{void}\ rprand\_unload\_sequence(\textcolor{keywordtype}{int}\ *sequence);\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unload\ pseudo-\/random\ numbers\ sequence}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00126\ \}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RPRAND\_H}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{comment}{/***********************************************************************************}}
+\DoxyCodeLine{00132\ \textcolor{comment}{*}}
+\DoxyCodeLine{00133\ \textcolor{comment}{*\ \ \ RPRAND\ IMPLEMENTATION}}
+\DoxyCodeLine{00134\ \textcolor{comment}{*}}
+\DoxyCodeLine{00135\ \textcolor{comment}{************************************************************************************/}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#if\ defined(RPRAND\_IMPLEMENTATION)}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#include\ <stdlib.h>}\ \ \ \ \ \textcolor{comment}{//\ Required\ for:\ calloc(),\ free(),\ abs()}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#include\ <stdint.h>}\ \ \ \ \ \textcolor{comment}{//\ Required\ for\ data\ types:\ uint32\_t,\ uint64\_t}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00143\ \textcolor{comment}{//\ Types\ and\ Structures\ Definition}}
+\DoxyCodeLine{00144\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00145\ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//\ Global\ Variables\ Definition}}
+\DoxyCodeLine{00149\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00150\ \textcolor{keyword}{static}\ uint64\_t\ rprand\_seed\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SplitMix64\ actual\ seed}}
+\DoxyCodeLine{00151\ \textcolor{keyword}{static}\ uint32\_t\ rprand\_state[4]\ =\ \{\ 0\ \};\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Xoshiro128**\ state,\ nitialized\ by\ SplitMix64}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ Module\ internal\ functions\ declaration}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00156\ \textcolor{keyword}{static}\ uint32\_t\ rprand\_xoshiro(\textcolor{keywordtype}{void});\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Xoshiro128**\ generator\ (uses\ global\ rprand\_state)}}
+\DoxyCodeLine{00157\ \textcolor{keyword}{static}\ uint64\_t\ rprand\_splitmix64(\textcolor{keywordtype}{void});\ \ \ \ \ \ \ \ \textcolor{comment}{//\ SplitMix64\ generator\ (uses\ seed\ to\ generate\ rprand\_state)}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00160\ \textcolor{comment}{//\ Module\ functions\ definition}}
+\DoxyCodeLine{00161\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00162\ \textcolor{comment}{//\ Set\ rprand\_state\ for\ Xoshiro128**}}
+\DoxyCodeLine{00163\ \textcolor{comment}{//\ NOTE:\ We\ use\ a\ custom\ generation\ algorithm\ using\ SplitMix64}}
+\DoxyCodeLine{00164\ \textcolor{keywordtype}{void}\ rprand\_set\_seed(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ seed)}
+\DoxyCodeLine{00165\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ rprand\_seed\ =\ (uint64\_t)seed;\ \ \ \ \textcolor{comment}{//\ Set\ SplitMix64\ seed\ for\ further\ use}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{comment}{//\ To\ generate\ the\ Xoshiro128**\ state,\ we\ use\ SplitMix64\ generator\ first}}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{comment}{//\ We\ generate\ 4\ pseudo-\/random\ 64bit\ numbers\ that\ we\ combine\ using\ their\ LSB|MSB}}
+\DoxyCodeLine{00170\ \ \ \ \ rprand\_state[0]\ =\ (uint32\_t)(rprand\_splitmix64()\ \&\ 0xffffffff);}
+\DoxyCodeLine{00171\ \ \ \ \ rprand\_state[1]\ =\ (uint32\_t)((rprand\_splitmix64()\ \&\ 0xffffffff00000000)\ >>\ 32);}
+\DoxyCodeLine{00172\ \ \ \ \ rprand\_state[2]\ =\ (uint32\_t)(rprand\_splitmix64()\ \&\ 0xffffffff);}
+\DoxyCodeLine{00173\ \ \ \ \ rprand\_state[3]\ =\ (uint32\_t)((rprand\_splitmix64()\ \&\ 0xffffffff00000000)\ >>\ 32);}
+\DoxyCodeLine{00174\ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ Get\ random\ value\ within\ a\ range,\ min\ and\ max\ included}}
+\DoxyCodeLine{00177\ \textcolor{keywordtype}{int}\ rprand\_get\_value(\textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max)}
+\DoxyCodeLine{00178\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ rprand\_xoshiro()\%(abs(max\ -\/\ min)\ +\ 1)\ +\ min;}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{00182\ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{comment}{//\ Load\ pseudo-\/random\ numbers\ sequence\ with\ no\ duplicates,\ min\ and\ max\ included}}
+\DoxyCodeLine{00185\ \textcolor{keywordtype}{int}\ *rprand\_load\_sequence(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ count,\ \textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max)}
+\DoxyCodeLine{00186\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{int}\ *sequence\ =\ NULL;}
+\DoxyCodeLine{00188\ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ >\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int})(abs(max\ -\/\ min)\ +\ 1))\ }
+\DoxyCodeLine{00190\ \ \ \ \ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ RPRAND\_LOG(\textcolor{stringliteral}{"{}WARNING:\ Sequence\ count\ required\ is\ greater\ than\ range\ provided\(\backslash\)n"{}});}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{comment}{//count\ =\ (max\ -\/\ min);}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sequence;}
+\DoxyCodeLine{00194\ \ \ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ sequence\ =\ (\textcolor{keywordtype}{int}\ *)RPRAND\_CALLOC(count,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ 0;}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordtype}{bool}\ value\_is\_dup\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ count;)}
+\DoxyCodeLine{00202\ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ value\ =\ ((int)rprand\_xoshiro()\%(abs(max\ -\/\ min)\ +\ 1))\ +\ min;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ value\_is\_dup\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ i;\ j++)}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sequence[j]\ ==\ value)}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\_is\_dup\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!value\_is\_dup)}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ sequence[i]\ =\ value;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordflow}{return}\ sequence;}
+\DoxyCodeLine{00223\ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \textcolor{comment}{//\ Unload\ pseudo-\/random\ numbers\ sequence}}
+\DoxyCodeLine{00226\ \textcolor{keywordtype}{void}\ rprand\_unload\_sequence(\textcolor{keywordtype}{int}\ *sequence)}
+\DoxyCodeLine{00227\ \{}
+\DoxyCodeLine{00228\ \ \ \ \ RPRAND\_FREE(sequence);}
+\DoxyCodeLine{00229\ \ \ \ \ sequence\ =\ NULL;}
+\DoxyCodeLine{00230\ \}}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00233\ \textcolor{comment}{//\ Module\ internal\ functions\ definition}}
+\DoxyCodeLine{00234\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00235\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ uint32\_t\ rprand\_rotate\_left(\textcolor{keyword}{const}\ uint32\_t\ x,\ \textcolor{keywordtype}{int}\ k)}
+\DoxyCodeLine{00236\ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordflow}{return}\ (x\ <<\ k)\ |\ (x\ >>\ (32\ -\/\ k));}
+\DoxyCodeLine{00238\ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \textcolor{comment}{//\ Xoshiro128**\ generator\ info:}}
+\DoxyCodeLine{00241\ \textcolor{comment}{//\ \ \ }}
+\DoxyCodeLine{00242\ \textcolor{comment}{//\ \ \ Written\ in\ 2018\ by\ David\ Blackman\ and\ Sebastiano\ Vigna\ (vigna@acm.org)}}
+\DoxyCodeLine{00243\ \textcolor{comment}{//\ \ \ }}
+\DoxyCodeLine{00244\ \textcolor{comment}{//\ \ \ To\ the\ extent\ possible\ under\ law,\ the\ author\ has\ dedicated\ all\ copyright}}
+\DoxyCodeLine{00245\ \textcolor{comment}{//\ \ \ and\ related\ and\ neighboring\ rights\ to\ this\ software\ to\ the\ public\ domain}}
+\DoxyCodeLine{00246\ \textcolor{comment}{//\ \ \ worldwide.\ This\ software\ is\ distributed\ without\ any\ warranty.}}
+\DoxyCodeLine{00247\ \textcolor{comment}{//\ \ \ }}
+\DoxyCodeLine{00248\ \textcolor{comment}{//\ \ \ See\ <http://creativecommons.org/publicdomain/zero/1.0/>.}}
+\DoxyCodeLine{00249\ \textcolor{comment}{//\ \ \ }}
+\DoxyCodeLine{00250\ \textcolor{comment}{//\ \ \ This\ is\ xoshiro128**\ 1.1,\ one\ of\ our\ 32-\/bit\ all-\/purpose,\ rock-\/solid}}
+\DoxyCodeLine{00251\ \textcolor{comment}{//\ \ \ generators.\ It\ has\ excellent\ speed,\ a\ state\ size\ (128\ bits)\ that\ is}}
+\DoxyCodeLine{00252\ \textcolor{comment}{//\ \ \ large\ enough\ for\ mild\ parallelism,\ and\ it\ passes\ all\ tests\ we\ are\ aware}}
+\DoxyCodeLine{00253\ \textcolor{comment}{//\ \ \ of.}}
+\DoxyCodeLine{00254\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00255\ \textcolor{comment}{//\ \ \ Note\ that\ version\ 1.0\ had\ mistakenly\ s[0]\ instead\ of\ s[1]\ as\ state}}
+\DoxyCodeLine{00256\ \textcolor{comment}{//\ \ \ word\ passed\ to\ the\ scrambler.}}
+\DoxyCodeLine{00257\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00258\ \textcolor{comment}{//\ \ \ For\ generating\ just\ single-\/precision\ (i.e.,\ 32-\/bit)\ floating-\/point}}
+\DoxyCodeLine{00259\ \textcolor{comment}{//\ \ \ numbers,\ xoshiro128+\ is\ even\ faster.}}
+\DoxyCodeLine{00260\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00261\ \textcolor{comment}{//\ \ \ The\ state\ must\ be\ seeded\ so\ that\ it\ is\ not\ everywhere\ zero.}}
+\DoxyCodeLine{00262\ \textcolor{comment}{//}}
+\DoxyCodeLine{00263\ uint32\_t\ rprand\_xoshiro(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00264\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keyword}{const}\ uint32\_t\ result\ =\ rprand\_rotate\_left(rprand\_state[1]*5,\ 7)*9;}
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keyword}{const}\ uint32\_t\ t\ =\ rprand\_state[1]\ <<\ 9;}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ rprand\_state[2]\ \string^=\ rprand\_state[0];}
+\DoxyCodeLine{00269\ \ \ \ \ rprand\_state[3]\ \string^=\ rprand\_state[1];}
+\DoxyCodeLine{00270\ \ \ \ \ rprand\_state[1]\ \string^=\ rprand\_state[2];}
+\DoxyCodeLine{00271\ \ \ \ \ rprand\_state[0]\ \string^=\ rprand\_state[3];}
+\DoxyCodeLine{00272\ \ \ \ \ }
+\DoxyCodeLine{00273\ \ \ \ \ rprand\_state[2]\ \string^=\ t;}
+\DoxyCodeLine{00274\ \ \ \ \ }
+\DoxyCodeLine{00275\ \ \ \ \ rprand\_state[3]\ =\ rprand\_rotate\_left(rprand\_state[3],\ 11);}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00278\ \}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \textcolor{comment}{//\ SplitMix64\ generator\ info:}}
+\DoxyCodeLine{00281\ \textcolor{comment}{//\ \ \ }}
+\DoxyCodeLine{00282\ \textcolor{comment}{//\ \ \ Written\ in\ 2015\ by\ Sebastiano\ Vigna\ (vigna@acm.org)}}
+\DoxyCodeLine{00283\ \textcolor{comment}{//\ \ \ }}
+\DoxyCodeLine{00284\ \textcolor{comment}{//\ \ \ To\ the\ extent\ possible\ under\ law,\ the\ author\ has\ dedicated\ all\ copyright}}
+\DoxyCodeLine{00285\ \textcolor{comment}{//\ \ \ and\ related\ and\ neighboring\ rights\ to\ this\ software\ to\ the\ public\ domain}}
+\DoxyCodeLine{00286\ \textcolor{comment}{//\ \ \ worldwide.\ This\ software\ is\ distributed\ without\ any\ warranty.}}
+\DoxyCodeLine{00287\ \textcolor{comment}{//\ \ \ }}
+\DoxyCodeLine{00288\ \textcolor{comment}{//\ \ \ See\ <http://creativecommons.org/publicdomain/zero/1.0/>.}}
+\DoxyCodeLine{00289\ \textcolor{comment}{//\ \ \ }}
+\DoxyCodeLine{00290\ \textcolor{comment}{//}}
+\DoxyCodeLine{00291\ \textcolor{comment}{//\ \ \ This\ is\ a\ fixed-\/increment\ version\ of\ Java\ 8's\ SplittableRandom\ generator}}
+\DoxyCodeLine{00292\ \textcolor{comment}{//\ \ \ See\ http://dx.doi.org/10.1145/2714064.2660195\ and}}
+\DoxyCodeLine{00293\ \textcolor{comment}{//\ \ \ http://docs.oracle.com/javase/8/docs/api/java/util/SplittableRandom.html}}
+\DoxyCodeLine{00294\ \textcolor{comment}{//\ \ \ }}
+\DoxyCodeLine{00295\ \textcolor{comment}{//\ \ \ It\ is\ a\ very\ fast\ generator\ passing\ BigCrush,\ and\ it\ can\ be\ useful\ if}}
+\DoxyCodeLine{00296\ \textcolor{comment}{//\ \ \ for\ some\ reason\ you\ absolutely\ want\ 64\ bits\ of\ state.}}
+\DoxyCodeLine{00297\ uint64\_t\ rprand\_splitmix64()}
+\DoxyCodeLine{00298\ \{}
+\DoxyCodeLine{00299\ \ \ \ \ uint64\_t\ z\ =\ (rprand\_seed\ +=\ 0x9e3779b97f4a7c15);}
+\DoxyCodeLine{00300\ \ \ \ \ z\ =\ (z\ \string^\ (z\ >>\ 30))*0xbf58476d1ce4e5b9;}
+\DoxyCodeLine{00301\ \ \ \ \ z\ =\ (z\ \string^\ (z\ >>\ 27))*0x94d049bb133111eb;}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keywordflow}{return}\ z\ \string^\ (z\ >>\ 31);}
+\DoxyCodeLine{00303\ \}}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ RPRAND\_IMPLEMENTATION}}
+
+\end{DoxyCode}

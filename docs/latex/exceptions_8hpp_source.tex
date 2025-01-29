@@ -1,0 +1,228 @@
+\doxysection{exceptions.\+hpp}
+\hypertarget{exceptions_8hpp_source}{}\label{exceptions_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/exceptions.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/exceptions.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstddef>}\ \textcolor{comment}{//\ nullptr\_t}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <exception>}\ \textcolor{comment}{//\ exception}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#if\ JSON\_DIAGNOSTICS}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#include\ <numeric>}\ \textcolor{comment}{//\ accumulate}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdexcept>}\ \textcolor{comment}{//\ runtime\_error}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}\ \textcolor{comment}{//\ to\_string}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}\ \textcolor{comment}{//\ vector}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/value\_t.hpp>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/string\_escape.hpp>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/input/position\_t.hpp>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/macro\_scope.hpp>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/cpp\_future.hpp>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/type\_traits.hpp>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/string\_concat.hpp>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ exceptions\ //}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }exception\ :\ \textcolor{keyword}{public}\ std::exception}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classdetail_1_1exception_ae75d7315f5f2d85958da6d961375caf0}{what}}()\ const\ noexcept\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classdetail_1_1exception_a6f86cee7b7a4938d4d758036dc4deed9}{m}}.what();}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{id}};\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/non-\/private-\/member-\/variables-\/in-\/classes)}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00051\ \ \ \ \ JSON\_HEDLEY\_NON\_NULL(3)}
+\DoxyCodeLine{00052\ \ \ \ \ exception(\textcolor{keywordtype}{int}\ id\_,\ const\ \textcolor{keywordtype}{char}*\ what\_arg)\ :\ \textcolor{keywordtype}{id}(id\_),\ \mbox{\hyperlink{classdetail_1_1exception_a6f86cee7b7a4938d4d758036dc4deed9}{m}}(what\_arg)\ \{\}\ \textcolor{comment}{//\ NOLINT(bugprone-\/throw-\/keyword-\/missing)}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ name(\textcolor{keyword}{const}\ std::string\&\ ename,\ \textcolor{keywordtype}{int}\ id\_)}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ concat(\textcolor{stringliteral}{"{}[json.exception."{}},\ ename,\ \textcolor{charliteral}{'.'},\ std::to\_string(id\_),\ \textcolor{stringliteral}{"{}]\ "{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ diagnostics(std::nullptr\_t\ \textcolor{comment}{/*leaf\_element*/})}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ BasicJsonType>}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ diagnostics(\textcolor{keyword}{const}\ BasicJsonType*\ leaf\_element)}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#if\ JSON\_DIAGNOSTICS}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ std::vector<std::string>\ tokens;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}*\ current\ =\ leaf\_element;\ current\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ current-\/>m\_parent\ !=\ \textcolor{keyword}{nullptr};\ current\ =\ current-\/>m\_parent)}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (current-\/>m\_parent-\/>type())}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ i\ =\ 0;\ i\ <\ current-\/>m\_parent-\/>m\_data.m\_value.array-\/>size();\ ++i)}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\&current-\/>m\_parent-\/>m\_data.m\_value.array-\/>operator[](i)\ ==\ current)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tokens.emplace\_back(std::to\_string(i));}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ element\ :\ *current-\/>m\_parent-\/>m\_data.m\_value.object)}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\&element.second\ ==\ current)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tokens.emplace\_back(element.first.c\_str());}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:\ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:\ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:\ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:\ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:\ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:\ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:\ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:\ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tokens.empty())}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ str\ =\ std::accumulate(tokens.rbegin(),\ tokens.rend(),\ std::string\{\},}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](\textcolor{keyword}{const}\ std::string\ \&\ a,\ \textcolor{keyword}{const}\ std::string\ \&\ b)}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ return\ concat(a,\ \textcolor{stringliteral}{'/'},\ detail::escape(b));}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ concat(\textcolor{charliteral}{'('},\ str,\ \textcolor{stringliteral}{"{})\ "{}});}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\textcolor{keyword}{>}(leaf\_element);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00131\ \ \ \ \ std::runtime\_error\ \mbox{\hyperlink{classdetail_1_1exception_a6f86cee7b7a4938d4d758036dc4deed9}{m}};}
+\DoxyCodeLine{00132\ \};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00136\ \textcolor{keyword}{class\ }parse\_error\ :\ \textcolor{keyword}{public}\ exception}
+\DoxyCodeLine{00137\ \{}
+\DoxyCodeLine{00138\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00148\ \ \ \ \ template<typename\ BasicJsonContext,\ enable\_if\_t<is\_basic\_json\_context<BasicJsonContext>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{static}\ parse\_error\ \mbox{\hyperlink{classdetail_1_1parse__error_a07046ea9f33d28f120af188ed674d6df}{create}}(\textcolor{keywordtype}{int}\ id\_,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structdetail_1_1position__t}{position\_t}}\&\ pos,\ \textcolor{keyword}{const}\ std::string\&\ what\_arg,\ BasicJsonContext\ context)}
+\DoxyCodeLine{00150\ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ w\ =\ concat(exception::name(\textcolor{stringliteral}{"{}parse\_error"{}},\ id\_),\ \textcolor{stringliteral}{"{}parse\ error"{}},}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ position\_string(pos),\ \textcolor{stringliteral}{"{}:\ "{}},\ exception::diagnostics(context),\ what\_arg);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{id\_,\ pos.\mbox{\hyperlink{structdetail_1_1position__t_ac4d220d61ce61eeffbea40985727a3b0}{chars\_read\_total}},\ w.c\_str()\};}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ template<typename\ BasicJsonContext,\ enable\_if\_t<is\_basic\_json\_context<BasicJsonContext>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classdetail_1_1parse__error}{parse\_error}}\ \mbox{\hyperlink{classdetail_1_1parse__error_a07046ea9f33d28f120af188ed674d6df}{create}}(\textcolor{keywordtype}{int}\ id\_,\ std::size\_t\ byte\_,\ \textcolor{keyword}{const}\ std::string\&\ what\_arg,\ BasicJsonContext\ context)}
+\DoxyCodeLine{00158\ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ w\ =\ concat(exception::name(\textcolor{stringliteral}{"{}parse\_error"{}},\ id\_),\ \textcolor{stringliteral}{"{}parse\ error"{}},}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (byte\_\ !=\ 0\ ?\ (concat(\textcolor{stringliteral}{"{}\ at\ byte\ "{}},\ std::to\_string(byte\_)))\ :\ \textcolor{stringliteral}{"{}"{}}),}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}:\ "{}},\ exception::diagnostics(context),\ what\_arg);}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{id\_,\ byte\_,\ w.c\_str()\};}
+\DoxyCodeLine{00163\ \ \ \ \ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keyword}{const}\ std::size\_t\ \mbox{\hyperlink{classdetail_1_1parse__error_a5bce7d135aa3a38d1d3f4ed7bf8615e1}{byte}};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00177\ \ \ \ \ parse\_error(\textcolor{keywordtype}{int}\ id\_,\ std::size\_t\ byte\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ what\_arg)}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ :\ exception(id\_,\ what\_arg),\ \mbox{\hyperlink{classdetail_1_1parse__error_a5bce7d135aa3a38d1d3f4ed7bf8615e1}{byte}}(byte\_)\ \{\}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ position\_string(\textcolor{keyword}{const}\ \mbox{\hyperlink{structdetail_1_1position__t}{position\_t}}\&\ pos)}
+\DoxyCodeLine{00181\ \ \ \ \ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ concat(\textcolor{stringliteral}{"{}\ at\ line\ "{}},\ std::to\_string(pos.\mbox{\hyperlink{structdetail_1_1position__t_a9ec1ac6600d1364f4d1c9f67de6a670b}{lines\_read}}\ +\ 1),}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ column\ "{}},\ std::to\_string(pos.\mbox{\hyperlink{structdetail_1_1position__t_a6548d584bd03d1d47bfcd7cf8b1fb0c6}{chars\_read\_current\_line}}));}
+\DoxyCodeLine{00184\ \ \ \ \ \}}
+\DoxyCodeLine{00185\ \};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00189\ \textcolor{keyword}{class\ }invalid\_iterator\ :\ \textcolor{keyword}{public}\ exception}
+\DoxyCodeLine{00190\ \{}
+\DoxyCodeLine{00191\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00192\ \ \ \ \ template<typename\ BasicJsonContext,\ enable\_if\_t<is\_basic\_json\_context<BasicJsonContext>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{static}\ invalid\_iterator\ create(\textcolor{keywordtype}{int}\ id\_,\ \textcolor{keyword}{const}\ std::string\&\ what\_arg,\ BasicJsonContext\ context)}
+\DoxyCodeLine{00194\ \ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ w\ =\ concat(exception::name(\textcolor{stringliteral}{"{}invalid\_iterator"{}},\ id\_),\ exception::diagnostics(context),\ what\_arg);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{id\_,\ w.c\_str()\};}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00200\ \ \ \ \ JSON\_HEDLEY\_NON\_NULL(3)}
+\DoxyCodeLine{00201\ \ \ \ \ invalid\_iterator(\textcolor{keywordtype}{int}\ id\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ what\_arg)}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ :\ exception(id\_,\ what\_arg)\ \{\}}
+\DoxyCodeLine{00203\ \};}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00207\ \textcolor{keyword}{class\ }type\_error\ :\ \textcolor{keyword}{public}\ exception}
+\DoxyCodeLine{00208\ \{}
+\DoxyCodeLine{00209\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00210\ \ \ \ \ template<typename\ BasicJsonContext,\ enable\_if\_t<is\_basic\_json\_context<BasicJsonContext>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keyword}{static}\ type\_error\ create(\textcolor{keywordtype}{int}\ id\_,\ \textcolor{keyword}{const}\ std::string\&\ what\_arg,\ BasicJsonContext\ context)}
+\DoxyCodeLine{00212\ \ \ \ \ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ w\ =\ concat(exception::name(\textcolor{stringliteral}{"{}type\_error"{}},\ id\_),\ exception::diagnostics(context),\ what\_arg);}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{id\_,\ w.c\_str()\};}
+\DoxyCodeLine{00215\ \ \ \ \ \}}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00218\ \ \ \ \ JSON\_HEDLEY\_NON\_NULL(3)}
+\DoxyCodeLine{00219\ \ \ \ \ type\_error(\textcolor{keywordtype}{int}\ id\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ what\_arg)\ :\ exception(id\_,\ what\_arg)\ \{\}}
+\DoxyCodeLine{00220\ \};}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00224\ \textcolor{keyword}{class\ }out\_of\_range\ :\ \textcolor{keyword}{public}\ exception}
+\DoxyCodeLine{00225\ \{}
+\DoxyCodeLine{00226\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00227\ \ \ \ \ template<typename\ BasicJsonContext,\ enable\_if\_t<is\_basic\_json\_context<BasicJsonContext>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keyword}{static}\ out\_of\_range\ create(\textcolor{keywordtype}{int}\ id\_,\ \textcolor{keyword}{const}\ std::string\&\ what\_arg,\ BasicJsonContext\ context)}
+\DoxyCodeLine{00229\ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ w\ =\ concat(exception::name(\textcolor{stringliteral}{"{}out\_of\_range"{}},\ id\_),\ exception::diagnostics(context),\ what\_arg);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{id\_,\ w.c\_str()\};}
+\DoxyCodeLine{00232\ \ \ \ \ \}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00235\ \ \ \ \ JSON\_HEDLEY\_NON\_NULL(3)}
+\DoxyCodeLine{00236\ \ \ \ \ out\_of\_range(\textcolor{keywordtype}{int}\ id\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ what\_arg)\ :\ exception(id\_,\ what\_arg)\ \{\}}
+\DoxyCodeLine{00237\ \};}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00241\ \textcolor{keyword}{class\ }other\_error\ :\ \textcolor{keyword}{public}\ exception}
+\DoxyCodeLine{00242\ \{}
+\DoxyCodeLine{00243\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00244\ \ \ \ \ template<typename\ BasicJsonContext,\ enable\_if\_t<is\_basic\_json\_context<BasicJsonContext>::value,\ \textcolor{keywordtype}{int}>\ =\ 0>}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keyword}{static}\ other\_error\ create(\textcolor{keywordtype}{int}\ id\_,\ \textcolor{keyword}{const}\ std::string\&\ what\_arg,\ BasicJsonContext\ context)}
+\DoxyCodeLine{00246\ \ \ \ \ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ w\ =\ concat(exception::name(\textcolor{stringliteral}{"{}other\_error"{}},\ id\_),\ exception::diagnostics(context),\ what\_arg);}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{id\_,\ w.c\_str()\};}
+\DoxyCodeLine{00249\ \ \ \ \ \}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00252\ \ \ \ \ JSON\_HEDLEY\_NON\_NULL(3)}
+\DoxyCodeLine{00253\ \ \ \ \ other\_error(\textcolor{keywordtype}{int}\ id\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ what\_arg)\ :\ exception(id\_,\ what\_arg)\ \{\}}
+\DoxyCodeLine{00254\ \};}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00257\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

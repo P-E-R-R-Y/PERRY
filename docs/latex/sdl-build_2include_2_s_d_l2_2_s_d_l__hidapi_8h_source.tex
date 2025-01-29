@@ -1,0 +1,110 @@
+\doxysection{SDL\+\_\+hidapi.\+h}
+\hypertarget{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_source}{}\label{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_hidapi.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_hidapi.h}}
+\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#ifndef\ SDL\_hidapi\_h\_}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ SDL\_hidapi\_h\_}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL\_stdinc.h}}"{}}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00068\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00070\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l__hid__device__}{SDL\_hid\_device\_}};}
+\DoxyCodeLine{00077\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l__hid__device__}{SDL\_hid\_device\_}}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}};\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l__hid__device__info}{SDL\_hid\_device\_info}}}
+\DoxyCodeLine{00084\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_s_d_l__hid__device__info_a66fd31e1bacf9ab231f5c4f5472db2ad}{path}};}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_a7bb9b5c173278a6699b3191953fcfe77}{vendor\_id}};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_a78b8d7cefcc61d786256280da7159dbc}{product\_id}};}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{wchar\_t}\ *\mbox{\hyperlink{struct_s_d_l__hid__device__info_a942e8f14d231da987ba9b328a3df4b5b}{serial\_number}};}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_ad6eb1e9cafd756ef89cd427cccc89da8}{release\_number}};}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{wchar\_t}\ *\mbox{\hyperlink{struct_s_d_l__hid__device__info_aa60309c15e39146c11b0adf3c686aec5}{manufacturer\_string}};}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{wchar\_t}\ *\mbox{\hyperlink{struct_s_d_l__hid__device__info_a8ce786c747e0e06c90c4076e2f0696c2}{product\_string}};}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_ace00a62000be5a947106f04d0dd5efc4}{usage\_page}};}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_ab5851e5c55c1903b63ecf8bb736c4249}{usage}};}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_ae1450dccd0f426357f6b95422645a0e3}{interface\_number}};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_a3816985c4cc4210c750da3a9720a28f6}{interface\_class}};}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{int}\ interface\_subclass;}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{int}\ interface\_protocol;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l__hid__device__info}{SDL\_hid\_device\_info}}\ *\mbox{\hyperlink{struct_s_d_l__hid__device__info_afca18afb80f0d3758aac4f491ccfe49a}{next}};}
+\DoxyCodeLine{00122\ \}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info}{SDL\_hid\_device\_info}};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00142\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_afab0dc5913a3e90ed4434bd2778fe1bf}{SDL\_hid\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00156\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a795ed5c8ed4410b5962742d1c92774c9}{SDL\_hid\_exit}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00177\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint32\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a1d7587010cbd25a9fcf77e26682de356}{SDL\_hid\_device\_change\_count}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00199\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l__hid__device__info}{SDL\_hid\_device\_info}}\ *\ SDLCALL\ SDL\_hid\_enumerate(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_a7bb9b5c173278a6699b3191953fcfe77}{vendor\_id}},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_a78b8d7cefcc61d786256280da7159dbc}{product\_id}});}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00211\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_hid\_free\_enumeration(\mbox{\hyperlink{struct_s_d_l__hid__device__info}{SDL\_hid\_device\_info}}\ *devs);}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *\ SDLCALL\ SDL\_hid\_open(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_a7bb9b5c173278a6699b3191953fcfe77}{vendor\_id}},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_s_d_l__hid__device__info_a78b8d7cefcc61d786256280da7159dbc}{product\_id}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{wchar\_t}\ *\mbox{\hyperlink{struct_s_d_l__hid__device__info_a942e8f14d231da987ba9b328a3df4b5b}{serial\_number}});}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00243\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *\ SDLCALL\ SDL\_hid\_open\_path(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path,\ \textcolor{keywordtype}{int}\ bExclusive\ \textcolor{comment}{/*\ =\ false\ */});}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00269\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_write(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00290\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_read\_timeout(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,\ \textcolor{keywordtype}{size\_t}\ length,\ \textcolor{keywordtype}{int}\ milliseconds);}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00310\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_read(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00328\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_set\_nonblocking(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keywordtype}{int}\ nonblock);}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00352\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_send\_feature\_report(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00374\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_get\_feature\_report(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *data,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00383\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_hid\_close(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev);}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00395\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_get\_manufacturer\_string(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keywordtype}{wchar\_t}\ *\textcolor{keywordtype}{string},\ \textcolor{keywordtype}{size\_t}\ maxlen);}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00407\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_get\_product\_string(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keywordtype}{wchar\_t}\ *\textcolor{keywordtype}{string},\ \textcolor{keywordtype}{size\_t}\ maxlen);}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00419\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_get\_serial\_number\_string(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keywordtype}{wchar\_t}\ *\textcolor{keywordtype}{string},\ \textcolor{keywordtype}{size\_t}\ maxlen);}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00432\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_hid\_get\_indexed\_string(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hidapi_8h_a01e37a76f52ebe32810eae8de7ffad85}{SDL\_hid\_device}}\ *dev,\ \textcolor{keywordtype}{int}\ string\_index,\ \textcolor{keywordtype}{wchar\_t}\ *\textcolor{keywordtype}{string},\ \textcolor{keywordtype}{size\_t}\ maxlen);}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00441\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_hid\_ble\_scan(SDL\_bool\ active);}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00444\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00445\ \}}
+\DoxyCodeLine{00446\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00447\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00449\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_hidapi\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00450\ }
+\DoxyCodeLine{00451\ \textcolor{comment}{/*\ vi:\ set\ sts=4\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

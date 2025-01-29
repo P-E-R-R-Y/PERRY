@@ -1,0 +1,187 @@
+\doxysection{SDL\+\_\+thread.\+h}
+\hypertarget{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_source}{}\label{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_thread.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_thread.h}}
+\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ SDL\_thread\_h\_}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ SDL\_thread\_h\_}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL\_stdinc.h}}"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__error_8h}{SDL\_error.h}}"{}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{/*\ Thread\ synchronization\ primitives\ */}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__atomic_8h}{SDL\_atomic.h}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mutex_8h}{SDL\_mutex.h}}"{}}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#if\ (defined(\_\_WIN32\_\_)\ ||\ defined(\_\_GDK\_\_))\ \&\&\ !defined(\_\_WINRT\_\_)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <process.h>}\ \textcolor{comment}{/*\ \_beginthreadex()\ and\ \_endthreadex()\ */}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#if\ defined(\_\_OS2\_\_)\ }\textcolor{comment}{/*\ for\ \_beginthread()\ and\ \_endthread()\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#ifndef\ \_\_EMX\_\_}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ <process.h>}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00050\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00052\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{/*\ The\ SDL\ thread\ structure,\ defined\ in\ SDL\_thread.c\ */}}
+\DoxyCodeLine{00056\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}};}
+\DoxyCodeLine{00057\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ \mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{/*\ The\ SDL\ thread\ ID\ */}}
+\DoxyCodeLine{00060\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ SDL\_threadID;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{/*\ Thread\ local\ storage\ ID,\ 0\ is\ the\ invalid\ ID\ */}}
+\DoxyCodeLine{00063\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ SDL\_TLSID;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ SDL\_THREAD\_PRIORITY\_LOW,}
+\DoxyCodeLine{00077\ \ \ \ \ SDL\_THREAD\_PRIORITY\_NORMAL,}
+\DoxyCodeLine{00078\ \ \ \ \ SDL\_THREAD\_PRIORITY\_HIGH,}
+\DoxyCodeLine{00079\ \ \ \ \ SDL\_THREAD\_PRIORITY\_TIME\_CRITICAL}
+\DoxyCodeLine{00080\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_acce8dea56f6b307fadd2949b64e3ebda}{SDL\_ThreadPriority}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ int\ (SDLCALL\ *\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_a35d10c50423c326b20abea6a486f53e0}{SDL\_ThreadFunction}})\ (\textcolor{keywordtype}{void}\ *data);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#if\ (defined(\_\_WIN32\_\_)\ ||\ defined(\_\_GDK\_\_))\ \&\&\ !defined(\_\_WINRT\_\_)}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ SDL\_PASSED\_BEGINTHREAD\_ENDTHREAD}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{typedef}\ uintptr\_t\ (\_\_cdecl\ *\ pfnSDL\_CurrentBeginThread)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keywordtype}{void}\ *,\ unsigned,\ unsigned\ (\_\_stdcall\ *func)(\textcolor{keywordtype}{void}\ *),}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\ \textcolor{comment}{/*arg*/},\ \textcolor{keywordtype}{unsigned},\ \textcolor{keywordtype}{unsigned}\ *\ \textcolor{comment}{/*\ threadID\ */});}
+\DoxyCodeLine{00117\ \textcolor{keyword}{typedef}\ void\ (\_\_cdecl\ *\ pfnSDL\_CurrentEndThread)\ (\textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{structcode}{code}});}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#ifndef\ SDL\_beginthread}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ SDL\_beginthread\ \_beginthreadex}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#ifndef\ SDL\_endthread}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ SDL\_endthread\ \_endthreadex}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *SDLCALL}
+\DoxyCodeLine{00127\ SDL\_CreateThread(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_a35d10c50423c326b20abea6a486f53e0}{SDL\_ThreadFunction}}\ fn,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{void}\ *data,}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pfnSDL\_CurrentBeginThread\ pfnBeginThread,}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pfnSDL\_CurrentEndThread\ pfnEndThread);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *SDLCALL}
+\DoxyCodeLine{00132\ SDL\_CreateThreadWithStackSize(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_a35d10c50423c326b20abea6a486f53e0}{SDL\_ThreadFunction}}\ fn,}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ stacksize,\ \textcolor{keywordtype}{void}\ *data,}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pfnSDL\_CurrentBeginThread\ pfnBeginThread,}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pfnSDL\_CurrentEndThread\ pfnEndThread);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#if\ defined(SDL\_CreateThread)\ \&\&\ SDL\_DYNAMIC\_API}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#undef\ SDL\_CreateThread}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#define\ SDL\_CreateThread(fn,\ name,\ data)\ SDL\_CreateThread\_REAL(fn,\ name,\ data,\ (pfnSDL\_CurrentBeginThread)SDL\_beginthread,\ (pfnSDL\_CurrentEndThread)SDL\_endthread)}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#undef\ SDL\_CreateThreadWithStackSize}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ SDL\_CreateThreadWithStackSize(fn,\ name,\ stacksize,\ data)\ SDL\_CreateThreadWithStackSize\_REAL(fn,\ name,\ stacksize,\ data,\ (pfnSDL\_CurrentBeginThread)SDL\_beginthread,\ (pfnSDL\_CurrentEndThread)SDL\_endthread)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ SDL\_CreateThread(fn,\ name,\ data)\ SDL\_CreateThread(fn,\ name,\ data,\ (pfnSDL\_CurrentBeginThread)SDL\_beginthread,\ (pfnSDL\_CurrentEndThread)SDL\_endthread)}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ SDL\_CreateThreadWithStackSize(fn,\ name,\ stacksize,\ data)\ SDL\_CreateThreadWithStackSize(fn,\ name,\ stacksize,\ data,\ (pfnSDL\_CurrentBeginThread)SDL\_beginthread,\ (pfnSDL\_CurrentEndThread)SDL\_endthread)}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#elif\ defined(\_\_OS2\_\_)}}
+\DoxyCodeLine{00149\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ *\ just\ like\ the\ windows\ case\ above:\ \ We\ compile\ SDL2}}
+\DoxyCodeLine{00151\ \textcolor{comment}{\ *\ into\ a\ dll\ with\ Watcom's\ runtime\ statically\ linked.}}
+\DoxyCodeLine{00152\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ SDL\_PASSED\_BEGINTHREAD\_ENDTHREAD}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{keyword}{typedef}\ int\ (*pfnSDL\_CurrentBeginThread)(void\ (*func)(\textcolor{keywordtype}{void}\ *),\ \textcolor{keywordtype}{void}\ *,\ \textcolor{keywordtype}{unsigned},\ \textcolor{keywordtype}{void}\ *\ \textcolor{comment}{/*arg*/});}
+\DoxyCodeLine{00156\ \textcolor{keyword}{typedef}\ void\ (*pfnSDL\_CurrentEndThread)(void);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#ifndef\ SDL\_beginthread}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ SDL\_beginthread\ \_beginthread}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#ifndef\ SDL\_endthread}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ SDL\_endthread\ \_endthread}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *SDLCALL}
+\DoxyCodeLine{00166\ SDL\_CreateThread(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_a35d10c50423c326b20abea6a486f53e0}{SDL\_ThreadFunction}}\ fn,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{void}\ *data,}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pfnSDL\_CurrentBeginThread\ pfnBeginThread,}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pfnSDL\_CurrentEndThread\ pfnEndThread);}
+\DoxyCodeLine{00169\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *SDLCALL}
+\DoxyCodeLine{00170\ SDL\_CreateThreadWithStackSize(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_a35d10c50423c326b20abea6a486f53e0}{SDL\_ThreadFunction}}\ fn,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ stacksize,\ \textcolor{keywordtype}{void}\ *data,}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pfnSDL\_CurrentBeginThread\ pfnBeginThread,}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pfnSDL\_CurrentEndThread\ pfnEndThread);}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#if\ defined(SDL\_CreateThread)\ \&\&\ SDL\_DYNAMIC\_API}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#undef\ SDL\_CreateThread}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ SDL\_CreateThread(fn,\ name,\ data)\ SDL\_CreateThread\_REAL(fn,\ name,\ data,\ (pfnSDL\_CurrentBeginThread)SDL\_beginthread,\ (pfnSDL\_CurrentEndThread)SDL\_endthread)}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#undef\ SDL\_CreateThreadWithStackSize}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ SDL\_CreateThreadWithStackSize(fn,\ name,\ stacksize,\ data)\ SDL\_CreateThreadWithStackSize\_REAL(fn,\ name,\ stacksize,\ data,\ (pfnSDL\_CurrentBeginThread)SDL\_beginthread,\ (pfnSDL\_CurrentEndThread)SDL\_endthread)}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ SDL\_CreateThread(fn,\ name,\ data)\ SDL\_CreateThread(fn,\ name,\ data,\ (pfnSDL\_CurrentBeginThread)SDL\_beginthread,\ (pfnSDL\_CurrentEndThread)SDL\_endthread)}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ SDL\_CreateThreadWithStackSize(fn,\ name,\ stacksize,\ data)\ SDL\_CreateThreadWithStackSize(fn,\ name,\ stacksize,\ data,\ (pfnSDL\_CurrentBeginThread)SDL\_beginthread,\ (pfnSDL\_CurrentEndThread)SDL\_endthread)}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00207\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *SDLCALL}
+\DoxyCodeLine{00208\ SDL\_CreateThread(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_a35d10c50423c326b20abea6a486f53e0}{SDL\_ThreadFunction}}\ fn,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keywordtype}{void}\ *data);}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00253\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *SDLCALL}
+\DoxyCodeLine{00254\ SDL\_CreateThreadWithStackSize(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_a35d10c50423c326b20abea6a486f53e0}{SDL\_ThreadFunction}}\ fn,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ stacksize,\ \textcolor{keywordtype}{void}\ *data);}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00272\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SDLCALL\ SDL\_GetThreadName(\mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *thread);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00290\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_threadID\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_a341933eef1470789de20b05c1392b9ae}{SDL\_ThreadID}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00307\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_threadID\ SDLCALL\ SDL\_GetThreadID(\mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *\ thread);}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00322\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetThreadPriority(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_acce8dea56f6b307fadd2949b64e3ebda}{SDL\_ThreadPriority}}\ priority);}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00357\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_WaitThread(\mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *\ thread,\ \textcolor{keywordtype}{int}\ *status);}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00393\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_DetachThread(\mbox{\hyperlink{struct_s_d_l___thread}{SDL\_Thread}}\ *\ thread);}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00408\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_TLSID\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_ac7ed1ec8dec5b902da25b60da2b728fa}{SDL\_TLSCreate}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00422\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ *\ SDLCALL\ SDL\_TLSGet(SDL\_TLSID\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00447\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_TLSSet(SDL\_TLSID\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *value,\ \textcolor{keywordtype}{void}\ (SDLCALL\ *destructor)(\textcolor{keywordtype}{void}*));}
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00454\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h_addd72a8ba431ef92685bbc9c89c5c67c}{SDL\_TLSCleanup}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00457\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00458\ \}}
+\DoxyCodeLine{00459\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00460\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_thread\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00464\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

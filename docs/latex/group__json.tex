@@ -1,0 +1,124 @@
+\doxysubsection{Json}
+\hypertarget{group__json}{}\label{group__json}\index{Json@{Json}}
+\doxysubsubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_json_serial}{Json\+Serial}}
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__json_gaf21d58754beca77b63391fa84b654c76}\label{group__json_gaf21d58754beca77b63391fa84b654c76} 
+\mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Serial} ()
+\item 
+\Hypertarget{group__json_gae4c51e8317006fdb05a471cede88ee99}\label{group__json_gae4c51e8317006fdb05a471cede88ee99} 
+void {\bfseries delete\+Serial} (\mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}} \texorpdfstring{$\ast$}{*}serial)
+\item 
+\Hypertarget{group__json_ga1b612f3670f20ad2c7ed3d7a21acc6b5}\label{group__json_ga1b612f3670f20ad2c7ed3d7a21acc6b5} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries get\+Name} ()
+\item 
+\Hypertarget{group__json_ga5a9e1cf52200ed570b486bf1df100e08}\label{group__json_ga5a9e1cf52200ed570b486bf1df100e08} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries get\+Type} ()
+\item 
+void \mbox{\hyperlink{group__json_ga2a00f269590167c661c249d1b18041bd}{Json\+Serial\+::load}} (const std\+::string \&path) override
+\begin{DoxyCompactList}\small\item\em virtual method to load a file \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__json_gae488c356c07d116778fbc6cf7114abca}{Json\+Serial\+::is\+Loaded}} () override
+\begin{DoxyCompactList}\small\item\em virtual method to know if the file is loaded \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__json_gad3ce46a0430880e403930e244c51dd24}{Json\+Serial\+::close}} () override
+\begin{DoxyCompactList}\small\item\em virtual method to close a file \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} \mbox{\hyperlink{group__json_ga37a58a2841346dddb51c2c0336be1918}{Json\+Serial\+::get\+Root}} () override
+\begin{DoxyCompactList}\small\item\em virtual method to get the root node \end{DoxyCompactList}\item 
+\Hypertarget{group__json_gab40e859c006dbf0b83da671def9c3cbb}\label{group__json_gab40e859c006dbf0b83da671def9c3cbb} 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries Json\+Serial\+::json\+\_\+converter} (nlohmann\+::json json)
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__json_ga090c22c9bdaccc498d954ef5e7067bcd}\label{group__json_ga090c22c9bdaccc498d954ef5e7067bcd} 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries Json\+Serial\+::node}
+\item 
+\Hypertarget{group__json_gae2013f571fa7987a42d4c0b57d84728b}\label{group__json_gae2013f571fa7987a42d4c0b57d84728b} 
+bool {\bfseries Json\+Serial\+::loaded}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__json_gad3ce46a0430880e403930e244c51dd24}\index{Json@{Json}!close@{close}}
+\index{close@{close}!Json@{Json}}
+\doxysubsubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{group__json_gad3ce46a0430880e403930e244c51dd24} 
+void Json\+Serial\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+virtual method to close a file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__serial_ga1e41af32fe3b2d40e0363d86df1a6016}{serial\+::\+ISerial}}.
+
+\Hypertarget{group__json_ga37a58a2841346dddb51c2c0336be1918}\index{Json@{Json}!getRoot@{getRoot}}
+\index{getRoot@{getRoot}!Json@{Json}}
+\doxysubsubsubsection{\texorpdfstring{getRoot()}{getRoot()}}
+{\footnotesize\ttfamily \label{group__json_ga37a58a2841346dddb51c2c0336be1918} 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} Json\+Serial\+::get\+Root (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+virtual method to get the root node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__serial_gaa7657594f1a004aa14b581d0a80b19b1}{serial\+::\+ISerial}}.
+
+\Hypertarget{group__json_gae488c356c07d116778fbc6cf7114abca}\index{Json@{Json}!isLoaded@{isLoaded}}
+\index{isLoaded@{isLoaded}!Json@{Json}}
+\doxysubsubsubsection{\texorpdfstring{isLoaded()}{isLoaded()}}
+{\footnotesize\ttfamily \label{group__json_gae488c356c07d116778fbc6cf7114abca} 
+bool Json\+Serial\+::is\+Loaded (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+virtual method to know if the file is loaded 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__serial_ga3cf30399f7e86a6f29968e125a9079bb}{serial\+::\+ISerial}}.
+
+\Hypertarget{group__json_ga2a00f269590167c661c249d1b18041bd}\index{Json@{Json}!load@{load}}
+\index{load@{load}!Json@{Json}}
+\doxysubsubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily \label{group__json_ga2a00f269590167c661c249d1b18041bd} 
+void Json\+Serial\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+virtual method to load a file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__serial_ga71cc14f1841c3df5683e9c631b7ca4f7}{serial\+::\+ISerial}}.
+

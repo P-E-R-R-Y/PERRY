@@ -1,16 +1,13 @@
 /**
- *
- * File: SfmlWindow.hpp (header.v2)
- * Created Date: Tue 14/03/2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Sat 18/03/2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
+ * @file SfmlWindow.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup SFML
+ * @{
+ */
 
 #ifndef SFMLWINDOW_HPP_
 #define SFMLWINDOW_HPP_
@@ -41,63 +38,130 @@
 //window
 #include "SfmlCamera.hpp"
 
-//sf::vector3f to std::array<double, 3>
+/**
+ * @brief turns a sf::Vector3f into a std::array<double, 3>
+ * 
+ * @param point 
+ * @return std::array<double, 3> 
+ */
 std::array<double, 3> v3toa3(sf::Vector3f point) {
     return {static_cast<double>(point.x),
             static_cast<double>(point.y),
             static_cast<double>(point.z)};
 }
 
+/**
+ * @brief define sfml window
+ */
 class SfmlWindow : public graphic::IWindow {
     public:
+
+        /**
+         * @brief Construct a new Sfml Window object
+         * 
+         * @param screenWidth 
+         * @param screenHeight 
+         * @param title 
+         */
         SfmlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title)
         : _window(sf::VideoMode(screenWidth, screenHeight), title), _event(nullptr), _deltaClock() {
         };
 
+        /**
+         * @brief Destroy the Sfml Window object
+         */
         ~SfmlWindow() = default;
 
-        //EVENT
+        /**
+         * @brief link an event to the window
+         * 
+         * @param event 
+         */
         void linkEvent(graphic::IEvent *event) override {
             _event = static_cast<SfmlEvent *>(event);
         };
-        //GLOBAL
+        
+        /**
+         * @brief notice if the window is open
+         * 
+         * @return true 
+         * @return false 
+         */
         bool isOpen() override {
             return _window.isOpen();
         };
 
+        /**
+         * @brief close the window
+         * 
+         */
         void close() override {
             _window.close();
         };
 
-        //TIME
+        /**
+         * @brief Set the Frame Limit object
+         * 
+         * @param limit 
+         */
         void setFrameLimit(__int32_t limit) override {
             _window.setFramerateLimit(limit);
         };
 
+        /**
+         * @brief Get the Delta object
+         * 
+         * @return __int32_t 
+         */
         __int32_t getDelta() override {
             return static_cast<__int32_t>(_deltaTime.asMilliseconds());
         };
 
-        //DRAW
+        /**
+         * @brief allowing to draw 2D on the window
+         */
         void beginDraw() override {
             _window.clear();
         };
 
+        /**
+         * @brief draw a polygon
+         * 
+         * @param polygon
+         */
         virtual void drawPoly(graphic::IPolygon *polygon) override;
+
+        /**
+         * @brief draw a sprite
+         * 
+         * @param sprite 
+         */
         virtual void drawSprite(graphic::ISprite *sprite) override;
 
+        /**
+         * @brief end the drawing
+         */
         void endDraw() override {
             _window.display();
             _deltaTime = _deltaClock.restart();
         };
 
-        //Draw3 (Carve)
+        /**
+         * @brief allowing to draw 3D on the window
+         * 
+         * @param cam 
+         */
         void beginMode3(graphic::ICamera *cam) override {
             if (_camera == nullptr && cam != nullptr) {
                 _camera = static_cast<SfmlCamera *>(cam);
             }
         }
 
+        /**
+         * @brief draw a point
+         * 
+         * @param point 
+         */
         void drawPoint(const sf::Vector3f& point) {
 
             //!make the camera the origin
@@ -144,6 +208,11 @@ class SfmlWindow : public graphic::IWindow {
             return;
         }
 
+        /**
+         * @brief draw a model
+         * 
+         * @param model 
+         */
         void drawModel(graphic::IModel *model) override {
             if (_camera == nullptr) {
                 throw std::runtime_error("begginMode3d not called");
@@ -158,14 +227,25 @@ class SfmlWindow : public graphic::IWindow {
             }
         }
 
+        /**
+         * @brief end the 3D drawing
+         */
         void endMode3() override {
         };
 
-        //EVENT
+        /**
+         * @brief poll the event
+         * 
+         * @return true 
+         * @return false 
+         */
         bool pollEvent() override {
             return _window.pollEvent(_event->_event);
         }
 
+        /**
+         * @brief close the window
+         */
         void eventClose() override {
             if (_event->_event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                 _window.close();

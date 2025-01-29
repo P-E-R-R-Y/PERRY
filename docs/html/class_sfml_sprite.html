@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -91,9 +92,12 @@ $(function(){ initResizable(false); });
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="class_sfml_sprite-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">SfmlSprite Class Reference</div></div>
+  <div class="headertitle"><div class="title">SfmlSprite Class Reference<div class="ingroups"><a class="el" href="group__graphic.html">Graphic</a> &raquo; <a class="el" href="group___s_f_m_l.html">SFML</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Used to handle images.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_sfml_sprite_8hpp_source.html">SfmlSprite.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -108,364 +112,66 @@ Inheritance diagram for SfmlSprite:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4dee9a5402ae6f2cb11c2a6e40e852b7" id="r_a4dee9a5402ae6f2cb11c2a6e40e852b7"><td class="memItemLeft" align="right" valign="top"><a id="a4dee9a5402ae6f2cb11c2a6e40e852b7" name="a4dee9a5402ae6f2cb11c2a6e40e852b7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SfmlSprite</b> (std::string path)</td></tr>
-<tr class="separator:a4dee9a5402ae6f2cb11c2a6e40e852b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43587aab7d5762108568c65232e31fb8" id="r_a43587aab7d5762108568c65232e31fb8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43587aab7d5762108568c65232e31fb8">isReady</a> () const override</td></tr>
-<tr class="memdesc:a43587aab7d5762108568c65232e31fb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">notice if the sprite is ready  <br /></td></tr>
-<tr class="separator:a43587aab7d5762108568c65232e31fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b6814799269cbec3f07427965df97a6" id="r_a1b6814799269cbec3f07427965df97a6"><td class="memItemLeft" align="right" valign="top">__v4f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b6814799269cbec3f07427965df97a6">getBounds</a> () const override</td></tr>
-<tr class="memdesc:a1b6814799269cbec3f07427965df97a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">give the bounds of the sprite  <br /></td></tr>
-<tr class="separator:a1b6814799269cbec3f07427965df97a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e44b19b49e74f7525a9026df19f1947" id="r_a7e44b19b49e74f7525a9026df19f1947"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e44b19b49e74f7525a9026df19f1947">setCrop</a> (__v4f_t rect) override</td></tr>
-<tr class="memdesc:a7e44b19b49e74f7525a9026df19f1947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crop the sprite with a rectangle.  <br /></td></tr>
-<tr class="separator:a7e44b19b49e74f7525a9026df19f1947"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56ce6dba47ee9764d2e780f6ef2a4729" id="r_a56ce6dba47ee9764d2e780f6ef2a4729"><td class="memItemLeft" align="right" valign="top">__v2f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56ce6dba47ee9764d2e780f6ef2a4729">getPosition</a> () const override</td></tr>
-<tr class="memdesc:a56ce6dba47ee9764d2e780f6ef2a4729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="struct_position.html">Position</a> object.  <br /></td></tr>
-<tr class="separator:a56ce6dba47ee9764d2e780f6ef2a4729"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa785fd42ef4de9aab70eff27ba8aacc" id="r_afa785fd42ef4de9aab70eff27ba8aacc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa785fd42ef4de9aab70eff27ba8aacc">setPosition</a> (__v2f_t position) override</td></tr>
-<tr class="memdesc:afa785fd42ef4de9aab70eff27ba8aacc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <a class="el" href="struct_position.html">Position</a> object.  <br /></td></tr>
-<tr class="separator:afa785fd42ef4de9aab70eff27ba8aacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacf999c674358e524f41fd302479be98" id="r_aacf999c674358e524f41fd302479be98"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacf999c674358e524f41fd302479be98">getRotation</a> () const override</td></tr>
-<tr class="memdesc:aacf999c674358e524f41fd302479be98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Rotation object.  <br /></td></tr>
-<tr class="separator:aacf999c674358e524f41fd302479be98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac80478281cd7c3386dad009cee9ac42f" id="r_ac80478281cd7c3386dad009cee9ac42f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac80478281cd7c3386dad009cee9ac42f">setRotation</a> (float angle, bool isRad=false) override</td></tr>
-<tr class="memdesc:ac80478281cd7c3386dad009cee9ac42f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Rotation object.  <br /></td></tr>
-<tr class="separator:ac80478281cd7c3386dad009cee9ac42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc048e63cab334b7b73e4b416220374b" id="r_adc048e63cab334b7b73e4b416220374b"><td class="memItemLeft" align="right" valign="top">__v2f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc048e63cab334b7b73e4b416220374b">getSize</a> () const override</td></tr>
-<tr class="memdesc:adc048e63cab334b7b73e4b416220374b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Sprite size.  <br /></td></tr>
-<tr class="separator:adc048e63cab334b7b73e4b416220374b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaac0ec9ad459089e2fab0c484d8544bb" id="r_aaac0ec9ad459089e2fab0c484d8544bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaac0ec9ad459089e2fab0c484d8544bb">setSize</a> (__v2f_t size) override</td></tr>
-<tr class="memdesc:aaac0ec9ad459089e2fab0c484d8544bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Sprite size.  <br /></td></tr>
-<tr class="separator:aaac0ec9ad459089e2fab0c484d8544bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4dee9a5402ae6f2cb11c2a6e40e852b7" id="r_ga4dee9a5402ae6f2cb11c2a6e40e852b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#ga4dee9a5402ae6f2cb11c2a6e40e852b7">SfmlSprite</a> (std::string path)</td></tr>
+<tr class="memdesc:ga4dee9a5402ae6f2cb11c2a6e40e852b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Sfml Sprite object.  <br /></td></tr>
+<tr class="separator:ga4dee9a5402ae6f2cb11c2a6e40e852b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43587aab7d5762108568c65232e31fb8" id="r_ga43587aab7d5762108568c65232e31fb8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#ga43587aab7d5762108568c65232e31fb8">isReady</a> () const override</td></tr>
+<tr class="memdesc:ga43587aab7d5762108568c65232e31fb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the sprite is ready  <br /></td></tr>
+<tr class="separator:ga43587aab7d5762108568c65232e31fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b6814799269cbec3f07427965df97a6" id="r_ga1b6814799269cbec3f07427965df97a6"><td class="memItemLeft" align="right" valign="top">__v4f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#ga1b6814799269cbec3f07427965df97a6">getBounds</a> () const override</td></tr>
+<tr class="memdesc:ga1b6814799269cbec3f07427965df97a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Bounds object.  <br /></td></tr>
+<tr class="separator:ga1b6814799269cbec3f07427965df97a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e44b19b49e74f7525a9026df19f1947" id="r_ga7e44b19b49e74f7525a9026df19f1947"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#ga7e44b19b49e74f7525a9026df19f1947">setCrop</a> (__v4f_t rect) override</td></tr>
+<tr class="memdesc:ga7e44b19b49e74f7525a9026df19f1947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Crop object.  <br /></td></tr>
+<tr class="separator:ga7e44b19b49e74f7525a9026df19f1947"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga56ce6dba47ee9764d2e780f6ef2a4729" id="r_ga56ce6dba47ee9764d2e780f6ef2a4729"><td class="memItemLeft" align="right" valign="top">__v2f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#ga56ce6dba47ee9764d2e780f6ef2a4729">getPosition</a> () const override</td></tr>
+<tr class="memdesc:ga56ce6dba47ee9764d2e780f6ef2a4729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="struct_position.html">Position</a> object.  <br /></td></tr>
+<tr class="separator:ga56ce6dba47ee9764d2e780f6ef2a4729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa785fd42ef4de9aab70eff27ba8aacc" id="r_gafa785fd42ef4de9aab70eff27ba8aacc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#gafa785fd42ef4de9aab70eff27ba8aacc">setPosition</a> (__v2f_t position) override</td></tr>
+<tr class="memdesc:gafa785fd42ef4de9aab70eff27ba8aacc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <a class="el" href="struct_position.html">Position</a> object.  <br /></td></tr>
+<tr class="separator:gafa785fd42ef4de9aab70eff27ba8aacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaacf999c674358e524f41fd302479be98" id="r_gaacf999c674358e524f41fd302479be98"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#gaacf999c674358e524f41fd302479be98">getRotation</a> () const override</td></tr>
+<tr class="memdesc:gaacf999c674358e524f41fd302479be98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Rotation object.  <br /></td></tr>
+<tr class="separator:gaacf999c674358e524f41fd302479be98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac80478281cd7c3386dad009cee9ac42f" id="r_gac80478281cd7c3386dad009cee9ac42f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#gac80478281cd7c3386dad009cee9ac42f">setRotation</a> (float angle, bool isRad=false) override</td></tr>
+<tr class="memdesc:gac80478281cd7c3386dad009cee9ac42f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Rotation object.  <br /></td></tr>
+<tr class="separator:gac80478281cd7c3386dad009cee9ac42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc048e63cab334b7b73e4b416220374b" id="r_gadc048e63cab334b7b73e4b416220374b"><td class="memItemLeft" align="right" valign="top">__v2f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#gadc048e63cab334b7b73e4b416220374b">getSize</a> () const override</td></tr>
+<tr class="memdesc:gadc048e63cab334b7b73e4b416220374b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Size object.  <br /></td></tr>
+<tr class="separator:gadc048e63cab334b7b73e4b416220374b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaac0ec9ad459089e2fab0c484d8544bb" id="r_gaaac0ec9ad459089e2fab0c484d8544bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_f_m_l.html#gaaac0ec9ad459089e2fab0c484d8544bb">setSize</a> (__v2f_t size) override</td></tr>
+<tr class="memdesc:gaaac0ec9ad459089e2fab0c484d8544bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Size object.  <br /></td></tr>
+<tr class="separator:gaaac0ec9ad459089e2fab0c484d8544bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgraphic_1_1_i_sprite"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classgraphic_1_1_i_sprite')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a></td></tr>
-<tr class="memitem:a786a8188a66a935e299d2cf489156241 inherit pub_methods_classgraphic_1_1_i_sprite" id="r_a786a8188a66a935e299d2cf489156241"><td class="memItemLeft" align="right" valign="top">
+<tr class="memitem:ga786a8188a66a935e299d2cf489156241 inherit pub_methods_classgraphic_1_1_i_sprite" id="r_ga786a8188a66a935e299d2cf489156241"><td class="memItemLeft" align="right" valign="top">
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ISprite</b> ()=default</td></tr>
-<tr class="memdesc:a786a8188a66a935e299d2cf489156241 inherit pub_methods_classgraphic_1_1_i_sprite"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_sprite.html" title="Sprite interface.">ISprite</a> object. <br /></td></tr>
-<tr class="separator:a786a8188a66a935e299d2cf489156241 inherit pub_methods_classgraphic_1_1_i_sprite"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga786a8188a66a935e299d2cf489156241 inherit pub_methods_classgraphic_1_1_i_sprite"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_sprite.html" title="Sprite interface.">ISprite</a> object. <br /></td></tr>
+<tr class="separator:ga786a8188a66a935e299d2cf489156241 inherit pub_methods_classgraphic_1_1_i_sprite"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a8a6f9bab65c40f509d1bea95878c9e4f" id="r_a8a6f9bab65c40f509d1bea95878c9e4f"><td class="memItemLeft" align="right" valign="top"><a id="a8a6f9bab65c40f509d1bea95878c9e4f" name="a8a6f9bab65c40f509d1bea95878c9e4f"></a>
+<tr class="memitem:ga8a6f9bab65c40f509d1bea95878c9e4f" id="r_ga8a6f9bab65c40f509d1bea95878c9e4f"><td class="memItemLeft" align="right" valign="top">
 sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><b>_texture</b></td></tr>
-<tr class="separator:a8a6f9bab65c40f509d1bea95878c9e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bf1cd07f46d36624f270df23914b9dc" id="r_a6bf1cd07f46d36624f270df23914b9dc"><td class="memItemLeft" align="right" valign="top"><a id="a6bf1cd07f46d36624f270df23914b9dc" name="a6bf1cd07f46d36624f270df23914b9dc"></a>
+<tr class="separator:ga8a6f9bab65c40f509d1bea95878c9e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6bf1cd07f46d36624f270df23914b9dc" id="r_ga6bf1cd07f46d36624f270df23914b9dc"><td class="memItemLeft" align="right" valign="top">
 sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><b>_sprite</b></td></tr>
-<tr class="separator:a6bf1cd07f46d36624f270df23914b9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b53872e5d0acc4c228ffaf1da691f45" id="r_a8b53872e5d0acc4c228ffaf1da691f45"><td class="memItemLeft" align="right" valign="top"><a id="a8b53872e5d0acc4c228ffaf1da691f45" name="a8b53872e5d0acc4c228ffaf1da691f45"></a>
+<tr class="separator:ga6bf1cd07f46d36624f270df23914b9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8b53872e5d0acc4c228ffaf1da691f45" id="r_ga8b53872e5d0acc4c228ffaf1da691f45"><td class="memItemLeft" align="right" valign="top">
 sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>_position</b></td></tr>
-<tr class="separator:a8b53872e5d0acc4c228ffaf1da691f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7e5d955f7ca1f9aa5fa41103ba6c681" id="r_af7e5d955f7ca1f9aa5fa41103ba6c681"><td class="memItemLeft" align="right" valign="top"><a id="af7e5d955f7ca1f9aa5fa41103ba6c681" name="af7e5d955f7ca1f9aa5fa41103ba6c681"></a>
+<tr class="separator:ga8b53872e5d0acc4c228ffaf1da691f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7e5d955f7ca1f9aa5fa41103ba6c681" id="r_gaf7e5d955f7ca1f9aa5fa41103ba6c681"><td class="memItemLeft" align="right" valign="top">
 sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>_scale</b></td></tr>
-<tr class="separator:af7e5d955f7ca1f9aa5fa41103ba6c681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gaf7e5d955f7ca1f9aa5fa41103ba6c681"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:ae0b58c2104bb6fe805f93db75b13c82c" id="r_ae0b58c2104bb6fe805f93db75b13c82c"><td class="memItemLeft" align="right" valign="top"><a id="ae0b58c2104bb6fe805f93db75b13c82c" name="ae0b58c2104bb6fe805f93db75b13c82c"></a>
+<tr class="memitem:gae0b58c2104bb6fe805f93db75b13c82c" id="r_gae0b58c2104bb6fe805f93db75b13c82c"><td class="memItemLeft" align="right" valign="top">
 class&#160;</td><td class="memItemRight" valign="bottom"><b>SfmlWindow</b></td></tr>
-<tr class="separator:ae0b58c2104bb6fe805f93db75b13c82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gae0b58c2104bb6fe805f93db75b13c82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File: RayModel2.hpp Created Date: Fr Mar 2023 Project: PERRY Author: Perry Chouteau</p>
-<p>Last Modified: Fri Mar 10 2023 Modified By: Perry Chouteau</p>
-<p>Copyright (c) 2023-2033 Perry Chouteau </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1b6814799269cbec3f07427965df97a6" name="a1b6814799269cbec3f07427965df97a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b6814799269cbec3f07427965df97a6">&#9670;&#160;</a></span>getBounds()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">__v4f_t SfmlSprite::getBounds </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>give the bounds of the sprite </p>
-<dl class="section return"><dt>Returns</dt><dd>__v4f_t </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_sprite.html#a00a5af5a26c11991f3fe24d268778f85">graphic::ISprite</a>.</p>
-
-</div>
-</div>
-<a id="a56ce6dba47ee9764d2e780f6ef2a4729" name="a56ce6dba47ee9764d2e780f6ef2a4729"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56ce6dba47ee9764d2e780f6ef2a4729">&#9670;&#160;</a></span>getPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">__v2f_t SfmlSprite::getPosition </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the <a class="el" href="struct_position.html">Position</a> object. </p>
-<dl class="section return"><dt>Returns</dt><dd>__v2f_t </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_sprite.html#a8cc0af533b60b32dc093a7cda5b50cdc">graphic::ISprite</a>.</p>
-
-</div>
-</div>
-<a id="aacf999c674358e524f41fd302479be98" name="aacf999c674358e524f41fd302479be98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacf999c674358e524f41fd302479be98">&#9670;&#160;</a></span>getRotation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float SfmlSprite::getRotation </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the Rotation object. </p>
-<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_sprite.html#a7d03f2782d06584062b096f74120e9e8">graphic::ISprite</a>.</p>
-
-</div>
-</div>
-<a id="adc048e63cab334b7b73e4b416220374b" name="adc048e63cab334b7b73e4b416220374b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc048e63cab334b7b73e4b416220374b">&#9670;&#160;</a></span>getSize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">__v2f_t SfmlSprite::getSize </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the Sprite size. </p>
-<dl class="section return"><dt>Returns</dt><dd>__v2f_t </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_sprite.html#a53f82fa3b8aaf11d8fd52645bbb9d7db">graphic::ISprite</a>.</p>
-
-</div>
-</div>
-<a id="a43587aab7d5762108568c65232e31fb8" name="a43587aab7d5762108568c65232e31fb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43587aab7d5762108568c65232e31fb8">&#9670;&#160;</a></span>isReady()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SfmlSprite::isReady </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>notice if the sprite is ready </p>
-<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_sprite.html#a8088e103ac1733993812764debae1e5e">graphic::ISprite</a>.</p>
-
-</div>
-</div>
-<a id="a7e44b19b49e74f7525a9026df19f1947" name="a7e44b19b49e74f7525a9026df19f1947"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e44b19b49e74f7525a9026df19f1947">&#9670;&#160;</a></span>setCrop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SfmlSprite::setCrop </td>
-          <td>(</td>
-          <td class="paramtype">__v4f_t</td>          <td class="paramname"><span class="paramname"><em>rect</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Crop the sprite with a rectangle. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">rect</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_sprite.html#a56dad5536d7c8f370a17842b966a9813">graphic::ISprite</a>.</p>
-
-</div>
-</div>
-<a id="afa785fd42ef4de9aab70eff27ba8aacc" name="afa785fd42ef4de9aab70eff27ba8aacc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa785fd42ef4de9aab70eff27ba8aacc">&#9670;&#160;</a></span>setPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SfmlSprite::setPosition </td>
-          <td>(</td>
-          <td class="paramtype">__v2f_t</td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the <a class="el" href="struct_position.html">Position</a> object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">position</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_sprite.html#a7da368451eae7bdc6919d238387f416a">graphic::ISprite</a>.</p>
-
-</div>
-</div>
-<a id="ac80478281cd7c3386dad009cee9ac42f" name="ac80478281cd7c3386dad009cee9ac42f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac80478281cd7c3386dad009cee9ac42f">&#9670;&#160;</a></span>setRotation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SfmlSprite::setRotation </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>angle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isRad</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the Rotation object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">angle</td><td></td></tr>
-    <tr><td class="paramname">isRad</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_sprite.html#a5706582ed7b81bee47577c05c8d44f12">graphic::ISprite</a>.</p>
-
-</div>
-</div>
-<a id="aaac0ec9ad459089e2fab0c484d8544bb" name="aaac0ec9ad459089e2fab0c484d8544bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaac0ec9ad459089e2fab0c484d8544bb">&#9670;&#160;</a></span>setSize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SfmlSprite::setSize </td>
-          <td>(</td>
-          <td class="paramtype">__v2f_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the Sprite size. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">size</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_sprite.html#a487198bf197d8880aecd8a237e07c9fd">graphic::ISprite</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Used to handle images. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/graphic/<a class="el" href="_sfml_sprite_8hpp_source.html">SfmlSprite.hpp</a></li>
 </ul>
 </div><!-- contents -->

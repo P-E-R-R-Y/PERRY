@@ -1,84 +1,83 @@
 \doxysection{ICore.\+hpp}
 \hypertarget{_i_core_8hpp_source}{}\label{_i_core_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/core/ICore.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/core/ICore.hpp}}
-
+\mbox{\hyperlink{_i_core_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ICORE\_HPP}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ICORE\_HPP}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_core}{ICore}}\ \{}
-\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_core}{\string~ICore}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ start()\ =\ 0;\ \ \ \ }
-\DoxyCodeLine{00009\ \};}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_engine}{Engine}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_core}{ICore}}\ \{}
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_engine}{\string~Engine}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ initHandler()\ =\ 0;}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ destroyHandler()\ =\ 0;}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ eventHandler()\ =\ 0;}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ updateHandler()\ =\ 0;}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ displayHandler()\ =\ 0;}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ ICORE\_HPP}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ ICORE\_HPP}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_core}{ICore}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_core}{\string~ICore}}()\ =\ \textcolor{keywordflow}{default};}
 \DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \};}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{comment}{//\ Custom\ Class}}
-\DoxyCodeLine{00027\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Parents>}
-\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }CustomisableEngine\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_engine}{Engine}},\ \textcolor{keyword}{public}\ Parents...\ \{}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Constructor:\ Accepts\ parameters\ for\ each\ parent\ class}}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Args>}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ CustomisableEngine(Args...\ params)}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ :\ Parents(constructParent<Parents>(params))...\ \{\ \textcolor{comment}{//\ Forward\ parameters\ to\ the\ parent\ constructors}}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ start()\ =\ 0;\ \ \ \ }
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_engine}{Engine}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_core}{ICore}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_engine}{\string~Engine}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ initHandler()\ =\ 0;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ destroyHandler()\ =\ 0;}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//params}}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ \textcolor{keywordtype}{void}>}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_customisable_engine_1_1has__params}{has\_params}}\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ eventHandler()\ =\ 0;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ updateHandler()\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ displayHandler()\ =\ 0;}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_customisable_engine_1_1has__params}{has\_params}}<T,\ std::void\_t<typename\ T::Params>>\ :\ std::true\_type\ \{\};}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ has\_params\_v\ =\ \mbox{\hyperlink{struct_customisable_engine_1_1has__params}{has\_params<T>::value}};}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//tuple}}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_customisable_engine_1_1is__specialization__of__tuple}{is\_specialization\_of\_tuple}}\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Parents>}
+\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }\mbox{\hyperlink{group__core_ga2c3c0d359b77ad86e7b485295c795386}{CustomisableEngine}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_engine}{Engine}},\ \textcolor{keyword}{public}\ Parents...\ \{}
 \DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ Args>}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_customisable_engine_1_1is__specialization__of__tuple}{is\_specialization\_of\_tuple}}<std::tuple<Args...>>\ :\ std::true\_type\ \{\};}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Helper\ function\ to\ construct\ a\ parent\ with\ the\ correct\ parameters}}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Parent,\ \textcolor{keyword}{typename}\ Arg>}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Parent\ constructParent(Arg\&\&\ arg)\ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (!has\_params\_v<Parent>\ ||\ std::is\_same\_v<Arg,\ std::tuple<>>)\ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//no\ params\ or\ empty\ tuple}}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}NoParams"{}}\ <<\ \textcolor{stringliteral}{"{}\ >\ "{}}\ <<\ \textcolor{keyword}{typeid}(Parent).name()\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Parent();}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (is\_specialization\_of\_tuple<typename\ Parent::Params>::value)\ \{}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unpack\ tuple}}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Tuple"{}}\ <<\ \textcolor{stringliteral}{"{}\ >\ "{}}\ <<\ \textcolor{keyword}{typeid}(Parent).name()\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::apply([](\textcolor{keyword}{auto}\&\&...\ unpackedArgs)\ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Parent(std::forward<\textcolor{keyword}{decltype}(unpackedArgs)>(unpackedArgs)...);}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ std::forward<Arg>(arg));}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ single\ param}}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SingleParams"{}}\ <<\ \textcolor{stringliteral}{"{}\ >\ "{}}\ <<\ \textcolor{keyword}{typeid}(Parent).name()\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Parent(std::forward<Arg>(arg));}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00076\ \};}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ICORE\_HPP}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__core_ga2c3c0d359b77ad86e7b485295c795386}{CustomisableEngine}}(Args...\ params)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ :\ Parents(\mbox{\hyperlink{group__core_ga65645c8eb74b16175b1d8dead1cfd90d}{constructParent}}<Parents>(params))...\ \{\ \textcolor{comment}{//\ Forward\ parameters\ to\ the\ parent\ constructors}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//params}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ =\ \textcolor{keywordtype}{void}>}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_customisable_engine_1_1has__params}{has\_params}}\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_customisable_engine_1_1has__params}{has\_params}}<T,\ std::void\_t<typename\ T::Params>>\ :\ std::true\_type\ \{\};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ has\_params\_v\ =\ \mbox{\hyperlink{struct_customisable_engine_1_1has__params}{has\_params<T>::value}};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//tuple}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_customisable_engine_1_1is__specialization__of__tuple}{is\_specialization\_of\_tuple}}\ :\ std::false\_type\ \{\};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_customisable_engine_1_1is__specialization__of__tuple}{is\_specialization\_of\_tuple}}<std::tuple<Args...>>\ :\ std::true\_type\ \{\};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Parent,\ \textcolor{keyword}{typename}\ Arg>}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Parent\ \mbox{\hyperlink{group__core_ga65645c8eb74b16175b1d8dead1cfd90d}{constructParent}}(Arg\&\&\ arg)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (!has\_params\_v<Parent>\ ||\ std::is\_same\_v<Arg,\ std::tuple<>>)\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//no\ params\ or\ empty\ tuple}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}NoParams"{}}\ <<\ \textcolor{stringliteral}{"{}\ >\ "{}}\ <<\ \textcolor{keyword}{typeid}(Parent).name()\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Parent();}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\mbox{\hyperlink{struct_customisable_engine_1_1is__specialization__of__tuple}{is\_specialization\_of\_tuple<typename\ Parent::Params>::value}})\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unpack\ tuple}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Tuple"{}}\ <<\ \textcolor{stringliteral}{"{}\ >\ "{}}\ <<\ \textcolor{keyword}{typeid}(Parent).name()\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::apply([](\textcolor{keyword}{auto}\&\&...\ unpackedArgs)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Parent(std::forward<\textcolor{keyword}{decltype}(unpackedArgs)>(unpackedArgs)...);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},\ std::forward<Arg>(arg));}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ single\ param}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SingleParams"{}}\ <<\ \textcolor{stringliteral}{"{}\ >\ "{}}\ <<\ \textcolor{keyword}{typeid}(Parent).name()\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Parent(std::forward<Arg>(arg));}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ICORE\_HPP}}
 
 \end{DoxyCode}

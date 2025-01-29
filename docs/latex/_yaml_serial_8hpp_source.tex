@@ -1,100 +1,104 @@
 \doxysection{Yaml\+Serial.\+hpp}
 \hypertarget{_yaml_serial_8hpp_source}{}\label{_yaml_serial_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/serial/yaml/YamlSerial.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/serial/yaml/YamlSerial.hpp}}
-
+\mbox{\hyperlink{_yaml_serial_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ YAML\_SERIAL\_HPP}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ YAML\_SERIAL\_HPP}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <variant>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <yaml-\/cpp/yaml.h>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}ISerial.hpp"{}}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }YamlSerial:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_serial}{ISerial}}\ \{}
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ YamlSerial()\ \{\ }
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{false};\ }
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ YAML\_SERIAL\_HPP}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ YAML\_SERIAL\_HPP}}
 \DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \string~YamlSerial()\ \{\};}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ load(\textcolor{keyword}{const}\ std::string\&\ path)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YAML::Node\ yaml\ =\ YAML::LoadFile(path);}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ yaml\_converter(yaml);}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (YAML::Exception\&\ e)\ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ e.what()\ <<\ std::endl;}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isLoaded()\textcolor{keyword}{\ override}\{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ loaded;}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ close()\textcolor{keyword}{\ override}\{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ \mbox{\hyperlink{class_node}{Node}}();\ \ \ \textcolor{comment}{//\ Clear\ the\ node}}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ Reset\ the\ loaded\ flag}}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ getRoot()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node;}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00041\ \ \ \ \ }
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ node;}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ loaded;}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//private\ function\ needed\ to\ convert\ yaml\ to\ Node}}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ yaml\_converter(YAML::Node\ node)\ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ n;}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node.IsMap())\ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ Node>\ m;}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ node.begin();\ it\ !=\ node.end();\ ++it)\ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ it-\/>first\ <<\ std::endl;}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m[it-\/>first.as<std::string>()]\ =\ yaml\_converter(it-\/>second);}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ m;}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (node.IsSequence())\ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Node>\ v;}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ node.begin();\ it\ !=\ node.end();\ ++it)\ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v.push\_back(yaml\_converter(*it));}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ v;}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (node.IsScalar()\ ==\ \textcolor{keyword}{true})\ \{}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ node\ <<\ std::endl;}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is<int>(node))\ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ node.as<\textcolor{keywordtype}{int}>();}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (is<double>(node))\ \{}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ node.as<\textcolor{keywordtype}{double}>();}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (is<std::string>(node)\ \&\&\ (node.as<std::string>()\ ==\ \textcolor{stringliteral}{"{}true"{}}\ ||\ node.as<std::string>()\ ==\ \textcolor{stringliteral}{"{}false"{}}))\ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ node.as<\textcolor{keywordtype}{bool}>();}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (is<std::string>(node))\ \{}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ node.as<std::string>();}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unknown\ scalar\ type"{}});}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (node.IsNull())\ \{}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\ *\textcolor{keyword}{>}(\textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Node\ is\ not\ a\ scalar,\ map\ or\ sequence"{}});}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is(\textcolor{keyword}{const}\ YAML::Node\&\ node)\ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ std::stringstream\ ss(node.as<std::string>());}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp;}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ >>\ std::noskipws\ >>\ temp;}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ss.eof()\ \&\&\ !ss.fail();}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00092\ \};}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ YAML\_SERIAL\_HPP}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <yaml-\/cpp/yaml.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_serial_8hpp}{ISerial.hpp}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespaceserial}{serial}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }YamlSerial:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ YamlSerial()\ \{\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \string~YamlSerial()\ \{\};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__yaml_gaa8a4eed5b881afe3712b112b5ed650ee}{load}}(\textcolor{keyword}{const}\ std::string\&\ path)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ YAML::Node\ yaml\ =\ YAML::LoadFile(path);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ yaml\_converter(yaml);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (YAML::Exception\&\ e)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ e.what()\ <<\ std::endl;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__yaml_ga6622a8423378c56464f3bb90e0f9a537}{isLoaded}}()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ loaded;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__yaml_ga27b4e6e7913a48076aaf46150dd31c9f}{close}}()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ \mbox{\hyperlink{classserial_1_1_node}{Node}}();\ \ \ \textcolor{comment}{//\ Clear\ the\ node}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ Reset\ the\ loaded\ flag}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classserial_1_1_node}{Node}}\ \mbox{\hyperlink{group__yaml_gad0cc24a096c9aac49878de5d99954f00}{getRoot}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classserial_1_1_node}{Node}}\ node;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ loaded;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//private\ function\ needed\ to\ convert\ yaml\ to\ Node}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classserial_1_1_node}{Node}}\ yaml\_converter(YAML::Node\ node)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classserial_1_1_node}{Node}}\ n;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node.IsMap())\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ Node>\ m;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ node.begin();\ it\ !=\ node.end();\ ++it)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ it-\/>first\ <<\ std::endl;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m[it-\/>first.as<std::string>()]\ =\ yaml\_converter(it-\/>second);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ m;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (node.IsSequence())\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Node>\ v;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ node.begin();\ it\ !=\ node.end();\ ++it)\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v.push\_back(yaml\_converter(*it));}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ v;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (node.IsScalar()\ ==\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ node\ <<\ std::endl;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is<int>(node))\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ node.as<\textcolor{keywordtype}{int}>();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (is<double>(node))\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ node.as<\textcolor{keywordtype}{double}>();}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (is<std::string>(node)\ \&\&\ (node.as<std::string>()\ ==\ \textcolor{stringliteral}{"{}true"{}}\ ||\ node.as<std::string>()\ ==\ \textcolor{stringliteral}{"{}false"{}}))\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ node.as<\textcolor{keywordtype}{bool}>();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (is<std::string>(node))\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ node.as<std::string>();}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unknown\ scalar\ type"{}});}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (node.IsNull())\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\ *\textcolor{keyword}{>}(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Node\ is\ not\ a\ scalar,\ map\ or\ sequence"{}});}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is(\textcolor{keyword}{const}\ YAML::Node\&\ node)\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ std::stringstream\ ss(node.as<std::string>());}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ T\ temp;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ >>\ std::noskipws\ >>\ temp;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ss.eof()\ \&\&\ !ss.fail();}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ YAML\_SERIAL\_HPP}}
 
 \end{DoxyCode}

@@ -1,0 +1,124 @@
+\doxysection{hash.\+hpp}
+\hypertarget{hash_8hpp_source}{}\label{hash_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/hash.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/hash.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstdint>}\ \textcolor{comment}{//\ uint8\_t}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstddef>}\ \textcolor{comment}{//\ size\_t}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <functional>}\ \textcolor{comment}{//\ hash}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/abi\_macros.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/value\_t.hpp>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ boost::hash\_combine}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{inline}\ std::size\_t\ combine(std::size\_t\ seed,\ std::size\_t\ h)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ seed\ \string^=\ h\ +\ 0x9e3779b9\ +\ (seed\ <<\ 6U)\ +\ (seed\ >>\ 2U);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{return}\ seed;}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ BasicJsonType>}
+\DoxyCodeLine{00041\ std::size\_t\ \mbox{\hyperlink{namespacedetail_a9dd43d16a6a490b032ceaca358755a29}{hash}}(\textcolor{keyword}{const}\ BasicJsonType\&\ j)}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{structstring__t}{string\_t}}\ =\ \textcolor{keyword}{typename}\ BasicJsonType::string\_t;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{using\ }number\_integer\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::number\_integer\_t;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{using\ }number\_unsigned\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::number\_unsigned\_t;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{using\ }number\_float\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::number\_float\_t;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ type\ =\ \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(j.type());}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{switch}\ (j.type())}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::null:}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::discarded:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ combine(type,\ 0);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::object:}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ seed\ =\ combine(type,\ j.size());}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ element\ :\ j.items())}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ h\ =\ std::hash<string\_t>\ \{\}(element.key());}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ combine(seed,\ h);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ combine(seed,\ \mbox{\hyperlink{namespacedetail_a9dd43d16a6a490b032ceaca358755a29}{hash}}(element.value()));}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ seed;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::array:}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ seed\ =\ combine(type,\ j.size());}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ element\ :\ j)}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ combine(seed,\ \mbox{\hyperlink{namespacedetail_a9dd43d16a6a490b032ceaca358755a29}{hash}}(element));}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ seed;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::string:}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ h\ =\ std::hash<string\_t>\ \{\}(j.template\ get\_ref<const\ string\_t\&>());}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ combine(type,\ h);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::boolean:}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ h\ =\ std::hash<bool>\ \{\}(j.template\ get<bool>());}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ combine(type,\ h);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::number\_integer:}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ h\ =\ std::hash<number\_integer\_t>\ \{\}(j.template\ get<number\_integer\_t>());}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ combine(type,\ h);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::number\_unsigned:}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ h\ =\ std::hash<number\_unsigned\_t>\ \{\}(j.template\ get<number\_unsigned\_t>());}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ combine(type,\ h);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::number\_float:}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ h\ =\ std::hash<number\_float\_t>\ \{\}(j.template\ get<number\_float\_t>());}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ combine(type,\ h);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BasicJsonType::value\_t::binary:}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ seed\ =\ combine(type,\ j.get\_binary().size());}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ h\ =\ std::hash<bool>\ \{\}(j.get\_binary().has\_subtype());}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ combine(seed,\ h);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ combine(seed,\ \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(j.get\_binary().subtype()));}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \textcolor{keywordtype}{byte}\ :\ j.get\_binary())}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seed\ =\ combine(seed,\ std::hash<std::uint8\_t>\ \{\}(byte));}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ seed;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_ASSERT(\textcolor{keyword}{false});\ \textcolor{comment}{//\ NOLINT(cert-\/dcl03-\/c,hicpp-\/static-\/assert,misc-\/static-\/assert)\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{00125\ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00129\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

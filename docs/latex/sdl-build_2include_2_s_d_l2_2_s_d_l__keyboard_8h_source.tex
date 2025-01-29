@@ -1,0 +1,99 @@
+\doxysection{SDL\+\_\+keyboard.\+h}
+\hypertarget{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_source}{}\label{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_keyboard.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_keyboard.h}}
+\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ SDL\_keyboard\_h\_}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SDL\_keyboard\_h\_}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL\_stdinc.h}}"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__error_8h}{SDL\_error.h}}"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keycode_8h}{SDL\_keycode.h}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__video_8h}{SDL\_video.h}}"{}}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00037\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___keysym}{SDL\_Keysym}}}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__scancode_8h_a82ab7cff701034fb40a47b5b3a02777b}{SDL\_Scancode}}\ \mbox{\hyperlink{struct_s_d_l___keysym_ad47e9120a511e2efc7ec0c6d8a5ec51e}{scancode}};\ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keycode_8h_ae9265f064f13f0f74dfca26a67875171}{SDL\_Keycode}}\ \mbox{\hyperlink{struct_s_d_l___keysym_a082ff1fd787b79fa6c3a445deb225f08}{sym}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ Uint16\ \mbox{\hyperlink{struct_s_d_l___keysym_ab519d1b8a9939d3d035f7103f3208291}{mod}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ Uint32\ unused;}
+\DoxyCodeLine{00053\ \}\ \mbox{\hyperlink{struct_s_d_l___keysym}{SDL\_Keysym}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{/*\ Function\ prototypes\ */}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}\ *\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_a3b552fc22887b0f67b2463301698078e}{SDL\_GetKeyboardFocus}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ Uint8\ *SDLCALL\ SDL\_GetKeyboardState(\textcolor{keywordtype}{int}\ *numkeys);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00106\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_a8631a8c97a224492e9b35a00761beb15}{SDL\_ResetKeyboard}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00119\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keycode_8h_afa050ad71f0a5b86aa05cb13f542d747}{SDL\_Keymod}}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_a7b2ee63de74c442ac456cac9db5f8ed0}{SDL\_GetModState}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00138\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_SetModState(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keycode_8h_afa050ad71f0a5b86aa05cb13f542d747}{SDL\_Keymod}}\ modstate);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keycode_8h_ae9265f064f13f0f74dfca26a67875171}{SDL\_Keycode}}\ SDLCALL\ SDL\_GetKeyFromScancode(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__scancode_8h_a82ab7cff701034fb40a47b5b3a02777b}{SDL\_Scancode}}\ scancode);}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00170\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__scancode_8h_a82ab7cff701034fb40a47b5b3a02777b}{SDL\_Scancode}}\ SDLCALL\ SDL\_GetScancodeFromKey(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keycode_8h_ae9265f064f13f0f74dfca26a67875171}{SDL\_Keycode}}\ key);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00195\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SDLCALL\ SDL\_GetScancodeName(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__scancode_8h_a82ab7cff701034fb40a47b5b3a02777b}{SDL\_Scancode}}\ scancode);}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00210\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__scancode_8h_a82ab7cff701034fb40a47b5b3a02777b}{SDL\_Scancode}}\ SDLCALL\ SDL\_GetScancodeFromName(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SDLCALL\ SDL\_GetKeyName(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keycode_8h_ae9265f064f13f0f74dfca26a67875171}{SDL\_Keycode}}\ key);}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00244\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keycode_8h_ae9265f064f13f0f74dfca26a67875171}{SDL\_Keycode}}\ SDLCALL\ SDL\_GetKeyFromName(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00261\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_ab2c8474b9a8b6d07cae4f8eceab38870}{SDL\_StartTextInput}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00272\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_a6c84ed1daac21f8224d43bcb9d5bc597}{SDL\_IsTextInputActive}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00281\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_ab08b914cdfb2eaed26165cb2f6b110ec}{SDL\_StopTextInput}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00291\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_a1b619a22759e8e833b46a06a6b0b7115}{SDL\_ClearComposition}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00298\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_a026985a9c6b23a6c71828542cc679ebf}{SDL\_IsTextInputShown}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00320\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_SetTextInputRect(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *rect);}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00333\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__keyboard_8h_a106356274c192b53844c8f1a821b00d7}{SDL\_HasScreenKeyboardSupport}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00345\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_IsScreenKeyboardShown(\mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}\ *window);}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00348\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00349\ \}}
+\DoxyCodeLine{00350\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00351\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_keyboard\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

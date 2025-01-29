@@ -1,3 +1,13 @@
+/**
+ * @file Registry.cpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup ecs
+ * @{
+ */
 
 #include "Registry.hpp"
 #include "Entity.hpp"

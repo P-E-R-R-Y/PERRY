@@ -1,0 +1,36 @@
+\doxysection{make\+\_\+test\+\_\+data\+\_\+available.\+hpp}
+\hypertarget{make__test__data__available_8hpp_source}{}\label{make__test__data__available_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/src/make\_test\_data\_available.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/src/make\_test\_data\_available.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++\ (supporting\ code)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstdio>}\ \ \ \textcolor{comment}{//\ fopen,\ fclose,\ FILE}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <memory>}\ \textcolor{comment}{//\ unique\_ptr}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <test\_data.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <doctest.h>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }utils}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ check\_testsuite\_downloaded()}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{const}\ std::unique\_ptr<std::FILE,\ \textcolor{keyword}{decltype}(\&std::fclose)>\ file(std::fopen(TEST\_DATA\_DIRECTORY\ \textcolor{stringliteral}{"{}/README.md"{}},\ \textcolor{stringliteral}{"{}r"{}}),\ \&std::fclose);}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ file\ !=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ TEST\_CASE(\textcolor{stringliteral}{"{}check\ test\ suite\ is\ downloaded"{}})}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ REQUIRE\_MESSAGE(utils::check\_testsuite\_downloaded(),\ \textcolor{stringliteral}{"{}Test\ data\ not\ found\ in\ '"{}}\ TEST\_DATA\_DIRECTORY\ \textcolor{stringliteral}{"{}'.\ Please\ execute\ target\ 'download\_test\_data'\ before\ running\ this\ test\ suite.\ See\ <https://github.com/nlohmann/json\#execute-\/unit-\/tests>\ for\ more\ information."{}});}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \}\ \ \textcolor{comment}{//\ namespace\ utils}}
+
+\end{DoxyCode}

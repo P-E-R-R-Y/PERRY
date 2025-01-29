@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_0',['update',['../classgraphic_1_1_i_keyboard.html#a1681260f7fa5502cfc353fe139c072f3',1,'graphic::IKeyboard::update()'],['../classgraphic_1_1_i_mouse.html#a87cc9ca9ea63bb88e083700c74acba74',1,'graphic::IMouse::update()'],['../classraylib_1_1_ray_keyboard.html#a15e08f671d7ada386c34d7a25d19a201',1,'raylib::RayKeyboard::update()'],['../classraylib_1_1_ray_mouse.html#a2cb24d9ea5b96f196c849232bdbd67d7',1,'raylib::RayMouse::update()'],['../class_sdl_keyboard.html#ab340de968136a78c5bfc2b63d193db4a',1,'SdlKeyboard::update()'],['../class_sdl_mouse.html#afe0af04452988961c526e636d174983b',1,'SdlMouse::update()'],['../class_sfml_keyboard.html#a025eacd7df470b64542db212a21d1860',1,'SfmlKeyboard::update()'],['../class_sfml_mouse.html#ab4474d824ce2e9cf2ac4ede8d91e73fa',1,'SfmlMouse::update()']]]
+  ['quaternion_0',['Quaternion',['../group___s_f_m_l.html#gabcc01358aada56ea5f0db4da18aaf77d',1,'Quaternion::Quaternion()'],['../group___s_f_m_l.html#gab13d6ced50c96438115b30cb91fc7d6c',1,'Quaternion::Quaternion(float w, float x, float y, float z)']]]
 ];

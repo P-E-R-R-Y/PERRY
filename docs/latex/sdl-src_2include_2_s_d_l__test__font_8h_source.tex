@@ -1,0 +1,77 @@
+\doxysection{SDL\+\_\+test\+\_\+font.\+h}
+\hypertarget{sdl-src_2include_2_s_d_l__test__font_8h_source}{}\label{sdl-src_2include_2_s_d_l__test__font_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_test\_font.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_test\_font.h}}
+\mbox{\hyperlink{sdl-src_2include_2_s_d_l__test__font_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#ifndef\ SDL\_test\_font\_h\_}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ SDL\_test\_font\_h\_}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{/*\ Function\ prototypes\ */}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ FONT\_CHARACTER\_SIZE\ 8}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ FONT\_LINE\_HEIGHT\ \ \ \ (FONT\_CHARACTER\_SIZE\ +\ 2)}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__font_8h_ab388a5186016a830aff147df1a57c433}{SDLTest\_DrawCharacter}}(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *renderer,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ Uint32\ c);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__font_8h_ac5ece4b232de5964c2565360a7318a77}{SDLTest\_DrawString}}(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *renderer,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l_test___text_window}{SDLTest\_TextWindow}}}
+\DoxyCodeLine{00074\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__rect_8h_a9e17b356ca55e6b653f4fe33c5357ed5}{SDL\_Rect}}\ rect;}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ current;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ numlines;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{char}\ **lines;}
+\DoxyCodeLine{00079\ \}\ \mbox{\hyperlink{struct_s_d_l_test___text_window}{SDLTest\_TextWindow}};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00093\ \mbox{\hyperlink{struct_s_d_l_test___text_window}{SDLTest\_TextWindow}}\ *\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__font_8h_ad177d2299387cfb809dee14aead9a69a}{SDLTest\_TextWindowCreate}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__font_8h_abbf887eb11c3983ee21df845654e446b}{SDLTest\_TextWindowDisplay}}(\mbox{\hyperlink{struct_s_d_l_test___text_window}{SDLTest\_TextWindow}}\ *textwin,\ \mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *renderer);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__font_8h_a18c3ec20c2c76a85d3fd78a9d0335a24}{SDLTest\_TextWindowAddText}}(\mbox{\hyperlink{struct_s_d_l_test___text_window}{SDLTest\_TextWindow}}\ *textwin,\ SDL\_PRINTF\_FORMAT\_STRING\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ SDL\_PRINTF\_VARARG\_FUNC(2);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__font_8h_a90c1152cf2a14c604588a72e077555cf}{SDLTest\_TextWindowAddTextWithLength}}(\mbox{\hyperlink{struct_s_d_l_test___text_window}{SDLTest\_TextWindow}}\ *textwin,\ const\ \textcolor{keywordtype}{char}\ *text,\ \textcolor{keywordtype}{size\_t}\ len);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00144\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__font_8h_a21ea5263f935c133afd8920a74f0ee88}{SDLTest\_TextWindowClear}}(\mbox{\hyperlink{struct_s_d_l_test___text_window}{SDLTest\_TextWindow}}\ *textwin);}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00153\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__font_8h_a2b4efe6ed26d78ba2f1e83af26eabdf6}{SDLTest\_TextWindowDestroy}}(\mbox{\hyperlink{struct_s_d_l_test___text_window}{SDLTest\_TextWindow}}\ *textwin);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00158\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__font_8h_aeec32d6261ad6e10e8b0d2f714a10aef}{SDLTest\_CleanupTextDrawing}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00162\ \}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_test\_font\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

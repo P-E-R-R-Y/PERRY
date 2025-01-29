@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -93,196 +94,196 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">RayWindow.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifndef RAYWINDOW_HPP_</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define RAYWINDOW_HPP_</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//Raylib</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;raylib.h&gt;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//Interface</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;../../../../interfaces/graphic/window/IWindow.hpp&quot;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//encapsulation</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;../graphic/RayPolygon.hpp&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;../graphic/RaySprite.hpp&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;../graphic/RayModel.hpp&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;RayCamera.hpp&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceraylib.html">raylib</a> {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html">   35</a></span>    <span class="keyword">class </span>RayWindow : <span class="keyword">public</span> <a class="code hl_interface" href="classgraphic_1_1_i_window.html">graphic::IWindow</a> {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            RayWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                InitWindow(screenWidth, screenHeight, title.c_str());</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">//            SetWindowState(FLAG_WINDOW_RESIZABLE);</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">//            SetWindowMinSize(800, 600);</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">//            SetWindowMaxSize(1920, 1080);</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            };</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            ~RayWindow() = <span class="keywordflow">default</span>;</div>
+<a href="_ray_window_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef RAYWINDOW_HPP_</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define RAYWINDOW_HPP_</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">//Raylib</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;raylib.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//Interface</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="_i_window_8hpp.html">../../../../interfaces/graphic/window/IWindow.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//encapsulation</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="_ray_polygon_8hpp.html">../graphic/RayPolygon.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="_ray_sprite_8hpp.html">../graphic/RaySprite.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="_ray_model_8hpp.html">../graphic/RayModel.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="_ray_camera_8hpp.html">RayCamera.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_ray_window.html">   30</a></span><span class="keyword">class </span>RayWindow : <span class="keyword">public</span> <a class="code hl_interface" href="classgraphic_1_1_i_window.html">graphic::IWindow</a> {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        RayWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            InitWindow(screenWidth, screenHeight, title.c_str());</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">//            SetWindowState(FLAG_WINDOW_RESIZABLE);</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//            SetWindowMinSize(800, 600);</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">//            SetWindowMaxSize(1920, 1080);</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        };</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        ~RayWindow() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment">//GLOBAL</span></div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="group___raylib.html#gabb07389775d4cd9cb2cd9a40b5673d3a">   43</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="group___raylib.html#gabb07389775d4cd9cb2cd9a40b5673d3a">isOpen</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordflow">return</span> !WindowShouldClose();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        };</div>
+</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="comment">//GLOBAL</span></div>
-<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#a048a279de887a3d2873e2d067c91c96c">   48</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a048a279de887a3d2873e2d067c91c96c">isOpen</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                <span class="keywordflow">return</span> !WindowShouldClose();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            };</div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="group___raylib.html#gabca431b2e02bf08a7b350c243fc34027">   47</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#gabca431b2e02bf08a7b350c243fc34027">close</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            CloseWindow();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        };</div>
 </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="comment">//EVENT</span></div>
 <div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#adc25e46a176f1eda2c5220cc6d40f754">   52</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#adc25e46a176f1eda2c5220cc6d40f754">close</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                CloseWindow();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            };</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="group___raylib.html#ga2a8308cce439f598e4c456dfc811403e">   52</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga2a8308cce439f598e4c456dfc811403e">linkEvent</a>(<a class="code hl_interface" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        };</div>
 </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="comment">//EVENT</span></div>
-<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#abb0d86563c25745db1e67606bf9a90da">   57</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#abb0d86563c25745db1e67606bf9a90da">linkEvent</a>(<a class="code hl_interface" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event)<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            };</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="group___raylib.html#gaf66a999ab88a2f5da32c2be509c5e7e4">   55</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="group___raylib.html#gaf66a999ab88a2f5da32c2be509c5e7e4">pollEvent</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keyword">static</span> <span class="keywordtype">bool</span> firstCall = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;firstCall&quot;</span> &lt;&lt; firstCall &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            firstCall = !firstCall;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">return</span> !firstCall;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            </div>
-<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#adefe97d3ac524f07d47e1bfcd229330e">   60</a></span>            <span class="keywordtype">bool</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#adefe97d3ac524f07d47e1bfcd229330e">pollEvent</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                <span class="keyword">static</span> <span class="keywordtype">bool</span> firstCall = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;firstCall&quot;</span> &lt;&lt; firstCall &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                firstCall = !firstCall;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                <span class="keywordflow">return</span> !firstCall;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="group___raylib.html#ga53cbfb2a713521d0493681b04e2da38f">   62</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga53cbfb2a713521d0493681b04e2da38f">eventClose</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        };</div>
 </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#ae7b187eeb9ab665c1c8e3d0a8d7308f4">   67</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#ae7b187eeb9ab665c1c8e3d0a8d7308f4">eventClose</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            };</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="comment">//TIME</span></div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="group___raylib.html#ga485bdbbba4a1e2cda2420ce4f8fecb42">   66</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga485bdbbba4a1e2cda2420ce4f8fecb42">setFrameLimit</a>(__int32_t limit)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            SetTargetFPS(limit);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        };</div>
 </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="comment">//TIME</span></div>
-<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#a2b02794ed97f6126669175f1828423f9">   71</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a2b02794ed97f6126669175f1828423f9">setFrameLimit</a>(__int32_t limit)<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                SetTargetFPS(limit);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            };</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="group___raylib.html#ga74e776ba4e78582326459807e279b04f">   70</a></span>        __int32_t <a class="code hl_function" href="group___raylib.html#ga74e776ba4e78582326459807e279b04f">getDelta</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>__int32_t<span class="keyword">&gt;</span>(GetFrameTime() * 1000);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        };</div>
 </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">//2D</span></div>
 <div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#a2f85ab2f4642ce4ddf15a94215969a74">   75</a></span>            __int32_t <a class="code hl_function" href="classraylib_1_1_ray_window.html#a2f85ab2f4642ce4ddf15a94215969a74">getDelta</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>__int32_t<span class="keyword">&gt;</span>(GetFrameTime() * 1000);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            };</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="group___raylib.html#ga985518be66b89adf9582cdeec747fe98">   75</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga985518be66b89adf9582cdeec747fe98">beginDraw</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            BeginDrawing();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            ClearBackground(BLACK);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        };</div>
 </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="comment">//2D</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#a77b1f26e5ab2656c67cc7e1aefcf2103">   80</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a77b1f26e5ab2656c67cc7e1aefcf2103">beginDraw</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                BeginDrawing();</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                ClearBackground(BLACK);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            };</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="group___raylib.html#ga22489f6acbbbba802e420d8618058590">   80</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga22489f6acbbbba802e420d8618058590">endDraw</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            EndDrawing();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        };</div>
 </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#a6adf82a47418e81a4851003578ef1185">   85</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a6adf82a47418e81a4851003578ef1185">endDraw</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                EndDrawing();</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            };</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga09c164ba3b217542c04764153ca25da0">drawPoly</a>(<a class="code hl_interface" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#gabf0d19617acbe081bbf04376d790a2be">drawSprite</a>(<a class="code hl_interface" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment">//3D</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="comment">//Draw3 (Carve)</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga4c87c2fd27ab3232fe7c61ece8f04473">beginMode3</a>(<a class="code hl_interface" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga85215ca453fd9f7f45e1b50c77bfa90e">drawModel</a>(<a class="code hl_interface" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#gaa390a52e3fa8f3fb3026a6ba21e99d60">endMode3</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>};</div>
 </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a1b8aafa614583ebc559702e2dbec79a6">drawPoly</a>(<a class="code hl_interface" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a071921a5c86e103041d9870ac2861075">drawSprite</a>(<a class="code hl_interface" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="comment">//3D</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="comment">//Draw3 (Carve)</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a49bb159d72dcc5a455e5a9b280a8ed54">beginMode3</a>(<a class="code hl_interface" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a8a9a46baae5e9d5aae659b395ab6a12f">drawModel</a>(<a class="code hl_interface" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#adeb41560b4af0a892a01337e69d41058">endMode3</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    };</div>
-</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">//2D</span></div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="group___raylib.html#ga09c164ba3b217542c04764153ca25da0">   99</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga09c164ba3b217542c04764153ca25da0">RayWindow::drawPoly</a>(<a class="code hl_interface" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_class" href="class_ray_polygon.html">RayPolygon</a> *rayPolygon = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="class_ray_polygon.html">RayPolygon</a> *<span class="keyword">&gt;</span>(polygon);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    std::vector&lt;graphic::triangle_t&gt; triangles = rayPolygon-&gt;_triangles;</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="comment">//2D</span></div>
-<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#a1b8aafa614583ebc559702e2dbec79a6">  104</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a1b8aafa614583ebc559702e2dbec79a6">RayWindow::drawPoly</a>(<a class="code hl_interface" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon) {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <a class="code hl_class" href="classraylib_1_1_ray_polygon.html">RayPolygon</a> *rayPolygon = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classraylib_1_1_ray_polygon.html">RayPolygon</a> *<span class="keyword">&gt;</span>(polygon);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        std::vector&lt;graphic::triangle_t&gt; triangles = rayPolygon-&gt;_triangles;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;StartDraw&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; triangles.size(); i++) {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <span class="comment">//raylib ask for counter clockwise it&#39;s why I reverse the order</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            DrawTriangle({<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].C.x), <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].C.y)},</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                        {<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].B.x), <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].B.y)},</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                        {<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].A.x), <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].A.y)},</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                        Color{<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(rand()%255), 0, 0, 255});</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        }</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;EndDraw&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    };</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;StartDraw&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; triangles.size(); i++) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="comment">//raylib ask for counter clockwise it&#39;s why I reverse the order</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        DrawTriangle({<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].C.x), <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].C.y)},</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                    {<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].B.x), <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].B.y)},</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                    {<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].A.x), <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(triangles[i].A.y)},</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                    Color{<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(rand()%255), 0, 0, 255});</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;EndDraw&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>};</div>
 </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="foldopen" id="foldopen00114" data-start="{" data-end="}">
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="group___raylib.html#gabf0d19617acbe081bbf04376d790a2be">  114</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#gabf0d19617acbe081bbf04376d790a2be">RayWindow::drawSprite</a>(<a class="code hl_interface" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite) {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <a class="code hl_class" href="class_ray_sprite.html">RaySprite</a> *raysprite = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="class_ray_sprite.html">RaySprite</a> *<span class="keyword">&gt;</span>(sprite);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    Rectangle posSize = {float(raysprite-&gt;<a class="code hl_function" href="group___raylib.html#ga54d86b404491e36c8ea9c6b98546a612">getPosition</a>().x), float(raysprite-&gt;<a class="code hl_function" href="group___raylib.html#ga54d86b404491e36c8ea9c6b98546a612">getPosition</a>().y),</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                        float(raysprite-&gt;<a class="code hl_function" href="group___raylib.html#ga655beb65e2555e895645a222eb4e7f69">getSize</a>().x), float(raysprite-&gt;<a class="code hl_function" href="group___raylib.html#ga655beb65e2555e895645a222eb4e7f69">getSize</a>().y) };</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="foldopen" id="foldopen00119" data-start="{" data-end="}">
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#a071921a5c86e103041d9870ac2861075">  119</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a071921a5c86e103041d9870ac2861075">RayWindow::drawSprite</a>(<a class="code hl_interface" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite) {</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <a class="code hl_class" href="classraylib_1_1_ray_sprite.html">RaySprite</a> *raysprite = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classraylib_1_1_ray_sprite.html">RaySprite</a> *<span class="keyword">&gt;</span>(sprite);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        Rectangle posSize = {float(raysprite-&gt;<a class="code hl_function" href="classraylib_1_1_ray_sprite.html#a52e6edf2f1b49eb3235ed321ef37f865">getPosition</a>().x), float(raysprite-&gt;<a class="code hl_function" href="classraylib_1_1_ray_sprite.html#a52e6edf2f1b49eb3235ed321ef37f865">getPosition</a>().y),</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                            float(raysprite-&gt;<a class="code hl_function" href="classraylib_1_1_ray_sprite.html#a29e6daccdd71c9ca47fc1fc6e3e2ae20">getSize</a>().x), float(raysprite-&gt;<a class="code hl_function" href="classraylib_1_1_ray_sprite.html#a29e6daccdd71c9ca47fc1fc6e3e2ae20">getSize</a>().y) };</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    DrawTexturePro(raysprite-&gt;_texture, raysprite-&gt;_crop, posSize, {0,0}, raysprite-&gt;_rotation, WHITE);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>};</div>
+</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">//3D</span></div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        DrawTexturePro(raysprite-&gt;_texture, raysprite-&gt;_crop, posSize, {0,0}, raysprite-&gt;_rotation, WHITE);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    };</div>
-</div>
+<div class="foldopen" id="foldopen00124" data-start="{" data-end="}">
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="group___raylib.html#ga4c87c2fd27ab3232fe7c61ece8f04473">  124</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga4c87c2fd27ab3232fe7c61ece8f04473">RayWindow::beginMode3</a>(<a class="code hl_interface" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera) {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <a class="code hl_class" href="class_ray_camera.html">RayCamera</a> *raycamera = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="class_ray_camera.html">RayCamera</a> *<span class="keyword">&gt;</span>(camera);</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="comment">//3D</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="foldopen" id="foldopen00129" data-start="{" data-end="}">
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#a49bb159d72dcc5a455e5a9b280a8ed54">  129</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a49bb159d72dcc5a455e5a9b280a8ed54">RayWindow::beginMode3</a>(<a class="code hl_interface" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera) {</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <a class="code hl_class" href="classraylib_1_1_ray_camera.html">RayCamera</a> *raycamera = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classraylib_1_1_ray_camera.html">RayCamera</a> *<span class="keyword">&gt;</span>(camera);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        BeginMode3D(raycamera-&gt;_camera);</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    };</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    BeginMode3D(raycamera-&gt;_camera);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>};</div>
 </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="foldopen" id="foldopen00135" data-start="{" data-end="}">
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#a8a9a46baae5e9d5aae659b395ab6a12f">  135</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#a8a9a46baae5e9d5aae659b395ab6a12f">RayWindow::drawModel</a>(<a class="code hl_interface" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model) {</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <a class="code hl_class" href="classraylib_1_1_ray_model.html">RayModel</a> *raymodel = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classraylib_1_1_ray_model.html">RayModel</a> *<span class="keyword">&gt;</span>(model);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        DrawCubeV(raymodel-&gt;_position, raymodel-&gt;_size, RED);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        DrawCubeWiresV(raymodel-&gt;_position, raymodel-&gt;_size, BLACK);</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    };</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="foldopen" id="foldopen00130" data-start="{" data-end="}">
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="group___raylib.html#ga85215ca453fd9f7f45e1b50c77bfa90e">  130</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga85215ca453fd9f7f45e1b50c77bfa90e">RayWindow::drawModel</a>(<a class="code hl_interface" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model) {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <a class="code hl_class" href="class_ray_model.html">RayModel</a> *raymodel = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="class_ray_model.html">RayModel</a> *<span class="keyword">&gt;</span>(model);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    DrawCubeV(raymodel-&gt;_position, raymodel-&gt;_size, RED);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    DrawCubeWiresV(raymodel-&gt;_position, raymodel-&gt;_size, BLACK);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>};</div>
 </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_window.html#adeb41560b4af0a892a01337e69d41058">  142</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classraylib_1_1_ray_window.html#adeb41560b4af0a892a01337e69d41058">RayWindow::endMode3</a>() {</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        EndMode3D();</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    };</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="foldopen" id="foldopen00137" data-start="{" data-end="}">
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="group___raylib.html#gaa390a52e3fa8f3fb3026a6ba21e99d60">  137</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#gaa390a52e3fa8f3fb3026a6ba21e99d60">RayWindow::endMode3</a>() {</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    EndMode3D();</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>};</div>
 </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>} <span class="comment">// namespace ray</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="preprocessor">#endif </span><span class="comment">/* !RAYWINDOW_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassgraphic_1_1_i_camera_html"><div class="ttname"><a href="classgraphic_1_1_i_camera.html">graphic::ICamera</a></div><div class="ttdoc">Camera interface.</div><div class="ttdef"><b>Definition</b> ICamera.hpp:27</div></div>
-<div class="ttc" id="aclassgraphic_1_1_i_event_html"><div class="ttname"><a href="classgraphic_1_1_i_event.html">graphic::IEvent</a></div><div class="ttdoc">Event interface.</div><div class="ttdef"><b>Definition</b> IEvent.hpp:19</div></div>
-<div class="ttc" id="aclassgraphic_1_1_i_model_html"><div class="ttname"><a href="classgraphic_1_1_i_model.html">graphic::IModel</a></div><div class="ttdoc">Model interface.</div><div class="ttdef"><b>Definition</b> IModel.hpp:23</div></div>
-<div class="ttc" id="aclassgraphic_1_1_i_polygon_html"><div class="ttname"><a href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a></div><div class="ttdoc">Polygon interface.</div><div class="ttdef"><b>Definition</b> IPolygon.hpp:39</div></div>
-<div class="ttc" id="aclassgraphic_1_1_i_sprite_html"><div class="ttname"><a href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a></div><div class="ttdoc">Sprite interface.</div><div class="ttdef"><b>Definition</b> ISprite.hpp:27</div></div>
-<div class="ttc" id="aclassgraphic_1_1_i_window_html"><div class="ttname"><a href="classgraphic_1_1_i_window.html">graphic::IWindow</a></div><div class="ttdoc">Window interface.</div><div class="ttdef"><b>Definition</b> IWindow.hpp:29</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_camera_html"><div class="ttname"><a href="classraylib_1_1_ray_camera.html">raylib::RayCamera</a></div><div class="ttdoc">Raylib Camera class.</div><div class="ttdef"><b>Definition</b> RayCamera.hpp:30</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_model_html"><div class="ttname"><a href="classraylib_1_1_ray_model.html">raylib::RayModel</a></div><div class="ttdoc">Raylib Model class.</div><div class="ttdef"><b>Definition</b> RayModel.hpp:30</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_polygon_html"><div class="ttname"><a href="classraylib_1_1_ray_polygon.html">raylib::RayPolygon</a></div><div class="ttdef"><b>Definition</b> RayPolygon.hpp:29</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_sprite_html"><div class="ttname"><a href="classraylib_1_1_ray_sprite.html">raylib::RaySprite</a></div><div class="ttdoc">Raylib Sprite class.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:31</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_sprite_html_a29e6daccdd71c9ca47fc1fc6e3e2ae20"><div class="ttname"><a href="classraylib_1_1_ray_sprite.html#a29e6daccdd71c9ca47fc1fc6e3e2ae20">raylib::RaySprite::getSize</a></div><div class="ttdeci">__v2f_t getSize() const override</div><div class="ttdoc">Get the Sprite size.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:76</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_sprite_html_a52e6edf2f1b49eb3235ed321ef37f865"><div class="ttname"><a href="classraylib_1_1_ray_sprite.html#a52e6edf2f1b49eb3235ed321ef37f865">raylib::RaySprite::getPosition</a></div><div class="ttdeci">__v2f_t getPosition() const override</div><div class="ttdoc">Get the Position object.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:57</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_a048a279de887a3d2873e2d067c91c96c"><div class="ttname"><a href="classraylib_1_1_ray_window.html#a048a279de887a3d2873e2d067c91c96c">raylib::RayWindow::isOpen</a></div><div class="ttdeci">bool isOpen() override</div><div class="ttdoc">notice if the window is open</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:48</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_a071921a5c86e103041d9870ac2861075"><div class="ttname"><a href="classraylib_1_1_ray_window.html#a071921a5c86e103041d9870ac2861075">raylib::RayWindow::drawSprite</a></div><div class="ttdeci">virtual void drawSprite(graphic::ISprite *sprite) override</div><div class="ttdoc">draw a sprite</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:119</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_a1b8aafa614583ebc559702e2dbec79a6"><div class="ttname"><a href="classraylib_1_1_ray_window.html#a1b8aafa614583ebc559702e2dbec79a6">raylib::RayWindow::drawPoly</a></div><div class="ttdeci">virtual void drawPoly(graphic::IPolygon *polygon) override</div><div class="ttdoc">draw a polygon</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:104</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_a2b02794ed97f6126669175f1828423f9"><div class="ttname"><a href="classraylib_1_1_ray_window.html#a2b02794ed97f6126669175f1828423f9">raylib::RayWindow::setFrameLimit</a></div><div class="ttdeci">void setFrameLimit(__int32_t limit) override</div><div class="ttdoc">Set the Frame Limit object.</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:71</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_a2f85ab2f4642ce4ddf15a94215969a74"><div class="ttname"><a href="classraylib_1_1_ray_window.html#a2f85ab2f4642ce4ddf15a94215969a74">raylib::RayWindow::getDelta</a></div><div class="ttdeci">__int32_t getDelta() override</div><div class="ttdoc">Get the Delta object.</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:75</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_a49bb159d72dcc5a455e5a9b280a8ed54"><div class="ttname"><a href="classraylib_1_1_ray_window.html#a49bb159d72dcc5a455e5a9b280a8ed54">raylib::RayWindow::beginMode3</a></div><div class="ttdeci">void beginMode3(graphic::ICamera *camera) override</div><div class="ttdoc">allowing to draw 3D on the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:129</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_a6adf82a47418e81a4851003578ef1185"><div class="ttname"><a href="classraylib_1_1_ray_window.html#a6adf82a47418e81a4851003578ef1185">raylib::RayWindow::endDraw</a></div><div class="ttdeci">void endDraw() override</div><div class="ttdoc">end the 2D drawing</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:85</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_a77b1f26e5ab2656c67cc7e1aefcf2103"><div class="ttname"><a href="classraylib_1_1_ray_window.html#a77b1f26e5ab2656c67cc7e1aefcf2103">raylib::RayWindow::beginDraw</a></div><div class="ttdeci">void beginDraw() override</div><div class="ttdoc">allowing to draw 2D on the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:80</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_a8a9a46baae5e9d5aae659b395ab6a12f"><div class="ttname"><a href="classraylib_1_1_ray_window.html#a8a9a46baae5e9d5aae659b395ab6a12f">raylib::RayWindow::drawModel</a></div><div class="ttdeci">virtual void drawModel(graphic::IModel *model) override</div><div class="ttdoc">draw a model</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:135</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_abb0d86563c25745db1e67606bf9a90da"><div class="ttname"><a href="classraylib_1_1_ray_window.html#abb0d86563c25745db1e67606bf9a90da">raylib::RayWindow::linkEvent</a></div><div class="ttdeci">void linkEvent(graphic::IEvent *event) override</div><div class="ttdoc">link an event to the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:57</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_adc25e46a176f1eda2c5220cc6d40f754"><div class="ttname"><a href="classraylib_1_1_ray_window.html#adc25e46a176f1eda2c5220cc6d40f754">raylib::RayWindow::close</a></div><div class="ttdeci">void close() override</div><div class="ttdoc">close the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:52</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_adeb41560b4af0a892a01337e69d41058"><div class="ttname"><a href="classraylib_1_1_ray_window.html#adeb41560b4af0a892a01337e69d41058">raylib::RayWindow::endMode3</a></div><div class="ttdeci">void endMode3() override</div><div class="ttdoc">end the 3D drawing</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:142</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_adefe97d3ac524f07d47e1bfcd229330e"><div class="ttname"><a href="classraylib_1_1_ray_window.html#adefe97d3ac524f07d47e1bfcd229330e">raylib::RayWindow::pollEvent</a></div><div class="ttdeci">bool pollEvent() override</div><div class="ttdoc">poll the event</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:60</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_window_html_ae7b187eeb9ab665c1c8e3d0a8d7308f4"><div class="ttname"><a href="classraylib_1_1_ray_window.html#ae7b187eeb9ab665c1c8e3d0a8d7308f4">raylib::RayWindow::eventClose</a></div><div class="ttdeci">void eventClose() override</div><div class="ttdoc">update the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:67</div></div>
-<div class="ttc" id="anamespaceraylib_html"><div class="ttname"><a href="namespaceraylib.html">raylib</a></div><div class="ttdoc">graphic/raylib</div><div class="ttdef"><b>Definition</b> RayEvent.hpp:18</div></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="preprocessor">#endif </span><span class="comment">/* !RAYWINDOW_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_i_window_8hpp_html"><div class="ttname"><a href="_i_window_8hpp.html">IWindow.hpp</a></div></div>
+<div class="ttc" id="a_ray_camera_8hpp_html"><div class="ttname"><a href="_ray_camera_8hpp.html">RayCamera.hpp</a></div></div>
+<div class="ttc" id="a_ray_model_8hpp_html"><div class="ttname"><a href="_ray_model_8hpp.html">RayModel.hpp</a></div></div>
+<div class="ttc" id="a_ray_polygon_8hpp_html"><div class="ttname"><a href="_ray_polygon_8hpp.html">RayPolygon.hpp</a></div></div>
+<div class="ttc" id="a_ray_sprite_8hpp_html"><div class="ttname"><a href="_ray_sprite_8hpp.html">RaySprite.hpp</a></div></div>
+<div class="ttc" id="aclass_ray_camera_html"><div class="ttname"><a href="class_ray_camera.html">RayCamera</a></div><div class="ttdoc">Raylib Camera class.</div><div class="ttdef"><b>Definition</b> RayCamera.hpp:25</div></div>
+<div class="ttc" id="aclass_ray_model_html"><div class="ttname"><a href="class_ray_model.html">RayModel</a></div><div class="ttdoc">Raylib Model class.</div><div class="ttdef"><b>Definition</b> RayModel.hpp:24</div></div>
+<div class="ttc" id="aclass_ray_polygon_html"><div class="ttname"><a href="class_ray_polygon.html">RayPolygon</a></div><div class="ttdef"><b>Definition</b> RayPolygon.hpp:23</div></div>
+<div class="ttc" id="aclass_ray_sprite_html"><div class="ttname"><a href="class_ray_sprite.html">RaySprite</a></div><div class="ttdoc">Raylib Sprite class.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:25</div></div>
+<div class="ttc" id="aclassgraphic_1_1_i_camera_html"><div class="ttname"><a href="classgraphic_1_1_i_camera.html">graphic::ICamera</a></div><div class="ttdoc">Camera interface.</div><div class="ttdef"><b>Definition</b> ICamera.hpp:24</div></div>
+<div class="ttc" id="aclassgraphic_1_1_i_event_html"><div class="ttname"><a href="classgraphic_1_1_i_event.html">graphic::IEvent</a></div><div class="ttdoc">Event interface.</div><div class="ttdef"><b>Definition</b> IEvent.hpp:21</div></div>
+<div class="ttc" id="aclassgraphic_1_1_i_model_html"><div class="ttname"><a href="classgraphic_1_1_i_model.html">graphic::IModel</a></div><div class="ttdoc">Model interface.</div><div class="ttdef"><b>Definition</b> IModel.hpp:26</div></div>
+<div class="ttc" id="aclassgraphic_1_1_i_polygon_html"><div class="ttname"><a href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a></div><div class="ttdoc">Polygon interface.</div><div class="ttdef"><b>Definition</b> IPolygon.hpp:36</div></div>
+<div class="ttc" id="aclassgraphic_1_1_i_sprite_html"><div class="ttname"><a href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a></div><div class="ttdoc">Sprite interface.</div><div class="ttdef"><b>Definition</b> ISprite.hpp:23</div></div>
+<div class="ttc" id="aclassgraphic_1_1_i_window_html"><div class="ttname"><a href="classgraphic_1_1_i_window.html">graphic::IWindow</a></div><div class="ttdoc">Window interface.</div><div class="ttdef"><b>Definition</b> IWindow.hpp:26</div></div>
+<div class="ttc" id="agroup___raylib_html_ga09c164ba3b217542c04764153ca25da0"><div class="ttname"><a href="group___raylib.html#ga09c164ba3b217542c04764153ca25da0">RayWindow::drawPoly</a></div><div class="ttdeci">virtual void drawPoly(graphic::IPolygon *polygon) override</div><div class="ttdoc">draw a polygon</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:99</div></div>
+<div class="ttc" id="agroup___raylib_html_ga22489f6acbbbba802e420d8618058590"><div class="ttname"><a href="group___raylib.html#ga22489f6acbbbba802e420d8618058590">RayWindow::endDraw</a></div><div class="ttdeci">void endDraw() override</div><div class="ttdoc">end the 2D drawing</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:80</div></div>
+<div class="ttc" id="agroup___raylib_html_ga2a8308cce439f598e4c456dfc811403e"><div class="ttname"><a href="group___raylib.html#ga2a8308cce439f598e4c456dfc811403e">RayWindow::linkEvent</a></div><div class="ttdeci">void linkEvent(graphic::IEvent *event) override</div><div class="ttdoc">link an event to the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:52</div></div>
+<div class="ttc" id="agroup___raylib_html_ga485bdbbba4a1e2cda2420ce4f8fecb42"><div class="ttname"><a href="group___raylib.html#ga485bdbbba4a1e2cda2420ce4f8fecb42">RayWindow::setFrameLimit</a></div><div class="ttdeci">void setFrameLimit(__int32_t limit) override</div><div class="ttdoc">Set the Frame Limit object.</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:66</div></div>
+<div class="ttc" id="agroup___raylib_html_ga4c87c2fd27ab3232fe7c61ece8f04473"><div class="ttname"><a href="group___raylib.html#ga4c87c2fd27ab3232fe7c61ece8f04473">RayWindow::beginMode3</a></div><div class="ttdeci">void beginMode3(graphic::ICamera *camera) override</div><div class="ttdoc">allowing to draw 3D on the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:124</div></div>
+<div class="ttc" id="agroup___raylib_html_ga53cbfb2a713521d0493681b04e2da38f"><div class="ttname"><a href="group___raylib.html#ga53cbfb2a713521d0493681b04e2da38f">RayWindow::eventClose</a></div><div class="ttdeci">void eventClose() override</div><div class="ttdoc">update the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:62</div></div>
+<div class="ttc" id="agroup___raylib_html_ga54d86b404491e36c8ea9c6b98546a612"><div class="ttname"><a href="group___raylib.html#ga54d86b404491e36c8ea9c6b98546a612">RaySprite::getPosition</a></div><div class="ttdeci">__v2f_t getPosition() const override</div><div class="ttdoc">Get the Position object.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:51</div></div>
+<div class="ttc" id="agroup___raylib_html_ga655beb65e2555e895645a222eb4e7f69"><div class="ttname"><a href="group___raylib.html#ga655beb65e2555e895645a222eb4e7f69">RaySprite::getSize</a></div><div class="ttdeci">__v2f_t getSize() const override</div><div class="ttdoc">Get the Sprite size.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:70</div></div>
+<div class="ttc" id="agroup___raylib_html_ga74e776ba4e78582326459807e279b04f"><div class="ttname"><a href="group___raylib.html#ga74e776ba4e78582326459807e279b04f">RayWindow::getDelta</a></div><div class="ttdeci">__int32_t getDelta() override</div><div class="ttdoc">Get the Delta object.</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:70</div></div>
+<div class="ttc" id="agroup___raylib_html_ga85215ca453fd9f7f45e1b50c77bfa90e"><div class="ttname"><a href="group___raylib.html#ga85215ca453fd9f7f45e1b50c77bfa90e">RayWindow::drawModel</a></div><div class="ttdeci">virtual void drawModel(graphic::IModel *model) override</div><div class="ttdoc">draw a model</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:130</div></div>
+<div class="ttc" id="agroup___raylib_html_ga985518be66b89adf9582cdeec747fe98"><div class="ttname"><a href="group___raylib.html#ga985518be66b89adf9582cdeec747fe98">RayWindow::beginDraw</a></div><div class="ttdeci">void beginDraw() override</div><div class="ttdoc">allowing to draw 2D on the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:75</div></div>
+<div class="ttc" id="agroup___raylib_html_gaa390a52e3fa8f3fb3026a6ba21e99d60"><div class="ttname"><a href="group___raylib.html#gaa390a52e3fa8f3fb3026a6ba21e99d60">RayWindow::endMode3</a></div><div class="ttdeci">void endMode3() override</div><div class="ttdoc">end the 3D drawing</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:137</div></div>
+<div class="ttc" id="agroup___raylib_html_gabb07389775d4cd9cb2cd9a40b5673d3a"><div class="ttname"><a href="group___raylib.html#gabb07389775d4cd9cb2cd9a40b5673d3a">RayWindow::isOpen</a></div><div class="ttdeci">bool isOpen() override</div><div class="ttdoc">notice if the window is open</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:43</div></div>
+<div class="ttc" id="agroup___raylib_html_gabca431b2e02bf08a7b350c243fc34027"><div class="ttname"><a href="group___raylib.html#gabca431b2e02bf08a7b350c243fc34027">RayWindow::close</a></div><div class="ttdeci">void close() override</div><div class="ttdoc">close the window</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:47</div></div>
+<div class="ttc" id="agroup___raylib_html_gabf0d19617acbe081bbf04376d790a2be"><div class="ttname"><a href="group___raylib.html#gabf0d19617acbe081bbf04376d790a2be">RayWindow::drawSprite</a></div><div class="ttdeci">virtual void drawSprite(graphic::ISprite *sprite) override</div><div class="ttdoc">draw a sprite</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:114</div></div>
+<div class="ttc" id="agroup___raylib_html_gaf66a999ab88a2f5da32c2be509c5e7e4"><div class="ttname"><a href="group___raylib.html#gaf66a999ab88a2f5da32c2be509c5e7e4">RayWindow::pollEvent</a></div><div class="ttdeci">bool pollEvent() override</div><div class="ttdoc">poll the event</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:55</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,165 +1,161 @@
 \doxysection{Ray\+Keyboard.\+hpp}
 \hypertarget{_ray_keyboard_8hpp_source}{}\label{_ray_keyboard_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/event/RayKeyboard.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/event/RayKeyboard.hpp}}
-
+\mbox{\hyperlink{_ray_keyboard_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ RAYKEYBOARD\_HPP\_}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ RAYKEYBOARD\_HPP\_}}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{comment}{//Interface}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../../../../interfaces/graphic/event/IKeyboard.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ RAYKEYBOARD\_HPP\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ RAYKEYBOARD\_HPP\_}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{comment}{//Raylib}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <raylib.h>}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_keyboard_8hpp}{../../../../interfaces/graphic/event/IKeyboard.hpp}}"{}}}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{comment}{//More}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceraylib}{raylib}}\ \{}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }RayKeyboard\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ \{}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ RayKeyboard(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \string~RayKeyboard()\ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Keys>\ \mbox{\hyperlink{classraylib_1_1_ray_keyboard_a333362bdedbb4f66f7030ab9df73c38e}{whichKey}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Keys>\ keys;}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ keys;}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_keyboard_afd285d5020646c997f4699f6a85a6f26}{isKeyPressed}}(\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}}\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsKeyPressed(\_keys.at(key));}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_keyboard_ae735d640e60ad2dddbd2bab6ce58c1bc}{isKeyDown}}(\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}}\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsKeyDown(\_keys.at(key));}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_keyboard_a53d12fbcc333ffdac2eff12092ebd894}{isKeyReleased}}(\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}}\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsKeyReleased(\_keys.at(key));}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_keyboard_a9e17957d366fce6f0ce5b3d0390945c5}{isKeyUp}}(\mbox{\hyperlink{classgraphic_1_1_i_keyboard_a8c628bac8cbea382161df60d48db1ca2}{Keys}}\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsKeyUp(\_keys.at(key));}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_keyboard_a15e08f671d7ada386c34d7a25d19a201}{update}}()\textcolor{keyword}{\ override\ }\{\};}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<IKeyboard::Keys,\ int>\ \_keys\ =\ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 0}}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_ESCAPE,\ KeyboardKey::KEY\_ESCAPE\},}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F1,\ KeyboardKey::KEY\_F1\},}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F2,\ KeyboardKey::KEY\_F2\},}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F3,\ KeyboardKey::KEY\_F3\},}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F4,\ KeyboardKey::KEY\_F4\},}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F5,\ KeyboardKey::KEY\_F5\},}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F6,\ KeyboardKey::KEY\_F6\},}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F7,\ KeyboardKey::KEY\_F7\},}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F8,\ KeyboardKey::KEY\_F8\},}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F9,\ KeyboardKey::KEY\_F9\},}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F10,\ KeyboardKey::KEY\_F10\},}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F11,\ KeyboardKey::KEY\_F11\},}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F12,\ KeyboardKey::KEY\_F12\},}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 1}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_1,\ KeyboardKey::KEY\_ONE\},}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_2,\ KeyboardKey::KEY\_TWO\},}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_3,\ KeyboardKey::KEY\_THREE\},}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_4,\ KeyboardKey::KEY\_FOUR\},}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_5,\ KeyboardKey::KEY\_FIVE\},}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_6,\ KeyboardKey::KEY\_SIX\},}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_7,\ KeyboardKey::KEY\_SEVEN\},}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_8,\ KeyboardKey::KEY\_EIGHT\},}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_9,\ KeyboardKey::KEY\_NINE\},}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_0,\ KeyboardKey::KEY\_ZERO\},}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_MINUS,\ KeyboardKey::KEY\_MINUS\},}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_EQUAL,\ KeyboardKey::KEY\_EQUAL\},}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_BACKSPACE,\ KeyboardKey::KEY\_BACKSPACE\},}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 2}}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_TAB,\ KeyboardKey::KEY\_TAB\},}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_Q,\ KeyboardKey::KEY\_Q\},}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_W,\ KeyboardKey::KEY\_W\},}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_E,\ KeyboardKey::KEY\_E\},}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_R,\ KeyboardKey::KEY\_R\},}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_T,\ KeyboardKey::KEY\_T\},}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_Y,\ KeyboardKey::KEY\_Y\},}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_U,\ KeyboardKey::KEY\_U\},}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_I,\ KeyboardKey::KEY\_I\},}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_O,\ KeyboardKey::KEY\_O\},}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_P,\ KeyboardKey::KEY\_P\},}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT\_BRACKET,\ KeyboardKey::KEY\_LEFT\_BRACKET\},}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT\_BRACKET,\ KeyboardKey::KEY\_RIGHT\_BRACKET\},}
-\DoxyCodeLine{00103\ }
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 3}}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_CAPS\_LOCK,\ KeyboardKey::KEY\_CAPS\_LOCK\},}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT\_CONTROL,\ KeyboardKey::KEY\_LEFT\_CONTROL\},}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_A,\ KeyboardKey::KEY\_A\},}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_S,\ KeyboardKey::KEY\_S\},}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_D,\ KeyboardKey::KEY\_D\},}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F,\ KeyboardKey::KEY\_F\},}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_G,\ KeyboardKey::KEY\_G\},}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_H,\ KeyboardKey::KEY\_H\},}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_J,\ KeyboardKey::KEY\_J\},}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_K,\ KeyboardKey::KEY\_K\},}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_L,\ KeyboardKey::KEY\_L\},}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_SEMICOLON,\ KeyboardKey::KEY\_SEMICOLON\},}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_APOSTROPHE,\ KeyboardKey::KEY\_APOSTROPHE\},}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::BACK\_TICK,\ KeyboardKey::KEY\_LEFT\_SUPER\},}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_ENTER,\ KeyboardKey::KEY\_ENTER\},}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 4}}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT\_SHIFT,\ KeyboardKey::KEY\_LEFT\_SHIFT\},}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_BACKSLASH,\ KeyboardKey::KEY\_BACKSLASH\},}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_Z,\ KeyboardKey::KEY\_Z\},}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_X,\ KeyboardKey::KEY\_X\},}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_C,\ KeyboardKey::KEY\_C\},}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_V,\ KeyboardKey::KEY\_V\},}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_B,\ KeyboardKey::KEY\_B\},}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_N,\ KeyboardKey::KEY\_N\},}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_M,\ KeyboardKey::KEY\_M\},}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_COMMA,\ KeyboardKey::KEY\_COMMA\},}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_DOT,\ -\/1\},}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT\_SHIFT,\ KeyboardKey::KEY\_RIGHT\_SHIFT\},}
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT\_ALT,\ KeyboardKey::KEY\_LEFT\_ALT\},}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_SPACE,\ KeyboardKey::KEY\_SPACE\},}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT\_ALT,\ KeyboardKey::KEY\_RIGHT\_ALT\},}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT\_CONTROL,\ KeyboardKey::KEY\_RIGHT\_CONTROL\},}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_0,\ KeyboardKey::KEY\_KP\_0\},}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_1,\ KeyboardKey::KEY\_KP\_1\},}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_2,\ KeyboardKey::KEY\_KP\_2\},}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_3,\ KeyboardKey::KEY\_KP\_3\},}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_4,\ KeyboardKey::KEY\_KP\_4\},}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_5,\ KeyboardKey::KEY\_KP\_5\},}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_6,\ KeyboardKey::KEY\_KP\_6\},}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_7,\ KeyboardKey::KEY\_KP\_7\},}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_8,\ KeyboardKey::KEY\_KP\_8\},}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_9,\ KeyboardKey::KEY\_KP\_9\},}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_MINUS,\ KeyboardKey::KEY\_KP\_SUBTRACT\},}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_PLUS,\ KeyboardKey::KEY\_KP\_ADD\},}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_DOT,\ KeyboardKey::KEY\_KP\_DECIMAL\},}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_ENTER,\ KeyboardKey::KEY\_KP\_ENTER\},}
-\DoxyCodeLine{00156\ }
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Arrow}}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_UP,\ KeyboardKey::KEY\_UP\},}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_DOWN,\ KeyboardKey::KEY\_DOWN\},}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT,\ KeyboardKey::KEY\_LEFT\},}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT,\ KeyboardKey::KEY\_RIGHT\},}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00163\ \ \ \ \ \};}
-\DoxyCodeLine{00164\ }
-\DoxyCodeLine{00165\ \}\ \textcolor{comment}{//\ namespace\ raylib}}
-\DoxyCodeLine{00166\ }
-\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !RAYKEYBOARD\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//Raylib}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <raylib.h>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//More}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }RayKeyboard\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ RayKeyboard(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \string~RayKeyboard()\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ std::vector<Keys>\ \mbox{\hyperlink{group___raylib_gacaf4a033e1ab717655d914251f7e5f02}{whichKey}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Keys>\ keys;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ keys;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___raylib_ga7c6eebf102bf86a4a775fc0edaf5b02e}{isKeyPressed}}(\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsKeyPressed(\_keys.at(key));}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___raylib_gafda851981ba1f0417247aa4da0870e73}{isKeyDown}}(\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsKeyDown(\_keys.at(key));}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___raylib_gae1e33ead44212368c573642e9a758b68}{isKeyReleased}}(\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsKeyReleased(\_keys.at(key));}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___raylib_ga63fd74eebf0fcab15fa21411b9427fdd}{isKeyUp}}(\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsKeyUp(\_keys.at(key));}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___raylib_ga8d00f372e21018df95f0b9b8c4e5776c}{update}}()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<IKeyboard::Keys,\ int>\ \_keys\ =\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 0}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_ESCAPE,\ KeyboardKey::KEY\_ESCAPE\},}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F1,\ KeyboardKey::KEY\_F1\},}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F2,\ KeyboardKey::KEY\_F2\},}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F3,\ KeyboardKey::KEY\_F3\},}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F4,\ KeyboardKey::KEY\_F4\},}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F5,\ KeyboardKey::KEY\_F5\},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F6,\ KeyboardKey::KEY\_F6\},}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F7,\ KeyboardKey::KEY\_F7\},}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F8,\ KeyboardKey::KEY\_F8\},}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F9,\ KeyboardKey::KEY\_F9\},}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F10,\ KeyboardKey::KEY\_F10\},}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F11,\ KeyboardKey::KEY\_F11\},}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F12,\ KeyboardKey::KEY\_F12\},}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 1}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_1,\ KeyboardKey::KEY\_ONE\},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_2,\ KeyboardKey::KEY\_TWO\},}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_3,\ KeyboardKey::KEY\_THREE\},}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_4,\ KeyboardKey::KEY\_FOUR\},}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_5,\ KeyboardKey::KEY\_FIVE\},}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_6,\ KeyboardKey::KEY\_SIX\},}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_7,\ KeyboardKey::KEY\_SEVEN\},}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_8,\ KeyboardKey::KEY\_EIGHT\},}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_9,\ KeyboardKey::KEY\_NINE\},}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_0,\ KeyboardKey::KEY\_ZERO\},}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_MINUS,\ KeyboardKey::KEY\_MINUS\},}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_EQUAL,\ KeyboardKey::KEY\_EQUAL\},}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_BACKSPACE,\ KeyboardKey::KEY\_BACKSPACE\},}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 2}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_TAB,\ KeyboardKey::KEY\_TAB\},}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_Q,\ KeyboardKey::KEY\_Q\},}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_W,\ KeyboardKey::KEY\_W\},}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_E,\ KeyboardKey::KEY\_E\},}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_R,\ KeyboardKey::KEY\_R\},}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_T,\ KeyboardKey::KEY\_T\},}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_Y,\ KeyboardKey::KEY\_Y\},}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_U,\ KeyboardKey::KEY\_U\},}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_I,\ KeyboardKey::KEY\_I\},}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_O,\ KeyboardKey::KEY\_O\},}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_P,\ KeyboardKey::KEY\_P\},}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT\_BRACKET,\ KeyboardKey::KEY\_LEFT\_BRACKET\},}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT\_BRACKET,\ KeyboardKey::KEY\_RIGHT\_BRACKET\},}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 3}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_CAPS\_LOCK,\ KeyboardKey::KEY\_CAPS\_LOCK\},}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT\_CONTROL,\ KeyboardKey::KEY\_LEFT\_CONTROL\},}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_A,\ KeyboardKey::KEY\_A\},}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_S,\ KeyboardKey::KEY\_S\},}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_D,\ KeyboardKey::KEY\_D\},}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_F,\ KeyboardKey::KEY\_F\},}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_G,\ KeyboardKey::KEY\_G\},}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_H,\ KeyboardKey::KEY\_H\},}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_J,\ KeyboardKey::KEY\_J\},}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_K,\ KeyboardKey::KEY\_K\},}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_L,\ KeyboardKey::KEY\_L\},}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_SEMICOLON,\ KeyboardKey::KEY\_SEMICOLON\},}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_APOSTROPHE,\ KeyboardKey::KEY\_APOSTROPHE\},}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::BACK\_TICK,\ KeyboardKey::KEY\_LEFT\_SUPER\},}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_ENTER,\ KeyboardKey::KEY\_ENTER\},}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//line\ 4}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT\_SHIFT,\ KeyboardKey::KEY\_LEFT\_SHIFT\},}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_BACKSLASH,\ KeyboardKey::KEY\_BACKSLASH\},}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_Z,\ KeyboardKey::KEY\_Z\},}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_X,\ KeyboardKey::KEY\_X\},}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_C,\ KeyboardKey::KEY\_C\},}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_V,\ KeyboardKey::KEY\_V\},}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_B,\ KeyboardKey::KEY\_B\},}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_N,\ KeyboardKey::KEY\_N\},}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_M,\ KeyboardKey::KEY\_M\},}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_COMMA,\ KeyboardKey::KEY\_COMMA\},}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_DOT,\ -\/1\},}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT\_SHIFT,\ KeyboardKey::KEY\_RIGHT\_SHIFT\},}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT\_ALT,\ KeyboardKey::KEY\_LEFT\_ALT\},}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_SPACE,\ KeyboardKey::KEY\_SPACE\},}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT\_ALT,\ KeyboardKey::KEY\_RIGHT\_ALT\},}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT\_CONTROL,\ KeyboardKey::KEY\_RIGHT\_CONTROL\},}
+\DoxyCodeLine{00141\ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_0,\ KeyboardKey::KEY\_KP\_0\},}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_1,\ KeyboardKey::KEY\_KP\_1\},}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_2,\ KeyboardKey::KEY\_KP\_2\},}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_3,\ KeyboardKey::KEY\_KP\_3\},}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_4,\ KeyboardKey::KEY\_KP\_4\},}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_5,\ KeyboardKey::KEY\_KP\_5\},}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_6,\ KeyboardKey::KEY\_KP\_6\},}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_7,\ KeyboardKey::KEY\_KP\_7\},}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_8,\ KeyboardKey::KEY\_KP\_8\},}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_9,\ KeyboardKey::KEY\_KP\_9\},}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_MINUS,\ KeyboardKey::KEY\_KP\_SUBTRACT\},}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_PLUS,\ KeyboardKey::KEY\_KP\_ADD\},}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_DOT,\ KeyboardKey::KEY\_KP\_DECIMAL\},}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_PAD\_ENTER,\ KeyboardKey::KEY\_KP\_ENTER\},}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Arrow}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_UP,\ KeyboardKey::KEY\_UP\},}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_DOWN,\ KeyboardKey::KEY\_DOWN\},}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_LEFT,\ KeyboardKey::KEY\_LEFT\},}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \{IKeyboard::Keys::KEY\_RIGHT,\ KeyboardKey::KEY\_RIGHT\},}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00164\ \};}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !RAYKEYBOARD\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

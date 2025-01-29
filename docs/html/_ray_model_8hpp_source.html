@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -93,57 +94,52 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">RayModel.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<a href="_ray_model_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef RAYMODEL_HPP_</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define RAYMODEL_HPP_</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#ifndef RAYMODEL_HPP_</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define RAYMODEL_HPP_</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//Interface</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;../../../../interfaces/graphic/graphic/IModel.hpp&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//Raylib</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;raylib.h&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceraylib.html">raylib</a> {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
-<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_model.html">   30</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classraylib_1_1_ray_model.html#a0c4e3acdb24a245f1548710649439300">RayModel</a> : <span class="keyword">public</span> <a class="code hl_interface" href="classgraphic_1_1_i_model.html">graphic::IModel</a> {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classraylib_1_1_ray_model.html#a0c4e3acdb24a245f1548710649439300">   37</a></span>            <a class="code hl_function" href="classraylib_1_1_ray_model.html#a0c4e3acdb24a245f1548710649439300">RayModel</a>() {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                _position = {0, 0, 0};</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                _size = {1, 1, 1};</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            }</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">//Interface</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="_i_model_8hpp.html">../../../../interfaces/graphic/graphic/IModel.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">//Raylib</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;raylib.h&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_ray_model.html">   24</a></span><span class="keyword">class </span><a class="code hl_function" href="group___raylib.html#ga60b8d5e686df54cfae037e6c06803ccf">RayModel</a> : <span class="keyword">public</span> <a class="code hl_interface" href="classgraphic_1_1_i_model.html">graphic::IModel</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span></div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="group___raylib.html#ga60b8d5e686df54cfae037e6c06803ccf">   31</a></span>        <a class="code hl_function" href="group___raylib.html#ga60b8d5e686df54cfae037e6c06803ccf">RayModel</a>() {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            _position = {0, 0, 0};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            _size = {1, 1, 1};</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        }</div>
 </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_class" href="class_ray_model.html">~RayModel</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        __v3f_t getPosition()<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">return</span> {_position.x, _position.y, _position.z};</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        }</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <a class="code hl_class" href="classraylib_1_1_ray_model.html">~RayModel</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            __v3f_t getPosition()<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keywordflow">return</span> {_position.x, _position.y, _position.z};</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">void</span> setPosition(__v3f_t position)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            _position = {float(position.x), float(position.y), float(position.z)};</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">friend</span> <span class="keyword">class </span>RayWindow;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordtype">void</span> setPosition(__v3f_t position)<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                _position = {float(position.x), float(position.y), float(position.z)};</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keyword">friend</span> <span class="keyword">class </span>RayWindow;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            Vector3 _position;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            Vector3 _size;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    };</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        Vector3 _position;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        Vector3 _size;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
 </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <span class="comment">// namespace ray</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif </span><span class="comment">/* !RAYMODEL_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassgraphic_1_1_i_model_html"><div class="ttname"><a href="classgraphic_1_1_i_model.html">graphic::IModel</a></div><div class="ttdoc">Model interface.</div><div class="ttdef"><b>Definition</b> IModel.hpp:23</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_model_html"><div class="ttname"><a href="classraylib_1_1_ray_model.html">raylib::RayModel</a></div><div class="ttdoc">Raylib Model class.</div><div class="ttdef"><b>Definition</b> RayModel.hpp:30</div></div>
-<div class="ttc" id="aclassraylib_1_1_ray_model_html_a0c4e3acdb24a245f1548710649439300"><div class="ttname"><a href="classraylib_1_1_ray_model.html#a0c4e3acdb24a245f1548710649439300">raylib::RayModel::RayModel</a></div><div class="ttdeci">RayModel()</div><div class="ttdoc">Construct a new Ray Model object.</div><div class="ttdef"><b>Definition</b> RayModel.hpp:37</div></div>
-<div class="ttc" id="anamespaceraylib_html"><div class="ttname"><a href="namespaceraylib.html">raylib</a></div><div class="ttdoc">graphic/raylib</div><div class="ttdef"><b>Definition</b> RayEvent.hpp:18</div></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif </span><span class="comment">/* !RAYMODEL_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_i_model_8hpp_html"><div class="ttname"><a href="_i_model_8hpp.html">IModel.hpp</a></div></div>
+<div class="ttc" id="aclass_ray_model_html"><div class="ttname"><a href="class_ray_model.html">RayModel</a></div><div class="ttdoc">Raylib Model class.</div><div class="ttdef"><b>Definition</b> RayModel.hpp:24</div></div>
+<div class="ttc" id="aclassgraphic_1_1_i_model_html"><div class="ttname"><a href="classgraphic_1_1_i_model.html">graphic::IModel</a></div><div class="ttdoc">Model interface.</div><div class="ttdef"><b>Definition</b> IModel.hpp:26</div></div>
+<div class="ttc" id="agroup___raylib_html_ga60b8d5e686df54cfae037e6c06803ccf"><div class="ttname"><a href="group___raylib.html#ga60b8d5e686df54cfae037e6c06803ccf">RayModel::RayModel</a></div><div class="ttdeci">RayModel()</div><div class="ttdoc">Construct a new Ray Model object.</div><div class="ttdef"><b>Definition</b> RayModel.hpp:31</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

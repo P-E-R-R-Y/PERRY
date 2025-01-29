@@ -1,16 +1,13 @@
 /**
- *
- * File: DynamicLoader.hpp (header.v2)
- * Created Date: Tue 14/03/2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Sat 18/03/2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
+ * @file DynamicLoader.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup utility
+ * @{
+ */
 
 #ifndef DYNAMICLOADER_HPP
 #define DYNAMICLOADER_HPP
@@ -20,6 +17,10 @@
 #include <vector>
 #include <iostream>
 
+/**
+ * @brief load shared libraries & retrieve symbols
+ * 
+ */
 class DynamicLoader {
     public:
         DynamicLoader() {

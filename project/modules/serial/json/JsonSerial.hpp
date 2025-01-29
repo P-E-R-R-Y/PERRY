@@ -1,3 +1,16 @@
+/**
+ * @file JsonSerial.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup serial
+ * @{
+ * @addtogroup json
+ * @{
+ */
+
 #ifndef JSON_SERIAL_HPP
 #define JSON_SERIAL_HPP
 
@@ -8,6 +21,8 @@
 #include "ISerial.hpp"
 #include <nlohmann/json.hpp>
 #include <fstream>
+
+using namespace serial;
 
 class JsonSerial: public ISerial {
     public:

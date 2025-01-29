@@ -1,0 +1,478 @@
+\doxysection{SDL\+\_\+hints.\+h}
+\hypertarget{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h_source}{}\label{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_hints.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_hints.h}}
+\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#ifndef\ SDL\_hints\_h\_}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ SDL\_hints\_h\_}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL\_stdinc.h}}"{}}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00045\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00047\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ACCELEROMETER\_AS\_JOYSTICK\ "{}SDL\_ACCELEROMETER\_AS\_JOYSTICK"{}}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ALLOW\_ALT\_TAB\_WHILE\_GRABBED\ "{}SDL\_ALLOW\_ALT\_TAB\_WHILE\_GRABBED"{}}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ALLOW\_TOPMOST\ "{}SDL\_ALLOW\_TOPMOST"{}}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ANDROID\_APK\_EXPANSION\_MAIN\_FILE\_VERSION\ "{}SDL\_ANDROID\_APK\_EXPANSION\_MAIN\_FILE\_VERSION"{}}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ANDROID\_APK\_EXPANSION\_PATCH\_FILE\_VERSION\ "{}SDL\_ANDROID\_APK\_EXPANSION\_PATCH\_FILE\_VERSION"{}}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ANDROID\_BLOCK\_ON\_PAUSE\ "{}SDL\_ANDROID\_BLOCK\_ON\_PAUSE"{}}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ANDROID\_BLOCK\_ON\_PAUSE\_PAUSEAUDIO\ "{}SDL\_ANDROID\_BLOCK\_ON\_PAUSE\_PAUSEAUDIO"{}}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ANDROID\_TRAP\_BACK\_BUTTON\ "{}SDL\_ANDROID\_TRAP\_BACK\_BUTTON"{}}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_APP\_NAME\ "{}SDL\_APP\_NAME"{}}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_APPLE\_TV\_CONTROLLER\_UI\_EVENTS\ "{}SDL\_APPLE\_TV\_CONTROLLER\_UI\_EVENTS"{}}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_APPLE\_TV\_REMOTE\_ALLOW\_ROTATION\ "{}SDL\_APPLE\_TV\_REMOTE\_ALLOW\_ROTATION"{}}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_AUDIO\_CATEGORY\ \ \ "{}SDL\_AUDIO\_CATEGORY"{}}}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_AUDIO\_DEVICE\_APP\_NAME\ "{}SDL\_AUDIO\_DEVICE\_APP\_NAME"{}}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_AUDIO\_DEVICE\_STREAM\_NAME\ "{}SDL\_AUDIO\_DEVICE\_STREAM\_NAME"{}}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_AUDIO\_DEVICE\_STREAM\_ROLE\ "{}SDL\_AUDIO\_DEVICE\_STREAM\_ROLE"{}}}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00292\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_AUDIO\_RESAMPLING\_MODE\ \ \ "{}SDL\_AUDIO\_RESAMPLING\_MODE"{}}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00304\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_AUTO\_UPDATE\_JOYSTICKS\ \ "{}SDL\_AUTO\_UPDATE\_JOYSTICKS"{}}}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00316\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_AUTO\_UPDATE\_SENSORS\ \ \ \ "{}SDL\_AUTO\_UPDATE\_SENSORS"{}}}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00335\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_BMP\_SAVE\_LEGACY\_FORMAT\ "{}SDL\_BMP\_SAVE\_LEGACY\_FORMAT"{}}}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00349\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_DISPLAY\_USABLE\_BOUNDS\ "{}SDL\_DISPLAY\_USABLE\_BOUNDS"{}}}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00364\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_EMSCRIPTEN\_ASYNCIFY\ \ \ "{}SDL\_EMSCRIPTEN\_ASYNCIFY"{}}}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00378\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_EMSCRIPTEN\_KEYBOARD\_ELEMENT\ \ \ "{}SDL\_EMSCRIPTEN\_KEYBOARD\_ELEMENT"{}}}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00389\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ENABLE\_SCREEN\_KEYBOARD\ "{}SDL\_ENABLE\_SCREEN\_KEYBOARD"{}}}
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00400\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ENABLE\_STEAM\_CONTROLLERS\ "{}SDL\_ENABLE\_STEAM\_CONTROLLERS"{}}}
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00422\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_EVENT\_LOGGING\ \ \ "{}SDL\_EVENT\_LOGGING"{}}}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00435\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_FORCE\_RAISEWINDOW\ \ \ \ "{}SDL\_HINT\_FORCE\_RAISEWINDOW"{}}}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00452\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_FRAMEBUFFER\_ACCELERATION\ \ \ "{}SDL\_FRAMEBUFFER\_ACCELERATION"{}}}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00462\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_GAMECONTROLLERCONFIG\ "{}SDL\_GAMECONTROLLERCONFIG"{}}}
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00472\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_GAMECONTROLLERCONFIG\_FILE\ "{}SDL\_GAMECONTROLLERCONFIG\_FILE"{}}}
+\DoxyCodeLine{00473\ }
+\DoxyCodeLine{00491\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_GAMECONTROLLERTYPE\ "{}SDL\_GAMECONTROLLERTYPE"{}}}
+\DoxyCodeLine{00492\ }
+\DoxyCodeLine{00504\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_GAMECONTROLLER\_IGNORE\_DEVICES\ "{}SDL\_GAMECONTROLLER\_IGNORE\_DEVICES"{}}}
+\DoxyCodeLine{00505\ }
+\DoxyCodeLine{00517\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_GAMECONTROLLER\_IGNORE\_DEVICES\_EXCEPT\ "{}SDL\_GAMECONTROLLER\_IGNORE\_DEVICES\_EXCEPT"{}}}
+\DoxyCodeLine{00518\ }
+\DoxyCodeLine{00540\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_GAMECONTROLLER\_USE\_BUTTON\_LABELS\ "{}SDL\_GAMECONTROLLER\_USE\_BUTTON\_LABELS"{}}}
+\DoxyCodeLine{00541\ }
+\DoxyCodeLine{00551\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_GRAB\_KEYBOARD\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}SDL\_GRAB\_KEYBOARD"{}}}
+\DoxyCodeLine{00552\ }
+\DoxyCodeLine{00559\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_HIDAPI\_IGNORE\_DEVICES\ "{}SDL\_HIDAPI\_IGNORE\_DEVICES"{}}}
+\DoxyCodeLine{00560\ }
+\DoxyCodeLine{00576\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_IDLE\_TIMER\_DISABLED\ "{}SDL\_IOS\_IDLE\_TIMER\_DISABLED"{}}}
+\DoxyCodeLine{00577\ }
+\DoxyCodeLine{00588\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_IME\_INTERNAL\_EDITING\ "{}SDL\_IME\_INTERNAL\_EDITING"{}}}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00597\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_IME\_SHOW\_UI\ "{}SDL\_IME\_SHOW\_UI"{}}}
+\DoxyCodeLine{00598\ }
+\DoxyCodeLine{00608\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_IME\_SUPPORT\_EXTENDED\_TEXT\ "{}SDL\_IME\_SUPPORT\_EXTENDED\_TEXT"{}}}
+\DoxyCodeLine{00609\ }
+\DoxyCodeLine{00619\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_IOS\_HIDE\_HOME\_INDICATOR\ "{}SDL\_IOS\_HIDE\_HOME\_INDICATOR"{}}}
+\DoxyCodeLine{00620\ }
+\DoxyCodeLine{00632\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_ALLOW\_BACKGROUND\_EVENTS\ "{}SDL\_JOYSTICK\_ALLOW\_BACKGROUND\_EVENTS"{}}}
+\DoxyCodeLine{00633\ }
+\DoxyCodeLine{00645\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_ARCADESTICK\_DEVICES\ "{}SDL\_JOYSTICK\_ARCADESTICK\_DEVICES"{}}}
+\DoxyCodeLine{00646\ }
+\DoxyCodeLine{00658\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_ARCADESTICK\_DEVICES\_EXCLUDED\ "{}SDL\_JOYSTICK\_ARCADESTICK\_DEVICES\_EXCLUDED"{}}}
+\DoxyCodeLine{00659\ }
+\DoxyCodeLine{00671\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_BLACKLIST\_DEVICES\ "{}SDL\_JOYSTICK\_BLACKLIST\_DEVICES"{}}}
+\DoxyCodeLine{00672\ }
+\DoxyCodeLine{00684\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_BLACKLIST\_DEVICES\_EXCLUDED\ "{}SDL\_JOYSTICK\_BLACKLIST\_DEVICES\_EXCLUDED"{}}}
+\DoxyCodeLine{00685\ }
+\DoxyCodeLine{00697\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_FLIGHTSTICK\_DEVICES\ "{}SDL\_JOYSTICK\_FLIGHTSTICK\_DEVICES"{}}}
+\DoxyCodeLine{00698\ }
+\DoxyCodeLine{00710\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_FLIGHTSTICK\_DEVICES\_EXCLUDED\ "{}SDL\_JOYSTICK\_FLIGHTSTICK\_DEVICES\_EXCLUDED"{}}}
+\DoxyCodeLine{00711\ }
+\DoxyCodeLine{00723\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_GAMECUBE\_DEVICES\ "{}SDL\_JOYSTICK\_GAMECUBE\_DEVICES"{}}}
+\DoxyCodeLine{00724\ }
+\DoxyCodeLine{00736\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_GAMECUBE\_DEVICES\_EXCLUDED\ "{}SDL\_JOYSTICK\_GAMECUBE\_DEVICES\_EXCLUDED"{}}}
+\DoxyCodeLine{00737\ }
+\DoxyCodeLine{00747\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\ "{}SDL\_JOYSTICK\_HIDAPI"{}}}
+\DoxyCodeLine{00748\ }
+\DoxyCodeLine{00758\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_GAMECUBE\ "{}SDL\_JOYSTICK\_HIDAPI\_GAMECUBE"{}}}
+\DoxyCodeLine{00759\ }
+\DoxyCodeLine{00773\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_GAMECUBE\_RUMBLE\_BRAKE\ "{}SDL\_JOYSTICK\_GAMECUBE\_RUMBLE\_BRAKE"{}}}
+\DoxyCodeLine{00774\ }
+\DoxyCodeLine{00784\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_JOY\_CONS\ "{}SDL\_JOYSTICK\_HIDAPI\_JOY\_CONS"{}}}
+\DoxyCodeLine{00785\ }
+\DoxyCodeLine{00793\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_COMBINE\_JOY\_CONS\ "{}SDL\_JOYSTICK\_HIDAPI\_COMBINE\_JOY\_CONS"{}}}
+\DoxyCodeLine{00794\ }
+\DoxyCodeLine{00804\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_VERTICAL\_JOY\_CONS\ "{}SDL\_JOYSTICK\_HIDAPI\_VERTICAL\_JOY\_CONS"{}}}
+\DoxyCodeLine{00805\ }
+\DoxyCodeLine{00815\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_LUNA\ "{}SDL\_JOYSTICK\_HIDAPI\_LUNA"{}}}
+\DoxyCodeLine{00816\ }
+\DoxyCodeLine{00826\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_NINTENDO\_CLASSIC\ "{}SDL\_JOYSTICK\_HIDAPI\_NINTENDO\_CLASSIC"{}}}
+\DoxyCodeLine{00827\ }
+\DoxyCodeLine{00837\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_SHIELD\ "{}SDL\_JOYSTICK\_HIDAPI\_SHIELD"{}}}
+\DoxyCodeLine{00838\ }
+\DoxyCodeLine{00851\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_PS3\ "{}SDL\_JOYSTICK\_HIDAPI\_PS3"{}}}
+\DoxyCodeLine{00852\ }
+\DoxyCodeLine{00862\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_PS4\ "{}SDL\_JOYSTICK\_HIDAPI\_PS4"{}}}
+\DoxyCodeLine{00863\ }
+\DoxyCodeLine{00882\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_PS4\_RUMBLE\ "{}SDL\_JOYSTICK\_HIDAPI\_PS4\_RUMBLE"{}}}
+\DoxyCodeLine{00883\ }
+\DoxyCodeLine{00893\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_PS5\ "{}SDL\_JOYSTICK\_HIDAPI\_PS5"{}}}
+\DoxyCodeLine{00894\ }
+\DoxyCodeLine{00902\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_PS5\_PLAYER\_LED\ "{}SDL\_JOYSTICK\_HIDAPI\_PS5\_PLAYER\_LED"{}}}
+\DoxyCodeLine{00903\ }
+\DoxyCodeLine{00921\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_PS5\_RUMBLE\ "{}SDL\_JOYSTICK\_HIDAPI\_PS5\_RUMBLE"{}}}
+\DoxyCodeLine{00922\ }
+\DoxyCodeLine{00932\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_STADIA\ "{}SDL\_JOYSTICK\_HIDAPI\_STADIA"{}}}
+\DoxyCodeLine{00933\ }
+\DoxyCodeLine{00944\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_STEAM\ "{}SDL\_JOYSTICK\_HIDAPI\_STEAM"{}}}
+\DoxyCodeLine{00945\ }
+\DoxyCodeLine{00955\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_STEAMDECK\ "{}SDL\_JOYSTICK\_HIDAPI\_STEAMDECK"{}}}
+\DoxyCodeLine{00956\ }
+\DoxyCodeLine{00966\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_SWITCH\ "{}SDL\_JOYSTICK\_HIDAPI\_SWITCH"{}}}
+\DoxyCodeLine{00967\ }
+\DoxyCodeLine{00977\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_SWITCH\_HOME\_LED\ "{}SDL\_JOYSTICK\_HIDAPI\_SWITCH\_HOME\_LED"{}}}
+\DoxyCodeLine{00978\ }
+\DoxyCodeLine{00988\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_JOYCON\_HOME\_LED\ "{}SDL\_JOYSTICK\_HIDAPI\_JOYCON\_HOME\_LED"{}}}
+\DoxyCodeLine{00989\ }
+\DoxyCodeLine{00997\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_SWITCH\_PLAYER\_LED\ "{}SDL\_JOYSTICK\_HIDAPI\_SWITCH\_PLAYER\_LED"{}}}
+\DoxyCodeLine{00998\ }
+\DoxyCodeLine{01008\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_WII\ "{}SDL\_JOYSTICK\_HIDAPI\_WII"{}}}
+\DoxyCodeLine{01009\ }
+\DoxyCodeLine{01017\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_WII\_PLAYER\_LED\ "{}SDL\_JOYSTICK\_HIDAPI\_WII\_PLAYER\_LED"{}}}
+\DoxyCodeLine{01018\ }
+\DoxyCodeLine{01028\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_XBOX\ \ \ "{}SDL\_JOYSTICK\_HIDAPI\_XBOX"{}}}
+\DoxyCodeLine{01029\ }
+\DoxyCodeLine{01039\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_XBOX\_360\ \ \ "{}SDL\_JOYSTICK\_HIDAPI\_XBOX\_360"{}}}
+\DoxyCodeLine{01040\ }
+\DoxyCodeLine{01048\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_XBOX\_360\_PLAYER\_LED\ "{}SDL\_JOYSTICK\_HIDAPI\_XBOX\_360\_PLAYER\_LED"{}}}
+\DoxyCodeLine{01049\ }
+\DoxyCodeLine{01059\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_XBOX\_360\_WIRELESS\ \ \ "{}SDL\_JOYSTICK\_HIDAPI\_XBOX\_360\_WIRELESS"{}}}
+\DoxyCodeLine{01060\ }
+\DoxyCodeLine{01070\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_XBOX\_ONE\ \ \ "{}SDL\_JOYSTICK\_HIDAPI\_XBOX\_ONE"{}}}
+\DoxyCodeLine{01071\ }
+\DoxyCodeLine{01081\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_HIDAPI\_XBOX\_ONE\_HOME\_LED\ "{}SDL\_JOYSTICK\_HIDAPI\_XBOX\_ONE\_HOME\_LED"{}}}
+\DoxyCodeLine{01082\ }
+\DoxyCodeLine{01090\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_IOKIT\ "{}SDL\_JOYSTICK\_IOKIT"{}}}
+\DoxyCodeLine{01091\ }
+\DoxyCodeLine{01099\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_MFI\ "{}SDL\_JOYSTICK\_MFI"{}}}
+\DoxyCodeLine{01100\ }
+\DoxyCodeLine{01108\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_RAWINPUT\ "{}SDL\_JOYSTICK\_RAWINPUT"{}}}
+\DoxyCodeLine{01109\ }
+\DoxyCodeLine{01121\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_RAWINPUT\_CORRELATE\_XINPUT\ \ \ "{}SDL\_JOYSTICK\_RAWINPUT\_CORRELATE\_XINPUT"{}}}
+\DoxyCodeLine{01122\ }
+\DoxyCodeLine{01130\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_ROG\_CHAKRAM\ "{}SDL\_JOYSTICK\_ROG\_CHAKRAM"{}}}
+\DoxyCodeLine{01131\ }
+\DoxyCodeLine{01141\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_THREAD\ "{}SDL\_JOYSTICK\_THREAD"{}}}
+\DoxyCodeLine{01142\ }
+\DoxyCodeLine{01154\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_THROTTLE\_DEVICES\ "{}SDL\_JOYSTICK\_THROTTLE\_DEVICES"{}}}
+\DoxyCodeLine{01155\ }
+\DoxyCodeLine{01167\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_THROTTLE\_DEVICES\_EXCLUDED\ "{}SDL\_JOYSTICK\_THROTTLE\_DEVICES\_EXCLUDED"{}}}
+\DoxyCodeLine{01168\ }
+\DoxyCodeLine{01176\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_WGI\ "{}SDL\_JOYSTICK\_WGI"{}}}
+\DoxyCodeLine{01177\ }
+\DoxyCodeLine{01189\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_WHEEL\_DEVICES\ "{}SDL\_JOYSTICK\_WHEEL\_DEVICES"{}}}
+\DoxyCodeLine{01190\ }
+\DoxyCodeLine{01202\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_WHEEL\_DEVICES\_EXCLUDED\ "{}SDL\_JOYSTICK\_WHEEL\_DEVICES\_EXCLUDED"{}}}
+\DoxyCodeLine{01203\ }
+\DoxyCodeLine{01215\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_ZERO\_CENTERED\_DEVICES\ "{}SDL\_JOYSTICK\_ZERO\_CENTERED\_DEVICES"{}}}
+\DoxyCodeLine{01216\ }
+\DoxyCodeLine{01238\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_KMSDRM\_REQUIRE\_DRM\_MASTER\ \ \ \ \ \ "{}SDL\_KMSDRM\_REQUIRE\_DRM\_MASTER"{}}}
+\DoxyCodeLine{01239\ }
+\DoxyCodeLine{01245\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_JOYSTICK\_DEVICE\ "{}SDL\_JOYSTICK\_DEVICE"{}}}
+\DoxyCodeLine{01246\ }
+\DoxyCodeLine{01254\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_LINUX\_DIGITAL\_HATS\ "{}SDL\_LINUX\_DIGITAL\_HATS"{}}}
+\DoxyCodeLine{01255\ }
+\DoxyCodeLine{01263\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_LINUX\_HAT\_DEADZONES\ "{}SDL\_LINUX\_HAT\_DEADZONES"{}}}
+\DoxyCodeLine{01264\ }
+\DoxyCodeLine{01274\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_LINUX\_JOYSTICK\_CLASSIC\ "{}SDL\_LINUX\_JOYSTICK\_CLASSIC"{}}}
+\DoxyCodeLine{01275\ }
+\DoxyCodeLine{01283\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_LINUX\_JOYSTICK\_DEADZONES\ "{}SDL\_LINUX\_JOYSTICK\_DEADZONES"{}}}
+\DoxyCodeLine{01284\ }
+\DoxyCodeLine{01299\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_LOGGING\ \ \ "{}SDL\_LOGGING"{}}}
+\DoxyCodeLine{01300\ }
+\DoxyCodeLine{01307\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MAC\_BACKGROUND\_APP\ \ \ \ "{}SDL\_MAC\_BACKGROUND\_APP"{}}}
+\DoxyCodeLine{01308\ }
+\DoxyCodeLine{01315\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MAC\_CTRL\_CLICK\_EMULATE\_RIGHT\_CLICK\ "{}SDL\_MAC\_CTRL\_CLICK\_EMULATE\_RIGHT\_CLICK"{}}}
+\DoxyCodeLine{01316\ }
+\DoxyCodeLine{01333\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MAC\_OPENGL\_ASYNC\_DISPATCH\ "{}SDL\_MAC\_OPENGL\_ASYNC\_DISPATCH"{}}}
+\DoxyCodeLine{01334\ }
+\DoxyCodeLine{01338\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_DOUBLE\_CLICK\_RADIUS\ \ \ \ "{}SDL\_MOUSE\_DOUBLE\_CLICK\_RADIUS"{}}}
+\DoxyCodeLine{01339\ }
+\DoxyCodeLine{01343\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_DOUBLE\_CLICK\_TIME\ \ \ \ "{}SDL\_MOUSE\_DOUBLE\_CLICK\_TIME"{}}}
+\DoxyCodeLine{01344\ }
+\DoxyCodeLine{01354\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_FOCUS\_CLICKTHROUGH\ "{}SDL\_MOUSE\_FOCUS\_CLICKTHROUGH"{}}}
+\DoxyCodeLine{01355\ }
+\DoxyCodeLine{01359\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_NORMAL\_SPEED\_SCALE\ \ \ \ "{}SDL\_MOUSE\_NORMAL\_SPEED\_SCALE"{}}}
+\DoxyCodeLine{01360\ }
+\DoxyCodeLine{01375\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_RELATIVE\_MODE\_CENTER\ \ \ \ "{}SDL\_MOUSE\_RELATIVE\_MODE\_CENTER"{}}}
+\DoxyCodeLine{01376\ }
+\DoxyCodeLine{01386\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_RELATIVE\_MODE\_WARP\ \ \ \ "{}SDL\_MOUSE\_RELATIVE\_MODE\_WARP"{}}}
+\DoxyCodeLine{01387\ }
+\DoxyCodeLine{01397\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_RELATIVE\_SCALING\ "{}SDL\_MOUSE\_RELATIVE\_SCALING"{}}}
+\DoxyCodeLine{01398\ }
+\DoxyCodeLine{01402\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_RELATIVE\_SPEED\_SCALE\ \ \ \ "{}SDL\_MOUSE\_RELATIVE\_SPEED\_SCALE"{}}}
+\DoxyCodeLine{01403\ }
+\DoxyCodeLine{01413\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_RELATIVE\_SYSTEM\_SCALE\ \ \ \ "{}SDL\_MOUSE\_RELATIVE\_SYSTEM\_SCALE"{}}}
+\DoxyCodeLine{01414\ }
+\DoxyCodeLine{01424\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_RELATIVE\_WARP\_MOTION\ \ "{}SDL\_MOUSE\_RELATIVE\_WARP\_MOTION"{}}}
+\DoxyCodeLine{01425\ }
+\DoxyCodeLine{01433\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_TOUCH\_EVENTS\ \ \ \ "{}SDL\_MOUSE\_TOUCH\_EVENTS"{}}}
+\DoxyCodeLine{01434\ }
+\DoxyCodeLine{01446\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_MOUSE\_AUTO\_CAPTURE\ \ \ \ "{}SDL\_MOUSE\_AUTO\_CAPTURE"{}}}
+\DoxyCodeLine{01447\ }
+\DoxyCodeLine{01459\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_NO\_SIGNAL\_HANDLERS\ \ \ "{}SDL\_NO\_SIGNAL\_HANDLERS"{}}}
+\DoxyCodeLine{01460\ }
+\DoxyCodeLine{01490\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_OPENGL\_ES\_DRIVER\ \ \ "{}SDL\_OPENGL\_ES\_DRIVER"{}}}
+\DoxyCodeLine{01491\ }
+\DoxyCodeLine{01501\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ORIENTATIONS\ "{}SDL\_IOS\_ORIENTATIONS"{}}}
+\DoxyCodeLine{01502\ }
+\DoxyCodeLine{01517\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_POLL\_SENTINEL\ "{}SDL\_POLL\_SENTINEL"{}}}
+\DoxyCodeLine{01518\ }
+\DoxyCodeLine{01531\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_PREFERRED\_LOCALES\ "{}SDL\_PREFERRED\_LOCALES"{}}}
+\DoxyCodeLine{01532\ }
+\DoxyCodeLine{01550\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_QTWAYLAND\_CONTENT\_ORIENTATION\ "{}SDL\_QTWAYLAND\_CONTENT\_ORIENTATION"{}}}
+\DoxyCodeLine{01551\ }
+\DoxyCodeLine{01561\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_QTWAYLAND\_WINDOW\_FLAGS\ "{}SDL\_QTWAYLAND\_WINDOW\_FLAGS"{}}}
+\DoxyCodeLine{01562\ }
+\DoxyCodeLine{01585\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_BATCHING\ \ "{}SDL\_RENDER\_BATCHING"{}}}
+\DoxyCodeLine{01586\ }
+\DoxyCodeLine{01598\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_LINE\_METHOD\ "{}SDL\_RENDER\_LINE\_METHOD"{}}}
+\DoxyCodeLine{01599\ }
+\DoxyCodeLine{01611\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_DIRECT3D11\_DEBUG\ \ \ \ "{}SDL\_RENDER\_DIRECT3D11\_DEBUG"{}}}
+\DoxyCodeLine{01612\ }
+\DoxyCodeLine{01622\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_DIRECT3D\_THREADSAFE\ "{}SDL\_RENDER\_DIRECT3D\_THREADSAFE"{}}}
+\DoxyCodeLine{01623\ }
+\DoxyCodeLine{01644\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_DRIVER\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}SDL\_RENDER\_DRIVER"{}}}
+\DoxyCodeLine{01645\ }
+\DoxyCodeLine{01655\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_LOGICAL\_SIZE\_MODE\ \ \ \ \ \ \ "{}SDL\_RENDER\_LOGICAL\_SIZE\_MODE"{}}}
+\DoxyCodeLine{01656\ }
+\DoxyCodeLine{01666\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_OPENGL\_SHADERS\ \ \ \ \ \ "{}SDL\_RENDER\_OPENGL\_SHADERS"{}}}
+\DoxyCodeLine{01667\ }
+\DoxyCodeLine{01678\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_SCALE\_QUALITY\ \ \ \ \ \ \ "{}SDL\_RENDER\_SCALE\_QUALITY"{}}}
+\DoxyCodeLine{01679\ }
+\DoxyCodeLine{01689\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_VSYNC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}SDL\_RENDER\_VSYNC"{}}}
+\DoxyCodeLine{01690\ }
+\DoxyCodeLine{01700\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RENDER\_METAL\_PREFER\_LOW\_POWER\_DEVICE\ "{}SDL\_RENDER\_METAL\_PREFER\_LOW\_POWER\_DEVICE"{}}}
+\DoxyCodeLine{01701\ }
+\DoxyCodeLine{01713\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ROG\_GAMEPAD\_MICE\ "{}SDL\_ROG\_GAMEPAD\_MICE"{}}}
+\DoxyCodeLine{01714\ }
+\DoxyCodeLine{01726\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_ROG\_GAMEPAD\_MICE\_EXCLUDED\ "{}SDL\_ROG\_GAMEPAD\_MICE\_EXCLUDED"{}}}
+\DoxyCodeLine{01727\ }
+\DoxyCodeLine{01737\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_PS2\_DYNAMIC\_VSYNC\ \ \ \ "{}SDL\_PS2\_DYNAMIC\_VSYNC"{}}}
+\DoxyCodeLine{01738\ }
+\DoxyCodeLine{01749\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RETURN\_KEY\_HIDES\_IME\ "{}SDL\_RETURN\_KEY\_HIDES\_IME"{}}}
+\DoxyCodeLine{01750\ }
+\DoxyCodeLine{01757\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_RPI\_VIDEO\_LAYER\ \ \ \ \ \ \ \ \ \ \ "{}SDL\_RPI\_VIDEO\_LAYER"{}}}
+\DoxyCodeLine{01758\ }
+\DoxyCodeLine{01777\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_SCREENSAVER\_INHIBIT\_ACTIVITY\_NAME\ "{}SDL\_SCREENSAVER\_INHIBIT\_ACTIVITY\_NAME"{}}}
+\DoxyCodeLine{01778\ }
+\DoxyCodeLine{01796\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_THREAD\_FORCE\_REALTIME\_TIME\_CRITICAL\ "{}SDL\_THREAD\_FORCE\_REALTIME\_TIME\_CRITICAL"{}}}
+\DoxyCodeLine{01797\ }
+\DoxyCodeLine{01813\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_THREAD\_PRIORITY\_POLICY\ \ \ \ \ \ \ \ \ "{}SDL\_THREAD\_PRIORITY\_POLICY"{}}}
+\DoxyCodeLine{01814\ }
+\DoxyCodeLine{01827\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_THREAD\_STACK\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}SDL\_THREAD\_STACK\_SIZE"{}}}
+\DoxyCodeLine{01828\ }
+\DoxyCodeLine{01843\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_TIMER\_RESOLUTION\ "{}SDL\_TIMER\_RESOLUTION"{}}}
+\DoxyCodeLine{01844\ }
+\DoxyCodeLine{01854\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_TOUCH\_MOUSE\_EVENTS\ \ \ \ "{}SDL\_TOUCH\_MOUSE\_EVENTS"{}}}
+\DoxyCodeLine{01855\ }
+\DoxyCodeLine{01866\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VITA\_TOUCH\_MOUSE\_DEVICE\ \ \ \ "{}SDL\_HINT\_VITA\_TOUCH\_MOUSE\_DEVICE"{}}}
+\DoxyCodeLine{01867\ }
+\DoxyCodeLine{01876\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_TV\_REMOTE\_AS\_JOYSTICK\ "{}SDL\_TV\_REMOTE\_AS\_JOYSTICK"{}}}
+\DoxyCodeLine{01877\ }
+\DoxyCodeLine{01887\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_ALLOW\_SCREENSAVER\ \ \ \ "{}SDL\_VIDEO\_ALLOW\_SCREENSAVER"{}}}
+\DoxyCodeLine{01888\ }
+\DoxyCodeLine{01906\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_DOUBLE\_BUFFER\ \ \ \ \ \ "{}SDL\_VIDEO\_DOUBLE\_BUFFER"{}}}
+\DoxyCodeLine{01907\ }
+\DoxyCodeLine{01917\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_EGL\_ALLOW\_TRANSPARENCY\ "{}SDL\_VIDEO\_EGL\_ALLOW\_TRANSPARENCY"{}}}
+\DoxyCodeLine{01918\ }
+\DoxyCodeLine{01932\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_EXTERNAL\_CONTEXT\ \ \ \ "{}SDL\_VIDEO\_EXTERNAL\_CONTEXT"{}}}
+\DoxyCodeLine{01933\ }
+\DoxyCodeLine{01937\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_HIGHDPI\_DISABLED\ "{}SDL\_VIDEO\_HIGHDPI\_DISABLED"{}}}
+\DoxyCodeLine{01938\ }
+\DoxyCodeLine{01954\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_MAC\_FULLSCREEN\_SPACES\ \ \ \ "{}SDL\_VIDEO\_MAC\_FULLSCREEN\_SPACES"{}}}
+\DoxyCodeLine{01955\ }
+\DoxyCodeLine{01962\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_MINIMIZE\_ON\_FOCUS\_LOSS\ \ \ "{}SDL\_VIDEO\_MINIMIZE\_ON\_FOCUS\_LOSS"{}}}
+\DoxyCodeLine{01963\ }
+\DoxyCodeLine{01973\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_WAYLAND\_ALLOW\_LIBDECOR\ "{}SDL\_VIDEO\_WAYLAND\_ALLOW\_LIBDECOR"{}}}
+\DoxyCodeLine{01974\ }
+\DoxyCodeLine{01987\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_WAYLAND\_PREFER\_LIBDECOR\ "{}SDL\_VIDEO\_WAYLAND\_PREFER\_LIBDECOR"{}}}
+\DoxyCodeLine{01988\ }
+\DoxyCodeLine{02002\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_WAYLAND\_MODE\_EMULATION\ "{}SDL\_VIDEO\_WAYLAND\_MODE\_EMULATION"{}}}
+\DoxyCodeLine{02003\ }
+\DoxyCodeLine{02019\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_WAYLAND\_EMULATE\_MOUSE\_WARP\ "{}SDL\_VIDEO\_WAYLAND\_EMULATE\_MOUSE\_WARP"{}}}
+\DoxyCodeLine{02020\ }
+\DoxyCodeLine{02038\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_WINDOW\_SHARE\_PIXEL\_FORMAT\ \ \ \ "{}SDL\_VIDEO\_WINDOW\_SHARE\_PIXEL\_FORMAT"{}}}
+\DoxyCodeLine{02039\ }
+\DoxyCodeLine{02049\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_FOREIGN\_WINDOW\_OPENGL\ "{}SDL\_VIDEO\_FOREIGN\_WINDOW\_OPENGL"{}}}
+\DoxyCodeLine{02050\ }
+\DoxyCodeLine{02060\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_FOREIGN\_WINDOW\_VULKAN\ "{}SDL\_VIDEO\_FOREIGN\_WINDOW\_VULKAN"{}}}
+\DoxyCodeLine{02061\ }
+\DoxyCodeLine{02076\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_WIN\_D3DCOMPILER\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}SDL\_VIDEO\_WIN\_D3DCOMPILER"{}}}
+\DoxyCodeLine{02077\ }
+\DoxyCodeLine{02087\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_X11\_FORCE\_EGL\ "{}SDL\_VIDEO\_X11\_FORCE\_EGL"{}}}
+\DoxyCodeLine{02088\ }
+\DoxyCodeLine{02099\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_X11\_NET\_WM\_BYPASS\_COMPOSITOR\ "{}SDL\_VIDEO\_X11\_NET\_WM\_BYPASS\_COMPOSITOR"{}}}
+\DoxyCodeLine{02100\ }
+\DoxyCodeLine{02113\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_X11\_NET\_WM\_PING\ \ \ \ \ \ "{}SDL\_VIDEO\_X11\_NET\_WM\_PING"{}}}
+\DoxyCodeLine{02114\ }
+\DoxyCodeLine{02119\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_X11\_WINDOW\_VISUALID\ \ \ \ \ \ "{}SDL\_VIDEO\_X11\_WINDOW\_VISUALID"{}}}
+\DoxyCodeLine{02120\ }
+\DoxyCodeLine{02128\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_X11\_XINERAMA\ \ \ \ \ \ \ \ \ "{}SDL\_VIDEO\_X11\_XINERAMA"{}}}
+\DoxyCodeLine{02129\ }
+\DoxyCodeLine{02139\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_X11\_XRANDR\ \ \ \ \ \ \ \ \ \ \ "{}SDL\_VIDEO\_X11\_XRANDR"{}}}
+\DoxyCodeLine{02140\ }
+\DoxyCodeLine{02148\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEO\_X11\_XVIDMODE\ \ \ \ \ \ \ \ \ "{}SDL\_VIDEO\_X11\_XVIDMODE"{}}}
+\DoxyCodeLine{02149\ }
+\DoxyCodeLine{02175\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WAVE\_FACT\_CHUNK\ \ \ "{}SDL\_WAVE\_FACT\_CHUNK"{}}}
+\DoxyCodeLine{02176\ }
+\DoxyCodeLine{02196\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WAVE\_RIFF\_CHUNK\_SIZE\ \ \ "{}SDL\_WAVE\_RIFF\_CHUNK\_SIZE"{}}}
+\DoxyCodeLine{02197\ }
+\DoxyCodeLine{02212\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WAVE\_TRUNCATION\ \ \ "{}SDL\_WAVE\_TRUNCATION"{}}}
+\DoxyCodeLine{02213\ }
+\DoxyCodeLine{02228\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_DISABLE\_THREAD\_NAMING\ "{}SDL\_WINDOWS\_DISABLE\_THREAD\_NAMING"{}}}
+\DoxyCodeLine{02229\ }
+\DoxyCodeLine{02250\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_ENABLE\_MENU\_MNEMONICS\ "{}SDL\_WINDOWS\_ENABLE\_MENU\_MNEMONICS"{}}}
+\DoxyCodeLine{02251\ }
+\DoxyCodeLine{02261\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_ENABLE\_MESSAGELOOP\ "{}SDL\_WINDOWS\_ENABLE\_MESSAGELOOP"{}}}
+\DoxyCodeLine{02262\ }
+\DoxyCodeLine{02275\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_FORCE\_MUTEX\_CRITICAL\_SECTIONS\ "{}SDL\_WINDOWS\_FORCE\_MUTEX\_CRITICAL\_SECTIONS"{}}}
+\DoxyCodeLine{02276\ }
+\DoxyCodeLine{02291\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_FORCE\_SEMAPHORE\_KERNEL\ "{}SDL\_WINDOWS\_FORCE\_SEMAPHORE\_KERNEL"{}}}
+\DoxyCodeLine{02292\ }
+\DoxyCodeLine{02296\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_INTRESOURCE\_ICON\ \ \ \ \ \ \ "{}SDL\_WINDOWS\_INTRESOURCE\_ICON"{}}}
+\DoxyCodeLine{02297\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_INTRESOURCE\_ICON\_SMALL\ "{}SDL\_WINDOWS\_INTRESOURCE\_ICON\_SMALL"{}}}
+\DoxyCodeLine{02298\ }
+\DoxyCodeLine{02306\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_NO\_CLOSE\_ON\_ALT\_F4\ "{}SDL\_WINDOWS\_NO\_CLOSE\_ON\_ALT\_F4"{}}}
+\DoxyCodeLine{02307\ }
+\DoxyCodeLine{02326\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_USE\_D3D9EX\ "{}SDL\_WINDOWS\_USE\_D3D9EX"{}}}
+\DoxyCodeLine{02327\ }
+\DoxyCodeLine{02356\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_DPI\_AWARENESS\ "{}SDL\_WINDOWS\_DPI\_AWARENESS"{}}}
+\DoxyCodeLine{02357\ }
+\DoxyCodeLine{02377\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOWS\_DPI\_SCALING\ "{}SDL\_WINDOWS\_DPI\_SCALING"{}}}
+\DoxyCodeLine{02378\ }
+\DoxyCodeLine{02388\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOW\_FRAME\_USABLE\_WHILE\_CURSOR\_HIDDEN\ \ \ \ "{}SDL\_WINDOW\_FRAME\_USABLE\_WHILE\_CURSOR\_HIDDEN"{}}}
+\DoxyCodeLine{02389\ }
+\DoxyCodeLine{02399\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINDOW\_NO\_ACTIVATION\_WHEN\_SHOWN\ \ \ \ "{}SDL\_WINDOW\_NO\_ACTIVATION\_WHEN\_SHOWN"{}}}
+\DoxyCodeLine{02400\ }
+\DoxyCodeLine{02451\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINRT\_HANDLE\_BACK\_BUTTON\ "{}SDL\_WINRT\_HANDLE\_BACK\_BUTTON"{}}}
+\DoxyCodeLine{02452\ }
+\DoxyCodeLine{02472\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINRT\_PRIVACY\_POLICY\_LABEL\ "{}SDL\_WINRT\_PRIVACY\_POLICY\_LABEL"{}}}
+\DoxyCodeLine{02473\ }
+\DoxyCodeLine{02498\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_WINRT\_PRIVACY\_POLICY\_URL\ "{}SDL\_WINRT\_PRIVACY\_POLICY\_URL"{}}}
+\DoxyCodeLine{02499\ }
+\DoxyCodeLine{02510\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_X11\_FORCE\_OVERRIDE\_REDIRECT\ "{}SDL\_X11\_FORCE\_OVERRIDE\_REDIRECT"{}}}
+\DoxyCodeLine{02511\ }
+\DoxyCodeLine{02519\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_XINPUT\_ENABLED\ "{}SDL\_XINPUT\_ENABLED"{}}}
+\DoxyCodeLine{02520\ }
+\DoxyCodeLine{02528\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_DIRECTINPUT\_ENABLED\ "{}SDL\_DIRECTINPUT\_ENABLED"{}}}
+\DoxyCodeLine{02529\ }
+\DoxyCodeLine{02537\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_XINPUT\_USE\_OLD\_JOYSTICK\_MAPPING\ "{}SDL\_XINPUT\_USE\_OLD\_JOYSTICK\_MAPPING"{}}}
+\DoxyCodeLine{02538\ }
+\DoxyCodeLine{02556\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_AUDIO\_INCLUDE\_MONITORS\ "{}SDL\_AUDIO\_INCLUDE\_MONITORS"{}}}
+\DoxyCodeLine{02557\ }
+\DoxyCodeLine{02576\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_X11\_WINDOW\_TYPE\ "{}SDL\_X11\_WINDOW\_TYPE"{}}}
+\DoxyCodeLine{02577\ }
+\DoxyCodeLine{02600\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_QUIT\_ON\_LAST\_WINDOW\_CLOSE\ "{}SDL\_QUIT\_ON\_LAST\_WINDOW\_CLOSE"{}}}
+\DoxyCodeLine{02601\ }
+\DoxyCodeLine{02602\ }
+\DoxyCodeLine{02624\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_VIDEODRIVER\ "{}SDL\_VIDEODRIVER"{}}}
+\DoxyCodeLine{02625\ }
+\DoxyCodeLine{02647\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_AUDIODRIVER\ "{}SDL\_AUDIODRIVER"{}}}
+\DoxyCodeLine{02648\ }
+\DoxyCodeLine{02661\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_KMSDRM\_DEVICE\_INDEX\ "{}SDL\_KMSDRM\_DEVICE\_INDEX"{}}}
+\DoxyCodeLine{02662\ }
+\DoxyCodeLine{02663\ }
+\DoxyCodeLine{02683\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_TRACKPAD\_IS\_TOUCH\_ONLY\ "{}SDL\_TRACKPAD\_IS\_TOUCH\_ONLY"{}}}
+\DoxyCodeLine{02684\ }
+\DoxyCodeLine{02699\ \textcolor{preprocessor}{\#define\ SDL\_HINT\_SHUTDOWN\_DBUS\_ON\_QUIT\ "{}SDL\_SHUTDOWN\_DBUS\_ON\_QUIT"{}}}
+\DoxyCodeLine{02700\ }
+\DoxyCodeLine{02701\ }
+\DoxyCodeLine{02705\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{02706\ \{}
+\DoxyCodeLine{02707\ \ \ \ \ SDL\_HINT\_DEFAULT,}
+\DoxyCodeLine{02708\ \ \ \ \ SDL\_HINT\_NORMAL,}
+\DoxyCodeLine{02709\ \ \ \ \ SDL\_HINT\_OVERRIDE}
+\DoxyCodeLine{02710\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h_ab85f3099d9bb0445b0c6b5002cfaa7ed}{SDL\_HintPriority}};}
+\DoxyCodeLine{02711\ }
+\DoxyCodeLine{02712\ }
+\DoxyCodeLine{02730\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_SetHintWithPriority(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,}
+\DoxyCodeLine{02731\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *value,}
+\DoxyCodeLine{02732\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h_ab85f3099d9bb0445b0c6b5002cfaa7ed}{SDL\_HintPriority}}\ priority);}
+\DoxyCodeLine{02733\ }
+\DoxyCodeLine{02750\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_SetHint(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,}
+\DoxyCodeLine{02751\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *value);}
+\DoxyCodeLine{02752\ }
+\DoxyCodeLine{02768\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_ResetHint(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
+\DoxyCodeLine{02769\ }
+\DoxyCodeLine{02783\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h_adb936ea7125da9c2850f0cb126e47d7f}{SDL\_ResetHints}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{02784\ }
+\DoxyCodeLine{02796\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ SDLCALL\ SDL\_GetHint(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
+\DoxyCodeLine{02797\ }
+\DoxyCodeLine{02811\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_GetHintBoolean(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ SDL\_bool\ default\_value);}
+\DoxyCodeLine{02812\ }
+\DoxyCodeLine{02821\ \textcolor{keyword}{typedef}\ void\ (SDLCALL\ *\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h_a393a846a6c2dbc4ec9e52bd9bef14e02}{SDL\_HintCallback}})(\textcolor{keywordtype}{void}\ *userdata,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *oldValue,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *newValue);}
+\DoxyCodeLine{02822\ }
+\DoxyCodeLine{02835\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_AddHintCallback(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,}
+\DoxyCodeLine{02836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h_a393a846a6c2dbc4ec9e52bd9bef14e02}{SDL\_HintCallback}}\ callback,}
+\DoxyCodeLine{02837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *userdata);}
+\DoxyCodeLine{02838\ }
+\DoxyCodeLine{02851\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_DelHintCallback(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name,}
+\DoxyCodeLine{02852\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h_a393a846a6c2dbc4ec9e52bd9bef14e02}{SDL\_HintCallback}}\ callback,}
+\DoxyCodeLine{02853\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *userdata);}
+\DoxyCodeLine{02854\ }
+\DoxyCodeLine{02869\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__hints_8h_a7feb78f92319c07e9d53d7be8185cdbb}{SDL\_ClearHints}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{02870\ }
+\DoxyCodeLine{02871\ }
+\DoxyCodeLine{02872\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{02873\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{02874\ \}}
+\DoxyCodeLine{02875\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{02876\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{02877\ }
+\DoxyCodeLine{02878\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_hints\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{02879\ }
+\DoxyCodeLine{02880\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

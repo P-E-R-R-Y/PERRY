@@ -1,0 +1,598 @@
+\doxysection{iter\+\_\+impl.\+hpp}
+\hypertarget{iter__impl_8hpp_source}{}\label{iter__impl_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/iterators/iter\_impl.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/iterators/iter\_impl.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iterator>}\ \textcolor{comment}{//\ iterator,\ random\_access\_iterator\_tag,\ bidirectional\_iterator\_tag,\ advance,\ next}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <type\_traits>}\ \textcolor{comment}{//\ conditional,\ is\_const,\ remove\_const}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/exceptions.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/iterators/internal\_iterator.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/iterators/primitive\_iterator.hpp>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/macro\_scope.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/cpp\_future.hpp>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/meta/type\_traits.hpp>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/value\_t.hpp>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ forward\ declare,\ to\ be\ able\ to\ friend\ it\ later\ on}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ IteratorType>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classdetail_1_1iteration__proxy}{iteration\_proxy}};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ IteratorType>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classdetail_1_1iteration__proxy__value}{iteration\_proxy\_value}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ BasicJsonType>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }iter\_impl\ \textcolor{comment}{//\ NOLINT(cppcoreguidelines-\/special-\/member-\/functions,hicpp-\/special-\/member-\/functions)}}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classdetail_1_1iter__impl_a67b4cdce7005498673f175a5c67d354c}{other\_iter\_impl}}\ =\ iter\_impl<typename\ std::conditional<std::is\_const<BasicJsonType>::value,\ \textcolor{keyword}{typename}\ std::remove\_const<BasicJsonType>::type,\ \textcolor{keyword}{const}\ BasicJsonType>::type>;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{classdetail_1_1iter__impl_ac21fe851cf594824029bbd2a5570c9c8}{other\_iter\_impl}};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{friend}\ BasicJsonType;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{classdetail_1_1iteration__proxy}{iteration\_proxy<iter\_impl>}};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{classdetail_1_1iteration__proxy__value}{iteration\_proxy\_value<iter\_impl>}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{using\ }object\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::object\_t;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{using\ }array\_t\ =\ \textcolor{keyword}{typename}\ BasicJsonType::array\_t;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ make\ sure\ BasicJsonType\ is\ basic\_json\ or\ const\ basic\_json}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static\_assert}(\mbox{\hyperlink{structdetail_1_1is__basic__json}{is\_basic\_json<typename\ std::remove\_const<BasicJsonType>::type}}>\mbox{\hyperlink{classdetail_1_1iter__impl_a96557c87bc9b3adf6aa0b1a6b6209525}{::value}},}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}iter\_impl\ only\ accepts\ (const)\ basic\_json"{}});}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ superficial\ check\ for\ the\ LegacyBidirectionalIterator\ named\ requirement}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{static\_assert}(std::is\_base\_of<std::bidirectional\_iterator\_tag,\ std::bidirectional\_iterator\_tag>::value}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ \ std::is\_base\_of<std::bidirectional\_iterator\_tag,\ typename\ std::iterator\_traits<typename\ array\_t::iterator>::iterator\_category>\mbox{\hyperlink{classdetail_1_1iter__impl_a96557c87bc9b3adf6aa0b1a6b6209525}{::value}},}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}basic\_json\ iterator\ assumes\ array\ and\ object\ type\ iterators\ satisfy\ the\ LegacyBidirectionalIterator\ named\ requirement."{}});}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classdetail_1_1iter__impl_a8fa317aaddc3dc7c58264e52e295c43e}{iterator\_category}}\ =\ std::bidirectional\_iterator\_tag;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classdetail_1_1iter__impl_ab6c453d3fea1df38fa45fd4f97ea42df}{value\_type}}\ =\ \textcolor{keyword}{typename}\ BasicJsonType::value\_type;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classdetail_1_1iter__impl_a6d51e1372282929d1c240223aa973c6e}{difference\_type}}\ =\ \textcolor{keyword}{typename}\ BasicJsonType::difference\_type;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classdetail_1_1iter__impl_a5f32f4fdd48a9b92ecb156af6421b1b8}{pointer}}\ =\ \textcolor{keyword}{typename}\ std::conditional<std::is\_const<BasicJsonType>::value,}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ BasicJsonType::const\_pointer,}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ BasicJsonType::pointer>::type;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classdetail_1_1iter__impl_ac0cfb3a9727e77580cb1beada093ee81}{reference}}\ =}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ std::conditional<std::is\_const<BasicJsonType>::value,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ BasicJsonType::const\_reference,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typename}\ BasicJsonType::reference>::type;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ iter\_impl()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00090\ \ \ \ \ \string~iter\_impl()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00091\ \ \ \ \ iter\_impl(iter\_impl\&\&)\ noexcept\ =\ default;}
+\DoxyCodeLine{00092\ \ \ \ \ iter\_impl\&\ operator=(iter\_impl\&\&)\ noexcept\ =\ default;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00100\ \ \ \ \ explicit\ iter\_impl(\mbox{\hyperlink{classdetail_1_1iter__impl_a5f32f4fdd48a9b92ecb156af6421b1b8}{pointer}}\ \textcolor{keywordtype}{object})\ noexcept\ :\ m\_object(\textcolor{keywordtype}{object})}
+\DoxyCodeLine{00101\ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator\ =\ \textcolor{keyword}{typename}\ object\_t::iterator();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator\ =\ \textcolor{keyword}{typename}\ array\_t::iterator();}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator\ =\ \mbox{\hyperlink{classdetail_1_1primitive__iterator__t}{primitive\_iterator\_t}}();}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_af8d8847a82d9dab28bd4650ed13a7c90}{iter\_impl}}(\textcolor{keyword}{const}\ iter\_impl<const\ BasicJsonType>\&\ other)\ noexcept}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ :\ m\_object(other.m\_object),\ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}(other.m\_it)}
+\DoxyCodeLine{00152\ \ \ \ \ \{\}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00160\ \ \ \ \ iter\_impl\&\ \mbox{\hyperlink{classdetail_1_1iter__impl_ae347fdf39e75d13ce488335ef1529b27}{operator=}}(\textcolor{keyword}{const}\ iter\_impl<const\ BasicJsonType>\&\ other)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00161\ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\&other\ !=\ \textcolor{keyword}{this})}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ m\_object\ =\ other.m\_object;}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}\ =\ other.m\_it;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_a26079f33eb8a16683577cf3782558f26}{iter\_impl}}(\textcolor{keyword}{const}\ iter\_impl<\textcolor{keyword}{typename}\ std::remove\_const<BasicJsonType>::type>\&\ other)\ noexcept}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ :\ m\_object(other.m\_object),\ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}(other.m\_it)}
+\DoxyCodeLine{00177\ \ \ \ \ \{\}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00185\ \ \ \ \ iter\_impl\&\ \mbox{\hyperlink{classdetail_1_1iter__impl_a228140be2554afd5dfe54d4194780b7c}{operator=}}(\textcolor{keyword}{const}\ iter\_impl<\textcolor{keyword}{typename}\ std::remove\_const<BasicJsonType>::type>\&\ other)\ \textcolor{keyword}{noexcept}\ \textcolor{comment}{//\ NOLINT(cert-\/oop54-\/cpp)}}
+\DoxyCodeLine{00186\ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ m\_object\ =\ other.m\_object;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}\ =\ other.m\_it;}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ JSON\_PRIVATE\_UNLESS\_TESTED:}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_begin()\ noexcept}
+\DoxyCodeLine{00198\ \ \ \ \ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator\ =\ m\_object-\/>m\_data.m\_value.object-\/>begin();}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator\ =\ m\_object-\/>m\_data.m\_value.array-\/>begin();}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ to\ end\ so\ begin()==end()\ is\ true:\ null\ is\ empty}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator.set\_end();}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator.set\_begin();}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classdetail_1_1iter__impl_afc94db3b8f35616347c25fae68e09509}{set\_end}}()\ noexcept}
+\DoxyCodeLine{00242\ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator\ =\ m\_object-\/>m\_data.m\_value.object-\/>end();}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator\ =\ m\_object-\/>m\_data.m\_value.array-\/>end();}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator.set\_end();}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ \}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_ac0cfb3a9727e77580cb1beada093ee81}{reference}}\ \mbox{\hyperlink{classdetail_1_1iter__impl_abbef7d5bdb2c45980a34e907610c32b2}{operator*}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00281\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_ASSERT(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator\ !=\ m\_object-\/>m\_data.m\_value.object-\/>end());}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator-\/>second;}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_ASSERT(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator\ !=\ m\_object-\/>m\_data.m\_value.array-\/>end());}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator;}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(214,\ \textcolor{stringliteral}{"{}cannot\ get\ value"{}},\ m\_object));}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (JSON\_HEDLEY\_LIKELY(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator.is\_begin()))}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *m\_object;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(214,\ \textcolor{stringliteral}{"{}cannot\ get\ value"{}},\ m\_object));}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00318\ \ \ \ \ \}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00324\ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_a5f32f4fdd48a9b92ecb156af6421b1b8}{pointer}}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a72314a87e67ba523f1be2f014f4eab56}{operator-\/>}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00325\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_ASSERT(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator\ !=\ m\_object-\/>m\_data.m\_value.object-\/>end());}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator-\/>second);}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_ASSERT(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator\ !=\ m\_object-\/>m\_data.m\_value.array-\/>end());}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&*\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator;}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (JSON\_HEDLEY\_LIKELY(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator.is\_begin()))}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_object;}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(214,\ \textcolor{stringliteral}{"{}cannot\ get\ value"{}},\ m\_object));}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00360\ \ \ \ \ \}}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00366\ \ \ \ \ iter\_impl\ \mbox{\hyperlink{classdetail_1_1iter__impl_a5a1af6b2cd3611778b697bb7d7107f0d}{operator++}}(\textcolor{keywordtype}{int})\&\ \textcolor{comment}{//\ NOLINT(cert-\/dcl21-\/cpp)}}
+\DoxyCodeLine{00367\ \ \ \ \ \{}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ ++(*this);}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00371\ \ \ \ \ \}}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00377\ \ \ \ \ iter\_impl\&\ \mbox{\hyperlink{classdetail_1_1iter__impl_ab0288ec335f563769a09fba1123c076c}{operator++}}()}
+\DoxyCodeLine{00378\ \ \ \ \ \{}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00380\ }
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::advance(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator,\ 1);}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::advance(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator,\ 1);}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator;}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00411\ \ \ \ \ \}}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00417\ \ \ \ \ iter\_impl\ \mbox{\hyperlink{classdetail_1_1iter__impl_ae8c229d46359424bf850f1ecb5587a70}{operator-\/-\/}}(\textcolor{keywordtype}{int})\&\ \textcolor{comment}{//\ NOLINT(cert-\/dcl21-\/cpp)}}
+\DoxyCodeLine{00418\ \ \ \ \ \{}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ -\/-\/(*this);}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00422\ \ \ \ \ \}}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00428\ \ \ \ \ iter\_impl\&\ \mbox{\hyperlink{classdetail_1_1iter__impl_a3b7d07348aaaaf3eda9bd98b7d80415f}{operator-\/-\/}}()}
+\DoxyCodeLine{00429\ \ \ \ \ \{}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::advance(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator,\ -\/1);}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::advance(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator,\ -\/1);}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator;}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00460\ }
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00462\ \ \ \ \ \}}
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00468\ \ \ \ \ \textcolor{keyword}{template}\ <\ \textcolor{keyword}{typename}\ IterImpl,\ detail::enable\_if\_t\ <\ (std::is\_same<IterImpl,\ iter\_impl>::value\ ||\ std::is\_same<IterImpl,\ other\_iter\_impl>::value),\ std::\textcolor{keywordtype}{nullptr}\_t\ >\ =\ \textcolor{keywordtype}{nullptr}\ >}
+\DoxyCodeLine{00469\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a57b4e1eee4a3cdb3c0683cf64979da8d}{operator==}}(\textcolor{keyword}{const}\ IterImpl\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00470\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ objects\ are\ not\ the\ same,\ the\ comparison\ is\ undefined}}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (JSON\_HEDLEY\_UNLIKELY(m\_object\ !=\ other.m\_object))}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(212,\ \textcolor{stringliteral}{"{}cannot\ compare\ iterators\ of\ different\ containers"{}},\ m\_object));}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator\ ==\ other.m\_it.object\_iterator);}
+\DoxyCodeLine{00483\ }
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator\ ==\ other.m\_it.array\_iterator);}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator\ ==\ other.m\_it.primitive\_iterator);}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00498\ \ \ \ \ \}}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00504\ \ \ \ \ \textcolor{keyword}{template}\ <\ \textcolor{keyword}{typename}\ IterImpl,\ detail::enable\_if\_t\ <\ (std::is\_same<IterImpl,\ iter\_impl>::value\ ||\ std::is\_same<IterImpl,\ other\_iter\_impl>::value),\ std::\textcolor{keywordtype}{nullptr}\_t\ >\ =\ \textcolor{keywordtype}{nullptr}\ >}
+\DoxyCodeLine{00505\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classdetail_1_1iter__impl_ae52db5f16f00edc13c848fe99e4c521b}{operator!=}}(\textcolor{keyword}{const}\ IterImpl\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00506\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{classdetail_1_1iter__impl_a57b4e1eee4a3cdb3c0683cf64979da8d}{operator==}}(other);}
+\DoxyCodeLine{00508\ \ \ \ \ \}}
+\DoxyCodeLine{00509\ }
+\DoxyCodeLine{00514\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a339df296df7f5d014d5c7cedf40497da}{operator<}}(\textcolor{keyword}{const}\ iter\_impl\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00515\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ objects\ are\ not\ the\ same,\ the\ comparison\ is\ undefined}}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (JSON\_HEDLEY\_UNLIKELY(m\_object\ !=\ other.m\_object))}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(212,\ \textcolor{stringliteral}{"{}cannot\ compare\ iterators\ of\ different\ containers"{}},\ m\_object));}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(213,\ \textcolor{stringliteral}{"{}cannot\ compare\ order\ of\ object\ iterators"{}},\ m\_object));}
+\DoxyCodeLine{00528\ }
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator\ <\ other.\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator);}
+\DoxyCodeLine{00531\ }
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator\ <\ other.\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator);}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00543\ \ \ \ \ \}}
+\DoxyCodeLine{00544\ }
+\DoxyCodeLine{00549\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a343806ffb02d7ce5266492128dfd5f9b}{operator<=}}(\textcolor{keyword}{const}\ iter\_impl\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00550\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !other.operator\ <\ (*this);}
+\DoxyCodeLine{00552\ \ \ \ \ \}}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a9b066d888f2f0ad0cd601594661a8e8b}{operator>}}(\textcolor{keyword}{const}\ iter\_impl\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00559\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{classdetail_1_1iter__impl_a343806ffb02d7ce5266492128dfd5f9b}{operator<=}}(other);}
+\DoxyCodeLine{00561\ \ \ \ \ \}}
+\DoxyCodeLine{00562\ }
+\DoxyCodeLine{00567\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a25a3a8e85eb37727487f210f5304a48e}{operator>=}}(\textcolor{keyword}{const}\ iter\_impl\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00568\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !\mbox{\hyperlink{classdetail_1_1iter__impl_a339df296df7f5d014d5c7cedf40497da}{operator<}}(other);}
+\DoxyCodeLine{00570\ \ \ \ \ \}}
+\DoxyCodeLine{00571\ }
+\DoxyCodeLine{00576\ \ \ \ \ iter\_impl\&\ \mbox{\hyperlink{classdetail_1_1iter__impl_a5e2dd333526ae85044fe78f65aac9b52}{operator+=}}(\mbox{\hyperlink{classdetail_1_1iter__impl_a6d51e1372282929d1c240223aa973c6e}{difference\_type}}\ i)}
+\DoxyCodeLine{00577\ \ \ \ \ \{}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00579\ }
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(209,\ \textcolor{stringliteral}{"{}cannot\ use\ offsets\ with\ object\ iterators"{}},\ m\_object));}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::advance(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator,\ i);}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00590\ }
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator\ +=\ i;}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00605\ }
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00607\ \ \ \ \ \}}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00613\ \ \ \ \ iter\_impl\&\ \mbox{\hyperlink{classdetail_1_1iter__impl_a3b48ed5856ca2011e8463d868fda3d0b}{operator-\/=}}(\mbox{\hyperlink{classdetail_1_1iter__impl_a6d51e1372282929d1c240223aa973c6e}{difference\_type}}\ i)}
+\DoxyCodeLine{00614\ \ \ \ \ \{}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a5e2dd333526ae85044fe78f65aac9b52}{operator+=}}(-\/i);}
+\DoxyCodeLine{00616\ \ \ \ \ \}}
+\DoxyCodeLine{00617\ }
+\DoxyCodeLine{00622\ \ \ \ \ iter\_impl\ \mbox{\hyperlink{classdetail_1_1iter__impl_a03abdffc86382e7c2a7c462c217d120e}{operator+}}(\mbox{\hyperlink{classdetail_1_1iter__impl_a6d51e1372282929d1c240223aa973c6e}{difference\_type}}\ i)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00623\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ result\ +=\ i;}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00627\ \ \ \ \ \}}
+\DoxyCodeLine{00628\ }
+\DoxyCodeLine{00633\ \ \ \ \ \textcolor{keyword}{friend}\ iter\_impl\ \mbox{\hyperlink{classdetail_1_1iter__impl_a94108d1a7563e103534f23eb5c1ee175}{operator+}}(\mbox{\hyperlink{classdetail_1_1iter__impl_a6d51e1372282929d1c240223aa973c6e}{difference\_type}}\ i,\ \textcolor{keyword}{const}\ iter\_impl\&\ it)}
+\DoxyCodeLine{00634\ \ \ \ \ \{}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ it;}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ result\ +=\ i;}
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00638\ \ \ \ \ \}}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00644\ \ \ \ \ iter\_impl\ \mbox{\hyperlink{classdetail_1_1iter__impl_abfcadba7a9796c3f5a5e123efef349ec}{operator-\/}}(\mbox{\hyperlink{classdetail_1_1iter__impl_a6d51e1372282929d1c240223aa973c6e}{difference\_type}}\ i)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00645\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ result\ -\/=\ i;}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00649\ \ \ \ \ \}}
+\DoxyCodeLine{00650\ }
+\DoxyCodeLine{00655\ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_a6d51e1372282929d1c240223aa973c6e}{difference\_type}}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a848837b8db99998c90d7bd71492d0dee}{operator-\/}}(\textcolor{keyword}{const}\ iter\_impl\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00656\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00658\ }
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(209,\ \textcolor{stringliteral}{"{}cannot\ use\ offsets\ with\ object\ iterators"{}},\ m\_object));}
+\DoxyCodeLine{00663\ }
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator\ -\/\ other.\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator;}
+\DoxyCodeLine{00666\ }
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator\ -\/\ other.\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator;}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00678\ \ \ \ \ \}}
+\DoxyCodeLine{00679\ }
+\DoxyCodeLine{00684\ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_ac0cfb3a9727e77580cb1beada093ee81}{reference}}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a5e557e30103e2af36cd8173c88eb586c}{operator[]}}(\mbox{\hyperlink{classdetail_1_1iter__impl_a6d51e1372282929d1c240223aa973c6e}{difference\_type}}\ n)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00685\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00687\ }
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (m\_object-\/>m\_data.m\_type)}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00690\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}}:}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(208,\ \textcolor{stringliteral}{"{}cannot\ use\ operator[]\ for\ object\ iterators"{}},\ m\_object));}
+\DoxyCodeLine{00692\ }
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}}:}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *std::next(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.array\_iterator,\ n);}
+\DoxyCodeLine{00695\ }
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}}:}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(214,\ \textcolor{stringliteral}{"{}cannot\ get\ value"{}},\ m\_object));}
+\DoxyCodeLine{00698\ }
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}}:}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}}:}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}}:}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}}:}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}}:}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a9d7183f16acce70658f686ae7f1a4d20}{value\_t::binary}}:}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacedetail_a917c3efabea8a20dc72d9ae2c673d632a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}}:}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (JSON\_HEDLEY\_LIKELY(\mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.primitive\_iterator.get\_value()\ ==\ -\/n))}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *m\_object;}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00712\ }
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(214,\ \textcolor{stringliteral}{"{}cannot\ get\ value"{}},\ m\_object));}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00716\ \ \ \ \ \}}
+\DoxyCodeLine{00717\ }
+\DoxyCodeLine{00722\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{typename}\ object\_t::key\_type\&\ \mbox{\hyperlink{classdetail_1_1iter__impl_a4064b295014b32f3cabd86f94264fc74}{key}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00723\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ JSON\_ASSERT(m\_object\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00725\ }
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (JSON\_HEDLEY\_LIKELY(m\_object-\/>is\_object()))}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}.object\_iterator-\/>first;}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00730\ }
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ JSON\_THROW(invalid\_iterator::create(207,\ \textcolor{stringliteral}{"{}cannot\ use\ key()\ for\ non-\/object\ iterators"{}},\ m\_object));}
+\DoxyCodeLine{00732\ \ \ \ \ \}}
+\DoxyCodeLine{00733\ }
+\DoxyCodeLine{00738\ \ \ \ \ \mbox{\hyperlink{classdetail_1_1iter__impl_ac0cfb3a9727e77580cb1beada093ee81}{reference}}\ \mbox{\hyperlink{classdetail_1_1iter__impl_a96557c87bc9b3adf6aa0b1a6b6209525}{value}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00739\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classdetail_1_1iter__impl_abbef7d5bdb2c45980a34e907610c32b2}{operator*}}();}
+\DoxyCodeLine{00741\ \ \ \ \ \}}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \ \ JSON\_PRIVATE\_UNLESS\_TESTED:}
+\DoxyCodeLine{00745\ \ \ \ \ pointer\ m\_object\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00747\ \ \ \ \ \mbox{\hyperlink{structdetail_1_1internal__iterator}{internal\_iterator<typename\ std::remove\_const<BasicJsonType>::type}}>\ \mbox{\hyperlink{classdetail_1_1iter__impl_aff5923e5a5821c4c1a5e127d47316c9b}{m\_it}}\ \{\};}
+\DoxyCodeLine{00748\ \};}
+\DoxyCodeLine{00749\ }
+\DoxyCodeLine{00750\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00751\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

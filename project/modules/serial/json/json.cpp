@@ -1,3 +1,16 @@
+/**
+ * @file json.cpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup serial
+ * @{
+ * @addtogroup json
+ * @{
+ */
+
 #ifndef JSON_CPP_
 #define JSON_CPP_
 

@@ -1,17 +1,13 @@
 /**
- *
- * File: SdlPolygon.hpp
- * Created Date: Fr Mar 2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Fri Mar 10 2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
-
+ * @file SdlPolygon.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup SDL
+ * @{
+ */
 
 #ifndef SDLPOLYGON_HPP_
 #define SDLPOLYGON_HPP_
@@ -24,9 +20,18 @@
 
 #include <vector>
 
+/**
+ * @brief handle a polygon
+ */
 class SdlPolygon : public graphic::IPolygon {
 
     public:
+
+        /**
+         * @brief Construct a new Sdl Polygon object
+         * 
+         * @param points 
+         */
         SdlPolygon(std::vector<__v2f_t> points) {
             _color = {255, 0, 0, 255};
             _position = {0, 0};
@@ -69,21 +74,45 @@ class SdlPolygon : public graphic::IPolygon {
             std::cout << "SdlPolygon not implemented" << std::endl;
         }
 
+        /**
+         * @brief Destroy the Sdl Polygon object
+         */
         ~SdlPolygon() {
         }
 
+        /**
+         * @brief check if the polygon is ready
+         * 
+         * @return true 
+         * @return false 
+         */
         bool isReady() const override {
             return true;
         }
 
+        /**
+         * @brief Get the Position object
+         * 
+         * @return __v2f_t 
+         */
         __v2f_t getPosition() const override {
             return {_position.x, _position.y};
         }
 
+        /**
+         * @brief Set the Position object
+         * 
+         * @param position 
+         */
         void setPosition(__v2f_t position) override {
             _position = {float(position.x), float(position.y)};
         }
 
+        /**
+         * @brief Get the Color object
+         * 
+         * @return __color_t 
+         */
         __color_t getColor() const override {
             return __color_t{
                 static_cast<double>(_color.r),
@@ -92,6 +121,11 @@ class SdlPolygon : public graphic::IPolygon {
                 static_cast<double>(_color.a)};
         }
 
+        /**
+         * @brief Set the Color object
+         * 
+         * @param color 
+         */
         void setColor(__color_t color) override {
             _color = __color_t{
                 static_cast<double>(color.r),
@@ -100,6 +134,11 @@ class SdlPolygon : public graphic::IPolygon {
                 static_cast<double>(color.a)};
         }
 
+        /**
+         * @brief Get the Points object
+         * 
+         * @return std::vector<__v2f_t> 
+         */
         std::vector<__v2f_t> getPoints() const override {
             std::vector<__v2f_t> points;
             for (auto point : _points) {

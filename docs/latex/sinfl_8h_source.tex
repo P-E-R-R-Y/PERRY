@@ -1,0 +1,635 @@
+\doxysection{sinfl.\+h}
+\hypertarget{sinfl_8h_source}{}\label{sinfl_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/src/external/sinfl.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/src/external/sinfl.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\#\ Small\ Deflate}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\`{}sdefl`\ is\ a\ small\ bare\ bone\ lossless\ compression\ library\ in\ ANSI\ C\ (ISO\ C90)}}
+\DoxyCodeLine{00004\ \textcolor{comment}{which\ implements\ the\ Deflate\ (RFC\ 1951)\ compressed\ data\ format\ specification\ standard.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{It\ is\ mainly\ tuned\ to\ get\ as\ much\ speed\ and\ compression\ ratio\ from\ as\ little\ code}}
+\DoxyCodeLine{00006\ \textcolor{comment}{as\ needed\ to\ keep\ the\ implementation\ as\ concise\ as\ possible.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\#\#\ Features}}
+\DoxyCodeLine{00009\ \textcolor{comment}{-\/\ Portable\ single\ header\ and\ source\ file\ duo\ written\ in\ ANSI\ C\ (ISO\ C90)}}
+\DoxyCodeLine{00010\ \textcolor{comment}{-\/\ Dual\ license\ with\ either\ MIT\ or\ public\ domain}}
+\DoxyCodeLine{00011\ \textcolor{comment}{-\/\ Small\ implementation}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ \ -\/\ Deflate:\ 525\ LoC}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ \ -\/\ Inflate:\ 500\ LoC}}
+\DoxyCodeLine{00014\ \textcolor{comment}{-\/\ Webassembly:}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ -\/\ Deflate\ \string~3.7\ KB\ (\string~2.2KB\ compressed)}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ -\/\ Inflate\ \string~3.6\ KB\ (\string~2.2KB\ compressed)}}
+\DoxyCodeLine{00017\ \textcolor{comment}{}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\#\#\ Usage:}}
+\DoxyCodeLine{00019\ \textcolor{comment}{This\ file\ behaves\ differently\ depending\ on\ what\ symbols\ you\ define}}
+\DoxyCodeLine{00020\ \textcolor{comment}{before\ including\ it.}}
+\DoxyCodeLine{00021\ \textcolor{comment}{}}
+\DoxyCodeLine{00022\ \textcolor{comment}{Header-\/File\ mode:}}
+\DoxyCodeLine{00023\ \textcolor{comment}{If\ you\ do\ not\ define\ \`{}SINFL\_IMPLEMENTATION`\ before\ including\ this\ file,\ it}}
+\DoxyCodeLine{00024\ \textcolor{comment}{will\ operate\ in\ header\ only\ mode.\ In\ this\ mode\ it\ declares\ all\ used\ structs}}
+\DoxyCodeLine{00025\ \textcolor{comment}{and\ the\ API\ of\ the\ library\ without\ including\ the\ implementation\ of\ the\ library.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{}}
+\DoxyCodeLine{00027\ \textcolor{comment}{Implementation\ mode:}}
+\DoxyCodeLine{00028\ \textcolor{comment}{If\ you\ define\ \`{}SINFL\_IMPLEMENTATION`\ before\ including\ this\ file,\ it\ will}}
+\DoxyCodeLine{00029\ \textcolor{comment}{compile\ the\ implementation.\ Make\ sure\ that\ you\ only\ include}}
+\DoxyCodeLine{00030\ \textcolor{comment}{this\ file\ implementation\ in\ *one*\ C\ or\ C++\ file\ to\ prevent\ collisions.}}
+\DoxyCodeLine{00031\ \textcolor{comment}{}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\#\#\#\ Benchmark}}
+\DoxyCodeLine{00033\ \textcolor{comment}{}}
+\DoxyCodeLine{00034\ \textcolor{comment}{|\ Compressor\ name\ \ \ \ \ \ \ \ \ |\ Compression|\ Decompress.|\ Compr.\ size\ |\ Ratio\ |}}
+\DoxyCodeLine{00035\ \textcolor{comment}{|\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ |\ -\/-\/-\/-\/-\/\ |}}
+\DoxyCodeLine{00036\ \textcolor{comment}{|\ miniz\ 1.0\ -\/1\ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ 122\ MB/s\ |\ \ \ 208\ MB/s\ |\ \ \ \ 48510028\ |\ 48.51\ |}}
+\DoxyCodeLine{00037\ \textcolor{comment}{|\ miniz\ 1.0\ -\/6\ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ 27\ MB/s\ |\ \ \ 260\ MB/s\ |\ \ \ \ 36513697\ |\ 36.51\ |}}
+\DoxyCodeLine{00038\ \textcolor{comment}{|\ miniz\ 1.0\ -\/9\ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ 23\ MB/s\ |\ \ \ 261\ MB/s\ |\ \ \ \ 36460101\ |\ 36.46\ |}}
+\DoxyCodeLine{00039\ \textcolor{comment}{|\ zlib\ 1.2.11\ -\/1\ \ \ \ \ \ \ \ \ \ |\ \ \ \ 72\ MB/s\ |\ \ \ 307\ MB/s\ |\ \ \ \ 42298774\ |\ 42.30\ |}}
+\DoxyCodeLine{00040\ \textcolor{comment}{|\ zlib\ 1.2.11\ -\/6\ \ \ \ \ \ \ \ \ \ |\ \ \ \ 24\ MB/s\ |\ \ \ 313\ MB/s\ |\ \ \ \ 36548921\ |\ 36.55\ |}}
+\DoxyCodeLine{00041\ \textcolor{comment}{|\ zlib\ 1.2.11\ -\/9\ \ \ \ \ \ \ \ \ \ |\ \ \ \ 20\ MB/s\ |\ \ \ 314\ MB/s\ |\ \ \ \ 36475792\ |\ 36.48\ |}}
+\DoxyCodeLine{00042\ \textcolor{comment}{|\ sdefl\ 1.0\ -\/0\ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ 127\ MB/s\ |\ \ \ 355\ MB/s\ |\ \ \ \ 40004116\ |\ 39.88\ |}}
+\DoxyCodeLine{00043\ \textcolor{comment}{|\ sdefl\ 1.0\ -\/1\ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ 111\ MB/s\ |\ \ \ 413\ MB/s\ |\ \ \ \ 38940674\ |\ 38.82\ |}}
+\DoxyCodeLine{00044\ \textcolor{comment}{|\ sdefl\ 1.0\ -\/5\ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ 45\ MB/s\ |\ \ \ 436\ MB/s\ |\ \ \ \ 36577183\ |\ 36.46\ |}}
+\DoxyCodeLine{00045\ \textcolor{comment}{|\ sdefl\ 1.0\ -\/7\ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ 38\ MB/s\ |\ \ \ 432\ MB/s\ |\ \ \ \ 36523781\ |\ 36.41\ |}}
+\DoxyCodeLine{00046\ \textcolor{comment}{|\ libdeflate\ 1.3\ -\/1\ \ \ \ \ \ \ |\ \ \ 147\ MB/s\ |\ \ \ 667\ MB/s\ |\ \ \ \ 39597378\ |\ 39.60\ |}}
+\DoxyCodeLine{00047\ \textcolor{comment}{|\ libdeflate\ 1.3\ -\/6\ \ \ \ \ \ \ |\ \ \ \ 69\ MB/s\ |\ \ \ 689\ MB/s\ |\ \ \ \ 36648318\ |\ 36.65\ |}}
+\DoxyCodeLine{00048\ \textcolor{comment}{|\ libdeflate\ 1.3\ -\/9\ \ \ \ \ \ \ |\ \ \ \ 13\ MB/s\ |\ \ \ 672\ MB/s\ |\ \ \ \ 35197141\ |\ 35.20\ |}}
+\DoxyCodeLine{00049\ \textcolor{comment}{|\ libdeflate\ 1.3\ -\/12\ \ \ \ \ \ |\ \ 8.13\ MB/s\ |\ \ \ 670\ MB/s\ |\ \ \ \ 35100568\ |\ 35.10\ |}}
+\DoxyCodeLine{00050\ \textcolor{comment}{}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\#\#\#\ Compression}}
+\DoxyCodeLine{00052\ \textcolor{comment}{Results\ on\ the\ [Silesia\ compression\ corpus](http://sun.aei.polsl.pl/\string~sdeor/index.php?page=silesia):}}
+\DoxyCodeLine{00053\ \textcolor{comment}{}}
+\DoxyCodeLine{00054\ \textcolor{comment}{|\ File\ \ \ \ |\ \ \ Original\ |\ \`{}sdefl\ 0`\ \ \ \ |\ \`{}sdefl\ 5`\ \ |\ \`{}sdefl\ 7`\ \ \ |}}
+\DoxyCodeLine{00055\ \textcolor{comment}{|\ -\/-\/-\/-\/-\/-\/-\/-\/|\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ |\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|}}
+\DoxyCodeLine{00056\ \textcolor{comment}{|\ dickens\ |\ 10.192.446\ |\ 4,260,187\ \ \ \ |\ \ 3,845,261\ |\ \ \ 3,833,657\ |}}
+\DoxyCodeLine{00057\ \textcolor{comment}{|\ mozilla\ |\ 51.220.480\ |\ 20,774,706\ \ \ |\ 19,607,009\ |\ \ 19,565,867\ |}}
+\DoxyCodeLine{00058\ \textcolor{comment}{|\ mr\ \ \ \ \ \ |\ \ 9.970.564\ |\ 3,860,531\ \ \ \ |\ \ 3,673,460\ |\ \ \ 3,665,627\ |}}
+\DoxyCodeLine{00059\ \textcolor{comment}{|\ nci\ \ \ \ \ |\ 33.553.445\ |\ 4,030,283\ \ \ \ |\ \ 3,094,526\ |\ \ \ 3,006,075\ |}}
+\DoxyCodeLine{00060\ \textcolor{comment}{|\ ooffice\ |\ \ 6.152.192\ |\ 3,320,063\ \ \ \ |\ \ 3,186,373\ |\ \ \ 3,183,815\ |}}
+\DoxyCodeLine{00061\ \textcolor{comment}{|\ osdb\ \ \ \ |\ 10.085.684\ |\ 3,919,646\ \ \ \ |\ \ 3,649,510\ |\ \ \ 3,649,477\ |}}
+\DoxyCodeLine{00062\ \textcolor{comment}{|\ reymont\ |\ \ 6.627.202\ |\ 2,263,378\ \ \ \ |\ \ 1,857,588\ |\ \ \ 1,827,237\ |}}
+\DoxyCodeLine{00063\ \textcolor{comment}{|\ samba\ \ \ |\ 21.606.400\ |\ 6,121,797\ \ \ \ |\ \ 5,462,670\ |\ \ \ 5,450,762\ |}}
+\DoxyCodeLine{00064\ \textcolor{comment}{|\ sao\ \ \ \ \ |\ \ 7.251.944\ |\ 5,612,421\ \ \ \ |\ \ 5,485,380\ |\ \ \ 5,481,765\ |}}
+\DoxyCodeLine{00065\ \textcolor{comment}{|\ webster\ |\ 41.458.703\ |\ 13,972,648\ \ \ |\ 12,059,432\ |\ \ 11,991,421\ |}}
+\DoxyCodeLine{00066\ \textcolor{comment}{|\ xml\ \ \ \ \ |\ \ 5.345.280\ |\ 886,620\ \ \ \ \ \ |\ \ \ \ 674,009\ |\ \ \ \ \ 662,141\ |}}
+\DoxyCodeLine{00067\ \textcolor{comment}{|\ x-\/ray\ \ \ |\ \ 8.474.240\ |\ 6,304,655\ \ \ \ |\ \ 6,244,779\ |\ \ \ 6,244,779\ |}}
+\DoxyCodeLine{00068\ \textcolor{comment}{}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\#\#\ License}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\`{}\`{}\`{}}}
+\DoxyCodeLine{00071\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00072\ \textcolor{comment}{This\ software\ is\ available\ under\ 2\ licenses\ -\/-\/\ choose\ whichever\ you\ prefer.}}
+\DoxyCodeLine{00073\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00074\ \textcolor{comment}{ALTERNATIVE\ A\ -\/\ MIT\ License}}
+\DoxyCodeLine{00075\ \textcolor{comment}{Copyright\ (c)\ 2020-\/2023\ Micha\ Mettke}}
+\DoxyCodeLine{00076\ \textcolor{comment}{Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy\ of}}
+\DoxyCodeLine{00077\ \textcolor{comment}{this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal\ in}}
+\DoxyCodeLine{00078\ \textcolor{comment}{the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights\ to}}
+\DoxyCodeLine{00079\ \textcolor{comment}{use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell\ copies}}
+\DoxyCodeLine{00080\ \textcolor{comment}{of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is\ furnished\ to\ do}}
+\DoxyCodeLine{00081\ \textcolor{comment}{so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{00082\ \textcolor{comment}{The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{00083\ \textcolor{comment}{copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{00084\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00085\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00086\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{00087\ \textcolor{comment}{AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{00088\ \textcolor{comment}{LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{00089\ \textcolor{comment}{OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{00090\ \textcolor{comment}{SOFTWARE.}}
+\DoxyCodeLine{00091\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00092\ \textcolor{comment}{ALTERNATIVE\ B\ -\/\ Public\ Domain\ (www.unlicense.org)}}
+\DoxyCodeLine{00093\ \textcolor{comment}{This\ is\ free\ and\ unencumbered\ software\ released\ into\ the\ public\ domain.}}
+\DoxyCodeLine{00094\ \textcolor{comment}{Anyone\ is\ free\ to\ copy,\ modify,\ publish,\ use,\ compile,\ sell,\ or\ distribute\ this}}
+\DoxyCodeLine{00095\ \textcolor{comment}{software,\ either\ in\ source\ code\ form\ or\ as\ a\ compiled\ binary,\ for\ any\ purpose,}}
+\DoxyCodeLine{00096\ \textcolor{comment}{commercial\ or\ non-\/commercial,\ and\ by\ any\ means.}}
+\DoxyCodeLine{00097\ \textcolor{comment}{In\ jurisdictions\ that\ recognize\ copyright\ laws,\ the\ author\ or\ authors\ of\ this}}
+\DoxyCodeLine{00098\ \textcolor{comment}{software\ dedicate\ any\ and\ all\ copyright\ interest\ in\ the\ software\ to\ the\ public}}
+\DoxyCodeLine{00099\ \textcolor{comment}{domain.\ We\ make\ this\ dedication\ for\ the\ benefit\ of\ the\ public\ at\ large\ and\ to}}
+\DoxyCodeLine{00100\ \textcolor{comment}{the\ detriment\ of\ our\ heirs\ and\ successors.\ We\ intend\ this\ dedication\ to\ be\ an}}
+\DoxyCodeLine{00101\ \textcolor{comment}{overt\ act\ of\ relinquishment\ in\ perpetuity\ of\ all\ present\ and\ future\ rights\ to}}
+\DoxyCodeLine{00102\ \textcolor{comment}{this\ software\ under\ copyright\ law.}}
+\DoxyCodeLine{00103\ \textcolor{comment}{THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{00104\ \textcolor{comment}{IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{00105\ \textcolor{comment}{FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{00106\ \textcolor{comment}{AUTHORS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER\ LIABILITY,\ WHETHER\ IN\ AN}}
+\DoxyCodeLine{00107\ \textcolor{comment}{ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,\ OUT\ OF\ OR\ IN\ CONNECTION}}
+\DoxyCodeLine{00108\ \textcolor{comment}{WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE\ SOFTWARE.}}
+\DoxyCodeLine{00109\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00110\ \textcolor{comment}{\`{}\`{}\`{}}}
+\DoxyCodeLine{00111\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#ifndef\ SINFL\_H\_INCLUDED}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ SINFL\_H\_INCLUDED}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00116\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ SINFL\_PRE\_TBL\_SIZE\ 128}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ SINFL\_LIT\_TBL\_SIZE\ 1334}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ SINFL\_OFF\_TBL\_SIZE\ 402}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsinfl}{sinfl}}\ \{}
+\DoxyCodeLine{00124\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *bitptr;}
+\DoxyCodeLine{00125\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *bitend;\ \ \ \ \ \ \textcolor{comment}{//\ @raysan5:\ added}}
+\DoxyCodeLine{00126\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ bitbuf;}
+\DoxyCodeLine{00127\ \ \ \textcolor{keywordtype}{int}\ bitcnt;}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \textcolor{keywordtype}{unsigned}\ lits[SINFL\_LIT\_TBL\_SIZE];}
+\DoxyCodeLine{00130\ \ \ \textcolor{keywordtype}{unsigned}\ dsts[SINFL\_OFF\_TBL\_SIZE];}
+\DoxyCodeLine{00131\ \};}
+\DoxyCodeLine{00132\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ sinflate(\textcolor{keywordtype}{void}\ *out,\ \textcolor{keywordtype}{int}\ cap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *in,\ \textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00133\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ zsinflate(\textcolor{keywordtype}{void}\ *out,\ \textcolor{keywordtype}{int}\ cap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *in,\ \textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00136\ \}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SINFL\_H\_INCLUDED\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#ifdef\ SINFL\_IMPLEMENTATION}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#include\ <string.h>}\ \textcolor{comment}{/*\ memcpy,\ memset\ */}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#include\ <assert.h>}\ \textcolor{comment}{/*\ assert\ */}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ sinfl\_likely(x)\ \ \ \ \ \ \ \_\_builtin\_expect((x),1)}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ sinfl\_unlikely(x)\ \ \ \ \ \_\_builtin\_expect((x),0)}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#define\ sinfl\_likely(x)\ \ \ \ \ \ \ (x)}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ sinfl\_unlikely(x)\ \ \ \ \ (x)}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#ifndef\ SINFL\_NO\_SIMD}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#if\ defined(\_\_x86\_64\_\_)\ ||\ defined(\_WIN32)\ ||\ defined(\_WIN64)}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\ \ \#include\ <emmintrin.h>}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\ \ \#define\ sinfl\_char16\ \_\_m128i}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\ \ \#define\ sinfl\_char16\_ld(p)\ \_mm\_loadu\_si128((const\ \_\_m128i\ *)(void*)(p))}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\ \ \#define\ sinfl\_char16\_str(d,v)\ \ \_mm\_storeu\_si128((\_\_m128i*)(void*)(d),\ v)}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\ \ \#define\ sinfl\_char16\_char(c)\ \_mm\_set1\_epi8(c)}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#elif\ defined(\_\_arm\_\_)\ ||\ defined(\_\_aarch64\_\_)}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\ \ \#include\ <arm\_neon.h>}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\ \ \#define\ sinfl\_char16\ uint8x16\_t}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\ \ \#define\ sinfl\_char16\_ld(p)\ vld1q\_u8((const\ unsigned\ char*)(p))}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\ \ \#define\ sinfl\_char16\_str(d,v)\ vst1q\_u8((unsigned\ char*)(d),\ v)}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\ \ \#define\ sinfl\_char16\_char(c)\ vdupq\_n\_u8(c)}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\ \ \#define\ SINFL\_NO\_SIMD}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00173\ sinfl\_bsr(\textcolor{keywordtype}{unsigned}\ n)\ \{}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#ifdef\ \_MSC\_VER}}
+\DoxyCodeLine{00175\ \ \ \_BitScanReverse(\&n,\ n);}
+\DoxyCodeLine{00176\ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#elif\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{00178\ \ \ \textcolor{keywordflow}{return}\ 31\ -\/\ \_\_builtin\_clz(n);}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00180\ \}}
+\DoxyCodeLine{00181\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}}
+\DoxyCodeLine{00182\ sinfl\_read64(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *p)\ \{}
+\DoxyCodeLine{00183\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ n;}
+\DoxyCodeLine{00184\ \ \ memcpy(\&n,\ p,\ 8);}
+\DoxyCodeLine{00185\ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00186\ \}}
+\DoxyCodeLine{00187\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}}
+\DoxyCodeLine{00188\ sinfl\_copy64(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ **dst,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ **src)\ \{}
+\DoxyCodeLine{00189\ \ \ \textcolor{comment}{//unsigned\ long\ long\ n;}}
+\DoxyCodeLine{00190\ \ \ \textcolor{comment}{//memcpy(\&n,\ *src,\ 8);}}
+\DoxyCodeLine{00191\ \ \ \textcolor{comment}{//memcpy(*dst,\ \&n,\ 8);}}
+\DoxyCodeLine{00192\ \ \ memcpy(*dst,\ *src,\ 8);\ \ \ \ \textcolor{comment}{//\ @raysan5}}
+\DoxyCodeLine{00193\ \ \ *dst\ +=\ 8,\ *src\ +=\ 8;}
+\DoxyCodeLine{00194\ \}}
+\DoxyCodeLine{00195\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*}
+\DoxyCodeLine{00196\ sinfl\_write64(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *dst,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ w)\ \{}
+\DoxyCodeLine{00197\ \ \ memcpy(dst,\ \&w,\ 8);}
+\DoxyCodeLine{00198\ \ \ \textcolor{keywordflow}{return}\ dst\ +\ 8;}
+\DoxyCodeLine{00199\ \}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#ifndef\ SINFL\_NO\_SIMD}}
+\DoxyCodeLine{00201\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*}
+\DoxyCodeLine{00202\ sinfl\_write128(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *dst,\ sinfl\_char16\ w)\ \{}
+\DoxyCodeLine{00203\ \ \ sinfl\_char16\_str(dst,\ w);}
+\DoxyCodeLine{00204\ \ \ \textcolor{keywordflow}{return}\ dst\ +\ 8;}
+\DoxyCodeLine{00205\ \}}
+\DoxyCodeLine{00206\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}}
+\DoxyCodeLine{00207\ sinfl\_copy128(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ **dst,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ **src)\ \{}
+\DoxyCodeLine{00208\ \ \ sinfl\_char16\ n\ =\ sinfl\_char16\_ld(*src);}
+\DoxyCodeLine{00209\ \ \ sinfl\_char16\_str(*dst,\ n);}
+\DoxyCodeLine{00210\ \ \ *dst\ +=\ 16,\ *src\ +=\ 16;}
+\DoxyCodeLine{00211\ \}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00213\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}}
+\DoxyCodeLine{00214\ sinfl\_refill(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structsinfl}{sinfl}}\ *s)\ \{}
+\DoxyCodeLine{00215\ \ \ \textcolor{keywordflow}{if}\ (s-\/>bitend\ -\/\ s-\/>bitptr\ >=\ 8)\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \textcolor{comment}{//\ @raysan5:\ original\ code,\ only\ those\ 3\ lines}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ s-\/>bitbuf\ |=\ sinfl\_read64(s-\/>bitptr)\ <<\ s-\/>bitcnt;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ s-\/>bitptr\ +=\ (63\ -\/\ s-\/>bitcnt)\ >>\ 3;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ s-\/>bitcnt\ |=\ 56;\ \textcolor{comment}{/*\ bitcount\ in\ range\ [56,63]\ */}}
+\DoxyCodeLine{00220\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \textcolor{comment}{//\ @raysan5:\ added\ this\ case\ when\ bits\ remaining\ <\ 8}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bitswant\ =\ 63\ -\/\ s-\/>bitcnt;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteswant\ =\ bitswant\ >>\ 3;}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bytesuse\ =\ s-\/>bitend\ -\/\ s-\/>bitptr\ <=\ byteswant\ ?\ (int)(s-\/>bitend\ -\/\ s-\/>bitptr)\ :\ byteswant;}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ n\ =\ 0;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ memcpy(\&n,\ s-\/>bitptr,\ bytesuse);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ s-\/>bitbuf\ |=\ n\ <<\ s-\/>bitcnt;}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ s-\/>bitptr\ +=\ bytesuse;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ s-\/>bitcnt\ +=\ bytesuse\ <<\ 3;}
+\DoxyCodeLine{00230\ \ \ \}}
+\DoxyCodeLine{00231\ \}}
+\DoxyCodeLine{00232\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00233\ sinfl\_peek(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structsinfl}{sinfl}}\ *s,\ \textcolor{keywordtype}{int}\ cnt)\ \{}
+\DoxyCodeLine{00234\ \ \ assert(cnt\ >=\ 0\ \&\&\ cnt\ <=\ 56);}
+\DoxyCodeLine{00235\ \ \ assert(cnt\ <=\ s-\/>bitcnt);}
+\DoxyCodeLine{00236\ \ \ \textcolor{keywordflow}{return}\ s-\/>bitbuf\ \&\ ((1ull\ <<\ cnt)\ -\/\ 1);}
+\DoxyCodeLine{00237\ \}}
+\DoxyCodeLine{00238\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}}
+\DoxyCodeLine{00239\ sinfl\_eat(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structsinfl}{sinfl}}\ *s,\ \textcolor{keywordtype}{int}\ cnt)\ \{}
+\DoxyCodeLine{00240\ \ \ assert(cnt\ <=\ s-\/>bitcnt);}
+\DoxyCodeLine{00241\ \ \ s-\/>bitbuf\ >>=\ cnt;}
+\DoxyCodeLine{00242\ \ \ s-\/>bitcnt\ -\/=\ cnt;}
+\DoxyCodeLine{00243\ \}}
+\DoxyCodeLine{00244\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00245\ sinfl\_\_get(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structsinfl}{sinfl}}\ *s,\ \textcolor{keywordtype}{int}\ cnt)\ \{}
+\DoxyCodeLine{00246\ \ \ \textcolor{keywordtype}{int}\ res\ =\ sinfl\_peek(s,\ cnt);}
+\DoxyCodeLine{00247\ \ \ sinfl\_eat(s,\ cnt);}
+\DoxyCodeLine{00248\ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00249\ \}}
+\DoxyCodeLine{00250\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00251\ sinfl\_get(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structsinfl}{sinfl}}\ *s,\ \textcolor{keywordtype}{int}\ cnt)\ \{}
+\DoxyCodeLine{00252\ \ \ sinfl\_refill(s);}
+\DoxyCodeLine{00253\ \ \ \textcolor{keywordflow}{return}\ sinfl\_\_get(s,\ cnt);}
+\DoxyCodeLine{00254\ \}}
+\DoxyCodeLine{00255\ \textcolor{keyword}{struct\ }sinfl\_gen\ \{}
+\DoxyCodeLine{00256\ \ \ \textcolor{keywordtype}{int}\ len;}
+\DoxyCodeLine{00257\ \ \ \textcolor{keywordtype}{int}\ cnt;}
+\DoxyCodeLine{00258\ \ \ \textcolor{keywordtype}{int}\ word;}
+\DoxyCodeLine{00259\ \ \ \textcolor{keywordtype}{short}*\ sorted;}
+\DoxyCodeLine{00260\ \};}
+\DoxyCodeLine{00261\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00262\ sinfl\_build\_tbl(\textcolor{keyword}{struct}\ sinfl\_gen\ *gen,\ \textcolor{keywordtype}{unsigned}\ *tbl,\ \textcolor{keywordtype}{int}\ tbl\_bits,}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ *cnt)\ \{}
+\DoxyCodeLine{00264\ \ \ \textcolor{keywordtype}{int}\ tbl\_end\ =\ 0;}
+\DoxyCodeLine{00265\ \ \ \textcolor{keywordflow}{while}\ (!(gen-\/>cnt\ =\ cnt[gen-\/>len]))\ \{}
+\DoxyCodeLine{00266\ \ \ \ \ ++gen-\/>len;}
+\DoxyCodeLine{00267\ \ \ \}}
+\DoxyCodeLine{00268\ \ \ tbl\_end\ =\ 1\ <<\ gen-\/>len;}
+\DoxyCodeLine{00269\ \ \ \textcolor{keywordflow}{while}\ (gen-\/>len\ <=\ tbl\_bits)\ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keywordflow}{do}\ \{\textcolor{keywordtype}{unsigned}\ bit\ =\ 0;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ tbl[gen-\/>word]\ =\ (*gen-\/>sorted++\ <<\ 16)\ |\ gen-\/>len;}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gen-\/>word\ ==\ tbl\_end\ -\/\ 1)\ \{}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ gen-\/>len\ <\ tbl\_bits;\ gen-\/>len++)\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ memcpy(\&tbl[tbl\_end],\ tbl,\ (\textcolor{keywordtype}{size\_t})tbl\_end\ *\ \textcolor{keyword}{sizeof}(tbl[0]));}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ tbl\_end\ <<=\ 1;}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ bit\ =\ 1\ <<\ sinfl\_bsr((\textcolor{keywordtype}{unsigned})(gen-\/>word\ \string^\ (tbl\_end\ -\/\ 1)));}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ gen-\/>word\ \&=\ bit\ -\/\ 1;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ gen-\/>word\ |=\ bit;}
+\DoxyCodeLine{00282\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (-\/-\/gen-\/>cnt);}
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (++gen-\/>len\ <=\ tbl\_bits)\ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ memcpy(\&tbl[tbl\_end],\ tbl,\ (\textcolor{keywordtype}{size\_t})tbl\_end\ *\ \textcolor{keyword}{sizeof}(tbl[0]));}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ tbl\_end\ <<=\ 1;}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00288\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (!(gen-\/>cnt\ =\ cnt[gen-\/>len]));}
+\DoxyCodeLine{00289\ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00291\ \}}
+\DoxyCodeLine{00292\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}}
+\DoxyCodeLine{00293\ sinfl\_build\_subtbl(\textcolor{keyword}{struct}\ sinfl\_gen\ *gen,\ \textcolor{keywordtype}{unsigned}\ *tbl,\ \textcolor{keywordtype}{int}\ tbl\_bits,}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ *cnt)\ \{}
+\DoxyCodeLine{00295\ \ \ \textcolor{keywordtype}{int}\ sub\_bits\ =\ 0;}
+\DoxyCodeLine{00296\ \ \ \textcolor{keywordtype}{int}\ sub\_start\ =\ 0;}
+\DoxyCodeLine{00297\ \ \ \textcolor{keywordtype}{int}\ sub\_prefix\ =\ -\/1;}
+\DoxyCodeLine{00298\ \ \ \textcolor{keywordtype}{int}\ tbl\_end\ =\ 1\ <<\ tbl\_bits;}
+\DoxyCodeLine{00299\ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ entry;}
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keywordtype}{int}\ bit,\ stride,\ i;}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{comment}{/*\ start\ new\ sub-\/table\ */}}
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordflow}{if}\ ((gen-\/>word\ \&\ ((1\ <<\ tbl\_bits)-\/1))\ !=\ sub\_prefix)\ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ used\ =\ 0;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ sub\_prefix\ =\ gen-\/>word\ \&\ ((1\ <<\ tbl\_bits)-\/1);}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ sub\_start\ =\ tbl\_end;}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ sub\_bits\ =\ gen-\/>len\ -\/\ tbl\_bits;}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ used\ =\ gen-\/>cnt;}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (used\ <\ (1\ <<\ sub\_bits))\ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ sub\_bits++;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ used\ =\ (used\ <<\ 1)\ +\ cnt[tbl\_bits\ +\ sub\_bits];}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ tbl\_end\ =\ sub\_start\ +\ (1\ <<\ sub\_bits);}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ tbl[sub\_prefix]\ =\ (sub\_start\ <<\ 16)\ |\ 0x10\ |\ (sub\_bits\ \&\ 0xf);}
+\DoxyCodeLine{00315\ \ \ \ \ \}}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{comment}{/*\ fill\ sub-\/table\ */}}
+\DoxyCodeLine{00317\ \ \ \ \ entry\ =\ (*gen-\/>sorted\ <<\ 16)\ |\ ((gen-\/>len\ -\/\ tbl\_bits)\ \&\ 0xf);}
+\DoxyCodeLine{00318\ \ \ \ \ gen-\/>sorted++;}
+\DoxyCodeLine{00319\ \ \ \ \ i\ =\ sub\_start\ +\ (gen-\/>word\ >>\ tbl\_bits);}
+\DoxyCodeLine{00320\ \ \ \ \ stride\ =\ 1\ <<\ (gen-\/>len\ -\/\ tbl\_bits);}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ tbl[i]\ =\ entry;}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ i\ +=\ stride;}
+\DoxyCodeLine{00324\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (i\ <\ tbl\_end);}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordflow}{if}\ (gen-\/>word\ ==\ (1\ <<\ gen-\/>len)-\/1)\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00327\ \ \ \ \ \}}
+\DoxyCodeLine{00328\ \ \ \ \ bit\ =\ 1\ <<\ sinfl\_bsr(gen-\/>word\ \string^\ ((1\ <<\ gen-\/>len)\ -\/\ 1));}
+\DoxyCodeLine{00329\ \ \ \ \ gen-\/>word\ \&=\ bit\ -\/\ 1;}
+\DoxyCodeLine{00330\ \ \ \ \ gen-\/>word\ |=\ bit;}
+\DoxyCodeLine{00331\ \ \ \ \ gen-\/>cnt-\/-\/;}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keywordflow}{while}\ (!gen-\/>cnt)\ \{}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ gen-\/>cnt\ =\ cnt[++gen-\/>len];}
+\DoxyCodeLine{00334\ \ \ \ \ \}}
+\DoxyCodeLine{00335\ \ \ \}}
+\DoxyCodeLine{00336\ \}}
+\DoxyCodeLine{00337\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}}
+\DoxyCodeLine{00338\ sinfl\_build(\textcolor{keywordtype}{unsigned}\ *tbl,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *lens,\ \textcolor{keywordtype}{int}\ tbl\_bits,\ \textcolor{keywordtype}{int}\ maxlen,}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ symcnt)\ \{}
+\DoxyCodeLine{00340\ \ \ \textcolor{keywordtype}{int}\ i,\ used\ =\ 0;}
+\DoxyCodeLine{00341\ \ \ \textcolor{keywordtype}{short}\ sort[288];}
+\DoxyCodeLine{00342\ \ \ \textcolor{keywordtype}{int}\ cnt[16]\ =\ \{0\},\ off[16]=\ \{0\};}
+\DoxyCodeLine{00343\ \ \ \textcolor{keyword}{struct\ }sinfl\_gen\ gen\ =\ \{0\};}
+\DoxyCodeLine{00344\ \ \ gen.sorted\ =\ sort;}
+\DoxyCodeLine{00345\ \ \ gen.len\ =\ 1;}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ symcnt;\ ++i)}
+\DoxyCodeLine{00348\ \ \ \ \ cnt[lens[i]]++;}
+\DoxyCodeLine{00349\ \ \ off[1]\ =\ cnt[0];}
+\DoxyCodeLine{00350\ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 1;\ i\ <\ maxlen;\ ++i)\ \{}
+\DoxyCodeLine{00351\ \ \ \ \ off[i\ +\ 1]\ =\ off[i]\ +\ cnt[i];}
+\DoxyCodeLine{00352\ \ \ \ \ used\ =\ (used\ <<\ 1)\ +\ cnt[i];}
+\DoxyCodeLine{00353\ \ \ \}}
+\DoxyCodeLine{00354\ \ \ used\ =\ (used\ <<\ 1)\ +\ cnt[i];}
+\DoxyCodeLine{00355\ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ symcnt;\ ++i)}
+\DoxyCodeLine{00356\ \ \ \ \ gen.sorted[off[lens[i]]++]\ =\ (\textcolor{keywordtype}{short})i;}
+\DoxyCodeLine{00357\ \ \ gen.sorted\ +=\ off[0];}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \ \ \textcolor{keywordflow}{if}\ (used\ <\ (1\ <<\ maxlen))\{}
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ 1\ <<\ tbl\_bits;\ ++i)}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ tbl[i]\ =\ (0\ <<\ 16u)\ |\ 1;}
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00363\ \ \ \}}
+\DoxyCodeLine{00364\ \ \ \textcolor{keywordflow}{if}\ (!sinfl\_build\_tbl(\&gen,\ tbl,\ tbl\_bits,\ cnt))\{}
+\DoxyCodeLine{00365\ \ \ \ \ sinfl\_build\_subtbl(\&gen,\ tbl,\ tbl\_bits,\ cnt);}
+\DoxyCodeLine{00366\ \ \ \}}
+\DoxyCodeLine{00367\ \}}
+\DoxyCodeLine{00368\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00369\ sinfl\_decode(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structsinfl}{sinfl}}\ *s,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ *tbl,\ \textcolor{keywordtype}{int}\ bit\_len)\ \{}
+\DoxyCodeLine{00370\ \ \ \textcolor{keywordtype}{int}\ idx\ =\ sinfl\_peek(s,\ bit\_len);}
+\DoxyCodeLine{00371\ \ \ \textcolor{keywordtype}{unsigned}\ key\ =\ tbl[idx];}
+\DoxyCodeLine{00372\ \ \ \textcolor{keywordflow}{if}\ (key\ \&\ 0x10)\ \{}
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{comment}{/*\ sub-\/table\ lookup\ */}}
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ key\ \&\ 0x0f;}
+\DoxyCodeLine{00375\ \ \ \ \ sinfl\_eat(s,\ bit\_len);}
+\DoxyCodeLine{00376\ \ \ \ \ idx\ =\ sinfl\_peek(s,\ len);}
+\DoxyCodeLine{00377\ \ \ \ \ key\ =\ tbl[((key\ >>\ 16)\ \&\ 0xffff)\ +\ (\textcolor{keywordtype}{unsigned})idx];}
+\DoxyCodeLine{00378\ \ \ \}}
+\DoxyCodeLine{00379\ \ \ sinfl\_eat(s,\ key\ \&\ 0x0f);}
+\DoxyCodeLine{00380\ \ \ \textcolor{keywordflow}{return}\ (key\ >>\ 16)\ \&\ 0x0fff;}
+\DoxyCodeLine{00381\ \}}
+\DoxyCodeLine{00382\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00383\ sinfl\_decompress(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *out,\ \textcolor{keywordtype}{int}\ cap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *in,\ \textcolor{keywordtype}{int}\ size)\ \{}
+\DoxyCodeLine{00384\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ order[]\ =\ \{16,17,18,0,8,7,9,6,10,5,11,4,12,3,13,2,14,1,15\};}
+\DoxyCodeLine{00385\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{short}\ dbase[30+2]\ =\ \{1,2,3,4,5,7,9,13,17,25,33,49,65,97,129,193,}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ 257,385,513,769,1025,1537,2049,3073,4097,6145,8193,12289,16385,24577\};}
+\DoxyCodeLine{00387\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ dbits[30+2]\ =\ \{0,0,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ 10,10,11,11,12,12,13,13,0,0\};}
+\DoxyCodeLine{00389\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{short}\ lbase[29+2]\ =\ \{3,4,5,6,7,8,9,10,11,13,15,17,19,23,27,31,35,}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ 43,51,59,67,83,99,115,131,163,195,227,258,0,0\};}
+\DoxyCodeLine{00391\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ lbits[29+2]\ =\ \{0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,3,3,4,}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ 4,4,4,5,5,5,5,0,0,0\};}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *oe\ =\ out\ +\ cap;}
+\DoxyCodeLine{00395\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *e\ =\ in\ +\ size,\ *o\ =\ out;}
+\DoxyCodeLine{00396\ \ \ \textcolor{keyword}{enum}\ sinfl\_states\ \{hdr,stored,fixed,dyn,blk\};}
+\DoxyCodeLine{00397\ \ \ \textcolor{keyword}{enum}\ sinfl\_states\ \mbox{\hyperlink{structstate}{state}}\ =\ hdr;}
+\DoxyCodeLine{00398\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsinfl}{sinfl}}\ s\ =\ \{0\};}
+\DoxyCodeLine{00399\ \ \ \textcolor{keywordtype}{int}\ last\ =\ 0;}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00401\ \ \ s.bitptr\ =\ in;}
+\DoxyCodeLine{00402\ \ \ s.bitend\ =\ e;\ \ \ \ \ \textcolor{comment}{//\ @raysan5:\ added}}
+\DoxyCodeLine{00403\ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
+\DoxyCodeLine{00404\ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{structstate}{state}})\ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \textcolor{keywordflow}{case}\ hdr:\ \{}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \textcolor{comment}{/*\ block\ header\ */}}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ type\ =\ 0;}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ sinfl\_refill(\&s);}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ last\ =\ sinfl\_\_get(\&s,1);}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ type\ =\ sinfl\_\_get(\&s,2);}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(out-\/o);}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0x00:\ \mbox{\hyperlink{structstate}{state}}\ =\ stored;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0x01:\ \mbox{\hyperlink{structstate}{state}}\ =\ fixed;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0x02:\ \mbox{\hyperlink{structstate}{state}}\ =\ dyn;\ \textcolor{keywordflow}{break};\}}
+\DoxyCodeLine{00416\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordflow}{case}\ stored:\ \{}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \textcolor{comment}{/*\ uncompressed\ block\ */}}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ len,\ nlen;}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ sinfl\_\_get(\&s,s.bitcnt\ \&\ 7);}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ len\ =\ (\textcolor{keywordtype}{unsigned}\ short)sinfl\_\_get(\&s,16);}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ nlen\ =\ (\textcolor{keywordtype}{unsigned}\ short)sinfl\_\_get(\&s,16);}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ s.bitptr\ -\/=\ s.bitcnt\ /\ 8;}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ s.bitbuf\ =\ s.bitcnt\ =\ 0;}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short})len\ !=\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short})\string~nlen)}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(out-\/o);}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (len\ >\ (e\ -\/\ s.bitptr)\ ||\ !len)}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(out-\/o);}
+\DoxyCodeLine{00430\ }
+\DoxyCodeLine{00431\ \ \ \ \ \ \ memcpy(out,\ s.bitptr,\ (\textcolor{keywordtype}{size\_t})len);}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ s.bitptr\ +=\ len,\ out\ +=\ len;}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (last)\ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(out-\/o);}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \mbox{\hyperlink{structstate}{state}}\ =\ hdr;}
+\DoxyCodeLine{00435\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00436\ \ \ \ \ \textcolor{keywordflow}{case}\ fixed:\ \{}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \textcolor{comment}{/*\ fixed\ huffman\ codes\ */}}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n;\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ lens[288+32];}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (n\ =\ 0;\ n\ <=\ 143;\ n++)\ lens[n]\ =\ 8;}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (n\ =\ 144;\ n\ <=\ 255;\ n++)\ lens[n]\ =\ 9;}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (n\ =\ 256;\ n\ <=\ 279;\ n++)\ lens[n]\ =\ 7;}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (n\ =\ 280;\ n\ <=\ 287;\ n++)\ lens[n]\ =\ 8;}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (n\ =\ 0;\ n\ <\ 32;\ n++)\ lens[288+n]\ =\ 5;}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \textcolor{comment}{/*\ build\ lit/dist\ tables\ */}}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ sinfl\_build(s.lits,\ lens,\ 10,\ 15,\ 288);}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ sinfl\_build(s.dsts,\ lens\ +\ 288,\ 8,\ 15,\ 32);}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \mbox{\hyperlink{structstate}{state}}\ =\ blk;}
+\DoxyCodeLine{00449\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00450\ \ \ \ \ \textcolor{keywordflow}{case}\ dyn:\ \{}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \textcolor{comment}{/*\ dynamic\ huffman\ codes\ */}}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n,\ i;}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ hlens[SINFL\_PRE\_TBL\_SIZE];}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ nlens[19]\ =\ \{0\},\ lens[288+32];}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ sinfl\_refill(\&s);}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \{\textcolor{keywordtype}{int}\ nlit\ =\ 257\ +\ sinfl\_\_get(\&s,5);}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ndist\ =\ 1\ +\ sinfl\_\_get(\&s,5);}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nlen\ =\ 4\ +\ sinfl\_\_get(\&s,4);}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (n\ =\ 0;\ n\ <\ nlen;\ n++)}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ nlens[order[n]]\ =\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})sinfl\_get(\&s,3);}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ sinfl\_build(hlens,\ nlens,\ 7,\ 7,\ 19);}
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \textcolor{comment}{/*\ decode\ code\ lengths\ */}}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (n\ =\ 0;\ n\ <\ nlit\ +\ ndist;)\ \{}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sym\ =\ 0;}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ sinfl\_refill(\&s);}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ sym\ =\ sinfl\_decode(\&s,\ hlens,\ 7);}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (sym)\ \{\textcolor{keywordflow}{default}:\ lens[n++]\ =\ (\textcolor{keywordtype}{unsigned}\ char)sym;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 16:\ \textcolor{keywordflow}{for}\ (i=3+sinfl\_get(\&s,2);i;i-\/-\/,n++)\ lens[n]=lens[n-\/1];\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 17:\ \textcolor{keywordflow}{for}\ (i=3+sinfl\_get(\&s,3);i;i-\/-\/,n++)\ lens[n]=0;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 18:\ \textcolor{keywordflow}{for}\ (i=11+sinfl\_get(\&s,7);i;i-\/-\/,n++)\ lens[n]=0;\ \textcolor{keywordflow}{break};\}}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \textcolor{comment}{/*\ build\ lit/dist\ tables\ */}}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ sinfl\_build(s.lits,\ lens,\ 10,\ 15,\ nlit);}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ sinfl\_build(s.dsts,\ lens\ +\ nlit,\ 8,\ 15,\ ndist);}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \mbox{\hyperlink{structstate}{state}}\ =\ blk;\}}
+\DoxyCodeLine{00478\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00479\ \ \ \ \ \textcolor{keywordflow}{case}\ blk:\ \{}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \textcolor{comment}{/*\ decompress\ block\ */}}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sym;}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ sinfl\_refill(\&s);}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ sym\ =\ sinfl\_decode(\&s,\ s.lits,\ 10);}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sym\ <\ 256)\ \{}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ literal\ */}}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sinfl\_unlikely(out\ >=\ oe))\ \{}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(out-\/o);}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ *out++\ =\ (\textcolor{keywordtype}{unsigned}\ char)sym;}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ sym\ =\ sinfl\_decode(\&s,\ s.lits,\ 10);}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sym\ <\ 256)\ \{}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ *out++\ =\ (\textcolor{keywordtype}{unsigned}\ char)sym;}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sinfl\_unlikely(sym\ ==\ 256))\ \{}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ end\ of\ block\ */}}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (last)\ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(out-\/o);}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structstate}{state}}\ =\ hdr;}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ match\ */}}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sym\ >=\ 286)\ \{}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ length\ codes\ 286\ and\ 287\ must\ not\ appear\ in\ compressed\ data\ */}}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(out-\/o);}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ sym\ -\/=\ 257;}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \{\textcolor{keywordtype}{int}\ len\ =\ sinfl\_\_get(\&s,\ lbits[sym])\ +\ lbase[sym];}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dsym\ =\ sinfl\_decode(\&s,\ s.dsts,\ 8);}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ offs\ =\ sinfl\_\_get(\&s,\ dbits[dsym])\ +\ dbase[dsym];}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *dst\ =\ out,\ *src\ =\ out\ -\/\ offs;}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sinfl\_unlikely(offs\ >\ (\textcolor{keywordtype}{int})(out-\/o)))\ \{}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(out-\/o);}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ out\ =\ out\ +\ len;}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00518\ \textcolor{preprocessor}{\#ifndef\ SINFL\_NO\_SIMD}}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sinfl\_likely(oe\ -\/\ out\ >=\ 16\ *\ 3))\ \{}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (offs\ >=\ 16)\ \{}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ simd\ copy\ match\ */}}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ sinfl\_copy128(\&dst,\ \&src);}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ sinfl\_copy128(\&dst,\ \&src);}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ sinfl\_copy128(\&dst,\ \&src);}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (dst\ <\ out);}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (offs\ >=\ 8)\ \{}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ word\ copy\ match\ */}}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ sinfl\_copy64(\&dst,\ \&src);}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ sinfl\_copy64(\&dst,\ \&src);}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ sinfl\_copy64(\&dst,\ \&src);}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (dst\ <\ out);}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (offs\ ==\ 1)\ \{}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ rle\ match\ copying\ */}}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ sinfl\_char16\ w\ =\ sinfl\_char16\_char(src[0]);}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ dst\ =\ sinfl\_write128(dst,\ w);}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ dst\ =\ sinfl\_write128(dst,\ w);}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ dst\ =\ sinfl\_write128(dst,\ w);}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (dst\ <\ out);}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ byte\ copy\ match\ */}}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ *dst++\ =\ *src++;}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ *dst++\ =\ *src++;}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ *dst++\ =\ *src++;}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (dst\ <\ out);}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00547\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sinfl\_likely(oe\ -\/\ out\ >=\ 3\ *\ 8\ -\/\ 3))\ \{}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (offs\ >=\ 8)\ \{}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ word\ copy\ match\ */}}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ sinfl\_copy64(\&dst,\ \&src);}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ sinfl\_copy64(\&dst,\ \&src);}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ sinfl\_copy64(\&dst,\ \&src);}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (dst\ <\ out);}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (offs\ ==\ 1)\ \{}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ rle\ match\ copying\ */}}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c\ =\ src[0];}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hw\ =\ (c\ <<\ 24u)\ |\ (c\ <<\ 16u)\ |\ (c\ <<\ 8u)\ |\ (\textcolor{keywordtype}{unsigned})c;}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ w\ =\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ long)hw\ <<\ 32llu\ |\ hw;}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ dst\ =\ sinfl\_write64(dst,\ w);}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ dst\ =\ sinfl\_write64(dst,\ w);}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ dst\ =\ sinfl\_write64(dst,\ w);}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (dst\ <\ out);}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ byte\ copy\ match\ */}}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ *dst++\ =\ *src++;}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ *dst++\ =\ *src++;}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ *dst++\ =\ *src++;}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (dst\ <\ out);}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00572\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ *dst++\ =\ *src++;}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ *dst++\ =\ *src++;}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ *dst++\ =\ *src++;}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (dst\ <\ out);}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \}\}}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00580\ \ \ \ \ \}\ \textcolor{keywordflow}{break};\}}
+\DoxyCodeLine{00581\ \ \ \}}
+\DoxyCodeLine{00582\ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(out-\/o);}
+\DoxyCodeLine{00583\ \}}
+\DoxyCodeLine{00584\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00585\ sinflate(\textcolor{keywordtype}{void}\ *out,\ \textcolor{keywordtype}{int}\ cap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *in,\ \textcolor{keywordtype}{int}\ size)\ \{}
+\DoxyCodeLine{00586\ \ \ \textcolor{keywordflow}{return}\ sinfl\_decompress((\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*)out,\ cap,\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*)in,\ size);}
+\DoxyCodeLine{00587\ \}}
+\DoxyCodeLine{00588\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}}
+\DoxyCodeLine{00589\ sinfl\_adler32(\textcolor{keywordtype}{unsigned}\ adler32,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *in,\ \textcolor{keywordtype}{int}\ in\_len)\ \{}
+\DoxyCodeLine{00590\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ ADLER\_MOD\ =\ 65521;}
+\DoxyCodeLine{00591\ \ \ \textcolor{keywordtype}{unsigned}\ s1\ =\ adler32\ \&\ 0xffff;}
+\DoxyCodeLine{00592\ \ \ \textcolor{keywordtype}{unsigned}\ s2\ =\ adler32\ >>\ 16;}
+\DoxyCodeLine{00593\ \ \ \textcolor{keywordtype}{unsigned}\ blk\_len,\ i;}
+\DoxyCodeLine{00594\ }
+\DoxyCodeLine{00595\ \ \ blk\_len\ =\ in\_len\ \%\ 5552;}
+\DoxyCodeLine{00596\ \ \ \textcolor{keywordflow}{while}\ (in\_len)\ \{}
+\DoxyCodeLine{00597\ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;\ i\ +\ 7\ <\ blk\_len;\ i\ +=\ 8)\ \{}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ s1\ +=\ in[0];\ s2\ +=\ s1;}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ s1\ +=\ in[1];\ s2\ +=\ s1;}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ s1\ +=\ in[2];\ s2\ +=\ s1;}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ s1\ +=\ in[3];\ s2\ +=\ s1;}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ s1\ +=\ in[4];\ s2\ +=\ s1;}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ s1\ +=\ in[5];\ s2\ +=\ s1;}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ s1\ +=\ in[6];\ s2\ +=\ s1;}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ s1\ +=\ in[7];\ s2\ +=\ s1;}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ in\ +=\ 8;}
+\DoxyCodeLine{00607\ \ \ \ \ \}}
+\DoxyCodeLine{00608\ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ i\ <\ blk\_len;\ ++i)}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ s1\ +=\ *in++,\ s2\ +=\ s1;}
+\DoxyCodeLine{00610\ \ \ \ \ s1\ \%=\ ADLER\_MOD;\ s2\ \%=\ ADLER\_MOD;}
+\DoxyCodeLine{00611\ \ \ \ \ in\_len\ -\/=\ blk\_len;}
+\DoxyCodeLine{00612\ \ \ \ \ blk\_len\ =\ 5552;}
+\DoxyCodeLine{00613\ \ \ \}\ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{unsigned})(s2\ <<\ 16)\ +\ (\textcolor{keywordtype}{unsigned})s1;}
+\DoxyCodeLine{00614\ \}}
+\DoxyCodeLine{00615\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00616\ zsinflate(\textcolor{keywordtype}{void}\ *out,\ \textcolor{keywordtype}{int}\ cap,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *mem,\ \textcolor{keywordtype}{int}\ size)\ \{}
+\DoxyCodeLine{00617\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *in\ =\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*)mem;}
+\DoxyCodeLine{00618\ \ \ \textcolor{keywordflow}{if}\ (size\ >=\ 6)\ \{}
+\DoxyCodeLine{00619\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *eob\ =\ in\ +\ size\ -\/\ 4;}
+\DoxyCodeLine{00620\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ sinfl\_decompress((\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*)out,\ cap,\ in\ +\ 2u,\ size);}
+\DoxyCodeLine{00621\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ a\ =\ sinfl\_adler32(1u,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*)out,\ n);}
+\DoxyCodeLine{00622\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ h\ =\ eob[0]\ <<\ 24\ |\ eob[1]\ <<\ 16\ |\ eob[2]\ <<\ 8\ |\ eob[3]\ <<\ 0;}
+\DoxyCodeLine{00623\ \ \ \ \ \textcolor{keywordflow}{return}\ a\ ==\ h\ ?\ n\ :\ -\/1;}
+\DoxyCodeLine{00624\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00625\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00626\ \ \ \}}
+\DoxyCodeLine{00627\ \}}
+\DoxyCodeLine{00628\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00629\ }
+
+\end{DoxyCode}

@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -90,9 +91,12 @@ $(function(){ initResizable(false); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_sdl_window-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">SdlWindow Class Reference</div></div>
+  <div class="headertitle"><div class="title">SdlWindow Class Reference<div class="ingroups"><a class="el" href="group__graphic.html">Graphic</a> &raquo; <a class="el" href="group___s_d_l.html">SDL</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Sdl Window class.  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_sdl_window_8hpp_source.html">SdlWindow.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -107,535 +111,91 @@ Inheritance diagram for SdlWindow:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a977f564355412e0852d8415f237a9ef5" id="r_a977f564355412e0852d8415f237a9ef5"><td class="memItemLeft" align="right" valign="top"><a id="a977f564355412e0852d8415f237a9ef5" name="a977f564355412e0852d8415f237a9ef5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SdlWindow</b> (__int32_t screenWidth, __int32_t screenHeight, std::string title)</td></tr>
-<tr class="separator:a977f564355412e0852d8415f237a9ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a658eab0bf038cd1775e73e920a71b80b" id="r_a658eab0bf038cd1775e73e920a71b80b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a658eab0bf038cd1775e73e920a71b80b">linkEvent</a> (<a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event) override</td></tr>
-<tr class="memdesc:a658eab0bf038cd1775e73e920a71b80b"><td class="mdescLeft">&#160;</td><td class="mdescRight">link an event to the window  <br /></td></tr>
-<tr class="separator:a658eab0bf038cd1775e73e920a71b80b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7881c13fde6af610cb7efb5ab342317" id="r_ae7881c13fde6af610cb7efb5ab342317"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7881c13fde6af610cb7efb5ab342317">isOpen</a> () override</td></tr>
-<tr class="memdesc:ae7881c13fde6af610cb7efb5ab342317"><td class="mdescLeft">&#160;</td><td class="mdescRight">notice if the window is open  <br /></td></tr>
-<tr class="separator:ae7881c13fde6af610cb7efb5ab342317"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1d006b6e87818f90e3042ab8772dec1" id="r_ac1d006b6e87818f90e3042ab8772dec1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1d006b6e87818f90e3042ab8772dec1">close</a> () override</td></tr>
-<tr class="memdesc:ac1d006b6e87818f90e3042ab8772dec1"><td class="mdescLeft">&#160;</td><td class="mdescRight">close the window  <br /></td></tr>
-<tr class="separator:ac1d006b6e87818f90e3042ab8772dec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a776361f77ae5b82c8bbd20d05c1dc45e" id="r_a776361f77ae5b82c8bbd20d05c1dc45e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a776361f77ae5b82c8bbd20d05c1dc45e">setFrameLimit</a> (__int32_t limit) override</td></tr>
-<tr class="memdesc:a776361f77ae5b82c8bbd20d05c1dc45e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Frame Limit object.  <br /></td></tr>
-<tr class="separator:a776361f77ae5b82c8bbd20d05c1dc45e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc7c25e238e5528a77e38ebb7dc160d9" id="r_acc7c25e238e5528a77e38ebb7dc160d9"><td class="memItemLeft" align="right" valign="top">__int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc7c25e238e5528a77e38ebb7dc160d9">getDelta</a> () override</td></tr>
-<tr class="memdesc:acc7c25e238e5528a77e38ebb7dc160d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Delta object.  <br /></td></tr>
-<tr class="separator:acc7c25e238e5528a77e38ebb7dc160d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c566894f7432dfcfd51faee1d239a5d" id="r_a7c566894f7432dfcfd51faee1d239a5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c566894f7432dfcfd51faee1d239a5d">beginDraw</a> () override</td></tr>
-<tr class="memdesc:a7c566894f7432dfcfd51faee1d239a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">allowing to draw 2D on the window  <br /></td></tr>
-<tr class="separator:a7c566894f7432dfcfd51faee1d239a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e1a79f993c7424831754404c32f3684" id="r_a8e1a79f993c7424831754404c32f3684"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e1a79f993c7424831754404c32f3684">drawPoly</a> (<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon) override</td></tr>
-<tr class="memdesc:a8e1a79f993c7424831754404c32f3684"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a polygon  <br /></td></tr>
-<tr class="separator:a8e1a79f993c7424831754404c32f3684"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4de650f1f3712087a4a5bca3aa2a5f0e" id="r_a4de650f1f3712087a4a5bca3aa2a5f0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4de650f1f3712087a4a5bca3aa2a5f0e">drawSprite</a> (<a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite) override</td></tr>
-<tr class="memdesc:a4de650f1f3712087a4a5bca3aa2a5f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a sprite  <br /></td></tr>
-<tr class="separator:a4de650f1f3712087a4a5bca3aa2a5f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c0bf1ab0a9b4917ead4ad8fc3c697ff" id="r_a9c0bf1ab0a9b4917ead4ad8fc3c697ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c0bf1ab0a9b4917ead4ad8fc3c697ff">endDraw</a> () override</td></tr>
-<tr class="memdesc:a9c0bf1ab0a9b4917ead4ad8fc3c697ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">end the 2D drawing  <br /></td></tr>
-<tr class="separator:a9c0bf1ab0a9b4917ead4ad8fc3c697ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa540228a558fee3510a05e29f629220b" id="r_aa540228a558fee3510a05e29f629220b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa540228a558fee3510a05e29f629220b">beginMode3</a> (<a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera) override</td></tr>
-<tr class="memdesc:aa540228a558fee3510a05e29f629220b"><td class="mdescLeft">&#160;</td><td class="mdescRight">allowing to draw 3D on the window  <br /></td></tr>
-<tr class="separator:aa540228a558fee3510a05e29f629220b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a304a33df6d466985e50c192b8fc8a25a" id="r_a304a33df6d466985e50c192b8fc8a25a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a304a33df6d466985e50c192b8fc8a25a">drawModel</a> (<a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model) override</td></tr>
-<tr class="memdesc:a304a33df6d466985e50c192b8fc8a25a"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a model  <br /></td></tr>
-<tr class="separator:a304a33df6d466985e50c192b8fc8a25a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4de0baf2dcd722e8fa4ce169420216c0" id="r_a4de0baf2dcd722e8fa4ce169420216c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4de0baf2dcd722e8fa4ce169420216c0">endMode3</a> () override</td></tr>
-<tr class="memdesc:a4de0baf2dcd722e8fa4ce169420216c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">end the 3D drawing  <br /></td></tr>
-<tr class="separator:a4de0baf2dcd722e8fa4ce169420216c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ea7d97069a1522b951696a9c9da2ddf" id="r_a3ea7d97069a1522b951696a9c9da2ddf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ea7d97069a1522b951696a9c9da2ddf">pollEvent</a> () override</td></tr>
-<tr class="memdesc:a3ea7d97069a1522b951696a9c9da2ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">poll the event  <br /></td></tr>
-<tr class="separator:a3ea7d97069a1522b951696a9c9da2ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27db59127c8c517c420afb80b27b38d2" id="r_a27db59127c8c517c420afb80b27b38d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27db59127c8c517c420afb80b27b38d2">eventClose</a> () override</td></tr>
-<tr class="memdesc:a27db59127c8c517c420afb80b27b38d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">update the window  <br /></td></tr>
-<tr class="separator:a27db59127c8c517c420afb80b27b38d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga977f564355412e0852d8415f237a9ef5" id="r_ga977f564355412e0852d8415f237a9ef5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga977f564355412e0852d8415f237a9ef5">SdlWindow</a> (__int32_t screenWidth, __int32_t screenHeight, std::string title)</td></tr>
+<tr class="memdesc:ga977f564355412e0852d8415f237a9ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Sdl Window object.  <br /></td></tr>
+<tr class="separator:ga977f564355412e0852d8415f237a9ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1d165b038a44aa75acf09c042d49253d" id="r_ga1d165b038a44aa75acf09c042d49253d"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>~SdlWindow</b> ()</td></tr>
+<tr class="memdesc:ga1d165b038a44aa75acf09c042d49253d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Sdl Window object. <br /></td></tr>
+<tr class="separator:ga1d165b038a44aa75acf09c042d49253d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga658eab0bf038cd1775e73e920a71b80b" id="r_ga658eab0bf038cd1775e73e920a71b80b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga658eab0bf038cd1775e73e920a71b80b">linkEvent</a> (<a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *event) override</td></tr>
+<tr class="memdesc:ga658eab0bf038cd1775e73e920a71b80b"><td class="mdescLeft">&#160;</td><td class="mdescRight">link an event to the window  <br /></td></tr>
+<tr class="separator:ga658eab0bf038cd1775e73e920a71b80b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7881c13fde6af610cb7efb5ab342317" id="r_gae7881c13fde6af610cb7efb5ab342317"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#gae7881c13fde6af610cb7efb5ab342317">isOpen</a> () override</td></tr>
+<tr class="memdesc:gae7881c13fde6af610cb7efb5ab342317"><td class="mdescLeft">&#160;</td><td class="mdescRight">notice if the window is open  <br /></td></tr>
+<tr class="separator:gae7881c13fde6af610cb7efb5ab342317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1d006b6e87818f90e3042ab8772dec1" id="r_gac1d006b6e87818f90e3042ab8772dec1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#gac1d006b6e87818f90e3042ab8772dec1">close</a> () override</td></tr>
+<tr class="memdesc:gac1d006b6e87818f90e3042ab8772dec1"><td class="mdescLeft">&#160;</td><td class="mdescRight">close the window  <br /></td></tr>
+<tr class="separator:gac1d006b6e87818f90e3042ab8772dec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga776361f77ae5b82c8bbd20d05c1dc45e" id="r_ga776361f77ae5b82c8bbd20d05c1dc45e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga776361f77ae5b82c8bbd20d05c1dc45e">setFrameLimit</a> (__int32_t limit) override</td></tr>
+<tr class="memdesc:ga776361f77ae5b82c8bbd20d05c1dc45e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Frame Limit object.  <br /></td></tr>
+<tr class="separator:ga776361f77ae5b82c8bbd20d05c1dc45e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacc7c25e238e5528a77e38ebb7dc160d9" id="r_gacc7c25e238e5528a77e38ebb7dc160d9"><td class="memItemLeft" align="right" valign="top">__int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#gacc7c25e238e5528a77e38ebb7dc160d9">getDelta</a> () override</td></tr>
+<tr class="memdesc:gacc7c25e238e5528a77e38ebb7dc160d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Delta object.  <br /></td></tr>
+<tr class="separator:gacc7c25e238e5528a77e38ebb7dc160d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c566894f7432dfcfd51faee1d239a5d" id="r_ga7c566894f7432dfcfd51faee1d239a5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga7c566894f7432dfcfd51faee1d239a5d">beginDraw</a> () override</td></tr>
+<tr class="memdesc:ga7c566894f7432dfcfd51faee1d239a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">begin the 2D drawing  <br /></td></tr>
+<tr class="separator:ga7c566894f7432dfcfd51faee1d239a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8e1a79f993c7424831754404c32f3684" id="r_ga8e1a79f993c7424831754404c32f3684"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga8e1a79f993c7424831754404c32f3684">drawPoly</a> (<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon) override</td></tr>
+<tr class="memdesc:ga8e1a79f993c7424831754404c32f3684"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a polygon  <br /></td></tr>
+<tr class="separator:ga8e1a79f993c7424831754404c32f3684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4de650f1f3712087a4a5bca3aa2a5f0e" id="r_ga4de650f1f3712087a4a5bca3aa2a5f0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga4de650f1f3712087a4a5bca3aa2a5f0e">drawSprite</a> (<a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite) override</td></tr>
+<tr class="memdesc:ga4de650f1f3712087a4a5bca3aa2a5f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a sprite  <br /></td></tr>
+<tr class="separator:ga4de650f1f3712087a4a5bca3aa2a5f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c0bf1ab0a9b4917ead4ad8fc3c697ff" id="r_ga9c0bf1ab0a9b4917ead4ad8fc3c697ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga9c0bf1ab0a9b4917ead4ad8fc3c697ff">endDraw</a> () override</td></tr>
+<tr class="memdesc:ga9c0bf1ab0a9b4917ead4ad8fc3c697ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">end the 2D drawing  <br /></td></tr>
+<tr class="separator:ga9c0bf1ab0a9b4917ead4ad8fc3c697ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa540228a558fee3510a05e29f629220b" id="r_gaa540228a558fee3510a05e29f629220b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#gaa540228a558fee3510a05e29f629220b">beginMode3</a> (<a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera) override</td></tr>
+<tr class="memdesc:gaa540228a558fee3510a05e29f629220b"><td class="mdescLeft">&#160;</td><td class="mdescRight">allowing to draw 3D on the window  <br /></td></tr>
+<tr class="separator:gaa540228a558fee3510a05e29f629220b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga304a33df6d466985e50c192b8fc8a25a" id="r_ga304a33df6d466985e50c192b8fc8a25a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga304a33df6d466985e50c192b8fc8a25a">drawModel</a> (<a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model) override</td></tr>
+<tr class="memdesc:ga304a33df6d466985e50c192b8fc8a25a"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a model  <br /></td></tr>
+<tr class="separator:ga304a33df6d466985e50c192b8fc8a25a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4de0baf2dcd722e8fa4ce169420216c0" id="r_ga4de0baf2dcd722e8fa4ce169420216c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga4de0baf2dcd722e8fa4ce169420216c0">endMode3</a> () override</td></tr>
+<tr class="memdesc:ga4de0baf2dcd722e8fa4ce169420216c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">end the 3D drawing  <br /></td></tr>
+<tr class="separator:ga4de0baf2dcd722e8fa4ce169420216c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ea7d97069a1522b951696a9c9da2ddf" id="r_ga3ea7d97069a1522b951696a9c9da2ddf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga3ea7d97069a1522b951696a9c9da2ddf">pollEvent</a> () override</td></tr>
+<tr class="memdesc:ga3ea7d97069a1522b951696a9c9da2ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">poll the event  <br /></td></tr>
+<tr class="separator:ga3ea7d97069a1522b951696a9c9da2ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga27db59127c8c517c420afb80b27b38d2" id="r_ga27db59127c8c517c420afb80b27b38d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga27db59127c8c517c420afb80b27b38d2">eventClose</a> () override</td></tr>
+<tr class="memdesc:ga27db59127c8c517c420afb80b27b38d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">close the window  <br /></td></tr>
+<tr class="separator:ga27db59127c8c517c420afb80b27b38d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgraphic_1_1_i_window"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classgraphic_1_1_i_window')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgraphic_1_1_i_window.html">graphic::IWindow</a></td></tr>
-<tr class="memitem:a2947b7684c9f2375be0dd6e66b1d7b7f inherit pub_methods_classgraphic_1_1_i_window" id="r_a2947b7684c9f2375be0dd6e66b1d7b7f"><td class="memItemLeft" align="right" valign="top">
+<tr class="memitem:ga2947b7684c9f2375be0dd6e66b1d7b7f inherit pub_methods_classgraphic_1_1_i_window" id="r_ga2947b7684c9f2375be0dd6e66b1d7b7f"><td class="memItemLeft" align="right" valign="top">
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IWindow</b> ()=default</td></tr>
-<tr class="memdesc:a2947b7684c9f2375be0dd6e66b1d7b7f inherit pub_methods_classgraphic_1_1_i_window"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_window.html" title="Window interface.">IWindow</a> object. <br /></td></tr>
-<tr class="separator:a2947b7684c9f2375be0dd6e66b1d7b7f inherit pub_methods_classgraphic_1_1_i_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga2947b7684c9f2375be0dd6e66b1d7b7f inherit pub_methods_classgraphic_1_1_i_window"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_window.html" title="Window interface.">IWindow</a> object. <br /></td></tr>
+<tr class="separator:ga2947b7684c9f2375be0dd6e66b1d7b7f inherit pub_methods_classgraphic_1_1_i_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a3ae917986807a47eb33088826681d709" id="r_a3ae917986807a47eb33088826681d709"><td class="memItemLeft" align="right" valign="top"><a id="a3ae917986807a47eb33088826681d709" name="a3ae917986807a47eb33088826681d709"></a>
+<tr class="memitem:ga3ae917986807a47eb33088826681d709" id="r_ga3ae917986807a47eb33088826681d709"><td class="memItemLeft" align="right" valign="top">
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_open</b></td></tr>
-<tr class="separator:a3ae917986807a47eb33088826681d709"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a677db36072426313885afece983d9a2a" id="r_a677db36072426313885afece983d9a2a"><td class="memItemLeft" align="right" valign="top"><a id="a677db36072426313885afece983d9a2a" name="a677db36072426313885afece983d9a2a"></a>
+<tr class="separator:ga3ae917986807a47eb33088826681d709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga677db36072426313885afece983d9a2a" id="r_ga677db36072426313885afece983d9a2a"><td class="memItemLeft" align="right" valign="top">
 SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><b>_window</b></td></tr>
-<tr class="separator:a677db36072426313885afece983d9a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6690063e66b666ce0ec1dd2815a79b5" id="r_ad6690063e66b666ce0ec1dd2815a79b5"><td class="memItemLeft" align="right" valign="top"><a id="ad6690063e66b666ce0ec1dd2815a79b5" name="ad6690063e66b666ce0ec1dd2815a79b5"></a>
+<tr class="separator:ga677db36072426313885afece983d9a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6690063e66b666ce0ec1dd2815a79b5" id="r_gad6690063e66b666ce0ec1dd2815a79b5"><td class="memItemLeft" align="right" valign="top">
 SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><b>_renderer</b></td></tr>
-<tr class="separator:ad6690063e66b666ce0ec1dd2815a79b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa26ef07cfffcc18eda06cca44415daed" id="r_aa26ef07cfffcc18eda06cca44415daed"><td class="memItemLeft" align="right" valign="top"><a id="aa26ef07cfffcc18eda06cca44415daed" name="aa26ef07cfffcc18eda06cca44415daed"></a>
+<tr class="separator:gad6690063e66b666ce0ec1dd2815a79b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa26ef07cfffcc18eda06cca44415daed" id="r_gaa26ef07cfffcc18eda06cca44415daed"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="class_sdl_event.html">SdlEvent</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_event</b></td></tr>
-<tr class="separator:aa26ef07cfffcc18eda06cca44415daed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a884920883ecfbafbbdcf99d80438e9d4" id="r_a884920883ecfbafbbdcf99d80438e9d4"><td class="memItemLeft" align="right" valign="top"><a id="a884920883ecfbafbbdcf99d80438e9d4" name="a884920883ecfbafbbdcf99d80438e9d4"></a>
+<tr class="separator:gaa26ef07cfffcc18eda06cca44415daed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga884920883ecfbafbbdcf99d80438e9d4" id="r_ga884920883ecfbafbbdcf99d80438e9d4"><td class="memItemLeft" align="right" valign="top">
 __int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>_frameLimit</b></td></tr>
-<tr class="separator:a884920883ecfbafbbdcf99d80438e9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd66a40fcb7db5fd2a01c3e7bcea282a" id="r_abd66a40fcb7db5fd2a01c3e7bcea282a"><td class="memItemLeft" align="right" valign="top"><a id="abd66a40fcb7db5fd2a01c3e7bcea282a" name="abd66a40fcb7db5fd2a01c3e7bcea282a"></a>
+<tr class="separator:ga884920883ecfbafbbdcf99d80438e9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd66a40fcb7db5fd2a01c3e7bcea282a" id="r_gabd66a40fcb7db5fd2a01c3e7bcea282a"><td class="memItemLeft" align="right" valign="top">
 __uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>_start</b></td></tr>
-<tr class="separator:abd66a40fcb7db5fd2a01c3e7bcea282a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada1176354f198c6891ae3f21c4e97e31" id="r_ada1176354f198c6891ae3f21c4e97e31"><td class="memItemLeft" align="right" valign="top"><a id="ada1176354f198c6891ae3f21c4e97e31" name="ada1176354f198c6891ae3f21c4e97e31"></a>
+<tr class="separator:gabd66a40fcb7db5fd2a01c3e7bcea282a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada1176354f198c6891ae3f21c4e97e31" id="r_gada1176354f198c6891ae3f21c4e97e31"><td class="memItemLeft" align="right" valign="top">
 __uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>_end</b></td></tr>
-<tr class="separator:ada1176354f198c6891ae3f21c4e97e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab783c2b8d3e928351d889132df591580" id="r_ab783c2b8d3e928351d889132df591580"><td class="memItemLeft" align="right" valign="top"><a id="ab783c2b8d3e928351d889132df591580" name="ab783c2b8d3e928351d889132df591580"></a>
+<tr class="separator:gada1176354f198c6891ae3f21c4e97e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab783c2b8d3e928351d889132df591580" id="r_gab783c2b8d3e928351d889132df591580"><td class="memItemLeft" align="right" valign="top">
 float&#160;</td><td class="memItemRight" valign="bottom"><b>_delta</b></td></tr>
-<tr class="separator:ab783c2b8d3e928351d889132df591580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gab783c2b8d3e928351d889132df591580"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File: <a class="el" href="_ray_window_8hpp_source.html">RayWindow.hpp</a> (header.v2) Created Date: Tue 14/03/2023 Project: PERRY Author: Perry Chouteau</p>
-<p>Last Modified: Sat 18/03/2023 Modified By: Perry Chouteau</p>
-<p>Copyright (c) 2023-2033 Perry Chouteau </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7c566894f7432dfcfd51faee1d239a5d" name="a7c566894f7432dfcfd51faee1d239a5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c566894f7432dfcfd51faee1d239a5d">&#9670;&#160;</a></span>beginDraw()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::beginDraw </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>allowing to draw 2D on the window </p>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#a37ccabdf7852fe8ff579f5de5ae29976">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="aa540228a558fee3510a05e29f629220b" name="aa540228a558fee3510a05e29f629220b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa540228a558fee3510a05e29f629220b">&#9670;&#160;</a></span>beginMode3()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::beginMode3 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *</td>          <td class="paramname"><span class="paramname"><em>camera</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>allowing to draw 3D on the window </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">camera</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#a44bfe77f58f2825edb1e7cb5304b8177">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="ac1d006b6e87818f90e3042ab8772dec1" name="ac1d006b6e87818f90e3042ab8772dec1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1d006b6e87818f90e3042ab8772dec1">&#9670;&#160;</a></span>close()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::close </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>close the window </p>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#a6eb555bdae7c6fa247a35b9147da8c7e">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="a304a33df6d466985e50c192b8fc8a25a" name="a304a33df6d466985e50c192b8fc8a25a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a304a33df6d466985e50c192b8fc8a25a">&#9670;&#160;</a></span>drawModel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::drawModel </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *</td>          <td class="paramname"><span class="paramname"><em>model</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>draw a model </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">model</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#a973287c1dd916f230234e9a557181dd9">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="a8e1a79f993c7424831754404c32f3684" name="a8e1a79f993c7424831754404c32f3684"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e1a79f993c7424831754404c32f3684">&#9670;&#160;</a></span>drawPoly()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::drawPoly </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *</td>          <td class="paramname"><span class="paramname"><em>polygon</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>draw a polygon </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">polygon</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#afe1c61041fa847fe80c0fbc5585a4de3">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="a4de650f1f3712087a4a5bca3aa2a5f0e" name="a4de650f1f3712087a4a5bca3aa2a5f0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4de650f1f3712087a4a5bca3aa2a5f0e">&#9670;&#160;</a></span>drawSprite()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::drawSprite </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *</td>          <td class="paramname"><span class="paramname"><em>model</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>draw a sprite </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">model</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#a0b6d9dc647ea8fa561630424bb4b5db0">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="a9c0bf1ab0a9b4917ead4ad8fc3c697ff" name="a9c0bf1ab0a9b4917ead4ad8fc3c697ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c0bf1ab0a9b4917ead4ad8fc3c697ff">&#9670;&#160;</a></span>endDraw()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::endDraw </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>end the 2D drawing </p>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#afeee676648888ac355a58f7fb90b62a6">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="a4de0baf2dcd722e8fa4ce169420216c0" name="a4de0baf2dcd722e8fa4ce169420216c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4de0baf2dcd722e8fa4ce169420216c0">&#9670;&#160;</a></span>endMode3()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::endMode3 </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>end the 3D drawing </p>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#ad064bd5a6aeafa259e0e629cf6cf82c1">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="a27db59127c8c517c420afb80b27b38d2" name="a27db59127c8c517c420afb80b27b38d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27db59127c8c517c420afb80b27b38d2">&#9670;&#160;</a></span>eventClose()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::eventClose </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>update the window </p>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#a6687f79bdb04698ea020aa85e72f3941">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="acc7c25e238e5528a77e38ebb7dc160d9" name="acc7c25e238e5528a77e38ebb7dc160d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc7c25e238e5528a77e38ebb7dc160d9">&#9670;&#160;</a></span>getDelta()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">__int32_t SdlWindow::getDelta </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the Delta object. </p>
-<dl class="section return"><dt>Returns</dt><dd>__int32_t </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#ac081cce8b211b1b3f027a7bae33cef61">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="ae7881c13fde6af610cb7efb5ab342317" name="ae7881c13fde6af610cb7efb5ab342317"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7881c13fde6af610cb7efb5ab342317">&#9670;&#160;</a></span>isOpen()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SdlWindow::isOpen </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>notice if the window is open </p>
-<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#ae17a137c8ad8da0c414782e27f4c5dfc">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="a658eab0bf038cd1775e73e920a71b80b" name="a658eab0bf038cd1775e73e920a71b80b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a658eab0bf038cd1775e73e920a71b80b">&#9670;&#160;</a></span>linkEvent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::linkEvent </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>link an event to the window </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">event</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#ad95ff6150837ebf658a520a4a932b5c3">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="a3ea7d97069a1522b951696a9c9da2ddf" name="a3ea7d97069a1522b951696a9c9da2ddf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ea7d97069a1522b951696a9c9da2ddf">&#9670;&#160;</a></span>pollEvent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SdlWindow::pollEvent </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>poll the event </p>
-<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#a4a40f63b3c53f89a6ce684e7d2a92428">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<a id="a776361f77ae5b82c8bbd20d05c1dc45e" name="a776361f77ae5b82c8bbd20d05c1dc45e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a776361f77ae5b82c8bbd20d05c1dc45e">&#9670;&#160;</a></span>setFrameLimit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlWindow::setFrameLimit </td>
-          <td>(</td>
-          <td class="paramtype">__int32_t</td>          <td class="paramname"><span class="paramname"><em>limit</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the Frame Limit object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">limit</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_window.html#a6b0e75f9c978eef8aca095144420f5af">graphic::IWindow</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>Sdl Window class. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sdl/window/<a class="el" href="_sdl_window_8hpp_source.html">SdlWindow.hpp</a></li>
 </ul>
 </div><!-- contents -->

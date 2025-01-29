@@ -1,11 +1,13 @@
 /**
- * @ Author: Perry Chouteau
- * @ Create Time: 2024-05-13 00:01:34
- * @ Modified by: Perry Chouteau
- * @ Modified time: 2025-01-28 00:29:03
- * @ Description:
+ * @file IEvent.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup graphic
+ * @{
  */
-
 
 #ifndef IEVENT_HPP
 #define IEVENT_HPP

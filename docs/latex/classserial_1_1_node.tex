@@ -1,0 +1,56 @@
+\doxysection{serial\+::Node Class Reference}
+\hypertarget{classserial_1_1_node}{}\label{classserial_1_1_node}\index{serial::Node@{serial::Node}}
+
+
+easy to Manage YAML, JSON, XAML and data serialization formats in C++.  
+
+
+
+
+{\ttfamily \#include $<$ISerial.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries node\+\_\+type} = std\+::variant$<$bool, int, double, std\+::string, std\+::vector$<$\mbox{\hyperlink{classserial_1_1_node}{Node}}$>$, std\+::map$<$std\+::string, \mbox{\hyperlink{classserial_1_1_node}{Node}}$>$, void \texorpdfstring{$\ast$}{*}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Node} (node\+\_\+type node)
+\item 
+bool {\bfseries is\+Scalar} ()
+\item 
+bool {\bfseries is\+Sequence} ()
+\item 
+bool {\bfseries is\+Map} ()
+\item 
+bool {\bfseries is\+Bool} ()
+\item 
+bool {\bfseries is\+Int} ()
+\item 
+bool {\bfseries is\+Double} ()
+\item 
+bool {\bfseries is\+String} ()
+\item 
+bool {\bfseries is\+Null} ()
+\item 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::string \&key)
+\item 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int \&index)
+\item 
+{\footnotesize template$<$typename T$>$ }\\T {\bfseries as} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+node\+\_\+type {\bfseries value}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+easy to Manage YAML, JSON, XAML and data serialization formats in C++. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/interfaces/serial/\mbox{\hyperlink{_i_serial_8hpp}{ISerial.\+hpp}}\end{DoxyCompactItemize}

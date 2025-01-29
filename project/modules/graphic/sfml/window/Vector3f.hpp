@@ -1,3 +1,16 @@
+/**
+ * @file Vector3f.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup SFML
+ * @{
+ * @addtogroup sfml_extra extra
+ * @{
+ */
+
 #pragma once
 
 #include <SFML/System/Vector3.hpp>

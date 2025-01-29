@@ -1,0 +1,569 @@
+\doxysection{SDL\+\_\+config.\+h}
+\hypertarget{sdl-build_2include-config-_2_s_d_l2_2_s_d_l__config_8h_source}{}\label{sdl-build_2include-config-_2_s_d_l2_2_s_d_l__config_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include-\/config-\//SDL2/SDL\_config.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include-\/config-\//SDL2/SDL\_config.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ SDL\_config\_h\_}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ SDL\_config\_h\_}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{/*\ General\ platform\ specific\ identifiers\ */}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}SDL\_platform.h"{}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{/*\ C\ language\ features\ */}}
+\DoxyCodeLine{00035\ \textcolor{comment}{/*\ \#undef\ const\ */}}
+\DoxyCodeLine{00036\ \textcolor{comment}{/*\ \#undef\ inline\ */}}
+\DoxyCodeLine{00037\ \textcolor{comment}{/*\ \#undef\ volatile\ */}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{/*\ C\ datatypes\ */}}
+\DoxyCodeLine{00040\ \textcolor{comment}{/*\ Define\ SIZEOF\_VOIDP\ for\ 64/32\ architectures\ */}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#if\ defined(\_\_LP64\_\_)\ ||\ defined(\_LP64)\ ||\ defined(\_WIN64)}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ SIZEOF\_VOIDP\ 8}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ SIZEOF\_VOIDP\ 4}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ HAVE\_GCC\_ATOMICS\ 1}}
+\DoxyCodeLine{00048\ \textcolor{comment}{/*\ \#undef\ HAVE\_GCC\_SYNC\_LOCK\_TEST\_AND\_SET\ */}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{/*\ Comment\ this\ if\ you\ want\ to\ build\ without\ any\ C\ library\ requirements\ */}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ HAVE\_LIBC\ 1}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#ifdef\ HAVE\_LIBC}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{/*\ Useful\ headers\ */}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ STDC\_HEADERS\ 1}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ HAVE\_ALLOCA\_H\ 1}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ HAVE\_CTYPE\_H\ 1}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ HAVE\_FLOAT\_H\ 1}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ HAVE\_ICONV\_H\ 1}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ HAVE\_INTTYPES\_H\ 1}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ HAVE\_LIMITS\_H\ 1}}
+\DoxyCodeLine{00062\ \textcolor{comment}{/*\ \#undef\ HAVE\_MALLOC\_H\ */}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ HAVE\_MATH\_H\ 1}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ HAVE\_MEMORY\_H\ 1}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ HAVE\_SIGNAL\_H\ 1}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ HAVE\_STDARG\_H\ 1}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ HAVE\_STDDEF\_H\ 1}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ HAVE\_STDINT\_H\ 1}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ HAVE\_STDIO\_H\ 1}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ HAVE\_STDLIB\_H\ 1}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ HAVE\_STRINGS\_H\ 1}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ HAVE\_STRING\_H\ 1}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ HAVE\_SYS\_TYPES\_H\ 1}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ HAVE\_WCHAR\_H\ 1}}
+\DoxyCodeLine{00075\ \textcolor{comment}{/*\ \#undef\ HAVE\_LINUX\_INPUT\_H\ */}}
+\DoxyCodeLine{00076\ \textcolor{comment}{/*\ \#undef\ HAVE\_PTHREAD\_NP\_H\ */}}
+\DoxyCodeLine{00077\ \textcolor{comment}{/*\ \#undef\ HAVE\_LIBUNWIND\_H\ */}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{comment}{/*\ C\ library\ functions\ */}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ HAVE\_DLOPEN\ 1}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ HAVE\_MALLOC\ 1}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ HAVE\_CALLOC\ 1}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ HAVE\_REALLOC\ 1}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ HAVE\_FREE\ 1}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ HAVE\_ALLOCA\ 1}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#ifndef\ \_\_WIN32\_\_\ }\textcolor{comment}{/*\ Don't\ use\ C\ runtime\ versions\ of\ these\ on\ Windows\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ HAVE\_GETENV\ 1}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ HAVE\_SETENV\ 1}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ HAVE\_PUTENV\ 1}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ HAVE\_UNSETENV\ 1}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ HAVE\_QSORT\ 1}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ HAVE\_BSEARCH\ 1}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ HAVE\_ABS\ 1}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ HAVE\_BCOPY\ 1}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ HAVE\_MEMSET\ 1}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ HAVE\_MEMCPY\ 1}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ HAVE\_MEMMOVE\ 1}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ HAVE\_MEMCMP\ 1}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ HAVE\_WCSLEN\ 1}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ HAVE\_WCSLCPY\ 1}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ HAVE\_WCSLCAT\ 1}}
+\DoxyCodeLine{00103\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_WCSDUP\ */}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ HAVE\_WCSDUP\ 1}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ HAVE\_WCSSTR\ 1}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ HAVE\_WCSCMP\ 1}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ HAVE\_WCSNCMP\ 1}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ HAVE\_WCSCASECMP\ 1}}
+\DoxyCodeLine{00109\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_WCSICMP\ */}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ HAVE\_WCSNCASECMP\ 1}}
+\DoxyCodeLine{00111\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_WCSNICMP\ */}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ HAVE\_STRLEN\ 1}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ HAVE\_STRLCPY\ 1}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ HAVE\_STRLCAT\ 1}}
+\DoxyCodeLine{00115\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_STRREV\ */}}
+\DoxyCodeLine{00116\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_STRUPR\ */}}
+\DoxyCodeLine{00117\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_STRLWR\ */}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ HAVE\_INDEX\ 1}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ HAVE\_RINDEX\ 1}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ HAVE\_STRCHR\ 1}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ HAVE\_STRRCHR\ 1}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ HAVE\_STRSTR\ 1}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ HAVE\_STRTOK\_R\ 1}}
+\DoxyCodeLine{00124\ \textcolor{comment}{/*\ \#undef\ HAVE\_ITOA\ */}}
+\DoxyCodeLine{00125\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_LTOA\ */}}
+\DoxyCodeLine{00126\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_UITOA\ */}}
+\DoxyCodeLine{00127\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_ULTOA\ */}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ HAVE\_STRTOL\ 1}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ HAVE\_STRTOUL\ 1}}
+\DoxyCodeLine{00130\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_I64TOA\ */}}
+\DoxyCodeLine{00131\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_UI64TOA\ */}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ HAVE\_STRTOLL\ 1}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ HAVE\_STRTOULL\ 1}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ HAVE\_STRTOD\ 1}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ HAVE\_ATOI\ 1}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#define\ HAVE\_ATOF\ 1}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ HAVE\_STRCMP\ 1}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ HAVE\_STRNCMP\ 1}}
+\DoxyCodeLine{00139\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_STRICMP\ */}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#define\ HAVE\_STRCASECMP\ 1}}
+\DoxyCodeLine{00141\ \textcolor{comment}{/*\ \#undef\ HAVE\_\_STRNICMP\ */}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ HAVE\_STRNCASECMP\ 1}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ HAVE\_STRCASESTR\ 1}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ HAVE\_SSCANF\ 1}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ HAVE\_VSSCANF\ 1}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ HAVE\_VSNPRINTF\ 1}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ HAVE\_M\_PI\ 1}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ HAVE\_ACOS\ 1}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ HAVE\_ACOSF\ 1}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#define\ HAVE\_ASIN\ 1}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ HAVE\_ASINF\ 1}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ HAVE\_ATAN\ 1}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ HAVE\_ATANF\ 1}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ HAVE\_ATAN2\ 1}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ HAVE\_ATAN2F\ 1}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ HAVE\_CEIL\ 1}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ HAVE\_CEILF\ 1}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#define\ HAVE\_COPYSIGN\ 1}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ HAVE\_COPYSIGNF\ 1}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ HAVE\_COS\ 1}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ HAVE\_COSF\ 1}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ HAVE\_EXP\ 1}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ HAVE\_EXPF\ 1}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ HAVE\_FABS\ 1}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ HAVE\_FABSF\ 1}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ HAVE\_FLOOR\ 1}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ HAVE\_FLOORF\ 1}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ HAVE\_FMOD\ 1}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ HAVE\_FMODF\ 1}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ HAVE\_LOG\ 1}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#define\ HAVE\_LOGF\ 1}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ HAVE\_LOG10\ 1}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ HAVE\_LOG10F\ 1}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#define\ HAVE\_LROUND\ 1}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#define\ HAVE\_LROUNDF\ 1}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ HAVE\_POW\ 1}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ HAVE\_POWF\ 1}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ HAVE\_ROUND\ 1}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#define\ HAVE\_ROUNDF\ 1}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ HAVE\_SCALBN\ 1}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ HAVE\_SCALBNF\ 1}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#define\ HAVE\_SIN\ 1}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#define\ HAVE\_SINF\ 1}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ HAVE\_SQRT\ 1}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ HAVE\_SQRTF\ 1}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ HAVE\_TAN\ 1}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ HAVE\_TANF\ 1}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ HAVE\_TRUNC\ 1}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#define\ HAVE\_TRUNCF\ 1}}
+\DoxyCodeLine{00190\ \textcolor{comment}{/*\ \#undef\ HAVE\_FOPEN64\ */}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#define\ HAVE\_FSEEKO\ 1}}
+\DoxyCodeLine{00192\ \textcolor{comment}{/*\ \#undef\ HAVE\_FSEEKO64\ */}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ HAVE\_SIGACTION\ 1}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ HAVE\_SA\_SIGACTION\ 1}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#define\ HAVE\_SETJMP\ 1}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#define\ HAVE\_NANOSLEEP\ 1}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#define\ HAVE\_SYSCONF\ 1}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\#define\ HAVE\_SYSCTLBYNAME\ 1}}
+\DoxyCodeLine{00199\ \textcolor{comment}{/*\ \#undef\ HAVE\_CLOCK\_GETTIME\ */}}
+\DoxyCodeLine{00200\ \textcolor{comment}{/*\ \#undef\ HAVE\_GETPAGESIZE\ */}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#define\ HAVE\_MPROTECT\ 1}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#define\ HAVE\_ICONV\ 1}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#define\ SDL\_USE\_LIBICONV\ 1}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#define\ HAVE\_PTHREAD\_SETNAME\_NP\ 1}}
+\DoxyCodeLine{00205\ \textcolor{comment}{/*\ \#undef\ HAVE\_PTHREAD\_SET\_NAME\_NP\ */}}
+\DoxyCodeLine{00206\ \textcolor{comment}{/*\ \#undef\ HAVE\_SEM\_TIMEDWAIT\ */}}
+\DoxyCodeLine{00207\ \textcolor{comment}{/*\ \#undef\ HAVE\_GETAUXVAL\ */}}
+\DoxyCodeLine{00208\ \textcolor{comment}{/*\ \#undef\ HAVE\_ELF\_AUX\_INFO\ */}}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#define\ HAVE\_POLL\ 1}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ HAVE\_\_EXIT\ 1}}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#define\ HAVE\_STDARG\_H\ 1}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ HAVE\_STDDEF\_H\ 1}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\#define\ HAVE\_STDINT\_H\ 1}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#define\ HAVE\_FLOAT\_H\ 1}}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ HAVE\_LIBC\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{comment}{/*\ \#undef\ HAVE\_ALTIVEC\_H\ */}}
+\DoxyCodeLine{00220\ \textcolor{comment}{/*\ \#undef\ HAVE\_DBUS\_DBUS\_H\ */}}
+\DoxyCodeLine{00221\ \textcolor{comment}{/*\ \#undef\ HAVE\_FCITX\ */}}
+\DoxyCodeLine{00222\ \textcolor{comment}{/*\ \#undef\ HAVE\_IBUS\_IBUS\_H\ */}}
+\DoxyCodeLine{00223\ \textcolor{comment}{/*\ \#undef\ HAVE\_SYS\_INOTIFY\_H\ */}}
+\DoxyCodeLine{00224\ \textcolor{comment}{/*\ \#undef\ HAVE\_INOTIFY\_INIT\ */}}
+\DoxyCodeLine{00225\ \textcolor{comment}{/*\ \#undef\ HAVE\_INOTIFY\_INIT1\ */}}
+\DoxyCodeLine{00226\ \textcolor{comment}{/*\ \#undef\ HAVE\_INOTIFY\ */}}
+\DoxyCodeLine{00227\ \textcolor{comment}{/*\ \#undef\ HAVE\_LIBUSB\ */}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ HAVE\_O\_CLOEXEC\ 1}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{comment}{/*\ Apple\ platforms\ might\ be\ building\ universal\ binaries,\ where\ Intel\ builds}}
+\DoxyCodeLine{00231\ \textcolor{comment}{\ \ \ can\ use\ immintrin.h\ but\ other\ architectures\ can't.\ */}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#ifdef\ \_\_APPLE\_\_}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#\ \ if\ defined(\_\_has\_include)\ \&\&\ (defined(\_\_i386\_\_)\ ||\ defined(\_\_x86\_64))}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#\ \ \ \ if\ \_\_has\_include(<immintrin.h>)}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ define\ HAVE\_IMMINTRIN\_H\ 1}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#\ \ \ \ endif}}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00238\ \textcolor{preprocessor}{\#else\ \ }\textcolor{comment}{/*\ non-\/Apple\ platforms\ can\ use\ the\ normal\ CMake\ check\ for\ this.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00239\ \textcolor{comment}{/*\ \#undef\ HAVE\_IMMINTRIN\_H\ */}}
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \textcolor{comment}{/*\ \#undef\ HAVE\_LIBUDEV\_H\ */}}
+\DoxyCodeLine{00243\ \textcolor{comment}{/*\ \#undef\ HAVE\_LIBSAMPLERATE\_H\ */}}
+\DoxyCodeLine{00244\ \textcolor{comment}{/*\ \#undef\ HAVE\_LIBDECOR\_H\ */}}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \textcolor{comment}{/*\ \#undef\ HAVE\_D3D\_H\ */}}
+\DoxyCodeLine{00247\ \textcolor{comment}{/*\ \#undef\ HAVE\_D3D11\_H\ */}}
+\DoxyCodeLine{00248\ \textcolor{comment}{/*\ \#undef\ HAVE\_D3D12\_H\ */}}
+\DoxyCodeLine{00249\ \textcolor{comment}{/*\ \#undef\ HAVE\_DDRAW\_H\ */}}
+\DoxyCodeLine{00250\ \textcolor{comment}{/*\ \#undef\ HAVE\_DSOUND\_H\ */}}
+\DoxyCodeLine{00251\ \textcolor{comment}{/*\ \#undef\ HAVE\_DINPUT\_H\ */}}
+\DoxyCodeLine{00252\ \textcolor{comment}{/*\ \#undef\ HAVE\_XINPUT\_H\ */}}
+\DoxyCodeLine{00253\ \textcolor{comment}{/*\ \#undef\ HAVE\_WINDOWS\_GAMING\_INPUT\_H\ */}}
+\DoxyCodeLine{00254\ \textcolor{comment}{/*\ \#undef\ HAVE\_DXGI\_H\ */}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \textcolor{comment}{/*\ \#undef\ HAVE\_MMDEVICEAPI\_H\ */}}
+\DoxyCodeLine{00257\ \textcolor{comment}{/*\ \#undef\ HAVE\_AUDIOCLIENT\_H\ */}}
+\DoxyCodeLine{00258\ \textcolor{comment}{/*\ \#undef\ HAVE\_TPCSHRD\_H\ */}}
+\DoxyCodeLine{00259\ \textcolor{comment}{/*\ \#undef\ HAVE\_SENSORSAPI\_H\ */}}
+\DoxyCodeLine{00260\ \textcolor{comment}{/*\ \#undef\ HAVE\_ROAPI\_H\ */}}
+\DoxyCodeLine{00261\ \textcolor{comment}{/*\ \#undef\ HAVE\_SHELLSCALINGAPI\_H\ */}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \textcolor{comment}{/*\ \#undef\ USE\_POSIX\_SPAWN\ */}}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \textcolor{comment}{/*\ SDL\ internal\ assertion\ support\ */}}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#if\ 0}}
+\DoxyCodeLine{00267\ \textcolor{comment}{/*\ \#undef\ SDL\_DEFAULT\_ASSERT\_LEVEL\ */}}
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \textcolor{comment}{/*\ Allow\ disabling\ of\ core\ subsystems\ */}}
+\DoxyCodeLine{00271\ \textcolor{comment}{/*\ \#undef\ SDL\_ATOMIC\_DISABLED\ */}}
+\DoxyCodeLine{00272\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DISABLED\ */}}
+\DoxyCodeLine{00273\ \textcolor{comment}{/*\ \#undef\ SDL\_CPUINFO\_DISABLED\ */}}
+\DoxyCodeLine{00274\ \textcolor{comment}{/*\ \#undef\ SDL\_EVENTS\_DISABLED\ */}}
+\DoxyCodeLine{00275\ \textcolor{comment}{/*\ \#undef\ SDL\_FILE\_DISABLED\ */}}
+\DoxyCodeLine{00276\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_DISABLED\ */}}
+\DoxyCodeLine{00277\ \textcolor{comment}{/*\ \#undef\ SDL\_HAPTIC\_DISABLED\ */}}
+\DoxyCodeLine{00278\ \textcolor{comment}{/*\ \#undef\ SDL\_HIDAPI\_DISABLED\ */}}
+\DoxyCodeLine{00279\ \textcolor{comment}{/*\ \#undef\ SDL\_SENSOR\_DISABLED\ */}}
+\DoxyCodeLine{00280\ \textcolor{comment}{/*\ \#undef\ SDL\_LOADSO\_DISABLED\ */}}
+\DoxyCodeLine{00281\ \textcolor{comment}{/*\ \#undef\ SDL\_RENDER\_DISABLED\ */}}
+\DoxyCodeLine{00282\ \textcolor{comment}{/*\ \#undef\ SDL\_THREADS\_DISABLED\ */}}
+\DoxyCodeLine{00283\ \textcolor{comment}{/*\ \#undef\ SDL\_TIMERS\_DISABLED\ */}}
+\DoxyCodeLine{00284\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DISABLED\ */}}
+\DoxyCodeLine{00285\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_DISABLED\ */}}
+\DoxyCodeLine{00286\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_DISABLED\ */}}
+\DoxyCodeLine{00287\ \textcolor{comment}{/*\ \#undef\ SDL\_LOCALE\_DISABLED\ */}}
+\DoxyCodeLine{00288\ \textcolor{comment}{/*\ \#undef\ SDL\_MISC\_DISABLED\ */}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \textcolor{comment}{/*\ Enable\ various\ audio\ drivers\ */}}
+\DoxyCodeLine{00291\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_ALSA\ */}}
+\DoxyCodeLine{00292\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_ALSA\_DYNAMIC\ */}}
+\DoxyCodeLine{00293\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_ANDROID\ */}}
+\DoxyCodeLine{00294\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_OPENSLES\ */}}
+\DoxyCodeLine{00295\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_AAUDIO\ */}}
+\DoxyCodeLine{00296\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_ARTS\ */}}
+\DoxyCodeLine{00297\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_ARTS\_DYNAMIC\ */}}
+\DoxyCodeLine{00298\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_DRIVER\_COREAUDIO\ 1}}
+\DoxyCodeLine{00299\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_DRIVER\_DISK\ 1}}
+\DoxyCodeLine{00300\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_DSOUND\ */}}
+\DoxyCodeLine{00301\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_DRIVER\_DUMMY\ 1}}
+\DoxyCodeLine{00302\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_EMSCRIPTEN\ */}}
+\DoxyCodeLine{00303\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_ESD\ */}}
+\DoxyCodeLine{00304\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_ESD\_DYNAMIC\ */}}
+\DoxyCodeLine{00305\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_FUSIONSOUND\ */}}
+\DoxyCodeLine{00306\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_FUSIONSOUND\_DYNAMIC\ */}}
+\DoxyCodeLine{00307\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_HAIKU\ */}}
+\DoxyCodeLine{00308\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_JACK\ */}}
+\DoxyCodeLine{00309\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_JACK\_DYNAMIC\ */}}
+\DoxyCodeLine{00310\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_NAS\ */}}
+\DoxyCodeLine{00311\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_NAS\_DYNAMIC\ */}}
+\DoxyCodeLine{00312\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_NETBSD\ */}}
+\DoxyCodeLine{00313\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_OSS\ */}}
+\DoxyCodeLine{00314\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_PAUDIO\ */}}
+\DoxyCodeLine{00315\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_PIPEWIRE\ */}}
+\DoxyCodeLine{00316\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_PIPEWIRE\_DYNAMIC\ */}}
+\DoxyCodeLine{00317\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_PULSEAUDIO\ */}}
+\DoxyCodeLine{00318\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_PULSEAUDIO\_DYNAMIC\ */}}
+\DoxyCodeLine{00319\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_QSA\ */}}
+\DoxyCodeLine{00320\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_SNDIO\ */}}
+\DoxyCodeLine{00321\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_SNDIO\_DYNAMIC\ */}}
+\DoxyCodeLine{00322\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_SUNAUDIO\ */}}
+\DoxyCodeLine{00323\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_WASAPI\ */}}
+\DoxyCodeLine{00324\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_WINMM\ */}}
+\DoxyCodeLine{00325\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_OS2\ */}}
+\DoxyCodeLine{00326\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_VITA\ */}}
+\DoxyCodeLine{00327\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_PSP\ */}}
+\DoxyCodeLine{00328\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_PS2\ */}}
+\DoxyCodeLine{00329\ \textcolor{comment}{/*\ \#undef\ SDL\_AUDIO\_DRIVER\_N3DS\ */}}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ \textcolor{comment}{/*\ Enable\ various\ input\ drivers\ */}}
+\DoxyCodeLine{00332\ \textcolor{comment}{/*\ \#undef\ SDL\_INPUT\_LINUXEV\ */}}
+\DoxyCodeLine{00333\ \textcolor{comment}{/*\ \#undef\ SDL\_INPUT\_LINUXKD\ */}}
+\DoxyCodeLine{00334\ \textcolor{comment}{/*\ \#undef\ SDL\_INPUT\_FBSDKBIO\ */}}
+\DoxyCodeLine{00335\ \textcolor{comment}{/*\ \#undef\ SDL\_INPUT\_WSCONS\ */}}
+\DoxyCodeLine{00336\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_ANDROID\ */}}
+\DoxyCodeLine{00337\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_HAIKU\ */}}
+\DoxyCodeLine{00338\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_WGI\ */}}
+\DoxyCodeLine{00339\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_DINPUT\ */}}
+\DoxyCodeLine{00340\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_XINPUT\ */}}
+\DoxyCodeLine{00341\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_DUMMY\ */}}
+\DoxyCodeLine{00342\ \textcolor{preprocessor}{\#define\ SDL\_JOYSTICK\_IOKIT\ 1}}
+\DoxyCodeLine{00343\ \textcolor{preprocessor}{\#define\ SDL\_JOYSTICK\_MFI\ 1}}
+\DoxyCodeLine{00344\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_LINUX\ */}}
+\DoxyCodeLine{00345\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_OS2\ */}}
+\DoxyCodeLine{00346\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_USBHID\ */}}
+\DoxyCodeLine{00347\ \textcolor{comment}{/*\ \#undef\ SDL\_HAVE\_MACHINE\_JOYSTICK\_H\ */}}
+\DoxyCodeLine{00348\ \textcolor{preprocessor}{\#define\ SDL\_JOYSTICK\_HIDAPI\ 1}}
+\DoxyCodeLine{00349\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_RAWINPUT\ */}}
+\DoxyCodeLine{00350\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_EMSCRIPTEN\ */}}
+\DoxyCodeLine{00351\ \textcolor{preprocessor}{\#define\ SDL\_JOYSTICK\_VIRTUAL\ 1}}
+\DoxyCodeLine{00352\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_VITA\ */}}
+\DoxyCodeLine{00353\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_PSP\ */}}
+\DoxyCodeLine{00354\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_PS2\ */}}
+\DoxyCodeLine{00355\ \textcolor{comment}{/*\ \#undef\ SDL\_JOYSTICK\_N3DS\ */}}
+\DoxyCodeLine{00356\ \textcolor{comment}{/*\ \#undef\ SDL\_HAPTIC\_DUMMY\ */}}
+\DoxyCodeLine{00357\ \textcolor{comment}{/*\ \#undef\ SDL\_HAPTIC\_LINUX\ */}}
+\DoxyCodeLine{00358\ \textcolor{preprocessor}{\#define\ SDL\_HAPTIC\_IOKIT\ 1}}
+\DoxyCodeLine{00359\ \textcolor{comment}{/*\ \#undef\ SDL\_HAPTIC\_DINPUT\ */}}
+\DoxyCodeLine{00360\ \textcolor{comment}{/*\ \#undef\ SDL\_HAPTIC\_XINPUT\ */}}
+\DoxyCodeLine{00361\ \textcolor{comment}{/*\ \#undef\ SDL\_HAPTIC\_ANDROID\ */}}
+\DoxyCodeLine{00362\ \textcolor{comment}{/*\ \#undef\ SDL\_LIBUSB\_DYNAMIC\ */}}
+\DoxyCodeLine{00363\ \textcolor{comment}{/*\ \#undef\ SDL\_UDEV\_DYNAMIC\ */}}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00365\ \textcolor{comment}{/*\ Enable\ various\ sensor\ drivers\ */}}
+\DoxyCodeLine{00366\ \textcolor{comment}{/*\ \#undef\ SDL\_SENSOR\_ANDROID\ */}}
+\DoxyCodeLine{00367\ \textcolor{comment}{/*\ \#undef\ SDL\_SENSOR\_COREMOTION\ */}}
+\DoxyCodeLine{00368\ \textcolor{comment}{/*\ \#undef\ SDL\_SENSOR\_WINDOWS\ */}}
+\DoxyCodeLine{00369\ \textcolor{preprocessor}{\#define\ SDL\_SENSOR\_DUMMY\ 1}}
+\DoxyCodeLine{00370\ \textcolor{comment}{/*\ \#undef\ SDL\_SENSOR\_VITA\ */}}
+\DoxyCodeLine{00371\ \textcolor{comment}{/*\ \#undef\ SDL\_SENSOR\_N3DS\ */}}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00373\ \textcolor{comment}{/*\ Enable\ various\ shared\ object\ loading\ systems\ */}}
+\DoxyCodeLine{00374\ \textcolor{preprocessor}{\#define\ SDL\_LOADSO\_DLOPEN\ 1}}
+\DoxyCodeLine{00375\ \textcolor{comment}{/*\ \#undef\ SDL\_LOADSO\_DUMMY\ */}}
+\DoxyCodeLine{00376\ \textcolor{comment}{/*\ \#undef\ SDL\_LOADSO\_LDG\ */}}
+\DoxyCodeLine{00377\ \textcolor{comment}{/*\ \#undef\ SDL\_LOADSO\_WINDOWS\ */}}
+\DoxyCodeLine{00378\ \textcolor{comment}{/*\ \#undef\ SDL\_LOADSO\_OS2\ */}}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \textcolor{comment}{/*\ Enable\ various\ threading\ systems\ */}}
+\DoxyCodeLine{00381\ \textcolor{comment}{/*\ \#undef\ SDL\_THREAD\_GENERIC\_COND\_SUFFIX\ */}}
+\DoxyCodeLine{00382\ \textcolor{preprocessor}{\#define\ SDL\_THREAD\_PTHREAD\ 1}}
+\DoxyCodeLine{00383\ \textcolor{preprocessor}{\#define\ SDL\_THREAD\_PTHREAD\_RECURSIVE\_MUTEX\ 1}}
+\DoxyCodeLine{00384\ \textcolor{comment}{/*\ \#undef\ SDL\_THREAD\_PTHREAD\_RECURSIVE\_MUTEX\_NP\ */}}
+\DoxyCodeLine{00385\ \textcolor{comment}{/*\ \#undef\ SDL\_THREAD\_WINDOWS\ */}}
+\DoxyCodeLine{00386\ \textcolor{comment}{/*\ \#undef\ SDL\_THREAD\_OS2\ */}}
+\DoxyCodeLine{00387\ \textcolor{comment}{/*\ \#undef\ SDL\_THREAD\_VITA\ */}}
+\DoxyCodeLine{00388\ \textcolor{comment}{/*\ \#undef\ SDL\_THREAD\_PSP\ */}}
+\DoxyCodeLine{00389\ \textcolor{comment}{/*\ \#undef\ SDL\_THREAD\_PS2\ */}}
+\DoxyCodeLine{00390\ \textcolor{comment}{/*\ \#undef\ SDL\_THREAD\_N3DS\ */}}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00392\ \textcolor{comment}{/*\ Enable\ various\ timer\ systems\ */}}
+\DoxyCodeLine{00393\ \textcolor{comment}{/*\ \#undef\ SDL\_TIMER\_HAIKU\ */}}
+\DoxyCodeLine{00394\ \textcolor{comment}{/*\ \#undef\ SDL\_TIMER\_DUMMY\ */}}
+\DoxyCodeLine{00395\ \textcolor{preprocessor}{\#define\ SDL\_TIMER\_UNIX\ 1}}
+\DoxyCodeLine{00396\ \textcolor{comment}{/*\ \#undef\ SDL\_TIMER\_WINDOWS\ */}}
+\DoxyCodeLine{00397\ \textcolor{comment}{/*\ \#undef\ SDL\_TIMER\_OS2\ */}}
+\DoxyCodeLine{00398\ \textcolor{comment}{/*\ \#undef\ SDL\_TIMER\_VITA\ */}}
+\DoxyCodeLine{00399\ \textcolor{comment}{/*\ \#undef\ SDL\_TIMER\_PSP\ */}}
+\DoxyCodeLine{00400\ \textcolor{comment}{/*\ \#undef\ SDL\_TIMER\_PS2\ */}}
+\DoxyCodeLine{00401\ \textcolor{comment}{/*\ \#undef\ SDL\_TIMER\_N3DS\ */}}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \textcolor{comment}{/*\ Enable\ various\ video\ drivers\ */}}
+\DoxyCodeLine{00404\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_ANDROID\ */}}
+\DoxyCodeLine{00405\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_EMSCRIPTEN\ */}}
+\DoxyCodeLine{00406\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_HAIKU\ */}}
+\DoxyCodeLine{00407\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_DRIVER\_COCOA\ 1}}
+\DoxyCodeLine{00408\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_UIKIT\ */}}
+\DoxyCodeLine{00409\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_DIRECTFB\ */}}
+\DoxyCodeLine{00410\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_DIRECTFB\_DYNAMIC\ */}}
+\DoxyCodeLine{00411\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_DRIVER\_DUMMY\ 1}}
+\DoxyCodeLine{00412\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_DRIVER\_OFFSCREEN\ 1}}
+\DoxyCodeLine{00413\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_WINDOWS\ */}}
+\DoxyCodeLine{00414\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_WINRT\ */}}
+\DoxyCodeLine{00415\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_WAYLAND\ */}}
+\DoxyCodeLine{00416\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_RPI\ */}}
+\DoxyCodeLine{00417\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_VIVANTE\ */}}
+\DoxyCodeLine{00418\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_VIVANTE\_VDK\ */}}
+\DoxyCodeLine{00419\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_OS2\ */}}
+\DoxyCodeLine{00420\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_QNX\ */}}
+\DoxyCodeLine{00421\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_RISCOS\ */}}
+\DoxyCodeLine{00422\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_PSP\ */}}
+\DoxyCodeLine{00423\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_PS2\ */}}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00425\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_KMSDRM\ */}}
+\DoxyCodeLine{00426\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_KMSDRM\_DYNAMIC\ */}}
+\DoxyCodeLine{00427\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_KMSDRM\_DYNAMIC\_GBM\ */}}
+\DoxyCodeLine{00428\ }
+\DoxyCodeLine{00429\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_WAYLAND\_QT\_TOUCH\ */}}
+\DoxyCodeLine{00430\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_WAYLAND\_DYNAMIC\ */}}
+\DoxyCodeLine{00431\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_WAYLAND\_DYNAMIC\_EGL\ */}}
+\DoxyCodeLine{00432\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_WAYLAND\_DYNAMIC\_CURSOR\ */}}
+\DoxyCodeLine{00433\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_WAYLAND\_DYNAMIC\_XKBCOMMON\ */}}
+\DoxyCodeLine{00434\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_WAYLAND\_DYNAMIC\_LIBDECOR\ */}}
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00436\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\ */}}
+\DoxyCodeLine{00437\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_DYNAMIC\ */}}
+\DoxyCodeLine{00438\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_DYNAMIC\_XEXT\ */}}
+\DoxyCodeLine{00439\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_DYNAMIC\_XCURSOR\ */}}
+\DoxyCodeLine{00440\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_DYNAMIC\_XINPUT2\ */}}
+\DoxyCodeLine{00441\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_DYNAMIC\_XFIXES\ */}}
+\DoxyCodeLine{00442\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_DYNAMIC\_XRANDR\ */}}
+\DoxyCodeLine{00443\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_DYNAMIC\_XSS\ */}}
+\DoxyCodeLine{00444\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_XCURSOR\ */}}
+\DoxyCodeLine{00445\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_XDBE\ */}}
+\DoxyCodeLine{00446\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_XINPUT2\ */}}
+\DoxyCodeLine{00447\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_XINPUT2\_SUPPORTS\_MULTITOUCH\ */}}
+\DoxyCodeLine{00448\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_XFIXES\ */}}
+\DoxyCodeLine{00449\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_XRANDR\ */}}
+\DoxyCodeLine{00450\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_XSCRNSAVER\ */}}
+\DoxyCodeLine{00451\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_XSHAPE\ */}}
+\DoxyCodeLine{00452\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_SUPPORTS\_GENERIC\_EVENTS\ */}}
+\DoxyCodeLine{00453\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_X11\_HAS\_XKBKEYCODETOKEYSYM\ */}}
+\DoxyCodeLine{00454\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_VITA\ */}}
+\DoxyCodeLine{00455\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_DRIVER\_N3DS\ */}}
+\DoxyCodeLine{00456\ }
+\DoxyCodeLine{00457\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_RENDER\_D3D\ */}}
+\DoxyCodeLine{00458\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_RENDER\_D3D11\ */}}
+\DoxyCodeLine{00459\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_RENDER\_D3D12\ */}}
+\DoxyCodeLine{00460\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_RENDER\_OGL\ 1}}
+\DoxyCodeLine{00461\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_RENDER\_OGL\_ES\ */}}
+\DoxyCodeLine{00462\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_RENDER\_OGL\_ES2\ 1}}
+\DoxyCodeLine{00463\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_RENDER\_DIRECTFB\ */}}
+\DoxyCodeLine{00464\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_RENDER\_METAL\ 1}}
+\DoxyCodeLine{00465\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_RENDER\_VITA\_GXM\ */}}
+\DoxyCodeLine{00466\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_RENDER\_PS2\ */}}
+\DoxyCodeLine{00467\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_RENDER\_PSP\ */}}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00469\ \textcolor{comment}{/*\ Enable\ OpenGL\ support\ */}}
+\DoxyCodeLine{00470\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_OPENGL\ 1}}
+\DoxyCodeLine{00471\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_OPENGL\_ES\ */}}
+\DoxyCodeLine{00472\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_OPENGL\_ES2\ 1}}
+\DoxyCodeLine{00473\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_OPENGL\_BGL\ */}}
+\DoxyCodeLine{00474\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_OPENGL\_CGL\ 1}}
+\DoxyCodeLine{00475\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_OPENGL\_GLX\ */}}
+\DoxyCodeLine{00476\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_OPENGL\_WGL\ */}}
+\DoxyCodeLine{00477\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_OPENGL\_EGL\ 1}}
+\DoxyCodeLine{00478\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_OPENGL\_OSMESA\ */}}
+\DoxyCodeLine{00479\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_OPENGL\_OSMESA\_DYNAMIC\ */}}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00481\ \textcolor{comment}{/*\ Enable\ Vulkan\ support\ */}}
+\DoxyCodeLine{00482\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_VULKAN\ 1}}
+\DoxyCodeLine{00483\ }
+\DoxyCodeLine{00484\ \textcolor{comment}{/*\ Enable\ Metal\ support\ */}}
+\DoxyCodeLine{00485\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_METAL\ 1}}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00487\ \textcolor{comment}{/*\ Enable\ system\ power\ support\ */}}
+\DoxyCodeLine{00488\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_ANDROID\ */}}
+\DoxyCodeLine{00489\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_LINUX\ */}}
+\DoxyCodeLine{00490\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_WINDOWS\ */}}
+\DoxyCodeLine{00491\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_WINRT\ */}}
+\DoxyCodeLine{00492\ \textcolor{preprocessor}{\#define\ SDL\_POWER\_MACOSX\ 1}}
+\DoxyCodeLine{00493\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_UIKIT\ */}}
+\DoxyCodeLine{00494\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_HAIKU\ */}}
+\DoxyCodeLine{00495\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_EMSCRIPTEN\ */}}
+\DoxyCodeLine{00496\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_HARDWIRED\ */}}
+\DoxyCodeLine{00497\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_VITA\ */}}
+\DoxyCodeLine{00498\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_PSP\ */}}
+\DoxyCodeLine{00499\ \textcolor{comment}{/*\ \#undef\ SDL\_POWER\_N3DS\ */}}
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00501\ \textcolor{comment}{/*\ Enable\ system\ filesystem\ support\ */}}
+\DoxyCodeLine{00502\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_ANDROID\ */}}
+\DoxyCodeLine{00503\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_HAIKU\ */}}
+\DoxyCodeLine{00504\ \textcolor{preprocessor}{\#define\ SDL\_FILESYSTEM\_COCOA\ 1}}
+\DoxyCodeLine{00505\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_DUMMY\ */}}
+\DoxyCodeLine{00506\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_RISCOS\ */}}
+\DoxyCodeLine{00507\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_UNIX\ */}}
+\DoxyCodeLine{00508\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_WINDOWS\ */}}
+\DoxyCodeLine{00509\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_EMSCRIPTEN\ */}}
+\DoxyCodeLine{00510\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_OS2\ */}}
+\DoxyCodeLine{00511\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_VITA\ */}}
+\DoxyCodeLine{00512\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_PSP\ */}}
+\DoxyCodeLine{00513\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_PS2\ */}}
+\DoxyCodeLine{00514\ \textcolor{comment}{/*\ \#undef\ SDL\_FILESYSTEM\_N3DS\ */}}
+\DoxyCodeLine{00515\ }
+\DoxyCodeLine{00516\ \textcolor{comment}{/*\ Enable\ misc\ subsystem\ */}}
+\DoxyCodeLine{00517\ \textcolor{comment}{/*\ \#undef\ SDL\_MISC\_DUMMY\ */}}
+\DoxyCodeLine{00518\ }
+\DoxyCodeLine{00519\ \textcolor{comment}{/*\ Enable\ locale\ subsystem\ */}}
+\DoxyCodeLine{00520\ \textcolor{comment}{/*\ \#undef\ SDL\_LOCALE\_DUMMY\ */}}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00522\ \textcolor{comment}{/*\ Enable\ assembly\ routines\ */}}
+\DoxyCodeLine{00523\ \textcolor{comment}{/*\ \#undef\ SDL\_ALTIVEC\_BLITTERS\ */}}
+\DoxyCodeLine{00524\ \textcolor{comment}{/*\ \#undef\ SDL\_ARM\_SIMD\_BLITTERS\ */}}
+\DoxyCodeLine{00525\ \textcolor{comment}{/*\ \#undef\ SDL\_ARM\_NEON\_BLITTERS\ */}}
+\DoxyCodeLine{00526\ }
+\DoxyCodeLine{00527\ \textcolor{comment}{/*\ Whether\ SDL\_DYNAMIC\_API\ needs\ dlopen\ */}}
+\DoxyCodeLine{00528\ \textcolor{preprocessor}{\#define\ DYNAPI\_NEEDS\_DLOPEN\ 1}}
+\DoxyCodeLine{00529\ }
+\DoxyCodeLine{00530\ \textcolor{comment}{/*\ Enable\ dynamic\ libsamplerate\ support\ */}}
+\DoxyCodeLine{00531\ \textcolor{comment}{/*\ \#undef\ SDL\_LIBSAMPLERATE\_DYNAMIC\ */}}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00533\ \textcolor{comment}{/*\ Enable\ ime\ support\ */}}
+\DoxyCodeLine{00534\ \textcolor{comment}{/*\ \#undef\ SDL\_USE\_IME\ */}}
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00536\ \textcolor{comment}{/*\ Platform\ specific\ definitions\ */}}
+\DoxyCodeLine{00537\ \textcolor{comment}{/*\ \#undef\ SDL\_IPHONE\_KEYBOARD\ */}}
+\DoxyCodeLine{00538\ \textcolor{comment}{/*\ \#undef\ SDL\_IPHONE\_LAUNCHSCREEN\ */}}
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00540\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_VITA\_PIB\ */}}
+\DoxyCodeLine{00541\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_VITA\_PVR\ */}}
+\DoxyCodeLine{00542\ \textcolor{comment}{/*\ \#undef\ SDL\_VIDEO\_VITA\_PVR\_OGL\ */}}
+\DoxyCodeLine{00543\ }
+\DoxyCodeLine{00544\ \textcolor{comment}{/*\ \#undef\ SDL\_HAVE\_LIBDECOR\_GET\_MIN\_MAX\ */}}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00546\ \textcolor{preprocessor}{\#if\ !defined(HAVE\_STDINT\_H)\ \&\&\ !defined(\_STDINT\_H\_)}}
+\DoxyCodeLine{00547\ \textcolor{comment}{/*\ Most\ everything\ except\ Visual\ Studio\ 2008\ and\ earlier\ has\ stdint.h\ now\ */}}
+\DoxyCodeLine{00548\ \textcolor{preprocessor}{\#if\ defined(\_MSC\_VER)\ \&\&\ (\_MSC\_VER\ <\ 1600)}}
+\DoxyCodeLine{00549\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \_\_int8\ int8\_t;}
+\DoxyCodeLine{00550\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int8\ uint8\_t;}
+\DoxyCodeLine{00551\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \_\_int16\ int16\_t;}
+\DoxyCodeLine{00552\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int16\ uint16\_t;}
+\DoxyCodeLine{00553\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \_\_int32\ int32\_t;}
+\DoxyCodeLine{00554\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int32\ uint32\_t;}
+\DoxyCodeLine{00555\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \_\_int64\ int64\_t;}
+\DoxyCodeLine{00556\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int64\ uint64\_t;}
+\DoxyCodeLine{00557\ \textcolor{preprocessor}{\#ifndef\ \_UINTPTR\_T\_DEFINED}}
+\DoxyCodeLine{00558\ \textcolor{preprocessor}{\#ifdef\ \ \_WIN64}}
+\DoxyCodeLine{00559\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \_\_int64\ uintptr\_t;}
+\DoxyCodeLine{00560\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00561\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ uintptr\_t;}
+\DoxyCodeLine{00562\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00563\ \textcolor{preprocessor}{\#define\ \_UINTPTR\_T\_DEFINED}}
+\DoxyCodeLine{00564\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00565\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ Visual\ Studio\ 2008\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00566\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !\_STDINT\_H\_\ \&\&\ !HAVE\_STDINT\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00568\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_config\_h\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

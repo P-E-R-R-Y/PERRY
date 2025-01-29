@@ -1,0 +1,127 @@
+\doxysection{Fuzzer\+Mutate.\+h}
+\hypertarget{_fuzzer_mutate_8h_source}{}\label{_fuzzer_mutate_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerMutate.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerMutate.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerMutate.h\ -\/\ Internal\ header\ for\ the\ Fuzzer\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ fuzzer::MutationDispatcher}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_MUTATE\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_MUTATE\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}FuzzerDefs.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}FuzzerDictionary.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}FuzzerRandom.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }MutationDispatcher\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ MutationDispatcher(\mbox{\hyperlink{classfuzzer_1_1_random}{Random}}\ \&Rand,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfuzzer_1_1_fuzzing_options}{FuzzingOptions}}\ \&Options);}
+\DoxyCodeLine{00024\ \ \ \string~MutationDispatcher()\ \{\}}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a6b24d17b1888937f6ea642544b3bfece}{StartMutationSequence}}();}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a44df135b1a9bc2bd967cb1e536c36431}{PrintMutationSequence}}();}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a166dc5df2b854118c2930fc5745dfde7}{RecordSuccessfulMutationSequence}}();}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a9d02ac9dfce1357597e88fa95541043e}{Mutate\_Custom}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a0c1deb224939195fe4d3d6db5c46ce9f}{Mutate\_CustomCrossOver}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a192001bfda5eeccd0609f25b2e9c8a8b}{Mutate\_ShuffleBytes}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_aab7670d22afeac5f79849fb64e5e9c05}{Mutate\_EraseBytes}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a82cdbe976a909974101ef04396209115}{Mutate\_InsertByte}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_aede8047c4c3f726ee4d781ae93e6e826}{Mutate\_InsertRepeatedBytes}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a3edae850d46dd6b8524c2f04b2c0e0b1}{Mutate\_ChangeByte}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_ac45fd827f35fae692dd23aaf676266c7}{Mutate\_ChangeBit}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a45cce402d75c235db82cf896f6159e66}{Mutate\_CopyPart}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a03dfef49f13061609c3fc61710bcfe5a}{Mutate\_AddWordFromManualDictionary}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_ad2e2f3e2d09f0a53864dfc861cd19e0c}{Mutate\_AddWordFromTemporaryAutoDictionary}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a91ff6f09304283c43e593b20e0a9403f}{Mutate\_AddWordFromTORC}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a0dad3669efe9f4c6fad7b7ef5ea5e0cb}{Mutate\_AddWordFromPersistentAutoDictionary}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a3b493d9e50fb40fb1c02428d6209e2c7}{Mutate\_ChangeASCIIInteger}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a6d2a194a767c3aabe3638468c2c0e2f0}{Mutate\_ChangeBinaryInteger}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a110430b28d550cb3fe55cf7df24bf662}{Mutate\_CrossOver}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_afa4f730fc79863d8b145b5ba0dea19f5}{Mutate}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_a8c0a901b3167282ed07de767de9ed01f}{DefaultMutate}}(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classfuzzer_1_1_mutation_dispatcher_ac694b90c95d9f978f22ac4a0fa592366}{CrossOver}}(\textcolor{keyword}{const}\ uint8\_t\ *Data1,\ \textcolor{keywordtype}{size\_t}\ Size1,\ \textcolor{keyword}{const}\ uint8\_t\ *Data2,}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Size2,\ uint8\_t\ *Out,\ \textcolor{keywordtype}{size\_t}\ MaxOutSize);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{void}\ AddWordToManualDictionary(\textcolor{keyword}{const}\ Word\ \&W);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{void}\ AddWordToAutoDictionary(\mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ DE);}
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{void}\ ClearAutoDictionary();}
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{void}\ PrintRecommendedDictionary();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{void}\ SetCorpus(\textcolor{keyword}{const}\ \mbox{\hyperlink{classfuzzer_1_1_input_corpus}{InputCorpus}}\ *Corpus)\ \{\ this-\/>Corpus\ =\ Corpus;\ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \mbox{\hyperlink{classfuzzer_1_1_random}{Random}}\ \&GetRand()\ \{\ \textcolor{keywordflow}{return}\ Rand;\ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfuzzer_1_1_mutation_dispatcher_1_1_mutator}{Mutator}}\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ size\_t\ (MutationDispatcher::*Fn)(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ Max);}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *Name;}
+\DoxyCodeLine{00099\ \ \ \};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{size\_t}\ AddWordFromDictionary(\mbox{\hyperlink{classfuzzer_1_1_dictionary}{Dictionary}}\ \&D,\ uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{size\_t}\ MutateImpl(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize,}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Mutator>\ \&Mutators);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{size\_t}\ InsertPartOf(\textcolor{keyword}{const}\ uint8\_t\ *From,\ \textcolor{keywordtype}{size\_t}\ FromSize,\ uint8\_t\ *To,}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ToSize,\ \textcolor{keywordtype}{size\_t}\ MaxToSize);}
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{size\_t}\ CopyPartOf(\textcolor{keyword}{const}\ uint8\_t\ *From,\ \textcolor{keywordtype}{size\_t}\ FromSize,\ uint8\_t\ *To,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ToSize);}
+\DoxyCodeLine{00110\ \ \ \textcolor{keywordtype}{size\_t}\ ApplyDictionaryEntry(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize,}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ \&DE);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00114\ \ \ \mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ MakeDictionaryEntryFromCMP(T\ Arg1,\ T\ Arg2,}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}});}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \mbox{\hyperlink{classfuzzer_1_1_random}{Random}}\ \&Rand;}
+\DoxyCodeLine{00118\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structfuzzer_1_1_fuzzing_options}{FuzzingOptions}}\ \&Options;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \textcolor{comment}{//\ Dictionary\ provided\ by\ the\ user\ via\ -\/dict=DICT\_FILE.}}
+\DoxyCodeLine{00121\ \ \ \mbox{\hyperlink{classfuzzer_1_1_dictionary}{Dictionary}}\ ManualDictionary;}
+\DoxyCodeLine{00122\ \ \ \textcolor{comment}{//\ Temporary\ dictionary\ modified\ by\ the\ fuzzer\ itself,}}
+\DoxyCodeLine{00123\ \ \ \textcolor{comment}{//\ recreated\ periodically.}}
+\DoxyCodeLine{00124\ \ \ \mbox{\hyperlink{classfuzzer_1_1_dictionary}{Dictionary}}\ TempAutoDictionary;}
+\DoxyCodeLine{00125\ \ \ \textcolor{comment}{//\ Persistent\ dictionary\ modified\ by\ the\ fuzzer,\ consists\ of}}
+\DoxyCodeLine{00126\ \ \ \textcolor{comment}{//\ entries\ that\ led\ to\ successfull\ discoveries\ in\ the\ past\ mutations.}}
+\DoxyCodeLine{00127\ \ \ \mbox{\hyperlink{classfuzzer_1_1_dictionary}{Dictionary}}\ PersistentAutoDictionary;}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ std::vector<Mutator>\ CurrentMutatorSequence;}
+\DoxyCodeLine{00130\ \ \ std::vector<DictionaryEntry\ *>\ CurrentDictionaryEntrySequence;}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ kCmpDictionaryEntriesDequeSize\ =\ 16;}
+\DoxyCodeLine{00133\ \ \ \mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ CmpDictionaryEntriesDeque[kCmpDictionaryEntriesDequeSize];}
+\DoxyCodeLine{00134\ \ \ \textcolor{keywordtype}{size\_t}\ CmpDictionaryEntriesDequeIdx\ =\ 0;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfuzzer_1_1_input_corpus}{InputCorpus}}\ *Corpus\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00137\ \ \ std::vector<uint8\_t>\ MutateInPlaceHere;}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ std::vector<Mutator>\ Mutators;}
+\DoxyCodeLine{00140\ \ \ std::vector<Mutator>\ DefaultMutators;}
+\DoxyCodeLine{00141\ \};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \}\ \ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_MUTATE\_H}}
+
+\end{DoxyCode}

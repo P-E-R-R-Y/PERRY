@@ -1,0 +1,583 @@
+\doxysection{internal.\+h}
+\hypertarget{sdl2__image-src_2external_2libavif_2include_2avif_2internal_8h_source}{}\label{sdl2__image-src_2external_2libavif_2include_2avif_2internal_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/libavif/include/avif/internal.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/libavif/include/avif/internal.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2019\ Joe\ Drago.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ BSD-\/2-\/Clause}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ AVIF\_INTERNAL\_H}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ AVIF\_INTERNAL\_H}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}avif/avif.h"{}}\ \textcolor{comment}{//\ IWYU\ pragma:\ export}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Yes,\ clamp\ macros\ are\ nasty.\ Do\ not\ use\ them.}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ AVIF\_CLAMP(x,\ low,\ high)\ (((x)\ <\ (low))\ ?\ (low)\ :\ (((high)\ <\ (x))\ ?\ (high)\ :\ (x)))}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ AVIF\_MIN(a,\ b)\ (((a)\ <\ (b))\ ?\ (a)\ :\ (b))}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ AVIF\_MAX(a,\ b)\ (((a)\ >\ (b))\ ?\ (a)\ :\ (b))}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Used\ by\ stream\ related\ things.}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ AVIF\_CHECK(A)\ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!(A))\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ AVIF\_FALSE;\ \(\backslash\)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Used\ instead\ of\ CHECK\ if\ needing\ to\ return\ a\ specific\ error\ on\ failure,\ instead\ of\ AVIF\_FALSE}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ AVIF\_CHECKERR(A,\ ERR)\ \(\backslash\)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!(A))\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ ERR;\ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ Forward\ any\ error\ to\ the\ caller\ now\ or\ continue\ execution.}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ AVIF\_CHECKRES(A)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ const\ avifResult\ result\_\_\ =\ (A);\ \(\backslash\)}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (result\_\_\ !=\ AVIF\_RESULT\_OK)\ \ \(\backslash\)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ result\_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ URNs\ and\ Content-\/Types}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ AVIF\_URN\_ALPHA0\ "{}urn:mpeg:mpegB:cicp:systems:auxiliary:alpha"{}}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ AVIF\_URN\_ALPHA1\ "{}urn:mpeg:hevc:2015:auxid:1"{}}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ AVIF\_CONTENT\_TYPE\_XMP\ "{}application/rdf+xml"{}}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ Utils}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{float}\ avifRoundf(\textcolor{keywordtype}{float}\ v);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ H\ (host)\ is\ platform-\/dependent.\ Could\ be\ little-\/\ or\ big-\/endian.}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ N\ (network)\ is\ big-\/endian:\ most-\/\ to\ least-\/significant\ bytes.}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ C\ (custom)\ is\ little-\/endian:\ least-\/\ to\ most-\/significant\ bytes.}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ Never\ read\ N\ or\ C\ values;\ only\ access\ after\ casting\ to\ uint8\_t*.}}
+\DoxyCodeLine{00057\ uint16\_t\ avifHTONS(uint16\_t\ s);}
+\DoxyCodeLine{00058\ uint16\_t\ avifNTOHS(uint16\_t\ s);}
+\DoxyCodeLine{00059\ uint16\_t\ avifCTOHS(uint16\_t\ s);}
+\DoxyCodeLine{00060\ uint32\_t\ avifHTONL(uint32\_t\ l);}
+\DoxyCodeLine{00061\ uint32\_t\ avifNTOHL(uint32\_t\ l);}
+\DoxyCodeLine{00062\ uint32\_t\ avifCTOHL(uint32\_t\ l);}
+\DoxyCodeLine{00063\ uint64\_t\ avifHTON64(uint64\_t\ l);}
+\DoxyCodeLine{00064\ uint64\_t\ avifNTOH64(uint64\_t\ l);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ avifCalcYUVCoefficients(\textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_image}{avifImage}}\ *\ image,\ \textcolor{keywordtype}{float}\ *\ outR,\ \textcolor{keywordtype}{float}\ *\ outG,\ \textcolor{keywordtype}{float}\ *\ outB);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ AVIF\_ARRAY\_DECLARE(TYPENAME,\ ITEMSTYPE,\ ITEMSNAME)\ \(\backslash\)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ \ \ typedef\ struct\ TYPENAME\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ITEMSTYPE\ *\ ITEMSNAME;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ uint32\_t\ elementSize;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ uint32\_t\ count;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ uint32\_t\ capacity;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\ \ \ \ \}\ TYPENAME}}
+\DoxyCodeLine{00076\ avifBool\ avifArrayCreate(\textcolor{keywordtype}{void}\ *\ arrayStruct,\ uint32\_t\ elementSize,\ uint32\_t\ initialCapacity);}
+\DoxyCodeLine{00077\ uint32\_t\ avifArrayPushIndex(\textcolor{keywordtype}{void}\ *\ arrayStruct);}
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ *\ avifArrayPushPtr(\textcolor{keywordtype}{void}\ *\ arrayStruct);}
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ avifArrayPush(\textcolor{keywordtype}{void}\ *\ arrayStruct,\ \textcolor{keywordtype}{void}\ *\ element);}
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ avifArrayPop(\textcolor{keywordtype}{void}\ *\ arrayStruct);}
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{void}\ avifArrayDestroy(\textcolor{keywordtype}{void}\ *\ arrayStruct);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ avifFractionSimplify(\mbox{\hyperlink{structavif_fraction}{avifFraction}}\ *\ f);}
+\DoxyCodeLine{00084\ avifBool\ avifFractionCD(\mbox{\hyperlink{structavif_fraction}{avifFraction}}\ *\ a,\ \mbox{\hyperlink{structavif_fraction}{avifFraction}}\ *\ b);}
+\DoxyCodeLine{00085\ avifBool\ avifFractionAdd(\mbox{\hyperlink{structavif_fraction}{avifFraction}}\ a,\ \mbox{\hyperlink{structavif_fraction}{avifFraction}}\ b,\ \mbox{\hyperlink{structavif_fraction}{avifFraction}}\ *\ result);}
+\DoxyCodeLine{00086\ avifBool\ avifFractionSub(\mbox{\hyperlink{structavif_fraction}{avifFraction}}\ a,\ \mbox{\hyperlink{structavif_fraction}{avifFraction}}\ b,\ \mbox{\hyperlink{structavif_fraction}{avifFraction}}\ *\ result);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{void}\ avifImageSetDefaults(\mbox{\hyperlink{structavif_image}{avifImage}}\ *\ image);}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ Copies\ all\ fields\ that\ do\ not\ need\ to\ be\ freed/allocated\ from\ srcImage\ to\ dstImage.}}
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{void}\ avifImageCopyNoAlloc(\mbox{\hyperlink{structavif_image}{avifImage}}\ *\ dstImage,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_image}{avifImage}}\ *\ srcImage);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ Copies\ the\ samples\ from\ srcImage\ to\ dstImage.\ dstImage\ must\ be\ allocated.}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ srcImage\ and\ dstImage\ must\ have\ the\ same\ width,\ height,\ and\ depth.}}
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ If\ the\ AVIF\_PLANES\_YUV\ bit\ is\ set\ in\ planes,\ then\ srcImage\ and\ dstImage\ must\ have\ the\ same\ yuvFormat\ and\ yuvRange.}}
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ avifImageCopySamples(\mbox{\hyperlink{structavif_image}{avifImage}}\ *\ dstImage,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_image}{avifImage}}\ *\ srcImage,\ avifPlanesFlags\ planes);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_alpha_params}{avifAlphaParams}}}
+\DoxyCodeLine{00098\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ uint32\_t\ width;}
+\DoxyCodeLine{00100\ \ \ \ \ uint32\_t\ height;}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ uint32\_t\ srcDepth;}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *\ srcPlane;}
+\DoxyCodeLine{00104\ \ \ \ \ uint32\_t\ srcRowBytes;}
+\DoxyCodeLine{00105\ \ \ \ \ uint32\_t\ srcOffsetBytes;}
+\DoxyCodeLine{00106\ \ \ \ \ uint32\_t\ srcPixelBytes;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ uint32\_t\ dstDepth;}
+\DoxyCodeLine{00109\ \ \ \ \ uint8\_t\ *\ dstPlane;}
+\DoxyCodeLine{00110\ \ \ \ \ uint32\_t\ dstRowBytes;}
+\DoxyCodeLine{00111\ \ \ \ \ uint32\_t\ dstOffsetBytes;}
+\DoxyCodeLine{00112\ \ \ \ \ uint32\_t\ dstPixelBytes;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \}\ \mbox{\hyperlink{structavif_alpha_params}{avifAlphaParams}};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ avifBool\ avifFillAlpha(\textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_alpha_params}{avifAlphaParams}}\ *\ params);}
+\DoxyCodeLine{00117\ avifBool\ avifReformatAlpha(\textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_alpha_params}{avifAlphaParams}}\ *\ params);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ avifReformatMode}
+\DoxyCodeLine{00120\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ AVIF\_REFORMAT\_MODE\_YUV\_COEFFICIENTS\ =\ 0,\ \textcolor{comment}{//\ Normal\ YUV\ conversion\ using\ coefficients}}
+\DoxyCodeLine{00122\ \ \ \ \ AVIF\_REFORMAT\_MODE\_IDENTITY,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pack\ GBR\ directly\ into\ YUV\ planes\ (AVIF\_MATRIX\_COEFFICIENTS\_IDENTITY)}}
+\DoxyCodeLine{00123\ \ \ \ \ AVIF\_REFORMAT\_MODE\_YCGCO,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ YUV\ conversion\ using\ AVIF\_MATRIX\_COEFFICIENTS\_YCGCO}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#if\ defined(AVIF\_ENABLE\_EXPERIMENTAL\_YCGCO\_R)}}
+\DoxyCodeLine{00125\ \ \ \ \ AVIF\_REFORMAT\_MODE\_YCGCO\_RE,\ \textcolor{comment}{//\ YUV\ conversion\ using\ AVIF\_MATRIX\_COEFFICIENTS\_YCGCO\_RE}}
+\DoxyCodeLine{00126\ \ \ \ \ AVIF\_REFORMAT\_MODE\_YCGCO\_RO,\ \textcolor{comment}{//\ YUV\ conversion\ using\ AVIF\_MATRIX\_COEFFICIENTS\_YCGCO\_RO}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00128\ \}\ avifReformatMode;}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ avifAlphaMultiplyMode}
+\DoxyCodeLine{00131\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ AVIF\_ALPHA\_MULTIPLY\_MODE\_NO\_OP\ =\ 0,}
+\DoxyCodeLine{00133\ \ \ \ \ AVIF\_ALPHA\_MULTIPLY\_MODE\_MULTIPLY,}
+\DoxyCodeLine{00134\ \ \ \ \ AVIF\_ALPHA\_MULTIPLY\_MODE\_UNMULTIPLY}
+\DoxyCodeLine{00135\ \}\ avifAlphaMultiplyMode;}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_reformat_state}{avifReformatState}}}
+\DoxyCodeLine{00138\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ YUV\ coefficients}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{float}\ kr;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{float}\ kg;}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{float}\ kb;}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ uint32\_t\ yuvChannelBytes;}
+\DoxyCodeLine{00145\ \ \ \ \ uint32\_t\ rgbChannelBytes;}
+\DoxyCodeLine{00146\ \ \ \ \ uint32\_t\ rgbPixelBytes;}
+\DoxyCodeLine{00147\ \ \ \ \ uint32\_t\ rgbOffsetBytesR;}
+\DoxyCodeLine{00148\ \ \ \ \ uint32\_t\ rgbOffsetBytesG;}
+\DoxyCodeLine{00149\ \ \ \ \ uint32\_t\ rgbOffsetBytesB;}
+\DoxyCodeLine{00150\ \ \ \ \ uint32\_t\ rgbOffsetBytesA;}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ uint32\_t\ yuvDepth;}
+\DoxyCodeLine{00153\ \ \ \ \ avifRange\ yuvRange;}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{int}\ yuvMaxChannel;}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{int}\ rgbMaxChannel;}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{float}\ rgbMaxChannelF;}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{float}\ biasY;\ \ \ \textcolor{comment}{//\ minimum\ Y\ value}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{float}\ biasUV;\ \ \textcolor{comment}{//\ the\ value\ of\ 0.5\ for\ the\ appropriate\ bit\ depth\ [128,\ 512,\ 2048]}}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{float}\ rangeY;\ \ \textcolor{comment}{//\ difference\ between\ max\ and\ min\ Y}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{float}\ rangeUV;\ \textcolor{comment}{//\ difference\ between\ max\ and\ min\ UV}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{structavif_pixel_format_info}{avifPixelFormatInfo}}\ formatInfo;}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ avifReformatMode\ mode;}
+\DoxyCodeLine{00165\ \}\ \mbox{\hyperlink{structavif_reformat_state}{avifReformatState}};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{comment}{//\ Returns:}}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ Converted\ successfully\ with\ libyuv}}
+\DoxyCodeLine{00169\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_NOT\_IMPLEMENTED\ -\/\ The\ fast\ path\ for\ this\ combination\ is\ not\ implemented\ with\ libyuv,\ use\ built-\/in\ RGB\ conversion}}
+\DoxyCodeLine{00170\ \textcolor{comment}{//\ *\ [any\ other\ error]\ \ \ \ \ \ \ \ \ \ \ -\/\ Return\ error\ to\ caller}}
+\DoxyCodeLine{00171\ avifResult\ avifImageRGBToYUVLibYUV(\mbox{\hyperlink{structavif_image}{avifImage}}\ *\ image,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_r_g_b_image}{avifRGBImage}}\ *\ rgb);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{comment}{//\ Parameters:}}
+\DoxyCodeLine{00174\ \textcolor{comment}{//\ *\ image\ -\/\ input\ YUV\ image}}
+\DoxyCodeLine{00175\ \textcolor{comment}{//\ *\ rgb\ -\/\ output\ RGB\ image}}
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ *\ reformatAlpha\ -\/\ if\ set\ to\ AVIF\_TRUE,\ the\ function\ will\ attempt\ to\ copy\ the\ alpha\ channel\ to\ the\ output\ RGB\ image\ using}}
+\DoxyCodeLine{00177\ \textcolor{comment}{//\ libyuv.}}
+\DoxyCodeLine{00178\ \textcolor{comment}{//\ *\ alphaReformattedWithLibYUV\ -\/\ Output\ parameter.\ If\ reformatAlpha\ is\ set\ to\ true\ and\ libyuv\ was\ able\ to\ copy\ over\ the\ alpha}}
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ channel,\ then\ this\ will\ be\ set\ to\ AVIF\_TRUE.\ Otherwise,\ this\ will\ be\ set\ to\ AVIF\_FALSE.\ The\ value\ in\ this\ parameter\ is\ valid}}
+\DoxyCodeLine{00180\ \textcolor{comment}{//\ only\ if\ the\ return\ value\ of\ the\ function\ is\ AVIF\_RESULT\_OK\ or\ AVIF\_RESULT\_NOT\_IMPLEMENTED.}}
+\DoxyCodeLine{00181\ \textcolor{comment}{//\ Returns:}}
+\DoxyCodeLine{00182\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ Converted\ successfully\ with\ libyuv}}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_NOT\_IMPLEMENTED\ -\/\ The\ fast\ path\ for\ this\ combination\ is\ not\ implemented\ with\ libyuv,\ use\ built-\/in\ YUV\ conversion}}
+\DoxyCodeLine{00184\ \textcolor{comment}{//\ *\ [any\ other\ error]\ \ \ \ \ \ \ \ \ \ \ -\/\ Return\ error\ to\ caller}}
+\DoxyCodeLine{00185\ avifResult\ avifImageYUVToRGBLibYUV(\textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_image}{avifImage}}\ *\ image,\ \mbox{\hyperlink{structavif_r_g_b_image}{avifRGBImage}}\ *\ rgb,\ avifBool\ reformatAlpha,\ avifBool\ *\ alphaReformattedWithLibYUV);}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{comment}{//\ Returns:}}
+\DoxyCodeLine{00188\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ Converted\ successfully\ with\ libsharpyuv}}
+\DoxyCodeLine{00189\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_NOT\_IMPLEMENTED\ -\/\ libsharpyuv\ is\ not\ compiled\ in,\ or\ doesn't\ support\ this\ type\ of\ input}}
+\DoxyCodeLine{00190\ \textcolor{comment}{//\ *\ [any\ other\ error]\ \ \ \ \ \ \ \ \ \ \ -\/\ Return\ error\ to\ caller}}
+\DoxyCodeLine{00191\ avifResult\ avifImageRGBToYUVLibSharpYUV(\mbox{\hyperlink{structavif_image}{avifImage}}\ *\ image,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_r_g_b_image}{avifRGBImage}}\ *\ rgb,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_reformat_state}{avifReformatState}}\ *\ \mbox{\hyperlink{structstate}{state}});}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \textcolor{comment}{//\ Returns:}}
+\DoxyCodeLine{00194\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ Converted\ successfully\ with\ libyuv.}}
+\DoxyCodeLine{00195\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_NOT\_IMPLEMENTED\ \ -\/\ The\ fast\ path\ for\ this\ conversion\ is\ not\ implemented\ with\ libyuv,\ use\ built-\/in\ conversion.}}
+\DoxyCodeLine{00196\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_INVALID\_ARGUMENT\ -\/\ Return\ error\ to\ caller.}}
+\DoxyCodeLine{00197\ avifResult\ avifRGBImageToF16LibYUV(\mbox{\hyperlink{structavif_r_g_b_image}{avifRGBImage}}\ *\ rgb);}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \textcolor{comment}{//\ Returns:}}
+\DoxyCodeLine{00200\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ (Un)Premultiply\ successfully\ with\ libyuv}}
+\DoxyCodeLine{00201\ \textcolor{comment}{//\ *\ AVIF\_RESULT\_NOT\_IMPLEMENTED\ -\/\ The\ fast\ path\ for\ this\ combination\ is\ not\ implemented\ with\ libyuv,\ use\ built-\/in\ (Un)Premultiply}}
+\DoxyCodeLine{00202\ \textcolor{comment}{//\ *\ [any\ other\ error]\ \ \ \ \ \ \ \ \ \ \ -\/\ Return\ error\ to\ caller}}
+\DoxyCodeLine{00203\ avifResult\ avifRGBImagePremultiplyAlphaLibYUV(\mbox{\hyperlink{structavif_r_g_b_image}{avifRGBImage}}\ *\ rgb);}
+\DoxyCodeLine{00204\ avifResult\ avifRGBImageUnpremultiplyAlphaLibYUV(\mbox{\hyperlink{structavif_r_g_b_image}{avifRGBImage}}\ *\ rgb);}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ avifBool\ avifDimensionsTooLarge(uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ imageSizeLimit,\ uint32\_t\ imageDimensionLimit);}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \textcolor{comment}{//\ Given\ the\ number\ of\ encoding\ threads\ or\ decoding\ threads\ available\ and\ the\ image\ dimensions,}}
+\DoxyCodeLine{00209\ \textcolor{comment}{//\ chooses\ suitable\ values\ of\ *tileRowsLog2\ and\ *tileColsLog2.}}
+\DoxyCodeLine{00210\ \textcolor{comment}{//}}
+\DoxyCodeLine{00211\ \textcolor{comment}{//\ Note:\ Although\ avifSetTileConfiguration()\ is\ only\ used\ in\ src/write.c\ and\ could\ be\ a\ static}}
+\DoxyCodeLine{00212\ \textcolor{comment}{//\ function\ in\ that\ file,\ it\ is\ defined\ as\ an\ internal\ global\ function\ so\ that\ it\ can\ be\ tested\ by}}
+\DoxyCodeLine{00213\ \textcolor{comment}{//\ unit\ tests.}}
+\DoxyCodeLine{00214\ \textcolor{keywordtype}{void}\ avifSetTileConfiguration(\textcolor{keywordtype}{int}\ threads,\ uint32\_t\ width,\ uint32\_t\ height,\ \textcolor{keywordtype}{int}\ *\ tileRowsLog2,\ \textcolor{keywordtype}{int}\ *\ tileColsLog2);}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00217\ \textcolor{comment}{//\ Scaling}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{comment}{//\ This\ scales\ the\ YUV/A\ planes\ in-\/place.}}
+\DoxyCodeLine{00220\ avifBool\ avifImageScale(\mbox{\hyperlink{structavif_image}{avifImage}}\ *\ image,}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ dstWidth,}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ dstHeight,}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ imageSizeLimit,}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ imageDimensionLimit,}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structavif_diagnostics}{avifDiagnostics}}\ *\ diag);}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00228\ \textcolor{comment}{//\ AVIF\ item\ type}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ avifItemCategory}
+\DoxyCodeLine{00231\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ AVIF\_ITEM\_COLOR\ =\ 0,}
+\DoxyCodeLine{00233\ \ \ \ \ AVIF\_ITEM\_ALPHA\ =\ 1}
+\DoxyCodeLine{00234\ \}\ avifItemCategory;}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00237\ \textcolor{comment}{//\ Grid\ AVIF\ images}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \textcolor{comment}{//\ Returns\ false\ if\ the\ tiles\ in\ a\ grid\ image\ violate\ any\ standards.}}
+\DoxyCodeLine{00240\ \textcolor{comment}{//\ The\ image\ contains\ imageW*imageH\ pixels.\ The\ tiles\ are\ of\ tileW*tileH\ pixels\ each.}}
+\DoxyCodeLine{00241\ avifBool\ avifAreGridDimensionsValid(avifPixelFormat\ yuvFormat,\ uint32\_t\ imageW,\ uint32\_t\ imageH,\ uint32\_t\ tileW,\ uint32\_t\ tileH,\ \mbox{\hyperlink{structavif_diagnostics}{avifDiagnostics}}\ *\ diag);}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00244\ \textcolor{comment}{//\ Metadata}}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \textcolor{comment}{//\ Attempts\ to\ parse\ the\ image-\/>exif\ payload\ for\ Exif\ orientation\ and\ sets\ image-\/>transformFlags,\ image-\/>irot\ and}}
+\DoxyCodeLine{00247\ \textcolor{comment}{//\ image-\/>imir\ on\ success.\ Returns\ AVIF\_RESULT\_INVALID\_EXIF\_PAYLOAD\ on\ failure.}}
+\DoxyCodeLine{00248\ avifResult\ avifImageExtractExifOrientationToIrotImir(\mbox{\hyperlink{structavif_image}{avifImage}}\ *\ image);}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00251\ \textcolor{comment}{//\ avifCodecDecodeInput}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \textcolor{comment}{//\ Legal\ spatial\_id\ values\ are\ [0,1,2,3],\ so\ this\ serves\ as\ a\ sentinel\ value\ for\ "{}do\ not\ filter\ by\ spatial\_id"{}}}
+\DoxyCodeLine{00254\ \textcolor{preprocessor}{\#define\ AVIF\_SPATIAL\_ID\_UNSET\ 0xff}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_decode_sample}{avifDecodeSample}}}
+\DoxyCodeLine{00257\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \mbox{\hyperlink{structavif_r_o_data}{avifROData}}\ data;}
+\DoxyCodeLine{00259\ \ \ \ \ avifBool\ ownsData;}
+\DoxyCodeLine{00260\ \ \ \ \ avifBool\ partialData;\ \textcolor{comment}{//\ if\ true,\ data\ exists\ but\ doesn't\ have\ all\ of\ the\ sample\ in\ it}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ uint32\_t\ itemID;\ \ \ \textcolor{comment}{//\ if\ non-\/zero,\ data\ comes\ from\ a\ mergedExtents\ buffer\ in\ an\ avifDecoderItem,\ not\ a\ file\ offset}}
+\DoxyCodeLine{00263\ \ \ \ \ uint64\_t\ offset;\ \ \ \textcolor{comment}{//\ additional\ offset\ into\ data.\ Can\ be\ used\ to\ offset\ into\ an\ itemID's\ payload\ as\ well.}}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size;\ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00265\ \ \ \ \ uint8\_t\ spatialID;\ \textcolor{comment}{//\ If\ set\ to\ a\ value\ other\ than\ AVIF\_SPATIAL\_ID\_UNSET,\ output\ frames\ from\ this\ sample\ should\ be}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skipped\ until\ the\ output\ frame's\ spatial\_id\ matches\ this\ ID.}}
+\DoxyCodeLine{00267\ \ \ \ \ avifBool\ sync;\ \ \ \ \ \textcolor{comment}{//\ is\ sync\ sample\ (keyframe)}}
+\DoxyCodeLine{00268\ \}\ \mbox{\hyperlink{structavif_decode_sample}{avifDecodeSample}};}
+\DoxyCodeLine{00269\ AVIF\_ARRAY\_DECLARE(avifDecodeSampleArray,\ \mbox{\hyperlink{structavif_decode_sample}{avifDecodeSample}},\ \mbox{\hyperlink{structsample}{sample}});}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec_decode_input}{avifCodecDecodeInput}}}
+\DoxyCodeLine{00272\ \{}
+\DoxyCodeLine{00273\ \ \ \ \ avifDecodeSampleArray\ samples;}
+\DoxyCodeLine{00274\ \ \ \ \ avifBool\ allLayers;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ true,\ the\ underlying\ codec\ must\ decode\ all\ layers,\ not\ just\ the\ best\ layer}}
+\DoxyCodeLine{00275\ \ \ \ \ avifItemCategory\ itemCategory;\ \textcolor{comment}{//\ category\ of\ item\ being\ decoded}}
+\DoxyCodeLine{00276\ \}\ \mbox{\hyperlink{structavif_codec_decode_input}{avifCodecDecodeInput}};}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \mbox{\hyperlink{structavif_codec_decode_input}{avifCodecDecodeInput}}\ *\ avifCodecDecodeInputCreate(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00279\ \textcolor{keywordtype}{void}\ avifCodecDecodeInputDestroy(\mbox{\hyperlink{structavif_codec_decode_input}{avifCodecDecodeInput}}\ *\ decodeInput);}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00282\ \textcolor{comment}{//\ avifCodecEncodeOutput}}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_encode_sample}{avifEncodeSample}}}
+\DoxyCodeLine{00285\ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \mbox{\hyperlink{structavif_r_w_data}{avifRWData}}\ data;}
+\DoxyCodeLine{00287\ \ \ \ \ avifBool\ sync;\ \textcolor{comment}{//\ is\ sync\ sample\ (keyframe)}}
+\DoxyCodeLine{00288\ \}\ \mbox{\hyperlink{structavif_encode_sample}{avifEncodeSample}};}
+\DoxyCodeLine{00289\ AVIF\_ARRAY\_DECLARE(avifEncodeSampleArray,\ \mbox{\hyperlink{structavif_encode_sample}{avifEncodeSample}},\ \mbox{\hyperlink{structsample}{sample}});}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec_encode_output}{avifCodecEncodeOutput}}}
+\DoxyCodeLine{00292\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ avifEncodeSampleArray\ samples;}
+\DoxyCodeLine{00294\ \}\ \mbox{\hyperlink{structavif_codec_encode_output}{avifCodecEncodeOutput}};}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \mbox{\hyperlink{structavif_codec_encode_output}{avifCodecEncodeOutput}}\ *\ avifCodecEncodeOutputCreate(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00297\ avifResult\ avifCodecEncodeOutputAddSample(\mbox{\hyperlink{structavif_codec_encode_output}{avifCodecEncodeOutput}}\ *\ encodeOutput,\ \textcolor{keyword}{const}\ uint8\_t\ *\ data,\ \textcolor{keywordtype}{size\_t}\ len,\ avifBool\ sync);}
+\DoxyCodeLine{00298\ \textcolor{keywordtype}{void}\ avifCodecEncodeOutputDestroy(\mbox{\hyperlink{structavif_codec_encode_output}{avifCodecEncodeOutput}}\ *\ encodeOutput);}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00301\ \textcolor{comment}{//\ avifCodecSpecificOptions\ (key/value\ string\ pairs\ for\ advanced\ tuning)}}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec_specific_option}{avifCodecSpecificOption}}}
+\DoxyCodeLine{00304\ \{}
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordtype}{char}\ *\ key;\ \ \ \textcolor{comment}{//\ Must\ be\ a\ simple\ lowercase\ alphanumeric\ string}}
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keywordtype}{char}\ *\ value;\ \textcolor{comment}{//\ Free-\/form\ string\ to\ be\ interpreted\ by\ the\ codec}}
+\DoxyCodeLine{00307\ \}\ \mbox{\hyperlink{structavif_codec_specific_option}{avifCodecSpecificOption}};}
+\DoxyCodeLine{00308\ AVIF\_ARRAY\_DECLARE(\mbox{\hyperlink{structavif_codec_specific_options}{avifCodecSpecificOptions}},\ \mbox{\hyperlink{structavif_codec_specific_option}{avifCodecSpecificOption}},\ entries);}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00310\ \textcolor{comment}{//\ Returns\ NULL\ if\ a\ memory\ allocation\ failed.}}
+\DoxyCodeLine{00311\ \mbox{\hyperlink{structavif_codec_specific_options}{avifCodecSpecificOptions}}\ *\ avifCodecSpecificOptionsCreate(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00312\ \textcolor{keywordtype}{void}\ avifCodecSpecificOptionsClear(\mbox{\hyperlink{structavif_codec_specific_options}{avifCodecSpecificOptions}}\ *\ csOptions);}
+\DoxyCodeLine{00313\ \textcolor{keywordtype}{void}\ avifCodecSpecificOptionsDestroy(\mbox{\hyperlink{structavif_codec_specific_options}{avifCodecSpecificOptions}}\ *\ csOptions);}
+\DoxyCodeLine{00314\ avifResult\ avifCodecSpecificOptionsSet(\mbox{\hyperlink{structavif_codec_specific_options}{avifCodecSpecificOptions}}\ *\ csOptions,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ key,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ value);\ \textcolor{comment}{//\ if(value==NULL),\ key\ is\ deleted}}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00317\ \textcolor{comment}{//\ avifCodecType\ (underlying\ video\ format)}}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ \textcolor{comment}{//\ Alliance\ for\ Open\ Media\ video\ formats\ that\ can\ be\ used\ in\ the\ AVIF\ image\ format.}}
+\DoxyCodeLine{00320\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ avifCodecType}
+\DoxyCodeLine{00321\ \{}
+\DoxyCodeLine{00322\ \ \ \ \ AVIF\_CODEC\_TYPE\_UNKNOWN,}
+\DoxyCodeLine{00323\ \ \ \ \ AVIF\_CODEC\_TYPE\_AV1,}
+\DoxyCodeLine{00324\ \textcolor{preprocessor}{\#if\ defined(AVIF\_CODEC\_AVM)}}
+\DoxyCodeLine{00325\ \ \ \ \ AVIF\_CODEC\_TYPE\_AV2,\ \textcolor{comment}{//\ Experimental.}}
+\DoxyCodeLine{00326\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00327\ \}\ avifCodecType;}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \textcolor{comment}{//\ Returns\ AVIF\_CODEC\_TYPE\_UNKNOWN\ unless\ the\ chosen\ codec\ is\ available\ with\ the\ requiredFlags.}}
+\DoxyCodeLine{00330\ avifCodecType\ avifCodecTypeFromChoice(avifCodecChoice\ choice,\ avifCodecFlags\ requiredFlags);}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00333\ \textcolor{comment}{//\ avifCodec\ (abstraction\ layer\ to\ use\ different\ codec\ implementations)}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec}{avifCodec}};}
+\DoxyCodeLine{00336\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec_internal}{avifCodecInternal}};}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ avifEncoderChange}
+\DoxyCodeLine{00339\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_MIN\_QUANTIZER\ =\ (1u\ <<\ 0),}
+\DoxyCodeLine{00341\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_MAX\_QUANTIZER\ =\ (1u\ <<\ 1),}
+\DoxyCodeLine{00342\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_MIN\_QUANTIZER\_ALPHA\ =\ (1u\ <<\ 2),}
+\DoxyCodeLine{00343\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_MAX\_QUANTIZER\_ALPHA\ =\ (1u\ <<\ 3),}
+\DoxyCodeLine{00344\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_TILE\_ROWS\_LOG2\ =\ (1u\ <<\ 4),}
+\DoxyCodeLine{00345\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_TILE\_COLS\_LOG2\ =\ (1u\ <<\ 5),}
+\DoxyCodeLine{00346\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_QUANTIZER\ =\ (1u\ <<\ 6),}
+\DoxyCodeLine{00347\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_QUANTIZER\_ALPHA\ =\ (1u\ <<\ 7),}
+\DoxyCodeLine{00348\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_SCALING\_MODE\ =\ (1u\ <<\ 8),}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \ \ \ \ AVIF\_ENCODER\_CHANGE\_CODEC\_SPECIFIC\ =\ (1u\ <<\ 31)}
+\DoxyCodeLine{00351\ \}\ avifEncoderChange;}
+\DoxyCodeLine{00352\ \textcolor{keyword}{typedef}\ uint32\_t\ avifEncoderChanges;}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ \textcolor{keyword}{typedef}\ avifBool\ (*avifCodecGetNextImageFunc)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ codec,}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_decoder}{avifDecoder}}\ *\ decoder,}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_decode_sample}{avifDecodeSample}}\ *\ \mbox{\hyperlink{structsample}{sample}},}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avifBool\ alpha,}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avifBool\ *\ isLimitedRangeAlpha,}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structavif_image}{avifImage}}\ *\ image);}
+\DoxyCodeLine{00360\ \textcolor{comment}{//\ EncodeImage\ and\ EncodeFinish\ are\ not\ required\ to\ always\ emit\ a\ sample,\ but\ when\ all\ images\ are}}
+\DoxyCodeLine{00361\ \textcolor{comment}{//\ encoded\ and\ EncodeFinish\ is\ called,\ the\ number\ of\ samples\ emitted\ must\ match\ the\ number\ of\ submitted\ frames.}}
+\DoxyCodeLine{00362\ \textcolor{comment}{//\ avifCodecEncodeImageFunc\ may\ return\ AVIF\_RESULT\_UNKNOWN\_ERROR\ to\ automatically\ emit\ the\ appropriate}}
+\DoxyCodeLine{00363\ \textcolor{comment}{//\ AVIF\_RESULT\_ENCODE\_COLOR\_FAILED\ or\ AVIF\_RESULT\_ENCODE\_ALPHA\_FAILED\ depending\ on\ the\ alpha\ argument.}}
+\DoxyCodeLine{00364\ \textcolor{comment}{//\ avifCodecEncodeImageFunc\ should\ use\ tileRowsLog2\ and\ tileColsLog2\ instead\ of}}
+\DoxyCodeLine{00365\ \textcolor{comment}{//\ encoder-\/>tileRowsLog2,\ encoder-\/>tileColsLog2,\ and\ encoder-\/>autoTiling.\ The\ caller\ of}}
+\DoxyCodeLine{00366\ \textcolor{comment}{//\ avifCodecEncodeImageFunc\ is\ responsible\ for\ automatic\ tiling\ if\ encoder-\/>autoTiling\ is\ set\ to}}
+\DoxyCodeLine{00367\ \textcolor{comment}{//\ AVIF\_TRUE.\ The\ actual\ tiling\ values\ are\ passed\ to\ avifCodecEncodeImageFunc\ as\ parameters.}}
+\DoxyCodeLine{00368\ \textcolor{comment}{//\ Similarly,\ avifCodecEncodeImageFunc\ should\ use\ the\ quantizer\ parameter\ instead\ of}}
+\DoxyCodeLine{00369\ \textcolor{comment}{//\ encoder-\/>quality\ and\ encoder-\/>qualityAlpha.\ If\ disableLaggedOutput\ is\ AVIF\_TRUE,\ then\ the\ encoder\ will\ emit\ the\ output\ frame}}
+\DoxyCodeLine{00370\ \textcolor{comment}{//\ without\ any\ lag\ (if\ supported).\ Note\ that\ disableLaggedOutput\ is\ only\ used\ by\ the\ first\ call\ to\ this\ function\ (which}}
+\DoxyCodeLine{00371\ \textcolor{comment}{//\ initializes\ the\ encoder)\ and\ is\ ignored\ by\ the\ subsequent\ calls.}}
+\DoxyCodeLine{00372\ \textcolor{comment}{//}}
+\DoxyCodeLine{00373\ \textcolor{comment}{//\ Note:\ The\ caller\ of\ avifCodecEncodeImageFunc\ always\ passes\ encoder-\/>data-\/>tileRowsLog2\ and}}
+\DoxyCodeLine{00374\ \textcolor{comment}{//\ encoder-\/>data-\/>tileColsLog2\ as\ the\ tileRowsLog2\ and\ tileColsLog2\ arguments.\ Because}}
+\DoxyCodeLine{00375\ \textcolor{comment}{//\ encoder-\/>data\ is\ of\ a\ struct\ type\ defined\ in\ src/write.c,\ avifCodecEncodeImageFunc\ cannot}}
+\DoxyCodeLine{00376\ \textcolor{comment}{//\ dereference\ encoder-\/>data\ and\ has\ to\ receive\ encoder-\/>data-\/>tileRowsLog2\ and}}
+\DoxyCodeLine{00377\ \textcolor{comment}{//\ encoder-\/>data-\/>tileColsLog2\ via\ function\ parameters.}}
+\DoxyCodeLine{00378\ \textcolor{keyword}{typedef}\ avifResult\ (*avifCodecEncodeImageFunc)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ codec,}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structavif_encoder}{avifEncoder}}\ *\ encoder,}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_image}{avifImage}}\ *\ image,}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avifBool\ alpha,}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tileRowsLog2,}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ tileColsLog2,}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ quantizer,}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avifEncoderChanges\ encoderChanges,}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avifBool\ disableLaggedOutput,}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ avifAddImageFlags\ addImageFlags,}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structavif_codec_encode_output}{avifCodecEncodeOutput}}\ *\ output);}
+\DoxyCodeLine{00389\ \textcolor{keyword}{typedef}\ avifBool\ (*avifCodecEncodeFinishFunc)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ codec,\ \mbox{\hyperlink{structavif_codec_encode_output}{avifCodecEncodeOutput}}\ *\ output);}
+\DoxyCodeLine{00390\ \textcolor{keyword}{typedef}\ void\ (*avifCodecDestroyInternalFunc)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ codec);}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00392\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec}{avifCodec}}}
+\DoxyCodeLine{00393\ \{}
+\DoxyCodeLine{00394\ \ \ \ \ \mbox{\hyperlink{structavif_codec_specific_options}{avifCodecSpecificOptions}}\ *\ csOptions;\ \textcolor{comment}{//\ Contains\ codec-\/specific\ key/value\ pairs\ for\ advanced\ tuning.}}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ a\ codec\ uses\ a\ value,\ it\ must\ mark\ it\ as\ used.}}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ array\ is\ NOT\ owned\ by\ avifCodec.}}
+\DoxyCodeLine{00397\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec_internal}{avifCodecInternal}}\ *\ internal;\ \ \textcolor{comment}{//\ up\ to\ each\ codec\ to\ use\ how\ it\ wants}}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00399\ \ \ \ \ \mbox{\hyperlink{structavif_diagnostics}{avifDiagnostics}}\ *\ diag;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Shallow\ copy;\ owned\ by\ avifEncoder\ or\ avifDecoder}}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00401\ \ \ \ \ uint8\_t\ operatingPoint;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Operating\ point,\ defaults\ to\ 0.}}
+\DoxyCodeLine{00402\ \ \ \ \ avifBool\ allLayers;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ true,\ the\ underlying\ codec\ must\ decode\ all\ layers,\ not\ just\ the\ best\ layer}}
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00404\ \ \ \ \ avifCodecGetNextImageFunc\ getNextImage;}
+\DoxyCodeLine{00405\ \ \ \ \ avifCodecEncodeImageFunc\ encodeImage;}
+\DoxyCodeLine{00406\ \ \ \ \ avifCodecEncodeFinishFunc\ encodeFinish;}
+\DoxyCodeLine{00407\ \ \ \ \ avifCodecDestroyInternalFunc\ destroyInternal;}
+\DoxyCodeLine{00408\ \}\ \mbox{\hyperlink{structavif_codec}{avifCodec}};}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00410\ \mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ avifCodecCreate(avifCodecChoice\ choice,\ avifCodecFlags\ requiredFlags);}
+\DoxyCodeLine{00411\ \textcolor{keywordtype}{void}\ avifCodecDestroy(\mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ codec);}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00413\ \mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ avifCodecCreateAOM(\textcolor{keywordtype}{void});\ \ \ \ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_AOM\ (codec\_aom.c)}}
+\DoxyCodeLine{00414\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ avifCodecVersionAOM(\textcolor{keywordtype}{void});\ \ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_AOM\ (codec\_aom.c)}}
+\DoxyCodeLine{00415\ \mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ avifCodecCreateDav1d(\textcolor{keywordtype}{void});\ \ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_DAV1D\ (codec\_dav1d.c)}}
+\DoxyCodeLine{00416\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ avifCodecVersionDav1d(\textcolor{keywordtype}{void});\ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_DAV1D\ (codec\_dav1d.c)}}
+\DoxyCodeLine{00417\ \mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ avifCodecCreateGav1(\textcolor{keywordtype}{void});\ \ \ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_LIBGAV1\ (codec\_libgav1.c)}}
+\DoxyCodeLine{00418\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ avifCodecVersionGav1(\textcolor{keywordtype}{void});\ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_LIBGAV1\ (codec\_libgav1.c)}}
+\DoxyCodeLine{00419\ \mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ avifCodecCreateRav1e(\textcolor{keywordtype}{void});\ \ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_RAV1E\ (codec\_rav1e.c)}}
+\DoxyCodeLine{00420\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ avifCodecVersionRav1e(\textcolor{keywordtype}{void});\ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_RAV1E\ (codec\_rav1e.c)}}
+\DoxyCodeLine{00421\ \mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ avifCodecCreateSvt(\textcolor{keywordtype}{void});\ \ \ \ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_SVT\ (codec\_svt.c)}}
+\DoxyCodeLine{00422\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ avifCodecVersionSvt(\textcolor{keywordtype}{void});\ \ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_SVT\ (codec\_svt.c)}}
+\DoxyCodeLine{00423\ \mbox{\hyperlink{structavif_codec}{avifCodec}}\ *\ avifCodecCreateAVM(\textcolor{keywordtype}{void});\ \ \ \ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_AVM\ (codec\_avm.c)}}
+\DoxyCodeLine{00424\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ avifCodecVersionAVM(\textcolor{keywordtype}{void});\ \ \ \textcolor{comment}{//\ requires\ AVIF\_CODEC\_AVM\ (codec\_avm.c)}}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00426\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00427\ \textcolor{comment}{//\ avifDiagnostics}}
+\DoxyCodeLine{00428\ }
+\DoxyCodeLine{00429\ \textcolor{preprocessor}{\#ifdef\ \_\_clang\_\_}}
+\DoxyCodeLine{00430\ \_\_attribute\_\_((\_\_format\_\_(\_\_printf\_\_,\ 2,\ 3)))}
+\DoxyCodeLine{00431\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00432\ \textcolor{keywordtype}{void}\ avifDiagnosticsPrintf(\mbox{\hyperlink{structavif_diagnostics}{avifDiagnostics}}\ *\ diag,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ format,\ ...);}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00434\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00435\ \textcolor{comment}{//\ avifStream}}
+\DoxyCodeLine{00436\ \textcolor{comment}{//}}
+\DoxyCodeLine{00437\ \textcolor{comment}{//\ In\ network\ byte\ order\ (big-\/endian)\ unless\ otherwise\ specified.}}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{size\_t}\ avifBoxMarker;}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_box_header}{avifBoxHeader}}}
+\DoxyCodeLine{00442\ \{}
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{comment}{//\ Size\ of\ the\ box\ in\ bytes,\ excluding\ the\ box\ header.}}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size;}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00446\ \ \ \ \ uint8\_t\ type[4];}
+\DoxyCodeLine{00447\ \}\ \mbox{\hyperlink{structavif_box_header}{avifBoxHeader}};}
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00449\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}}
+\DoxyCodeLine{00450\ \{}
+\DoxyCodeLine{00451\ \ \ \ \ \mbox{\hyperlink{structavif_r_o_data}{avifROData}}\ *\ raw;}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00453\ \ \ \ \ \textcolor{comment}{//\ Index\ of\ the\ next\ byte\ in\ the\ raw\ stream.}}
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ offset;}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \ \ \ \ \textcolor{comment}{//\ If\ 0,\ byte-\/aligned\ functions\ can\ be\ used\ (avifROStreamRead()\ etc.).}}
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{comment}{//\ Otherwise,\ it\ represents\ the\ number\ of\ bits\ already\ used\ in\ the\ last\ byte}}
+\DoxyCodeLine{00458\ \ \ \ \ \textcolor{comment}{//\ (located\ at\ offset-\/1).}}
+\DoxyCodeLine{00459\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ numUsedBitsInPartialByte;}
+\DoxyCodeLine{00460\ }
+\DoxyCodeLine{00461\ \ \ \ \ \textcolor{comment}{//\ Error\ information,\ if\ any.}}
+\DoxyCodeLine{00462\ \ \ \ \ \mbox{\hyperlink{structavif_diagnostics}{avifDiagnostics}}\ *\ diag;}
+\DoxyCodeLine{00463\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ diagContext;}
+\DoxyCodeLine{00464\ \}\ \mbox{\hyperlink{structavif_r_o_stream}{avifROStream}};}
+\DoxyCodeLine{00465\ }
+\DoxyCodeLine{00466\ \textcolor{keyword}{const}\ uint8\_t\ *\ avifROStreamCurrent(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream);}
+\DoxyCodeLine{00467\ \textcolor{keywordtype}{void}\ avifROStreamStart(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ \mbox{\hyperlink{structavif_r_o_data}{avifROData}}\ *\ raw,\ \mbox{\hyperlink{structavif_diagnostics}{avifDiagnostics}}\ *\ diag,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ diagContext);}
+\DoxyCodeLine{00468\ \textcolor{keywordtype}{size\_t}\ avifROStreamOffset(\textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream);}
+\DoxyCodeLine{00469\ \textcolor{keywordtype}{void}\ avifROStreamSetOffset(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structoffset}{offset}});}
+\DoxyCodeLine{00470\ }
+\DoxyCodeLine{00471\ avifBool\ avifROStreamHasBytesLeft(\textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ \textcolor{keywordtype}{size\_t}\ byteCount);}
+\DoxyCodeLine{00472\ \textcolor{keywordtype}{size\_t}\ avifROStreamRemainingBytes(\textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream);}
+\DoxyCodeLine{00473\ \textcolor{comment}{//\ The\ following\ functions\ require\ byte\ alignment.}}
+\DoxyCodeLine{00474\ avifBool\ avifROStreamSkip(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ \textcolor{keywordtype}{size\_t}\ byteCount);}
+\DoxyCodeLine{00475\ avifBool\ avifROStreamRead(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint8\_t\ *\ data,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00476\ avifBool\ avifROStreamReadU16(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint16\_t\ *\ v);}
+\DoxyCodeLine{00477\ avifBool\ avifROStreamReadU16Endianness(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint16\_t\ *\ v,\ avifBool\ littleEndian);}
+\DoxyCodeLine{00478\ avifBool\ avifROStreamReadU32(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint32\_t\ *\ v);}
+\DoxyCodeLine{00479\ avifBool\ avifROStreamReadU32Endianness(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint32\_t\ *\ v,\ avifBool\ littleEndian);}
+\DoxyCodeLine{00480\ avifBool\ avifROStreamReadUX8(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint64\_t\ *\ v,\ uint64\_t\ factor);\ \textcolor{comment}{//\ Reads\ a\ factor*8\ sized\ uint,\ saves\ in\ v}}
+\DoxyCodeLine{00481\ avifBool\ avifROStreamReadU64(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint64\_t\ *\ v);}
+\DoxyCodeLine{00482\ avifBool\ avifROStreamReadString(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ \textcolor{keywordtype}{char}\ *\ output,\ \textcolor{keywordtype}{size\_t}\ outputSize);}
+\DoxyCodeLine{00483\ avifBool\ avifROStreamReadBoxHeader(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ \mbox{\hyperlink{structavif_box_header}{avifBoxHeader}}\ *\ header);\ \textcolor{comment}{//\ This\ fails\ if\ the\ size\ reported\ by\ the\ header\ cannot\ fit\ in\ the\ stream}}
+\DoxyCodeLine{00484\ avifBool\ avifROStreamReadBoxHeaderPartial(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ \mbox{\hyperlink{structavif_box_header}{avifBoxHeader}}\ *\ header);\ \textcolor{comment}{//\ This\ doesn't\ require\ that\ the\ full\ box\ can\ fit\ in\ the\ stream}}
+\DoxyCodeLine{00485\ avifBool\ avifROStreamReadVersionAndFlags(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint8\_t\ *\ version,\ uint32\_t\ *\ flags);\ \textcolor{comment}{//\ version\ and\ flags\ ptrs\ are\ both\ optional}}
+\DoxyCodeLine{00486\ avifBool\ avifROStreamReadAndEnforceVersion(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint8\_t\ enforcedVersion);\ \textcolor{comment}{//\ currently\ discards\ flags}}
+\DoxyCodeLine{00487\ \textcolor{comment}{//\ The\ following\ functions\ can\ write\ non-\/aligned\ bits.}}
+\DoxyCodeLine{00488\ avifBool\ avifROStreamReadBits8(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint8\_t\ *\ v,\ \textcolor{keywordtype}{size\_t}\ bitCount);}
+\DoxyCodeLine{00489\ avifBool\ avifROStreamReadBits(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint32\_t\ *\ v,\ \textcolor{keywordtype}{size\_t}\ bitCount);}
+\DoxyCodeLine{00490\ avifBool\ avifROStreamReadVarInt(\mbox{\hyperlink{structavif_r_o_stream}{avifROStream}}\ *\ stream,\ uint32\_t\ *\ v);}
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00492\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}}
+\DoxyCodeLine{00493\ \{}
+\DoxyCodeLine{00494\ \ \ \ \ \mbox{\hyperlink{structavif_r_w_data}{avifRWData}}\ *\ raw;}
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00496\ \ \ \ \ \textcolor{comment}{//\ Index\ of\ the\ next\ byte\ in\ the\ raw\ stream.}}
+\DoxyCodeLine{00497\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ offset;}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{comment}{//\ If\ 0,\ byte-\/aligned\ functions\ can\ be\ used\ (avifRWStreamWrite()\ etc.).}}
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{comment}{//\ Otherwise,\ it\ represents\ the\ number\ of\ bits\ already\ used\ in\ the\ last\ byte}}
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{comment}{//\ (located\ at\ offset-\/1).}}
+\DoxyCodeLine{00502\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ numUsedBitsInPartialByte;}
+\DoxyCodeLine{00503\ \}\ \mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}};}
+\DoxyCodeLine{00504\ }
+\DoxyCodeLine{00505\ \textcolor{keywordtype}{void}\ avifRWStreamStart(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ \mbox{\hyperlink{structavif_r_w_data}{avifRWData}}\ *\ raw);}
+\DoxyCodeLine{00506\ \textcolor{keywordtype}{size\_t}\ avifRWStreamOffset(\textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream);}
+\DoxyCodeLine{00507\ \textcolor{keywordtype}{void}\ avifRWStreamSetOffset(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structoffset}{offset}});}
+\DoxyCodeLine{00508\ }
+\DoxyCodeLine{00509\ \textcolor{keywordtype}{void}\ avifRWStreamFinishWrite(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream);}
+\DoxyCodeLine{00510\ \textcolor{comment}{//\ The\ following\ functions\ require\ byte\ alignment.}}
+\DoxyCodeLine{00511\ avifResult\ avifRWStreamWrite(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *\ data,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00512\ avifResult\ avifRWStreamWriteChars(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ chars,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00513\ avifResult\ avifRWStreamWriteBox(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ type,\ \textcolor{keywordtype}{size\_t}\ contentSize,\ avifBoxMarker\ *\ marker);}
+\DoxyCodeLine{00514\ avifResult\ avifRWStreamWriteFullBox(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ type,\ \textcolor{keywordtype}{size\_t}\ contentSize,\ \textcolor{keywordtype}{int}\ version,\ uint32\_t\ flags,\ avifBoxMarker\ *\ marker);}
+\DoxyCodeLine{00515\ \textcolor{keywordtype}{void}\ avifRWStreamFinishBox(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ avifBoxMarker\ marker);}
+\DoxyCodeLine{00516\ avifResult\ avifRWStreamWriteU8(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ uint8\_t\ v);}
+\DoxyCodeLine{00517\ avifResult\ avifRWStreamWriteU16(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ uint16\_t\ v);}
+\DoxyCodeLine{00518\ avifResult\ avifRWStreamWriteU32(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ uint32\_t\ v);}
+\DoxyCodeLine{00519\ avifResult\ avifRWStreamWriteU64(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ uint64\_t\ v);}
+\DoxyCodeLine{00520\ avifResult\ avifRWStreamWriteZeros(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ \textcolor{keywordtype}{size\_t}\ byteCount);}
+\DoxyCodeLine{00521\ \textcolor{comment}{//\ The\ following\ functions\ can\ write\ non-\/aligned\ bits.}}
+\DoxyCodeLine{00522\ avifResult\ avifRWStreamWriteBits(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ uint32\_t\ v,\ \textcolor{keywordtype}{size\_t}\ bitCount);}
+\DoxyCodeLine{00523\ avifResult\ avifRWStreamWriteVarInt(\mbox{\hyperlink{structavif_r_w_stream}{avifRWStream}}\ *\ stream,\ uint32\_t\ v);}
+\DoxyCodeLine{00524\ }
+\DoxyCodeLine{00525\ \textcolor{comment}{//\ This\ is\ to\ make\ it\ clear\ that\ the\ box\ size\ is\ currently\ unknown,\ and\ will\ be\ determined\ later\ (with\ a\ call\ to\ avifRWStreamFinishBox)}}
+\DoxyCodeLine{00526\ \textcolor{preprocessor}{\#define\ AVIF\_BOX\_SIZE\_TBD\ 0}}
+\DoxyCodeLine{00527\ }
+\DoxyCodeLine{00528\ \textcolor{comment}{//\ Used\ for\ both\ av1C\ and\ av2C.}}
+\DoxyCodeLine{00529\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_codec_configuration_box}{avifCodecConfigurationBox}}}
+\DoxyCodeLine{00530\ \{}
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{comment}{//\ [skipped;\ is\ constant]\ unsigned\ int\ (1)marker\ =\ 1;}}
+\DoxyCodeLine{00532\ \ \ \ \ \textcolor{comment}{//\ [skipped;\ is\ constant]\ unsigned\ int\ (7)version\ =\ 1;}}
+\DoxyCodeLine{00533\ }
+\DoxyCodeLine{00534\ \ \ \ \ uint8\_t\ seqProfile;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unsigned\ int\ (3)\ seq\_profile;}}
+\DoxyCodeLine{00535\ \ \ \ \ uint8\_t\ seqLevelIdx0;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unsigned\ int\ (5)\ seq\_level\_idx\_0;}}
+\DoxyCodeLine{00536\ \ \ \ \ uint8\_t\ seqTier0;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unsigned\ int\ (1)\ seq\_tier\_0;}}
+\DoxyCodeLine{00537\ \ \ \ \ uint8\_t\ highBitdepth;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unsigned\ int\ (1)\ high\_bitdepth;}}
+\DoxyCodeLine{00538\ \ \ \ \ uint8\_t\ twelveBit;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unsigned\ int\ (1)\ twelve\_bit;}}
+\DoxyCodeLine{00539\ \ \ \ \ uint8\_t\ monochrome;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unsigned\ int\ (1)\ monochrome;}}
+\DoxyCodeLine{00540\ \ \ \ \ uint8\_t\ chromaSubsamplingX;\ \ \ \textcolor{comment}{//\ unsigned\ int\ (1)\ chroma\_subsampling\_x;}}
+\DoxyCodeLine{00541\ \ \ \ \ uint8\_t\ chromaSubsamplingY;\ \ \ \textcolor{comment}{//\ unsigned\ int\ (1)\ chroma\_subsampling\_y;}}
+\DoxyCodeLine{00542\ \ \ \ \ uint8\_t\ chromaSamplePosition;\ \textcolor{comment}{//\ unsigned\ int\ (2)\ chroma\_sample\_position;}}
+\DoxyCodeLine{00543\ }
+\DoxyCodeLine{00544\ \ \ \ \ \textcolor{comment}{//\ unsigned\ int\ (3)reserved\ =\ 0;}}
+\DoxyCodeLine{00545\ \ \ \ \ \textcolor{comment}{//\ unsigned\ int\ (1)initial\_presentation\_delay\_present;}}
+\DoxyCodeLine{00546\ \ \ \ \ \textcolor{comment}{//\ if\ (initial\_presentation\_delay\_present)\ \{}}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ unsigned\ int\ (4)initial\_presentation\_delay\_minus\_one;}}
+\DoxyCodeLine{00548\ \ \ \ \ \textcolor{comment}{//\ \}\ else\ \{}}
+\DoxyCodeLine{00549\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ unsigned\ int\ (4)reserved\ =\ 0;}}
+\DoxyCodeLine{00550\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00551\ \}\ \mbox{\hyperlink{structavif_codec_configuration_box}{avifCodecConfigurationBox}};}
+\DoxyCodeLine{00552\ }
+\DoxyCodeLine{00553\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structavif_sequence_header}{avifSequenceHeader}}}
+\DoxyCodeLine{00554\ \{}
+\DoxyCodeLine{00555\ \ \ \ \ uint8\_t\ reduced\_still\_picture\_header;}
+\DoxyCodeLine{00556\ \ \ \ \ uint32\_t\ maxWidth;}
+\DoxyCodeLine{00557\ \ \ \ \ uint32\_t\ maxHeight;}
+\DoxyCodeLine{00558\ \ \ \ \ uint32\_t\ bitDepth;}
+\DoxyCodeLine{00559\ \ \ \ \ avifPixelFormat\ yuvFormat;}
+\DoxyCodeLine{00560\ \ \ \ \ avifChromaSamplePosition\ chromaSamplePosition;}
+\DoxyCodeLine{00561\ \ \ \ \ avifColorPrimaries\ colorPrimaries;}
+\DoxyCodeLine{00562\ \ \ \ \ avifTransferCharacteristics\ transferCharacteristics;}
+\DoxyCodeLine{00563\ \ \ \ \ avifMatrixCoefficients\ matrixCoefficients;}
+\DoxyCodeLine{00564\ \ \ \ \ avifRange\ range;}
+\DoxyCodeLine{00565\ \ \ \ \ \mbox{\hyperlink{structavif_codec_configuration_box}{avifCodecConfigurationBox}}\ av1C;\ \textcolor{comment}{//\ TODO(yguyon):\ Rename\ or\ add\ av2C}}
+\DoxyCodeLine{00566\ \}\ \mbox{\hyperlink{structavif_sequence_header}{avifSequenceHeader}};}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00568\ avifBool\ avifSequenceHeaderParse(\mbox{\hyperlink{structavif_sequence_header}{avifSequenceHeader}}\ *\ header,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structavif_r_o_data}{avifROData}}\ *\ \mbox{\hyperlink{structsample}{sample}},\ avifCodecType\ codecType);}
+\DoxyCodeLine{00569\ }
+\DoxyCodeLine{00570\ \textcolor{preprocessor}{\#define\ AVIF\_INDEFINITE\_DURATION64\ UINT64\_MAX}}
+\DoxyCodeLine{00571\ \textcolor{preprocessor}{\#define\ AVIF\_INDEFINITE\_DURATION32\ UINT32\_MAX}}
+\DoxyCodeLine{00572\ }
+\DoxyCodeLine{00573\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00574\ \}\ \textcolor{comment}{//\ extern\ "{}C"{}}}
+\DoxyCodeLine{00575\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00577\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ifndef\ AVIF\_INTERNAL\_H}}
+
+\end{DoxyCode}

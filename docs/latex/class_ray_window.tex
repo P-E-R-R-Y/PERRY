@@ -1,0 +1,63 @@
+\doxysection{Ray\+Window Class Reference}
+\hypertarget{class_ray_window}{}\label{class_ray_window}\index{RayWindow@{RayWindow}}
+
+
+Raylib Window class.  
+
+
+
+
+{\ttfamily \#include $<$Ray\+Window.\+hpp$>$}
+
+Inheritance diagram for Ray\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ray_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Ray\+Window} (\+\_\+\+\_\+int32\+\_\+t screen\+Width, \+\_\+\+\_\+int32\+\_\+t screen\+Height, std\+::string title)
+\item 
+bool \mbox{\hyperlink{group___raylib_gabb07389775d4cd9cb2cd9a40b5673d3a}{is\+Open}} () override
+\begin{DoxyCompactList}\small\item\em notice if the window is open \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gabca431b2e02bf08a7b350c243fc34027}{close}} () override
+\begin{DoxyCompactList}\small\item\em close the window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga2a8308cce439f598e4c456dfc811403e}{link\+Event}} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em link an event to the window \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___raylib_gaf66a999ab88a2f5da32c2be509c5e7e4}{poll\+Event}} () override
+\begin{DoxyCompactList}\small\item\em poll the event \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga53cbfb2a713521d0493681b04e2da38f}{event\+Close}} () override
+\begin{DoxyCompactList}\small\item\em update the window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga485bdbbba4a1e2cda2420ce4f8fecb42}{set\+Frame\+Limit}} (\+\_\+\+\_\+int32\+\_\+t limit) override
+\begin{DoxyCompactList}\small\item\em Set the Frame Limit object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+int32\+\_\+t \mbox{\hyperlink{group___raylib_ga74e776ba4e78582326459807e279b04f}{get\+Delta}} () override
+\begin{DoxyCompactList}\small\item\em Get the Delta object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga985518be66b89adf9582cdeec747fe98}{begin\+Draw}} () override
+\begin{DoxyCompactList}\small\item\em allowing to draw 2D on the window \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga22489f6acbbbba802e420d8618058590}{end\+Draw}} () override
+\begin{DoxyCompactList}\small\item\em end the 2D drawing \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group___raylib_ga09c164ba3b217542c04764153ca25da0}{draw\+Poly}} (\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}polygon) override
+\begin{DoxyCompactList}\small\item\em draw a polygon \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group___raylib_gabf0d19617acbe081bbf04376d790a2be}{draw\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite) override
+\begin{DoxyCompactList}\small\item\em draw a sprite \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga4c87c2fd27ab3232fe7c61ece8f04473}{begin\+Mode3}} (\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}camera) override
+\begin{DoxyCompactList}\small\item\em allowing to draw 3D on the window \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group___raylib_ga85215ca453fd9f7f45e1b50c77bfa90e}{draw\+Model}} (\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model) override
+\begin{DoxyCompactList}\small\item\em draw a model \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gaa390a52e3fa8f3fb3026a6ba21e99d60}{end\+Mode3}} () override
+\begin{DoxyCompactList}\small\item\em end the 3D drawing \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IWindow} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_window}{IWindow} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Raylib Window class. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/raylib/window/\mbox{\hyperlink{_ray_window_8hpp}{Ray\+Window.\+hpp}}\end{DoxyCompactItemize}

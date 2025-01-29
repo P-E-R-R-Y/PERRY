@@ -1,0 +1,1010 @@
+\doxysection{x11\+\_\+platform.\+h}
+\hypertarget{x11__platform_8h_source}{}\label{x11__platform_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/src/external/glfw/src/x11\_platform.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/src/external/glfw/src/x11\_platform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ GLFW\ 3.4\ X11\ -\/\ www.glfw.org}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Copyright\ (c)\ 2002-\/2006\ Marcus\ Geelnard}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Copyright\ (c)\ 2006-\/2019\ Camilla\ Löwy\ <elmindreda@glfw.org>}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ warranty.\ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ \ \ \ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ \ \ \ be\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ \ \ \ distribution.}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <signal.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <X11/Xlib.h>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <X11/keysym.h>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <X11/Xatom.h>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <X11/Xresource.h>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <X11/Xcursor/Xcursor.h>}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ The\ XRandR\ extension\ provides\ mode\ setting\ and\ gamma\ control}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <X11/extensions/Xrandr.h>}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ The\ Xkb\ extension\ provides\ improved\ keyboard\ support}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <X11/XKBlib.h>}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ The\ Xinerama\ extension\ provides\ legacy\ monitor\ indices}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <X11/extensions/Xinerama.h>}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ The\ XInput\ extension\ provides\ raw\ mouse\ motion\ input}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ <X11/extensions/XInput2.h>}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ The\ Shape\ extension\ provides\ custom\ window\ shapes}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ <X11/extensions/shape.h>}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ GLX\_VENDOR\ 1}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ GLX\_RGBA\_BIT\ 0x00000001}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ GLX\_WINDOW\_BIT\ 0x00000001}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ GLX\_DRAWABLE\_TYPE\ 0x8010}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ GLX\_RENDER\_TYPE\ 0x8011}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ GLX\_RGBA\_TYPE\ 0x8014}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ GLX\_DOUBLEBUFFER\ 5}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ GLX\_STEREO\ 6}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ GLX\_AUX\_BUFFERS\ 7}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ GLX\_RED\_SIZE\ 8}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ GLX\_GREEN\_SIZE\ 9}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ GLX\_BLUE\_SIZE\ 10}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ GLX\_ALPHA\_SIZE\ 11}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ GLX\_DEPTH\_SIZE\ 12}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ GLX\_STENCIL\_SIZE\ 13}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ GLX\_ACCUM\_RED\_SIZE\ 14}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ GLX\_ACCUM\_GREEN\_SIZE\ 15}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ GLX\_ACCUM\_BLUE\_SIZE\ 16}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ GLX\_ACCUM\_ALPHA\_SIZE\ 17}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ GLX\_SAMPLES\ 0x186a1}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ GLX\_VISUAL\_ID\ 0x800b}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ GLX\_FRAMEBUFFER\_SRGB\_CAPABLE\_ARB\ 0x20b2}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_DEBUG\_BIT\_ARB\ 0x00000001}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_COMPATIBILITY\_PROFILE\_BIT\_ARB\ 0x00000002}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_CORE\_PROFILE\_BIT\_ARB\ 0x00000001}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_PROFILE\_MASK\_ARB\ 0x9126}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_FORWARD\_COMPATIBLE\_BIT\_ARB\ 0x00000002}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_MAJOR\_VERSION\_ARB\ 0x2091}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_MINOR\_VERSION\_ARB\ 0x2092}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_FLAGS\_ARB\ 0x2094}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_ES2\_PROFILE\_BIT\_EXT\ 0x00000004}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_ROBUST\_ACCESS\_BIT\_ARB\ 0x00000004}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ GLX\_LOSE\_CONTEXT\_ON\_RESET\_ARB\ 0x8252}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_RESET\_NOTIFICATION\_STRATEGY\_ARB\ 0x8256}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ GLX\_NO\_RESET\_NOTIFICATION\_ARB\ 0x8261}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_RELEASE\_BEHAVIOR\_ARB\ 0x2097}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_RELEASE\_BEHAVIOR\_NONE\_ARB\ 0}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_RELEASE\_BEHAVIOR\_FLUSH\_ARB\ 0x2098}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ GLX\_CONTEXT\_OPENGL\_NO\_ERROR\_ARB\ 0x31b3}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{typedef}\ XID\ GLXWindow;}
+\DoxyCodeLine{00095\ \textcolor{keyword}{typedef}\ XID\ GLXDrawable;}
+\DoxyCodeLine{00096\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_\_GLXFBConfig*\ GLXFBConfig;}
+\DoxyCodeLine{00097\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_\_GLXcontext*\ GLXContext;}
+\DoxyCodeLine{00098\ \textcolor{keyword}{typedef}\ void\ (*\_\_GLXextproc)(void);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{typedef}\ XClassHint*\ (*\ PFN\_XAllocClassHint)(void);}
+\DoxyCodeLine{00101\ \textcolor{keyword}{typedef}\ XSizeHints*\ (*\ PFN\_XAllocSizeHints)(void);}
+\DoxyCodeLine{00102\ \textcolor{keyword}{typedef}\ XWMHints*\ (*\ PFN\_XAllocWMHints)(void);}
+\DoxyCodeLine{00103\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XChangeProperty)(Display*,Window,Atom,Atom,int,int,\textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*,int);}
+\DoxyCodeLine{00104\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XChangeWindowAttributes)(Display*,Window,\textcolor{keywordtype}{unsigned}\ long,XSetWindowAttributes*);}
+\DoxyCodeLine{00105\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XCheckIfEvent)(Display*,XEvent*,Bool(*)(Display*,XEvent*,XPointer),XPointer);}
+\DoxyCodeLine{00106\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XCheckTypedWindowEvent)(Display*,Window,int,XEvent*);}
+\DoxyCodeLine{00107\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XCloseDisplay)(Display*);}
+\DoxyCodeLine{00108\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XCloseIM)(XIM);}
+\DoxyCodeLine{00109\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XConvertSelection)(Display*,Atom,Atom,Atom,Window,Time);}
+\DoxyCodeLine{00110\ \textcolor{keyword}{typedef}\ Colormap\ (*\ PFN\_XCreateColormap)(Display*,Window,Visual*,int);}
+\DoxyCodeLine{00111\ \textcolor{keyword}{typedef}\ Cursor\ (*\ PFN\_XCreateFontCursor)(Display*,\textcolor{keywordtype}{unsigned}\ int);}
+\DoxyCodeLine{00112\ \textcolor{keyword}{typedef}\ XIC\ (*\ PFN\_XCreateIC)(XIM,...);}
+\DoxyCodeLine{00113\ \textcolor{keyword}{typedef}\ Region\ (*\ PFN\_XCreateRegion)(void);}
+\DoxyCodeLine{00114\ \textcolor{keyword}{typedef}\ Window\ (*\ PFN\_XCreateWindow)(Display*,Window,int,int,\textcolor{keywordtype}{unsigned}\ int,\textcolor{keywordtype}{unsigned}\ int,\textcolor{keywordtype}{unsigned}\ int,int,\textcolor{keywordtype}{unsigned}\ int,Visual*,\textcolor{keywordtype}{unsigned}\ long,XSetWindowAttributes*);}
+\DoxyCodeLine{00115\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XDefineCursor)(Display*,Window,Cursor);}
+\DoxyCodeLine{00116\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XDeleteContext)(Display*,XID,XContext);}
+\DoxyCodeLine{00117\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XDeleteProperty)(Display*,Window,Atom);}
+\DoxyCodeLine{00118\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XDestroyIC)(XIC);}
+\DoxyCodeLine{00119\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XDestroyRegion)(Region);}
+\DoxyCodeLine{00120\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XDestroyWindow)(Display*,Window);}
+\DoxyCodeLine{00121\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XDisplayKeycodes)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00122\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XEventsQueued)(Display*,int);}
+\DoxyCodeLine{00123\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XFilterEvent)(XEvent*,Window);}
+\DoxyCodeLine{00124\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XFindContext)(Display*,XID,XContext,XPointer*);}
+\DoxyCodeLine{00125\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XFlush)(Display*);}
+\DoxyCodeLine{00126\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XFree)(\textcolor{keywordtype}{void}*);}
+\DoxyCodeLine{00127\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XFreeColormap)(Display*,Colormap);}
+\DoxyCodeLine{00128\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XFreeCursor)(Display*,Cursor);}
+\DoxyCodeLine{00129\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XFreeEventData)(Display*,XGenericEventCookie*);}
+\DoxyCodeLine{00130\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XGetErrorText)(Display*,int,\textcolor{keywordtype}{char}*,int);}
+\DoxyCodeLine{00131\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XGetEventData)(Display*,XGenericEventCookie*);}
+\DoxyCodeLine{00132\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{char}*\ (*\ PFN\_XGetICValues)(XIC,...);}
+\DoxyCodeLine{00133\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{char}*\ (*\ PFN\_XGetIMValues)(XIM,...);}
+\DoxyCodeLine{00134\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XGetInputFocus)(Display*,Window*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00135\ \textcolor{keyword}{typedef}\ KeySym*\ (*\ PFN\_XGetKeyboardMapping)(Display*,KeyCode,int,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00136\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XGetScreenSaver)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00137\ \textcolor{keyword}{typedef}\ Window\ (*\ PFN\_XGetSelectionOwner)(Display*,Atom);}
+\DoxyCodeLine{00138\ \textcolor{keyword}{typedef}\ XVisualInfo*\ (*\ PFN\_XGetVisualInfo)(Display*,long,XVisualInfo*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00139\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XGetWMNormalHints)(Display*,Window,XSizeHints*,\textcolor{keywordtype}{long}*);}
+\DoxyCodeLine{00140\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XGetWindowAttributes)(Display*,Window,XWindowAttributes*);}
+\DoxyCodeLine{00141\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XGetWindowProperty)(Display*,Window,Atom,long,long,Bool,Atom,Atom*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}*,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}**);}
+\DoxyCodeLine{00142\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XGrabPointer)(Display*,Window,Bool,\textcolor{keywordtype}{unsigned}\ int,int,int,Window,Cursor,Time);}
+\DoxyCodeLine{00143\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XIconifyWindow)(Display*,Window,int);}
+\DoxyCodeLine{00144\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XInitThreads)(void);}
+\DoxyCodeLine{00145\ \textcolor{keyword}{typedef}\ Atom\ (*\ PFN\_XInternAtom)(Display*,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,Bool);}
+\DoxyCodeLine{00146\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XLookupString)(XKeyEvent*,\textcolor{keywordtype}{char}*,int,KeySym*,XComposeStatus*);}
+\DoxyCodeLine{00147\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XMapRaised)(Display*,Window);}
+\DoxyCodeLine{00148\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XMapWindow)(Display*,Window);}
+\DoxyCodeLine{00149\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XMoveResizeWindow)(Display*,Window,int,int,\textcolor{keywordtype}{unsigned}\ int,\textcolor{keywordtype}{unsigned}\ int);}
+\DoxyCodeLine{00150\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XMoveWindow)(Display*,Window,int,int);}
+\DoxyCodeLine{00151\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XNextEvent)(Display*,XEvent*);}
+\DoxyCodeLine{00152\ \textcolor{keyword}{typedef}\ Display*\ (*\ PFN\_XOpenDisplay)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00153\ \textcolor{keyword}{typedef}\ XIM\ (*\ PFN\_XOpenIM)(Display*,XrmDatabase*,\textcolor{keywordtype}{char}*,\textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00154\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XPeekEvent)(Display*,XEvent*);}
+\DoxyCodeLine{00155\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XPending)(Display*);}
+\DoxyCodeLine{00156\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XQueryExtension)(Display*,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00157\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XQueryPointer)(Display*,Window,Window*,Window*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00158\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XRaiseWindow)(Display*,Window);}
+\DoxyCodeLine{00159\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XRegisterIMInstantiateCallback)(Display*,\textcolor{keywordtype}{void}*,\textcolor{keywordtype}{char}*,\textcolor{keywordtype}{char}*,XIDProc,XPointer);}
+\DoxyCodeLine{00160\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XResizeWindow)(Display*,Window,\textcolor{keywordtype}{unsigned}\ int,\textcolor{keywordtype}{unsigned}\ int);}
+\DoxyCodeLine{00161\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{char}*\ (*\ PFN\_XResourceManagerString)(Display*);}
+\DoxyCodeLine{00162\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XSaveContext)(Display*,XID,XContext,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00163\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XSelectInput)(Display*,Window,long);}
+\DoxyCodeLine{00164\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XSendEvent)(Display*,Window,Bool,long,XEvent*);}
+\DoxyCodeLine{00165\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XSetClassHint)(Display*,Window,XClassHint*);}
+\DoxyCodeLine{00166\ \textcolor{keyword}{typedef}\ XErrorHandler\ (*\ PFN\_XSetErrorHandler)(XErrorHandler);}
+\DoxyCodeLine{00167\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XSetICFocus)(XIC);}
+\DoxyCodeLine{00168\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{char}*\ (*\ PFN\_XSetIMValues)(XIM,...);}
+\DoxyCodeLine{00169\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XSetInputFocus)(Display*,Window,int,Time);}
+\DoxyCodeLine{00170\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{char}*\ (*\ PFN\_XSetLocaleModifiers)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00171\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XSetScreenSaver)(Display*,int,int,int,int);}
+\DoxyCodeLine{00172\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XSetSelectionOwner)(Display*,Atom,Window,Time);}
+\DoxyCodeLine{00173\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XSetWMHints)(Display*,Window,XWMHints*);}
+\DoxyCodeLine{00174\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XSetWMNormalHints)(Display*,Window,XSizeHints*);}
+\DoxyCodeLine{00175\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XSetWMProtocols)(Display*,Window,Atom*,int);}
+\DoxyCodeLine{00176\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XSupportsLocale)(void);}
+\DoxyCodeLine{00177\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XSync)(Display*,Bool);}
+\DoxyCodeLine{00178\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XTranslateCoordinates)(Display*,Window,Window,int,int,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,Window*);}
+\DoxyCodeLine{00179\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XUndefineCursor)(Display*,Window);}
+\DoxyCodeLine{00180\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XUngrabPointer)(Display*,Time);}
+\DoxyCodeLine{00181\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XUnmapWindow)(Display*,Window);}
+\DoxyCodeLine{00182\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XUnsetICFocus)(XIC);}
+\DoxyCodeLine{00183\ \textcolor{keyword}{typedef}\ VisualID\ (*\ PFN\_XVisualIDFromVisual)(Visual*);}
+\DoxyCodeLine{00184\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XWarpPointer)(Display*,Window,Window,int,int,\textcolor{keywordtype}{unsigned}\ int,\textcolor{keywordtype}{unsigned}\ int,int,int);}
+\DoxyCodeLine{00185\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XkbFreeKeyboard)(XkbDescPtr,\textcolor{keywordtype}{unsigned}\ int,Bool);}
+\DoxyCodeLine{00186\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XkbFreeNames)(XkbDescPtr,\textcolor{keywordtype}{unsigned}\ int,Bool);}
+\DoxyCodeLine{00187\ \textcolor{keyword}{typedef}\ XkbDescPtr\ (*\ PFN\_XkbGetMap)(Display*,\textcolor{keywordtype}{unsigned}\ int,\textcolor{keywordtype}{unsigned}\ int);}
+\DoxyCodeLine{00188\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XkbGetNames)(Display*,\textcolor{keywordtype}{unsigned}\ int,XkbDescPtr);}
+\DoxyCodeLine{00189\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XkbGetState)(Display*,\textcolor{keywordtype}{unsigned}\ int,XkbStatePtr);}
+\DoxyCodeLine{00190\ \textcolor{keyword}{typedef}\ KeySym\ (*\ PFN\_XkbKeycodeToKeysym)(Display*,KeyCode,int,int);}
+\DoxyCodeLine{00191\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XkbQueryExtension)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00192\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XkbSelectEventDetails)(Display*,\textcolor{keywordtype}{unsigned}\ int,\textcolor{keywordtype}{unsigned}\ int,\textcolor{keywordtype}{unsigned}\ long,\textcolor{keywordtype}{unsigned}\ long);}
+\DoxyCodeLine{00193\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XkbSetDetectableAutoRepeat)(Display*,Bool,Bool*);}
+\DoxyCodeLine{00194\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XrmDestroyDatabase)(XrmDatabase);}
+\DoxyCodeLine{00195\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XrmGetResource)(XrmDatabase,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\textcolor{keywordtype}{char}**,XrmValue*);}
+\DoxyCodeLine{00196\ \textcolor{keyword}{typedef}\ XrmDatabase\ (*\ PFN\_XrmGetStringDatabase)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00197\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XrmInitialize)(void);}
+\DoxyCodeLine{00198\ \textcolor{keyword}{typedef}\ XrmQuark\ (*\ PFN\_XrmUniqueQuark)(void);}
+\DoxyCodeLine{00199\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XUnregisterIMInstantiateCallback)(Display*,\textcolor{keywordtype}{void}*,\textcolor{keywordtype}{char}*,\textcolor{keywordtype}{char}*,XIDProc,XPointer);}
+\DoxyCodeLine{00200\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_Xutf8LookupString)(XIC,XKeyPressedEvent*,\textcolor{keywordtype}{char}*,int,KeySym*,Status*);}
+\DoxyCodeLine{00201\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_Xutf8SetWMProperties)(Display*,Window,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\textcolor{keywordtype}{char}**,int,XSizeHints*,XWMHints*,XClassHint*);}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#define\ XAllocClassHint\ \_glfw.x11.xlib.AllocClassHint}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#define\ XAllocSizeHints\ \_glfw.x11.xlib.AllocSizeHints}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#define\ XAllocWMHints\ \_glfw.x11.xlib.AllocWMHints}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ XChangeProperty\ \_glfw.x11.xlib.ChangeProperty}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#define\ XChangeWindowAttributes\ \_glfw.x11.xlib.ChangeWindowAttributes}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#define\ XCheckIfEvent\ \_glfw.x11.xlib.CheckIfEvent}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ XCheckTypedWindowEvent\ \_glfw.x11.xlib.CheckTypedWindowEvent}}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#define\ XCloseDisplay\ \_glfw.x11.xlib.CloseDisplay}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ XCloseIM\ \_glfw.x11.xlib.CloseIM}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#define\ XConvertSelection\ \_glfw.x11.xlib.ConvertSelection}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#define\ XCreateColormap\ \_glfw.x11.xlib.CreateColormap}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#define\ XCreateFontCursor\ \_glfw.x11.xlib.CreateFontCursor}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ XCreateIC\ \_glfw.x11.xlib.CreateIC}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\#define\ XCreateRegion\ \_glfw.x11.xlib.CreateRegion}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#define\ XCreateWindow\ \_glfw.x11.xlib.CreateWindow}}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#define\ XDefineCursor\ \_glfw.x11.xlib.DefineCursor}}
+\DoxyCodeLine{00218\ \textcolor{preprocessor}{\#define\ XDeleteContext\ \_glfw.x11.xlib.DeleteContext}}
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#define\ XDeleteProperty\ \_glfw.x11.xlib.DeleteProperty}}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#define\ XDestroyIC\ \_glfw.x11.xlib.DestroyIC}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#define\ XDestroyRegion\ \_glfw.x11.xlib.DestroyRegion}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#define\ XDestroyWindow\ \_glfw.x11.xlib.DestroyWindow}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#define\ XDisplayKeycodes\ \_glfw.x11.xlib.DisplayKeycodes}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#define\ XEventsQueued\ \_glfw.x11.xlib.EventsQueued}}
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#define\ XFilterEvent\ \_glfw.x11.xlib.FilterEvent}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#define\ XFindContext\ \_glfw.x11.xlib.FindContext}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#define\ XFlush\ \_glfw.x11.xlib.Flush}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ XFree\ \_glfw.x11.xlib.Free}}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#define\ XFreeColormap\ \_glfw.x11.xlib.FreeColormap}}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#define\ XFreeCursor\ \_glfw.x11.xlib.FreeCursor}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#define\ XFreeEventData\ \_glfw.x11.xlib.FreeEventData}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#define\ XGetErrorText\ \_glfw.x11.xlib.GetErrorText}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ XGetEventData\ \_glfw.x11.xlib.GetEventData}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#define\ XGetICValues\ \_glfw.x11.xlib.GetICValues}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#define\ XGetIMValues\ \_glfw.x11.xlib.GetIMValues}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#define\ XGetInputFocus\ \_glfw.x11.xlib.GetInputFocus}}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\#define\ XGetKeyboardMapping\ \_glfw.x11.xlib.GetKeyboardMapping}}
+\DoxyCodeLine{00238\ \textcolor{preprocessor}{\#define\ XGetScreenSaver\ \_glfw.x11.xlib.GetScreenSaver}}
+\DoxyCodeLine{00239\ \textcolor{preprocessor}{\#define\ XGetSelectionOwner\ \_glfw.x11.xlib.GetSelectionOwner}}
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#define\ XGetVisualInfo\ \_glfw.x11.xlib.GetVisualInfo}}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#define\ XGetWMNormalHints\ \_glfw.x11.xlib.GetWMNormalHints}}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#define\ XGetWindowAttributes\ \_glfw.x11.xlib.GetWindowAttributes}}
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#define\ XGetWindowProperty\ \_glfw.x11.xlib.GetWindowProperty}}
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#define\ XGrabPointer\ \_glfw.x11.xlib.GrabPointer}}
+\DoxyCodeLine{00245\ \textcolor{preprocessor}{\#define\ XIconifyWindow\ \_glfw.x11.xlib.IconifyWindow}}
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\#define\ XInternAtom\ \_glfw.x11.xlib.InternAtom}}
+\DoxyCodeLine{00247\ \textcolor{preprocessor}{\#define\ XLookupString\ \_glfw.x11.xlib.LookupString}}
+\DoxyCodeLine{00248\ \textcolor{preprocessor}{\#define\ XMapRaised\ \_glfw.x11.xlib.MapRaised}}
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\#define\ XMapWindow\ \_glfw.x11.xlib.MapWindow}}
+\DoxyCodeLine{00250\ \textcolor{preprocessor}{\#define\ XMoveResizeWindow\ \_glfw.x11.xlib.MoveResizeWindow}}
+\DoxyCodeLine{00251\ \textcolor{preprocessor}{\#define\ XMoveWindow\ \_glfw.x11.xlib.MoveWindow}}
+\DoxyCodeLine{00252\ \textcolor{preprocessor}{\#define\ XNextEvent\ \_glfw.x11.xlib.NextEvent}}
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\#define\ XOpenIM\ \_glfw.x11.xlib.OpenIM}}
+\DoxyCodeLine{00254\ \textcolor{preprocessor}{\#define\ XPeekEvent\ \_glfw.x11.xlib.PeekEvent}}
+\DoxyCodeLine{00255\ \textcolor{preprocessor}{\#define\ XPending\ \_glfw.x11.xlib.Pending}}
+\DoxyCodeLine{00256\ \textcolor{preprocessor}{\#define\ XQueryExtension\ \_glfw.x11.xlib.QueryExtension}}
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\#define\ XQueryPointer\ \_glfw.x11.xlib.QueryPointer}}
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#define\ XRaiseWindow\ \_glfw.x11.xlib.RaiseWindow}}
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\#define\ XRegisterIMInstantiateCallback\ \_glfw.x11.xlib.RegisterIMInstantiateCallback}}
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\#define\ XResizeWindow\ \_glfw.x11.xlib.ResizeWindow}}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#define\ XResourceManagerString\ \_glfw.x11.xlib.ResourceManagerString}}
+\DoxyCodeLine{00262\ \textcolor{preprocessor}{\#define\ XSaveContext\ \_glfw.x11.xlib.SaveContext}}
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\#define\ XSelectInput\ \_glfw.x11.xlib.SelectInput}}
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\#define\ XSendEvent\ \_glfw.x11.xlib.SendEvent}}
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#define\ XSetClassHint\ \_glfw.x11.xlib.SetClassHint}}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#define\ XSetErrorHandler\ \_glfw.x11.xlib.SetErrorHandler}}
+\DoxyCodeLine{00267\ \textcolor{preprocessor}{\#define\ XSetICFocus\ \_glfw.x11.xlib.SetICFocus}}
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#define\ XSetIMValues\ \_glfw.x11.xlib.SetIMValues}}
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#define\ XSetInputFocus\ \_glfw.x11.xlib.SetInputFocus}}
+\DoxyCodeLine{00270\ \textcolor{preprocessor}{\#define\ XSetLocaleModifiers\ \_glfw.x11.xlib.SetLocaleModifiers}}
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#define\ XSetScreenSaver\ \_glfw.x11.xlib.SetScreenSaver}}
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\#define\ XSetSelectionOwner\ \_glfw.x11.xlib.SetSelectionOwner}}
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#define\ XSetWMHints\ \_glfw.x11.xlib.SetWMHints}}
+\DoxyCodeLine{00274\ \textcolor{preprocessor}{\#define\ XSetWMNormalHints\ \_glfw.x11.xlib.SetWMNormalHints}}
+\DoxyCodeLine{00275\ \textcolor{preprocessor}{\#define\ XSetWMProtocols\ \_glfw.x11.xlib.SetWMProtocols}}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#define\ XSupportsLocale\ \_glfw.x11.xlib.SupportsLocale}}
+\DoxyCodeLine{00277\ \textcolor{preprocessor}{\#define\ XSync\ \_glfw.x11.xlib.Sync}}
+\DoxyCodeLine{00278\ \textcolor{preprocessor}{\#define\ XTranslateCoordinates\ \_glfw.x11.xlib.TranslateCoordinates}}
+\DoxyCodeLine{00279\ \textcolor{preprocessor}{\#define\ XUndefineCursor\ \_glfw.x11.xlib.UndefineCursor}}
+\DoxyCodeLine{00280\ \textcolor{preprocessor}{\#define\ XUngrabPointer\ \_glfw.x11.xlib.UngrabPointer}}
+\DoxyCodeLine{00281\ \textcolor{preprocessor}{\#define\ XUnmapWindow\ \_glfw.x11.xlib.UnmapWindow}}
+\DoxyCodeLine{00282\ \textcolor{preprocessor}{\#define\ XUnsetICFocus\ \_glfw.x11.xlib.UnsetICFocus}}
+\DoxyCodeLine{00283\ \textcolor{preprocessor}{\#define\ XVisualIDFromVisual\ \_glfw.x11.xlib.VisualIDFromVisual}}
+\DoxyCodeLine{00284\ \textcolor{preprocessor}{\#define\ XWarpPointer\ \_glfw.x11.xlib.WarpPointer}}
+\DoxyCodeLine{00285\ \textcolor{preprocessor}{\#define\ XkbFreeKeyboard\ \_glfw.x11.xkb.FreeKeyboard}}
+\DoxyCodeLine{00286\ \textcolor{preprocessor}{\#define\ XkbFreeNames\ \_glfw.x11.xkb.FreeNames}}
+\DoxyCodeLine{00287\ \textcolor{preprocessor}{\#define\ XkbGetMap\ \_glfw.x11.xkb.GetMap}}
+\DoxyCodeLine{00288\ \textcolor{preprocessor}{\#define\ XkbGetNames\ \_glfw.x11.xkb.GetNames}}
+\DoxyCodeLine{00289\ \textcolor{preprocessor}{\#define\ XkbGetState\ \_glfw.x11.xkb.GetState}}
+\DoxyCodeLine{00290\ \textcolor{preprocessor}{\#define\ XkbKeycodeToKeysym\ \_glfw.x11.xkb.KeycodeToKeysym}}
+\DoxyCodeLine{00291\ \textcolor{preprocessor}{\#define\ XkbQueryExtension\ \_glfw.x11.xkb.QueryExtension}}
+\DoxyCodeLine{00292\ \textcolor{preprocessor}{\#define\ XkbSelectEventDetails\ \_glfw.x11.xkb.SelectEventDetails}}
+\DoxyCodeLine{00293\ \textcolor{preprocessor}{\#define\ XkbSetDetectableAutoRepeat\ \_glfw.x11.xkb.SetDetectableAutoRepeat}}
+\DoxyCodeLine{00294\ \textcolor{preprocessor}{\#define\ XrmDestroyDatabase\ \_glfw.x11.xrm.DestroyDatabase}}
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\#define\ XrmGetResource\ \_glfw.x11.xrm.GetResource}}
+\DoxyCodeLine{00296\ \textcolor{preprocessor}{\#define\ XrmGetStringDatabase\ \_glfw.x11.xrm.GetStringDatabase}}
+\DoxyCodeLine{00297\ \textcolor{preprocessor}{\#define\ XrmUniqueQuark\ \_glfw.x11.xrm.UniqueQuark}}
+\DoxyCodeLine{00298\ \textcolor{preprocessor}{\#define\ XUnregisterIMInstantiateCallback\ \_glfw.x11.xlib.UnregisterIMInstantiateCallback}}
+\DoxyCodeLine{00299\ \textcolor{preprocessor}{\#define\ Xutf8LookupString\ \_glfw.x11.xlib.utf8LookupString}}
+\DoxyCodeLine{00300\ \textcolor{preprocessor}{\#define\ Xutf8SetWMProperties\ \_glfw.x11.xlib.utf8SetWMProperties}}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \textcolor{keyword}{typedef}\ XRRCrtcGamma*\ (*\ PFN\_XRRAllocGamma)(int);}
+\DoxyCodeLine{00303\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XRRFreeCrtcInfo)(XRRCrtcInfo*);}
+\DoxyCodeLine{00304\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XRRFreeGamma)(XRRCrtcGamma*);}
+\DoxyCodeLine{00305\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XRRFreeOutputInfo)(XRROutputInfo*);}
+\DoxyCodeLine{00306\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XRRFreeScreenResources)(XRRScreenResources*);}
+\DoxyCodeLine{00307\ \textcolor{keyword}{typedef}\ XRRCrtcGamma*\ (*\ PFN\_XRRGetCrtcGamma)(Display*,RRCrtc);}
+\DoxyCodeLine{00308\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XRRGetCrtcGammaSize)(Display*,RRCrtc);}
+\DoxyCodeLine{00309\ \textcolor{keyword}{typedef}\ XRRCrtcInfo*\ (*\ PFN\_XRRGetCrtcInfo)\ (Display*,XRRScreenResources*,RRCrtc);}
+\DoxyCodeLine{00310\ \textcolor{keyword}{typedef}\ XRROutputInfo*\ (*\ PFN\_XRRGetOutputInfo)(Display*,XRRScreenResources*,RROutput);}
+\DoxyCodeLine{00311\ \textcolor{keyword}{typedef}\ RROutput\ (*\ PFN\_XRRGetOutputPrimary)(Display*,Window);}
+\DoxyCodeLine{00312\ \textcolor{keyword}{typedef}\ XRRScreenResources*\ (*\ PFN\_XRRGetScreenResourcesCurrent)(Display*,Window);}
+\DoxyCodeLine{00313\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XRRQueryExtension)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00314\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XRRQueryVersion)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00315\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XRRSelectInput)(Display*,Window,int);}
+\DoxyCodeLine{00316\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XRRSetCrtcConfig)(Display*,XRRScreenResources*,RRCrtc,Time,int,int,RRMode,Rotation,RROutput*,int);}
+\DoxyCodeLine{00317\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XRRSetCrtcGamma)(Display*,RRCrtc,XRRCrtcGamma*);}
+\DoxyCodeLine{00318\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XRRUpdateConfiguration)(XEvent*);}
+\DoxyCodeLine{00319\ \textcolor{preprocessor}{\#define\ XRRAllocGamma\ \_glfw.x11.randr.AllocGamma}}
+\DoxyCodeLine{00320\ \textcolor{preprocessor}{\#define\ XRRFreeCrtcInfo\ \_glfw.x11.randr.FreeCrtcInfo}}
+\DoxyCodeLine{00321\ \textcolor{preprocessor}{\#define\ XRRFreeGamma\ \_glfw.x11.randr.FreeGamma}}
+\DoxyCodeLine{00322\ \textcolor{preprocessor}{\#define\ XRRFreeOutputInfo\ \_glfw.x11.randr.FreeOutputInfo}}
+\DoxyCodeLine{00323\ \textcolor{preprocessor}{\#define\ XRRFreeScreenResources\ \_glfw.x11.randr.FreeScreenResources}}
+\DoxyCodeLine{00324\ \textcolor{preprocessor}{\#define\ XRRGetCrtcGamma\ \_glfw.x11.randr.GetCrtcGamma}}
+\DoxyCodeLine{00325\ \textcolor{preprocessor}{\#define\ XRRGetCrtcGammaSize\ \_glfw.x11.randr.GetCrtcGammaSize}}
+\DoxyCodeLine{00326\ \textcolor{preprocessor}{\#define\ XRRGetCrtcInfo\ \_glfw.x11.randr.GetCrtcInfo}}
+\DoxyCodeLine{00327\ \textcolor{preprocessor}{\#define\ XRRGetOutputInfo\ \_glfw.x11.randr.GetOutputInfo}}
+\DoxyCodeLine{00328\ \textcolor{preprocessor}{\#define\ XRRGetOutputPrimary\ \_glfw.x11.randr.GetOutputPrimary}}
+\DoxyCodeLine{00329\ \textcolor{preprocessor}{\#define\ XRRGetScreenResourcesCurrent\ \_glfw.x11.randr.GetScreenResourcesCurrent}}
+\DoxyCodeLine{00330\ \textcolor{preprocessor}{\#define\ XRRQueryExtension\ \_glfw.x11.randr.QueryExtension}}
+\DoxyCodeLine{00331\ \textcolor{preprocessor}{\#define\ XRRQueryVersion\ \_glfw.x11.randr.QueryVersion}}
+\DoxyCodeLine{00332\ \textcolor{preprocessor}{\#define\ XRRSelectInput\ \_glfw.x11.randr.SelectInput}}
+\DoxyCodeLine{00333\ \textcolor{preprocessor}{\#define\ XRRSetCrtcConfig\ \_glfw.x11.randr.SetCrtcConfig}}
+\DoxyCodeLine{00334\ \textcolor{preprocessor}{\#define\ XRRSetCrtcGamma\ \_glfw.x11.randr.SetCrtcGamma}}
+\DoxyCodeLine{00335\ \textcolor{preprocessor}{\#define\ XRRUpdateConfiguration\ \_glfw.x11.randr.UpdateConfiguration}}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00337\ \textcolor{keyword}{typedef}\ XcursorImage*\ (*\ PFN\_XcursorImageCreate)(int,int);}
+\DoxyCodeLine{00338\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XcursorImageDestroy)(XcursorImage*);}
+\DoxyCodeLine{00339\ \textcolor{keyword}{typedef}\ Cursor\ (*\ PFN\_XcursorImageLoadCursor)(Display*,\textcolor{keyword}{const}\ XcursorImage*);}
+\DoxyCodeLine{00340\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{char}*\ (*\ PFN\_XcursorGetTheme)(Display*);}
+\DoxyCodeLine{00341\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XcursorGetDefaultSize)(Display*);}
+\DoxyCodeLine{00342\ \textcolor{keyword}{typedef}\ XcursorImage*\ (*\ PFN\_XcursorLibraryLoadImage)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*,int);}
+\DoxyCodeLine{00343\ \textcolor{preprocessor}{\#define\ XcursorImageCreate\ \_glfw.x11.xcursor.ImageCreate}}
+\DoxyCodeLine{00344\ \textcolor{preprocessor}{\#define\ XcursorImageDestroy\ \_glfw.x11.xcursor.ImageDestroy}}
+\DoxyCodeLine{00345\ \textcolor{preprocessor}{\#define\ XcursorImageLoadCursor\ \_glfw.x11.xcursor.ImageLoadCursor}}
+\DoxyCodeLine{00346\ \textcolor{preprocessor}{\#define\ XcursorGetTheme\ \_glfw.x11.xcursor.GetTheme}}
+\DoxyCodeLine{00347\ \textcolor{preprocessor}{\#define\ XcursorGetDefaultSize\ \_glfw.x11.xcursor.GetDefaultSize}}
+\DoxyCodeLine{00348\ \textcolor{preprocessor}{\#define\ XcursorLibraryLoadImage\ \_glfw.x11.xcursor.LibraryLoadImage}}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XineramaIsActive)(Display*);}
+\DoxyCodeLine{00351\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XineramaQueryExtension)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00352\ \textcolor{keyword}{typedef}\ XineramaScreenInfo*\ (*\ PFN\_XineramaQueryScreens)(Display*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00353\ \textcolor{preprocessor}{\#define\ XineramaIsActive\ \_glfw.x11.xinerama.IsActive}}
+\DoxyCodeLine{00354\ \textcolor{preprocessor}{\#define\ XineramaQueryExtension\ \_glfw.x11.xinerama.QueryExtension}}
+\DoxyCodeLine{00355\ \textcolor{preprocessor}{\#define\ XineramaQueryScreens\ \_glfw.x11.xinerama.QueryScreens}}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \textcolor{keyword}{typedef}\ XID\ xcb\_window\_t;}
+\DoxyCodeLine{00358\ \textcolor{keyword}{typedef}\ XID\ xcb\_visualid\_t;}
+\DoxyCodeLine{00359\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }xcb\_connection\_t\ xcb\_connection\_t;}
+\DoxyCodeLine{00360\ \textcolor{keyword}{typedef}\ xcb\_connection\_t*\ (*\ PFN\_XGetXCBConnection)(Display*);}
+\DoxyCodeLine{00361\ \textcolor{preprocessor}{\#define\ XGetXCBConnection\ \_glfw.x11.x11xcb.GetXCBConnection}}
+\DoxyCodeLine{00362\ }
+\DoxyCodeLine{00363\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XF86VidModeQueryExtension)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00364\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XF86VidModeGetGammaRamp)(Display*,int,int,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}*,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}*,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}*);}
+\DoxyCodeLine{00365\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XF86VidModeSetGammaRamp)(Display*,int,int,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}*,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}*,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}*);}
+\DoxyCodeLine{00366\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XF86VidModeGetGammaRampSize)(Display*,int,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00367\ \textcolor{preprocessor}{\#define\ XF86VidModeQueryExtension\ \_glfw.x11.vidmode.QueryExtension}}
+\DoxyCodeLine{00368\ \textcolor{preprocessor}{\#define\ XF86VidModeGetGammaRamp\ \_glfw.x11.vidmode.GetGammaRamp}}
+\DoxyCodeLine{00369\ \textcolor{preprocessor}{\#define\ XF86VidModeSetGammaRamp\ \_glfw.x11.vidmode.SetGammaRamp}}
+\DoxyCodeLine{00370\ \textcolor{preprocessor}{\#define\ XF86VidModeGetGammaRampSize\ \_glfw.x11.vidmode.GetGammaRampSize}}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XIQueryVersion)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00373\ \textcolor{keyword}{typedef}\ int\ (*\ PFN\_XISelectEvents)(Display*,Window,XIEventMask*,int);}
+\DoxyCodeLine{00374\ \textcolor{preprocessor}{\#define\ XIQueryVersion\ \_glfw.x11.xi.QueryVersion}}
+\DoxyCodeLine{00375\ \textcolor{preprocessor}{\#define\ XISelectEvents\ \_glfw.x11.xi.SelectEvents}}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00377\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XRenderQueryExtension)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00378\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XRenderQueryVersion)(Display*dpy,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00379\ \textcolor{keyword}{typedef}\ XRenderPictFormat*\ (*\ PFN\_XRenderFindVisualFormat)(Display*,Visual\ \textcolor{keyword}{const}*);}
+\DoxyCodeLine{00380\ \textcolor{preprocessor}{\#define\ XRenderQueryExtension\ \_glfw.x11.xrender.QueryExtension}}
+\DoxyCodeLine{00381\ \textcolor{preprocessor}{\#define\ XRenderQueryVersion\ \_glfw.x11.xrender.QueryVersion}}
+\DoxyCodeLine{00382\ \textcolor{preprocessor}{\#define\ XRenderFindVisualFormat\ \_glfw.x11.xrender.FindVisualFormat}}
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00384\ \textcolor{keyword}{typedef}\ Bool\ (*\ PFN\_XShapeQueryExtension)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00385\ \textcolor{keyword}{typedef}\ Status\ (*\ PFN\_XShapeQueryVersion)(Display*dpy,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00386\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XShapeCombineRegion)(Display*,Window,int,int,int,Region,int);}
+\DoxyCodeLine{00387\ \textcolor{keyword}{typedef}\ void\ (*\ PFN\_XShapeCombineMask)(Display*,Window,int,int,int,Pixmap,int);}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00389\ \textcolor{preprocessor}{\#define\ XShapeQueryExtension\ \_glfw.x11.xshape.QueryExtension}}
+\DoxyCodeLine{00390\ \textcolor{preprocessor}{\#define\ XShapeQueryVersion\ \_glfw.x11.xshape.QueryVersion}}
+\DoxyCodeLine{00391\ \textcolor{preprocessor}{\#define\ XShapeCombineRegion\ \_glfw.x11.xshape.ShapeCombineRegion}}
+\DoxyCodeLine{00392\ \textcolor{preprocessor}{\#define\ XShapeCombineMask\ \_glfw.x11.xshape.ShapeCombineMask}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \textcolor{keyword}{typedef}\ int\ (*PFNGLXGETFBCONFIGATTRIBPROC)(Display*,GLXFBConfig,int,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00395\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ (*PFNGLXGETCLIENTSTRINGPROC)(Display*,int);}
+\DoxyCodeLine{00396\ \textcolor{keyword}{typedef}\ Bool\ (*PFNGLXQUERYEXTENSIONPROC)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00397\ \textcolor{keyword}{typedef}\ Bool\ (*PFNGLXQUERYVERSIONPROC)(Display*,\textcolor{keywordtype}{int}*,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00398\ \textcolor{keyword}{typedef}\ void\ (*PFNGLXDESTROYCONTEXTPROC)(Display*,GLXContext);}
+\DoxyCodeLine{00399\ \textcolor{keyword}{typedef}\ Bool\ (*PFNGLXMAKECURRENTPROC)(Display*,GLXDrawable,GLXContext);}
+\DoxyCodeLine{00400\ \textcolor{keyword}{typedef}\ void\ (*PFNGLXSWAPBUFFERSPROC)(Display*,GLXDrawable);}
+\DoxyCodeLine{00401\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ (*PFNGLXQUERYEXTENSIONSSTRINGPROC)(Display*,int);}
+\DoxyCodeLine{00402\ \textcolor{keyword}{typedef}\ GLXFBConfig*\ (*PFNGLXGETFBCONFIGSPROC)(Display*,int,\textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00403\ \textcolor{keyword}{typedef}\ GLXContext\ (*PFNGLXCREATENEWCONTEXTPROC)(Display*,GLXFBConfig,int,GLXContext,Bool);}
+\DoxyCodeLine{00404\ \textcolor{keyword}{typedef}\ \_\_GLXextproc\ (*\ PFNGLXGETPROCADDRESSPROC)(\textcolor{keyword}{const}\ GLubyte\ *procName);}
+\DoxyCodeLine{00405\ \textcolor{keyword}{typedef}\ void\ (*PFNGLXSWAPINTERVALEXTPROC)(Display*,GLXDrawable,int);}
+\DoxyCodeLine{00406\ \textcolor{keyword}{typedef}\ XVisualInfo*\ (*PFNGLXGETVISUALFROMFBCONFIGPROC)(Display*,GLXFBConfig);}
+\DoxyCodeLine{00407\ \textcolor{keyword}{typedef}\ GLXWindow\ (*PFNGLXCREATEWINDOWPROC)(Display*,GLXFBConfig,Window,\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00408\ \textcolor{keyword}{typedef}\ void\ (*PFNGLXDESTROYWINDOWPROC)(Display*,GLXWindow);}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00410\ \textcolor{keyword}{typedef}\ int\ (*PFNGLXSWAPINTERVALMESAPROC)(int);}
+\DoxyCodeLine{00411\ \textcolor{keyword}{typedef}\ int\ (*PFNGLXSWAPINTERVALSGIPROC)(int);}
+\DoxyCodeLine{00412\ \textcolor{keyword}{typedef}\ GLXContext\ (*PFNGLXCREATECONTEXTATTRIBSARBPROC)(Display*,GLXFBConfig,GLXContext,Bool,\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}*);}
+\DoxyCodeLine{00413\ }
+\DoxyCodeLine{00414\ \textcolor{comment}{//\ libGL.so\ function\ pointer\ typedefs}}
+\DoxyCodeLine{00415\ \textcolor{preprocessor}{\#define\ glXGetFBConfigs\ \_glfw.glx.GetFBConfigs}}
+\DoxyCodeLine{00416\ \textcolor{preprocessor}{\#define\ glXGetFBConfigAttrib\ \_glfw.glx.GetFBConfigAttrib}}
+\DoxyCodeLine{00417\ \textcolor{preprocessor}{\#define\ glXGetClientString\ \_glfw.glx.GetClientString}}
+\DoxyCodeLine{00418\ \textcolor{preprocessor}{\#define\ glXQueryExtension\ \_glfw.glx.QueryExtension}}
+\DoxyCodeLine{00419\ \textcolor{preprocessor}{\#define\ glXQueryVersion\ \_glfw.glx.QueryVersion}}
+\DoxyCodeLine{00420\ \textcolor{preprocessor}{\#define\ glXDestroyContext\ \_glfw.glx.DestroyContext}}
+\DoxyCodeLine{00421\ \textcolor{preprocessor}{\#define\ glXMakeCurrent\ \_glfw.glx.MakeCurrent}}
+\DoxyCodeLine{00422\ \textcolor{preprocessor}{\#define\ glXSwapBuffers\ \_glfw.glx.SwapBuffers}}
+\DoxyCodeLine{00423\ \textcolor{preprocessor}{\#define\ glXQueryExtensionsString\ \_glfw.glx.QueryExtensionsString}}
+\DoxyCodeLine{00424\ \textcolor{preprocessor}{\#define\ glXCreateNewContext\ \_glfw.glx.CreateNewContext}}
+\DoxyCodeLine{00425\ \textcolor{preprocessor}{\#define\ glXGetVisualFromFBConfig\ \_glfw.glx.GetVisualFromFBConfig}}
+\DoxyCodeLine{00426\ \textcolor{preprocessor}{\#define\ glXCreateWindow\ \_glfw.glx.CreateWindow}}
+\DoxyCodeLine{00427\ \textcolor{preprocessor}{\#define\ glXDestroyWindow\ \_glfw.glx.DestroyWindow}}
+\DoxyCodeLine{00428\ }
+\DoxyCodeLine{00429\ \textcolor{keyword}{typedef}\ VkFlags\ VkXlibSurfaceCreateFlagsKHR;}
+\DoxyCodeLine{00430\ \textcolor{keyword}{typedef}\ VkFlags\ VkXcbSurfaceCreateFlagsKHR;}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00432\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vk_xlib_surface_create_info_k_h_r}{VkXlibSurfaceCreateInfoKHR}}}
+\DoxyCodeLine{00433\ \{}
+\DoxyCodeLine{00434\ \ \ \ \ VkStructureType\ \ \ \ \ \ \ \ \ \ \ \ \ sType;}
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pNext;}
+\DoxyCodeLine{00436\ \ \ \ \ VkXlibSurfaceCreateFlagsKHR\ flags;}
+\DoxyCodeLine{00437\ \ \ \ \ Display*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dpy;}
+\DoxyCodeLine{00438\ \ \ \ \ Window\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window;}
+\DoxyCodeLine{00439\ \}\ \mbox{\hyperlink{struct_vk_xlib_surface_create_info_k_h_r}{VkXlibSurfaceCreateInfoKHR}};}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vk_xcb_surface_create_info_k_h_r}{VkXcbSurfaceCreateInfoKHR}}}
+\DoxyCodeLine{00442\ \{}
+\DoxyCodeLine{00443\ \ \ \ \ VkStructureType\ \ \ \ \ \ \ \ \ \ \ \ \ sType;}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pNext;}
+\DoxyCodeLine{00445\ \ \ \ \ VkXcbSurfaceCreateFlagsKHR\ \ flags;}
+\DoxyCodeLine{00446\ \ \ \ \ xcb\_connection\_t*\ \ \ \ \ \ \ \ \ \ \ connection;}
+\DoxyCodeLine{00447\ \ \ \ \ xcb\_window\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ window;}
+\DoxyCodeLine{00448\ \}\ \mbox{\hyperlink{struct_vk_xcb_surface_create_info_k_h_r}{VkXcbSurfaceCreateInfoKHR}};}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ \textcolor{keyword}{typedef}\ VkResult\ (APIENTRY\ *PFN\_vkCreateXlibSurfaceKHR)(VkInstance,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_vk_xlib_surface_create_info_k_h_r}{VkXlibSurfaceCreateInfoKHR}}*,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*,VkSurfaceKHR*);}
+\DoxyCodeLine{00451\ \textcolor{keyword}{typedef}\ VkBool32\ (APIENTRY\ *PFN\_vkGetPhysicalDeviceXlibPresentationSupportKHR)(VkPhysicalDevice,uint32\_t,Display*,VisualID);}
+\DoxyCodeLine{00452\ \textcolor{keyword}{typedef}\ VkResult\ (APIENTRY\ *PFN\_vkCreateXcbSurfaceKHR)(VkInstance,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_vk_xcb_surface_create_info_k_h_r}{VkXcbSurfaceCreateInfoKHR}}*,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*,VkSurfaceKHR*);}
+\DoxyCodeLine{00453\ \textcolor{keyword}{typedef}\ VkBool32\ (APIENTRY\ *PFN\_vkGetPhysicalDeviceXcbPresentationSupportKHR)(VkPhysicalDevice,uint32\_t,xcb\_connection\_t*,xcb\_visualid\_t);}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00455\ \textcolor{preprocessor}{\#include\ "{}xkb\_unicode.h"{}}}
+\DoxyCodeLine{00456\ \textcolor{preprocessor}{\#include\ "{}posix\_poll.h"{}}}
+\DoxyCodeLine{00457\ }
+\DoxyCodeLine{00458\ \textcolor{preprocessor}{\#define\ GLFW\_X11\_WINDOW\_STATE\ \ \ \ \ \ \ \ \ \ \ \_GLFWwindowX11\ x11;}}
+\DoxyCodeLine{00459\ \textcolor{preprocessor}{\#define\ GLFW\_X11\_LIBRARY\_WINDOW\_STATE\ \ \ \_GLFWlibraryX11\ x11;}}
+\DoxyCodeLine{00460\ \textcolor{preprocessor}{\#define\ GLFW\_X11\_MONITOR\_STATE\ \ \ \ \ \ \ \ \ \ \_GLFWmonitorX11\ x11;}}
+\DoxyCodeLine{00461\ \textcolor{preprocessor}{\#define\ GLFW\_X11\_CURSOR\_STATE\ \ \ \ \ \ \ \ \ \ \ \_GLFWcursorX11\ x11;}}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \textcolor{preprocessor}{\#define\ GLFW\_GLX\_CONTEXT\_STATE\ \ \ \ \ \ \ \ \ \ \_GLFWcontextGLX\ glx;}}
+\DoxyCodeLine{00464\ \textcolor{preprocessor}{\#define\ GLFW\_GLX\_LIBRARY\_CONTEXT\_STATE\ \ \_GLFWlibraryGLX\ glx;}}
+\DoxyCodeLine{00465\ }
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00467\ \textcolor{comment}{//\ GLX-\/specific\ per-\/context\ data}}
+\DoxyCodeLine{00468\ \textcolor{comment}{//}}
+\DoxyCodeLine{00469\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wcontext_g_l_x}{\_GLFWcontextGLX}}}
+\DoxyCodeLine{00470\ \{}
+\DoxyCodeLine{00471\ \ \ \ \ GLXContext\ \ \ \ \ \ handle;}
+\DoxyCodeLine{00472\ \ \ \ \ GLXWindow\ \ \ \ \ \ \ window;}
+\DoxyCodeLine{00473\ \}\ \mbox{\hyperlink{struct___g_l_f_wcontext_g_l_x}{\_GLFWcontextGLX}};}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00475\ \textcolor{comment}{//\ GLX-\/specific\ global\ data}}
+\DoxyCodeLine{00476\ \textcolor{comment}{//}}
+\DoxyCodeLine{00477\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wlibrary_g_l_x}{\_GLFWlibraryGLX}}}
+\DoxyCodeLine{00478\ \{}
+\DoxyCodeLine{00479\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ major,\ minor;}
+\DoxyCodeLine{00480\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ eventBase;}
+\DoxyCodeLine{00481\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ errorBase;}
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ \ \ \ \ \textcolor{comment}{//\ GLX\ 1.3\ functions}}
+\DoxyCodeLine{00486\ \ \ \ \ PFNGLXGETFBCONFIGSPROC\ \ \ \ \ \ \ \ \ \ \ \ \ \ GetFBConfigs;}
+\DoxyCodeLine{00487\ \ \ \ \ PFNGLXGETFBCONFIGATTRIBPROC\ \ \ \ \ \ \ \ \ GetFBConfigAttrib;}
+\DoxyCodeLine{00488\ \ \ \ \ PFNGLXGETCLIENTSTRINGPROC\ \ \ \ \ \ \ \ \ \ \ GetClientString;}
+\DoxyCodeLine{00489\ \ \ \ \ PFNGLXQUERYEXTENSIONPROC\ \ \ \ \ \ \ \ \ \ \ \ QueryExtension;}
+\DoxyCodeLine{00490\ \ \ \ \ PFNGLXQUERYVERSIONPROC\ \ \ \ \ \ \ \ \ \ \ \ \ \ QueryVersion;}
+\DoxyCodeLine{00491\ \ \ \ \ PFNGLXDESTROYCONTEXTPROC\ \ \ \ \ \ \ \ \ \ \ \ DestroyContext;}
+\DoxyCodeLine{00492\ \ \ \ \ PFNGLXMAKECURRENTPROC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MakeCurrent;}
+\DoxyCodeLine{00493\ \ \ \ \ PFNGLXSWAPBUFFERSPROC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SwapBuffers;}
+\DoxyCodeLine{00494\ \ \ \ \ PFNGLXQUERYEXTENSIONSSTRINGPROC\ \ \ \ \ QueryExtensionsString;}
+\DoxyCodeLine{00495\ \ \ \ \ PFNGLXCREATENEWCONTEXTPROC\ \ \ \ \ \ \ \ \ \ CreateNewContext;}
+\DoxyCodeLine{00496\ \ \ \ \ PFNGLXGETVISUALFROMFBCONFIGPROC\ \ \ \ \ GetVisualFromFBConfig;}
+\DoxyCodeLine{00497\ \ \ \ \ PFNGLXCREATEWINDOWPROC\ \ \ \ \ \ \ \ \ \ \ \ \ \ CreateWindow;}
+\DoxyCodeLine{00498\ \ \ \ \ PFNGLXDESTROYWINDOWPROC\ \ \ \ \ \ \ \ \ \ \ \ \ DestroyWindow;}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{comment}{//\ GLX\ 1.4\ and\ extension\ functions}}
+\DoxyCodeLine{00501\ \ \ \ \ PFNGLXGETPROCADDRESSPROC\ \ \ \ \ \ \ \ \ \ \ \ GetProcAddress;}
+\DoxyCodeLine{00502\ \ \ \ \ PFNGLXGETPROCADDRESSPROC\ \ \ \ \ \ \ \ \ \ \ \ GetProcAddressARB;}
+\DoxyCodeLine{00503\ \ \ \ \ PFNGLXSWAPINTERVALSGIPROC\ \ \ \ \ \ \ \ \ \ \ SwapIntervalSGI;}
+\DoxyCodeLine{00504\ \ \ \ \ PFNGLXSWAPINTERVALEXTPROC\ \ \ \ \ \ \ \ \ \ \ SwapIntervalEXT;}
+\DoxyCodeLine{00505\ \ \ \ \ PFNGLXSWAPINTERVALMESAPROC\ \ \ \ \ \ \ \ \ \ SwapIntervalMESA;}
+\DoxyCodeLine{00506\ \ \ \ \ PFNGLXCREATECONTEXTATTRIBSARBPROC\ \ \ CreateContextAttribsARB;}
+\DoxyCodeLine{00507\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ SGI\_swap\_control;}
+\DoxyCodeLine{00508\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ EXT\_swap\_control;}
+\DoxyCodeLine{00509\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ MESA\_swap\_control;}
+\DoxyCodeLine{00510\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ ARB\_multisample;}
+\DoxyCodeLine{00511\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ ARB\_framebuffer\_sRGB;}
+\DoxyCodeLine{00512\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ EXT\_framebuffer\_sRGB;}
+\DoxyCodeLine{00513\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ ARB\_create\_context;}
+\DoxyCodeLine{00514\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ ARB\_create\_context\_profile;}
+\DoxyCodeLine{00515\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ ARB\_create\_context\_robustness;}
+\DoxyCodeLine{00516\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ EXT\_create\_context\_es2\_profile;}
+\DoxyCodeLine{00517\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ ARB\_create\_context\_no\_error;}
+\DoxyCodeLine{00518\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ ARB\_context\_flush\_control;}
+\DoxyCodeLine{00519\ \}\ \mbox{\hyperlink{struct___g_l_f_wlibrary_g_l_x}{\_GLFWlibraryGLX}};}
+\DoxyCodeLine{00520\ }
+\DoxyCodeLine{00521\ \textcolor{comment}{//\ X11-\/specific\ per-\/window\ data}}
+\DoxyCodeLine{00522\ \textcolor{comment}{//}}
+\DoxyCodeLine{00523\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wwindow_x11}{\_GLFWwindowX11}}}
+\DoxyCodeLine{00524\ \{}
+\DoxyCodeLine{00525\ \ \ \ \ Colormap\ \ \ \ \ \ \ \ colormap;}
+\DoxyCodeLine{00526\ \ \ \ \ Window\ \ \ \ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00527\ \ \ \ \ Window\ \ \ \ \ \ \ \ \ \ parent;}
+\DoxyCodeLine{00528\ \ \ \ \ XIC\ \ \ \ \ \ \ \ \ \ \ \ \ ic;}
+\DoxyCodeLine{00529\ }
+\DoxyCodeLine{00530\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ overrideRedirect;}
+\DoxyCodeLine{00531\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ iconified;}
+\DoxyCodeLine{00532\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ maximized;}
+\DoxyCodeLine{00533\ }
+\DoxyCodeLine{00534\ \ \ \ \ \textcolor{comment}{//\ Whether\ the\ visual\ supports\ framebuffer\ transparency}}
+\DoxyCodeLine{00535\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ transparent;}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00537\ \ \ \ \ \textcolor{comment}{//\ Cached\ position\ and\ size\ used\ to\ filter\ out\ duplicate\ events}}
+\DoxyCodeLine{00538\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ width,\ height;}
+\DoxyCodeLine{00539\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ xpos,\ ypos;}
+\DoxyCodeLine{00540\ }
+\DoxyCodeLine{00541\ \ \ \ \ \textcolor{comment}{//\ The\ last\ received\ cursor\ position,\ regardless\ of\ source}}
+\DoxyCodeLine{00542\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ lastCursorPosX,\ lastCursorPosY;}
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{comment}{//\ The\ last\ position\ the\ cursor\ was\ warped\ to\ by\ GLFW}}
+\DoxyCodeLine{00544\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ warpCursorPosX,\ warpCursorPosY;}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00546\ \ \ \ \ \textcolor{comment}{//\ The\ time\ of\ the\ last\ KeyPress\ event\ per\ keycode,\ for\ discarding}}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{comment}{//\ duplicate\ key\ events\ generated\ for\ some\ keys\ by\ ibus}}
+\DoxyCodeLine{00548\ \ \ \ \ Time\ \ \ \ \ \ \ \ \ \ \ \ keyPressTimes[256];}
+\DoxyCodeLine{00549\ \}\ \mbox{\hyperlink{struct___g_l_f_wwindow_x11}{\_GLFWwindowX11}};}
+\DoxyCodeLine{00550\ }
+\DoxyCodeLine{00551\ \textcolor{comment}{//\ X11-\/specific\ global\ data}}
+\DoxyCodeLine{00552\ \textcolor{comment}{//}}
+\DoxyCodeLine{00553\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wlibrary_x11}{\_GLFWlibraryX11}}}
+\DoxyCodeLine{00554\ \{}
+\DoxyCodeLine{00555\ \ \ \ \ Display*\ \ \ \ \ \ \ \ display;}
+\DoxyCodeLine{00556\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ screen;}
+\DoxyCodeLine{00557\ \ \ \ \ Window\ \ \ \ \ \ \ \ \ \ root;}
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00559\ \ \ \ \ \textcolor{comment}{//\ System\ content\ scale}}
+\DoxyCodeLine{00560\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ contentScaleX,\ contentScaleY;}
+\DoxyCodeLine{00561\ \ \ \ \ \textcolor{comment}{//\ Helper\ window\ for\ IPC}}
+\DoxyCodeLine{00562\ \ \ \ \ Window\ \ \ \ \ \ \ \ \ \ helperWindowHandle;}
+\DoxyCodeLine{00563\ \ \ \ \ \textcolor{comment}{//\ Invisible\ cursor\ for\ hidden\ cursor\ mode}}
+\DoxyCodeLine{00564\ \ \ \ \ Cursor\ \ \ \ \ \ \ \ \ \ hiddenCursorHandle;}
+\DoxyCodeLine{00565\ \ \ \ \ \textcolor{comment}{//\ Context\ for\ mapping\ window\ XIDs\ to\ \_GLFWwindow\ pointers}}
+\DoxyCodeLine{00566\ \ \ \ \ XContext\ \ \ \ \ \ \ \ context;}
+\DoxyCodeLine{00567\ \ \ \ \ \textcolor{comment}{//\ XIM\ input\ method}}
+\DoxyCodeLine{00568\ \ \ \ \ XIM\ \ \ \ \ \ \ \ \ \ \ \ \ im;}
+\DoxyCodeLine{00569\ \ \ \ \ \textcolor{comment}{//\ The\ previous\ X\ error\ handler,\ to\ be\ restored\ later}}
+\DoxyCodeLine{00570\ \ \ \ \ XErrorHandler\ \ \ errorHandler;}
+\DoxyCodeLine{00571\ \ \ \ \ \textcolor{comment}{//\ Most\ recent\ error\ code\ received\ by\ X\ error\ handler}}
+\DoxyCodeLine{00572\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ errorCode;}
+\DoxyCodeLine{00573\ \ \ \ \ \textcolor{comment}{//\ Primary\ selection\ string\ (while\ the\ primary\ selection\ is\ owned)}}
+\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ \ \ primarySelectionString;}
+\DoxyCodeLine{00575\ \ \ \ \ \textcolor{comment}{//\ Clipboard\ string\ (while\ the\ selection\ is\ owned)}}
+\DoxyCodeLine{00576\ \ \ \ \ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ \ \ clipboardString;}
+\DoxyCodeLine{00577\ \ \ \ \ \textcolor{comment}{//\ Key\ name\ string}}
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ \ \ keynames[GLFW\_KEY\_LAST\ +\ 1][5];}
+\DoxyCodeLine{00579\ \ \ \ \ \textcolor{comment}{//\ X11\ keycode\ to\ GLFW\ key\ LUT}}
+\DoxyCodeLine{00580\ \ \ \ \ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ keycodes[256];}
+\DoxyCodeLine{00581\ \ \ \ \ \textcolor{comment}{//\ GLFW\ key\ to\ X11\ keycode\ LUT}}
+\DoxyCodeLine{00582\ \ \ \ \ \textcolor{keywordtype}{short}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ scancodes[GLFW\_KEY\_LAST\ +\ 1];}
+\DoxyCodeLine{00583\ \ \ \ \ \textcolor{comment}{//\ Where\ to\ place\ the\ cursor\ when\ re-\/enabled}}
+\DoxyCodeLine{00584\ \ \ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \ \ \ restoreCursorPosX,\ restoreCursorPosY;}
+\DoxyCodeLine{00585\ \ \ \ \ \textcolor{comment}{//\ The\ window\ whose\ disabled\ cursor\ mode\ is\ active}}
+\DoxyCodeLine{00586\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ \ \ \ disabledCursorWindow;}
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ emptyEventPipe[2];}
+\DoxyCodeLine{00588\ }
+\DoxyCodeLine{00589\ \ \ \ \ \textcolor{comment}{//\ Window\ manager\ atoms}}
+\DoxyCodeLine{00590\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_SUPPORTED;}
+\DoxyCodeLine{00591\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_SUPPORTING\_WM\_CHECK;}
+\DoxyCodeLine{00592\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ WM\_PROTOCOLS;}
+\DoxyCodeLine{00593\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ WM\_STATE;}
+\DoxyCodeLine{00594\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ WM\_DELETE\_WINDOW;}
+\DoxyCodeLine{00595\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_NAME;}
+\DoxyCodeLine{00596\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_ICON\_NAME;}
+\DoxyCodeLine{00597\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_ICON;}
+\DoxyCodeLine{00598\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_PID;}
+\DoxyCodeLine{00599\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_PING;}
+\DoxyCodeLine{00600\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_WINDOW\_TYPE;}
+\DoxyCodeLine{00601\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_WINDOW\_TYPE\_NORMAL;}
+\DoxyCodeLine{00602\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_STATE;}
+\DoxyCodeLine{00603\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_STATE\_ABOVE;}
+\DoxyCodeLine{00604\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_STATE\_FULLSCREEN;}
+\DoxyCodeLine{00605\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_STATE\_MAXIMIZED\_VERT;}
+\DoxyCodeLine{00606\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_STATE\_MAXIMIZED\_HORZ;}
+\DoxyCodeLine{00607\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_STATE\_DEMANDS\_ATTENTION;}
+\DoxyCodeLine{00608\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_BYPASS\_COMPOSITOR;}
+\DoxyCodeLine{00609\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_FULLSCREEN\_MONITORS;}
+\DoxyCodeLine{00610\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_WINDOW\_OPACITY;}
+\DoxyCodeLine{00611\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WM\_CM\_Sx;}
+\DoxyCodeLine{00612\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_WORKAREA;}
+\DoxyCodeLine{00613\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_CURRENT\_DESKTOP;}
+\DoxyCodeLine{00614\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_ACTIVE\_WINDOW;}
+\DoxyCodeLine{00615\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_FRAME\_EXTENTS;}
+\DoxyCodeLine{00616\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NET\_REQUEST\_FRAME\_EXTENTS;}
+\DoxyCodeLine{00617\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ MOTIF\_WM\_HINTS;}
+\DoxyCodeLine{00618\ }
+\DoxyCodeLine{00619\ \ \ \ \ \textcolor{comment}{//\ Xdnd\ (drag\ and\ drop)\ atoms}}
+\DoxyCodeLine{00620\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ XdndAware;}
+\DoxyCodeLine{00621\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ XdndEnter;}
+\DoxyCodeLine{00622\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ XdndPosition;}
+\DoxyCodeLine{00623\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ XdndStatus;}
+\DoxyCodeLine{00624\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ XdndActionCopy;}
+\DoxyCodeLine{00625\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ XdndDrop;}
+\DoxyCodeLine{00626\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ XdndFinished;}
+\DoxyCodeLine{00627\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ XdndSelection;}
+\DoxyCodeLine{00628\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ XdndTypeList;}
+\DoxyCodeLine{00629\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ text\_uri\_list;}
+\DoxyCodeLine{00630\ }
+\DoxyCodeLine{00631\ \ \ \ \ \textcolor{comment}{//\ Selection\ (clipboard)\ atoms}}
+\DoxyCodeLine{00632\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ TARGETS;}
+\DoxyCodeLine{00633\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ MULTIPLE;}
+\DoxyCodeLine{00634\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ INCR;}
+\DoxyCodeLine{00635\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ CLIPBOARD;}
+\DoxyCodeLine{00636\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ PRIMARY;}
+\DoxyCodeLine{00637\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ CLIPBOARD\_MANAGER;}
+\DoxyCodeLine{00638\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ SAVE\_TARGETS;}
+\DoxyCodeLine{00639\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ NULL\_;}
+\DoxyCodeLine{00640\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ UTF8\_STRING;}
+\DoxyCodeLine{00641\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ COMPOUND\_STRING;}
+\DoxyCodeLine{00642\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ ATOM\_PAIR;}
+\DoxyCodeLine{00643\ \ \ \ \ Atom\ \ \ \ \ \ \ \ \ \ \ \ GLFW\_SELECTION;}
+\DoxyCodeLine{00644\ }
+\DoxyCodeLine{00645\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ utf8;}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ PFN\_XAllocClassHint\ AllocClassHint;}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ PFN\_XAllocSizeHints\ AllocSizeHints;}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ PFN\_XAllocWMHints\ AllocWMHints;}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ PFN\_XChangeProperty\ ChangeProperty;}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ PFN\_XChangeWindowAttributes\ ChangeWindowAttributes;}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ PFN\_XCheckIfEvent\ CheckIfEvent;}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ PFN\_XCheckTypedWindowEvent\ CheckTypedWindowEvent;}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ PFN\_XCloseDisplay\ CloseDisplay;}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ PFN\_XCloseIM\ CloseIM;}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ PFN\_XConvertSelection\ ConvertSelection;}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ PFN\_XCreateColormap\ CreateColormap;}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ PFN\_XCreateFontCursor\ CreateFontCursor;}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ PFN\_XCreateIC\ CreateIC;}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ PFN\_XCreateRegion\ CreateRegion;}
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ PFN\_XCreateWindow\ CreateWindow;}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ PFN\_XDefineCursor\ DefineCursor;}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ PFN\_XDeleteContext\ DeleteContext;}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ PFN\_XDeleteProperty\ DeleteProperty;}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ PFN\_XDestroyIC\ DestroyIC;}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ PFN\_XDestroyRegion\ DestroyRegion;}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ PFN\_XDestroyWindow\ DestroyWindow;}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ PFN\_XDisplayKeycodes\ DisplayKeycodes;}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ PFN\_XEventsQueued\ EventsQueued;}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ PFN\_XFilterEvent\ FilterEvent;}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ PFN\_XFindContext\ FindContext;}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ PFN\_XFlush\ Flush;}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ PFN\_XFree\ Free;}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ PFN\_XFreeColormap\ FreeColormap;}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ PFN\_XFreeCursor\ FreeCursor;}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ PFN\_XFreeEventData\ FreeEventData;}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ PFN\_XGetErrorText\ GetErrorText;}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ PFN\_XGetEventData\ GetEventData;}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ PFN\_XGetICValues\ GetICValues;}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ PFN\_XGetIMValues\ GetIMValues;}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ PFN\_XGetInputFocus\ GetInputFocus;}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ PFN\_XGetKeyboardMapping\ GetKeyboardMapping;}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ PFN\_XGetScreenSaver\ GetScreenSaver;}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ PFN\_XGetSelectionOwner\ GetSelectionOwner;}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ PFN\_XGetVisualInfo\ GetVisualInfo;}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ PFN\_XGetWMNormalHints\ GetWMNormalHints;}
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ PFN\_XGetWindowAttributes\ GetWindowAttributes;}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ PFN\_XGetWindowProperty\ GetWindowProperty;}
+\DoxyCodeLine{00690\ \ \ \ \ \ \ \ \ PFN\_XGrabPointer\ GrabPointer;}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ PFN\_XIconifyWindow\ IconifyWindow;}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \ PFN\_XInternAtom\ InternAtom;}
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ PFN\_XLookupString\ LookupString;}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ PFN\_XMapRaised\ MapRaised;}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ PFN\_XMapWindow\ MapWindow;}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ PFN\_XMoveResizeWindow\ MoveResizeWindow;}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ PFN\_XMoveWindow\ MoveWindow;}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ PFN\_XNextEvent\ NextEvent;}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ PFN\_XOpenIM\ OpenIM;}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ PFN\_XPeekEvent\ PeekEvent;}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ PFN\_XPending\ Pending;}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ PFN\_XQueryExtension\ QueryExtension;}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ PFN\_XQueryPointer\ QueryPointer;}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ PFN\_XRaiseWindow\ RaiseWindow;}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ PFN\_XRegisterIMInstantiateCallback\ RegisterIMInstantiateCallback;}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ PFN\_XResizeWindow\ ResizeWindow;}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ PFN\_XResourceManagerString\ ResourceManagerString;}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ PFN\_XSaveContext\ SaveContext;}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ PFN\_XSelectInput\ SelectInput;}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ PFN\_XSendEvent\ SendEvent;}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ PFN\_XSetClassHint\ SetClassHint;}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ PFN\_XSetErrorHandler\ SetErrorHandler;}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ PFN\_XSetICFocus\ SetICFocus;}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ PFN\_XSetIMValues\ SetIMValues;}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ PFN\_XSetInputFocus\ SetInputFocus;}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ PFN\_XSetLocaleModifiers\ SetLocaleModifiers;}
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ PFN\_XSetScreenSaver\ SetScreenSaver;}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ PFN\_XSetSelectionOwner\ SetSelectionOwner;}
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ PFN\_XSetWMHints\ SetWMHints;}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ PFN\_XSetWMNormalHints\ SetWMNormalHints;}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ PFN\_XSetWMProtocols\ SetWMProtocols;}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ PFN\_XSupportsLocale\ SupportsLocale;}
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ PFN\_XSync\ Sync;}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ PFN\_XTranslateCoordinates\ TranslateCoordinates;}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ PFN\_XUndefineCursor\ UndefineCursor;}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ PFN\_XUngrabPointer\ UngrabPointer;}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ PFN\_XUnmapWindow\ UnmapWindow;}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ PFN\_XUnsetICFocus\ UnsetICFocus;}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ PFN\_XVisualIDFromVisual\ VisualIDFromVisual;}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ PFN\_XWarpPointer\ WarpPointer;}
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ PFN\_XUnregisterIMInstantiateCallback\ UnregisterIMInstantiateCallback;}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ PFN\_Xutf8LookupString\ utf8LookupString;}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ PFN\_Xutf8SetWMProperties\ utf8SetWMProperties;}
+\DoxyCodeLine{00734\ \ \ \ \ \}\ xlib;}
+\DoxyCodeLine{00735\ }
+\DoxyCodeLine{00736\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ PFN\_XrmDestroyDatabase\ DestroyDatabase;}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ PFN\_XrmGetResource\ GetResource;}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ PFN\_XrmGetStringDatabase\ GetStringDatabase;}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ PFN\_XrmUniqueQuark\ UniqueQuark;}
+\DoxyCodeLine{00741\ \ \ \ \ \}\ xrm;}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ available;}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ eventBase;}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ errorBase;}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ major;}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ minor;}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ gammaBroken;}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ monitorBroken;}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ PFN\_XRRAllocGamma\ AllocGamma;}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ PFN\_XRRFreeCrtcInfo\ FreeCrtcInfo;}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ PFN\_XRRFreeGamma\ FreeGamma;}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ PFN\_XRRFreeOutputInfo\ FreeOutputInfo;}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ PFN\_XRRFreeScreenResources\ FreeScreenResources;}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ PFN\_XRRGetCrtcGamma\ GetCrtcGamma;}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ PFN\_XRRGetCrtcGammaSize\ GetCrtcGammaSize;}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ PFN\_XRRGetCrtcInfo\ GetCrtcInfo;}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ PFN\_XRRGetOutputInfo\ GetOutputInfo;}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ PFN\_XRRGetOutputPrimary\ GetOutputPrimary;}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ PFN\_XRRGetScreenResourcesCurrent\ GetScreenResourcesCurrent;}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ PFN\_XRRQueryExtension\ QueryExtension;}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ PFN\_XRRQueryVersion\ QueryVersion;}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ PFN\_XRRSelectInput\ SelectInput;}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ PFN\_XRRSetCrtcConfig\ SetCrtcConfig;}
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ PFN\_XRRSetCrtcGamma\ SetCrtcGamma;}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ PFN\_XRRUpdateConfiguration\ UpdateConfiguration;}
+\DoxyCodeLine{00769\ \ \ \ \ \}\ randr;}
+\DoxyCodeLine{00770\ }
+\DoxyCodeLine{00771\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ \ available;}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ \ detectable;}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ majorOpcode;}
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ eventBase;}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ errorBase;}
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ major;}
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ minor;}
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ group;}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ PFN\_XkbFreeKeyboard\ FreeKeyboard;}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ PFN\_XkbFreeNames\ FreeNames;}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ PFN\_XkbGetMap\ GetMap;}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ PFN\_XkbGetNames\ GetNames;}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ PFN\_XkbGetState\ GetState;}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ PFN\_XkbKeycodeToKeysym\ KeycodeToKeysym;}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ PFN\_XkbQueryExtension\ QueryExtension;}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ PFN\_XkbSelectEventDetails\ SelectEventDetails;}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ PFN\_XkbSetDetectableAutoRepeat\ SetDetectableAutoRepeat;}
+\DoxyCodeLine{00789\ \ \ \ \ \}\ xkb;}
+\DoxyCodeLine{00790\ }
+\DoxyCodeLine{00791\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ count;}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ timeout;}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ interval;}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ blanking;}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ exposure;}
+\DoxyCodeLine{00797\ \ \ \ \ \}\ saver;}
+\DoxyCodeLine{00798\ }
+\DoxyCodeLine{00799\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ version;}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ Window\ \ \ \ \ \ source;}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ Atom\ \ \ \ \ \ \ \ format;}
+\DoxyCodeLine{00803\ \ \ \ \ \}\ xdnd;}
+\DoxyCodeLine{00804\ }
+\DoxyCodeLine{00805\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ PFN\_XcursorImageCreate\ ImageCreate;}
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ PFN\_XcursorImageDestroy\ ImageDestroy;}
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ PFN\_XcursorImageLoadCursor\ ImageLoadCursor;}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ PFN\_XcursorGetTheme\ GetTheme;}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ PFN\_XcursorGetDefaultSize\ GetDefaultSize;}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ PFN\_XcursorLibraryLoadImage\ LibraryLoadImage;}
+\DoxyCodeLine{00813\ \ \ \ \ \}\ xcursor;}
+\DoxyCodeLine{00814\ }
+\DoxyCodeLine{00815\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ available;}
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ major;}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ minor;}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ PFN\_XineramaIsActive\ IsActive;}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ PFN\_XineramaQueryExtension\ QueryExtension;}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ PFN\_XineramaQueryScreens\ QueryScreens;}
+\DoxyCodeLine{00823\ \ \ \ \ \}\ xinerama;}
+\DoxyCodeLine{00824\ }
+\DoxyCodeLine{00825\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ PFN\_XGetXCBConnection\ GetXCBConnection;}
+\DoxyCodeLine{00828\ \ \ \ \ \}\ x11xcb;}
+\DoxyCodeLine{00829\ }
+\DoxyCodeLine{00830\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ available;}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ eventBase;}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ errorBase;}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ PFN\_XF86VidModeQueryExtension\ QueryExtension;}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ PFN\_XF86VidModeGetGammaRamp\ GetGammaRamp;}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ PFN\_XF86VidModeSetGammaRamp\ SetGammaRamp;}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ PFN\_XF86VidModeGetGammaRampSize\ GetGammaRampSize;}
+\DoxyCodeLine{00839\ \ \ \ \ \}\ vidmode;}
+\DoxyCodeLine{00840\ }
+\DoxyCodeLine{00841\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ available;}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ majorOpcode;}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ eventBase;}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ errorBase;}
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ major;}
+\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ minor;}
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ PFN\_XIQueryVersion\ QueryVersion;}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ PFN\_XISelectEvents\ SelectEvents;}
+\DoxyCodeLine{00851\ \ \ \ \ \}\ xi;}
+\DoxyCodeLine{00852\ }
+\DoxyCodeLine{00853\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ available;}
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ major;}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ minor;}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ eventBase;}
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ errorBase;}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ PFN\_XRenderQueryExtension\ QueryExtension;}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ PFN\_XRenderQueryVersion\ QueryVersion;}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ PFN\_XRenderFindVisualFormat\ FindVisualFormat;}
+\DoxyCodeLine{00863\ \ \ \ \ \}\ xrender;}
+\DoxyCodeLine{00864\ }
+\DoxyCodeLine{00865\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ GLFWbool\ \ \ \ available;}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ handle;}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ major;}
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ minor;}
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ eventBase;}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ errorBase;}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ PFN\_XShapeQueryExtension\ QueryExtension;}
+\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ PFN\_XShapeCombineRegion\ ShapeCombineRegion;}
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ PFN\_XShapeQueryVersion\ QueryVersion;}
+\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ PFN\_XShapeCombineMask\ ShapeCombineMask;}
+\DoxyCodeLine{00876\ \ \ \ \ \}\ xshape;}
+\DoxyCodeLine{00877\ \}\ \mbox{\hyperlink{struct___g_l_f_wlibrary_x11}{\_GLFWlibraryX11}};}
+\DoxyCodeLine{00878\ }
+\DoxyCodeLine{00879\ \textcolor{comment}{//\ X11-\/specific\ per-\/monitor\ data}}
+\DoxyCodeLine{00880\ \textcolor{comment}{//}}
+\DoxyCodeLine{00881\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wmonitor_x11}{\_GLFWmonitorX11}}}
+\DoxyCodeLine{00882\ \{}
+\DoxyCodeLine{00883\ \ \ \ \ RROutput\ \ \ \ \ \ \ \ output;}
+\DoxyCodeLine{00884\ \ \ \ \ RRCrtc\ \ \ \ \ \ \ \ \ \ crtc;}
+\DoxyCodeLine{00885\ \ \ \ \ RRMode\ \ \ \ \ \ \ \ \ \ oldMode;}
+\DoxyCodeLine{00886\ }
+\DoxyCodeLine{00887\ \ \ \ \ \textcolor{comment}{//\ Index\ of\ corresponding\ Xinerama\ screen,}}
+\DoxyCodeLine{00888\ \ \ \ \ \textcolor{comment}{//\ for\ EWMH\ full\ screen\ window\ placement}}
+\DoxyCodeLine{00889\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ index;}
+\DoxyCodeLine{00890\ \}\ \mbox{\hyperlink{struct___g_l_f_wmonitor_x11}{\_GLFWmonitorX11}};}
+\DoxyCodeLine{00891\ }
+\DoxyCodeLine{00892\ \textcolor{comment}{//\ X11-\/specific\ per-\/cursor\ data}}
+\DoxyCodeLine{00893\ \textcolor{comment}{//}}
+\DoxyCodeLine{00894\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wcursor_x11}{\_GLFWcursorX11}}}
+\DoxyCodeLine{00895\ \{}
+\DoxyCodeLine{00896\ \ \ \ \ Cursor\ handle;}
+\DoxyCodeLine{00897\ \}\ \mbox{\hyperlink{struct___g_l_f_wcursor_x11}{\_GLFWcursorX11}};}
+\DoxyCodeLine{00898\ }
+\DoxyCodeLine{00899\ }
+\DoxyCodeLine{00900\ GLFWbool\ \_glfwConnectX11(\textcolor{keywordtype}{int}\ platformID,\ \mbox{\hyperlink{struct___g_l_f_wplatform}{\_GLFWplatform}}*\ platform);}
+\DoxyCodeLine{00901\ \textcolor{keywordtype}{int}\ \_glfwInitX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00902\ \textcolor{keywordtype}{void}\ \_glfwTerminateX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00903\ }
+\DoxyCodeLine{00904\ GLFWbool\ \_glfwCreateWindowX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wwndconfig}{\_GLFWwndconfig}}*\ wndconfig,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wctxconfig}{\_GLFWctxconfig}}*\ ctxconfig,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wfbconfig}{\_GLFWfbconfig}}*\ fbconfig);}
+\DoxyCodeLine{00905\ \textcolor{keywordtype}{void}\ \_glfwDestroyWindowX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00906\ \textcolor{keywordtype}{void}\ \_glfwSetWindowTitleX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ title);}
+\DoxyCodeLine{00907\ \textcolor{keywordtype}{void}\ \_glfwSetWindowIconX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ count,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wimage}{GLFWimage}}*\ images);}
+\DoxyCodeLine{00908\ \textcolor{keywordtype}{void}\ \_glfwGetWindowPosX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ xpos,\ \textcolor{keywordtype}{int}*\ ypos);}
+\DoxyCodeLine{00909\ \textcolor{keywordtype}{void}\ \_glfwSetWindowPosX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ xpos,\ \textcolor{keywordtype}{int}\ ypos);}
+\DoxyCodeLine{00910\ \textcolor{keywordtype}{void}\ \_glfwGetWindowSizeX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ width,\ \textcolor{keywordtype}{int}*\ height);}
+\DoxyCodeLine{00911\ \textcolor{keywordtype}{void}\ \_glfwSetWindowSizeX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00912\ \textcolor{keywordtype}{void}\ \_glfwSetWindowSizeLimitsX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ minwidth,\ \textcolor{keywordtype}{int}\ minheight,\ \textcolor{keywordtype}{int}\ maxwidth,\ \textcolor{keywordtype}{int}\ maxheight);}
+\DoxyCodeLine{00913\ \textcolor{keywordtype}{void}\ \_glfwSetWindowAspectRatioX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ numer,\ \textcolor{keywordtype}{int}\ denom);}
+\DoxyCodeLine{00914\ \textcolor{keywordtype}{void}\ \_glfwGetFramebufferSizeX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ width,\ \textcolor{keywordtype}{int}*\ height);}
+\DoxyCodeLine{00915\ \textcolor{keywordtype}{void}\ \_glfwGetWindowFrameSizeX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ left,\ \textcolor{keywordtype}{int}*\ top,\ \textcolor{keywordtype}{int}*\ right,\ \textcolor{keywordtype}{int}*\ bottom);}
+\DoxyCodeLine{00916\ \textcolor{keywordtype}{void}\ \_glfwGetWindowContentScaleX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{float}*\ xscale,\ \textcolor{keywordtype}{float}*\ yscale);}
+\DoxyCodeLine{00917\ \textcolor{keywordtype}{void}\ \_glfwIconifyWindowX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00918\ \textcolor{keywordtype}{void}\ \_glfwRestoreWindowX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00919\ \textcolor{keywordtype}{void}\ \_glfwMaximizeWindowX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00920\ \textcolor{keywordtype}{void}\ \_glfwShowWindowX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00921\ \textcolor{keywordtype}{void}\ \_glfwHideWindowX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00922\ \textcolor{keywordtype}{void}\ \_glfwRequestWindowAttentionX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00923\ \textcolor{keywordtype}{void}\ \_glfwFocusWindowX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00924\ \textcolor{keywordtype}{void}\ \_glfwSetWindowMonitorX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{int}\ xpos,\ \textcolor{keywordtype}{int}\ ypos,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{int}\ refreshRate);}
+\DoxyCodeLine{00925\ GLFWbool\ \_glfwWindowFocusedX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00926\ GLFWbool\ \_glfwWindowIconifiedX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00927\ GLFWbool\ \_glfwWindowVisibleX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00928\ GLFWbool\ \_glfwWindowMaximizedX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00929\ GLFWbool\ \_glfwWindowHoveredX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00930\ GLFWbool\ \_glfwFramebufferTransparentX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00931\ \textcolor{keywordtype}{void}\ \_glfwSetWindowResizableX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{00932\ \textcolor{keywordtype}{void}\ \_glfwSetWindowDecoratedX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{00933\ \textcolor{keywordtype}{void}\ \_glfwSetWindowFloatingX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{00934\ \textcolor{keywordtype}{float}\ \_glfwGetWindowOpacityX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00935\ \textcolor{keywordtype}{void}\ \_glfwSetWindowOpacityX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{float}\ opacity);}
+\DoxyCodeLine{00936\ \textcolor{keywordtype}{void}\ \_glfwSetWindowMousePassthroughX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{00937\ }
+\DoxyCodeLine{00938\ \textcolor{keywordtype}{void}\ \_glfwSetRawMouseMotionX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}\ *window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{00939\ GLFWbool\ \_glfwRawMouseMotionSupportedX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00940\ }
+\DoxyCodeLine{00941\ \textcolor{keywordtype}{void}\ \_glfwPollEventsX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00942\ \textcolor{keywordtype}{void}\ \_glfwWaitEventsX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00943\ \textcolor{keywordtype}{void}\ \_glfwWaitEventsTimeoutX11(\textcolor{keywordtype}{double}\ timeout);}
+\DoxyCodeLine{00944\ \textcolor{keywordtype}{void}\ \_glfwPostEmptyEventX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00945\ }
+\DoxyCodeLine{00946\ \textcolor{keywordtype}{void}\ \_glfwGetCursorPosX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{double}*\ xpos,\ \textcolor{keywordtype}{double}*\ ypos);}
+\DoxyCodeLine{00947\ \textcolor{keywordtype}{void}\ \_glfwSetCursorPosX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{double}\ xpos,\ \textcolor{keywordtype}{double}\ ypos);}
+\DoxyCodeLine{00948\ \textcolor{keywordtype}{void}\ \_glfwSetCursorModeX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ mode);}
+\DoxyCodeLine{00949\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_glfwGetScancodeNameX11(\textcolor{keywordtype}{int}\ scancode);}
+\DoxyCodeLine{00950\ \textcolor{keywordtype}{int}\ \_glfwGetKeyScancodeX11(\textcolor{keywordtype}{int}\ key);}
+\DoxyCodeLine{00951\ GLFWbool\ \_glfwCreateCursorX11(\mbox{\hyperlink{struct___g_l_f_wcursor}{\_GLFWcursor}}*\ cursor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wimage}{GLFWimage}}*\ image,\ \textcolor{keywordtype}{int}\ xhot,\ \textcolor{keywordtype}{int}\ yhot);}
+\DoxyCodeLine{00952\ GLFWbool\ \_glfwCreateStandardCursorX11(\mbox{\hyperlink{struct___g_l_f_wcursor}{\_GLFWcursor}}*\ cursor,\ \textcolor{keywordtype}{int}\ shape);}
+\DoxyCodeLine{00953\ \textcolor{keywordtype}{void}\ \_glfwDestroyCursorX11(\mbox{\hyperlink{struct___g_l_f_wcursor}{\_GLFWcursor}}*\ cursor);}
+\DoxyCodeLine{00954\ \textcolor{keywordtype}{void}\ \_glfwSetCursorX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \mbox{\hyperlink{struct___g_l_f_wcursor}{\_GLFWcursor}}*\ cursor);}
+\DoxyCodeLine{00955\ \textcolor{keywordtype}{void}\ \_glfwSetClipboardStringX11(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keywordtype}{string});}
+\DoxyCodeLine{00956\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_glfwGetClipboardStringX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00957\ }
+\DoxyCodeLine{00958\ EGLenum\ \_glfwGetEGLPlatformX11(EGLint**\ attribs);}
+\DoxyCodeLine{00959\ EGLNativeDisplayType\ \_glfwGetEGLNativeDisplayX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00960\ EGLNativeWindowType\ \_glfwGetEGLNativeWindowX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00961\ }
+\DoxyCodeLine{00962\ \textcolor{keywordtype}{void}\ \_glfwGetRequiredInstanceExtensionsX11(\textcolor{keywordtype}{char}**\ extensions);}
+\DoxyCodeLine{00963\ GLFWbool\ \_glfwGetPhysicalDevicePresentationSupportX11(VkInstance\ instance,\ VkPhysicalDevice\ device,\ uint32\_t\ queuefamily);}
+\DoxyCodeLine{00964\ VkResult\ \_glfwCreateWindowSurfaceX11(VkInstance\ instance,\ \mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*\ allocator,\ VkSurfaceKHR*\ surface);}
+\DoxyCodeLine{00965\ }
+\DoxyCodeLine{00966\ \textcolor{keywordtype}{void}\ \_glfwFreeMonitorX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor);}
+\DoxyCodeLine{00967\ \textcolor{keywordtype}{void}\ \_glfwGetMonitorPosX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{int}*\ xpos,\ \textcolor{keywordtype}{int}*\ ypos);}
+\DoxyCodeLine{00968\ \textcolor{keywordtype}{void}\ \_glfwGetMonitorContentScaleX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{float}*\ xscale,\ \textcolor{keywordtype}{float}*\ yscale);}
+\DoxyCodeLine{00969\ \textcolor{keywordtype}{void}\ \_glfwGetMonitorWorkareaX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{int}*\ xpos,\ \textcolor{keywordtype}{int}*\ ypos,\ \textcolor{keywordtype}{int}*\ width,\ \textcolor{keywordtype}{int}*\ height);}
+\DoxyCodeLine{00970\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ \_glfwGetVideoModesX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{int}*\ count);}
+\DoxyCodeLine{00971\ \textcolor{keywordtype}{void}\ \_glfwGetVideoModeX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ mode);}
+\DoxyCodeLine{00972\ GLFWbool\ \_glfwGetGammaRampX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}*\ ramp);}
+\DoxyCodeLine{00973\ \textcolor{keywordtype}{void}\ \_glfwSetGammaRampX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}*\ ramp);}
+\DoxyCodeLine{00974\ }
+\DoxyCodeLine{00975\ \textcolor{keywordtype}{void}\ \_glfwPollMonitorsX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00976\ \textcolor{keywordtype}{void}\ \_glfwSetVideoModeX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ desired);}
+\DoxyCodeLine{00977\ \textcolor{keywordtype}{void}\ \_glfwRestoreVideoModeX11(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor);}
+\DoxyCodeLine{00978\ }
+\DoxyCodeLine{00979\ Cursor\ \_glfwCreateNativeCursorX11(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wimage}{GLFWimage}}*\ image,\ \textcolor{keywordtype}{int}\ xhot,\ \textcolor{keywordtype}{int}\ yhot);}
+\DoxyCodeLine{00980\ }
+\DoxyCodeLine{00981\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \_glfwGetWindowPropertyX11(Window\ window,}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Atom\ property,}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Atom\ type,}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}**\ value);}
+\DoxyCodeLine{00985\ GLFWbool\ \_glfwIsVisualTransparentX11(Visual*\ visual);}
+\DoxyCodeLine{00986\ }
+\DoxyCodeLine{00987\ \textcolor{keywordtype}{void}\ \_glfwGrabErrorHandlerX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00988\ \textcolor{keywordtype}{void}\ \_glfwReleaseErrorHandlerX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00989\ \textcolor{keywordtype}{void}\ \_glfwInputErrorX11(\textcolor{keywordtype}{int}\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message);}
+\DoxyCodeLine{00990\ }
+\DoxyCodeLine{00991\ \textcolor{keywordtype}{void}\ \_glfwPushSelectionToManagerX11(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00992\ \textcolor{keywordtype}{void}\ \_glfwCreateInputContextX11(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{00993\ }
+\DoxyCodeLine{00994\ GLFWbool\ \_glfwInitGLX(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00995\ \textcolor{keywordtype}{void}\ \_glfwTerminateGLX(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00996\ GLFWbool\ \_glfwCreateContextGLX(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,}
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wctxconfig}{\_GLFWctxconfig}}*\ ctxconfig,}
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wfbconfig}{\_GLFWfbconfig}}*\ fbconfig);}
+\DoxyCodeLine{00999\ \textcolor{keywordtype}{void}\ \_glfwDestroyContextGLX(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{01000\ GLFWbool\ \_glfwChooseVisualGLX(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wwndconfig}{\_GLFWwndconfig}}*\ wndconfig,}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wctxconfig}{\_GLFWctxconfig}}*\ ctxconfig,}
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wfbconfig}{\_GLFWfbconfig}}*\ fbconfig,}
+\DoxyCodeLine{01003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Visual**\ visual,\ \textcolor{keywordtype}{int}*\ depth);}
+\DoxyCodeLine{01004\ }
+
+\end{DoxyCode}

@@ -1,16 +1,13 @@
 /**
- *
- * File: SwitchLibCore.hpp (header.v2)
- * Created Date: Fri 29/11/2024
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Sun 02/04/2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
+ * @file GraphicSharedLoader.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup graphic
+ * @{
+ */
 
 #ifndef GRAPHIC_SHARED_LOADER_HPP
 #define GRAPHIC_SHARED_LOADER_HPP

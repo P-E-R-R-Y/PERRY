@@ -1,0 +1,184 @@
+\doxysection{utils.\+h}
+\hypertarget{sdl2__image-src_2external_2libwebp_2src_2utils_2utils_8h_source}{}\label{sdl2__image-src_2external_2libwebp_2src_2utils_2utils_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/libwebp/src/utils/utils.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/libwebp/src/utils/utils.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2012\ Google\ Inc.\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Use\ of\ this\ source\ code\ is\ governed\ by\ a\ BSD-\/style\ license}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ that\ can\ be\ found\ in\ the\ COPYING\ file\ in\ the\ root\ of\ the\ source}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ tree.\ An\ additional\ intellectual\ property\ rights\ grant\ can\ be\ found}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ in\ the\ file\ PATENTS.\ All\ contributing\ project\ authors\ may}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ be\ found\ in\ the\ AUTHORS\ file\ in\ the\ root\ of\ the\ source\ tree.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ Misc.\ common\ utility\ functions}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Authors:\ Skal\ (pascal.massimino@gmail.com)}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ Urvang\ (urvang@google.com)}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ WEBP\_UTILS\_UTILS\_H\_}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ WEBP\_UTILS\_UTILS\_H\_}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifdef\ HAVE\_CONFIG\_H}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}src/webp/config.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <limits.h>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}src/dsp/dsp.h"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}src/webp/types.h"{}}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ Memory\ allocation}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ This\ is\ the\ maximum\ memory\ amount\ that\ libwebp\ will\ ever\ try\ to\ allocate.}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifndef\ WEBP\_MAX\_ALLOCABLE\_MEMORY}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#if\ SIZE\_MAX\ >\ (1ULL\ <<\ 34)}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ WEBP\_MAX\_ALLOCABLE\_MEMORY\ (1ULL\ <<\ 34)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ For\ 32-\/bit\ targets\ keep\ this\ below\ INT\_MAX\ to\ avoid\ valgrind\ warnings.}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ WEBP\_MAX\_ALLOCABLE\_MEMORY\ ((1ULL\ <<\ 31)\ -\/\ (1\ <<\ 16))}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ WEBP\_MAX\_ALLOCABLE\_MEMORY}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ size-\/checking\ safe\ malloc/calloc:\ verify\ that\ the\ requested\ size\ is\ not\ too}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ large,\ or\ return\ NULL.\ You\ don't\ need\ to\ call\ these\ for\ constructs\ like}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ malloc(sizeof(foo)),\ but\ only\ if\ there's\ picture-\/dependent\ size\ involved}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ somewhere\ (like:\ malloc(num\_pixels\ *\ sizeof(*something))).\ That's\ why\ this}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ safe\ malloc()\ borrows\ the\ signature\ from\ calloc(),\ pointing\ at\ the\ dangerous}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ underlying\ multiply\ involved.}}
+\DoxyCodeLine{00051\ WEBP\_EXTERN\ \textcolor{keywordtype}{void}*\ WebPSafeMalloc(uint64\_t\ nmemb,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ Note\ that\ WebPSafeCalloc()\ expects\ the\ second\ argument\ type\ to\ be\ 'size\_t'}}
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ in\ order\ to\ favor\ the\ "{}calloc(num\_foo,\ sizeof(foo))"{}\ pattern.}}
+\DoxyCodeLine{00054\ WEBP\_EXTERN\ \textcolor{keywordtype}{void}*\ WebPSafeCalloc(uint64\_t\ nmemb,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ Companion\ deallocation\ function\ to\ the\ above\ allocations.}}
+\DoxyCodeLine{00057\ WEBP\_EXTERN\ \textcolor{keywordtype}{void}\ WebPSafeFree(\textcolor{keywordtype}{void}*\ \textcolor{keyword}{const}\ ptr);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ Alignment}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ WEBP\_ALIGN\_CST\ 31}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ WEBP\_ALIGN(PTR)\ (((uintptr\_t)(PTR)\ +\ WEBP\_ALIGN\_CST)\ \&\ \string~WEBP\_ALIGN\_CST)}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ memcpy()\ is\ the\ safe\ way\ of\ moving\ potentially\ unaligned\ 32b\ memory.}}
+\DoxyCodeLine{00067\ \textcolor{keyword}{static}\ WEBP\_INLINE\ uint32\_t\ WebPMemToUint32(\textcolor{keyword}{const}\ uint8\_t*\ \textcolor{keyword}{const}\ ptr)\ \{}
+\DoxyCodeLine{00068\ \ \ uint32\_t\ A;}
+\DoxyCodeLine{00069\ \ \ memcpy(\&A,\ ptr,\ \textcolor{keyword}{sizeof}(A));}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordflow}{return}\ A;}
+\DoxyCodeLine{00071\ \}}
+\DoxyCodeLine{00072\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{void}\ WebPUint32ToMem(uint8\_t*\ \textcolor{keyword}{const}\ ptr,\ uint32\_t\ val)\ \{}
+\DoxyCodeLine{00073\ \ \ memcpy(ptr,\ \&val,\ \textcolor{keyword}{sizeof}(val));}
+\DoxyCodeLine{00074\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ Reading/writing\ data.}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{comment}{//\ Read\ 16,\ 24\ or\ 32\ bits\ stored\ in\ little-\/endian\ order.}}
+\DoxyCodeLine{00080\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{int}\ GetLE16(\textcolor{keyword}{const}\ uint8\_t*\ \textcolor{keyword}{const}\ data)\ \{}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})(data[0]\ <<\ 0)\ |\ (data[1]\ <<\ 8);}
+\DoxyCodeLine{00082\ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{int}\ GetLE24(\textcolor{keyword}{const}\ uint8\_t*\ \textcolor{keyword}{const}\ data)\ \{}
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordflow}{return}\ GetLE16(data)\ |\ (data[2]\ <<\ 16);}
+\DoxyCodeLine{00086\ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{static}\ WEBP\_INLINE\ uint32\_t\ GetLE32(\textcolor{keyword}{const}\ uint8\_t*\ \textcolor{keyword}{const}\ data)\ \{}
+\DoxyCodeLine{00089\ \ \ \textcolor{keywordflow}{return}\ GetLE16(data)\ |\ ((uint32\_t)GetLE16(data\ +\ 2)\ <<\ 16);}
+\DoxyCodeLine{00090\ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ Store\ 16,\ 24\ or\ 32\ bits\ in\ little-\/endian\ order.}}
+\DoxyCodeLine{00093\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{void}\ PutLE16(uint8\_t*\ \textcolor{keyword}{const}\ data,\ \textcolor{keywordtype}{int}\ val)\ \{}
+\DoxyCodeLine{00094\ \ \ assert(val\ <\ (1\ <<\ 16));}
+\DoxyCodeLine{00095\ \ \ data[0]\ =\ (val\ >>\ 0)\ \&\ 0xff;}
+\DoxyCodeLine{00096\ \ \ data[1]\ =\ (val\ >>\ 8)\ \&\ 0xff;}
+\DoxyCodeLine{00097\ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{void}\ PutLE24(uint8\_t*\ \textcolor{keyword}{const}\ data,\ \textcolor{keywordtype}{int}\ val)\ \{}
+\DoxyCodeLine{00100\ \ \ assert(val\ <\ (1\ <<\ 24));}
+\DoxyCodeLine{00101\ \ \ PutLE16(data,\ val\ \&\ 0xffff);}
+\DoxyCodeLine{00102\ \ \ data[2]\ =\ (val\ >>\ 16)\ \&\ 0xff;}
+\DoxyCodeLine{00103\ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{void}\ PutLE32(uint8\_t*\ \textcolor{keyword}{const}\ data,\ uint32\_t\ val)\ \{}
+\DoxyCodeLine{00106\ \ \ PutLE16(data,\ (\textcolor{keywordtype}{int})(val\ \&\ 0xffff));}
+\DoxyCodeLine{00107\ \ \ PutLE16(data\ +\ 2,\ (\textcolor{keywordtype}{int})(val\ >>\ 16));}
+\DoxyCodeLine{00108\ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ Returns\ (int)floor(log2(n)).\ n\ must\ be\ >\ 0.}}
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ use\ GNU\ builtins\ where\ available.}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\ \ \ \ ((\_\_GNUC\_\_\ ==\ 3\ \&\&\ \_\_GNUC\_MINOR\_\_\ >=\ 4)\ ||\ \_\_GNUC\_\_\ >=\ 4)}}
+\DoxyCodeLine{00114\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{int}\ BitsLog2Floor(uint32\_t\ n)\ \{}
+\DoxyCodeLine{00115\ \ \ \textcolor{keywordflow}{return}\ 31\ \string^\ \_\_builtin\_clz(n);}
+\DoxyCodeLine{00116\ \}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#elif\ defined(\_MSC\_VER)\ \&\&\ \_MSC\_VER\ >\ 1310\ \&\&\ \(\backslash\)}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\ \ \ \ \ \ (defined(\_M\_X64)\ ||\ defined(\_M\_IX86))}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#include\ <intrin.h>}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#pragma\ intrinsic(\_BitScanReverse)}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{int}\ BitsLog2Floor(uint32\_t\ n)\ \{}
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ first\_set\_bit;}
+\DoxyCodeLine{00124\ \ \ \_BitScanReverse(\&first\_set\_bit,\ n);}
+\DoxyCodeLine{00125\ \ \ \textcolor{keywordflow}{return}\ first\_set\_bit;}
+\DoxyCodeLine{00126\ \}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#else\ \ \ }\textcolor{comment}{//\ default:\ use\ the\ C-\/version.}}
+\DoxyCodeLine{00128\ \textcolor{comment}{//\ Returns\ 31\ \string^\ clz(n)\ =\ log2(n).\ This\ is\ the\ default\ C-\/implementation,\ either}}
+\DoxyCodeLine{00129\ \textcolor{comment}{//\ based\ on\ table\ or\ not.\ Can\ be\ used\ as\ fallback\ if\ clz()\ is\ not\ available.}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ WEBP\_NEED\_LOG\_TABLE\_8BIT}}
+\DoxyCodeLine{00131\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ uint8\_t\ WebPLogTable8bit[256];}
+\DoxyCodeLine{00132\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{int}\ WebPLog2FloorC(uint32\_t\ n)\ \{}
+\DoxyCodeLine{00133\ \ \ \textcolor{keywordtype}{int}\ log\_value\ =\ 0;}
+\DoxyCodeLine{00134\ \ \ \textcolor{keywordflow}{while}\ (n\ >=\ 256)\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ log\_value\ +=\ 8;}
+\DoxyCodeLine{00136\ \ \ \ \ n\ >>=\ 8;}
+\DoxyCodeLine{00137\ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \textcolor{keywordflow}{return}\ log\_value\ +\ WebPLogTable8bit[n];}
+\DoxyCodeLine{00139\ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{static}\ WEBP\_INLINE\ \textcolor{keywordtype}{int}\ BitsLog2Floor(uint32\_t\ n)\ \{\ \textcolor{keywordflow}{return}\ WebPLog2FloorC(n);\ \}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00145\ \textcolor{comment}{//\ Pixel\ copying.}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_web_p_picture}{WebPPicture}};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \textcolor{comment}{//\ Copy\ width\ x\ height\ pixels\ from\ 'src'\ to\ 'dst'\ honoring\ the\ strides.}}
+\DoxyCodeLine{00150\ WEBP\_EXTERN\ \textcolor{keywordtype}{void}\ WebPCopyPlane(\textcolor{keyword}{const}\ uint8\_t*\ src,\ \textcolor{keywordtype}{int}\ src\_stride,}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t*\ dst,\ \textcolor{keywordtype}{int}\ dst\_stride,}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ Copy\ ARGB\ pixels\ from\ 'src'\ to\ 'dst'\ honoring\ strides.\ 'src'\ and\ 'dst'\ are}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//\ assumed\ to\ be\ already\ allocated\ and\ using\ ARGB\ data.}}
+\DoxyCodeLine{00156\ WEBP\_EXTERN\ \textcolor{keywordtype}{void}\ WebPCopyPixels(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_web_p_picture}{WebPPicture}}*\ \textcolor{keyword}{const}\ src,}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_web_p_picture}{WebPPicture}}*\ \textcolor{keyword}{const}\ dst);}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00160\ \textcolor{comment}{//\ Unique\ colors.}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{comment}{//\ Returns\ count\ of\ unique\ colors\ in\ 'pic',\ assuming\ pic-\/>use\_argb\ is\ true.}}
+\DoxyCodeLine{00163\ \textcolor{comment}{//\ If\ the\ unique\ color\ count\ is\ more\ than\ MAX\_PALETTE\_SIZE,\ returns}}
+\DoxyCodeLine{00164\ \textcolor{comment}{//\ MAX\_PALETTE\_SIZE+1.}}
+\DoxyCodeLine{00165\ \textcolor{comment}{//\ If\ 'palette'\ is\ not\ NULL\ and\ number\ of\ unique\ colors\ is\ less\ than\ or\ equal\ to}}
+\DoxyCodeLine{00166\ \textcolor{comment}{//\ MAX\_PALETTE\_SIZE,\ also\ outputs\ the\ actual\ unique\ colors\ into\ 'palette'.}}
+\DoxyCodeLine{00167\ \textcolor{comment}{//\ Note:\ 'palette'\ is\ assumed\ to\ be\ an\ array\ already\ allocated\ with\ at\ least}}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ MAX\_PALETTE\_SIZE\ elements.}}
+\DoxyCodeLine{00169\ WEBP\_EXTERN\ \textcolor{keywordtype}{int}\ WebPGetColorPalette(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{struct_web_p_picture}{WebPPicture}}*\ \textcolor{keyword}{const}\ pic,}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t*\ \textcolor{keyword}{const}\ palette);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00175\ \}\ \ \ \ \textcolor{comment}{//\ extern\ "{}C"{}}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ WEBP\_UTILS\_UTILS\_H\_}}
+
+\end{DoxyCode}

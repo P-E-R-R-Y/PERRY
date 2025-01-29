@@ -1,0 +1,127 @@
+\doxysubsection{Yaml}
+\hypertarget{group__yaml}{}\label{group__yaml}\index{Yaml@{Yaml}}
+\doxysubsubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_yaml_serial}{Yaml\+Serial}}
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__yaml_gaf21d58754beca77b63391fa84b654c76}\label{group__yaml_gaf21d58754beca77b63391fa84b654c76} 
+\mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Serial} ()
+\item 
+\Hypertarget{group__yaml_gae4c51e8317006fdb05a471cede88ee99}\label{group__yaml_gae4c51e8317006fdb05a471cede88ee99} 
+void {\bfseries delete\+Serial} (\mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}} \texorpdfstring{$\ast$}{*}serial)
+\item 
+\Hypertarget{group__yaml_ga1b612f3670f20ad2c7ed3d7a21acc6b5}\label{group__yaml_ga1b612f3670f20ad2c7ed3d7a21acc6b5} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries get\+Name} ()
+\item 
+\Hypertarget{group__yaml_ga5a9e1cf52200ed570b486bf1df100e08}\label{group__yaml_ga5a9e1cf52200ed570b486bf1df100e08} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries get\+Type} ()
+\item 
+void \mbox{\hyperlink{group__yaml_gaa8a4eed5b881afe3712b112b5ed650ee}{Yaml\+Serial\+::load}} (const std\+::string \&path) override
+\begin{DoxyCompactList}\small\item\em virtual method to load a file \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__yaml_ga6622a8423378c56464f3bb90e0f9a537}{Yaml\+Serial\+::is\+Loaded}} () override
+\begin{DoxyCompactList}\small\item\em virtual method to know if the file is loaded \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__yaml_ga27b4e6e7913a48076aaf46150dd31c9f}{Yaml\+Serial\+::close}} () override
+\begin{DoxyCompactList}\small\item\em virtual method to close a file \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} \mbox{\hyperlink{group__yaml_gad0cc24a096c9aac49878de5d99954f00}{Yaml\+Serial\+::get\+Root}} () override
+\begin{DoxyCompactList}\small\item\em virtual method to get the root node \end{DoxyCompactList}\item 
+\Hypertarget{group__yaml_gae1245eb105d694126f2d3265e2406840}\label{group__yaml_gae1245eb105d694126f2d3265e2406840} 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries Yaml\+Serial\+::yaml\+\_\+converter} (YAML\+::\+Node node)
+\item 
+\Hypertarget{group__yaml_gae256bb323ffec5be0e6a57f8560180a5}\label{group__yaml_gae256bb323ffec5be0e6a57f8560180a5} 
+{\footnotesize template$<$typename T$>$ }\\bool {\bfseries Yaml\+Serial\+::is} (const YAML\+::\+Node \&node)
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__yaml_gae27bf71cf61d56df3388ba9b90c520f2}\label{group__yaml_gae27bf71cf61d56df3388ba9b90c520f2} 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries Yaml\+Serial\+::node}
+\item 
+\Hypertarget{group__yaml_ga763865b3b587238b1f56568e30b26b2b}\label{group__yaml_ga763865b3b587238b1f56568e30b26b2b} 
+bool {\bfseries Yaml\+Serial\+::loaded}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__yaml_ga27b4e6e7913a48076aaf46150dd31c9f}\index{Yaml@{Yaml}!close@{close}}
+\index{close@{close}!Yaml@{Yaml}}
+\doxysubsubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{group__yaml_ga27b4e6e7913a48076aaf46150dd31c9f} 
+void Yaml\+Serial\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+virtual method to close a file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__serial_ga1e41af32fe3b2d40e0363d86df1a6016}{serial\+::\+ISerial}}.
+
+\Hypertarget{group__yaml_gad0cc24a096c9aac49878de5d99954f00}\index{Yaml@{Yaml}!getRoot@{getRoot}}
+\index{getRoot@{getRoot}!Yaml@{Yaml}}
+\doxysubsubsubsection{\texorpdfstring{getRoot()}{getRoot()}}
+{\footnotesize\ttfamily \label{group__yaml_gad0cc24a096c9aac49878de5d99954f00} 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} Yaml\+Serial\+::get\+Root (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+virtual method to get the root node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__serial_gaa7657594f1a004aa14b581d0a80b19b1}{serial\+::\+ISerial}}.
+
+\Hypertarget{group__yaml_ga6622a8423378c56464f3bb90e0f9a537}\index{Yaml@{Yaml}!isLoaded@{isLoaded}}
+\index{isLoaded@{isLoaded}!Yaml@{Yaml}}
+\doxysubsubsubsection{\texorpdfstring{isLoaded()}{isLoaded()}}
+{\footnotesize\ttfamily \label{group__yaml_ga6622a8423378c56464f3bb90e0f9a537} 
+bool Yaml\+Serial\+::is\+Loaded (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+virtual method to know if the file is loaded 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__serial_ga3cf30399f7e86a6f29968e125a9079bb}{serial\+::\+ISerial}}.
+
+\Hypertarget{group__yaml_gaa8a4eed5b881afe3712b112b5ed650ee}\index{Yaml@{Yaml}!load@{load}}
+\index{load@{load}!Yaml@{Yaml}}
+\doxysubsubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily \label{group__yaml_gaa8a4eed5b881afe3712b112b5ed650ee} 
+void Yaml\+Serial\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+virtual method to load a file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__serial_ga71cc14f1841c3df5683e9c631b7ca4f7}{serial\+::\+ISerial}}.
+

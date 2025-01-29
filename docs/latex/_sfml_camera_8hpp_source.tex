@@ -1,136 +1,132 @@
 \doxysection{Sfml\+Camera.\+hpp}
 \hypertarget{_sfml_camera_8hpp_source}{}\label{_sfml_camera_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/SfmlCamera.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sfml/window/SfmlCamera.hpp}}
-
+\mbox{\hyperlink{_sfml_camera_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ SFMLCAMERA\_HPP\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ SFMLCAMERA\_HPP\_}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ SFMLCAMERA\_HPP\_}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ SFMLCAMERA\_HPP\_}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{comment}{//Interface}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../../../../interfaces/graphic/window/ICamera.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_camera_8hpp}{../../../../interfaces/graphic/window/ICamera.hpp}}"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}../../../../libraries/system/type.hpp"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_quaternion_8hpp}{./Quaternion.hpp}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_matrice_8hpp}{./Matrice.hpp}}"{}}}
 \DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}../../../../libraries/system/type.hpp"{}}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}./Quaternion.hpp"{}}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}./Matrice.hpp"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <cmath>}}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <array>}}
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{group___s_f_m_l_ga99c0349ff93a7b007d3830e48305c626}{SfmlCamera}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ }
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }SfmlCamera\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }SfmlWindow;}
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }SfmlWindow;}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ SfmlCamera(sf::Vector3f\ pos\ =\ \{0.f,\ 0.0f,\ 0.0f\},\ sf::Vector3f\ target\ =\ \{0,\ 0,\ -\/1\},\ \textcolor{keywordtype}{float}\ fov\ =\ 90)\ :\ \_position(pos),\ \_up(\{0,\ 1,\ 0\}),\ \_fov(fov)\ \{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ usual\ =\ \{0,\ 0,\ -\/1\};}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ direction\ =\ normaliseV3f(target\ -\/\ \_position);}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \_projection\ =\ Projection::PERSPECTIVE;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Camera\ projection\ type}}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_quaternion\ =\ \mbox{\hyperlink{class_quaternion_a9fcfa9ff4a12d1cab07d561ab904e240}{Quaternion::fromVectors}}(usual,\ direction);}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___s_f_m_l_ga99c0349ff93a7b007d3830e48305c626}{SfmlCamera}}(sf::Vector3f\ pos\ =\ \{0.f,\ 0.0f,\ 0.0f\},\ sf::Vector3f\ target\ =\ \{0,\ 0,\ -\/1\},\ \textcolor{keywordtype}{float}\ fov\ =\ 90)\ :\ \_position(pos),\ \_up(\{0,\ 1,\ 0\}),\ \_fov(fov)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ usual\ =\ \{0,\ 0,\ -\/1\};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector3f\ direction\ =\ \mbox{\hyperlink{group__sfml__extra_gaf2fb156d3650dd4a023012d7e490497a}{normaliseV3f}}(target\ -\/\ \_position);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \_projection\ =\ Projection::PERSPECTIVE;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Camera\ projection\ type}}
 \DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \string~SfmlCamera()\ \{\}}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//f}}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_sfml_camera_ad11678907097a3d73687808039ee1d42}{getFov}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_camera_a8883151f4d4ee9dc9e263f9c095df511}{setFov}}(\textcolor{keywordtype}{float}\ fov)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setFov\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//m}}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ ICamera::Mode\ \mbox{\hyperlink{class_sfml_camera_a951d66286e7960dd2f5ca4793b0cb370}{getMode}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::Mode::FIRST\_PERSON;}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setMode(ICamera::Mode\ mode)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setMode\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//p}}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{class_sfml_camera_a905167efe03f026b0d84441ad0b202bb}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\_position.x,\ \_position.y,\ \_position.z\};}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_camera_aea1805f2eeb6da5dfe0f5e1188765d18}{setPosition}}(\_\_v3f\_t\ position)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ \{float(position.x),\ float(position.y),\ float(position.z)\};}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ ICamera::Projection\ \mbox{\hyperlink{class_sfml_camera_a2fb9f5ab1287515a9805468ee29104fe}{getProjection}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::PERSPECTIVE;}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setProjection(ICamera::Projection\ projection)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setProjection\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//t}}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{class_sfml_camera_ac9b4abc33f5e1433ca8b375c9d8048ca}{getTarget}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::getTarget\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0,\ 0\};}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_camera_acfda052fa04fa82d3b30ead5bdf35b32}{setTarget}}(\_\_v3f\_t\ target)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setTarget\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{comment}{//u}}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{class_sfml_camera_a81292302e8e35571d8cff3a4556dfee9}{getUp}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0,\ 0\};}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_sfml_camera_ab0bb3576dd49509dcfb9ede61be3b487}{setUp}}(\_\_v3f\_t\ up)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setUp\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sfml_window}{SfmlWindow}};}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ sf::Vector3f\ \_position;}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ sf::Vector3f\ \_up;}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ \_quaternion;}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ Projection\ \_projection;}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ Mode\ \_mode;}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_fov;}
-\DoxyCodeLine{00108\ \};}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00110\ }
-\DoxyCodeLine{00111\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00112\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}\ perspectiveProjection(T\ fov,\ T\ aspectRatio)\ \{}
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ Convert\ FOV\ from\ degrees\ to\ radians}}
-\DoxyCodeLine{00114\ \ \ \ \ T\ fovRad\ =\ fov\ *\ M\_PI\ /\ 180.0;}
-\DoxyCodeLine{00115\ \ \ \ \ T\ nearPlane\ =\ 0.001;}
-\DoxyCodeLine{00116\ \ \ \ \ T\ farPlane\ =\ 1000.0;}
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ perspective\ projection\ matrix}}
-\DoxyCodeLine{00119\ \ \ \ \ std::vector<std::vector<T>>\ proj\ =\ \{\{}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \{1.0f\ /\ (aspectRatio\ *\ tan(fovRad\ /\ 2.f)),\ 0.f,\ 0.f,\ 0.f\},}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \{0.f,\ 1.f\ /\ tan(fovRad\ /\ 2.f),\ 0.f,\ 0.f\},}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \{0.f,\ 0.f,\ (farPlane\ +\ nearPlane)\ /\ (nearPlane\ -\/\ farPlane),\ (2\ *\ farPlane\ *\ nearPlane)\ /\ (nearPlane\ -\/\ farPlane)\},}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \{0.f,\ 0.f,\ -\/1.f,\ 0.f\}}
-\DoxyCodeLine{00124\ \ \ \ \ \}\};}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}(proj);}
-\DoxyCodeLine{00127\ \}}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00129\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00130\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}\ orthographicProjection(T\ left,\ T\ right,\ T\ bottom,\ T\ top,\ T\ nearPlane,\ T\ farPlane)\ \{}
-\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ orthographic\ projection\ matrix}}
-\DoxyCodeLine{00132\ \ \ \ \ std::array<std::array<T,\ 4>,\ 4>\ proj\ =\ \{\{}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \{2.0\ /\ (right\ -\/\ left),\ 0,\ 0,\ -\/(right\ +\ left)\ /\ (right\ -\/\ left)\},}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \{0,\ 2.0\ /\ (top\ -\/\ bottom),\ 0,\ -\/(top\ +\ bottom)\ /\ (top\ -\/\ bottom)\},}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \{0,\ 0,\ -\/2.0\ /\ (farPlane\ -\/\ nearPlane),\ -\/(farPlane\ +\ nearPlane)\ /\ (farPlane\ -\/\ nearPlane)\},}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1\}}
-\DoxyCodeLine{00137\ \ \ \ \ \}\};}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}(proj);}
-\DoxyCodeLine{00140\ \}}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !RAYMODEL2\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \_quaternion\ =\ \mbox{\hyperlink{group___s_f_m_l_ga9fcfa9ff4a12d1cab07d561ab904e240}{Quaternion::fromVectors}}(usual,\ direction);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___s_f_m_l_ga1e3ea763b4acd5fbf466d15c08907b57}{\string~SfmlCamera}}()\ \{\}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group___s_f_m_l_gad11678907097a3d73687808039ee1d42}{getFov}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_ga8883151f4d4ee9dc9e263f9c095df511}{setFov}}(\textcolor{keywordtype}{float}\ fov)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setFov\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ ICamera::Mode\ \mbox{\hyperlink{group___s_f_m_l_ga951d66286e7960dd2f5ca4793b0cb370}{getMode}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::Mode::FIRST\_PERSON;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_ga38cbc9ece85daf00dbac5a776cda380c}{setMode}}(ICamera::Mode\ mode)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setMode\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{group___s_f_m_l_ga905167efe03f026b0d84441ad0b202bb}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\_position.x,\ \_position.y,\ \_position.z\};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gaea1805f2eeb6da5dfe0f5e1188765d18}{setPosition}}(\_\_v3f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ \{float(position.x),\ float(position.y),\ float(position.z)\};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ ICamera::Projection\ \mbox{\hyperlink{group___s_f_m_l_ga2fb9f5ab1287515a9805468ee29104fe}{getProjection}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ICamera::PERSPECTIVE;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_ga542ca15a2bd57ee4ea25c7069a9562d7}{setProjection}}(ICamera::Projection\ projection)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setProjection\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{group___s_f_m_l_gac9b4abc33f5e1433ca8b375c9d8048ca}{getTarget}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::getTarget\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0,\ 0\};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gacfda052fa04fa82d3b30ead5bdf35b32}{setTarget}}(\_\_v3f\_t\ target)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setTarget\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \_\_v3f\_t\ \mbox{\hyperlink{group___s_f_m_l_ga81292302e8e35571d8cff3a4556dfee9}{getUp}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{0,\ 0,\ 0\};}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gab0bb3576dd49509dcfb9ede61be3b487}{setUp}}(\_\_v3f\_t\ up)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlCamera::setUp\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sfml_window}{SfmlWindow}};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ sf::Vector3f\ \_position;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ sf::Vector3f\ \_up;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ \_quaternion;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ Projection\ \_projection;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ Mode\ \_mode;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_fov;}
+\DoxyCodeLine{00171\ \};}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00182\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00183\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}\ \mbox{\hyperlink{group___s_f_m_l_ga7a6d6c1298835eed6dc2a42b8fae5681}{perspectiveProjection}}(T\ fov,\ T\ aspectRatio)\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{comment}{//\ Convert\ FOV\ from\ degrees\ to\ radians}}
+\DoxyCodeLine{00185\ \ \ \ \ T\ fovRad\ =\ fov\ *\ M\_PI\ /\ 180.0;}
+\DoxyCodeLine{00186\ \ \ \ \ T\ nearPlane\ =\ 0.001;}
+\DoxyCodeLine{00187\ \ \ \ \ T\ farPlane\ =\ 1000.0;}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ perspective\ projection\ matrix}}
+\DoxyCodeLine{00190\ \ \ \ \ std::vector<std::vector<T>>\ proj\ =\ \{\{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \{1.0f\ /\ (aspectRatio\ *\ tan(fovRad\ /\ 2.f)),\ 0.f,\ 0.f,\ 0.f\},}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \{0.f,\ 1.f\ /\ tan(fovRad\ /\ 2.f),\ 0.f,\ 0.f\},}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \{0.f,\ 0.f,\ (farPlane\ +\ nearPlane)\ /\ (nearPlane\ -\/\ farPlane),\ (2\ *\ farPlane\ *\ nearPlane)\ /\ (nearPlane\ -\/\ farPlane)\},}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \{0.f,\ 0.f,\ -\/1.f,\ 0.f\}}
+\DoxyCodeLine{00195\ \ \ \ \ \}\};}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}(proj);}
+\DoxyCodeLine{00198\ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00212\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00213\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}\ \mbox{\hyperlink{group___s_f_m_l_ga157982865c73fefadf30a7b8739c890c}{orthographicProjection}}(T\ left,\ T\ right,\ T\ bottom,\ T\ top,\ T\ nearPlane,\ T\ farPlane)\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ orthographic\ projection\ matrix}}
+\DoxyCodeLine{00215\ \ \ \ \ std::array<std::array<T,\ 4>,\ 4>\ proj\ =\ \{\{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \{2.0\ /\ (right\ -\/\ left),\ 0,\ 0,\ -\/(right\ +\ left)\ /\ (right\ -\/\ left)\},}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \{0,\ 2.0\ /\ (top\ -\/\ bottom),\ 0,\ -\/(top\ +\ bottom)\ /\ (top\ -\/\ bottom)\},}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \{0,\ 0,\ -\/2.0\ /\ (farPlane\ -\/\ nearPlane),\ -\/(farPlane\ +\ nearPlane)\ /\ (farPlane\ -\/\ nearPlane)\},}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 1\}}
+\DoxyCodeLine{00220\ \ \ \ \ \}\};}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrice}{Matrice<T>}}(proj);}
+\DoxyCodeLine{00223\ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !RAYMODEL2\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

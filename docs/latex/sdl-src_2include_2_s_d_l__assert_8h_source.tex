@@ -1,0 +1,225 @@
+\doxysection{SDL\+\_\+assert.\+h}
+\hypertarget{sdl-src_2include_2_s_d_l__assert_8h_source}{}\label{sdl-src_2include_2_s_d_l__assert_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_assert.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_assert.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ SDL\_assert\_h\_}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ SDL\_assert\_h\_}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__stdinc_8h}{SDL\_stdinc.h}}"{}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00028\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00030\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#ifndef\ SDL\_ASSERT\_LEVEL}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#ifdef\ SDL\_DEFAULT\_ASSERT\_LEVEL}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ SDL\_ASSERT\_LEVEL\ SDL\_DEFAULT\_ASSERT\_LEVEL}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#elif\ defined(\_DEBUG)\ ||\ defined(DEBUG)\ ||\ \(\backslash\)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ \ \ (defined(\_\_GNUC\_\_)\ \&\&\ !defined(\_\_OPTIMIZE\_\_))}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ SDL\_ASSERT\_LEVEL\ 2}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ SDL\_ASSERT\_LEVEL\ 1}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_ASSERT\_LEVEL\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00045\ \textcolor{comment}{These\ are\ macros\ and\ not\ first\ class\ functions\ so\ that\ the\ debugger\ breaks}}
+\DoxyCodeLine{00046\ \textcolor{comment}{on\ the\ assertion\ line\ and\ not\ in\ some\ random\ guts\ of\ SDL,\ and\ so\ each}}
+\DoxyCodeLine{00047\ \textcolor{comment}{assert\ can\ have\ unique\ static\ variables\ associated\ with\ it.}}
+\DoxyCodeLine{00048\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#if\ defined(\_MSC\_VER)}}
+\DoxyCodeLine{00051\ \textcolor{comment}{/*\ Don't\ include\ intrin.h\ here\ because\ it\ contains\ C++\ code\ */}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \_\_cdecl\ \_\_debugbreak(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDL\_TriggerBreakpoint()\ \_\_debugbreak()}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#elif\ \_SDL\_HAS\_BUILTIN(\_\_builtin\_debugtrap)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDL\_TriggerBreakpoint()\ \_\_builtin\_debugtrap()}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#elif\ (\ (!defined(\_\_NACL\_\_))\ \&\&\ ((defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_))\ \&\&\ (defined(\_\_i386\_\_)\ ||\ defined(\_\_x86\_64\_\_)))\ )}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDL\_TriggerBreakpoint()\ \_\_asm\_\_\ \_\_volatile\_\_\ (\ "{}int\ \$3\(\backslash\)n\(\backslash\)t"{}\ )}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#elif\ (defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_))\ \&\&\ defined(\_\_riscv)}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDL\_TriggerBreakpoint()\ \_\_asm\_\_\ \_\_volatile\_\_\ (\ "{}ebreak\(\backslash\)n\(\backslash\)t"{}\ )}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#elif\ (\ defined(\_\_APPLE\_\_)\ \&\&\ (defined(\_\_arm64\_\_)\ ||\ defined(\_\_aarch64\_\_))\ )\ \ }\textcolor{comment}{/*\ this\ might\ work\ on\ other\ ARM\ targets,\ but\ this\ is\ a\ known\ quantity...\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDL\_TriggerBreakpoint()\ \_\_asm\_\_\ \_\_volatile\_\_\ (\ "{}brk\ \#22\(\backslash\)n\(\backslash\)t"{}\ )}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#elif\ defined(\_\_APPLE\_\_)\ \&\&\ defined(\_\_arm\_\_)}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDL\_TriggerBreakpoint()\ \_\_asm\_\_\ \_\_volatile\_\_\ (\ "{}bkpt\ \#22\(\backslash\)n\(\backslash\)t"{}\ )}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#elif\ defined(\_\_386\_\_)\ \&\&\ defined(\_\_WATCOMC\_\_)}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDL\_TriggerBreakpoint()\ \{\ \_asm\ \{\ int\ 0x03\ \}\ \}}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#elif\ defined(HAVE\_SIGNAL\_H)\ \&\&\ !defined(\_\_WATCOMC\_\_)}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\ \ \ \ \#include\ <signal.h>}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDL\_TriggerBreakpoint()\ raise(SIGTRAP)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{/*\ How\ do\ we\ trigger\ breakpoints\ on\ this\ platform?\ */}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDL\_TriggerBreakpoint()}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#if\ defined(\_\_STDC\_VERSION\_\_)\ \&\&\ (\_\_STDC\_VERSION\_\_\ >=\ 199901L)\ }\textcolor{comment}{/*\ C99\ supports\ \_\_func\_\_\ as\ a\ standard.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_FUNCTION\ \_\_func\_\_}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#elif\ ((defined(\_\_GNUC\_\_)\ \&\&\ (\_\_GNUC\_\_\ >=\ 2))\ ||\ defined(\_MSC\_VER)\ ||\ defined\ (\_\_WATCOMC\_\_))}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_FUNCTION\ \_\_FUNCTION\_\_}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_FUNCTION\ "{}???"{}}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ SDL\_FILE\ \ \ \ \_\_FILE\_\_}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ SDL\_LINE\ \ \ \ \_\_LINE\_\_}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00085\ \textcolor{comment}{sizeof\ (x)\ makes\ the\ compiler\ still\ parse\ the\ expression\ even\ without}}
+\DoxyCodeLine{00086\ \textcolor{comment}{assertions\ enabled,\ so\ the\ code\ is\ always\ checked\ at\ compile\ time,\ but}}
+\DoxyCodeLine{00087\ \textcolor{comment}{doesn't\ actually\ generate\ code\ for\ it,\ so\ there\ are\ no\ side\ effects\ or}}
+\DoxyCodeLine{00088\ \textcolor{comment}{expensive\ checks\ at\ run\ time,\ just\ the\ constant\ size\ of\ what\ x\ WOULD\ be,}}
+\DoxyCodeLine{00089\ \textcolor{comment}{which\ presumably\ gets\ optimized\ out\ as\ unused.}}
+\DoxyCodeLine{00090\ \textcolor{comment}{This\ also\ solves\ the\ problem\ of...}}
+\DoxyCodeLine{00091\ \textcolor{comment}{}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ \ int\ somevalue\ =\ blah();}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ \ SDL\_assert(somevalue\ ==\ 1);}}
+\DoxyCodeLine{00094\ \textcolor{comment}{}}
+\DoxyCodeLine{00095\ \textcolor{comment}{...which\ would\ cause\ compiles\ to\ complain\ that\ somevalue\ is\ unused\ if\ we}}
+\DoxyCodeLine{00096\ \textcolor{comment}{disable\ assertions.}}
+\DoxyCodeLine{00097\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{comment}{/*\ "{}while\ (0,0)"{}\ fools\ Microsoft's\ compiler's\ /W4\ warning\ level\ into\ thinking}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ \ \ \ this\ condition\ isn't\ constant.\ And\ looks\ like\ an\ owl's\ face!\ */}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#ifdef\ \_MSC\_VER\ \ }\textcolor{comment}{/*\ stupid\ /W4\ warnings.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ SDL\_NULL\_WHILE\_LOOP\_CONDITION\ (0,0)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ SDL\_NULL\_WHILE\_LOOP\_CONDITION\ (0)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ SDL\_disabled\_assert(condition)\ \(\backslash\)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ (void)\ sizeof\ ((condition));\ \}\ while\ (SDL\_NULL\_WHILE\_LOOP\_CONDITION)}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00111\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ SDL\_ASSERTION\_RETRY,\ \ }
+\DoxyCodeLine{00113\ \ \ \ \ SDL\_ASSERTION\_BREAK,\ \ }
+\DoxyCodeLine{00114\ \ \ \ \ SDL\_ASSERTION\_ABORT,\ \ }
+\DoxyCodeLine{00115\ \ \ \ \ SDL\_ASSERTION\_IGNORE,\ \ }
+\DoxyCodeLine{00116\ \ \ \ \ SDL\_ASSERTION\_ALWAYS\_IGNORE\ \ }
+\DoxyCodeLine{00117\ \}\ SDL\_AssertState;}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___assert_data}{SDL\_AssertData}}}
+\DoxyCodeLine{00120\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{int}\ always\_ignore;}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ trigger\_count;}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *condition;}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename;}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{int}\ linenum;}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function;}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }SDL\_AssertData\ *next;}
+\DoxyCodeLine{00128\ \}\ \mbox{\hyperlink{struct_s_d_l___assert_data}{SDL\_AssertData}};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{comment}{/*\ Never\ call\ this\ directly.\ Use\ the\ SDL\_assert*\ macros.\ */}}
+\DoxyCodeLine{00131\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_AssertState\ SDLCALL\ SDL\_ReportAssertion(\mbox{\hyperlink{struct_s_d_l___assert_data}{SDL\_AssertData}}\ *,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *,}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *,\ \textcolor{keywordtype}{int})}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#if\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#if\ \_\_has\_feature(attribute\_analyzer\_noreturn)}}
+\DoxyCodeLine{00136\ \textcolor{comment}{/*\ this\ tells\ Clang's\ static\ analysis\ that\ we're\ a\ custom\ assert\ function,}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ and\ that\ the\ analyzer\ should\ assume\ the\ condition\ was\ always\ true\ past\ this}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ \ \ SDL\_assert\ test.\ */}}
+\DoxyCodeLine{00139\ \ \ \ \_\_attribute\_\_((analyzer\_noreturn))}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00142\ ;}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{comment}{/*\ the\ do\ \{\}\ while(0)\ avoids\ dangling\ else\ problems:}}
+\DoxyCodeLine{00145\ \textcolor{comment}{\ \ \ \ if\ (x)\ SDL\_assert(y);\ else\ blah();}}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ \ \ \ \ \ \ ...\ without\ the\ do/while,\ the\ "{}else"{}\ could\ attach\ to\ this\ macro's\ "{}if"{}.}}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ \ \ We\ try\ to\ handle\ just\ the\ minimum\ we\ need\ here\ in\ a\ macro...the\ loop,}}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ \ \ the\ static\ vars,\ and\ break\ points.\ The\ heavy\ lifting\ is\ handled\ in}}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ \ SDL\_ReportAssertion(),\ in\ SDL\_assert.c.}}
+\DoxyCodeLine{00150\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ SDL\_enabled\_assert(condition)\ \(\backslash\)}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ while\ (\ !(condition)\ )\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ static\ struct\ SDL\_AssertData\ sdl\_assert\_data\ =\ \{\ 0,\ 0,\ \#condition,\ 0,\ 0,\ 0,\ 0\ \};\ \(\backslash\)}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ const\ SDL\_AssertState\ sdl\_assert\_state\ =\ SDL\_ReportAssertion(\&sdl\_assert\_data,\ SDL\_FUNCTION,\ SDL\_FILE,\ SDL\_LINE);\ \(\backslash\)}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ if\ (sdl\_assert\_state\ ==\ SDL\_ASSERTION\_RETRY)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ continue;\ }\textcolor{comment}{/*\ go\ again.\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ if\ (sdl\_assert\_state\ ==\ SDL\_ASSERTION\_BREAK)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_TriggerBreakpoint();\ \(\backslash\)}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ break;\ }\textcolor{comment}{/*\ not\ retrying.\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (SDL\_NULL\_WHILE\_LOOP\_CONDITION)}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{comment}{/*\ Enable\ various\ levels\ of\ assertions.\ */}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#if\ SDL\_ASSERT\_LEVEL\ ==\ 0\ \ \ }\textcolor{comment}{/*\ assertions\ disabled\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert(condition)\ SDL\_disabled\_assert(condition)}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert\_release(condition)\ SDL\_disabled\_assert(condition)}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert\_paranoid(condition)\ SDL\_disabled\_assert(condition)}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#elif\ SDL\_ASSERT\_LEVEL\ ==\ 1\ \ }\textcolor{comment}{/*\ release\ settings.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert(condition)\ SDL\_disabled\_assert(condition)}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert\_release(condition)\ SDL\_enabled\_assert(condition)}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert\_paranoid(condition)\ SDL\_disabled\_assert(condition)}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#elif\ SDL\_ASSERT\_LEVEL\ ==\ 2\ \ }\textcolor{comment}{/*\ normal\ settings.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert(condition)\ SDL\_enabled\_assert(condition)}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert\_release(condition)\ SDL\_enabled\_assert(condition)}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert\_paranoid(condition)\ SDL\_disabled\_assert(condition)}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#elif\ SDL\_ASSERT\_LEVEL\ ==\ 3\ \ }\textcolor{comment}{/*\ paranoid\ settings.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert(condition)\ SDL\_enabled\_assert(condition)}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert\_release(condition)\ SDL\_enabled\_assert(condition)}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#\ \ \ define\ SDL\_assert\_paranoid(condition)\ SDL\_enabled\_assert(condition)}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#\ \ \ error\ Unknown\ assertion\ level.}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \textcolor{comment}{/*\ this\ assertion\ is\ never\ disabled\ at\ any\ level.\ */}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ SDL\_assert\_always(condition)\ SDL\_enabled\_assert(condition)}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00198\ \textcolor{keyword}{typedef}\ SDL\_AssertState\ (SDLCALL\ *SDL\_AssertionHandler)(}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___assert_data}{SDL\_AssertData}}*\ data,\ \textcolor{keywordtype}{void}*\ userdata);}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00222\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_SetAssertionHandler(}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_AssertionHandler\ handler,}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *userdata);}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00241\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_AssertionHandler\ SDLCALL\ SDL\_GetDefaultAssertionHandler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00264\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_AssertionHandler\ SDLCALL\ SDL\_GetAssertionHandler(\textcolor{keywordtype}{void}\ **puserdata);}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00292\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___assert_data}{SDL\_AssertData}}\ *\ SDLCALL\ SDL\_GetAssertionReport(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00306\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_ResetAssertionReport(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \textcolor{comment}{/*\ these\ had\ wrong\ naming\ conventions\ until\ 2.0.4.\ Please\ update\ your\ app!\ */}}
+\DoxyCodeLine{00310\ \textcolor{preprocessor}{\#define\ SDL\_assert\_state\ SDL\_AssertState}}
+\DoxyCodeLine{00311\ \textcolor{preprocessor}{\#define\ SDL\_assert\_data\ SDL\_AssertData}}
+\DoxyCodeLine{00312\ }
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00315\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00316\ \}}
+\DoxyCodeLine{00317\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00318\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_assert\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

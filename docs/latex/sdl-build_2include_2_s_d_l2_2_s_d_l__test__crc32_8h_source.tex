@@ -1,0 +1,91 @@
+\doxysection{SDL\+\_\+test\+\_\+crc32.\+h}
+\hypertarget{sdl-build_2include_2_s_d_l2_2_s_d_l__test__crc32_8h_source}{}\label{sdl-build_2include_2_s_d_l2_2_s_d_l__test__crc32_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_test\_crc32.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_test\_crc32.h}}
+\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__crc32_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00031\ \textcolor{comment}{}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ Implements\ CRC32\ calculations\ (default\ output\ is\ Perl\ String::CRC32\ compatible).}}
+\DoxyCodeLine{00033\ \textcolor{comment}{}}
+\DoxyCodeLine{00034\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifndef\ SDL\_test\_crc32\_h\_}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ SDL\_test\_crc32\_h\_}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00040\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Definitions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{/*\ Definition\ shared\ by\ all\ CRC\ routines\ */}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#ifndef\ CrcUint32}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\ \#define\ CrcUint32\ \ unsigned\ int}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#ifndef\ CrcUint8}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \#define\ CrcUint8\ \ \ unsigned\ char}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#ifdef\ ORIGINAL\_METHOD}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \#define\ CRC32\_POLY\ 0x04c11db7\ \ \ }\textcolor{comment}{/*\ AUTODIN\ II,\ Ethernet,\ \&\ FDDI\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \#define\ CRC32\_POLY\ 0xEDB88320\ \ \ }\textcolor{comment}{/*\ Perl\ String::CRC32\ compatible\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00067\ \ \ \ \ CrcUint32\ \ \ \ crc32\_table[256];\ \textcolor{comment}{/*\ CRC\ table\ */}}
+\DoxyCodeLine{00068\ \ \ \}\ \mbox{\hyperlink{struct_s_d_l_test___crc32_context}{SDLTest\_Crc32Context}};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Function\ Prototypes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00082\ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__crc32_8h_a06655d4056d1992fa85a1849b4f3eeeb}{SDLTest\_Crc32Init}}(\mbox{\hyperlink{struct_s_d_l_test___crc32_context}{SDLTest\_Crc32Context}}\ *\ crcContext);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__crc32_8h_a0397333489338ed3fca5dc0f892070cd}{SDLTest\_Crc32Calc}}(\mbox{\hyperlink{struct_s_d_l_test___crc32_context}{SDLTest\_Crc32Context}}\ *\ crcContext,\ CrcUint8\ *inBuf,\ CrcUint32\ inLen,\ CrcUint32\ *crc32);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{comment}{/*\ Same\ routine\ broken\ down\ into\ three\ steps\ */}}
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{int}\ SDLTest\_Crc32CalcStart(\mbox{\hyperlink{struct_s_d_l_test___crc32_context}{SDLTest\_Crc32Context}}\ *\ crcContext,\ CrcUint32\ *crc32);}
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{int}\ SDLTest\_Crc32CalcEnd(\mbox{\hyperlink{struct_s_d_l_test___crc32_context}{SDLTest\_Crc32Context}}\ *\ crcContext,\ CrcUint32\ *crc32);}
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{int}\ SDLTest\_Crc32CalcBuffer(\mbox{\hyperlink{struct_s_d_l_test___crc32_context}{SDLTest\_Crc32Context}}\ *\ crcContext,\ CrcUint8\ *inBuf,\ CrcUint32\ inLen,\ CrcUint32\ *crc32);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__test__crc32_8h_a020b58aa3d188466b41b7c9e526c18ec}{SDLTest\_Crc32Done}}(\mbox{\hyperlink{struct_s_d_l_test___crc32_context}{SDLTest\_Crc32Context}}\ *\ crcContext);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00118\ \}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_test\_crc32\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

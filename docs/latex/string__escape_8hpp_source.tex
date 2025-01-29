@@ -1,0 +1,51 @@
+\doxysection{string\+\_\+escape.\+hpp}
+\hypertarget{string__escape_8hpp_source}{}\label{string__escape_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/string\_escape.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/string\_escape.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <nlohmann/detail/abi\_macros.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacedetail}{detail}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ StringType>}
+\DoxyCodeLine{00031\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacedetail_a6fd295e53b1dd4f46e235e6afee26d5e}{replace\_substring}}(StringType\&\ s,\ \textcolor{keyword}{const}\ StringType\&\ f,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ StringType\&\ t)}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ JSON\_ASSERT(!f.empty());}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ pos\ =\ s.find(f);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ find\ first\ occurrence\ of\ f}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ !=\ StringType::npos;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ make\ sure\ f\ was\ found}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ s.replace(pos,\ f.size(),\ t),\ \ \ \ \ \ \textcolor{comment}{//\ replace\ with\ t,\ and}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ s.find(f,\ pos\ +\ t.size()))\ \ \textcolor{comment}{//\ find\ next\ occurrence\ of\ f}}
+\DoxyCodeLine{00039\ \ \ \ \ \{\}}
+\DoxyCodeLine{00040\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ StringType>}
+\DoxyCodeLine{00050\ \textcolor{keyword}{inline}\ StringType\ \mbox{\hyperlink{namespacedetail_af2a9ce4740e0b45d33129e2c8e53a0a8}{escape}}(StringType\ s)}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a6fd295e53b1dd4f46e235e6afee26d5e}{replace\_substring}}(s,\ StringType\{\textcolor{stringliteral}{"{}\string~"{}}\},\ StringType\{\textcolor{stringliteral}{"{}\string~0"{}}\});}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a6fd295e53b1dd4f46e235e6afee26d5e}{replace\_substring}}(s,\ StringType\{\textcolor{stringliteral}{"{}/"{}}\},\ StringType\{\textcolor{stringliteral}{"{}\string~1"{}}\});}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ s;}
+\DoxyCodeLine{00055\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ StringType>}
+\DoxyCodeLine{00065\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ unescape(StringType\&\ s)}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a6fd295e53b1dd4f46e235e6afee26d5e}{replace\_substring}}(s,\ StringType\{\textcolor{stringliteral}{"{}\string~1"{}}\},\ StringType\{\textcolor{stringliteral}{"{}/"{}}\});}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{namespacedetail_a6fd295e53b1dd4f46e235e6afee26d5e}{replace\_substring}}(s,\ StringType\{\textcolor{stringliteral}{"{}\string~0"{}}\},\ StringType\{\textcolor{stringliteral}{"{}\string~"{}}\});}
+\DoxyCodeLine{00069\ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \}\ \ \textcolor{comment}{//\ namespace\ detail}}
+\DoxyCodeLine{00072\ NLOHMANN\_JSON\_NAMESPACE\_END}
+
+\end{DoxyCode}

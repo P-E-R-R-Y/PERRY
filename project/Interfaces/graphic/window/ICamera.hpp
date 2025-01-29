@@ -1,16 +1,13 @@
 /**
- *
- * File: ICamera.hpp
- * Created Date: Fr Mar 2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Fri Mar 10 2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
+ * @file ICamera.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup graphic
+ * @{
+ */
     
 
 #ifndef ICAMERA_HPP_

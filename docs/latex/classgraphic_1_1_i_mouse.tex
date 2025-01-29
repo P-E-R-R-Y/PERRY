@@ -18,7 +18,7 @@ Inheritance diagram for graphic\+::IMouse\+:\begin{figure}[H]
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classgraphic_1_1_i_mouse_a18ae44dcdc8753386db91545cfb83aa1}\label{classgraphic_1_1_i_mouse_a18ae44dcdc8753386db91545cfb83aa1} 
+\Hypertarget{group__graphic_ga18ae44dcdc8753386db91545cfb83aa1}\label{group__graphic_ga18ae44dcdc8753386db91545cfb83aa1} 
 enum {\bfseries Buttons} \{ \newline
 {\bfseries BUTTON\+\_\+\+LEFT}
 , {\bfseries BUTTON\+\_\+\+RIGHT}
@@ -31,201 +31,29 @@ enum {\bfseries Buttons} \{ \newline
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classgraphic_1_1_i_mouse_ae4cf37895d4a403fa899ed14edf9e8d9}\label{classgraphic_1_1_i_mouse_ae4cf37895d4a403fa899ed14edf9e8d9} 
 virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IMouse} ()=default
 \begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_mouse}{IMouse} interface. \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{classgraphic_1_1_i_mouse_afd8ef257d34f4195838cbc758860df1f}{is\+Button\+Pressed}} (Buttons key) const =0
+virtual bool \mbox{\hyperlink{group__graphic_gafd8ef257d34f4195838cbc758860df1f}{is\+Button\+Pressed}} (Buttons key) const =0
 \begin{DoxyCompactList}\small\item\em notice if a button is pressed \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{classgraphic_1_1_i_mouse_addb497afb0c9af10f0e05d416bc8345a}{is\+Button\+Down}} (Buttons key) const =0
+virtual bool \mbox{\hyperlink{group__graphic_gaddb497afb0c9af10f0e05d416bc8345a}{is\+Button\+Down}} (Buttons key) const =0
 \begin{DoxyCompactList}\small\item\em notice if a button is down \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{classgraphic_1_1_i_mouse_a1b1620f7a9cd866f543172ce711f8d96}{is\+Button\+Released}} (Buttons key) const =0
+virtual bool \mbox{\hyperlink{group__graphic_ga1b1620f7a9cd866f543172ce711f8d96}{is\+Button\+Released}} (Buttons key) const =0
 \begin{DoxyCompactList}\small\item\em notice if a button is released \end{DoxyCompactList}\item 
-virtual bool \mbox{\hyperlink{classgraphic_1_1_i_mouse_afa52d70cdd08910cc7eb7b4084b8adfe}{is\+Button\+Up}} (Buttons key) const =0
+virtual bool \mbox{\hyperlink{group__graphic_gafa52d70cdd08910cc7eb7b4084b8adfe}{is\+Button\+Up}} (Buttons key) const =0
 \begin{DoxyCompactList}\small\item\em notice if a button is up \end{DoxyCompactList}\item 
-virtual \+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{classgraphic_1_1_i_mouse_a4634bb19c29588e97688f2816be3b3a8}{get\+Position}} () const =0
+virtual \+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group__graphic_ga4634bb19c29588e97688f2816be3b3a8}{get\+Position}} () const =0
 \begin{DoxyCompactList}\small\item\em get the position of the mouse \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classgraphic_1_1_i_mouse_a365cbd8e5b9bd47abdd15ddd157dcb1e}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position)=0
+virtual void \mbox{\hyperlink{group__graphic_ga365cbd8e5b9bd47abdd15ddd157dcb1e}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position)=0
 \begin{DoxyCompactList}\small\item\em set the position of the mouse \end{DoxyCompactList}\item 
-virtual float \mbox{\hyperlink{classgraphic_1_1_i_mouse_a5d886845b95237eceebe384df90b05b5}{Get\+Mouse\+Wheel\+Move}} () const =0
+virtual float \mbox{\hyperlink{group__graphic_ga5d886845b95237eceebe384df90b05b5}{Get\+Mouse\+Wheel\+Move}} () const =0
 \begin{DoxyCompactList}\small\item\em get the mouse wheel move \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classgraphic_1_1_i_mouse_a87cc9ca9ea63bb88e083700c74acba74}{update}} ()=0
+virtual void \mbox{\hyperlink{group__graphic_ga87cc9ca9ea63bb88e083700c74acba74}{update}} ()=0
 \begin{DoxyCompactList}\small\item\em set the mouse wheel move \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Mouse interface. 
 
-\doxysubsection{Member Function Documentation}
-\Hypertarget{classgraphic_1_1_i_mouse_a5d886845b95237eceebe384df90b05b5}\index{graphic::IMouse@{graphic::IMouse}!GetMouseWheelMove@{GetMouseWheelMove}}
-\index{GetMouseWheelMove@{GetMouseWheelMove}!graphic::IMouse@{graphic::IMouse}}
-\doxysubsubsection{\texorpdfstring{GetMouseWheelMove()}{GetMouseWheelMove()}}
-{\footnotesize\ttfamily \label{classgraphic_1_1_i_mouse_a5d886845b95237eceebe384df90b05b5} 
-virtual float graphic\+::\+IMouse\+::\+Get\+Mouse\+Wheel\+Move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-get the mouse wheel move 
-
-\begin{DoxyReturn}{Returns}
-float 
-\end{DoxyReturn}
-
-
-Implemented in \mbox{\hyperlink{classraylib_1_1_ray_mouse_a521ecc70ca45a45153e5952174513624}{raylib\+::\+Ray\+Mouse}}, \mbox{\hyperlink{class_sdl_mouse_a90a0264525a1d0e85645fa9697fde004}{Sdl\+Mouse}}, and \mbox{\hyperlink{class_sfml_mouse_a764f4ad5591e0868e1e9009d2a931f76}{Sfml\+Mouse}}.
-
-\Hypertarget{classgraphic_1_1_i_mouse_a4634bb19c29588e97688f2816be3b3a8}\index{graphic::IMouse@{graphic::IMouse}!getPosition@{getPosition}}
-\index{getPosition@{getPosition}!graphic::IMouse@{graphic::IMouse}}
-\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
-{\footnotesize\ttfamily \label{classgraphic_1_1_i_mouse_a4634bb19c29588e97688f2816be3b3a8} 
-virtual \+\_\+\+\_\+v2f\+\_\+t graphic\+::\+IMouse\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-get the position of the mouse 
-
-\begin{DoxyReturn}{Returns}
-\+\_\+\+\_\+v2f\+\_\+t 
-\end{DoxyReturn}
-
-
-Implemented in \mbox{\hyperlink{classraylib_1_1_ray_mouse_aed641b29c15222d71ceefda349f87702}{raylib\+::\+Ray\+Mouse}}, \mbox{\hyperlink{class_sdl_mouse_a4d66a150db63eeb156d5edcf37fc3e5d}{Sdl\+Mouse}}, and \mbox{\hyperlink{class_sfml_mouse_a2fc4314abc4305e0d1ebb83d83817ac7}{Sfml\+Mouse}}.
-
-\Hypertarget{classgraphic_1_1_i_mouse_addb497afb0c9af10f0e05d416bc8345a}\index{graphic::IMouse@{graphic::IMouse}!isButtonDown@{isButtonDown}}
-\index{isButtonDown@{isButtonDown}!graphic::IMouse@{graphic::IMouse}}
-\doxysubsubsection{\texorpdfstring{isButtonDown()}{isButtonDown()}}
-{\footnotesize\ttfamily \label{classgraphic_1_1_i_mouse_addb497afb0c9af10f0e05d416bc8345a} 
-virtual bool graphic\+::\+IMouse\+::is\+Button\+Down (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-notice if a button is down 
-
-
-\begin{DoxyParams}{Parameters}
-{\em key} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true 
-
-false 
-\end{DoxyReturn}
-
-
-Implemented in \mbox{\hyperlink{classraylib_1_1_ray_mouse_ae9107e57d786d0e7d40c4d0a66c22609}{raylib\+::\+Ray\+Mouse}}, \mbox{\hyperlink{class_sdl_mouse_a78d1216fc3c78eb6a0f4d2a6c762905c}{Sdl\+Mouse}}, and \mbox{\hyperlink{class_sfml_mouse_a8525563a7db58d7674fbc8867cf90249}{Sfml\+Mouse}}.
-
-\Hypertarget{classgraphic_1_1_i_mouse_afd8ef257d34f4195838cbc758860df1f}\index{graphic::IMouse@{graphic::IMouse}!isButtonPressed@{isButtonPressed}}
-\index{isButtonPressed@{isButtonPressed}!graphic::IMouse@{graphic::IMouse}}
-\doxysubsubsection{\texorpdfstring{isButtonPressed()}{isButtonPressed()}}
-{\footnotesize\ttfamily \label{classgraphic_1_1_i_mouse_afd8ef257d34f4195838cbc758860df1f} 
-virtual bool graphic\+::\+IMouse\+::is\+Button\+Pressed (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-notice if a button is pressed 
-
-
-\begin{DoxyParams}{Parameters}
-{\em key} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true 
-
-false 
-\end{DoxyReturn}
-
-
-Implemented in \mbox{\hyperlink{classraylib_1_1_ray_mouse_ab3f88b7353be3fb4755dc2538a82b375}{raylib\+::\+Ray\+Mouse}}, \mbox{\hyperlink{class_sdl_mouse_a4c0700d20c6bb17258122949b093bf02}{Sdl\+Mouse}}, and \mbox{\hyperlink{class_sfml_mouse_a5b9a63574efc220ec963df1f312b78fd}{Sfml\+Mouse}}.
-
-\Hypertarget{classgraphic_1_1_i_mouse_a1b1620f7a9cd866f543172ce711f8d96}\index{graphic::IMouse@{graphic::IMouse}!isButtonReleased@{isButtonReleased}}
-\index{isButtonReleased@{isButtonReleased}!graphic::IMouse@{graphic::IMouse}}
-\doxysubsubsection{\texorpdfstring{isButtonReleased()}{isButtonReleased()}}
-{\footnotesize\ttfamily \label{classgraphic_1_1_i_mouse_a1b1620f7a9cd866f543172ce711f8d96} 
-virtual bool graphic\+::\+IMouse\+::is\+Button\+Released (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-notice if a button is released 
-
-
-\begin{DoxyParams}{Parameters}
-{\em key} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true 
-
-false 
-\end{DoxyReturn}
-
-
-Implemented in \mbox{\hyperlink{classraylib_1_1_ray_mouse_aa504ae73fc7b5398e6496092a763be37}{raylib\+::\+Ray\+Mouse}}, \mbox{\hyperlink{class_sdl_mouse_aa3f194fc86ed25c083fe13d16dcca800}{Sdl\+Mouse}}, and \mbox{\hyperlink{class_sfml_mouse_ac29f9ce04fa6821c39ee64aba7a072e0}{Sfml\+Mouse}}.
-
-\Hypertarget{classgraphic_1_1_i_mouse_afa52d70cdd08910cc7eb7b4084b8adfe}\index{graphic::IMouse@{graphic::IMouse}!isButtonUp@{isButtonUp}}
-\index{isButtonUp@{isButtonUp}!graphic::IMouse@{graphic::IMouse}}
-\doxysubsubsection{\texorpdfstring{isButtonUp()}{isButtonUp()}}
-{\footnotesize\ttfamily \label{classgraphic_1_1_i_mouse_afa52d70cdd08910cc7eb7b4084b8adfe} 
-virtual bool graphic\+::\+IMouse\+::is\+Button\+Up (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-notice if a button is up 
-
-
-\begin{DoxyParams}{Parameters}
-{\em key} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true 
-
-false 
-\end{DoxyReturn}
-
-
-Implemented in \mbox{\hyperlink{classraylib_1_1_ray_mouse_a8e05b8154e9141143e122bf7b448db3a}{raylib\+::\+Ray\+Mouse}}, \mbox{\hyperlink{class_sdl_mouse_aa5edac30acd48135eb7df43ab4fc4b50}{Sdl\+Mouse}}, and \mbox{\hyperlink{class_sfml_mouse_aa02ce805d4f597394a83200f4ee8c0b5}{Sfml\+Mouse}}.
-
-\Hypertarget{classgraphic_1_1_i_mouse_a365cbd8e5b9bd47abdd15ddd157dcb1e}\index{graphic::IMouse@{graphic::IMouse}!setPosition@{setPosition}}
-\index{setPosition@{setPosition}!graphic::IMouse@{graphic::IMouse}}
-\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
-{\footnotesize\ttfamily \label{classgraphic_1_1_i_mouse_a365cbd8e5b9bd47abdd15ddd157dcb1e} 
-virtual void graphic\+::\+IMouse\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-set the position of the mouse 
-
-
-\begin{DoxyParams}{Parameters}
-{\em position} & \\
-\hline
-\end{DoxyParams}
-
-
-Implemented in \mbox{\hyperlink{classraylib_1_1_ray_mouse_aee5f43a15aba3f5c9712b20b0d8f1f67}{raylib\+::\+Ray\+Mouse}}, \mbox{\hyperlink{class_sdl_mouse_a8f4c5b8eb4303e9776d7e1e132dad987}{Sdl\+Mouse}}, and \mbox{\hyperlink{class_sfml_mouse_a7fcee9e689f8fe1c359185f0d0d14e13}{Sfml\+Mouse}}.
-
-\Hypertarget{classgraphic_1_1_i_mouse_a87cc9ca9ea63bb88e083700c74acba74}\index{graphic::IMouse@{graphic::IMouse}!update@{update}}
-\index{update@{update}!graphic::IMouse@{graphic::IMouse}}
-\doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily \label{classgraphic_1_1_i_mouse_a87cc9ca9ea63bb88e083700c74acba74} 
-virtual void graphic\+::\+IMouse\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-set the mouse wheel move 
-
-
-\begin{DoxyParams}{Parameters}
-{\em move} & \\
-\hline
-\end{DoxyParams}
-
-
-Implemented in \mbox{\hyperlink{classraylib_1_1_ray_mouse_a2cb24d9ea5b96f196c849232bdbd67d7}{raylib\+::\+Ray\+Mouse}}, \mbox{\hyperlink{class_sdl_mouse_afe0af04452988961c526e636d174983b}{Sdl\+Mouse}}, and \mbox{\hyperlink{class_sfml_mouse_ab4474d824ce2e9cf2ac4ede8d91e73fa}{Sfml\+Mouse}}.
-
-
-
 The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/interfaces/graphic/event/IMouse.\+hpp\end{DoxyCompactItemize}
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/interfaces/graphic/event/\mbox{\hyperlink{_i_mouse_8hpp}{IMouse.\+hpp}}\end{DoxyCompactItemize}

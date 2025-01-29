@@ -1,0 +1,252 @@
+\doxysection{SDL\+\_\+gamecontroller.\+h}
+\hypertarget{sdl2__image-src_2_xcode_2mac_o_s_2_s_d_l2_8framework_2_versions_2_a_2_headers_2_s_d_l__gamecontroller_8h_source}{}\label{sdl2__image-src_2_xcode_2mac_o_s_2_s_d_l2_8framework_2_versions_2_a_2_headers_2_s_d_l__gamecontroller_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/macOS/SDL2.framework/Versions/A/Headers/SDL\_gamecontroller.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/macOS/SDL2.framework/Versions/A/Headers/SDL\_gamecontroller.h}}
+\mbox{\hyperlink{sdl2__image-src_2_xcode_2mac_o_s_2_s_d_l2_8framework_2_versions_2_a_2_headers_2_s_d_l__gamecontroller_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2022\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ SDL\_gamecontroller\_h\_}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SDL\_gamecontroller\_h\_}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL2/SDL\_stdinc.h}}>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__error_8h}{SDL2/SDL\_error.h}}>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__rwops_8h}{SDL2/SDL\_rwops.h}}>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__sensor_8h}{SDL2/SDL\_sensor.h}}>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h}{SDL2/SDL\_joystick.h}}>}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{SDL2/begin\_code.h}}>}}
+\DoxyCodeLine{00038\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___s_d_l___game_controller}{\_SDL\_GameController}};}
+\DoxyCodeLine{00059\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___s_d_l___game_controller}{\_SDL\_GameController}}\ SDL\_GameController;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_UNKNOWN\ =\ 0,}
+\DoxyCodeLine{00064\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_XBOX360,}
+\DoxyCodeLine{00065\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_XBOXONE,}
+\DoxyCodeLine{00066\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_PS3,}
+\DoxyCodeLine{00067\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_PS4,}
+\DoxyCodeLine{00068\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_NINTENDO\_SWITCH\_PRO,}
+\DoxyCodeLine{00069\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_VIRTUAL,}
+\DoxyCodeLine{00070\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_PS5,}
+\DoxyCodeLine{00071\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_AMAZON\_LUNA,}
+\DoxyCodeLine{00072\ \ \ \ \ SDL\_CONTROLLER\_TYPE\_GOOGLE\_STADIA}
+\DoxyCodeLine{00073\ \}\ SDL\_GameControllerType;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ SDL\_CONTROLLER\_BINDTYPE\_NONE\ =\ 0,}
+\DoxyCodeLine{00078\ \ \ \ \ SDL\_CONTROLLER\_BINDTYPE\_BUTTON,}
+\DoxyCodeLine{00079\ \ \ \ \ SDL\_CONTROLLER\_BINDTYPE\_AXIS,}
+\DoxyCodeLine{00080\ \ \ \ \ SDL\_CONTROLLER\_BINDTYPE\_HAT}
+\DoxyCodeLine{00081\ \}\ SDL\_GameControllerBindType;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___game_controller_button_bind}{SDL\_GameControllerButtonBind}}}
+\DoxyCodeLine{00087\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ SDL\_GameControllerBindType\ bindType;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{union}}
+\DoxyCodeLine{00090\ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ button;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ axis;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hat;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hat\_mask;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}\ hat;}
+\DoxyCodeLine{00097\ \ \ \ \ \}\ value;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \}\ \mbox{\hyperlink{struct_s_d_l___game_controller_button_bind}{SDL\_GameControllerButtonBind}};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerAddMappingsFromRW(\mbox{\hyperlink{struct_s_d_l___r_wops}{SDL\_RWops}}\ *\ rw,\ \textcolor{keywordtype}{int}\ freerw);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ SDL\_GameControllerAddMappingsFromFile(file)\ \ \ SDL\_GameControllerAddMappingsFromRW(SDL\_RWFromFile(file,\ "{}rb"{}),\ 1)}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00197\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerAddMapping(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ mappingString);}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00206\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_ac14eb47ec6097d89c7bec14f6b27ebfe}{SDL\_GameControllerNumMappings}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00216\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{char}\ *\ SDLCALL\ SDL\_GameControllerMappingForIndex(\textcolor{keywordtype}{int}\ mapping\_index);}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00232\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{char}\ *\ SDLCALL\ SDL\_GameControllerMappingForGUID(\mbox{\hyperlink{struct_s_d_l___joystick_g_u_i_d}{SDL\_JoystickGUID}}\ guid);}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00251\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{char}\ *\ SDLCALL\ SDL\_GameControllerMapping(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00269\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_IsGameController(\textcolor{keywordtype}{int}\ joystick\_index);}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00290\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SDLCALL\ SDL\_GameControllerNameForIndex(\textcolor{keywordtype}{int}\ joystick\_index);}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00303\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_GameControllerType\ SDLCALL\ SDL\_GameControllerTypeForIndex(\textcolor{keywordtype}{int}\ joystick\_index);}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00317\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{char}\ *SDLCALL\ SDL\_GameControllerMappingForDeviceIndex(\textcolor{keywordtype}{int}\ joystick\_index);}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00341\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_GameController\ *SDLCALL\ SDL\_GameControllerOpen(\textcolor{keywordtype}{int}\ joystick\_index);}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00352\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_GameController\ *SDLCALL\ SDL\_GameControllerFromInstanceID(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__joystick_8h_a3c3d32500cb08f76ee8077983912c0bd}{SDL\_JoystickID}}\ joyid);}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00369\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_GameController\ *SDLCALL\ SDL\_GameControllerFromPlayerIndex(\textcolor{keywordtype}{int}\ player\_index);}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00387\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SDLCALL\ SDL\_GameControllerName(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00400\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_GameControllerType\ SDLCALL\ SDL\_GameControllerGetType(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00412\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerGetPlayerIndex(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00413\ }
+\DoxyCodeLine{00422\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_GameControllerSetPlayerIndex(SDL\_GameController\ *gamecontroller,\ \textcolor{keywordtype}{int}\ player\_index);}
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00434\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint16\ SDLCALL\ SDL\_GameControllerGetVendor(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00446\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint16\ SDLCALL\ SDL\_GameControllerGetProduct(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00458\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint16\ SDLCALL\ SDL\_GameControllerGetProductVersion(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00471\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ SDLCALL\ SDL\_GameControllerGetSerial(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00486\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_GameControllerGetAttached(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00507\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_Joystick\ *SDLCALL\ SDL\_GameControllerGetJoystick(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00508\ }
+\DoxyCodeLine{00527\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerEventState(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{structstate}{state}});}
+\DoxyCodeLine{00528\ }
+\DoxyCodeLine{00538\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a92fe68241a17b60b2240c04d01b73e6b}{SDL\_GameControllerUpdate}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00540\ }
+\DoxyCodeLine{00550\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00551\ \{}
+\DoxyCodeLine{00552\ \ \ \ \ SDL\_CONTROLLER\_AXIS\_INVALID\ =\ -\/1,}
+\DoxyCodeLine{00553\ \ \ \ \ SDL\_CONTROLLER\_AXIS\_LEFTX,}
+\DoxyCodeLine{00554\ \ \ \ \ SDL\_CONTROLLER\_AXIS\_LEFTY,}
+\DoxyCodeLine{00555\ \ \ \ \ SDL\_CONTROLLER\_AXIS\_RIGHTX,}
+\DoxyCodeLine{00556\ \ \ \ \ SDL\_CONTROLLER\_AXIS\_RIGHTY,}
+\DoxyCodeLine{00557\ \ \ \ \ SDL\_CONTROLLER\_AXIS\_TRIGGERLEFT,}
+\DoxyCodeLine{00558\ \ \ \ \ SDL\_CONTROLLER\_AXIS\_TRIGGERRIGHT,}
+\DoxyCodeLine{00559\ \ \ \ \ SDL\_CONTROLLER\_AXIS\_MAX}
+\DoxyCodeLine{00560\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a96d0bda99d806397e4c697241ccffa1c}{SDL\_GameControllerAxis}};}
+\DoxyCodeLine{00561\ }
+\DoxyCodeLine{00582\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a96d0bda99d806397e4c697241ccffa1c}{SDL\_GameControllerAxis}}\ SDLCALL\ SDL\_GameControllerGetAxisFromString(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00583\ }
+\DoxyCodeLine{00598\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ SDLCALL\ SDL\_GameControllerGetStringForAxis(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a96d0bda99d806397e4c697241ccffa1c}{SDL\_GameControllerAxis}}\ axis);}
+\DoxyCodeLine{00599\ }
+\DoxyCodeLine{00613\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___game_controller_button_bind}{SDL\_GameControllerButtonBind}}\ SDLCALL}
+\DoxyCodeLine{00614\ SDL\_GameControllerGetBindForAxis(SDL\_GameController\ *gamecontroller,}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a96d0bda99d806397e4c697241ccffa1c}{SDL\_GameControllerAxis}}\ axis);}
+\DoxyCodeLine{00616\ }
+\DoxyCodeLine{00629\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL}
+\DoxyCodeLine{00630\ SDL\_GameControllerHasAxis(SDL\_GameController\ *gamecontroller,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a96d0bda99d806397e4c697241ccffa1c}{SDL\_GameControllerAxis}}\ axis);}
+\DoxyCodeLine{00631\ }
+\DoxyCodeLine{00649\ \textcolor{keyword}{extern}\ DECLSPEC\ Sint16\ SDLCALL}
+\DoxyCodeLine{00650\ SDL\_GameControllerGetAxis(SDL\_GameController\ *gamecontroller,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a96d0bda99d806397e4c697241ccffa1c}{SDL\_GameControllerAxis}}\ axis);}
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00655\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00656\ \{}
+\DoxyCodeLine{00657\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_INVALID\ =\ -\/1,}
+\DoxyCodeLine{00658\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_A,}
+\DoxyCodeLine{00659\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_B,}
+\DoxyCodeLine{00660\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_X,}
+\DoxyCodeLine{00661\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_Y,}
+\DoxyCodeLine{00662\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_BACK,}
+\DoxyCodeLine{00663\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_GUIDE,}
+\DoxyCodeLine{00664\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_START,}
+\DoxyCodeLine{00665\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_LEFTSTICK,}
+\DoxyCodeLine{00666\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_RIGHTSTICK,}
+\DoxyCodeLine{00667\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_LEFTSHOULDER,}
+\DoxyCodeLine{00668\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_RIGHTSHOULDER,}
+\DoxyCodeLine{00669\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_DPAD\_UP,}
+\DoxyCodeLine{00670\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_DPAD\_DOWN,}
+\DoxyCodeLine{00671\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_DPAD\_LEFT,}
+\DoxyCodeLine{00672\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_DPAD\_RIGHT,}
+\DoxyCodeLine{00673\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_MISC1,\ \ \ \ \textcolor{comment}{/*\ Xbox\ Series\ X\ share\ button,\ PS5\ microphone\ button,\ Nintendo\ Switch\ Pro\ capture\ button,\ Amazon\ Luna\ microphone\ button\ */}}
+\DoxyCodeLine{00674\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_PADDLE1,\ \ \textcolor{comment}{/*\ Xbox\ Elite\ paddle\ P1\ */}}
+\DoxyCodeLine{00675\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_PADDLE2,\ \ \textcolor{comment}{/*\ Xbox\ Elite\ paddle\ P3\ */}}
+\DoxyCodeLine{00676\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_PADDLE3,\ \ \textcolor{comment}{/*\ Xbox\ Elite\ paddle\ P2\ */}}
+\DoxyCodeLine{00677\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_PADDLE4,\ \ \textcolor{comment}{/*\ Xbox\ Elite\ paddle\ P4\ */}}
+\DoxyCodeLine{00678\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_TOUCHPAD,\ \textcolor{comment}{/*\ PS4/PS5\ touchpad\ button\ */}}
+\DoxyCodeLine{00679\ \ \ \ \ SDL\_CONTROLLER\_BUTTON\_MAX}
+\DoxyCodeLine{00680\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a9e4d3f8c9c9860064a68a700e0486f98}{SDL\_GameControllerButton}};}
+\DoxyCodeLine{00681\ }
+\DoxyCodeLine{00696\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a9e4d3f8c9c9860064a68a700e0486f98}{SDL\_GameControllerButton}}\ SDLCALL\ SDL\_GameControllerGetButtonFromString(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00697\ }
+\DoxyCodeLine{00712\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ SDLCALL\ SDL\_GameControllerGetStringForButton(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a9e4d3f8c9c9860064a68a700e0486f98}{SDL\_GameControllerButton}}\ button);}
+\DoxyCodeLine{00713\ }
+\DoxyCodeLine{00727\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___game_controller_button_bind}{SDL\_GameControllerButtonBind}}\ SDLCALL}
+\DoxyCodeLine{00728\ SDL\_GameControllerGetBindForButton(SDL\_GameController\ *gamecontroller,}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a9e4d3f8c9c9860064a68a700e0486f98}{SDL\_GameControllerButton}}\ button);}
+\DoxyCodeLine{00730\ }
+\DoxyCodeLine{00743\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_GameControllerHasButton(SDL\_GameController\ *gamecontroller,}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a9e4d3f8c9c9860064a68a700e0486f98}{SDL\_GameControllerButton}}\ button);}
+\DoxyCodeLine{00745\ }
+\DoxyCodeLine{00758\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint8\ SDLCALL\ SDL\_GameControllerGetButton(SDL\_GameController\ *gamecontroller,}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a9e4d3f8c9c9860064a68a700e0486f98}{SDL\_GameControllerButton}}\ button);}
+\DoxyCodeLine{00760\ }
+\DoxyCodeLine{00766\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerGetNumTouchpads(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00767\ }
+\DoxyCodeLine{00774\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerGetNumTouchpadFingers(SDL\_GameController\ *gamecontroller,\ \textcolor{keywordtype}{int}\ touchpad);}
+\DoxyCodeLine{00775\ }
+\DoxyCodeLine{00781\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerGetTouchpadFinger(SDL\_GameController\ *gamecontroller,\ \textcolor{keywordtype}{int}\ touchpad,\ \textcolor{keywordtype}{int}\ finger,\ Uint8\ *\mbox{\hyperlink{structstate}{state}},\ \textcolor{keywordtype}{float}\ *x,\ \textcolor{keywordtype}{float}\ *y,\ \textcolor{keywordtype}{float}\ *pressure);}
+\DoxyCodeLine{00782\ }
+\DoxyCodeLine{00792\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_GameControllerHasSensor(SDL\_GameController\ *gamecontroller,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__sensor_8h_a94a441696f7d053dd541ec0b7e00e33a}{SDL\_SensorType}}\ type);}
+\DoxyCodeLine{00793\ }
+\DoxyCodeLine{00804\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerSetSensorEnabled(SDL\_GameController\ *gamecontroller,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__sensor_8h_a94a441696f7d053dd541ec0b7e00e33a}{SDL\_SensorType}}\ type,\ SDL\_bool\ enabled);}
+\DoxyCodeLine{00805\ }
+\DoxyCodeLine{00815\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_GameControllerIsSensorEnabled(SDL\_GameController\ *gamecontroller,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__sensor_8h_a94a441696f7d053dd541ec0b7e00e33a}{SDL\_SensorType}}\ type);}
+\DoxyCodeLine{00816\ }
+\DoxyCodeLine{00827\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{float}\ SDLCALL\ SDL\_GameControllerGetSensorDataRate(SDL\_GameController\ *gamecontroller,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__sensor_8h_a94a441696f7d053dd541ec0b7e00e33a}{SDL\_SensorType}}\ type);}
+\DoxyCodeLine{00828\ }
+\DoxyCodeLine{00843\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerGetSensorData(SDL\_GameController\ *gamecontroller,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__sensor_8h_a94a441696f7d053dd541ec0b7e00e33a}{SDL\_SensorType}}\ type,\ \textcolor{keywordtype}{float}\ *data,\ \textcolor{keywordtype}{int}\ num\_values);}
+\DoxyCodeLine{00844\ }
+\DoxyCodeLine{00863\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerRumble(SDL\_GameController\ *gamecontroller,\ Uint16\ low\_frequency\_rumble,\ Uint16\ high\_frequency\_rumble,\ Uint32\ duration\_ms);}
+\DoxyCodeLine{00864\ }
+\DoxyCodeLine{00888\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerRumbleTriggers(SDL\_GameController\ *gamecontroller,\ Uint16\ left\_rumble,\ Uint16\ right\_rumble,\ Uint32\ duration\_ms);}
+\DoxyCodeLine{00889\ }
+\DoxyCodeLine{00899\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_GameControllerHasLED(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00900\ }
+\DoxyCodeLine{00912\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_GameControllerHasRumble(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00913\ }
+\DoxyCodeLine{00925\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_GameControllerHasRumbleTriggers(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00926\ }
+\DoxyCodeLine{00938\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerSetLED(SDL\_GameController\ *gamecontroller,\ Uint8\ red,\ Uint8\ green,\ Uint8\ blue);}
+\DoxyCodeLine{00939\ }
+\DoxyCodeLine{00951\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GameControllerSendEffect(SDL\_GameController\ *gamecontroller,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *data,\ \textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00952\ }
+\DoxyCodeLine{00963\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_GameControllerClose(SDL\_GameController\ *gamecontroller);}
+\DoxyCodeLine{00964\ }
+\DoxyCodeLine{00977\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ SDLCALL\ SDL\_GameControllerGetAppleSFSymbolsNameForButton(SDL\_GameController\ *gamecontroller,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a9e4d3f8c9c9860064a68a700e0486f98}{SDL\_GameControllerButton}}\ button);}
+\DoxyCodeLine{00978\ }
+\DoxyCodeLine{00991\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ SDLCALL\ SDL\_GameControllerGetAppleSFSymbolsNameForAxis(SDL\_GameController\ *gamecontroller,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__gamecontroller_8h_a96d0bda99d806397e4c697241ccffa1c}{SDL\_GameControllerAxis}}\ axis);}
+\DoxyCodeLine{00992\ }
+\DoxyCodeLine{00993\ }
+\DoxyCodeLine{00994\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00995\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00996\ \}}
+\DoxyCodeLine{00997\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00998\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{SDL2/close\_code.h}}>}}
+\DoxyCodeLine{00999\ }
+\DoxyCodeLine{01000\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_gamecontroller\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01001\ }
+\DoxyCodeLine{01002\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

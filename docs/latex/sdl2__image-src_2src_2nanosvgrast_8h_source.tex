@@ -1,0 +1,1473 @@
+\doxysection{nanosvgrast.\+h}
+\hypertarget{sdl2__image-src_2src_2nanosvgrast_8h_source}{}\label{sdl2__image-src_2src_2nanosvgrast_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/src/nanosvgrast.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/src/nanosvgrast.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2013-\/14\ Mikko\ Mononen\ memon@inside.org}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ The\ polygon\ rasterization\ is\ heavily\ based\ on\ stb\_truetype\ rasterizer}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ by\ Sean\ Barrett\ -\/\ http://nothings.org/}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ NANOSVGRAST\_H}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ NANOSVGRAST\_H}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ NSVG\_EXPORT}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ NSVG\_EXPORT}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#ifndef\ NANOSVGRAST\_CPLUSPLUS}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00034\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }NSVGrasterizer\ NSVGrasterizer;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{/*\ Example\ Usage:}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ //\ Load\ SVG}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ NSVGimage*\ image;}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ image\ =\ nsvgParseFromFile("{}test.svg"{},\ "{}px"{},\ 96);}}
+\DoxyCodeLine{00044\ \textcolor{comment}{}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ \ //\ Create\ rasterizer\ (can\ be\ used\ to\ render\ multiple\ images).}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ \ \ struct\ NSVGrasterizer*\ rast\ =\ nsvgCreateRasterizer();}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ \ \ //\ Allocate\ memory\ for\ image}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ \ \ \ unsigned\ char*\ img\ =\ malloc(w*h*4);}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ \ //\ Rasterize}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ \ nsvgRasterize(rast,\ image,\ 0,0,1,\ img,\ w,\ h,\ w*4);}}
+\DoxyCodeLine{00051\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ Allocated\ rasterizer\ context.}}
+\DoxyCodeLine{00054\ NSVG\_EXPORT\ NSVGrasterizer*\ nsvgCreateRasterizer(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ Rasterizes\ SVG\ image,\ returns\ RGBA\ image\ (non-\/premultiplied\ alpha)}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ \ \ r\ -\/\ pointer\ to\ rasterizer\ context}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ \ \ image\ -\/\ pointer\ to\ image\ to\ rasterize}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ \ \ tx,ty\ -\/\ image\ offset\ (applied\ after\ scaling)}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ \ \ scale\ -\/\ image\ scale}}
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ \ \ dst\ -\/\ pointer\ to\ destination\ image\ data,\ 4\ bytes\ per\ pixel\ (RGBA)}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ \ \ w\ -\/\ width\ of\ the\ image\ to\ render}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ \ \ h\ -\/\ height\ of\ the\ image\ to\ render}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ \ \ stride\ -\/\ number\ of\ bytes\ per\ scaleline\ in\ the\ destination\ buffer}}
+\DoxyCodeLine{00065\ NSVG\_EXPORT\ \textcolor{keywordtype}{void}\ nsvgRasterize(NSVGrasterizer*\ r,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_n_s_v_gimage}{NSVGimage}}*\ image,\ \textcolor{keywordtype}{float}\ tx,\ \textcolor{keywordtype}{float}\ ty,\ \textcolor{keywordtype}{float}\ scale,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ dst,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ stride);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{comment}{//\ Deletes\ rasterizer\ context.}}
+\DoxyCodeLine{00070\ NSVG\_EXPORT\ \textcolor{keywordtype}{void}\ nsvgDeleteRasterizer(NSVGrasterizer*);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#ifndef\ NANOSVGRAST\_CPLUSPLUS}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00075\ \}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#ifdef\ NANOSVGRAST\_IMPLEMENTATION}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\#include\ <math.h>}}
+\DoxyCodeLine{00083\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ NSVG\_\_SUBSAMPLES\ \ \ \ 5}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ NSVG\_\_FIXSHIFT\ \ \ \ \ \ 10}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ NSVG\_\_FIX\ \ \ \ \ \ \ \ \ \ \ (1\ <<\ NSVG\_\_FIXSHIFT)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ NSVG\_\_FIXMASK\ \ \ \ \ \ \ (NSVG\_\_FIX-\/1)}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ NSVG\_\_MEMPAGE\_SIZE\ \ 1024}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }NSVGedge\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{float}\ x0,y0,\ x1,y1;}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ dir;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{struct\ }NSVGedge*\ next;}
+\DoxyCodeLine{00095\ \}\ NSVGedge;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }NSVGpoint\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{float}\ x,\ y;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{float}\ dx,\ dy;}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{float}\ len;}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{float}\ dmx,\ dmy;}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ flags;}
+\DoxyCodeLine{00103\ \}\ NSVGpoint;}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }NSVGactiveEdge\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{int}\ x,dx;}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{float}\ ey;}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{int}\ dir;}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{struct\ }NSVGactiveEdge\ *next;}
+\DoxyCodeLine{00110\ \}\ NSVGactiveEdge;}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }NSVGmemPage\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ mem[NSVG\_\_MEMPAGE\_SIZE];}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{struct\ }NSVGmemPage*\ next;}
+\DoxyCodeLine{00116\ \}\ NSVGmemPage;}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }NSVGcachedPaint\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{signed}\ \textcolor{keywordtype}{char}\ type;}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{char}\ spread;}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{float}\ xform[6];}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ colors[256];}
+\DoxyCodeLine{00123\ \}\ NSVGcachedPaint;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{struct\ }NSVGrasterizer}
+\DoxyCodeLine{00126\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{float}\ px,\ py;}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{float}\ tessTol;}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{float}\ distTol;}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ NSVGedge*\ edges;}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{int}\ nedges;}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{int}\ cedges;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ NSVGpoint*\ points;}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{int}\ npoints;}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{int}\ cpoints;}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ NSVGpoint*\ points2;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{int}\ npoints2;}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{int}\ cpoints2;}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ NSVGactiveEdge*\ freelist;}
+\DoxyCodeLine{00145\ \ \ \ \ NSVGmemPage*\ pages;}
+\DoxyCodeLine{00146\ \ \ \ \ NSVGmemPage*\ curpage;}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ scanline;}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{int}\ cscanline;}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ bitmap;}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{int}\ width,\ height,\ stride;}
+\DoxyCodeLine{00153\ \};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ NSVG\_EXPORT\ NSVGrasterizer*\ nsvgCreateRasterizer(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00156\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ NSVGrasterizer*\ r\ =\ (NSVGrasterizer*)malloc(\textcolor{keyword}{sizeof}(NSVGrasterizer));}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ NULL)\ \textcolor{keywordflow}{goto}\ error;}
+\DoxyCodeLine{00159\ \ \ \ \ memset(r,\ 0,\ \textcolor{keyword}{sizeof}(NSVGrasterizer));}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ r-\/>tessTol\ =\ 0.25f;}
+\DoxyCodeLine{00162\ \ \ \ \ r-\/>distTol\ =\ 0.01f;}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ error:}
+\DoxyCodeLine{00167\ \ \ \ \ nsvgDeleteRasterizer(r);}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00169\ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ NSVG\_EXPORT\ \textcolor{keywordtype}{void}\ nsvgDeleteRasterizer(NSVGrasterizer*\ r)}
+\DoxyCodeLine{00172\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ NSVGmemPage*\ p;}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ NULL)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ p\ =\ r-\/>pages;}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{while}\ (p\ !=\ NULL)\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ NSVGmemPage*\ next\ =\ p-\/>next;}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ free(p);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ p\ =\ next;}
+\DoxyCodeLine{00182\ \ \ \ \ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>edges)\ free(r-\/>edges);}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>points)\ free(r-\/>points);}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>points2)\ free(r-\/>points2);}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>scanline)\ free(r-\/>scanline);}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ free(r);}
+\DoxyCodeLine{00190\ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{static}\ NSVGmemPage*\ nsvg\_\_nextPage(NSVGrasterizer*\ r,\ NSVGmemPage*\ cur)}
+\DoxyCodeLine{00193\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ NSVGmemPage\ *newp;}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{//\ If\ using\ existing\ chain,\ return\ the\ next\ page\ in\ chain}}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordflow}{if}\ (cur\ !=\ NULL\ \&\&\ cur-\/>next\ !=\ NULL)\ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cur-\/>next;}
+\DoxyCodeLine{00199\ \ \ \ \ \}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{comment}{//\ Alloc\ new\ page}}
+\DoxyCodeLine{00202\ \ \ \ \ newp\ =\ (NSVGmemPage*)malloc(\textcolor{keyword}{sizeof}(NSVGmemPage));}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordflow}{if}\ (newp\ ==\ NULL)\ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00204\ \ \ \ \ memset(newp,\ 0,\ \textcolor{keyword}{sizeof}(NSVGmemPage));}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{comment}{//\ Add\ to\ linked\ list}}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordflow}{if}\ (cur\ !=\ NULL)}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ cur-\/>next\ =\ newp;}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ r-\/>pages\ =\ newp;}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{return}\ newp;}
+\DoxyCodeLine{00213\ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_resetPool(NSVGrasterizer*\ r)}
+\DoxyCodeLine{00216\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ NSVGmemPage*\ p\ =\ r-\/>pages;}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordflow}{while}\ (p\ !=\ NULL)\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ p-\/>size\ =\ 0;}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ p\ =\ p-\/>next;}
+\DoxyCodeLine{00221\ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ r-\/>curpage\ =\ r-\/>pages;}
+\DoxyCodeLine{00223\ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ nsvg\_\_alloc(NSVGrasterizer*\ r,\ \textcolor{keywordtype}{int}\ size)}
+\DoxyCodeLine{00226\ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ buf;}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ >\ NSVG\_\_MEMPAGE\_SIZE)\ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>curpage\ ==\ NULL\ ||\ r-\/>curpage-\/>size+size\ >\ NSVG\_\_MEMPAGE\_SIZE)\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ r-\/>curpage\ =\ nsvg\_\_nextPage(r,\ r-\/>curpage);}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \ \ \ \ buf\ =\ \&r-\/>curpage-\/>mem[r-\/>curpage-\/>size];}
+\DoxyCodeLine{00233\ \ \ \ \ r-\/>curpage-\/>size\ +=\ size;}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordflow}{return}\ buf;}
+\DoxyCodeLine{00235\ \}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ nsvg\_\_ptEquals(\textcolor{keywordtype}{float}\ x1,\ \textcolor{keywordtype}{float}\ y1,\ \textcolor{keywordtype}{float}\ x2,\ \textcolor{keywordtype}{float}\ y2,\ \textcolor{keywordtype}{float}\ tol)}
+\DoxyCodeLine{00238\ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ x2\ -\/\ x1;}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordtype}{float}\ dy\ =\ y2\ -\/\ y1;}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordflow}{return}\ dx*dx\ +\ dy*dy\ <\ tol*tol;}
+\DoxyCodeLine{00242\ \}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_addPathPoint(NSVGrasterizer*\ r,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{int}\ flags)}
+\DoxyCodeLine{00245\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ NSVGpoint*\ pt;}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>npoints\ >\ 0)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ pt\ =\ \&r-\/>points[r-\/>npoints-\/1];}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nsvg\_\_ptEquals(pt-\/>x,pt-\/>y,\ x,y,\ r-\/>distTol))\ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ pt-\/>flags\ =\ (\textcolor{keywordtype}{unsigned}\ char)(pt-\/>flags\ |\ flags);}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00254\ \ \ \ \ \}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>npoints+1\ >\ r-\/>cpoints)\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ r-\/>cpoints\ =\ r-\/>cpoints\ >\ 0\ ?\ r-\/>cpoints\ *\ 2\ :\ 64;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ r-\/>points\ =\ (NSVGpoint*)realloc(r-\/>points,\ \textcolor{keyword}{sizeof}(NSVGpoint)\ *\ r-\/>cpoints);}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>points\ ==\ NULL)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00260\ \ \ \ \ \}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ pt\ =\ \&r-\/>points[r-\/>npoints];}
+\DoxyCodeLine{00263\ \ \ \ \ pt-\/>x\ =\ x;}
+\DoxyCodeLine{00264\ \ \ \ \ pt-\/>y\ =\ y;}
+\DoxyCodeLine{00265\ \ \ \ \ pt-\/>flags\ =\ (\textcolor{keywordtype}{unsigned}\ char)flags;}
+\DoxyCodeLine{00266\ \ \ \ \ r-\/>npoints++;}
+\DoxyCodeLine{00267\ \}}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_appendPathPoint(NSVGrasterizer*\ r,\ NSVGpoint\ pt)}
+\DoxyCodeLine{00270\ \{}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>npoints+1\ >\ r-\/>cpoints)\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ r-\/>cpoints\ =\ r-\/>cpoints\ >\ 0\ ?\ r-\/>cpoints\ *\ 2\ :\ 64;}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ r-\/>points\ =\ (NSVGpoint*)realloc(r-\/>points,\ \textcolor{keyword}{sizeof}(NSVGpoint)\ *\ r-\/>cpoints);}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>points\ ==\ NULL)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00275\ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ r-\/>points[r-\/>npoints]\ =\ pt;}
+\DoxyCodeLine{00277\ \ \ \ \ r-\/>npoints++;}
+\DoxyCodeLine{00278\ \}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_duplicatePoints(NSVGrasterizer*\ r)}
+\DoxyCodeLine{00281\ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>npoints\ >\ r-\/>cpoints2)\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ r-\/>cpoints2\ =\ r-\/>npoints;}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ r-\/>points2\ =\ (NSVGpoint*)realloc(r-\/>points2,\ \textcolor{keyword}{sizeof}(NSVGpoint)\ *\ r-\/>cpoints2);}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>points2\ ==\ NULL)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00286\ \ \ \ \ \}}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \ \ \ \ memcpy(r-\/>points2,\ r-\/>points,\ \textcolor{keyword}{sizeof}(NSVGpoint)\ *\ r-\/>npoints);}
+\DoxyCodeLine{00289\ \ \ \ \ r-\/>npoints2\ =\ r-\/>npoints;}
+\DoxyCodeLine{00290\ \}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_addEdge(NSVGrasterizer*\ r,\ \textcolor{keywordtype}{float}\ x0,\ \textcolor{keywordtype}{float}\ y0,\ \textcolor{keywordtype}{float}\ x1,\ \textcolor{keywordtype}{float}\ y1)}
+\DoxyCodeLine{00293\ \{}
+\DoxyCodeLine{00294\ \ \ \ \ NSVGedge*\ e;}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{comment}{//\ Skip\ horizontal\ edges}}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordflow}{if}\ (y0\ ==\ y1)}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>nedges+1\ >\ r-\/>cedges)\ \{}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ r-\/>cedges\ =\ r-\/>cedges\ >\ 0\ ?\ r-\/>cedges\ *\ 2\ :\ 64;}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ r-\/>edges\ =\ (NSVGedge*)realloc(r-\/>edges,\ \textcolor{keyword}{sizeof}(NSVGedge)\ *\ r-\/>cedges);}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>edges\ ==\ NULL)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00304\ \ \ \ \ \}}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00306\ \ \ \ \ e\ =\ \&r-\/>edges[r-\/>nedges];}
+\DoxyCodeLine{00307\ \ \ \ \ r-\/>nedges++;}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordflow}{if}\ (y0\ <\ y1)\ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ e-\/>x0\ =\ x0;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ e-\/>y0\ =\ y0;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ e-\/>x1\ =\ x1;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ e-\/>y1\ =\ y1;}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ e-\/>dir\ =\ 1;}
+\DoxyCodeLine{00315\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ e-\/>x0\ =\ x1;}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ e-\/>y0\ =\ y1;}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ e-\/>x1\ =\ x0;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ e-\/>y1\ =\ y0;}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ e-\/>dir\ =\ -\/1;}
+\DoxyCodeLine{00321\ \ \ \ \ \}}
+\DoxyCodeLine{00322\ \}}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00324\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ nsvg\_\_normalize(\textcolor{keywordtype}{float}\ *x,\ \textcolor{keywordtype}{float}*\ y)}
+\DoxyCodeLine{00325\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordtype}{float}\ d\ =\ sqrtf((*x)*(*x)\ +\ (*y)*(*y));}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordflow}{if}\ (d\ >\ 1e-\/6f)\ \{}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \textcolor{keywordtype}{id}\ =\ 1.0f\ /\ d;}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ *x\ *=\ id;}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ *y\ *=\ id;}
+\DoxyCodeLine{00331\ \ \ \ \ \}}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keywordflow}{return}\ d;}
+\DoxyCodeLine{00333\ \}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ nsvg\_\_absf(\textcolor{keywordtype}{float}\ x)\ \{\ \textcolor{keywordflow}{return}\ x\ <\ 0\ ?\ -\/x\ :\ x;\ \}}
+\DoxyCodeLine{00336\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ nsvg\_\_roundf(\textcolor{keywordtype}{float}\ x)\ \{\ \textcolor{keywordflow}{return}\ (x\ >=\ 0)\ ?\ floorf(x\ +\ 0.5)\ :\ ceilf(x\ -\/\ 0.5);\ \}}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_flattenCubicBez(NSVGrasterizer*\ r,}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x1,\ \textcolor{keywordtype}{float}\ y1,\ \textcolor{keywordtype}{float}\ x2,\ \textcolor{keywordtype}{float}\ y2,}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x3,\ \textcolor{keywordtype}{float}\ y3,\ \textcolor{keywordtype}{float}\ x4,\ \textcolor{keywordtype}{float}\ y4,}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ level,\ \textcolor{keywordtype}{int}\ type)}
+\DoxyCodeLine{00342\ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_level\ =\ 10;}
+\DoxyCodeLine{00344\ \ \ \ \ \textcolor{keywordtype}{float}\ x12,y12,x23,y23,x34,y34,x123,y123,x234,y234,x1234,y1234;}
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keywordtype}{float}\ dx,dy,d2,d3;}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keywordflow}{if}\ (level\ >\ max\_level)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \ \ \ \ x12\ =\ (x1+x2)*0.5f;}
+\DoxyCodeLine{00350\ \ \ \ \ y12\ =\ (y1+y2)*0.5f;}
+\DoxyCodeLine{00351\ \ \ \ \ x23\ =\ (x2+x3)*0.5f;}
+\DoxyCodeLine{00352\ \ \ \ \ y23\ =\ (y2+y3)*0.5f;}
+\DoxyCodeLine{00353\ \ \ \ \ x34\ =\ (x3+x4)*0.5f;}
+\DoxyCodeLine{00354\ \ \ \ \ y34\ =\ (y3+y4)*0.5f;}
+\DoxyCodeLine{00355\ \ \ \ \ x123\ =\ (x12+x23)*0.5f;}
+\DoxyCodeLine{00356\ \ \ \ \ y123\ =\ (y12+y23)*0.5f;}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00358\ \ \ \ \ dx\ =\ x4\ -\/\ x1;}
+\DoxyCodeLine{00359\ \ \ \ \ dy\ =\ y4\ -\/\ y1;}
+\DoxyCodeLine{00360\ \ \ \ \ d2\ =\ nsvg\_\_absf((x2\ -\/\ x4)\ *\ dy\ -\/\ (y2\ -\/\ y4)\ *\ dx);}
+\DoxyCodeLine{00361\ \ \ \ \ d3\ =\ nsvg\_\_absf((x3\ -\/\ x4)\ *\ dy\ -\/\ (y3\ -\/\ y4)\ *\ dx);}
+\DoxyCodeLine{00362\ }
+\DoxyCodeLine{00363\ \ \ \ \ \textcolor{keywordflow}{if}\ ((d2\ +\ d3)*(d2\ +\ d3)\ <\ r-\/>tessTol\ *\ (dx*dx\ +\ dy*dy))\ \{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ nsvg\_\_addPathPoint(r,\ x4,\ y4,\ type);}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00366\ \ \ \ \ \}}
+\DoxyCodeLine{00367\ \ \ \ \ ++level;}
+\DoxyCodeLine{00368\ \ \ \ \ \textcolor{keywordflow}{if}\ (level\ >\ max\_level)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ x234\ =\ (x23+x34)*0.5f;}
+\DoxyCodeLine{00371\ \ \ \ \ y234\ =\ (y23+y34)*0.5f;}
+\DoxyCodeLine{00372\ \ \ \ \ x1234\ =\ (x123+x234)*0.5f;}
+\DoxyCodeLine{00373\ \ \ \ \ y1234\ =\ (y123+y234)*0.5f;}
+\DoxyCodeLine{00374\ }
+\DoxyCodeLine{00375\ \ \ \ \ nsvg\_\_flattenCubicBez(r,\ x1,y1,\ x12,y12,\ x123,y123,\ x1234,y1234,\ level,\ 0);}
+\DoxyCodeLine{00376\ \ \ \ \ nsvg\_\_flattenCubicBez(r,\ x1234,y1234,\ x234,y234,\ x34,y34,\ x4,y4,\ level,\ type);}
+\DoxyCodeLine{00377\ \}}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_flattenShape(NSVGrasterizer*\ r,\ \mbox{\hyperlink{struct_n_s_v_gshape}{NSVGshape}}*\ shape,\ \textcolor{keywordtype}{float}\ scale)}
+\DoxyCodeLine{00380\ \{}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{00382\ \ \ \ \ \mbox{\hyperlink{struct_n_s_v_gpath}{NSVGpath}}*\ path;}
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{keywordflow}{for}\ (path\ =\ shape-\/>paths;\ path\ !=\ NULL;\ path\ =\ path-\/>next)\ \{}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ r-\/>npoints\ =\ 0;}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Flatten\ path}}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ nsvg\_\_addPathPoint(r,\ path-\/>pts[0]*scale,\ path-\/>pts[1]*scale,\ 0);}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ path-\/>npts-\/1;\ i\ +=\ 3)\ \{}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ p\ =\ \&path-\/>pts[i*2];}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_flattenCubicBez(r,\ p[0]*scale,p[1]*scale,\ p[2]*scale,p[3]*scale,\ p[4]*scale,p[5]*scale,\ p[6]*scale,p[7]*scale,\ 0,\ 0);}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Close\ path}}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ nsvg\_\_addPathPoint(r,\ path-\/>pts[0]*scale,\ path-\/>pts[1]*scale,\ 0);}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Build\ edges}}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0,\ j\ =\ r-\/>npoints-\/1;\ i\ <\ r-\/>npoints;\ j\ =\ i++)}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ r-\/>points[j].x,\ r-\/>points[j].y,\ r-\/>points[i].x,\ r-\/>points[i].y);}
+\DoxyCodeLine{00397\ \ \ \ \ \}}
+\DoxyCodeLine{00398\ \}}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00400\ \textcolor{keyword}{enum}\ NSVGpointFlags}
+\DoxyCodeLine{00401\ \{}
+\DoxyCodeLine{00402\ \ \ \ \ NSVG\_PT\_CORNER\ =\ 0x01,}
+\DoxyCodeLine{00403\ \ \ \ \ NSVG\_PT\_BEVEL\ =\ 0x02,}
+\DoxyCodeLine{00404\ \ \ \ \ NSVG\_PT\_LEFT\ =\ 0x04}
+\DoxyCodeLine{00405\ \};}
+\DoxyCodeLine{00406\ }
+\DoxyCodeLine{00407\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_initClosed(NSVGpoint*\ left,\ NSVGpoint*\ right,\ NSVGpoint*\ p0,\ NSVGpoint*\ p1,\ \textcolor{keywordtype}{float}\ lineWidth)}
+\DoxyCodeLine{00408\ \{}
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ p1-\/>x\ -\/\ p0-\/>x;}
+\DoxyCodeLine{00411\ \ \ \ \ \textcolor{keywordtype}{float}\ dy\ =\ p1-\/>y\ -\/\ p0-\/>y;}
+\DoxyCodeLine{00412\ \ \ \ \ \textcolor{keywordtype}{float}\ len\ =\ nsvg\_\_normalize(\&dx,\ \&dy);}
+\DoxyCodeLine{00413\ \ \ \ \ \textcolor{keywordtype}{float}\ px\ =\ p0-\/>x\ +\ dx*len*0.5f,\ py\ =\ p0-\/>y\ +\ dy*len*0.5f;}
+\DoxyCodeLine{00414\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx\ =\ dy,\ dly\ =\ -\/dx;}
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{keywordtype}{float}\ lx\ =\ px\ -\/\ dlx*w,\ ly\ =\ py\ -\/\ dly*w;}
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{keywordtype}{float}\ rx\ =\ px\ +\ dlx*w,\ ry\ =\ py\ +\ dly*w;}
+\DoxyCodeLine{00417\ \ \ \ \ left-\/>x\ =\ lx;\ left-\/>y\ =\ ly;}
+\DoxyCodeLine{00418\ \ \ \ \ right-\/>x\ =\ rx;\ right-\/>y\ =\ ry;}
+\DoxyCodeLine{00419\ \}}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_buttCap(NSVGrasterizer*\ r,\ NSVGpoint*\ left,\ NSVGpoint*\ right,\ NSVGpoint*\ p,\ \textcolor{keywordtype}{float}\ dx,\ \textcolor{keywordtype}{float}\ dy,\ \textcolor{keywordtype}{float}\ lineWidth,\ \textcolor{keywordtype}{int}\ connect)}
+\DoxyCodeLine{00422\ \{}
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keywordtype}{float}\ px\ =\ p-\/>x,\ py\ =\ p-\/>y;}
+\DoxyCodeLine{00425\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx\ =\ dy,\ dly\ =\ -\/dx;}
+\DoxyCodeLine{00426\ \ \ \ \ \textcolor{keywordtype}{float}\ lx\ =\ px\ -\/\ dlx*w,\ ly\ =\ py\ -\/\ dly*w;}
+\DoxyCodeLine{00427\ \ \ \ \ \textcolor{keywordtype}{float}\ rx\ =\ px\ +\ dlx*w,\ ry\ =\ py\ +\ dly*w;}
+\DoxyCodeLine{00428\ }
+\DoxyCodeLine{00429\ \ \ \ \ nsvg\_\_addEdge(r,\ lx,\ ly,\ rx,\ ry);}
+\DoxyCodeLine{00430\ }
+\DoxyCodeLine{00431\ \ \ \ \ \textcolor{keywordflow}{if}\ (connect)\ \{}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ left-\/>x,\ left-\/>y,\ lx,\ ly);}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ rx,\ ry,\ right-\/>x,\ right-\/>y);}
+\DoxyCodeLine{00434\ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ left-\/>x\ =\ lx;\ left-\/>y\ =\ ly;}
+\DoxyCodeLine{00436\ \ \ \ \ right-\/>x\ =\ rx;\ right-\/>y\ =\ ry;}
+\DoxyCodeLine{00437\ \}}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_squareCap(NSVGrasterizer*\ r,\ NSVGpoint*\ left,\ NSVGpoint*\ right,\ NSVGpoint*\ p,\ \textcolor{keywordtype}{float}\ dx,\ \textcolor{keywordtype}{float}\ dy,\ \textcolor{keywordtype}{float}\ lineWidth,\ \textcolor{keywordtype}{int}\ connect)}
+\DoxyCodeLine{00440\ \{}
+\DoxyCodeLine{00441\ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{00442\ \ \ \ \ \textcolor{keywordtype}{float}\ px\ =\ p-\/>x\ -\/\ dx*w,\ py\ =\ p-\/>y\ -\/\ dy*w;}
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx\ =\ dy,\ dly\ =\ -\/dx;}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{keywordtype}{float}\ lx\ =\ px\ -\/\ dlx*w,\ ly\ =\ py\ -\/\ dly*w;}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keywordtype}{float}\ rx\ =\ px\ +\ dlx*w,\ ry\ =\ py\ +\ dly*w;}
+\DoxyCodeLine{00446\ }
+\DoxyCodeLine{00447\ \ \ \ \ nsvg\_\_addEdge(r,\ lx,\ ly,\ rx,\ ry);}
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00449\ \ \ \ \ \textcolor{keywordflow}{if}\ (connect)\ \{}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ left-\/>x,\ left-\/>y,\ lx,\ ly);}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ rx,\ ry,\ right-\/>x,\ right-\/>y);}
+\DoxyCodeLine{00452\ \ \ \ \ \}}
+\DoxyCodeLine{00453\ \ \ \ \ left-\/>x\ =\ lx;\ left-\/>y\ =\ ly;}
+\DoxyCodeLine{00454\ \ \ \ \ right-\/>x\ =\ rx;\ right-\/>y\ =\ ry;}
+\DoxyCodeLine{00455\ \}}
+\DoxyCodeLine{00456\ }
+\DoxyCodeLine{00457\ \textcolor{preprocessor}{\#ifndef\ NSVG\_PI}}
+\DoxyCodeLine{00458\ \textcolor{preprocessor}{\#define\ NSVG\_PI\ (3.14159265358979323846264338327f)}}
+\DoxyCodeLine{00459\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00460\ }
+\DoxyCodeLine{00461\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_roundCap(NSVGrasterizer*\ r,\ NSVGpoint*\ left,\ NSVGpoint*\ right,\ NSVGpoint*\ p,\ \textcolor{keywordtype}{float}\ dx,\ \textcolor{keywordtype}{float}\ dy,\ \textcolor{keywordtype}{float}\ lineWidth,\ \textcolor{keywordtype}{int}\ ncap,\ \textcolor{keywordtype}{int}\ connect)}
+\DoxyCodeLine{00462\ \{}
+\DoxyCodeLine{00463\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00464\ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{00465\ \ \ \ \ \textcolor{keywordtype}{float}\ px\ =\ p-\/>x,\ py\ =\ p-\/>y;}
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx\ =\ dy,\ dly\ =\ -\/dx;}
+\DoxyCodeLine{00467\ \ \ \ \ \textcolor{keywordtype}{float}\ lx\ =\ 0,\ ly\ =\ 0,\ rx\ =\ 0,\ ry\ =\ 0,\ prevx\ =\ 0,\ prevy\ =\ 0;}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00469\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ ncap;\ i++)\ \{}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ a\ =\ (float)i/(\textcolor{keywordtype}{float})(ncap-\/1)*NSVG\_PI;}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ ax\ =\ cosf(a)\ *\ w,\ ay\ =\ sinf(a)\ *\ w;}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\ =\ px\ -\/\ dlx*ax\ -\/\ dx*ay;}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ py\ -\/\ dly*ax\ -\/\ dy*ay;}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 0)}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ prevx,\ prevy,\ x,\ y);}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ prevx\ =\ x;}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ prevy\ =\ y;}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ 0)\ \{}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ lx\ =\ x;\ ly\ =\ y;}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ ncap-\/1)\ \{}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ rx\ =\ x;\ ry\ =\ y;}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00486\ \ \ \ \ \}}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordflow}{if}\ (connect)\ \{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ left-\/>x,\ left-\/>y,\ lx,\ ly);}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ rx,\ ry,\ right-\/>x,\ right-\/>y);}
+\DoxyCodeLine{00491\ \ \ \ \ \}}
+\DoxyCodeLine{00492\ }
+\DoxyCodeLine{00493\ \ \ \ \ left-\/>x\ =\ lx;\ left-\/>y\ =\ ly;}
+\DoxyCodeLine{00494\ \ \ \ \ right-\/>x\ =\ rx;\ right-\/>y\ =\ ry;}
+\DoxyCodeLine{00495\ \}}
+\DoxyCodeLine{00496\ }
+\DoxyCodeLine{00497\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_bevelJoin(NSVGrasterizer*\ r,\ NSVGpoint*\ left,\ NSVGpoint*\ right,\ NSVGpoint*\ p0,\ NSVGpoint*\ p1,\ \textcolor{keywordtype}{float}\ lineWidth)}
+\DoxyCodeLine{00498\ \{}
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx0\ =\ p0-\/>dy,\ dly0\ =\ -\/p0-\/>dx;}
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx1\ =\ p1-\/>dy,\ dly1\ =\ -\/p1-\/>dx;}
+\DoxyCodeLine{00502\ \ \ \ \ \textcolor{keywordtype}{float}\ lx0\ =\ p1-\/>x\ -\/\ (dlx0\ *\ w),\ ly0\ =\ p1-\/>y\ -\/\ (dly0\ *\ w);}
+\DoxyCodeLine{00503\ \ \ \ \ \textcolor{keywordtype}{float}\ rx0\ =\ p1-\/>x\ +\ (dlx0\ *\ w),\ ry0\ =\ p1-\/>y\ +\ (dly0\ *\ w);}
+\DoxyCodeLine{00504\ \ \ \ \ \textcolor{keywordtype}{float}\ lx1\ =\ p1-\/>x\ -\/\ (dlx1\ *\ w),\ ly1\ =\ p1-\/>y\ -\/\ (dly1\ *\ w);}
+\DoxyCodeLine{00505\ \ \ \ \ \textcolor{keywordtype}{float}\ rx1\ =\ p1-\/>x\ +\ (dlx1\ *\ w),\ ry1\ =\ p1-\/>y\ +\ (dly1\ *\ w);}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ \ \ \ \ nsvg\_\_addEdge(r,\ lx0,\ ly0,\ left-\/>x,\ left-\/>y);}
+\DoxyCodeLine{00508\ \ \ \ \ nsvg\_\_addEdge(r,\ lx1,\ ly1,\ lx0,\ ly0);}
+\DoxyCodeLine{00509\ }
+\DoxyCodeLine{00510\ \ \ \ \ nsvg\_\_addEdge(r,\ right-\/>x,\ right-\/>y,\ rx0,\ ry0);}
+\DoxyCodeLine{00511\ \ \ \ \ nsvg\_\_addEdge(r,\ rx0,\ ry0,\ rx1,\ ry1);}
+\DoxyCodeLine{00512\ }
+\DoxyCodeLine{00513\ \ \ \ \ left-\/>x\ =\ lx1;\ left-\/>y\ =\ ly1;}
+\DoxyCodeLine{00514\ \ \ \ \ right-\/>x\ =\ rx1;\ right-\/>y\ =\ ry1;}
+\DoxyCodeLine{00515\ \}}
+\DoxyCodeLine{00516\ }
+\DoxyCodeLine{00517\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_miterJoin(NSVGrasterizer*\ r,\ NSVGpoint*\ left,\ NSVGpoint*\ right,\ NSVGpoint*\ p0,\ NSVGpoint*\ p1,\ \textcolor{keywordtype}{float}\ lineWidth)}
+\DoxyCodeLine{00518\ \{}
+\DoxyCodeLine{00519\ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{00520\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx0\ =\ p0-\/>dy,\ dly0\ =\ -\/p0-\/>dx;}
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx1\ =\ p1-\/>dy,\ dly1\ =\ -\/p1-\/>dx;}
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keywordtype}{float}\ lx0,\ rx0,\ lx1,\ rx1;}
+\DoxyCodeLine{00523\ \ \ \ \ \textcolor{keywordtype}{float}\ ly0,\ ry0,\ ly1,\ ry1;}
+\DoxyCodeLine{00524\ }
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keywordflow}{if}\ (p1-\/>flags\ \&\ NSVG\_PT\_LEFT)\ \{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ lx0\ =\ lx1\ =\ p1-\/>x\ -\/\ p1-\/>dmx\ *\ w;}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ ly0\ =\ ly1\ =\ p1-\/>y\ -\/\ p1-\/>dmy\ *\ w;}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ lx1,\ ly1,\ left-\/>x,\ left-\/>y);}
+\DoxyCodeLine{00529\ }
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ rx0\ =\ p1-\/>x\ +\ (dlx0\ *\ w);}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ ry0\ =\ p1-\/>y\ +\ (dly0\ *\ w);}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ rx1\ =\ p1-\/>x\ +\ (dlx1\ *\ w);}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ ry1\ =\ p1-\/>y\ +\ (dly1\ *\ w);}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ right-\/>x,\ right-\/>y,\ rx0,\ ry0);}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ rx0,\ ry0,\ rx1,\ ry1);}
+\DoxyCodeLine{00536\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ lx0\ =\ p1-\/>x\ -\/\ (dlx0\ *\ w);}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ ly0\ =\ p1-\/>y\ -\/\ (dly0\ *\ w);}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ lx1\ =\ p1-\/>x\ -\/\ (dlx1\ *\ w);}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ ly1\ =\ p1-\/>y\ -\/\ (dly1\ *\ w);}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ lx0,\ ly0,\ left-\/>x,\ left-\/>y);}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ lx1,\ ly1,\ lx0,\ ly0);}
+\DoxyCodeLine{00543\ }
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ rx0\ =\ rx1\ =\ p1-\/>x\ +\ p1-\/>dmx\ *\ w;}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ ry0\ =\ ry1\ =\ p1-\/>y\ +\ p1-\/>dmy\ *\ w;}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ right-\/>x,\ right-\/>y,\ rx1,\ ry1);}
+\DoxyCodeLine{00547\ \ \ \ \ \}}
+\DoxyCodeLine{00548\ }
+\DoxyCodeLine{00549\ \ \ \ \ left-\/>x\ =\ lx1;\ left-\/>y\ =\ ly1;}
+\DoxyCodeLine{00550\ \ \ \ \ right-\/>x\ =\ rx1;\ right-\/>y\ =\ ry1;}
+\DoxyCodeLine{00551\ \}}
+\DoxyCodeLine{00552\ }
+\DoxyCodeLine{00553\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_roundJoin(NSVGrasterizer*\ r,\ NSVGpoint*\ left,\ NSVGpoint*\ right,\ NSVGpoint*\ p0,\ NSVGpoint*\ p1,\ \textcolor{keywordtype}{float}\ lineWidth,\ \textcolor{keywordtype}{int}\ ncap)}
+\DoxyCodeLine{00554\ \{}
+\DoxyCodeLine{00555\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ n;}
+\DoxyCodeLine{00556\ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{00557\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx0\ =\ p0-\/>dy,\ dly0\ =\ -\/p0-\/>dx;}
+\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keywordtype}{float}\ dlx1\ =\ p1-\/>dy,\ dly1\ =\ -\/p1-\/>dx;}
+\DoxyCodeLine{00559\ \ \ \ \ \textcolor{keywordtype}{float}\ a0\ =\ atan2f(dly0,\ dlx0);}
+\DoxyCodeLine{00560\ \ \ \ \ \textcolor{keywordtype}{float}\ a1\ =\ atan2f(dly1,\ dlx1);}
+\DoxyCodeLine{00561\ \ \ \ \ \textcolor{keywordtype}{float}\ da\ =\ a1\ -\/\ a0;}
+\DoxyCodeLine{00562\ \ \ \ \ \textcolor{keywordtype}{float}\ lx,\ ly,\ rx,\ ry;}
+\DoxyCodeLine{00563\ }
+\DoxyCodeLine{00564\ \ \ \ \ \textcolor{keywordflow}{if}\ (da\ <\ NSVG\_PI)\ da\ +=\ NSVG\_PI*2;}
+\DoxyCodeLine{00565\ \ \ \ \ \textcolor{keywordflow}{if}\ (da\ >\ NSVG\_PI)\ da\ -\/=\ NSVG\_PI*2;}
+\DoxyCodeLine{00566\ }
+\DoxyCodeLine{00567\ \ \ \ \ n\ =\ (int)ceilf((nsvg\_\_absf(da)\ /\ NSVG\_PI)\ *\ (\textcolor{keywordtype}{float})ncap);}
+\DoxyCodeLine{00568\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 2)\ n\ =\ 2;}
+\DoxyCodeLine{00569\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ ncap)\ n\ =\ ncap;}
+\DoxyCodeLine{00570\ }
+\DoxyCodeLine{00571\ \ \ \ \ lx\ =\ left-\/>x;}
+\DoxyCodeLine{00572\ \ \ \ \ ly\ =\ left-\/>y;}
+\DoxyCodeLine{00573\ \ \ \ \ rx\ =\ right-\/>x;}
+\DoxyCodeLine{00574\ \ \ \ \ ry\ =\ right-\/>y;}
+\DoxyCodeLine{00575\ }
+\DoxyCodeLine{00576\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ u\ =\ (float)i/(\textcolor{keywordtype}{float})(n-\/1);}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ a\ =\ a0\ +\ u*da;}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ ax\ =\ cosf(a)\ *\ w,\ ay\ =\ sinf(a)\ *\ w;}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lx1\ =\ p1-\/>x\ -\/\ ax,\ ly1\ =\ p1-\/>y\ -\/\ ay;}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rx1\ =\ p1-\/>x\ +\ ax,\ ry1\ =\ p1-\/>y\ +\ ay;}
+\DoxyCodeLine{00582\ }
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ lx1,\ ly1,\ lx,\ ly);}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ rx,\ ry,\ rx1,\ ry1);}
+\DoxyCodeLine{00585\ }
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ lx\ =\ lx1;\ ly\ =\ ly1;}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ rx\ =\ rx1;\ ry\ =\ ry1;}
+\DoxyCodeLine{00588\ \ \ \ \ \}}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ \ \ \ \ left-\/>x\ =\ lx;\ left-\/>y\ =\ ly;}
+\DoxyCodeLine{00591\ \ \ \ \ right-\/>x\ =\ rx;\ right-\/>y\ =\ ry;}
+\DoxyCodeLine{00592\ \}}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00594\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_straightJoin(NSVGrasterizer*\ r,\ NSVGpoint*\ left,\ NSVGpoint*\ right,\ NSVGpoint*\ p1,\ \textcolor{keywordtype}{float}\ lineWidth)}
+\DoxyCodeLine{00595\ \{}
+\DoxyCodeLine{00596\ \ \ \ \ \textcolor{keywordtype}{float}\ w\ =\ lineWidth\ *\ 0.5f;}
+\DoxyCodeLine{00597\ \ \ \ \ \textcolor{keywordtype}{float}\ lx\ =\ p1-\/>x\ -\/\ (p1-\/>dmx\ *\ w),\ ly\ =\ p1-\/>y\ -\/\ (p1-\/>dmy\ *\ w);}
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keywordtype}{float}\ rx\ =\ p1-\/>x\ +\ (p1-\/>dmx\ *\ w),\ ry\ =\ p1-\/>y\ +\ (p1-\/>dmy\ *\ w);}
+\DoxyCodeLine{00599\ }
+\DoxyCodeLine{00600\ \ \ \ \ nsvg\_\_addEdge(r,\ lx,\ ly,\ left-\/>x,\ left-\/>y);}
+\DoxyCodeLine{00601\ \ \ \ \ nsvg\_\_addEdge(r,\ right-\/>x,\ right-\/>y,\ rx,\ ry);}
+\DoxyCodeLine{00602\ }
+\DoxyCodeLine{00603\ \ \ \ \ left-\/>x\ =\ lx;\ left-\/>y\ =\ ly;}
+\DoxyCodeLine{00604\ \ \ \ \ right-\/>x\ =\ rx;\ right-\/>y\ =\ ry;}
+\DoxyCodeLine{00605\ \}}
+\DoxyCodeLine{00606\ }
+\DoxyCodeLine{00607\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ nsvg\_\_curveDivs(\textcolor{keywordtype}{float}\ r,\ \textcolor{keywordtype}{float}\ arc,\ \textcolor{keywordtype}{float}\ tol)}
+\DoxyCodeLine{00608\ \{}
+\DoxyCodeLine{00609\ \ \ \ \ \textcolor{keywordtype}{float}\ da\ =\ acosf(r\ /\ (r\ +\ tol))\ *\ 2.0f;}
+\DoxyCodeLine{00610\ \ \ \ \ \textcolor{keywordtype}{int}\ divs\ =\ (int)ceilf(arc\ /\ da);}
+\DoxyCodeLine{00611\ \ \ \ \ \textcolor{keywordflow}{if}\ (divs\ <\ 2)\ divs\ =\ 2;}
+\DoxyCodeLine{00612\ \ \ \ \ \textcolor{keywordflow}{return}\ divs;}
+\DoxyCodeLine{00613\ \}}
+\DoxyCodeLine{00614\ }
+\DoxyCodeLine{00615\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_expandStroke(NSVGrasterizer*\ r,\ NSVGpoint*\ points,\ \textcolor{keywordtype}{int}\ npoints,\ \textcolor{keywordtype}{int}\ closed,\ \textcolor{keywordtype}{int}\ lineJoin,\ \textcolor{keywordtype}{int}\ lineCap,\ \textcolor{keywordtype}{float}\ lineWidth)}
+\DoxyCodeLine{00616\ \{}
+\DoxyCodeLine{00617\ \ \ \ \ \textcolor{keywordtype}{int}\ ncap\ =\ nsvg\_\_curveDivs(lineWidth*0.5f,\ NSVG\_PI,\ r-\/>tessTol);\ \ \ \ \textcolor{comment}{//\ Calculate\ divisions\ per\ half\ circle.}}
+\DoxyCodeLine{00618\ \ \ \ \ NSVGpoint\ left\ =\ \{0,0,0,0,0,0,0,0\},\ right\ =\ \{0,0,0,0,0,0,0,0\},\ firstLeft\ =\ \{0,0,0,0,0,0,0,0\},\ firstRight\ =\ \{0,0,0,0,0,0,0,0\};}
+\DoxyCodeLine{00619\ \ \ \ \ NSVGpoint*\ p0,\ *p1;}
+\DoxyCodeLine{00620\ \ \ \ \ \textcolor{keywordtype}{int}\ j,\ s,\ e;}
+\DoxyCodeLine{00621\ }
+\DoxyCodeLine{00622\ \ \ \ \ \textcolor{comment}{//\ Build\ stroke\ edges}}
+\DoxyCodeLine{00623\ \ \ \ \ \textcolor{keywordflow}{if}\ (closed)\ \{}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Looping}}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ p0\ =\ \&points[npoints-\/1];}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ p1\ =\ \&points[0];}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ s\ =\ 0;}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ e\ =\ npoints;}
+\DoxyCodeLine{00629\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ cap}}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ p0\ =\ \&points[0];}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ p1\ =\ \&points[1];}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ s\ =\ 1;}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ e\ =\ npoints-\/1;}
+\DoxyCodeLine{00635\ \ \ \ \ \}}
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00637\ \ \ \ \ \textcolor{keywordflow}{if}\ (closed)\ \{}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ nsvg\_\_initClosed(\&left,\ \&right,\ p0,\ p1,\ lineWidth);}
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ firstLeft\ =\ left;}
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ firstRight\ =\ right;}
+\DoxyCodeLine{00641\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ cap}}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ p1-\/>x\ -\/\ p0-\/>x;}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dy\ =\ p1-\/>y\ -\/\ p0-\/>y;}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ nsvg\_\_normalize(\&dx,\ \&dy);}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lineCap\ ==\ NSVG\_CAP\_BUTT)}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_buttCap(r,\ \&left,\ \&right,\ p0,\ dx,\ dy,\ lineWidth,\ 0);}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (lineCap\ ==\ NSVG\_CAP\_SQUARE)}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_squareCap(r,\ \&left,\ \&right,\ p0,\ dx,\ dy,\ lineWidth,\ 0);}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (lineCap\ ==\ NSVG\_CAP\_ROUND)}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_roundCap(r,\ \&left,\ \&right,\ p0,\ dx,\ dy,\ lineWidth,\ ncap,\ 0);}
+\DoxyCodeLine{00652\ \ \ \ \ \}}
+\DoxyCodeLine{00653\ }
+\DoxyCodeLine{00654\ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ s;\ j\ <\ e;\ ++j)\ \{}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p1-\/>flags\ \&\ NSVG\_PT\_CORNER)\ \{}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lineJoin\ ==\ NSVG\_JOIN\_ROUND)}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_roundJoin(r,\ \&left,\ \&right,\ p0,\ p1,\ lineWidth,\ ncap);}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (lineJoin\ ==\ NSVG\_JOIN\_BEVEL\ ||\ (p1-\/>flags\ \&\ NSVG\_PT\_BEVEL))}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_bevelJoin(r,\ \&left,\ \&right,\ p0,\ p1,\ lineWidth);}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_miterJoin(r,\ \&left,\ \&right,\ p0,\ p1,\ lineWidth);}
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_straightJoin(r,\ \&left,\ \&right,\ p1,\ lineWidth);}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ p0\ =\ p1++;}
+\DoxyCodeLine{00666\ \ \ \ \ \}}
+\DoxyCodeLine{00667\ }
+\DoxyCodeLine{00668\ \ \ \ \ \textcolor{keywordflow}{if}\ (closed)\ \{}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Loop\ it}}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ firstLeft.x,\ firstLeft.y,\ left.x,\ left.y);}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ nsvg\_\_addEdge(r,\ right.x,\ right.y,\ firstRight.x,\ firstRight.y);}
+\DoxyCodeLine{00672\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ cap}}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ p1-\/>x\ -\/\ p0-\/>x;}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dy\ =\ p1-\/>y\ -\/\ p0-\/>y;}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ nsvg\_\_normalize(\&dx,\ \&dy);}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lineCap\ ==\ NSVG\_CAP\_BUTT)}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_buttCap(r,\ \&right,\ \&left,\ p1,\ -\/dx,\ -\/dy,\ lineWidth,\ 1);}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (lineCap\ ==\ NSVG\_CAP\_SQUARE)}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_squareCap(r,\ \&right,\ \&left,\ p1,\ -\/dx,\ -\/dy,\ lineWidth,\ 1);}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (lineCap\ ==\ NSVG\_CAP\_ROUND)}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_roundCap(r,\ \&right,\ \&left,\ p1,\ -\/dx,\ -\/dy,\ lineWidth,\ ncap,\ 1);}
+\DoxyCodeLine{00683\ \ \ \ \ \}}
+\DoxyCodeLine{00684\ \}}
+\DoxyCodeLine{00685\ }
+\DoxyCodeLine{00686\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_prepareStroke(NSVGrasterizer*\ r,\ \textcolor{keywordtype}{float}\ miterLimit,\ \textcolor{keywordtype}{int}\ lineJoin)}
+\DoxyCodeLine{00687\ \{}
+\DoxyCodeLine{00688\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{00689\ \ \ \ \ NSVGpoint*\ p0,\ *p1;}
+\DoxyCodeLine{00690\ }
+\DoxyCodeLine{00691\ \ \ \ \ p0\ =\ \&r-\/>points[r-\/>npoints-\/1];}
+\DoxyCodeLine{00692\ \ \ \ \ p1\ =\ \&r-\/>points[0];}
+\DoxyCodeLine{00693\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ r-\/>npoints;\ i++)\ \{}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ segment\ direction\ and\ length}}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ p0-\/>dx\ =\ p1-\/>x\ -\/\ p0-\/>x;}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ p0-\/>dy\ =\ p1-\/>y\ -\/\ p0-\/>y;}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ p0-\/>len\ =\ nsvg\_\_normalize(\&p0-\/>dx,\ \&p0-\/>dy);}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Advance}}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ p0\ =\ p1++;}
+\DoxyCodeLine{00700\ \ \ \ \ \}}
+\DoxyCodeLine{00701\ }
+\DoxyCodeLine{00702\ \ \ \ \ \textcolor{comment}{//\ calculate\ joins}}
+\DoxyCodeLine{00703\ \ \ \ \ p0\ =\ \&r-\/>points[r-\/>npoints-\/1];}
+\DoxyCodeLine{00704\ \ \ \ \ p1\ =\ \&r-\/>points[0];}
+\DoxyCodeLine{00705\ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <\ r-\/>npoints;\ j++)\ \{}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dlx0,\ dly0,\ dlx1,\ dly1,\ dmr2,\ cross;}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ dlx0\ =\ p0-\/>dy;}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ dly0\ =\ -\/p0-\/>dx;}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ dlx1\ =\ p1-\/>dy;}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ dly1\ =\ -\/p1-\/>dx;}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ extrusions}}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ p1-\/>dmx\ =\ (dlx0\ +\ dlx1)\ *\ 0.5f;}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ p1-\/>dmy\ =\ (dly0\ +\ dly1)\ *\ 0.5f;}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ dmr2\ =\ p1-\/>dmx*p1-\/>dmx\ +\ p1-\/>dmy*p1-\/>dmy;}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dmr2\ >\ 0.000001f)\ \{}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ s2\ =\ 1.0f\ /\ dmr2;}
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s2\ >\ 600.0f)\ \{}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s2\ =\ 600.0f;}
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ \ \ \ \ p1-\/>dmx\ *=\ s2;}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ \ \ \ \ p1-\/>dmy\ *=\ s2;}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00723\ }
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clear\ flags,\ but\ keep\ the\ corner.}}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ p1-\/>flags\ =\ (p1-\/>flags\ \&\ NSVG\_PT\_CORNER)\ ?\ NSVG\_PT\_CORNER\ :\ 0;}
+\DoxyCodeLine{00726\ }
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Keep\ track\ of\ left\ turns.}}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ cross\ =\ p1-\/>dx\ *\ p0-\/>dy\ -\/\ p0-\/>dx\ *\ p1-\/>dy;}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cross\ >\ 0.0f)}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \ \ \ \ p1-\/>flags\ |=\ NSVG\_PT\_LEFT;}
+\DoxyCodeLine{00731\ }
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ to\ see\ if\ the\ corner\ needs\ to\ be\ beveled.}}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p1-\/>flags\ \&\ NSVG\_PT\_CORNER)\ \{}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((dmr2\ *\ miterLimit*miterLimit)\ <\ 1.0f\ ||\ lineJoin\ ==\ NSVG\_JOIN\_BEVEL\ ||\ lineJoin\ ==\ NSVG\_JOIN\_ROUND)\ \{}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p1-\/>flags\ |=\ NSVG\_PT\_BEVEL;}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00738\ }
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ p0\ =\ p1++;}
+\DoxyCodeLine{00740\ \ \ \ \ \}}
+\DoxyCodeLine{00741\ \}}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_flattenShapeStroke(NSVGrasterizer*\ r,\ \mbox{\hyperlink{struct_n_s_v_gshape}{NSVGshape}}*\ shape,\ \textcolor{keywordtype}{float}\ scale)}
+\DoxyCodeLine{00744\ \{}
+\DoxyCodeLine{00745\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j,\ closed;}
+\DoxyCodeLine{00746\ \ \ \ \ \mbox{\hyperlink{struct_n_s_v_gpath}{NSVGpath}}*\ path;}
+\DoxyCodeLine{00747\ \ \ \ \ NSVGpoint*\ p0,\ *p1;}
+\DoxyCodeLine{00748\ \ \ \ \ \textcolor{keywordtype}{float}\ miterLimit\ =\ shape-\/>miterLimit;}
+\DoxyCodeLine{00749\ \ \ \ \ \textcolor{keywordtype}{int}\ lineJoin\ =\ shape-\/>strokeLineJoin;}
+\DoxyCodeLine{00750\ \ \ \ \ \textcolor{keywordtype}{int}\ lineCap\ =\ shape-\/>strokeLineCap;}
+\DoxyCodeLine{00751\ \ \ \ \ \textcolor{keywordtype}{float}\ lineWidth\ =\ shape-\/>strokeWidth\ *\ scale;}
+\DoxyCodeLine{00752\ }
+\DoxyCodeLine{00753\ \ \ \ \ \textcolor{keywordflow}{for}\ (path\ =\ shape-\/>paths;\ path\ !=\ NULL;\ path\ =\ path-\/>next)\ \{}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Flatten\ path}}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ r-\/>npoints\ =\ 0;}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ nsvg\_\_addPathPoint(r,\ path-\/>pts[0]*scale,\ path-\/>pts[1]*scale,\ NSVG\_PT\_CORNER);}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ path-\/>npts-\/1;\ i\ +=\ 3)\ \{}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ p\ =\ \&path-\/>pts[i*2];}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_flattenCubicBez(r,\ p[0]*scale,p[1]*scale,\ p[2]*scale,p[3]*scale,\ p[4]*scale,p[5]*scale,\ p[6]*scale,p[7]*scale,\ 0,\ NSVG\_PT\_CORNER);}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>npoints\ <\ 2)}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00763\ }
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ closed\ =\ path-\/>closed;}
+\DoxyCodeLine{00765\ }
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ first\ and\ last\ points\ are\ the\ same,\ remove\ the\ last,\ mark\ as\ closed\ path.}}
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ p0\ =\ \&r-\/>points[r-\/>npoints-\/1];}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ p1\ =\ \&r-\/>points[0];}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nsvg\_\_ptEquals(p0-\/>x,p0-\/>y,\ p1-\/>x,p1-\/>y,\ r-\/>distTol))\ \{}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \ \ \ r-\/>npoints-\/-\/;}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ p0\ =\ \&r-\/>points[r-\/>npoints-\/1];}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ closed\ =\ 1;}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00774\ }
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shape-\/>strokeDashCount\ >\ 0)\ \{}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ idash\ =\ 0,\ dashState\ =\ 1;}
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ totalDist\ =\ 0,\ dashLen,\ allDashLen,\ dashOffset;}
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ \ \ NSVGpoint\ cur;}
+\DoxyCodeLine{00779\ }
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (closed)}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_appendPathPoint(r,\ r-\/>points[0]);}
+\DoxyCodeLine{00782\ }
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Duplicate\ points\ -\/>\ points2.}}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_duplicatePoints(r);}
+\DoxyCodeLine{00785\ }
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ r-\/>npoints\ =\ 0;}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \ \ \ \ cur\ =\ r-\/>points2[0];}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_appendPathPoint(r,\ cur);}
+\DoxyCodeLine{00789\ }
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Figure\ out\ dash\ offset.}}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ \ \ \ allDashLen\ =\ 0;}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <\ shape-\/>strokeDashCount;\ j++)}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ allDashLen\ +=\ shape-\/>strokeDashArray[j];}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shape-\/>strokeDashCount\ \&\ 1)}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ allDashLen\ *=\ 2.0f;}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ location\ inside\ pattern}}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \ \ \ dashOffset\ =\ fmodf(shape-\/>strokeDashOffset,\ allDashLen);}
+\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dashOffset\ <\ 0.0f)}
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dashOffset\ +=\ allDashLen;}
+\DoxyCodeLine{00800\ }
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (dashOffset\ >\ shape-\/>strokeDashArray[idash])\ \{}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dashOffset\ -\/=\ shape-\/>strokeDashArray[idash];}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ idash\ =\ (idash\ +\ 1)\ \%\ shape-\/>strokeDashCount;}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ dashLen\ =\ (shape-\/>strokeDashArray[idash]\ -\/\ dashOffset)\ *\ scale;}
+\DoxyCodeLine{00806\ }
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 1;\ j\ <\ r-\/>npoints2;\ )\ \{}
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dx\ =\ r-\/>points2[j].x\ -\/\ cur.x;}
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dy\ =\ r-\/>points2[j].y\ -\/\ cur.y;}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dist\ =\ sqrtf(dx*dx\ +\ dy*dy);}
+\DoxyCodeLine{00811\ }
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((totalDist\ +\ dist)\ >\ dashLen)\ \{}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ intermediate\ point}}
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ d\ =\ (dashLen\ -\/\ totalDist)\ /\ dist;}
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\ =\ cur.x\ +\ dx\ *\ d;}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ cur.y\ +\ dy\ *\ d;}
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_addPathPoint(r,\ x,\ y,\ NSVG\_PT\_CORNER);}
+\DoxyCodeLine{00818\ }
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Stroke}}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>npoints\ >\ 1\ \&\&\ dashState)\ \{}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_prepareStroke(r,\ miterLimit,\ lineJoin);}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_expandStroke(r,\ r-\/>points,\ r-\/>npoints,\ 0,\ lineJoin,\ lineCap,\ lineWidth);}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Advance\ dash\ pattern}}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dashState\ =\ !dashState;}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ idash\ =\ (idash+1)\ \%\ shape-\/>strokeDashCount;}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dashLen\ =\ shape-\/>strokeDashArray[idash]\ *\ scale;}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Restart}}
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cur.x\ =\ x;}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cur.y\ =\ y;}
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cur.flags\ =\ NSVG\_PT\_CORNER;}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ totalDist\ =\ 0.0f;}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r-\/>npoints\ =\ 0;}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_appendPathPoint(r,\ cur);}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ totalDist\ +=\ dist;}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cur\ =\ r-\/>points2[j];}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_appendPathPoint(r,\ cur);}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j++;}
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Stroke\ any\ leftover\ path}}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>npoints\ >\ 1\ \&\&\ dashState)}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_expandStroke(r,\ r-\/>points,\ r-\/>npoints,\ 0,\ lineJoin,\ lineCap,\ lineWidth);}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_prepareStroke(r,\ miterLimit,\ lineJoin);}
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_expandStroke(r,\ r-\/>points,\ r-\/>npoints,\ closed,\ lineJoin,\ lineCap,\ lineWidth);}
+\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00849\ \ \ \ \ \}}
+\DoxyCodeLine{00850\ \}}
+\DoxyCodeLine{00851\ }
+\DoxyCodeLine{00852\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ SDLCALL}
+\DoxyCodeLine{00853\ nsvg\_\_cmpEdge(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *p,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *q)}
+\DoxyCodeLine{00854\ \{}
+\DoxyCodeLine{00855\ \ \ \ \ \textcolor{keyword}{const}\ NSVGedge*\ a\ =\ (\textcolor{keyword}{const}\ NSVGedge*)p;}
+\DoxyCodeLine{00856\ \ \ \ \ \textcolor{keyword}{const}\ NSVGedge*\ b\ =\ (\textcolor{keyword}{const}\ NSVGedge*)q;}
+\DoxyCodeLine{00857\ }
+\DoxyCodeLine{00858\ \ \ \ \ \textcolor{keywordflow}{if}\ (a-\/>y0\ <\ b-\/>y0)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00859\ \ \ \ \ \textcolor{keywordflow}{if}\ (a-\/>y0\ >\ b-\/>y0)\ \textcolor{keywordflow}{return}\ \ 1;}
+\DoxyCodeLine{00860\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00861\ \}}
+\DoxyCodeLine{00862\ }
+\DoxyCodeLine{00863\ }
+\DoxyCodeLine{00864\ \textcolor{keyword}{static}\ NSVGactiveEdge*\ nsvg\_\_addActive(NSVGrasterizer*\ r,\ NSVGedge*\ e,\ \textcolor{keywordtype}{float}\ startPoint)}
+\DoxyCodeLine{00865\ \{}
+\DoxyCodeLine{00866\ \ \ \ \ \ NSVGactiveEdge*\ z;}
+\DoxyCodeLine{00867\ \ \ \ \ \ \textcolor{keywordtype}{float}\ dxdy;}
+\DoxyCodeLine{00868\ }
+\DoxyCodeLine{00869\ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>freelist\ !=\ NULL)\ \{}
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Restore\ from\ freelist.}}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ z\ =\ r-\/>freelist;}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ r-\/>freelist\ =\ z-\/>next;}
+\DoxyCodeLine{00873\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Alloc\ new\ edge.}}
+\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ z\ =\ (NSVGactiveEdge*)nsvg\_\_alloc(r,\ \textcolor{keyword}{sizeof}(NSVGactiveEdge));}
+\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (z\ ==\ NULL)\ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00877\ \ \ \ \ \}}
+\DoxyCodeLine{00878\ }
+\DoxyCodeLine{00879\ \ \ \ \ dxdy\ =\ (e-\/>x1\ -\/\ e-\/>x0)\ /\ (e-\/>y1\ -\/\ e-\/>y0);}
+\DoxyCodeLine{00880\ \textcolor{comment}{//\ \ STBTT\_assert(e-\/>y0\ <=\ start\_point);}}
+\DoxyCodeLine{00881\ \ \ \ \ \textcolor{comment}{//\ round\ dx\ down\ to\ avoid\ going\ too\ far}}
+\DoxyCodeLine{00882\ \ \ \ \ \textcolor{keywordflow}{if}\ (dxdy\ <\ 0)}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ z-\/>dx\ =\ (int)(-\/nsvg\_\_roundf(NSVG\_\_FIX\ *\ -\/dxdy));}
+\DoxyCodeLine{00884\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ z-\/>dx\ =\ (int)nsvg\_\_roundf(NSVG\_\_FIX\ *\ dxdy);}
+\DoxyCodeLine{00886\ \ \ \ \ z-\/>x\ =\ (int)nsvg\_\_roundf(NSVG\_\_FIX\ *\ (e-\/>x0\ +\ dxdy\ *\ (startPoint\ -\/\ e-\/>y0)));}
+\DoxyCodeLine{00887\ \textcolor{comment}{//\ \ z-\/>x\ -\/=\ off\_x\ *\ FIX;}}
+\DoxyCodeLine{00888\ \ \ \ \ z-\/>ey\ =\ e-\/>y1;}
+\DoxyCodeLine{00889\ \ \ \ \ z-\/>next\ =\ 0;}
+\DoxyCodeLine{00890\ \ \ \ \ z-\/>dir\ =\ e-\/>dir;}
+\DoxyCodeLine{00891\ }
+\DoxyCodeLine{00892\ \ \ \ \ \textcolor{keywordflow}{return}\ z;}
+\DoxyCodeLine{00893\ \}}
+\DoxyCodeLine{00894\ }
+\DoxyCodeLine{00895\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_freeActive(NSVGrasterizer*\ r,\ NSVGactiveEdge*\ z)}
+\DoxyCodeLine{00896\ \{}
+\DoxyCodeLine{00897\ \ \ \ \ z-\/>next\ =\ r-\/>freelist;}
+\DoxyCodeLine{00898\ \ \ \ \ r-\/>freelist\ =\ z;}
+\DoxyCodeLine{00899\ \}}
+\DoxyCodeLine{00900\ }
+\DoxyCodeLine{00901\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_fillScanline(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ scanline,\ \textcolor{keywordtype}{int}\ len,\ \textcolor{keywordtype}{int}\ x0,\ \textcolor{keywordtype}{int}\ x1,\ \textcolor{keywordtype}{int}\ maxWeight,\ \textcolor{keywordtype}{int}*\ xmin,\ \textcolor{keywordtype}{int}*\ xmax)}
+\DoxyCodeLine{00902\ \{}
+\DoxyCodeLine{00903\ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ x0\ >>\ NSVG\_\_FIXSHIFT;}
+\DoxyCodeLine{00904\ \ \ \ \ \textcolor{keywordtype}{int}\ j\ =\ x1\ >>\ NSVG\_\_FIXSHIFT;}
+\DoxyCodeLine{00905\ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ *xmin)\ *xmin\ =\ i;}
+\DoxyCodeLine{00906\ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ >\ *xmax)\ *xmax\ =\ j;}
+\DoxyCodeLine{00907\ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ len\ \&\&\ j\ >=\ 0)\ \{}
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ ==\ j)\ \{}
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ x0,x1\ are\ the\ same\ pixel,\ so\ compute\ combined\ coverage}}
+\DoxyCodeLine{00910\ \ \ \ \ \ \ \ \ \ \ \ \ scanline[i]\ =\ (\textcolor{keywordtype}{unsigned}\ char)(scanline[i]\ +\ ((x1\ -\/\ x0)\ *\ maxWeight\ >>\ NSVG\_\_FIXSHIFT));}
+\DoxyCodeLine{00911\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >=\ 0)\ \textcolor{comment}{//\ add\ antialiasing\ for\ x0}}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scanline[i]\ =\ (\textcolor{keywordtype}{unsigned}\ char)(scanline[i]\ +\ (((NSVG\_\_FIX\ -\/\ (x0\ \&\ NSVG\_\_FIXMASK))\ *\ maxWeight)\ >>\ NSVG\_\_FIXSHIFT));}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ -\/1;\ \textcolor{comment}{//\ clip}}
+\DoxyCodeLine{00916\ }
+\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ len)\ \textcolor{comment}{//\ add\ antialiasing\ for\ x1}}
+\DoxyCodeLine{00918\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scanline[j]\ =\ (\textcolor{keywordtype}{unsigned}\ char)(scanline[j]\ +\ (((x1\ \&\ NSVG\_\_FIXMASK)\ *\ maxWeight)\ >>\ NSVG\_\_FIXSHIFT));}
+\DoxyCodeLine{00919\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ j\ =\ len;\ \textcolor{comment}{//\ clip}}
+\DoxyCodeLine{00921\ }
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (++i;\ i\ <\ j;\ ++i)\ \textcolor{comment}{//\ fill\ pixels\ between\ x0\ and\ x1}}
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scanline[i]\ =\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})(scanline[i]\ +\ maxWeight);}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00925\ \ \ \ \ \}}
+\DoxyCodeLine{00926\ \}}
+\DoxyCodeLine{00927\ }
+\DoxyCodeLine{00928\ \textcolor{comment}{//\ note:\ this\ routine\ clips\ fills\ that\ extend\ off\ the\ edges...\ ideally\ this}}
+\DoxyCodeLine{00929\ \textcolor{comment}{//\ wouldn't\ happen,\ but\ it\ could\ happen\ if\ the\ truetype\ glyph\ bounding\ boxes}}
+\DoxyCodeLine{00930\ \textcolor{comment}{//\ are\ wrong,\ or\ if\ the\ user\ supplies\ a\ too-\/small\ bitmap}}
+\DoxyCodeLine{00931\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_fillActiveEdges(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ scanline,\ \textcolor{keywordtype}{int}\ len,\ NSVGactiveEdge*\ e,\ \textcolor{keywordtype}{int}\ maxWeight,\ \textcolor{keywordtype}{int}*\ xmin,\ \textcolor{keywordtype}{int}*\ xmax,\ \textcolor{keywordtype}{char}\ fillRule)}
+\DoxyCodeLine{00932\ \{}
+\DoxyCodeLine{00933\ \ \ \ \ \textcolor{comment}{//\ non-\/zero\ winding\ fill}}
+\DoxyCodeLine{00934\ \ \ \ \ \textcolor{keywordtype}{int}\ x0\ =\ 0,\ w\ =\ 0;}
+\DoxyCodeLine{00935\ }
+\DoxyCodeLine{00936\ \ \ \ \ \textcolor{keywordflow}{if}\ (fillRule\ ==\ NSVG\_FILLRULE\_NONZERO)\ \{}
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Non-\/zero}}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (e\ !=\ NULL)\ \{}
+\DoxyCodeLine{00939\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (w\ ==\ 0)\ \{}
+\DoxyCodeLine{00940\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we're\ currently\ at\ zero,\ we\ need\ to\ record\ the\ edge\ start\ point}}
+\DoxyCodeLine{00941\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x0\ =\ e-\/>x;\ w\ +=\ e-\/>dir;}
+\DoxyCodeLine{00942\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x1\ =\ e-\/>x;\ w\ +=\ e-\/>dir;}
+\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we\ went\ to\ zero,\ we\ need\ to\ draw}}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (w\ ==\ 0)}
+\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_fillScanline(scanline,\ len,\ x0,\ x1,\ maxWeight,\ xmin,\ xmax);}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \ \ \ \ \ \ e\ =\ e-\/>next;}
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00950\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (fillRule\ ==\ NSVG\_FILLRULE\_EVENODD)\ \{}
+\DoxyCodeLine{00951\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Even-\/odd}}
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (e\ !=\ NULL)\ \{}
+\DoxyCodeLine{00953\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (w\ ==\ 0)\ \{}
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ we're\ currently\ at\ zero,\ we\ need\ to\ record\ the\ edge\ start\ point}}
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x0\ =\ e-\/>x;\ w\ =\ 1;}
+\DoxyCodeLine{00956\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00957\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x1\ =\ e-\/>x;\ w\ =\ 0;}
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_fillScanline(scanline,\ len,\ x0,\ x1,\ maxWeight,\ xmin,\ xmax);}
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00960\ \ \ \ \ \ \ \ \ \ \ \ \ e\ =\ e-\/>next;}
+\DoxyCodeLine{00961\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00962\ \ \ \ \ \}}
+\DoxyCodeLine{00963\ \}}
+\DoxyCodeLine{00964\ }
+\DoxyCodeLine{00965\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ nsvg\_\_clampf(\textcolor{keywordtype}{float}\ a,\ \textcolor{keywordtype}{float}\ mn,\ \textcolor{keywordtype}{float}\ mx)\ \{\ \textcolor{keywordflow}{return}\ a\ <\ mn\ ?\ mn\ :\ (a\ >\ mx\ ?\ mx\ :\ a);\ \}}
+\DoxyCodeLine{00966\ }
+\DoxyCodeLine{00967\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nsvg\_\_RGBA(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ r,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ g,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ b,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ a)}
+\DoxyCodeLine{00968\ \{}
+\DoxyCodeLine{00969\ \ \ \ \ \textcolor{keywordflow}{return}\ ((\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int})r)\ |\ ((\textcolor{keywordtype}{unsigned}\ int)g\ <<\ 8)\ |\ ((\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int})b\ <<\ 16)\ |\ ((\textcolor{keywordtype}{unsigned}\ int)a\ <<\ 24);}
+\DoxyCodeLine{00970\ \}}
+\DoxyCodeLine{00971\ }
+\DoxyCodeLine{00972\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nsvg\_\_lerpRGBA(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c0,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c1,\ \textcolor{keywordtype}{float}\ u)}
+\DoxyCodeLine{00973\ \{}
+\DoxyCodeLine{00974\ \ \ \ \ \textcolor{keywordtype}{int}\ iu\ =\ (int)(nsvg\_\_clampf(u,\ 0.0f,\ 1.0f)\ *\ 256.0f);}
+\DoxyCodeLine{00975\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ (((c0)\ \&\ 0xff)*(256-\/iu)\ +\ (((c1)\ \&\ 0xff)*iu))\ >>\ 8;}
+\DoxyCodeLine{00976\ \ \ \ \ \textcolor{keywordtype}{int}\ g\ =\ (((c0>>8)\ \&\ 0xff)*(256-\/iu)\ +\ (((c1>>8)\ \&\ 0xff)*iu))\ >>\ 8;}
+\DoxyCodeLine{00977\ \ \ \ \ \textcolor{keywordtype}{int}\ b\ =\ (((c0>>16)\ \&\ 0xff)*(256-\/iu)\ +\ (((c1>>16)\ \&\ 0xff)*iu))\ >>\ 8;}
+\DoxyCodeLine{00978\ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ (((c0>>24)\ \&\ 0xff)*(256-\/iu)\ +\ (((c1>>24)\ \&\ 0xff)*iu))\ >>\ 8;}
+\DoxyCodeLine{00979\ \ \ \ \ \textcolor{keywordflow}{return}\ nsvg\_\_RGBA((\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})r,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})g,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})b,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})a);}
+\DoxyCodeLine{00980\ \}}
+\DoxyCodeLine{00981\ }
+\DoxyCodeLine{00982\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nsvg\_\_applyOpacity(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c,\ \textcolor{keywordtype}{float}\ u)}
+\DoxyCodeLine{00983\ \{}
+\DoxyCodeLine{00984\ \ \ \ \ \textcolor{keywordtype}{int}\ iu\ =\ (int)(nsvg\_\_clampf(u,\ 0.0f,\ 1.0f)\ *\ 256.0f);}
+\DoxyCodeLine{00985\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ (c)\ \&\ 0xff;}
+\DoxyCodeLine{00986\ \ \ \ \ \textcolor{keywordtype}{int}\ g\ =\ (c>>8)\ \&\ 0xff;}
+\DoxyCodeLine{00987\ \ \ \ \ \textcolor{keywordtype}{int}\ b\ =\ (c>>16)\ \&\ 0xff;}
+\DoxyCodeLine{00988\ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ (((c>>24)\ \&\ 0xff)*iu)\ >>\ 8;}
+\DoxyCodeLine{00989\ \ \ \ \ \textcolor{keywordflow}{return}\ nsvg\_\_RGBA((\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})r,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})g,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})b,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char})a);}
+\DoxyCodeLine{00990\ \}}
+\DoxyCodeLine{00991\ }
+\DoxyCodeLine{00992\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ nsvg\_\_div255(\textcolor{keywordtype}{int}\ x)}
+\DoxyCodeLine{00993\ \{}
+\DoxyCodeLine{00994\ \ \ \ \ \textcolor{keywordflow}{return}\ ((x+1)\ *\ 257)\ >>\ 16;}
+\DoxyCodeLine{00995\ \}}
+\DoxyCodeLine{00996\ }
+\DoxyCodeLine{00997\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_scanlineSolid(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ dst,\ \textcolor{keywordtype}{int}\ count,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ cover,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,}
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ tx,\ \textcolor{keywordtype}{float}\ ty,\ \textcolor{keywordtype}{float}\ scale,\ NSVGcachedPaint*\ cache)}
+\DoxyCodeLine{00999\ \{}
+\DoxyCodeLine{01000\ }
+\DoxyCodeLine{01001\ \ \ \ \ \textcolor{keywordflow}{if}\ (cache-\/>type\ ==\ NSVG\_PAINT\_COLOR)\ \{}
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ cr,\ cg,\ cb,\ ca;}
+\DoxyCodeLine{01003\ \ \ \ \ \ \ \ \ cr\ =\ cache-\/>colors[0]\ \&\ 0xff;}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ cg\ =\ (cache-\/>colors[0]\ >>\ 8)\ \&\ 0xff;}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ cb\ =\ (cache-\/>colors[0]\ >>\ 16)\ \&\ 0xff;}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ ca\ =\ (cache-\/>colors[0]\ >>\ 24)\ \&\ 0xff;}
+\DoxyCodeLine{01007\ }
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ count;\ i++)\ \{}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r,g,b;}
+\DoxyCodeLine{01010\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ a\ =\ nsvg\_\_div255((\textcolor{keywordtype}{int})cover[0]\ *\ ca);}
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ia\ =\ 255\ -\/\ a;}
+\DoxyCodeLine{01012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Premultiply}}
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ nsvg\_\_div255(cr\ *\ a);}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ nsvg\_\_div255(cg\ *\ a);}
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ nsvg\_\_div255(cb\ *\ a);}
+\DoxyCodeLine{01016\ }
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Blend\ over}}
+\DoxyCodeLine{01018\ \ \ \ \ \ \ \ \ \ \ \ \ r\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[0]);}
+\DoxyCodeLine{01019\ \ \ \ \ \ \ \ \ \ \ \ \ g\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[1]);}
+\DoxyCodeLine{01020\ \ \ \ \ \ \ \ \ \ \ \ \ b\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[2]);}
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \ \ \ \ \ \ a\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[3]);}
+\DoxyCodeLine{01022\ }
+\DoxyCodeLine{01023\ \ \ \ \ \ \ \ \ \ \ \ \ dst[0]\ =\ (\textcolor{keywordtype}{unsigned}\ char)r;}
+\DoxyCodeLine{01024\ \ \ \ \ \ \ \ \ \ \ \ \ dst[1]\ =\ (\textcolor{keywordtype}{unsigned}\ char)g;}
+\DoxyCodeLine{01025\ \ \ \ \ \ \ \ \ \ \ \ \ dst[2]\ =\ (\textcolor{keywordtype}{unsigned}\ char)b;}
+\DoxyCodeLine{01026\ \ \ \ \ \ \ \ \ \ \ \ \ dst[3]\ =\ (\textcolor{keywordtype}{unsigned}\ char)a;}
+\DoxyCodeLine{01027\ }
+\DoxyCodeLine{01028\ \ \ \ \ \ \ \ \ \ \ \ \ cover++;}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ \ \ \ \ \ \ dst\ +=\ 4;}
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01031\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (cache-\/>type\ ==\ NSVG\_PAINT\_LINEAR\_GRADIENT)\ \{}
+\DoxyCodeLine{01032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ spread\ modes.}}
+\DoxyCodeLine{01033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ plenty\ of\ opportunities\ to\ optimize.}}
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fx,\ fy,\ dx,\ gy;}
+\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ t\ =\ cache-\/>xform;}
+\DoxyCodeLine{01036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ cr,\ cg,\ cb,\ ca;}
+\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c;}
+\DoxyCodeLine{01038\ }
+\DoxyCodeLine{01039\ \ \ \ \ \ \ \ \ fx\ =\ ((float)x\ -\/\ tx)\ /\ scale;}
+\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ fy\ =\ ((float)y\ -\/\ ty)\ /\ scale;}
+\DoxyCodeLine{01041\ \ \ \ \ \ \ \ \ dx\ =\ 1.0f\ /\ scale;}
+\DoxyCodeLine{01042\ }
+\DoxyCodeLine{01043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ count;\ i++)\ \{}
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r,g,b,a,ia;}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ \ \ \ \ gy\ =\ fx*t[1]\ +\ fy*t[3]\ +\ t[5];}
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ cache-\/>colors[(int)nsvg\_\_clampf(gy*255.0f,\ 0,\ 255.0f)];}
+\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ \ \ \ \ cr\ =\ (c)\ \&\ 0xff;}
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \ \ \ \ cg\ =\ (c\ >>\ 8)\ \&\ 0xff;}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ \ \ \ \ cb\ =\ (c\ >>\ 16)\ \&\ 0xff;}
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \ \ \ \ ca\ =\ (c\ >>\ 24)\ \&\ 0xff;}
+\DoxyCodeLine{01051\ }
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \ \ \ \ a\ =\ nsvg\_\_div255((\textcolor{keywordtype}{int})cover[0]\ *\ ca);}
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \ \ \ \ ia\ =\ 255\ -\/\ a;}
+\DoxyCodeLine{01054\ }
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Premultiply}}
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ nsvg\_\_div255(cr\ *\ a);}
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ nsvg\_\_div255(cg\ *\ a);}
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ nsvg\_\_div255(cb\ *\ a);}
+\DoxyCodeLine{01059\ }
+\DoxyCodeLine{01060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Blend\ over}}
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ \ \ \ \ r\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[0]);}
+\DoxyCodeLine{01062\ \ \ \ \ \ \ \ \ \ \ \ \ g\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[1]);}
+\DoxyCodeLine{01063\ \ \ \ \ \ \ \ \ \ \ \ \ b\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[2]);}
+\DoxyCodeLine{01064\ \ \ \ \ \ \ \ \ \ \ \ \ a\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[3]);}
+\DoxyCodeLine{01065\ }
+\DoxyCodeLine{01066\ \ \ \ \ \ \ \ \ \ \ \ \ dst[0]\ =\ (\textcolor{keywordtype}{unsigned}\ char)r;}
+\DoxyCodeLine{01067\ \ \ \ \ \ \ \ \ \ \ \ \ dst[1]\ =\ (\textcolor{keywordtype}{unsigned}\ char)g;}
+\DoxyCodeLine{01068\ \ \ \ \ \ \ \ \ \ \ \ \ dst[2]\ =\ (\textcolor{keywordtype}{unsigned}\ char)b;}
+\DoxyCodeLine{01069\ \ \ \ \ \ \ \ \ \ \ \ \ dst[3]\ =\ (\textcolor{keywordtype}{unsigned}\ char)a;}
+\DoxyCodeLine{01070\ }
+\DoxyCodeLine{01071\ \ \ \ \ \ \ \ \ \ \ \ \ cover++;}
+\DoxyCodeLine{01072\ \ \ \ \ \ \ \ \ \ \ \ \ dst\ +=\ 4;}
+\DoxyCodeLine{01073\ \ \ \ \ \ \ \ \ \ \ \ \ fx\ +=\ dx;}
+\DoxyCodeLine{01074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01075\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (cache-\/>type\ ==\ NSVG\_PAINT\_RADIAL\_GRADIENT)\ \{}
+\DoxyCodeLine{01076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ spread\ modes.}}
+\DoxyCodeLine{01077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ plenty\ of\ opportunities\ to\ optimize.}}
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ focus\ (fx,fy)}}
+\DoxyCodeLine{01079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fx,\ fy,\ dx,\ gx,\ gy,\ gd;}
+\DoxyCodeLine{01080\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ t\ =\ cache-\/>xform;}
+\DoxyCodeLine{01081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ cr,\ cg,\ cb,\ ca;}
+\DoxyCodeLine{01082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c;}
+\DoxyCodeLine{01083\ }
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \ \ fx\ =\ ((float)x\ -\/\ tx)\ /\ scale;}
+\DoxyCodeLine{01085\ \ \ \ \ \ \ \ \ fy\ =\ ((float)y\ -\/\ ty)\ /\ scale;}
+\DoxyCodeLine{01086\ \ \ \ \ \ \ \ \ dx\ =\ 1.0f\ /\ scale;}
+\DoxyCodeLine{01087\ }
+\DoxyCodeLine{01088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ count;\ i++)\ \{}
+\DoxyCodeLine{01089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r,g,b,a,ia;}
+\DoxyCodeLine{01090\ \ \ \ \ \ \ \ \ \ \ \ \ gx\ =\ fx*t[0]\ +\ fy*t[2]\ +\ t[4];}
+\DoxyCodeLine{01091\ \ \ \ \ \ \ \ \ \ \ \ \ gy\ =\ fx*t[1]\ +\ fy*t[3]\ +\ t[5];}
+\DoxyCodeLine{01092\ \ \ \ \ \ \ \ \ \ \ \ \ gd\ =\ sqrtf(gx*gx\ +\ gy*gy);}
+\DoxyCodeLine{01093\ \ \ \ \ \ \ \ \ \ \ \ \ c\ =\ cache-\/>colors[(int)nsvg\_\_clampf(gd*255.0f,\ 0,\ 255.0f)];}
+\DoxyCodeLine{01094\ \ \ \ \ \ \ \ \ \ \ \ \ cr\ =\ (c)\ \&\ 0xff;}
+\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \ \ \ \ cg\ =\ (c\ >>\ 8)\ \&\ 0xff;}
+\DoxyCodeLine{01096\ \ \ \ \ \ \ \ \ \ \ \ \ cb\ =\ (c\ >>\ 16)\ \&\ 0xff;}
+\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \ \ \ \ ca\ =\ (c\ >>\ 24)\ \&\ 0xff;}
+\DoxyCodeLine{01098\ }
+\DoxyCodeLine{01099\ \ \ \ \ \ \ \ \ \ \ \ \ a\ =\ nsvg\_\_div255((\textcolor{keywordtype}{int})cover[0]\ *\ ca);}
+\DoxyCodeLine{01100\ \ \ \ \ \ \ \ \ \ \ \ \ ia\ =\ 255\ -\/\ a;}
+\DoxyCodeLine{01101\ }
+\DoxyCodeLine{01102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Premultiply}}
+\DoxyCodeLine{01103\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ nsvg\_\_div255(cr\ *\ a);}
+\DoxyCodeLine{01104\ \ \ \ \ \ \ \ \ \ \ \ \ g\ =\ nsvg\_\_div255(cg\ *\ a);}
+\DoxyCodeLine{01105\ \ \ \ \ \ \ \ \ \ \ \ \ b\ =\ nsvg\_\_div255(cb\ *\ a);}
+\DoxyCodeLine{01106\ }
+\DoxyCodeLine{01107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Blend\ over}}
+\DoxyCodeLine{01108\ \ \ \ \ \ \ \ \ \ \ \ \ r\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[0]);}
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ \ \ \ \ g\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[1]);}
+\DoxyCodeLine{01110\ \ \ \ \ \ \ \ \ \ \ \ \ b\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[2]);}
+\DoxyCodeLine{01111\ \ \ \ \ \ \ \ \ \ \ \ \ a\ +=\ nsvg\_\_div255(ia\ *\ (\textcolor{keywordtype}{int})dst[3]);}
+\DoxyCodeLine{01112\ }
+\DoxyCodeLine{01113\ \ \ \ \ \ \ \ \ \ \ \ \ dst[0]\ =\ (\textcolor{keywordtype}{unsigned}\ char)r;}
+\DoxyCodeLine{01114\ \ \ \ \ \ \ \ \ \ \ \ \ dst[1]\ =\ (\textcolor{keywordtype}{unsigned}\ char)g;}
+\DoxyCodeLine{01115\ \ \ \ \ \ \ \ \ \ \ \ \ dst[2]\ =\ (\textcolor{keywordtype}{unsigned}\ char)b;}
+\DoxyCodeLine{01116\ \ \ \ \ \ \ \ \ \ \ \ \ dst[3]\ =\ (\textcolor{keywordtype}{unsigned}\ char)a;}
+\DoxyCodeLine{01117\ }
+\DoxyCodeLine{01118\ \ \ \ \ \ \ \ \ \ \ \ \ cover++;}
+\DoxyCodeLine{01119\ \ \ \ \ \ \ \ \ \ \ \ \ dst\ +=\ 4;}
+\DoxyCodeLine{01120\ \ \ \ \ \ \ \ \ \ \ \ \ fx\ +=\ dx;}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01122\ \ \ \ \ \}}
+\DoxyCodeLine{01123\ \}}
+\DoxyCodeLine{01124\ }
+\DoxyCodeLine{01125\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_rasterizeSortedEdges(NSVGrasterizer\ *r,\ \textcolor{keywordtype}{float}\ tx,\ \textcolor{keywordtype}{float}\ ty,\ \textcolor{keywordtype}{float}\ scale,\ NSVGcachedPaint*\ cache,\ \textcolor{keywordtype}{char}\ fillRule)}
+\DoxyCodeLine{01126\ \{}
+\DoxyCodeLine{01127\ \ \ \ \ NSVGactiveEdge\ *active\ =\ NULL;}
+\DoxyCodeLine{01128\ \ \ \ \ \textcolor{keywordtype}{int}\ y,\ s;}
+\DoxyCodeLine{01129\ \ \ \ \ \textcolor{keywordtype}{int}\ e\ =\ 0;}
+\DoxyCodeLine{01130\ \ \ \ \ \textcolor{keywordtype}{int}\ maxWeight\ =\ (255\ /\ NSVG\_\_SUBSAMPLES);\ \ \textcolor{comment}{//\ weight\ per\ vertical\ scanline}}
+\DoxyCodeLine{01131\ \ \ \ \ \textcolor{keywordtype}{int}\ xmin,\ xmax;}
+\DoxyCodeLine{01132\ }
+\DoxyCodeLine{01133\ \ \ \ \ \textcolor{keywordflow}{for}\ (y\ =\ 0;\ y\ <\ r-\/>height;\ y++)\ \{}
+\DoxyCodeLine{01134\ \ \ \ \ \ \ \ \ memset(r-\/>scanline,\ 0,\ r-\/>width);}
+\DoxyCodeLine{01135\ \ \ \ \ \ \ \ \ xmin\ =\ r-\/>width;}
+\DoxyCodeLine{01136\ \ \ \ \ \ \ \ \ xmax\ =\ 0;}
+\DoxyCodeLine{01137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (s\ =\ 0;\ s\ <\ NSVG\_\_SUBSAMPLES;\ ++s)\ \{}
+\DoxyCodeLine{01138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ find\ center\ of\ pixel\ for\ this\ scanline}}
+\DoxyCodeLine{01139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ scany\ =\ (float)(y*NSVG\_\_SUBSAMPLES\ +\ s)\ +\ 0.5f;}
+\DoxyCodeLine{01140\ \ \ \ \ \ \ \ \ \ \ \ \ NSVGactiveEdge\ **step\ =\ \&active;}
+\DoxyCodeLine{01141\ }
+\DoxyCodeLine{01142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ update\ all\ active\ edges;}}
+\DoxyCodeLine{01143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ all\ active\ edges\ that\ terminate\ before\ the\ center\ of\ this\ scanline}}
+\DoxyCodeLine{01144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (*step)\ \{}
+\DoxyCodeLine{01145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NSVGactiveEdge\ *z\ =\ *step;}
+\DoxyCodeLine{01146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (z-\/>ey\ <=\ scany)\ \{}
+\DoxyCodeLine{01147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *step\ =\ z-\/>next;\ \textcolor{comment}{//\ delete\ from\ list}}
+\DoxyCodeLine{01148\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NSVG\_\_assert(z-\/>valid);}}
+\DoxyCodeLine{01149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_freeActive(r,\ z);}
+\DoxyCodeLine{01150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z-\/>x\ +=\ z-\/>dx;\ \textcolor{comment}{//\ advance\ to\ position\ for\ current\ scanline}}
+\DoxyCodeLine{01152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ step\ =\ \&((*step)-\/>next);\ \textcolor{comment}{//\ advance\ through\ list}}
+\DoxyCodeLine{01153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01154\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01155\ }
+\DoxyCodeLine{01156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ resort\ the\ list\ if\ needed}}
+\DoxyCodeLine{01157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;;)\ \{}
+\DoxyCodeLine{01158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ changed\ =\ 0;}
+\DoxyCodeLine{01159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ step\ =\ \&active;}
+\DoxyCodeLine{01160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (*step\ \&\&\ (*step)-\/>next)\ \{}
+\DoxyCodeLine{01161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((*step)-\/>x\ >\ (*step)-\/>next-\/>x)\ \{}
+\DoxyCodeLine{01162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NSVGactiveEdge*\ t\ =\ *step;}
+\DoxyCodeLine{01163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NSVGactiveEdge*\ q\ =\ t-\/>next;}
+\DoxyCodeLine{01164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t-\/>next\ =\ q-\/>next;}
+\DoxyCodeLine{01165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q-\/>next\ =\ t;}
+\DoxyCodeLine{01166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *step\ =\ q;}
+\DoxyCodeLine{01167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ changed\ =\ 1;}
+\DoxyCodeLine{01168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ step\ =\ \&(*step)-\/>next;}
+\DoxyCodeLine{01170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!changed)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01173\ }
+\DoxyCodeLine{01174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ insert\ all\ edges\ that\ start\ before\ the\ center\ of\ this\ scanline\ -\/-\/\ omit\ ones\ that\ also\ end\ on\ this\ scanline}}
+\DoxyCodeLine{01175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (e\ <\ r-\/>nedges\ \&\&\ r-\/>edges[e].y0\ <=\ scany)\ \{}
+\DoxyCodeLine{01176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>edges[e].y1\ >\ scany)\ \{}
+\DoxyCodeLine{01177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NSVGactiveEdge*\ z\ =\ nsvg\_\_addActive(r,\ \&r-\/>edges[e],\ scany);}
+\DoxyCodeLine{01178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (z\ ==\ NULL)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ find\ insertion\ point}}
+\DoxyCodeLine{01180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (active\ ==\ NULL)\ \{}
+\DoxyCodeLine{01181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ active\ =\ z;}
+\DoxyCodeLine{01182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (z-\/>x\ <\ active-\/>x)\ \{}
+\DoxyCodeLine{01183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ insert\ at\ front}}
+\DoxyCodeLine{01184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z-\/>next\ =\ active;}
+\DoxyCodeLine{01185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ active\ =\ z;}
+\DoxyCodeLine{01186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ find\ thing\ to\ insert\ AFTER}}
+\DoxyCodeLine{01188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NSVGactiveEdge*\ p\ =\ active;}
+\DoxyCodeLine{01189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (p-\/>next\ \&\&\ p-\/>next-\/>x\ <\ z-\/>x)}
+\DoxyCodeLine{01190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p\ =\ p-\/>next;}
+\DoxyCodeLine{01191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ at\ this\ point,\ p-\/>next-\/>x\ is\ NOT\ <\ z-\/>x}}
+\DoxyCodeLine{01192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z-\/>next\ =\ p-\/>next;}
+\DoxyCodeLine{01193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p-\/>next\ =\ z;}
+\DoxyCodeLine{01194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e++;}
+\DoxyCodeLine{01197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01198\ }
+\DoxyCodeLine{01199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now\ process\ all\ active\ edges\ in\ non-\/zero\ fashion}}
+\DoxyCodeLine{01200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (active\ !=\ NULL)}
+\DoxyCodeLine{01201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_fillActiveEdges(r-\/>scanline,\ r-\/>width,\ active,\ maxWeight,\ \&xmin,\ \&xmax,\ fillRule);}
+\DoxyCodeLine{01202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01203\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Blit}}
+\DoxyCodeLine{01204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xmin\ <\ 0)\ xmin\ =\ 0;}
+\DoxyCodeLine{01205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xmax\ >\ r-\/>width-\/1)\ xmax\ =\ r-\/>width-\/1;}
+\DoxyCodeLine{01206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xmin\ <=\ xmax)\ \{}
+\DoxyCodeLine{01207\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_scanlineSolid(\&r-\/>bitmap[y\ *\ r-\/>stride]\ +\ xmin*4,\ xmax-\/xmin+1,\ \&r-\/>scanline[xmin],\ xmin,\ y,\ tx,ty,\ scale,\ cache);}
+\DoxyCodeLine{01208\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01209\ \ \ \ \ \}}
+\DoxyCodeLine{01210\ }
+\DoxyCodeLine{01211\ \}}
+\DoxyCodeLine{01212\ }
+\DoxyCodeLine{01213\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_unpremultiplyAlpha(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ image,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ stride)}
+\DoxyCodeLine{01214\ \{}
+\DoxyCodeLine{01215\ \ \ \ \ \textcolor{keywordtype}{int}\ x,y;}
+\DoxyCodeLine{01216\ }
+\DoxyCodeLine{01217\ \ \ \ \ \textcolor{comment}{//\ Unpremultiply}}
+\DoxyCodeLine{01218\ \ \ \ \ \textcolor{keywordflow}{for}\ (y\ =\ 0;\ y\ <\ h;\ y++)\ \{}
+\DoxyCodeLine{01219\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *row\ =\ \&image[y*stride];}
+\DoxyCodeLine{01220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (x\ =\ 0;\ x\ <\ w;\ x++)\ \{}
+\DoxyCodeLine{01221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ row[0],\ g\ =\ row[1],\ b\ =\ row[2],\ a\ =\ row[3];}
+\DoxyCodeLine{01222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ !=\ 0)\ \{}
+\DoxyCodeLine{01223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[0]\ =\ (\textcolor{keywordtype}{unsigned}\ char)(r*255/a);}
+\DoxyCodeLine{01224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[1]\ =\ (\textcolor{keywordtype}{unsigned}\ char)(g*255/a);}
+\DoxyCodeLine{01225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[2]\ =\ (\textcolor{keywordtype}{unsigned}\ char)(b*255/a);}
+\DoxyCodeLine{01226\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01227\ \ \ \ \ \ \ \ \ \ \ \ \ row\ +=\ 4;}
+\DoxyCodeLine{01228\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01229\ \ \ \ \ \}}
+\DoxyCodeLine{01230\ }
+\DoxyCodeLine{01231\ \ \ \ \ \textcolor{comment}{//\ Defringe}}
+\DoxyCodeLine{01232\ \ \ \ \ \textcolor{keywordflow}{for}\ (y\ =\ 0;\ y\ <\ h;\ y++)\ \{}
+\DoxyCodeLine{01233\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *row\ =\ \&image[y*stride];}
+\DoxyCodeLine{01234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (x\ =\ 0;\ x\ <\ w;\ x++)\ \{}
+\DoxyCodeLine{01235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ 0,\ g\ =\ 0,\ b\ =\ 0,\ a\ =\ row[3],\ n\ =\ 0;}
+\DoxyCodeLine{01236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ ==\ 0)\ \{}
+\DoxyCodeLine{01237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x-\/1\ >\ 0\ \&\&\ row[-\/1]\ !=\ 0)\ \{}
+\DoxyCodeLine{01238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r\ +=\ row[-\/4];}
+\DoxyCodeLine{01239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g\ +=\ row[-\/3];}
+\DoxyCodeLine{01240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b\ +=\ row[-\/2];}
+\DoxyCodeLine{01241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n++;}
+\DoxyCodeLine{01242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x+1\ <\ w\ \&\&\ row[7]\ !=\ 0)\ \{}
+\DoxyCodeLine{01244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r\ +=\ row[4];}
+\DoxyCodeLine{01245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g\ +=\ row[5];}
+\DoxyCodeLine{01246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b\ +=\ row[6];}
+\DoxyCodeLine{01247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n++;}
+\DoxyCodeLine{01248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (y-\/1\ >\ 0\ \&\&\ row[-\/stride+3]\ !=\ 0)\ \{}
+\DoxyCodeLine{01250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r\ +=\ row[-\/stride];}
+\DoxyCodeLine{01251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g\ +=\ row[-\/stride+1];}
+\DoxyCodeLine{01252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b\ +=\ row[-\/stride+2];}
+\DoxyCodeLine{01253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n++;}
+\DoxyCodeLine{01254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (y+1\ <\ h\ \&\&\ row[stride+3]\ !=\ 0)\ \{}
+\DoxyCodeLine{01256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r\ +=\ row[stride];}
+\DoxyCodeLine{01257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g\ +=\ row[stride+1];}
+\DoxyCodeLine{01258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b\ +=\ row[stride+2];}
+\DoxyCodeLine{01259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n++;}
+\DoxyCodeLine{01260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ 0)\ \{}
+\DoxyCodeLine{01262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[0]\ =\ (\textcolor{keywordtype}{unsigned}\ char)(r/n);}
+\DoxyCodeLine{01263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[1]\ =\ (\textcolor{keywordtype}{unsigned}\ char)(g/n);}
+\DoxyCodeLine{01264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ row[2]\ =\ (\textcolor{keywordtype}{unsigned}\ char)(b/n);}
+\DoxyCodeLine{01265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01266\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01267\ \ \ \ \ \ \ \ \ \ \ \ \ row\ +=\ 4;}
+\DoxyCodeLine{01268\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01269\ \ \ \ \ \}}
+\DoxyCodeLine{01270\ \}}
+\DoxyCodeLine{01271\ }
+\DoxyCodeLine{01272\ }
+\DoxyCodeLine{01273\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ nsvg\_\_initPaint(NSVGcachedPaint*\ cache,\ \mbox{\hyperlink{struct_n_s_v_gpaint}{NSVGpaint}}*\ paint,\ \textcolor{keywordtype}{float}\ opacity)}
+\DoxyCodeLine{01274\ \{}
+\DoxyCodeLine{01275\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{01276\ \ \ \ \ \mbox{\hyperlink{struct_n_s_v_ggradient}{NSVGgradient}}*\ grad;}
+\DoxyCodeLine{01277\ }
+\DoxyCodeLine{01278\ \ \ \ \ cache-\/>type\ =\ paint-\/>type;}
+\DoxyCodeLine{01279\ }
+\DoxyCodeLine{01280\ \ \ \ \ \textcolor{keywordflow}{if}\ (paint-\/>type\ ==\ NSVG\_PAINT\_COLOR)\ \{}
+\DoxyCodeLine{01281\ \ \ \ \ \ \ \ \ cache-\/>colors[0]\ =\ nsvg\_\_applyOpacity(paint-\/>color,\ opacity);}
+\DoxyCodeLine{01282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01283\ \ \ \ \ \}}
+\DoxyCodeLine{01284\ }
+\DoxyCodeLine{01285\ \ \ \ \ grad\ =\ paint-\/>gradient;}
+\DoxyCodeLine{01286\ }
+\DoxyCodeLine{01287\ \ \ \ \ cache-\/>spread\ =\ grad-\/>spread;}
+\DoxyCodeLine{01288\ \ \ \ \ memcpy(cache-\/>xform,\ grad-\/>xform,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})*6);}
+\DoxyCodeLine{01289\ }
+\DoxyCodeLine{01290\ \ \ \ \ \textcolor{keywordflow}{if}\ (grad-\/>nstops\ ==\ 0)\ \{}
+\DoxyCodeLine{01291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ 256;\ i++)}
+\DoxyCodeLine{01292\ \ \ \ \ \ \ \ \ \ \ \ \ cache-\/>colors[i]\ =\ 0;}
+\DoxyCodeLine{01293\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (grad-\/>nstops\ ==\ 1)\ \{}
+\DoxyCodeLine{01294\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ color\ =\ nsvg\_\_applyOpacity(grad-\/>stops[0].color,\ opacity);}
+\DoxyCodeLine{01295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ 256;\ i++)}
+\DoxyCodeLine{01296\ \ \ \ \ \ \ \ \ \ \ \ \ cache-\/>colors[i]\ =\ color;}
+\DoxyCodeLine{01297\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01298\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ ca,\ cb\ =\ 0;}
+\DoxyCodeLine{01299\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ ua,\ ub,\ du,\ u;}
+\DoxyCodeLine{01300\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ia,\ ib,\ count;}
+\DoxyCodeLine{01301\ }
+\DoxyCodeLine{01302\ \ \ \ \ \ \ \ \ ca\ =\ nsvg\_\_applyOpacity(grad-\/>stops[0].color,\ opacity);}
+\DoxyCodeLine{01303\ \ \ \ \ \ \ \ \ ua\ =\ nsvg\_\_clampf(grad-\/>stops[0].offset,\ 0,\ 1);}
+\DoxyCodeLine{01304\ \ \ \ \ \ \ \ \ ub\ =\ nsvg\_\_clampf(grad-\/>stops[grad-\/>nstops-\/1].offset,\ ua,\ 1);}
+\DoxyCodeLine{01305\ \ \ \ \ \ \ \ \ ia\ =\ (int)(ua\ *\ 255.0f);}
+\DoxyCodeLine{01306\ \ \ \ \ \ \ \ \ ib\ =\ (int)(ub\ *\ 255.0f);}
+\DoxyCodeLine{01307\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ ia;\ i++)\ \{}
+\DoxyCodeLine{01308\ \ \ \ \ \ \ \ \ \ \ \ \ cache-\/>colors[i]\ =\ ca;}
+\DoxyCodeLine{01309\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01310\ }
+\DoxyCodeLine{01311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ grad-\/>nstops-\/1;\ i++)\ \{}
+\DoxyCodeLine{01312\ \ \ \ \ \ \ \ \ \ \ \ \ ca\ =\ nsvg\_\_applyOpacity(grad-\/>stops[i].color,\ opacity);}
+\DoxyCodeLine{01313\ \ \ \ \ \ \ \ \ \ \ \ \ cb\ =\ nsvg\_\_applyOpacity(grad-\/>stops[i+1].color,\ opacity);}
+\DoxyCodeLine{01314\ \ \ \ \ \ \ \ \ \ \ \ \ ua\ =\ nsvg\_\_clampf(grad-\/>stops[i].offset,\ 0,\ 1);}
+\DoxyCodeLine{01315\ \ \ \ \ \ \ \ \ \ \ \ \ ub\ =\ nsvg\_\_clampf(grad-\/>stops[i+1].offset,\ 0,\ 1);}
+\DoxyCodeLine{01316\ \ \ \ \ \ \ \ \ \ \ \ \ ia\ =\ (int)(ua\ *\ 255.0f);}
+\DoxyCodeLine{01317\ \ \ \ \ \ \ \ \ \ \ \ \ ib\ =\ (int)(ub\ *\ 255.0f);}
+\DoxyCodeLine{01318\ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ ib\ -\/\ ia;}
+\DoxyCodeLine{01319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ <=\ 0)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{01320\ \ \ \ \ \ \ \ \ \ \ \ \ u\ =\ 0;}
+\DoxyCodeLine{01321\ \ \ \ \ \ \ \ \ \ \ \ \ du\ =\ 1.0f\ /\ (float)count;}
+\DoxyCodeLine{01322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <\ count;\ j++)\ \{}
+\DoxyCodeLine{01323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cache-\/>colors[ia+j]\ =\ nsvg\_\_lerpRGBA(ca,cb,u);}
+\DoxyCodeLine{01324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ u\ +=\ du;}
+\DoxyCodeLine{01325\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01326\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01327\ }
+\DoxyCodeLine{01328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ ib;\ i\ <\ 256;\ i++)}
+\DoxyCodeLine{01329\ \ \ \ \ \ \ \ \ \ \ \ \ cache-\/>colors[i]\ =\ cb;}
+\DoxyCodeLine{01330\ \ \ \ \ \}}
+\DoxyCodeLine{01331\ }
+\DoxyCodeLine{01332\ \}}
+\DoxyCodeLine{01333\ }
+\DoxyCodeLine{01334\ \textcolor{comment}{/*}}
+\DoxyCodeLine{01335\ \textcolor{comment}{static\ void\ dumpEdges(NSVGrasterizer*\ r,\ const\ char*\ name)}}
+\DoxyCodeLine{01336\ \textcolor{comment}{\{}}
+\DoxyCodeLine{01337\ \textcolor{comment}{\ \ \ \ float\ xmin\ =\ 0,\ xmax\ =\ 0,\ ymin\ =\ 0,\ ymax\ =\ 0;}}
+\DoxyCodeLine{01338\ \textcolor{comment}{\ \ \ \ NSVGedge\ *e\ =\ NULL;}}
+\DoxyCodeLine{01339\ \textcolor{comment}{\ \ \ \ int\ i;}}
+\DoxyCodeLine{01340\ \textcolor{comment}{\ \ \ \ if\ (r-\/>nedges\ ==\ 0)\ return;}}
+\DoxyCodeLine{01341\ \textcolor{comment}{\ \ \ \ FILE*\ fp\ =\ fopen(name,\ "{}w"{});}}
+\DoxyCodeLine{01342\ \textcolor{comment}{\ \ \ \ if\ (fp\ ==\ NULL)\ return;}}
+\DoxyCodeLine{01343\ \textcolor{comment}{}}
+\DoxyCodeLine{01344\ \textcolor{comment}{\ \ \ \ xmin\ =\ xmax\ =\ r-\/>edges[0].x0;}}
+\DoxyCodeLine{01345\ \textcolor{comment}{\ \ \ \ ymin\ =\ ymax\ =\ r-\/>edges[0].y0;}}
+\DoxyCodeLine{01346\ \textcolor{comment}{\ \ \ \ for\ (i\ =\ 0;\ i\ <\ r-\/>nedges;\ i++)\ \{}}
+\DoxyCodeLine{01347\ \textcolor{comment}{\ \ \ \ \ \ \ \ e\ =\ \&r-\/>edges[i];}}
+\DoxyCodeLine{01348\ \textcolor{comment}{\ \ \ \ \ \ \ \ xmin\ =\ nsvg\_\_minf(xmin,\ e-\/>x0);}}
+\DoxyCodeLine{01349\ \textcolor{comment}{\ \ \ \ \ \ \ \ xmin\ =\ nsvg\_\_minf(xmin,\ e-\/>x1);}}
+\DoxyCodeLine{01350\ \textcolor{comment}{\ \ \ \ \ \ \ \ xmax\ =\ nsvg\_\_maxf(xmax,\ e-\/>x0);}}
+\DoxyCodeLine{01351\ \textcolor{comment}{\ \ \ \ \ \ \ \ xmax\ =\ nsvg\_\_maxf(xmax,\ e-\/>x1);}}
+\DoxyCodeLine{01352\ \textcolor{comment}{\ \ \ \ \ \ \ \ ymin\ =\ nsvg\_\_minf(ymin,\ e-\/>y0);}}
+\DoxyCodeLine{01353\ \textcolor{comment}{\ \ \ \ \ \ \ \ ymin\ =\ nsvg\_\_minf(ymin,\ e-\/>y1);}}
+\DoxyCodeLine{01354\ \textcolor{comment}{\ \ \ \ \ \ \ \ ymax\ =\ nsvg\_\_maxf(ymax,\ e-\/>y0);}}
+\DoxyCodeLine{01355\ \textcolor{comment}{\ \ \ \ \ \ \ \ ymax\ =\ nsvg\_\_maxf(ymax,\ e-\/>y1);}}
+\DoxyCodeLine{01356\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{01357\ \textcolor{comment}{}}
+\DoxyCodeLine{01358\ \textcolor{comment}{\ \ \ \ fprintf(fp,\ "{}<svg\ viewBox=\(\backslash\)"{}\%f\ \%f\ \%f\ \%f\(\backslash\)"{}\ xmlns=\(\backslash\)"{}http://www.w3.org/2000/svg\(\backslash\)"{}>"{},\ xmin,\ ymin,\ (xmax\ -\/\ xmin),\ (ymax\ -\/\ ymin));}}
+\DoxyCodeLine{01359\ \textcolor{comment}{}}
+\DoxyCodeLine{01360\ \textcolor{comment}{\ \ \ \ for\ (i\ =\ 0;\ i\ <\ r-\/>nedges;\ i++)\ \{}}
+\DoxyCodeLine{01361\ \textcolor{comment}{\ \ \ \ \ \ \ \ e\ =\ \&r-\/>edges[i];}}
+\DoxyCodeLine{01362\ \textcolor{comment}{\ \ \ \ \ \ \ \ fprintf(fp\ ,"{}<line\ x1=\(\backslash\)"{}\%f\(\backslash\)"{}\ y1=\(\backslash\)"{}\%f\(\backslash\)"{}\ x2=\(\backslash\)"{}\%f\(\backslash\)"{}\ y2=\(\backslash\)"{}\%f\(\backslash\)"{}\ style=\(\backslash\)"{}stroke:\#000;\(\backslash\)"{}\ />"{},\ e-\/>x0,e-\/>y0,\ e-\/>x1,e-\/>y1);}}
+\DoxyCodeLine{01363\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{01364\ \textcolor{comment}{}}
+\DoxyCodeLine{01365\ \textcolor{comment}{\ \ \ \ for\ (i\ =\ 0;\ i\ <\ r-\/>npoints;\ i++)\ \{}}
+\DoxyCodeLine{01366\ \textcolor{comment}{\ \ \ \ \ \ \ \ if\ (i+1\ <\ r-\/>npoints)}}
+\DoxyCodeLine{01367\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ fprintf(fp\ ,"{}<line\ x1=\(\backslash\)"{}\%f\(\backslash\)"{}\ y1=\(\backslash\)"{}\%f\(\backslash\)"{}\ x2=\(\backslash\)"{}\%f\(\backslash\)"{}\ y2=\(\backslash\)"{}\%f\(\backslash\)"{}\ style=\(\backslash\)"{}stroke:\#f00;\(\backslash\)"{}\ />"{},\ r-\/>points[i].x,\ r-\/>points[i].y,\ r-\/>points[i+1].x,\ r-\/>points[i+1].y);}}
+\DoxyCodeLine{01368\ \textcolor{comment}{\ \ \ \ \ \ \ \ fprintf(fp\ ,"{}<circle\ cx=\(\backslash\)"{}\%f\(\backslash\)"{}\ cy=\(\backslash\)"{}\%f\(\backslash\)"{}\ r=\(\backslash\)"{}1\(\backslash\)"{}\ style=\(\backslash\)"{}fill:\%s;\(\backslash\)"{}\ />"{},\ r-\/>points[i].x,\ r-\/>points[i].y,\ r-\/>points[i].flags\ ==\ 0\ ?\ "{}\#f00"{}\ :\ "{}\#0f0"{});}}
+\DoxyCodeLine{01369\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{01370\ \textcolor{comment}{}}
+\DoxyCodeLine{01371\ \textcolor{comment}{\ \ \ \ fprintf(fp,\ "{}</svg>"{});}}
+\DoxyCodeLine{01372\ \textcolor{comment}{\ \ \ \ fclose(fp);}}
+\DoxyCodeLine{01373\ \textcolor{comment}{\}}}
+\DoxyCodeLine{01374\ \textcolor{comment}{*/}}
+\DoxyCodeLine{01375\ }
+\DoxyCodeLine{01376\ NSVG\_EXPORT\ \textcolor{keywordtype}{void}\ nsvgRasterize(NSVGrasterizer*\ r,}
+\DoxyCodeLine{01377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_n_s_v_gimage}{NSVGimage}}*\ image,\ \textcolor{keywordtype}{float}\ tx,\ \textcolor{keywordtype}{float}\ ty,\ \textcolor{keywordtype}{float}\ scale,}
+\DoxyCodeLine{01378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ dst,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ stride)}
+\DoxyCodeLine{01379\ \{}
+\DoxyCodeLine{01380\ \ \ \ \ \mbox{\hyperlink{struct_n_s_v_gshape}{NSVGshape}}\ *shape\ =\ NULL;}
+\DoxyCodeLine{01381\ \ \ \ \ NSVGedge\ *e\ =\ NULL;}
+\DoxyCodeLine{01382\ \ \ \ \ NSVGcachedPaint\ cache;}
+\DoxyCodeLine{01383\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{01384\ }
+\DoxyCodeLine{01385\ \ \ \ \ r-\/>bitmap\ =\ dst;}
+\DoxyCodeLine{01386\ \ \ \ \ r-\/>width\ =\ w;}
+\DoxyCodeLine{01387\ \ \ \ \ r-\/>height\ =\ h;}
+\DoxyCodeLine{01388\ \ \ \ \ r-\/>stride\ =\ stride;}
+\DoxyCodeLine{01389\ }
+\DoxyCodeLine{01390\ \ \ \ \ \textcolor{keywordflow}{if}\ (w\ >\ r-\/>cscanline)\ \{}
+\DoxyCodeLine{01391\ \ \ \ \ \ \ \ \ r-\/>cscanline\ =\ w;}
+\DoxyCodeLine{01392\ \ \ \ \ \ \ \ \ r-\/>scanline\ =\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*)realloc(r-\/>scanline,\ w);}
+\DoxyCodeLine{01393\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>scanline\ ==\ NULL)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01394\ \ \ \ \ \}}
+\DoxyCodeLine{01395\ }
+\DoxyCodeLine{01396\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ h;\ i++)}
+\DoxyCodeLine{01397\ \ \ \ \ \ \ \ \ memset(\&dst[i*stride],\ 0,\ w*4);}
+\DoxyCodeLine{01398\ }
+\DoxyCodeLine{01399\ \ \ \ \ \textcolor{keywordflow}{for}\ (shape\ =\ image-\/>shapes;\ shape\ !=\ NULL;\ shape\ =\ shape-\/>next)\ \{}
+\DoxyCodeLine{01400\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(shape-\/>flags\ \&\ NSVG\_FLAGS\_VISIBLE))}
+\DoxyCodeLine{01401\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{01402\ }
+\DoxyCodeLine{01403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shape-\/>fill.type\ !=\ NSVG\_PAINT\_NONE)\ \{}
+\DoxyCodeLine{01404\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_resetPool(r);}
+\DoxyCodeLine{01405\ \ \ \ \ \ \ \ \ \ \ \ \ r-\/>freelist\ =\ NULL;}
+\DoxyCodeLine{01406\ \ \ \ \ \ \ \ \ \ \ \ \ r-\/>nedges\ =\ 0;}
+\DoxyCodeLine{01407\ }
+\DoxyCodeLine{01408\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_flattenShape(r,\ shape,\ scale);}
+\DoxyCodeLine{01409\ }
+\DoxyCodeLine{01410\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Scale\ and\ translate\ edges}}
+\DoxyCodeLine{01411\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ r-\/>nedges;\ i++)\ \{}
+\DoxyCodeLine{01412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e\ =\ \&r-\/>edges[i];}
+\DoxyCodeLine{01413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>x0\ =\ tx\ +\ e-\/>x0;}
+\DoxyCodeLine{01414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>y0\ =\ (ty\ +\ e-\/>y0)\ *\ NSVG\_\_SUBSAMPLES;}
+\DoxyCodeLine{01415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>x1\ =\ tx\ +\ e-\/>x1;}
+\DoxyCodeLine{01416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>y1\ =\ (ty\ +\ e-\/>y1)\ *\ NSVG\_\_SUBSAMPLES;}
+\DoxyCodeLine{01417\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01418\ }
+\DoxyCodeLine{01419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rasterize\ edges}}
+\DoxyCodeLine{01420\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>nedges\ !=\ 0)}
+\DoxyCodeLine{01421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qsort(r-\/>edges,\ r-\/>nedges,\ \textcolor{keyword}{sizeof}(NSVGedge),\ nsvg\_\_cmpEdge);}
+\DoxyCodeLine{01422\ }
+\DoxyCodeLine{01423\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now,\ traverse\ the\ scanlines\ and\ find\ the\ intersections\ on\ each\ scanline,\ use\ non-\/zero\ rule}}
+\DoxyCodeLine{01424\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_initPaint(\&cache,\ \&shape-\/>fill,\ shape-\/>opacity);}
+\DoxyCodeLine{01425\ }
+\DoxyCodeLine{01426\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_rasterizeSortedEdges(r,\ tx,ty,scale,\ \&cache,\ shape-\/>fillRule);}
+\DoxyCodeLine{01427\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01428\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shape-\/>stroke.type\ !=\ NSVG\_PAINT\_NONE\ \&\&\ (shape-\/>strokeWidth\ *\ scale)\ >\ 0.01f)\ \{}
+\DoxyCodeLine{01429\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_resetPool(r);}
+\DoxyCodeLine{01430\ \ \ \ \ \ \ \ \ \ \ \ \ r-\/>freelist\ =\ NULL;}
+\DoxyCodeLine{01431\ \ \ \ \ \ \ \ \ \ \ \ \ r-\/>nedges\ =\ 0;}
+\DoxyCodeLine{01432\ }
+\DoxyCodeLine{01433\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_flattenShapeStroke(r,\ shape,\ scale);}
+\DoxyCodeLine{01434\ }
+\DoxyCodeLine{01435\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ dumpEdges(r,\ "{}edge.svg"{});}}
+\DoxyCodeLine{01436\ }
+\DoxyCodeLine{01437\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Scale\ and\ translate\ edges}}
+\DoxyCodeLine{01438\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ r-\/>nedges;\ i++)\ \{}
+\DoxyCodeLine{01439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e\ =\ \&r-\/>edges[i];}
+\DoxyCodeLine{01440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>x0\ =\ tx\ +\ e-\/>x0;}
+\DoxyCodeLine{01441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>y0\ =\ (ty\ +\ e-\/>y0)\ *\ NSVG\_\_SUBSAMPLES;}
+\DoxyCodeLine{01442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>x1\ =\ tx\ +\ e-\/>x1;}
+\DoxyCodeLine{01443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>y1\ =\ (ty\ +\ e-\/>y1)\ *\ NSVG\_\_SUBSAMPLES;}
+\DoxyCodeLine{01444\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01445\ }
+\DoxyCodeLine{01446\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rasterize\ edges}}
+\DoxyCodeLine{01447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r-\/>nedges\ !=\ 0)}
+\DoxyCodeLine{01448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qsort(r-\/>edges,\ r-\/>nedges,\ \textcolor{keyword}{sizeof}(NSVGedge),\ nsvg\_\_cmpEdge);}
+\DoxyCodeLine{01449\ }
+\DoxyCodeLine{01450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ now,\ traverse\ the\ scanlines\ and\ find\ the\ intersections\ on\ each\ scanline,\ use\ non-\/zero\ rule}}
+\DoxyCodeLine{01451\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_initPaint(\&cache,\ \&shape-\/>stroke,\ shape-\/>opacity);}
+\DoxyCodeLine{01452\ }
+\DoxyCodeLine{01453\ \ \ \ \ \ \ \ \ \ \ \ \ nsvg\_\_rasterizeSortedEdges(r,\ tx,ty,scale,\ \&cache,\ NSVG\_FILLRULE\_NONZERO);}
+\DoxyCodeLine{01454\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01455\ \ \ \ \ \}}
+\DoxyCodeLine{01456\ }
+\DoxyCodeLine{01457\ \ \ \ \ nsvg\_\_unpremultiplyAlpha(dst,\ w,\ h,\ stride);}
+\DoxyCodeLine{01458\ }
+\DoxyCodeLine{01459\ \ \ \ \ r-\/>bitmap\ =\ NULL;}
+\DoxyCodeLine{01460\ \ \ \ \ r-\/>width\ =\ 0;}
+\DoxyCodeLine{01461\ \ \ \ \ r-\/>height\ =\ 0;}
+\DoxyCodeLine{01462\ \ \ \ \ r-\/>stride\ =\ 0;}
+\DoxyCodeLine{01463\ \}}
+\DoxyCodeLine{01464\ }
+\DoxyCodeLine{01465\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ NANOSVGRAST\_IMPLEMENTATION}}
+\DoxyCodeLine{01466\ }
+\DoxyCodeLine{01467\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ NANOSVGRAST\_H}}
+
+\end{DoxyCode}

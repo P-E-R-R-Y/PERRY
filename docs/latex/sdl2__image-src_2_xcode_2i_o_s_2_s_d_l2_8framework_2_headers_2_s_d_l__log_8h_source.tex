@@ -1,0 +1,136 @@
+\doxysection{SDL\+\_\+log.\+h}
+\hypertarget{sdl2__image-src_2_xcode_2i_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__log_8h_source}{}\label{sdl2__image-src_2_xcode_2i_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__log_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/iOS/SDL2.framework/Headers/SDL\_log.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/iOS/SDL2.framework/Headers/SDL\_log.h}}
+\mbox{\hyperlink{sdl2__image-src_2_xcode_2i_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__log_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2022\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#ifndef\ SDL\_log\_h\_}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ SDL\_log\_h\_}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL2/SDL\_stdinc.h}}>}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{SDL2/begin\_code.h}}>}}
+\DoxyCodeLine{00043\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ SDL\_MAX\_LOG\_MESSAGE\ 4096}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00065\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ SDL\_LOG\_CATEGORY\_APPLICATION,}
+\DoxyCodeLine{00067\ \ \ \ \ SDL\_LOG\_CATEGORY\_ERROR,}
+\DoxyCodeLine{00068\ \ \ \ \ SDL\_LOG\_CATEGORY\_ASSERT,}
+\DoxyCodeLine{00069\ \ \ \ \ SDL\_LOG\_CATEGORY\_SYSTEM,}
+\DoxyCodeLine{00070\ \ \ \ \ SDL\_LOG\_CATEGORY\_AUDIO,}
+\DoxyCodeLine{00071\ \ \ \ \ SDL\_LOG\_CATEGORY\_VIDEO,}
+\DoxyCodeLine{00072\ \ \ \ \ SDL\_LOG\_CATEGORY\_RENDER,}
+\DoxyCodeLine{00073\ \ \ \ \ SDL\_LOG\_CATEGORY\_INPUT,}
+\DoxyCodeLine{00074\ \ \ \ \ SDL\_LOG\_CATEGORY\_TEST,}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{/*\ Reserved\ for\ future\ SDL\ library\ use\ */}}
+\DoxyCodeLine{00077\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED1,}
+\DoxyCodeLine{00078\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED2,}
+\DoxyCodeLine{00079\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED3,}
+\DoxyCodeLine{00080\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED4,}
+\DoxyCodeLine{00081\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED5,}
+\DoxyCodeLine{00082\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED6,}
+\DoxyCodeLine{00083\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED7,}
+\DoxyCodeLine{00084\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED8,}
+\DoxyCodeLine{00085\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED9,}
+\DoxyCodeLine{00086\ \ \ \ \ SDL\_LOG\_CATEGORY\_RESERVED10,}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{/*\ Beyond\ this\ point\ is\ reserved\ for\ application\ use,\ e.g.}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ \ \ \ enum\ \{}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ MYAPP\_CATEGORY\_AWESOME1\ =\ SDL\_LOG\_CATEGORY\_CUSTOM,}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ MYAPP\_CATEGORY\_AWESOME2,}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ MYAPP\_CATEGORY\_AWESOME3,}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ ...}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ \ \ \ \ \};}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00096\ \ \ \ \ SDL\_LOG\_CATEGORY\_CUSTOM}
+\DoxyCodeLine{00097\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_ad221d23d6438fe99a781fb04b118039d}{SDL\_LogCategory}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00103\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ SDL\_LOG\_PRIORITY\_VERBOSE\ =\ 1,}
+\DoxyCodeLine{00105\ \ \ \ \ SDL\_LOG\_PRIORITY\_DEBUG,}
+\DoxyCodeLine{00106\ \ \ \ \ SDL\_LOG\_PRIORITY\_INFO,}
+\DoxyCodeLine{00107\ \ \ \ \ SDL\_LOG\_PRIORITY\_WARN,}
+\DoxyCodeLine{00108\ \ \ \ \ SDL\_LOG\_PRIORITY\_ERROR,}
+\DoxyCodeLine{00109\ \ \ \ \ SDL\_LOG\_PRIORITY\_CRITICAL,}
+\DoxyCodeLine{00110\ \ \ \ \ SDL\_NUM\_LOG\_PRIORITIES}
+\DoxyCodeLine{00111\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a09e04f1d062a71901f59592c276ad946}{SDL\_LogPriority}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogSetAllPriority(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a09e04f1d062a71901f59592c276ad946}{SDL\_LogPriority}}\ priority);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00136\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogSetPriority(\textcolor{keywordtype}{int}\ category,}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a09e04f1d062a71901f59592c276ad946}{SDL\_LogPriority}}\ priority);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00149\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a09e04f1d062a71901f59592c276ad946}{SDL\_LogPriority}}\ SDLCALL\ SDL\_LogGetPriority(\textcolor{keywordtype}{int}\ category);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_acf17b4ea6a83e308c815fd4d50544eba}{SDL\_LogResetPriorities}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00182\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_Log(SDL\_PRINTF\_FORMAT\_STRING\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ SDL\_PRINTF\_VARARG\_FUNC(1);}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00203\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogVerbose(\textcolor{keywordtype}{int}\ category,\ SDL\_PRINTF\_FORMAT\_STRING\ const\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ SDL\_PRINTF\_VARARG\_FUNC(2);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00224\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogDebug(\textcolor{keywordtype}{int}\ category,\ SDL\_PRINTF\_FORMAT\_STRING\ const\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ SDL\_PRINTF\_VARARG\_FUNC(2);}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00245\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogInfo(\textcolor{keywordtype}{int}\ category,\ SDL\_PRINTF\_FORMAT\_STRING\ const\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ SDL\_PRINTF\_VARARG\_FUNC(2);}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00266\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogWarn(\textcolor{keywordtype}{int}\ category,\ SDL\_PRINTF\_FORMAT\_STRING\ const\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ SDL\_PRINTF\_VARARG\_FUNC(2);}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00287\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogError(\textcolor{keywordtype}{int}\ category,\ SDL\_PRINTF\_FORMAT\_STRING\ const\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ SDL\_PRINTF\_VARARG\_FUNC(2);}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00308\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogCritical(\textcolor{keywordtype}{int}\ category,\ SDL\_PRINTF\_FORMAT\_STRING\ const\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ SDL\_PRINTF\_VARARG\_FUNC(2);}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00330\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogMessage(\textcolor{keywordtype}{int}\ category,}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a09e04f1d062a71901f59592c276ad946}{SDL\_LogPriority}}\ priority,}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_PRINTF\_FORMAT\_STRING\ const\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ SDL\_PRINTF\_VARARG\_FUNC(3);}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00353\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogMessageV(\textcolor{keywordtype}{int}\ category,}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a09e04f1d062a71901f59592c276ad946}{SDL\_LogPriority}}\ priority,}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ const\ \textcolor{keywordtype}{char}\ *fmt,\ va\_list\ ap);}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00367\ typedef\ \textcolor{keywordtype}{void}\ (SDLCALL\ *\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a11c2a5b3bbfd910cf18fbc70cf513e24}{SDL\_LogOutputFunction}})(\textcolor{keywordtype}{void}\ *userdata,\ \textcolor{keywordtype}{int}\ category,\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a09e04f1d062a71901f59592c276ad946}{SDL\_LogPriority}}\ priority,\ const\ \textcolor{keywordtype}{char}\ *message);}
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00381\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogGetOutputFunction(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a11c2a5b3bbfd910cf18fbc70cf513e24}{SDL\_LogOutputFunction}}\ *callback,\ \textcolor{keywordtype}{void}\ **userdata);}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00393\ extern\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LogSetOutputFunction(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__log_8h_a11c2a5b3bbfd910cf18fbc70cf513e24}{SDL\_LogOutputFunction}}\ callback,\ \textcolor{keywordtype}{void}\ *userdata);}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00396\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00397\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00398\ \}}
+\DoxyCodeLine{00399\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00400\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{SDL2/close\_code.h}}>}}
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00402\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_log\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00404\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

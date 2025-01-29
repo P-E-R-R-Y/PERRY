@@ -1,60 +1,60 @@
 \doxysection{IWindow.\+hpp}
 \hypertarget{_i_window_8hpp_source}{}\label{_i_window_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/graphic/window/IWindow.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/graphic/window/IWindow.hpp}}
-
+\mbox{\hyperlink{_i_window_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ IWINDOW\_HPP\_}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#define\ IWINDOW\_HPP\_}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../graphic/IPolygon.hpp"{}}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../graphic/IModel.hpp"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../graphic/ISprite.hpp"{}}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../event/IEvent.hpp"{}}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}ICamera.hpp"{}}}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegraphic}{graphic}}\ \{}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgraphic_1_1_i_window}{IWindow}}\ \{}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classgraphic_1_1_i_window_a2947b7684c9f2375be0dd6e66b1d7b7f}{\string~IWindow}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgraphic_1_1_i_window_ae17a137c8ad8da0c414782e27f4c5dfc}{isOpen}}()\ =\ 0;}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_a6eb555bdae7c6fa247a35b9147da8c7e}{close}}()\ =\ 0;}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_a6b0e75f9c978eef8aca095144420f5af}{setFrameLimit}}(\_\_int32\_t\ limit)\ =\ 0;}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \_\_int32\_t\ \mbox{\hyperlink{classgraphic_1_1_i_window_ac081cce8b211b1b3f027a7bae33cef61}{getDelta}}()\ =\ 0;}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_ad95ff6150837ebf658a520a4a932b5c3}{linkEvent}}(\mbox{\hyperlink{classgraphic_1_1_i_event}{IEvent}}\ *event)\ =\ 0;}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_a37ccabdf7852fe8ff579f5de5ae29976}{beginDraw}}()\ =\ 0;}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_afe1c61041fa847fe80c0fbc5585a4de3}{drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{IPolygon}}\ *polygon)\ =\ 0;}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_a0b6d9dc647ea8fa561630424bb4b5db0}{drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{ISprite}}\ *model)\ =\ 0;}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_afeee676648888ac355a58f7fb90b62a6}{endDraw}}()\ =\ 0;}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_a44bfe77f58f2825edb1e7cb5304b8177}{beginMode3}}(\mbox{\hyperlink{classgraphic_1_1_i_camera}{ICamera}}\ *camera)\ =\ 0;}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_a973287c1dd916f230234e9a557181dd9}{drawModel}}(\mbox{\hyperlink{classgraphic_1_1_i_model}{IModel}}\ *model)\ =\ 0;}
-\DoxyCodeLine{00108\ }
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_ad064bd5a6aeafa259e0e629cf6cf82c1}{endMode3}}()\ =\ 0;}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classgraphic_1_1_i_window_a4a40f63b3c53f89a6ce684e7d2a92428}{pollEvent}}()\ =\ 0;}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classgraphic_1_1_i_window_a6687f79bdb04698ea020aa85e72f3941}{eventClose}}()\ =\ 0;}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//your\ variables\ here}}
-\DoxyCodeLine{00128\ \ \ \ \ \};}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ IWINDOW\_HPP\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#define\ IWINDOW\_HPP\_}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_i_polygon_8hpp}{../graphic/IPolygon.hpp}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_i_model_8hpp}{../graphic/IModel.hpp}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_i_sprite_8hpp}{../graphic/ISprite.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_i_event_8hpp}{../event/IEvent.hpp}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_i_camera_8hpp}{ICamera.hpp}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegraphic}{graphic}}\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classgraphic_1_1_i_window}{IWindow}}\ \{}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{group__graphic_ga2947b7684c9f2375be0dd6e66b1d7b7f}{\string~IWindow}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__graphic_gae17a137c8ad8da0c414782e27f4c5dfc}{isOpen}}()\ =\ 0;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_ga6eb555bdae7c6fa247a35b9147da8c7e}{close}}()\ =\ 0;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_ga6b0e75f9c978eef8aca095144420f5af}{setFrameLimit}}(\_\_int32\_t\ limit)\ =\ 0;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \_\_int32\_t\ \mbox{\hyperlink{group__graphic_gac081cce8b211b1b3f027a7bae33cef61}{getDelta}}()\ =\ 0;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_gad95ff6150837ebf658a520a4a932b5c3}{linkEvent}}(\mbox{\hyperlink{classgraphic_1_1_i_event}{IEvent}}\ *event)\ =\ 0;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_ga37ccabdf7852fe8ff579f5de5ae29976}{beginDraw}}()\ =\ 0;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_gafe1c61041fa847fe80c0fbc5585a4de3}{drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{IPolygon}}\ *polygon)\ =\ 0;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_ga0b6d9dc647ea8fa561630424bb4b5db0}{drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{ISprite}}\ *model)\ =\ 0;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_gafeee676648888ac355a58f7fb90b62a6}{endDraw}}()\ =\ 0;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_ga44bfe77f58f2825edb1e7cb5304b8177}{beginMode3}}(\mbox{\hyperlink{classgraphic_1_1_i_camera}{ICamera}}\ *camera)\ =\ 0;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_ga973287c1dd916f230234e9a557181dd9}{drawModel}}(\mbox{\hyperlink{classgraphic_1_1_i_model}{IModel}}\ *model)\ =\ 0;}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_gad064bd5a6aeafa259e0e629cf6cf82c1}{endMode3}}()\ =\ 0;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__graphic_ga4a40f63b3c53f89a6ce684e7d2a92428}{pollEvent}}()\ =\ 0;}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__graphic_ga6687f79bdb04698ea020aa85e72f3941}{eventClose}}()\ =\ 0;}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//your\ variables\ here}}
+\DoxyCodeLine{00125\ \ \ \ \ \};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \}\ \textcolor{comment}{//\ namespace\ graphic3}}
+\DoxyCodeLine{00128\ }
 \DoxyCodeLine{00129\ }
-\DoxyCodeLine{00130\ \}\ \textcolor{comment}{//\ namespace\ graphic3}}
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00132\ }
-\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !IWINDOW\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !IWINDOW\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -1,0 +1,289 @@
+\doxysubsubsection{extra}
+\hypertarget{group__sfml__extra}{}\label{group__sfml__extra}\index{extra@{extra}}
+\doxysubsubsubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_matrice}{Matrice$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__sfml__extra_ga9e2e8b2e16469d00463c00fb1335e8cc}{Matrice$<$ T $>$\+::\+Matrice}} (int rows, int cols)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_matrice}{Matrice} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__sfml__extra_ga538b9a7b8c682d2bad32547530a0665a}{Matrice$<$ T $>$\+::\+Matrice}} (const std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&grid)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_matrice}{Matrice} object. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{group__sfml__extra_ga297dd2bc35a5249bbc9f90e5ad20256a}{Matrice$<$ T $>$\+::operator()}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em get the value of the matrix at the given row and column \end{DoxyCompactList}\item 
+const T \& \mbox{\hyperlink{group__sfml__extra_gacac28fe1829782e2f172449692296558}{Matrice$<$ T $>$\+::operator()}} (int row, int col) const
+\begin{DoxyCompactList}\small\item\em get the unmutable value of the matrix at the given row and column \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \mbox{\hyperlink{group__sfml__extra_ga4a6fc8d1cc02a91afc785dca867ef850}{Matrice$<$ T $>$\+::operator=}} (const \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__sfml__extra_ga09dd588fade2d50c9668b00e27882cfd}{Matrice$<$ T $>$\+::get\+Rows}} () const
+\begin{DoxyCompactList}\small\item\em Get the Rows object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__sfml__extra_ga54125375ae1e07548713eae4ed853e42}{Matrice$<$ T $>$\+::get\+Cols}} () const
+\begin{DoxyCompactList}\small\item\em Get the Cols object. \end{DoxyCompactList}\item 
+\Hypertarget{group__sfml__extra_ga2d8d916f922e653859f3be0669a703ba}\label{group__sfml__extra_ga2d8d916f922e653859f3be0669a703ba} 
+void {\bfseries Matrice$<$ T $>$\+::print} () const
+\begin{DoxyCompactList}\small\item\em Print the matrix. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \mbox{\hyperlink{group__sfml__extra_ga8d882600c0c7c8ed9a1ea17746eb3d17}{operator\texorpdfstring{$\ast$}{*}}} (const \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \&a, const \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \&b)
+\begin{DoxyCompactList}\small\item\em Define the multiplication operator for matrix multiplication. \end{DoxyCompactList}\item 
+sf\+::\+Vector3f \mbox{\hyperlink{group__sfml__extra_gad5fd8037d6e46130fe85e122209f2df1}{cross\+Product}} (sf\+::\+Vector3f a, sf\+::\+Vector3f b)
+\begin{DoxyCompactList}\small\item\em cross product of two vectors gives you a new vector that is perpendicular to both input vectors \end{DoxyCompactList}\item 
+sf\+::\+Vector3f \mbox{\hyperlink{group__sfml__extra_gaf2fb156d3650dd4a023012d7e490497a}{normalise\+V3f}} (const sf\+::\+Vector3f \&vec)
+\begin{DoxyCompactList}\small\item\em convert a vector to a unit vector \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group__sfml__extra_gab82b99fd9eebd9b7b10a4f8f3985c0e8}{dot\+Product}} (sf\+::\+Vector3f a, sf\+::\+Vector3f b)
+\begin{DoxyCompactList}\small\item\em give an idea about how much two vectors are aligned \end{DoxyCompactList}\item 
+sf\+::\+Vector3f \mbox{\hyperlink{group__sfml__extra_ga97aad74a25caeefe971f24eda62ce15b}{view\+From\+Up}} (const sf\+::\+Vector3f up)
+\begin{DoxyCompactList}\small\item\em view\+From\+Up will return a view vector based on the up vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__sfml__extra_gad3f2f16c12081902a55b34ee9624be3e}\label{group__sfml__extra_gad3f2f16c12081902a55b34ee9624be3e} 
+std\+::vector$<$ std\+::vector$<$ T $>$ $>$ {\bfseries Matrice$<$ T $>$\+::data}
+\item 
+\Hypertarget{group__sfml__extra_gac7af91c5baafdbe4c1ac054faee11b18}\label{group__sfml__extra_gac7af91c5baafdbe4c1ac054faee11b18} 
+int {\bfseries Matrice$<$ T $>$\+::rows}
+\item 
+\Hypertarget{group__sfml__extra_ga96eea97a05db27f3ae7fced58fd7fea4}\label{group__sfml__extra_ga96eea97a05db27f3ae7fced58fd7fea4} 
+int {\bfseries Matrice$<$ T $>$\+::cols}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsubsection{Detailed Description}
+
+
+\doxysubsubsubsection{Function Documentation}
+\Hypertarget{group__sfml__extra_gad5fd8037d6e46130fe85e122209f2df1}\index{extra@{extra}!crossProduct@{crossProduct}}
+\index{crossProduct@{crossProduct}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{crossProduct()}{crossProduct()}}
+{\footnotesize\ttfamily \label{group__sfml__extra_gad5fd8037d6e46130fe85e122209f2df1} 
+sf\+::\+Vector3f cross\+Product (\begin{DoxyParamCaption}\item[{sf\+::\+Vector3f}]{a}{, }\item[{sf\+::\+Vector3f}]{b}{}\end{DoxyParamCaption})}
+
+
+
+cross product of two vectors gives you a new vector that is perpendicular to both input vectors 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector3f 
+\end{DoxyReturn}
+\Hypertarget{group__sfml__extra_gab82b99fd9eebd9b7b10a4f8f3985c0e8}\index{extra@{extra}!dotProduct@{dotProduct}}
+\index{dotProduct@{dotProduct}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{dotProduct()}{dotProduct()}}
+{\footnotesize\ttfamily \label{group__sfml__extra_gab82b99fd9eebd9b7b10a4f8f3985c0e8} 
+float dot\+Product (\begin{DoxyParamCaption}\item[{sf\+::\+Vector3f}]{a}{, }\item[{sf\+::\+Vector3f}]{b}{}\end{DoxyParamCaption})}
+
+
+
+give an idea about how much two vectors are aligned 
+
+
+\begin{DoxyItemize}
+\item If the dot product is positive, the vectors point in roughly the same direction.
+\item If the dot product is zero, the vectors are perpendicular (at a 90° angle to each other).
+\item If the dot product is negative, the vectors point in opposite directions.
+\end{DoxyItemize}
+
+need to normalize the vectors before using the dot product
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\Hypertarget{group__sfml__extra_ga54125375ae1e07548713eae4ed853e42}\index{extra@{extra}!getCols@{getCols}}
+\index{getCols@{getCols}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{getCols()}{getCols()}}
+{\footnotesize\ttfamily \label{group__sfml__extra_ga54125375ae1e07548713eae4ed853e42} 
+template$<$typename T$>$ \\
+int \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$\+::get\+Cols (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Cols object. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{group__sfml__extra_ga09dd588fade2d50c9668b00e27882cfd}\index{extra@{extra}!getRows@{getRows}}
+\index{getRows@{getRows}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{getRows()}{getRows()}}
+{\footnotesize\ttfamily \label{group__sfml__extra_ga09dd588fade2d50c9668b00e27882cfd} 
+template$<$typename T$>$ \\
+int \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$\+::get\+Rows (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Rows object. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{group__sfml__extra_ga538b9a7b8c682d2bad32547530a0665a}\index{extra@{extra}!Matrice@{Matrice}}
+\index{Matrice@{Matrice}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{Matrice()}{Matrice()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group__sfml__extra_ga538b9a7b8c682d2bad32547530a0665a} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$\mbox{\hyperlink{class_matrice}{\+::\+Matrice}} (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&}]{grid}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_matrice}{Matrice} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__sfml__extra_ga9e2e8b2e16469d00463c00fb1335e8cc}\index{extra@{extra}!Matrice@{Matrice}}
+\index{Matrice@{Matrice}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{Matrice()}{Matrice()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group__sfml__extra_ga9e2e8b2e16469d00463c00fb1335e8cc} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$\mbox{\hyperlink{class_matrice}{\+::\+Matrice}} (\begin{DoxyParamCaption}\item[{int}]{rows}{, }\item[{int}]{cols}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_matrice}{Matrice} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & \\
+\hline
+{\em cols} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__sfml__extra_gaf2fb156d3650dd4a023012d7e490497a}\index{extra@{extra}!normaliseV3f@{normaliseV3f}}
+\index{normaliseV3f@{normaliseV3f}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{normaliseV3f()}{normaliseV3f()}}
+{\footnotesize\ttfamily \label{group__sfml__extra_gaf2fb156d3650dd4a023012d7e490497a} 
+sf\+::\+Vector3f normalise\+V3f (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector3f \&}]{vec}{}\end{DoxyParamCaption})}
+
+
+
+convert a vector to a unit vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector3f 
+\end{DoxyReturn}
+\Hypertarget{group__sfml__extra_ga297dd2bc35a5249bbc9f90e5ad20256a}\index{extra@{extra}!operator()@{operator()}}
+\index{operator()@{operator()}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group__sfml__extra_ga297dd2bc35a5249bbc9f90e5ad20256a} 
+template$<$typename T$>$ \\
+T \& \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{int}]{row}{, }\item[{int}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get the value of the matrix at the given row and column 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & \\
+\hline
+{\em col} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\& 
+\end{DoxyReturn}
+\Hypertarget{group__sfml__extra_gacac28fe1829782e2f172449692296558}\index{extra@{extra}!operator()@{operator()}}
+\index{operator()@{operator()}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group__sfml__extra_gacac28fe1829782e2f172449692296558} 
+template$<$typename T$>$ \\
+const T \& \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{int}]{row}{, }\item[{int}]{col}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+get the unmutable value of the matrix at the given row and column 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & \\
+\hline
+{\em col} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+const T\& 
+\end{DoxyReturn}
+\Hypertarget{group__sfml__extra_ga8d882600c0c7c8ed9a1ea17746eb3d17}\index{extra@{extra}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{group__sfml__extra_ga8d882600c0c7c8ed9a1ea17746eb3d17} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \&}]{a}{, }\item[{const \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \&}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Define the multiplication operator for matrix multiplication. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_matrice}{Matrice$<$\+T$>$} 
+\end{DoxyReturn}
+\Hypertarget{group__sfml__extra_ga4a6fc8d1cc02a91afc785dca867ef850}\index{extra@{extra}!operator=@{operator=}}
+\index{operator=@{operator=}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{group__sfml__extra_ga4a6fc8d1cc02a91afc785dca867ef850} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrice}{Matrice}}$<$ T $>$ \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+copy constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_matrice}{Matrice$<$\+T$>$} 
+\end{DoxyReturn}
+\Hypertarget{group__sfml__extra_ga97aad74a25caeefe971f24eda62ce15b}\index{extra@{extra}!viewFromUp@{viewFromUp}}
+\index{viewFromUp@{viewFromUp}!extra@{extra}}
+\doxysubsubsubsubsection{\texorpdfstring{viewFromUp()}{viewFromUp()}}
+{\footnotesize\ttfamily \label{group__sfml__extra_ga97aad74a25caeefe971f24eda62ce15b} 
+sf\+::\+Vector3f view\+From\+Up (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector3f}]{up}{}\end{DoxyParamCaption})}
+
+
+
+view\+From\+Up will return a view vector based on the up vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em up} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector3f 
+\end{DoxyReturn}

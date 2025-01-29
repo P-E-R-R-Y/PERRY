@@ -1,0 +1,95 @@
+\doxysection{SDL\+\_\+config\+\_\+ngage.\+h}
+\hypertarget{_s_d_l__config__ngage_8h_source}{}\label{_s_d_l__config__ngage_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_config\_ngage.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_config\_ngage.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ SDL\_config\_ngage\_h\_}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ SDL\_config\_ngage\_h\_}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ SDL\_config\_h\_}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__platform_8h}{SDL\_platform.h}}"{}}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ int8\_t;}
+\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \ \ \ \ \ uint8\_t;}
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \textcolor{keywordtype}{short}\ \ \ \ \ \ \ int16\_t;}
+\DoxyCodeLine{00031\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ \ \ \ \ uint16\_t;}
+\DoxyCodeLine{00032\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ int32\_t;}
+\DoxyCodeLine{00033\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ uint32\_t;}
+\DoxyCodeLine{00034\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{signed}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \ \ int64\_t;}
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ uint64\_t;}
+\DoxyCodeLine{00036\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \ \ \ \ \ uintptr\_t;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ HAVE\_STDARG\_H\ \ \ \ 1}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ HAVE\_STDDEF\_H\ \ \ \ 1}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ HAVE\_STDIO\_H\ \ \ \ \ 1}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ HAVE\_STDLIB\_H\ \ \ \ 1}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ HAVE\_MATH\_H\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ HAVE\_CEIL\ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ HAVE\_COPYSIGN\ \ \ \ 1}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ HAVE\_COS\ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ HAVE\_EXP\ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ HAVE\_FABS\ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ HAVE\_FLOOR\ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ HAVE\_LOG\ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ HAVE\_LOG10\ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ HAVE\_SCALBN\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ HAVE\_SIN\ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ HAVE\_SQRT\ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ HAVE\_TAN\ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ HAVE\_MALLOC\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ SDL\_MAIN\_NEEDED\ \ 1}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ LACKS\_SYS\_MMAN\_H\ 1}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{/*\ Enable\ the\ N-\/Gage\ thread\ support\ (src/thread/ngage/\(\backslash\)*.c)\ */}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ SDL\_THREAD\_NGAGE\ 1}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{/*\ Enable\ the\ N-\/Gage\ timer\ support\ (src/timer/ngage/\(\backslash\)*.c)\ */}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ SDL\_TIMER\_NGAGE\ \ 1}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{/*\ Enable\ the\ N-\/Gage\ video\ driver\ (src/video/ngage/\(\backslash\)*.c)\ */}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ SDL\_VIDEO\_DRIVER\_NGAGE\ 1}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{/*\ Enable\ the\ dummy\ audio\ driver\ (src/audio/dummy/\(\backslash\)*.c)\ */}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_DRIVER\_DUMMY\ \ 1}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{/*\ Enable\ the\ stub\ joystick\ driver\ (src/joystick/dummy/\(\backslash\)*.c)\ */}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ SDL\_JOYSTICK\_DISABLED\ \ \ 1}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{/*\ Enable\ the\ stub\ haptic\ driver\ (src/haptic/dummy/\(\backslash\)*.c)\ */}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ SDL\_HAPTIC\_DISABLED\ 1}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{comment}{/*\ Enable\ the\ stub\ HIDAPI\ */}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ SDL\_HIDAPI\_DISABLED\ 1}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{comment}{/*\ Enable\ the\ stub\ sensor\ driver\ (src/sensor/dummy/\(\backslash\)*.c)\ */}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ SDL\_SENSOR\_DISABLED\ 1}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{comment}{/*\ Enable\ the\ stub\ shared\ object\ loader\ (src/loadso/dummy/\(\backslash\)*.c)\ */}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ SDL\_LOADSO\_DISABLED\ 1}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{comment}{/*\ Enable\ the\ dummy\ filesystem\ driver\ (src/filesystem/dummy/\(\backslash\)*.c)\ */}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ SDL\_FILESYSTEM\_DUMMY\ 1}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_config\_ngage\_h\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

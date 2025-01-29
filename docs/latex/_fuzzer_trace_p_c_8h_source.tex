@@ -1,0 +1,164 @@
+\doxysection{Fuzzer\+Trace\+PC.\+h}
+\hypertarget{_fuzzer_trace_p_c_8h_source}{}\label{_fuzzer_trace_p_c_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerTracePC.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerTracePC.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerTracePC.h\ -\/\ Internal\ header\ for\ the\ Fuzzer\ -\/-\/-\/-\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ fuzzer::TracePC}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_TRACE\_PC}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_TRACE\_PC}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}FuzzerDefs.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}FuzzerValueBitMap.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ TableOfRecentCompares\ (TORC)\ remembers\ the\ most\ recently\ performed}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ comparisons\ of\ type\ T.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ We\ record\ the\ arguments\ of\ CMP\ instructions\ in\ this\ table\ unconditionally}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ because\ it\ seems\ cheaper\ this\ way\ than\ to\ compute\ some\ expensive}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ conditions\ inside\ \_\_sanitizer\_cov\_trace\_cmp*.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ After\ the\ unit\ has\ been\ executed\ we\ may\ decide\ to\ use\ the\ contents\ of}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ this\ table\ to\ populate\ a\ Dictionary.}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T,\ \textcolor{keywordtype}{size\_t}\ kSizeT>}
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfuzzer_1_1_table_of_recent_compares}{TableOfRecentCompares}}\ \{}
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ kSize\ =\ kSizeT;}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfuzzer_1_1_table_of_recent_compares_1_1_pair}{Pair}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ T\ A,\ B;}
+\DoxyCodeLine{00033\ \ \ \};}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ Insert(\textcolor{keywordtype}{size\_t}\ Idx,\ T\ Arg1,\ T\ Arg2)\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ Idx\ =\ Idx\ \%\ kSize;}
+\DoxyCodeLine{00036\ \ \ \ \ Table[Idx].A\ =\ Arg1;}
+\DoxyCodeLine{00037\ \ \ \ \ Table[Idx].B\ =\ Arg2;}
+\DoxyCodeLine{00038\ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ Pair\ Get(\textcolor{keywordtype}{size\_t}\ I)\ \{\ \textcolor{keywordflow}{return}\ Table[I\ \%\ kSize];\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ Pair\ Table[kSize];}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classfuzzer_1_1_trace_p_c}{TracePC}}\ \{}
+\DoxyCodeLine{00046\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ kFeatureSetSize\ =\ ValueBitMap::kNumberOfItems;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ HandleTrace(uint32\_t\ *guard,\ uintptr\_t\ PC);}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{void}\ HandleInit(uint32\_t\ *start,\ uint32\_t\ *stop);}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{void}\ HandleCallerCallee(uintptr\_t\ Caller,\ uintptr\_t\ Callee);}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ HandleValueProfile(\textcolor{keywordtype}{size\_t}\ Value)\ \{\ ValueProfileMap.AddValue(Value);\ \}}
+\DoxyCodeLine{00053\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>\ \textcolor{keywordtype}{void}\ HandleCmp(\textcolor{keywordtype}{void}\ *PC,\ T\ Arg1,\ T\ Arg2);}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{size\_t}\ GetTotalPCCoverage();}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{void}\ SetUseCounters(\textcolor{keywordtype}{bool}\ UC)\ \{\ UseCounters\ =\ UC;\ \}}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ SetUseValueProfile(\textcolor{keywordtype}{bool}\ VP)\ \{\ UseValueProfile\ =\ VP;\ \}}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ SetPrintNewPCs(\textcolor{keywordtype}{bool}\ P)\ \{\ DoPrintNewPCs\ =\ P;\ \}}
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Callback>\ \textcolor{keywordtype}{size\_t}\ CollectFeatures(Callback\ CB);}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{bool}\ UpdateValueProfileMap(\mbox{\hyperlink{structfuzzer_1_1_value_bit_map}{ValueBitMap}}\ *MaxValueProfileMap)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ UseValueProfile\ \&\&\ MaxValueProfileMap-\/>MergeFrom(ValueProfileMap);}
+\DoxyCodeLine{00061\ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ ResetMaps()\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ ValueProfileMap.Reset();}
+\DoxyCodeLine{00065\ \ \ \ \ memset(Counters,\ 0,\ \textcolor{keyword}{sizeof}(Counters));}
+\DoxyCodeLine{00066\ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{void}\ UpdateFeatureSet(\textcolor{keywordtype}{size\_t}\ CurrentElementIdx,\ \textcolor{keywordtype}{size\_t}\ CurrentElementSize);}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ PrintFeatureSet();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{void}\ PrintModuleInfo();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{void}\ PrintCoverage();}
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{void}\ DumpCoverage();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{void}\ AddValueForMemcmp(\textcolor{keywordtype}{void}\ *caller\_pc,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *s1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *s2,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n);}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{void}\ AddValueForStrcmp(\textcolor{keywordtype}{void}\ *caller\_pc,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s2,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{bool}\ UsingTracePcGuard()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ NumModules;\ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ kTORCSize\ =\ 1\ <<\ 5;}
+\DoxyCodeLine{00084\ \ \ \mbox{\hyperlink{structfuzzer_1_1_table_of_recent_compares}{TableOfRecentCompares<uint32\_t,\ kTORCSize>}}\ TORC4;}
+\DoxyCodeLine{00085\ \ \ \mbox{\hyperlink{structfuzzer_1_1_table_of_recent_compares}{TableOfRecentCompares<uint64\_t,\ kTORCSize>}}\ TORC8;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{void}\ PrintNewPCs();}
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{size\_t}\ GetNumPCs()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Min(kNumPCs,\ NumGuards\ +\ 1);\ \}}
+\DoxyCodeLine{00089\ \ \ uintptr\_t\ GetPC(\textcolor{keywordtype}{size\_t}\ Idx)\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ assert(Idx\ <\ GetNumPCs());}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{return}\ PCs[Idx];}
+\DoxyCodeLine{00092\ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00095\ \ \ \textcolor{keywordtype}{bool}\ UseCounters\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{bool}\ UseValueProfile\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{bool}\ DoPrintNewPCs\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfuzzer_1_1_trace_p_c_1_1_module}{Module}}\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ uint32\_t\ *Start,\ *Stop;}
+\DoxyCodeLine{00101\ \ \ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \mbox{\hyperlink{structfuzzer_1_1_trace_p_c_1_1_module}{Module}}\ Modules[4096];}
+\DoxyCodeLine{00104\ \ \ \textcolor{keywordtype}{size\_t}\ NumModules;\ \ \textcolor{comment}{//\ linker-\/initialized.}}
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{size\_t}\ NumGuards;\ \ \textcolor{comment}{//\ linker-\/initialized.}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ kNumCounters\ =\ 1\ <<\ 14;}
+\DoxyCodeLine{00108\ \ \ \textcolor{keyword}{alignas}(8)\ uint8\_t\ Counters[kNumCounters];}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ kNumPCs\ =\ 1\ <<\ 24;}
+\DoxyCodeLine{00111\ \ \ uintptr\_t\ PCs[kNumPCs];}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ std::set<uintptr\_t>\ *PrintedPCs;}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \mbox{\hyperlink{structfuzzer_1_1_value_bit_map}{ValueBitMap}}\ ValueProfileMap;}
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Callback>}
+\DoxyCodeLine{00119\ \textcolor{keywordtype}{size\_t}\ TracePC::CollectFeatures(Callback\ CB)\ \{}
+\DoxyCodeLine{00120\ \ \ \textcolor{keywordflow}{if}\ (!UsingTracePcGuard())\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{size\_t}\ Res\ =\ 0;}
+\DoxyCodeLine{00122\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ Step\ =\ 8;}
+\DoxyCodeLine{00123\ \ \ assert(\textcolor{keyword}{reinterpret\_cast<}uintptr\_t\textcolor{keyword}{>}(Counters)\ \%\ Step\ ==\ 0);}
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ Min(kNumCounters,\ NumGuards\ +\ 1);}
+\DoxyCodeLine{00125\ \ \ N\ =\ (N\ +\ Step\ -\/\ 1)\ \&\ \string~(Step\ -\/\ 1);\ \ \textcolor{comment}{//\ Round\ up.}}
+\DoxyCodeLine{00126\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ Idx\ =\ 0;\ Idx\ <\ N;\ Idx\ +=\ Step)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ uint64\_t\ Bundle\ =\ *\textcolor{keyword}{reinterpret\_cast<}uint64\_t*\textcolor{keyword}{>}(\&Counters[Idx]);}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{if}\ (!Bundle)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ Idx;\ i\ <\ Idx\ +\ Step;\ i++)\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_counter}{Counter}}\ =\ (Bundle\ >>\ ((i\ -\/\ Idx)\ *\ 8))\ \&\ 0xff;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_counter}{Counter}})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ Counters[i]\ =\ 0;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ Bit\ =\ 0;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \textcolor{comment}{/**/}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_counter}{Counter}}\ >=\ 128)\ Bit\ =\ 7;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_counter}{Counter}}\ >=\ 32)\ Bit\ =\ 6;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_counter}{Counter}}\ >=\ 16)\ Bit\ =\ 5;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_counter}{Counter}}\ >=\ 8)\ Bit\ =\ 4;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_counter}{Counter}}\ >=\ 4)\ Bit\ =\ 3;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_counter}{Counter}}\ >=\ 3)\ Bit\ =\ 2;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_counter}{Counter}}\ >=\ 2)\ Bit\ =\ 1;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Feature\ =\ (i\ *\ 8\ +\ Bit);}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CB(Feature))}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ Res++;}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \textcolor{keywordflow}{if}\ (UseValueProfile)}
+\DoxyCodeLine{00147\ \ \ \ \ ValueProfileMap.ForEach([\&](\textcolor{keywordtype}{size\_t}\ Idx)\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (CB(NumGuards\ *\ 8\ +\ Idx))}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ Res++;}
+\DoxyCodeLine{00150\ \ \ \ \ \});}
+\DoxyCodeLine{00151\ \ \ \textcolor{keywordflow}{return}\ Res;}
+\DoxyCodeLine{00152\ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{classfuzzer_1_1_trace_p_c}{TracePC}}\ TPC;}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \}\ \ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_TRACE\_PC}}
+
+\end{DoxyCode}

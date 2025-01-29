@@ -1,0 +1,73 @@
+\doxysection{Fuzzer\+Interface.\+h}
+\hypertarget{_fuzzer_interface_8h_source}{}\label{_fuzzer_interface_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerInterface.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerInterface.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerInterface.h\ -\/\ Interface\ header\ for\ the\ Fuzzer\ -\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Define\ the\ interface\ between\ libFuzzer\ and\ the\ library\ being\ tested.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ NOTE:\ the\ libFuzzer\ interface\ is\ thin\ and\ in\ the\ majority\ of\ cases}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ you\ should\ not\ include\ this\ file\ into\ your\ target.\ In\ 95\%\ of\ cases}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ all\ you\ need\ is\ to\ define\ the\ following\ function\ in\ your\ file:}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ extern\ "{}C"{}\ int\ LLVMFuzzerTestOneInput(const\ uint8\_t\ *Data,\ size\_t\ Size);}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ WARNING:\ keep\ the\ interface\ in\ C.}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_INTERFACE\_H}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_INTERFACE\_H}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ \_\_cplusplus}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ Mandatory\ user-\/provided\ target\ function.}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ Executes\ the\ code\ under\ test\ with\ [Data,\ Data+Size)\ as\ the\ input.}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ libFuzzer\ will\ invoke\ this\ function\ *many*\ times\ with\ different\ inputs.}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ Must\ return\ 0.}}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{int}\ LLVMFuzzerTestOneInput(\textcolor{keyword}{const}\ uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ Optional\ user-\/provided\ initialization\ function.}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ If\ provided,\ this\ function\ will\ be\ called\ by\ libFuzzer\ once\ at\ startup.}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ It\ may\ read\ and\ modify\ argc/argv.}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ Must\ return\ 0.}}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ LLVMFuzzerInitialize(\textcolor{keywordtype}{int}\ *argc,\ \textcolor{keywordtype}{char}\ ***argv);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Optional\ user-\/provided\ custom\ mutator.}}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ Mutates\ raw\ data\ in\ [Data,\ Data+Size)\ inplace.}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ Returns\ the\ new\ size,\ which\ is\ not\ greater\ than\ MaxSize.}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ Given\ the\ same\ Seed\ produces\ the\ same\ mutation.}}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{size\_t}\ LLVMFuzzerCustomMutator(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ Seed);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//\ Optional\ user-\/provided\ custom\ cross-\/over\ function.}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ Combines\ pieces\ of\ Data1\ \&\ Data2\ together\ into\ Out.}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ Returns\ the\ new\ size,\ which\ is\ not\ greater\ than\ MaxOutSize.}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ Should\ produce\ the\ same\ mutation\ given\ the\ same\ Seed.}}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{size\_t}\ LLVMFuzzerCustomCrossOver(\textcolor{keyword}{const}\ uint8\_t\ *Data1,\ \textcolor{keywordtype}{size\_t}\ Size1,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *Data2,\ \textcolor{keywordtype}{size\_t}\ Size2,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *Out,\ \textcolor{keywordtype}{size\_t}\ MaxOutSize,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ Seed);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ Experimental,\ may\ go\ away\ in\ future.}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ libFuzzer-\/provided\ function\ to\ be\ used\ inside\ LLVMFuzzerTestOneInput.}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ Mutates\ raw\ data\ in\ [Data,\ Data+Size)\ inplace.}}
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ Returns\ the\ new\ size,\ which\ is\ not\ greater\ than\ MaxSize.}}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{size\_t}\ LLVMFuzzerMutate(uint8\_t\ *\mbox{\hyperlink{struct_data}{Data}},\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_size}{Size}},\ \textcolor{keywordtype}{size\_t}\ MaxSize);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00064\ \}\ \ \textcolor{comment}{//\ extern\ "{}C"{}}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ \_\_cplusplus}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_INTERFACE\_H}}
+
+\end{DoxyCode}

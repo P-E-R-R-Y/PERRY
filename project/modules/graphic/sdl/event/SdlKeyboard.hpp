@@ -1,9 +1,13 @@
 /**
- * @ Author: Perry Chouteau
- * @ Create Time: 2024-05-10 19:59:08
- * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-11-11 12:16:55
- * @ Description: Raylib Encapsulation for IMouse
+ * @file SdlKeyboard.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ *
+ * @addtogroup SDL
+ * @{
+
  */
 
 #ifndef SDLKEYBOARD_HPP_
@@ -20,40 +24,87 @@
 #include <vector>
 #include <unordered_map>
 
+/**
+ * @brief Sdl Keyboard class
+ */
 class SdlKeyboard : public graphic::IKeyboard {
 
     public:
+
+        /**
+         * @brief Construct a new Sdl Keyboard object
+         * 
+         * @param event 
+         */
         SdlKeyboard(graphic::IEvent *event) {
             _event = static_cast<SdlEvent *>(event);
         }
 
+        /**
+         * @brief Destroy the Sdl Keyboard object
+         */
         ~SdlKeyboard() {
         }
 
+        /**
+         * @brief which key is set
+         * 
+         * @return std::vector<Keys> 
+         */
         std::vector<Keys> whichKey() const override {
             std::vector<Keys> keys;
             
             return keys;
         }
 
+        /**
+         * @brief check if the key is pressed
+         * 
+         * @param key 
+         * @return true 
+         * @return false 
+         */
         bool isKeyPressed(Keys key) const override {
             return (_event->_event.key.keysym.sym == _keys.at(key));
         }
 
+        /**
+         * @brief check if the key is down
+         * 
+         * @param key 
+         * @return true 
+         * @return false 
+         */
         bool isKeyDown(Keys key) const override {
             //return true
             return (_event->_event.key.keysym.sym == _keys.at(key));
         }
 
+        /**
+         * @brief check if the key is released
+         * 
+         * @param key 
+         * @return true 
+         * @return false 
+         */
         bool isKeyReleased(Keys key) const override {
             return (_event->_event.key.keysym.sym == _keys.at(key));
         }
 
-
+        /**
+         * @brief check if the key is up
+         * 
+         * @param key 
+         * @return true 
+         * @return false 
+         */
         bool isKeyUp(Keys key) const override {
             return !(_event->_event.key.keysym.sym == _keys.at(key));
         }
 
+        /**
+         * @brief update the keyboard
+         */
         void update() override {};
 
     private:

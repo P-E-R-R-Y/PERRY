@@ -1,12 +1,12 @@
 /**
  * @file Entity.hpp
- * @author @Perry-chouteau
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
  * @brief 
  * @version 0.1
- * @date 2025-01-27
+ * @date 2025-01-29
  * 
- * @copyright Copyright (c) 2025
- * 
+ * @addtogroup ecs
+ * @{
  */
 
 #ifndef ENTITY_HPP

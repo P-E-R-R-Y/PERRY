@@ -13,7 +13,7 @@ var searchData=
   ['is_5fspecialization_5fof_5ftuple_3c_20std_3a_3atuple_3c_20args_2e_2e_2e_20_3e_20_3e_10',['is_specialization_of_tuple&lt; std::tuple&lt; Args... &gt; &gt;',['../struct_customisable_engine_1_1is__specialization__of__tuple_3_01std_1_1tuple_3_01_args_8_8_8_01_4_01_4.html',1,'CustomisableEngine']]],
   ['is_5ftuple_11',['is_tuple',['../structecs_1_1_registry_1_1is__tuple.html',1,'ecs::Registry']]],
   ['is_5ftuple_3c_20std_3a_3atuple_3c_20args_2e_2e_2e_20_3e_20_3e_12',['is_tuple&lt; std::tuple&lt; Args... &gt; &gt;',['../structecs_1_1_registry_1_1is__tuple_3_01std_1_1tuple_3_01_args_8_8_8_01_4_01_4.html',1,'ecs::Registry']]],
-  ['iserial_13',['ISerial',['../class_i_serial.html',1,'']]],
+  ['iserial_13',['ISerial',['../classserial_1_1_i_serial.html',1,'serial']]],
   ['isprite_14',['ISprite',['../classgraphic_1_1_i_sprite.html',1,'graphic']]],
   ['iwindow_15',['IWindow',['../classgraphic_1_1_i_window.html',1,'graphic']]]
 ];

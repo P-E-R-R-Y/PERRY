@@ -1,6 +1,22 @@
+/**
+ * @file ICore.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * 
+ * @addtogroup core
+ * @{
+ */
+
 #ifndef ICORE_HPP
 #define ICORE_HPP
 
+/**
+ * @brief define the core interface
+ * @interface ICore
+ */
 class ICore {
     public:
         virtual ~ICore() = default;
@@ -8,6 +24,10 @@ class ICore {
         virtual int start() = 0;    
 };
 
+/**
+ * @brief define the engine interface
+ * @interface Engine
+ */
 class Engine : public ICore {
     public:
         virtual ~Engine() = default;
@@ -23,13 +43,22 @@ class Engine : public ICore {
 
 };
 
-// Custom Class
+/**
+ * @brief define the customisable engine
+ * 
+ * @tparam Parents 
+ */
 template <typename... Parents>
 class CustomisableEngine : public Engine, public Parents... {
 
     public:
 
-        // Constructor: Accepts parameters for each parent class
+        /**
+         * @brief Construct a new Customisable Engine object (Accepts parameters for each parent class)
+         * 
+         * @tparam Args 
+         * @param params 
+         */
         template <typename... Args>
         CustomisableEngine(Args... params)
             : Parents(constructParent<Parents>(params))... { // Forward parameters to the parent constructors
@@ -54,7 +83,14 @@ class CustomisableEngine : public Engine, public Parents... {
         template<typename... Args>
         struct is_specialization_of_tuple<std::tuple<Args...>> : std::true_type {};
 
-        // Helper function to construct a parent with the correct parameters
+        /**
+         * @brief Construct a Parent object
+         * 
+         * @tparam Parent 
+         * @tparam Arg 
+         * @param arg 
+         * @return Parent 
+         */
         template <typename Parent, typename Arg>
         static Parent constructParent(Arg&& arg) {
             if constexpr (!has_params_v<Parent> || std::is_same_v<Arg, std::tuple<>>) {

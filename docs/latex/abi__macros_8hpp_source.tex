@@ -1,0 +1,106 @@
+\doxysection{abi\+\_\+macros.\+hpp}
+\hypertarget{abi__macros_8hpp_source}{}\label{abi__macros_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/abi\_macros.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/include/nlohmann/detail/abi\_macros.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ This\ file\ contains\ all\ macro\ definitions\ affecting\ or\ depending\ on\ the\ ABI}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ JSON\_SKIP\_LIBRARY\_VERSION\_CHECK}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(NLOHMANN\_JSON\_VERSION\_MAJOR)\ \&\&\ defined(NLOHMANN\_JSON\_VERSION\_MINOR)\ \&\&\ defined(NLOHMANN\_JSON\_VERSION\_PATCH)}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ NLOHMANN\_JSON\_VERSION\_MAJOR\ !=\ 3\ ||\ NLOHMANN\_JSON\_VERSION\_MINOR\ !=\ 11\ ||\ NLOHMANN\_JSON\_VERSION\_PATCH\ !=\ 3}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#warning\ "{}Already\ included\ a\ different\ version\ of\ the\ library!"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_VERSION\_MAJOR\ 3\ \ \ }\textcolor{comment}{//\ NOLINT(modernize-\/macro-\/to-\/enum)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_VERSION\_MINOR\ 11\ \ }\textcolor{comment}{//\ NOLINT(modernize-\/macro-\/to-\/enum)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_VERSION\_PATCH\ 3\ \ \ }\textcolor{comment}{//\ NOLINT(modernize-\/macro-\/to-\/enum)}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ JSON\_DIAGNOSTICS}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \#define\ JSON\_DIAGNOSTICS\ 0}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifndef\ JSON\_USE\_LEGACY\_DISCARDED\_VALUE\_COMPARISON}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \#define\ JSON\_USE\_LEGACY\_DISCARDED\_VALUE\_COMPARISON\ 0}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#if\ JSON\_DIAGNOSTICS}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \#define\ NLOHMANN\_JSON\_ABI\_TAG\_DIAGNOSTICS\ \_diag}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \#define\ NLOHMANN\_JSON\_ABI\_TAG\_DIAGNOSTICS}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#if\ JSON\_USE\_LEGACY\_DISCARDED\_VALUE\_COMPARISON}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\ \ \ \ \#define\ NLOHMANN\_JSON\_ABI\_TAG\_LEGACY\_DISCARDED\_VALUE\_COMPARISON\ \_ldvcmp}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\ \ \ \ \#define\ NLOHMANN\_JSON\_ABI\_TAG\_LEGACY\_DISCARDED\_VALUE\_COMPARISON}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#ifndef\ NLOHMANN\_JSON\_NAMESPACE\_NO\_VERSION}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\ \ \ \ \#define\ NLOHMANN\_JSON\_NAMESPACE\_NO\_VERSION\ 0}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ Construct\ the\ namespace\ ABI\ tags\ component}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_ABI\_TAGS\_CONCAT\_EX(a,\ b)\ json\_abi\ \#\#\ a\ \#\#\ b}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_ABI\_TAGS\_CONCAT(a,\ b)\ \(\backslash\)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ NLOHMANN\_JSON\_ABI\_TAGS\_CONCAT\_EX(a,\ b)}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_ABI\_TAGS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ NLOHMANN\_JSON\_ABI\_TAGS\_CONCAT(\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_JSON\_ABI\_TAG\_DIAGNOSTICS,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_JSON\_ABI\_TAG\_LEGACY\_DISCARDED\_VALUE\_COMPARISON)}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ Construct\ the\ namespace\ version\ component}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_NAMESPACE\_VERSION\_CONCAT\_EX(major,\ minor,\ patch)\ \(\backslash\)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \_v\ \#\#\ major\ \#\#\ \_\ \#\#\ minor\ \#\#\ \_\ \#\#\ patch}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_NAMESPACE\_VERSION\_CONCAT(major,\ minor,\ patch)\ \(\backslash\)}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\ \ \ \ NLOHMANN\_JSON\_NAMESPACE\_VERSION\_CONCAT\_EX(major,\ minor,\ patch)}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#if\ NLOHMANN\_JSON\_NAMESPACE\_NO\_VERSION}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_NAMESPACE\_VERSION}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_NAMESPACE\_VERSION\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ \ \ NLOHMANN\_JSON\_NAMESPACE\_VERSION\_CONCAT(NLOHMANN\_JSON\_VERSION\_MAJOR,\ \(\backslash\)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_JSON\_VERSION\_MINOR,\ \(\backslash\)}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_JSON\_VERSION\_PATCH)}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{//\ Combine\ namespace\ components}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_NAMESPACE\_CONCAT\_EX(a,\ b)\ a\ \#\#\ b}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_NAMESPACE\_CONCAT(a,\ b)\ \(\backslash\)}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ NLOHMANN\_JSON\_NAMESPACE\_CONCAT\_EX(a,\ b)}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#ifndef\ NLOHMANN\_JSON\_NAMESPACE}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_NAMESPACE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ nlohmann::NLOHMANN\_JSON\_NAMESPACE\_CONCAT(\ \(\backslash\)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_JSON\_ABI\_TAGS,\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_JSON\_NAMESPACE\_VERSION)}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#ifndef\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_NAMESPACE\_BEGIN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\ \ \ \ namespace\ nlohmann\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ inline\ namespace\ NLOHMANN\_JSON\_NAMESPACE\_CONCAT(\ \(\backslash\)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_JSON\_ABI\_TAGS,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_JSON\_NAMESPACE\_VERSION)\ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ \{}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#ifndef\ NLOHMANN\_JSON\_NAMESPACE\_END}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ NLOHMANN\_JSON\_NAMESPACE\_END\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\ \ \ \ \}\ \ }\textcolor{comment}{/*\ namespace\ (inline\ namespace)\ NOLINT(readability/namespace)\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \ \ \}\ \ }\textcolor{comment}{//\ namespace\ nlohmann}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

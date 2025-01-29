@@ -1,0 +1,130 @@
+\doxysection{Fuzzer\+Dictionary.\+h}
+\hypertarget{_fuzzer_dictionary_8h_source}{}\label{_fuzzer_dictionary_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerDictionary.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerDictionary.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerDictionary.h\ -\/\ Internal\ header\ for\ the\ Fuzzer\ -\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ fuzzer::Dictionary}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_DICTIONARY\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_DICTIONARY\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}FuzzerDefs.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}FuzzerIO.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}FuzzerUtil.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ A\ simple\ POD\ sized\ array\ of\ bytes.}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{template}\ <\textcolor{keywordtype}{size\_t}\ kMaxSize>\ \textcolor{keyword}{class\ }FixedWord\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ FixedWord()\ \{\}}
+\DoxyCodeLine{00026\ \ \ FixedWord(\textcolor{keyword}{const}\ uint8\_t\ *B,\ uint8\_t\ S)\ \{\ Set(B,\ S);\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{void}\ Set(\textcolor{keyword}{const}\ uint8\_t\ *B,\ uint8\_t\ S)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ assert(S\ <=\ kMaxSize);}
+\DoxyCodeLine{00030\ \ \ \ \ memcpy(Data,\ B,\ S);}
+\DoxyCodeLine{00031\ \ \ \ \ Size\ =\ S;}
+\DoxyCodeLine{00032\ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ FixedWord<kMaxSize>\ \&w)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ Size\ ==\ w.Size\ \&\&\ 0\ ==\ memcmp(Data,\ w.Data,\ Size);}
+\DoxyCodeLine{00036\ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ FixedWord<kMaxSize>\ \&w)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (Size\ !=\ w.Size)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Size\ <\ w.Size;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ memcmp(Data,\ w.Data,\ Size)\ <\ 0;}
+\DoxyCodeLine{00042\ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ GetMaxSize()\ \{\ \textcolor{keywordflow}{return}\ kMaxSize;\ \}}
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{const}\ uint8\_t\ *data()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Data;\ \}}
+\DoxyCodeLine{00046\ \ \ uint8\_t\ size()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Size;\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ uint8\_t\ Size\ =\ 0;}
+\DoxyCodeLine{00050\ \ \ uint8\_t\ Data[kMaxSize];}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{classfuzzer_1_1_fixed_word}{FixedWord<27>}}\ Word;\ \textcolor{comment}{//\ 28\ bytes.}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{class\ }DictionaryEntry\ \{}
+\DoxyCodeLine{00056\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00057\ \ \ DictionaryEntry()\ \{\}}
+\DoxyCodeLine{00058\ \ \ DictionaryEntry(Word\ W)\ :\ W(W)\ \{\}}
+\DoxyCodeLine{00059\ \ \ DictionaryEntry(Word\ W,\ \textcolor{keywordtype}{size\_t}\ PositionHint)\ :\ W(W),\ PositionHint(PositionHint)\ \{\}}
+\DoxyCodeLine{00060\ \ \ \textcolor{keyword}{const}\ Word\ \&GetW()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ W;\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{bool}\ HasPositionHint()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ PositionHint\ !=\ std::numeric\_limits<size\_t>::max();\ \}}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{size\_t}\ GetPositionHint()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00064\ \ \ \ \ assert(HasPositionHint());}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{return}\ PositionHint;}
+\DoxyCodeLine{00066\ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ IncUseCount()\ \{\ UseCount++;\ \}}
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{void}\ IncSuccessCount()\ \{\ SuccessCount++;\ \}}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{size\_t}\ GetUseCount()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ UseCount;\ \}}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{size\_t}\ GetSuccessCount()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ SuccessCount;\ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{void}\ Print(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *PrintAfter\ =\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}})\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ PrintASCII(W.data(),\ W.size());}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{if}\ (HasPositionHint())}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ Printf(\textcolor{stringliteral}{"{}@\%zd"{}},\ GetPositionHint());}
+\DoxyCodeLine{00076\ \ \ \ \ Printf(\textcolor{stringliteral}{"{}\%s"{}},\ PrintAfter);}
+\DoxyCodeLine{00077\ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00080\ \ \ Word\ W;}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{size\_t}\ PositionHint\ =\ std::numeric\_limits<size\_t>::max();}
+\DoxyCodeLine{00082\ \ \ \textcolor{keywordtype}{size\_t}\ UseCount\ =\ 0;}
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{size\_t}\ SuccessCount\ =\ 0;}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classfuzzer_1_1_dictionary}{Dictionary}}\ \{}
+\DoxyCodeLine{00087\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ kMaxDictSize\ =\ 1\ <<\ 14;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{bool}\ ContainsWord(\textcolor{keyword}{const}\ Word\ \&W)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{return}\ std::any\_of(begin(),\ end(),\ [\&](\textcolor{keyword}{const}\ \mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ \&DE)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ DE.GetW()\ ==\ W;}
+\DoxyCodeLine{00093\ \ \ \ \ \});}
+\DoxyCodeLine{00094\ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ *begin()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \&DE[0];\ \}}
+\DoxyCodeLine{00096\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ *end()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ begin()\ +\ Size;\ \}}
+\DoxyCodeLine{00097\ \ \ \mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ \&\ operator[]\ (\textcolor{keywordtype}{size\_t}\ Idx)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ assert(Idx\ <\ Size);}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{return}\ DE[Idx];}
+\DoxyCodeLine{00100\ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ push\_back(\mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ DE)\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (Size\ <\ kMaxDictSize)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ this-\/>DE[Size++]\ =\ DE;}
+\DoxyCodeLine{00104\ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{void}\ clear()\ \{\ Size\ =\ 0;\ \}}
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{bool}\ empty()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Size\ ==\ 0;\ \}}
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{size\_t}\ size()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Size;\ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00110\ \ \ \mbox{\hyperlink{classfuzzer_1_1_dictionary_entry}{DictionaryEntry}}\ DE[kMaxDictSize];}
+\DoxyCodeLine{00111\ \ \ \textcolor{keywordtype}{size\_t}\ Size\ =\ 0;}
+\DoxyCodeLine{00112\ \};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{comment}{//\ Parses\ one\ dictionary\ entry.}}
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ If\ successfull,\ write\ the\ enty\ to\ Unit\ and\ returns\ true,}}
+\DoxyCodeLine{00116\ \textcolor{comment}{//\ otherwise\ returns\ false.}}
+\DoxyCodeLine{00117\ \textcolor{keywordtype}{bool}\ ParseOneDictionaryEntry(\textcolor{keyword}{const}\ std::string\ \&Str,\ Unit\ *U);}
+\DoxyCodeLine{00118\ \textcolor{comment}{//\ Parses\ the\ dictionary\ file,\ fills\ Units,\ returns\ true\ iff\ all\ lines}}
+\DoxyCodeLine{00119\ \textcolor{comment}{//\ were\ parsed\ succesfully.}}
+\DoxyCodeLine{00120\ \textcolor{keywordtype}{bool}\ ParseDictionaryFile(\textcolor{keyword}{const}\ std::string\ \&Text,\ std::vector<Unit>\ *Units);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \}\ \ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_DICTIONARY\_H}}
+
+\end{DoxyCode}

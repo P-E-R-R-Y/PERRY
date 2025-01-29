@@ -1,0 +1,185 @@
+\doxysection{android\+\_\+native\+\_\+app\+\_\+glue.\+h}
+\hypertarget{android__native__app__glue_8h_source}{}\label{android__native__app__glue_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/projects/VS2019-\/Android/raylib\_android/raylib\_android.NativeActivity/android\_native\_app\_glue.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/projects/VS2019-\/Android/raylib\_android/raylib\_android.NativeActivity/android\_native\_app\_glue.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ ©\ 2010\ The\ Android\ Open\ Source\ Project}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Лицензировано\ по\ лицензии\ Apache\ License,\ версия\ 2.0\ (\ "{}Лицензия"{});}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *этот\ файл\ можно\ использовать\ только\ в\ соответствии\ с\ лицензией.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *Копию\ лицензии\ можно\ получить\ на\ веб-\/сайте}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ \ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *Если\ только\ не\ требуется\ в\ соответствии\ с\ применимым\ законодательством\ или\ согласовано\ в\ письменном\ виде,\ программное\ обеспечение}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ распространяется\ в\ рамках\ лицензии\ на\ УСЛОВИЯХ\ "{}КАК\ ЕСТЬ"{},}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ БЕЗ\ ГАРАНТИЙ\ И\ УСЛОВИЙ\ ЛЮБОГО\ РОДА,\ явно\ выраженных\ и\ подразумеваемых.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ См.\ лицензию\ для\ получения\ информации\ об\ определенных\ разрешениях\ по\ использованию\ языка\ и}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ ограничениях\ в\ рамках\ лицензии.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ \_ANDROID\_NATIVE\_APP\_GLUE\_H}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ \_ANDROID\_NATIVE\_APP\_GLUE\_H}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <poll.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <pthread.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <sched.h>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <android/configuration.h>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <android/looper.h>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <android/native\_activity.h>}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00030\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__app}{android\_app}};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__poll__source}{android\_poll\_source}}\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ Идентификатор\ данного\ источника.\ Может\ быть\ LOOPER\_ID\_MAIN\ или}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//\ LOOPER\_ID\_INPUT.}}
+\DoxyCodeLine{00093\ \ \ \ \ int32\_t\ id;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ android\_app,\ с\ которым\ связан\ данный\ идентификатор.}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__app}{android\_app}}*\ app;}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ Функция,\ вызываемая\ для\ стандартной\ обработки\ данных\ из}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ этого\ источника.}}
+\DoxyCodeLine{00100\ \ \ \ \ void\ (*process)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__app}{android\_app}}*\ app,\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__poll__source}{android\_poll\_source}}*\ source);}
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__app}{android\_app}}\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ Приложение\ может\ поместить\ указатель\ на\ свой\ собственный\ объект\ состояния}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ здесь,\ если\ нужно.}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}*\ userData;}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ Введите\ здесь\ код\ функции\ для\ обработки\ основных\ команд\ приложения\ (APP\_CMD\_*)}}
+\DoxyCodeLine{00117\ \ \ \ \ void\ (*onAppCmd)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__app}{android\_app}}*\ app,\ int32\_t\ cmd);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//\ Введите\ здесь\ код\ функции\ для\ обработки\ входных\ событий.\ Сейчас}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ событие\ уже\ было\ предварительно\ отправлено\ и\ будет\ завершено\ при}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ возврате.\ Верните\ 1,\ если\ событие\ обработано,\ 0\ —\ для\ любой\ диспетчеризации}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//\ по\ умолчанию.}}
+\DoxyCodeLine{00123\ \ \ \ \ int32\_t\ (*onInputEvent)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__app}{android\_app}}*\ app,\ AInputEvent*\ event);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ Экземпляр\ объекта\ ANativeActivity,\ в\ котором\ выполняется\ это\ приложение.}}
+\DoxyCodeLine{00126\ \ \ \ \ ANativeActivity*\ activity;}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//\ Текущая\ конфигурация,\ в\ которой\ выполняется\ это\ приложение.}}
+\DoxyCodeLine{00129\ \ \ \ \ AConfiguration*\ config;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ Это\ последнее\ сохраненное\ состояние\ экземпляра,\ предоставленное\ во\ время\ создания.}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//\ Значение\ равно\ NULL,\ если\ состояния\ не\ было.\ Можно\ использовать\ это\ по\ мере\ необходимости;}}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{//\ память\ останется\ доступной\ до\ вызова\ android\_app\_exec\_cmd()\ для}}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ APP\_CMD\_RESUME,\ после\ чего\ она\ будет\ освобождена,\ а\ savedState\ получит\ значение\ NULL.}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ Эти\ переменные\ необходимо\ изменять\ только\ при\ обработке\ APP\_CMD\_SAVE\_STATE,}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ когда\ их\ значения\ будут\ инициализироваться\ в\ NULL\ и\ можно\ будет\ выполнить\ malloc\ для}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\ состояния\ и\ поместить\ здесь\ информацию.\ В\ этом\ случае\ память\ будет}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ освобождена\ позднее.}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}*\ savedState;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ savedStateSize;}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//\ ALooper,\ связанный\ с\ потоком\ приложения.}}
+\DoxyCodeLine{00143\ \ \ \ \ ALooper*\ looper;}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ Если\ значение\ не\ равно\ NULL,\ то\ это\ входная\ очередь,\ из\ которой\ приложение\ будет}}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{//\ получать\ входные\ события\ пользователя.}}
+\DoxyCodeLine{00147\ \ \ \ \ AInputQueue*\ inputQueue;}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{//\ Если\ значение\ не\ равно\ NULL,\ то\ это\ поверхность\ окна,\ в\ котором\ приложение\ может\ рисовать.}}
+\DoxyCodeLine{00150\ \ \ \ \ ANativeWindow*\ window;}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//\ Текущий\ прямоугольник\ содержимого\ окна.\ Это\ область,\ в\ которой}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{//\ должно\ помещаться\ содержимое\ окна,\ чтобы\ его\ видел\ пользователь.}}
+\DoxyCodeLine{00154\ \ \ \ \ ARect\ contentRect;}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\ Текущее\ состояние\ действия\ приложения.\ Может\ быть\ APP\_CMD\_START,}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ APP\_CMD\_RESUME,\ APP\_CMD\_PAUSE\ или\ APP\_CMD\_STOP;\ см.\ ниже.}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{int}\ activityState;}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{comment}{//\ Значение\ не\ равно\ нулю,\ когда\ NativeActivity\ приложения}}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//\ разрушается\ и\ ожидает\ завершения\ потока\ приложения.}}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{int}\ destroyRequested;}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{comment}{//\ Ниже\ показан\ "{}частная"{}\ реализация\ кода\ прилипания.}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ pthread\_mutex\_t\ mutex;}
+\DoxyCodeLine{00168\ \ \ \ \ pthread\_cond\_t\ cond;}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{int}\ msgread;}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{int}\ msgwrite;}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ pthread\_t\ thread;}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__poll__source}{android\_poll\_source}}\ cmdPollSource;}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structandroid__poll__source}{android\_poll\_source}}\ inputPollSource;}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{int}\ running;}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{int}\ stateSaved;}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{int}\ destroyed;}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{int}\ redrawNeeded;}
+\DoxyCodeLine{00182\ \ \ \ \ AInputQueue*\ pendingInputQueue;}
+\DoxyCodeLine{00183\ \ \ \ \ ANativeWindow*\ pendingWindow;}
+\DoxyCodeLine{00184\ \ \ \ \ ARect\ pendingContentRect;}
+\DoxyCodeLine{00185\ \};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00195\ \ \ \ \ LOOPER\_ID\_MAIN\ =\ 1,}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00204\ \ \ \ \ LOOPER\_ID\_INPUT\ =\ 2,}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00209\ \ \ \ \ LOOPER\_ID\_USER\ =\ 3,}
+\DoxyCodeLine{00210\ \};}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ APP\_CMD\_INPUT\_CHANGED,}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00225\ \ \ \ \ APP\_CMD\_INIT\_WINDOW,}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00233\ \ \ \ \ APP\_CMD\_TERM\_WINDOW,}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00239\ \ \ \ \ APP\_CMD\_WINDOW\_RESIZED,}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00246\ \ \ \ \ APP\_CMD\_WINDOW\_REDRAW\_NEEDED,}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00253\ \ \ \ \ APP\_CMD\_CONTENT\_RECT\_CHANGED,}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00259\ \ \ \ \ APP\_CMD\_GAINED\_FOCUS,}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00265\ \ \ \ \ APP\_CMD\_LOST\_FOCUS,}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00270\ \ \ \ \ APP\_CMD\_CONFIG\_CHANGED,}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00276\ \ \ \ \ APP\_CMD\_LOW\_MEMORY,}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00281\ \ \ \ \ APP\_CMD\_START,}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00286\ \ \ \ \ APP\_CMD\_RESUME,}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00295\ \ \ \ \ APP\_CMD\_SAVE\_STATE,}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00300\ \ \ \ \ APP\_CMD\_PAUSE,}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00305\ \ \ \ \ APP\_CMD\_STOP,}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00311\ \ \ \ \ APP\_CMD\_DESTROY,}
+\DoxyCodeLine{00312\ \};}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00318\ int8\_t\ android\_app\_read\_cmd(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structandroid__app}{android\_app}}*\ \mbox{\hyperlink{structandroid__app}{android\_app}});}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00325\ \textcolor{keywordtype}{void}\ android\_app\_pre\_exec\_cmd(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structandroid__app}{android\_app}}*\ \mbox{\hyperlink{structandroid__app}{android\_app}},\ int8\_t\ cmd);}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00332\ \textcolor{keywordtype}{void}\ android\_app\_post\_exec\_cmd(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structandroid__app}{android\_app}}*\ \mbox{\hyperlink{structandroid__app}{android\_app}},\ int8\_t\ cmd);}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00338\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ android\_main(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structandroid__app}{android\_app}}*\ app);}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00341\ \}}
+\DoxyCodeLine{00342\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_ANDROID\_NATIVE\_APP\_GLUE\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['jpegxl_5falloc_5ffunc_0',['jpegxl_alloc_func',['../memory__manager_8h.html#a4e9e1a4ce37625c71b9084ff2fc7fb73',1,'memory_manager.h']]],
+  ['jpegxl_5ffree_5ffunc_1',['jpegxl_free_func',['../memory__manager_8h.html#a0543519bf8cb4b175583e8e1156fbb43',1,'memory_manager.h']]],
+  ['json_2',['json',['../namespacenlohmann.html#a8ba8c5483f73a36e716558571ff97d57',1,'nlohmann']]],
+  ['json_5fpointer_3',['json_pointer',['../classbasic__json.html#afe66720a34c11920f359394a4430a16e',1,'basic_json::json_pointer'],['../classbasic__json.html#afe66720a34c11920f359394a4430a16e',1,'basic_json::json_pointer'],['../classnlohmann_1_1basic__json.html#aa8f1f93b32da01b42413643be32b2c27',1,'nlohmann::basic_json::json_pointer']]],
+  ['json_5fsax_5ft_4',['json_sax_t',['../classbasic__json.html#acefb05e1022be791038db86c9963cec7',1,'basic_json::json_sax_t'],['../classbasic__json.html#acefb05e1022be791038db86c9963cec7',1,'basic_json::json_sax_t'],['../classnlohmann_1_1basic__json.html#a164b1094a1a9feb54e400d8510bb0b12',1,'nlohmann::basic_json::json_sax_t']]],
+  ['jxlbasicinfo_5',['JxlBasicInfo',['../codestream__header_8h.html#a3402525e29a2afe3b026da90617117ad',1,'codestream_header.h']]],
+  ['jxlbutteraugliapi_6',['JxlButteraugliApi',['../include_2jxl_2butteraugli_8h.html#ae057c4772d6e4c7b47d20ff999c3ca5a',1,'butteraugli.h']]],
+  ['jxlbutteraugliapiptr_7',['JxlButteraugliApiPtr',['../butteraugli__cxx_8h.html#ad9e78681f54959297099de11d0c61384',1,'butteraugli_cxx.h']]],
+  ['jxlbutteraugliresult_8',['JxlButteraugliResult',['../include_2jxl_2butteraugli_8h.html#adb4cb84b6ae91300a3627a0f055fe540',1,'butteraugli.h']]],
+  ['jxlbutteraugliresultptr_9',['JxlButteraugliResultPtr',['../butteraugli__cxx_8h.html#a4938f332fc266aa9c4b666ef80d2d041',1,'butteraugli_cxx.h']]],
+  ['jxldecoder_10',['JxlDecoder',['../external_2libjxl_2lib_2include_2jxl_2decode_8h.html#af848318ca6c0665464210a851525d26c',1,'decode.h']]],
+  ['jxldecoderptr_11',['JxlDecoderPtr',['../decode__cxx_8h.html#a8093e24acf8a1475ccd00eb45b6814b9',1,'decode_cxx.h']]],
+  ['jxlencoder_12',['JxlEncoder',['../external_2libjxl_2lib_2include_2jxl_2encode_8h.html#a302523c87c2d1b54daf2b3ab29737dd0',1,'encode.h']]],
+  ['jxlencoderoptions_13',['JxlEncoderOptions',['../external_2libjxl_2lib_2include_2jxl_2encode_8h.html#a882c8043578435d47668b08801ccf3a6',1,'encode.h']]],
+  ['jxlencoderptr_14',['JxlEncoderPtr',['../encode__cxx_8h.html#a8ef3caf6f1494934db783a7d7ba08d76',1,'encode_cxx.h']]],
+  ['jxlimageoutcallback_15',['JxlImageOutCallback',['../external_2libjxl_2lib_2include_2jxl_2decode_8h.html#ac7e26c197c1b03e86307077695dfbbca',1,'decode.h']]],
+  ['jxlmemorymanager_16',['JxlMemoryManager',['../memory__manager_8h.html#a3f1468cae859dcc40ff4462363a8dc59',1,'memory_manager.h']]],
+  ['jxlparallelretcode_17',['JxlParallelRetCode',['../parallel__runner_8h.html#a4586ffba031c12ec6d839cdfbfe328bf',1,'parallel_runner.h']]],
+  ['jxlparallelrunfunction_18',['JxlParallelRunFunction',['../parallel__runner_8h.html#af8a1ac739edace87da9b401136b13ff1',1,'parallel_runner.h']]],
+  ['jxlparallelruninit_19',['JxlParallelRunInit',['../parallel__runner_8h.html#a3a4875a596fc6aad8ec54ef65d5f50c4',1,'parallel_runner.h']]],
+  ['jxlparallelrunner_20',['JxlParallelRunner',['../parallel__runner_8h.html#a334d28e8b52424a09a9ec9dadb4e054d',1,'parallel_runner.h']]],
+  ['jxlresizableparallelrunnerptr_21',['JxlResizableParallelRunnerPtr',['../resizable__parallel__runner__cxx_8h.html#a916335283d18c7a7c9385da051365cb3',1,'resizable_parallel_runner_cxx.h']]],
+  ['jxlthreadparallelrunnerptr_22',['JxlThreadParallelRunnerPtr',['../thread__parallel__runner__cxx_8h.html#a2d40443ed33ee877b2fa90c6723624f3',1,'thread_parallel_runner_cxx.h']]]
+];

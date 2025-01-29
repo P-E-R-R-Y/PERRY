@@ -1,0 +1,42 @@
+\doxysection{Fuzzer\+Random.\+h}
+\hypertarget{_fuzzer_random_8h_source}{}\label{_fuzzer_random_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerRandom.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerRandom.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerRandom.h\ -\/\ Internal\ header\ for\ the\ Fuzzer\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ fuzzer::Random}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_RANDOM\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_RANDOM\_H}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }Random\ \{}
+\DoxyCodeLine{00019\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ Random(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seed)\ :\ R(seed)\ \{\}}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{size\_t}\ Rand()\ \{\ \textcolor{keywordflow}{return}\ R();\ \}}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{size\_t}\ RandBool()\ \{\ \textcolor{keywordflow}{return}\ Rand()\ \%\ 2;\ \}}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{size\_t}\ operator()(\textcolor{keywordtype}{size\_t}\ n)\ \{\ \textcolor{keywordflow}{return}\ n\ ?\ Rand()\ \%\ n\ :\ 0;\ \}}
+\DoxyCodeLine{00024\ \ \ intptr\_t\ operator()(intptr\_t\ From,\ intptr\_t\ To)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ assert(From\ <\ To);}
+\DoxyCodeLine{00026\ \ \ \ \ intptr\_t\ RangeSize\ =\ To\ -\/\ From\ +\ 1;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{return}\ operator()(RangeSize)\ +\ From;}
+\DoxyCodeLine{00028\ \ \ \}}
+\DoxyCodeLine{00029\ \ \ std::mt19937\ \&Get\_mt19937()\ \{\ \textcolor{keywordflow}{return}\ R;\ \}}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ std::mt19937\ R;}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \}\ \ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_RANDOM\_H}}
+
+\end{DoxyCode}

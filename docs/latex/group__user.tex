@@ -1,0 +1,266 @@
+\doxysection{User}
+\hypertarget{group__user}{}\label{group__user}\index{User@{User}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_position}{Position}}
+\item 
+struct \mbox{\hyperlink{struct_velocity}{Velocity}}
+\item 
+struct \mbox{\hyperlink{structconfig}{config}}
+\begin{DoxyCompactList}\small\item\em register every components by extraction from a tuple \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classuser_1_1_movement_system}{user\+::\+Movement\+System}}
+\item 
+class \mbox{\hyperlink{classuser_1_1_math}{user\+::\+Math}}
+\item 
+class \mbox{\hyperlink{classuser_1_1_display_system}{user\+::\+Display\+System}}
+\item 
+class \mbox{\hyperlink{class_game}{Game}}
+\begin{DoxyCompactList}\small\item\em Create a \doxylink{class_game}{Game} from \doxylink{class_customisable_engine}{Customisable\+Engine$<$\+Graphic\+Shared\+Loader, Registry$>$} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__user_gae53ec5044f3b9940cfa2ab2b673c20d3}\label{group__user_gae53ec5044f3b9940cfa2ab2b673c20d3} 
+using {\bfseries config\+::components} = std\+::tuple$<$\mbox{\hyperlink{struct_position}{Position}}, \mbox{\hyperlink{struct_velocity}{Velocity}}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__user_gac7eb49e387b6c28a70b5e6732af038a8}\label{group__user_gac7eb49e387b6c28a70b5e6732af038a8} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, \mbox{\hyperlink{struct_position}{Position}} const \&c)
+\item 
+\Hypertarget{group__user_ga080847557f5a9a0dd8859585ff69551a}\label{group__user_ga080847557f5a9a0dd8859585ff69551a} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, \mbox{\hyperlink{struct_velocity}{Velocity}} const \&c)
+\item 
+\Hypertarget{group__user_ga38b0f75419490d71ae127fa1c9e06009}\label{group__user_ga38b0f75419490d71ae127fa1c9e06009} 
+{\bfseries user\+::\+Movement\+System\+::\+Movement\+System} (std\+::string name)
+\item 
+void \mbox{\hyperlink{group__user_ga771c82b6a1ba689c1b26fcd9842e32dd}{user\+::\+Movement\+System\+::lambda}} (\mbox{\hyperlink{classecs_1_1_registry}{ecs\+::\+Registry}} \&r) override
+\item 
+\Hypertarget{group__user_ga592c2f1106a1fadf416a230ad283fa3f}\label{group__user_ga592c2f1106a1fadf416a230ad283fa3f} 
+int {\bfseries user\+::\+Math\+::sqrt} (int a)
+\item 
+\Hypertarget{group__user_ga6b34ae944bca7cdf4deec6e8a0b20b79}\label{group__user_ga6b34ae944bca7cdf4deec6e8a0b20b79} 
+{\bfseries user\+::\+Display\+System\+::\+Display\+System} (\mbox{\hyperlink{classuser_1_1_math}{Math}} \&math)
+\item 
+void \mbox{\hyperlink{group__user_ga53b3bfd8a52f10ac0fbf305167d7c557}{user\+::\+Display\+System\+::lambda}} (\mbox{\hyperlink{classecs_1_1_registry}{ecs\+::\+Registry}} \&r) override
+\item 
+\mbox{\hyperlink{group__user_gab010c76af5f09d304ff21c0c3acade1f}{Game\+::\+Game}} (std\+::string graphic)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_game}{Game} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__user_ga0192ea1783bbb31a85f08afb7853e49e}{Game\+::start}} () override
+\begin{DoxyCompactList}\small\item\em start the game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__user_ga424dd77894f8d22029600cb0c49292f5}{Game\+::init\+Handler}} () override
+\begin{DoxyCompactList}\small\item\em init the game using inherited methods \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__user_gab91c97b4267eab6d3b2501ed20da716e}{Game\+::event\+Handler}} () override
+\begin{DoxyCompactList}\small\item\em handle event the game using inherited methods \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__user_ga2efddf1ff64dab689b4ec2dac3f138b3}{Game\+::update\+Handler}} () override
+\begin{DoxyCompactList}\small\item\em update event the game using inherited methods \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__user_gac0fe7d3741b704aa570fabb04b1b2e86}{Game\+::display\+Handler}} () override
+\begin{DoxyCompactList}\small\item\em render the game using inherited methods \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__user_ga6fb2e8ff41ee39919c4d1cf2ca94e386}{Game\+::destroy\+Handler}} () override
+\begin{DoxyCompactList}\small\item\em free game\textquotesingle{}s data using inherited methods \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{group__user_ga9931c8db39a71f8863a2156909ccad6c}{sort\+Shared\+Library}} (std\+::vector$<$ std\+::string $>$ files)
+\begin{DoxyCompactList}\small\item\em sort shared library \end{DoxyCompactList}\item 
+\Hypertarget{group__user_gae66f6b31b5ad750f1fe042a706a4e3d4}\label{group__user_gae66f6b31b5ad750f1fe042a706a4e3d4} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__user_gaf684446cbf0f6d53386686283da6dcc6}\label{group__user_gaf684446cbf0f6d53386686283da6dcc6} 
+float {\bfseries Position\+::x}
+\item 
+\Hypertarget{group__user_ga54a6182b5f7539295b32255808897d3f}\label{group__user_ga54a6182b5f7539295b32255808897d3f} 
+float {\bfseries Position\+::y}
+\item 
+\Hypertarget{group__user_ga187e49dd195f35d9566d87e75c2bd43d}\label{group__user_ga187e49dd195f35d9566d87e75c2bd43d} 
+float {\bfseries Velocity\+::x}
+\item 
+\Hypertarget{group__user_gadf369bfba58dde57499b342b5e7b77f8}\label{group__user_gadf369bfba58dde57499b342b5e7b77f8} 
+float {\bfseries Velocity\+::y}
+\item 
+\Hypertarget{group__user_gabc88f38b35a551be110dccd1532cec31}\label{group__user_gabc88f38b35a551be110dccd1532cec31} 
+std\+::string {\bfseries user\+::\+Movement\+System\+::\+\_\+name}
+\item 
+\Hypertarget{group__user_ga9360c0f169a1afd6800e692cdd574b0b}\label{group__user_ga9360c0f169a1afd6800e692cdd574b0b} 
+\mbox{\hyperlink{classuser_1_1_math}{Math}} \& {\bfseries user\+::\+Display\+System\+::\+\_\+math}
+\item 
+\Hypertarget{group__user_gabaf43360cd8f43cafe006b46c395ff46}\label{group__user_gabaf43360cd8f43cafe006b46c395ff46} 
+const std\+::string {\bfseries user\+::\+Display\+System\+::\+RED} = "{}\textbackslash{}033\mbox{[}31m"{}
+\item 
+\Hypertarget{group__user_gab0a63708c40d997066172679b95257cf}\label{group__user_gab0a63708c40d997066172679b95257cf} 
+const std\+::string {\bfseries user\+::\+Display\+System\+::\+RESET} = "{}\textbackslash{}033\mbox{[}0m"{}
+\item 
+\Hypertarget{group__user_ga9ce6215e6cd07451fca8075849f66d5d}\label{group__user_ga9ce6215e6cd07451fca8075849f66d5d} 
+\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+::window}
+\item 
+\Hypertarget{group__user_gaa100ad95bf111f7938d785b2fc12949c}\label{group__user_gaa100ad95bf111f7938d785b2fc12949c} 
+\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+::event}
+\item 
+\Hypertarget{group__user_ga526e168692b758383d949e9e3eb38455}\label{group__user_ga526e168692b758383d949e9e3eb38455} 
+\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+::poly\+\_\+star}
+\item 
+\Hypertarget{group__user_gaac388197933ddc4c83a8de2b25864132}\label{group__user_gaac388197933ddc4c83a8de2b25864132} 
+\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+::poly\+\_\+heart}
+\item 
+\Hypertarget{group__user_ga1d5036496839f9bffcc4487574a5eeba}\label{group__user_ga1d5036496839f9bffcc4487574a5eeba} 
+\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+::sprite}
+\item 
+\Hypertarget{group__user_ga5ad91302e0cf57a37e026e3c21afa0cf}\label{group__user_ga5ad91302e0cf57a37e026e3c21afa0cf} 
+\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+::camera}
+\item 
+\Hypertarget{group__user_ga1d65948fe0d80666c1dc97ae1e70e690}\label{group__user_ga1d65948fe0d80666c1dc97ae1e70e690} 
+\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+::model}
+\item 
+\Hypertarget{group__user_gabd6200c9e3580bcf5eb4e611b53e9dfc}\label{group__user_gabd6200c9e3580bcf5eb4e611b53e9dfc} 
+\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+::keyboard}
+\item 
+\Hypertarget{group__user_ga913ad20e9cfa6ed0e0c76583419256ac}\label{group__user_ga913ad20e9cfa6ed0e0c76583419256ac} 
+\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*} {\bfseries Game\+::mouse}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__user_ga6fb2e8ff41ee39919c4d1cf2ca94e386}\index{User@{User}!destroyHandler@{destroyHandler}}
+\index{destroyHandler@{destroyHandler}!User@{User}}
+\doxysubsubsection{\texorpdfstring{destroyHandler()}{destroyHandler()}}
+{\footnotesize\ttfamily \label{group__user_ga6fb2e8ff41ee39919c4d1cf2ca94e386} 
+void Game\+::destroy\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+free game\textquotesingle{}s data using inherited methods 
+
+
+
+Implements \mbox{\hyperlink{class_engine}{Engine}}.
+
+\Hypertarget{group__user_gac0fe7d3741b704aa570fabb04b1b2e86}\index{User@{User}!displayHandler@{displayHandler}}
+\index{displayHandler@{displayHandler}!User@{User}}
+\doxysubsubsection{\texorpdfstring{displayHandler()}{displayHandler()}}
+{\footnotesize\ttfamily \label{group__user_gac0fe7d3741b704aa570fabb04b1b2e86} 
+void Game\+::display\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+render the game using inherited methods 
+
+
+
+Implements \mbox{\hyperlink{class_engine}{Engine}}.
+
+\Hypertarget{group__user_gab91c97b4267eab6d3b2501ed20da716e}\index{User@{User}!eventHandler@{eventHandler}}
+\index{eventHandler@{eventHandler}!User@{User}}
+\doxysubsubsection{\texorpdfstring{eventHandler()}{eventHandler()}}
+{\footnotesize\ttfamily \label{group__user_gab91c97b4267eab6d3b2501ed20da716e} 
+void Game\+::event\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+handle event the game using inherited methods 
+
+
+
+Implements \mbox{\hyperlink{class_engine}{Engine}}.
+
+\Hypertarget{group__user_gab010c76af5f09d304ff21c0c3acade1f}\index{User@{User}!Game@{Game}}
+\index{Game@{Game}!User@{User}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily \label{group__user_gab010c76af5f09d304ff21c0c3acade1f} 
+Game\+::\+Game (\begin{DoxyParamCaption}\item[{std\+::string}]{graphic}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \doxylink{class_game}{Game} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graphic} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__user_ga424dd77894f8d22029600cb0c49292f5}\index{User@{User}!initHandler@{initHandler}}
+\index{initHandler@{initHandler}!User@{User}}
+\doxysubsubsection{\texorpdfstring{initHandler()}{initHandler()}}
+{\footnotesize\ttfamily \label{group__user_ga424dd77894f8d22029600cb0c49292f5} 
+void Game\+::init\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+init the game using inherited methods 
+
+
+
+Implements \mbox{\hyperlink{class_engine}{Engine}}.
+
+\Hypertarget{group__user_ga53b3bfd8a52f10ac0fbf305167d7c557}\index{User@{User}!lambda@{lambda}}
+\index{lambda@{lambda}!User@{User}}
+\doxysubsubsection{\texorpdfstring{lambda()}{lambda()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group__user_ga53b3bfd8a52f10ac0fbf305167d7c557} 
+void user\+::\+Display\+System\+::lambda (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1_registry}{ecs\+::\+Registry}} \&}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classecs_1_1_system}{ecs\+::\+System}}.
+
+\Hypertarget{group__user_ga771c82b6a1ba689c1b26fcd9842e32dd}\index{User@{User}!lambda@{lambda}}
+\index{lambda@{lambda}!User@{User}}
+\doxysubsubsection{\texorpdfstring{lambda()}{lambda()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group__user_ga771c82b6a1ba689c1b26fcd9842e32dd} 
+void user\+::\+Movement\+System\+::lambda (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classecs_1_1_registry}{ecs\+::\+Registry}} \&}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classecs_1_1_system}{ecs\+::\+System}}.
+
+\Hypertarget{group__user_ga9931c8db39a71f8863a2156909ccad6c}\index{User@{User}!sortSharedLibrary@{sortSharedLibrary}}
+\index{sortSharedLibrary@{sortSharedLibrary}!User@{User}}
+\doxysubsubsection{\texorpdfstring{sortSharedLibrary()}{sortSharedLibrary()}}
+{\footnotesize\ttfamily \label{group__user_ga9931c8db39a71f8863a2156909ccad6c} 
+std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ sort\+Shared\+Library (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{files}{}\end{DoxyParamCaption})}
+
+
+
+sort shared library 
+
+
+\begin{DoxyParams}{Parameters}
+{\em files} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::map$<$std\+::string, std\+::vector$<$std\+::string$>$$>$ 
+\end{DoxyReturn}
+\Hypertarget{group__user_ga0192ea1783bbb31a85f08afb7853e49e}\index{User@{User}!start@{start}}
+\index{start@{start}!User@{User}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \label{group__user_ga0192ea1783bbb31a85f08afb7853e49e} 
+int Game\+::start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+start the game 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_core}{ICore}}.
+
+\Hypertarget{group__user_ga2efddf1ff64dab689b4ec2dac3f138b3}\index{User@{User}!updateHandler@{updateHandler}}
+\index{updateHandler@{updateHandler}!User@{User}}
+\doxysubsubsection{\texorpdfstring{updateHandler()}{updateHandler()}}
+{\footnotesize\ttfamily \label{group__user_ga2efddf1ff64dab689b4ec2dac3f138b3} 
+void Game\+::update\+Handler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+update event the game using inherited methods 
+
+
+
+Implements \mbox{\hyperlink{class_engine}{Engine}}.
+

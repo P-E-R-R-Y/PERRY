@@ -1,0 +1,189 @@
+\doxysection{dirent.\+h}
+\hypertarget{raylib-src_2src_2external_2dirent_8h_source}{}\label{raylib-src_2src_2external_2dirent_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/src/external/dirent.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/src/external/dirent.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ \ Declaration\ of\ POSIX\ directory\ browsing\ functions\ and\ types\ for\ Win32.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ \ \ Author:\ \ Kevlin\ Henney\ (kevlin@acm.org,\ kevlin@curbralan.com)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ \ \ History:\ Created\ March\ 1997.\ Updated\ June\ 2003.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ Reviewed\ by\ Ramon\ Santamaria\ for\ raylib\ on\ January\ 2020.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ \ Copyright\ Kevlin\ Henney,\ 1997,\ 2003.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ Permission\ to\ use,\ copy,\ modify,\ and\ distribute\ this\ software\ and\ its}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ \ documentation\ for\ any\ purpose\ is\ hereby\ granted\ without\ fee,\ provided}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ \ that\ this\ copyright\ and\ permissions\ notice\ appear\ in\ all\ copies\ and}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ derivatives.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ This\ software\ is\ supplied\ "{}as\ is"{}\ without\ express\ or\ implied\ warranty.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ But\ that\ said,\ if\ there\ are\ any\ problems\ please\ get\ in\ touch.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{}}
+\DoxyCodeLine{00020\ \textcolor{comment}{****************************************************************************/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ DIRENT\_H}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ DIRENT\_H}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Allow\ custom\ memory\ allocators}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#ifndef\ DIRENT\_MALLOC}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \#define\ DIRENT\_MALLOC(sz)\ \ \ malloc(sz)}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifndef\ DIRENT\_FREE}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \#define\ DIRENT\_FREE(p)\ \ \ \ \ \ free(p)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Types\ and\ Structures\ Definition}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Fordward\ declaration\ of\ DIR,\ implementation\ below}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_d_i_r}{DIR}}\ \mbox{\hyperlink{struct_d_i_r}{DIR}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdirent}{dirent}}\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{char}\ *d\_name;}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ Functions\ Declaration}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00051\ \mbox{\hyperlink{struct_d_i_r}{DIR}}\ *opendir(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{int}\ closedir(\mbox{\hyperlink{struct_d_i_r}{DIR}}\ *dir);}
+\DoxyCodeLine{00053\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdirent}{dirent}}\ *readdir(\mbox{\hyperlink{struct_d_i_r}{DIR}}\ *dir);}
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ rewinddir(\mbox{\hyperlink{struct_d_i_r}{DIR}}\ *dir);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00057\ \}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ }\textcolor{comment}{//\ DIRENT\_H}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{/****************************************************************************}}
+\DoxyCodeLine{00063\ \textcolor{comment}{}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \ \ Implementation\ of\ POSIX\ directory\ browsing\ functions\ and\ types\ for\ Win32.}}
+\DoxyCodeLine{00065\ \textcolor{comment}{}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \ \ Author:\ \ Kevlin\ Henney\ (kevlin@acm.org,\ kevlin@curbralan.com)}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ \ \ History:\ Created\ March\ 1997.\ Updated\ June\ 2003.}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ Reviewed\ by\ Ramon\ Santamaria\ for\ raylib\ on\ January\ 2020.}}
+\DoxyCodeLine{00069\ \textcolor{comment}{}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ \ Copyright\ Kevlin\ Henney,\ 1997,\ 2003.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00071\ \textcolor{comment}{}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ \ Permission\ to\ use,\ copy,\ modify,\ and\ distribute\ this\ software\ and\ its}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ documentation\ for\ any\ purpose\ is\ hereby\ granted\ without\ fee,\ provided}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ that\ this\ copyright\ and\ permissions\ notice\ appear\ in\ all\ copies\ and}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ \ derivatives.}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ \ This\ software\ is\ supplied\ "{}as\ is"{}\ without\ express\ or\ implied\ warranty.}}
+\DoxyCodeLine{00078\ \textcolor{comment}{}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ \ But\ that\ said,\ if\ there\ are\ any\ problems\ please\ get\ in\ touch.}}
+\DoxyCodeLine{00080\ \textcolor{comment}{}}
+\DoxyCodeLine{00081\ \textcolor{comment}{****************************************************************************/}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#include\ <io.h>}\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \_findfirst\ and\ \_findnext\ set\ errno\ iff\ they\ return\ -\/1}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#include\ <errno.h>}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ Types\ and\ Structures\ Definition}}
+\DoxyCodeLine{00090\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00091\ \textcolor{keyword}{typedef}\ ptrdiff\_t\ handle\_type;\ \ \textcolor{comment}{//\ C99's\ intptr\_t\ not\ sufficiently\ portable}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_d_i_r}{DIR}}\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ handle\_type\ handle;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/1\ for\ failed\ rewind}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{struct\ }\_finddata\_t\ info;}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdirent}{dirent}}\ result;\ \ \ \ \ \ \ \textcolor{comment}{//\ d\_name\ null\ iff\ first\ time}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{char}\ *name;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ null-\/terminated\ char\ string}}
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \mbox{\hyperlink{struct_d_i_r}{DIR}}\ *opendir(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name)}
+\DoxyCodeLine{00101\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{struct_d_i_r}{DIR}}\ *dir\ =\ 0;}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (name\ \&\&\ name[0])}
+\DoxyCodeLine{00105\ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ base\_length\ =\ strlen(name);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Search\ pattern\ must\ end\ with\ suitable\ wildcard}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *all\ =\ strchr(\textcolor{stringliteral}{"{}/\(\backslash\)\(\backslash\)"{}},\ name[base\_length\ -\/\ 1])\ ?\ \textcolor{stringliteral}{"{}*"{}}\ :\ \textcolor{stringliteral}{"{}/*"{}};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((dir\ =\ (\mbox{\hyperlink{struct_d_i_r}{DIR}}\ *)DIRENT\_MALLOC(\textcolor{keyword}{sizeof}\ *dir))\ !=\ 0\ \&\&}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ (dir-\/>name\ =\ (\textcolor{keywordtype}{char}\ *)DIRENT\_MALLOC(base\_length\ +\ strlen(all)\ +\ 1))\ !=\ 0)}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ strcat(strcpy(dir-\/>name,\ name),\ all);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((dir-\/>handle\ =\ (handle\_type)\ \_findfirst(dir-\/>name,\ \&dir-\/>info))\ !=\ -\/1)}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dir-\/>result.d\_name\ =\ 0;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \textcolor{comment}{//\ rollback}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DIRENT\_FREE(dir-\/>name);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DIRENT\_FREE(dir);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dir\ =\ 0;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \textcolor{comment}{//\ rollback}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ DIRENT\_FREE(dir);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ dir\ \ \ =\ 0;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ errno\ =\ ENOMEM;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{else}\ errno\ =\ EINVAL;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{return}\ dir;}
+\DoxyCodeLine{00137\ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{keywordtype}{int}\ closedir(\mbox{\hyperlink{struct_d_i_r}{DIR}}\ *dir)}
+\DoxyCodeLine{00140\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ -\/1;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{if}\ (dir)}
+\DoxyCodeLine{00144\ \ \ \ \ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dir-\/>handle\ !=\ -\/1)\ result\ =\ \_findclose(dir-\/>handle);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ DIRENT\_FREE(dir-\/>name);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ DIRENT\_FREE(dir);}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ NOTE:\ All\ errors\ ampped\ to\ EBADF}}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ ==\ -\/1)\ errno\ =\ EBADF;}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00155\ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdirent}{dirent}}\ *readdir(\mbox{\hyperlink{struct_d_i_r}{DIR}}\ *dir)}
+\DoxyCodeLine{00158\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdirent}{dirent}}\ *result\ =\ 0;}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ \&\&\ dir-\/>handle\ !=\ -\/1)}
+\DoxyCodeLine{00162\ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dir-\/>result.d\_name\ ||\ \_findnext(dir-\/>handle,\ \&dir-\/>info)\ !=\ -\/1)}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \&dir-\/>result;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>d\_name\ =\ dir-\/>info.name;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordflow}{else}\ errno\ =\ EBADF;}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00172\ \}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{keywordtype}{void}\ rewinddir(\mbox{\hyperlink{struct_d_i_r}{DIR}}\ *dir)}
+\DoxyCodeLine{00175\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ \&\&\ dir-\/>handle\ !=\ -\/1)}
+\DoxyCodeLine{00177\ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \_findclose(dir-\/>handle);}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ dir-\/>handle\ =\ (handle\_type)\ \_findfirst(dir-\/>name,\ \&dir-\/>info);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ dir-\/>result.d\_name\ =\ 0;}
+\DoxyCodeLine{00181\ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordflow}{else}\ errno\ =\ EBADF;}
+\DoxyCodeLine{00183\ \}}
+
+\end{DoxyCode}

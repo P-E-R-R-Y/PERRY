@@ -25,26 +25,28 @@
 var NAVTREE =
 [
   [ "PERRY", "index.html", [
-    [ "P.E.R.R.Y/PERRY", "index.html", "index" ],
-    [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+    [ "P.E.R.R.Y/PERRY", "md__readme.html", [
+      [ "Description", "md__readme.html#autotoc_md1", null ],
+      [ "History", "md__readme.html#autotoc_md2", null ],
+      [ "Summary", "md__readme.html#autotoc_md3", null ],
+      [ "Action Plan", "md__readme.html#autotoc_md4", null ],
+      [ "Documentation", "md__readme.html#autotoc_md5", [
+        [ "P-E-R-R-Y/Perry.html", "md__readme.html#autotoc_md6", null ]
+      ] ],
+      [ "Developer", "md__readme.html#autotoc_md7", null ],
+      [ "Setup", "md__readme.html#autotoc_md8", null ],
+      [ "Credits (Thanks for feeding my brains with features)", "md__readme.html#autotoc_md9", null ]
     ] ],
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ]
-    ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+    [ "Project Topics", "_topics.html", [
+      [ "Project Overview", "_topics.html#Overview", null ],
+      [ "Getting Started", "_topics.html#GettingStarted", null ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_component_8hpp_source.html",
-"classecs_1_1_sparse_array.html",
-"classgraphic_1_1_i_keyboard.html#a8c628bac8cbea382161df60d48db1ca2ad2a9a27b963a478eeca205f32553f2a0",
-"classraylib_1_1_ray_window.html#adc25e46a176f1eda2c5220cc6d40f754"
+"_topics.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

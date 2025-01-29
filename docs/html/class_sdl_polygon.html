@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -91,9 +92,12 @@ $(function(){ initResizable(false); });
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="class_sdl_polygon-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">SdlPolygon Class Reference</div></div>
+  <div class="headertitle"><div class="title">SdlPolygon Class Reference<div class="ingroups"><a class="el" href="group__graphic.html">Graphic</a> &raquo; <a class="el" href="group___s_d_l.html">SDL</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>handle a polygon  
+ <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_sdl_polygon_8hpp_source.html">SdlPolygon.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -108,250 +112,61 @@ Inheritance diagram for SdlPolygon:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae6b989fd94e3a5d42e6c5f2e3bede0e6" id="r_ae6b989fd94e3a5d42e6c5f2e3bede0e6"><td class="memItemLeft" align="right" valign="top"><a id="ae6b989fd94e3a5d42e6c5f2e3bede0e6" name="ae6b989fd94e3a5d42e6c5f2e3bede0e6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SdlPolygon</b> (std::vector&lt; <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> &gt; points)</td></tr>
-<tr class="separator:ae6b989fd94e3a5d42e6c5f2e3bede0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4789b439c0a4796b081731b901f65435" id="r_a4789b439c0a4796b081731b901f65435"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4789b439c0a4796b081731b901f65435">isReady</a> () const override</td></tr>
-<tr class="memdesc:a4789b439c0a4796b081731b901f65435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="struct_position.html">Position</a> object.  <br /></td></tr>
-<tr class="separator:a4789b439c0a4796b081731b901f65435"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c77e095888b6d9f9a295c6042138fc6" id="r_a6c77e095888b6d9f9a295c6042138fc6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c77e095888b6d9f9a295c6042138fc6">getPosition</a> () const override</td></tr>
-<tr class="memdesc:a6c77e095888b6d9f9a295c6042138fc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="struct_position.html">Position</a> object.  <br /></td></tr>
-<tr class="separator:a6c77e095888b6d9f9a295c6042138fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a40b6fc99987136011e061ff1a02180" id="r_a6a40b6fc99987136011e061ff1a02180"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a40b6fc99987136011e061ff1a02180">setPosition</a> (<a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> position) override</td></tr>
-<tr class="memdesc:a6a40b6fc99987136011e061ff1a02180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <a class="el" href="struct_position.html">Position</a> object.  <br /></td></tr>
-<tr class="separator:a6a40b6fc99987136011e061ff1a02180"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2318c7c47b8ffa339805c41333ee6c8" id="r_aa2318c7c47b8ffa339805c41333ee6c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtype_1_1____color__s.html">__color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2318c7c47b8ffa339805c41333ee6c8">getColor</a> () const override</td></tr>
-<tr class="memdesc:aa2318c7c47b8ffa339805c41333ee6c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Color object.  <br /></td></tr>
-<tr class="separator:aa2318c7c47b8ffa339805c41333ee6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a561712ec4a1d70f4c9ead43d23d2b7be" id="r_a561712ec4a1d70f4c9ead43d23d2b7be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a561712ec4a1d70f4c9ead43d23d2b7be">setColor</a> (<a class="el" href="structtype_1_1____color__s.html">__color_t</a> color) override</td></tr>
-<tr class="memdesc:a561712ec4a1d70f4c9ead43d23d2b7be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Color object.  <br /></td></tr>
-<tr class="separator:a561712ec4a1d70f4c9ead43d23d2b7be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7776840ca7c8331e39023b6b02e9dac6" id="r_a7776840ca7c8331e39023b6b02e9dac6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7776840ca7c8331e39023b6b02e9dac6">getPoints</a> () const override</td></tr>
-<tr class="memdesc:a7776840ca7c8331e39023b6b02e9dac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Points object.  <br /></td></tr>
-<tr class="separator:a7776840ca7c8331e39023b6b02e9dac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae6b989fd94e3a5d42e6c5f2e3bede0e6" id="r_gae6b989fd94e3a5d42e6c5f2e3bede0e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#gae6b989fd94e3a5d42e6c5f2e3bede0e6">SdlPolygon</a> (std::vector&lt; <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> &gt; points)</td></tr>
+<tr class="memdesc:gae6b989fd94e3a5d42e6c5f2e3bede0e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Sdl Polygon object.  <br /></td></tr>
+<tr class="separator:gae6b989fd94e3a5d42e6c5f2e3bede0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga59dc5cb45039a12fa11d978696392988" id="r_ga59dc5cb45039a12fa11d978696392988"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>~SdlPolygon</b> ()</td></tr>
+<tr class="memdesc:ga59dc5cb45039a12fa11d978696392988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Sdl Polygon object. <br /></td></tr>
+<tr class="separator:ga59dc5cb45039a12fa11d978696392988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4789b439c0a4796b081731b901f65435" id="r_ga4789b439c0a4796b081731b901f65435"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga4789b439c0a4796b081731b901f65435">isReady</a> () const override</td></tr>
+<tr class="memdesc:ga4789b439c0a4796b081731b901f65435"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the polygon is ready  <br /></td></tr>
+<tr class="separator:ga4789b439c0a4796b081731b901f65435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6c77e095888b6d9f9a295c6042138fc6" id="r_ga6c77e095888b6d9f9a295c6042138fc6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga6c77e095888b6d9f9a295c6042138fc6">getPosition</a> () const override</td></tr>
+<tr class="memdesc:ga6c77e095888b6d9f9a295c6042138fc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="struct_position.html">Position</a> object.  <br /></td></tr>
+<tr class="separator:ga6c77e095888b6d9f9a295c6042138fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a40b6fc99987136011e061ff1a02180" id="r_ga6a40b6fc99987136011e061ff1a02180"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga6a40b6fc99987136011e061ff1a02180">setPosition</a> (<a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> position) override</td></tr>
+<tr class="memdesc:ga6a40b6fc99987136011e061ff1a02180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <a class="el" href="struct_position.html">Position</a> object.  <br /></td></tr>
+<tr class="separator:ga6a40b6fc99987136011e061ff1a02180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa2318c7c47b8ffa339805c41333ee6c8" id="r_gaa2318c7c47b8ffa339805c41333ee6c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtype_1_1____color__s.html">__color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#gaa2318c7c47b8ffa339805c41333ee6c8">getColor</a> () const override</td></tr>
+<tr class="memdesc:gaa2318c7c47b8ffa339805c41333ee6c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Color object.  <br /></td></tr>
+<tr class="separator:gaa2318c7c47b8ffa339805c41333ee6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga561712ec4a1d70f4c9ead43d23d2b7be" id="r_ga561712ec4a1d70f4c9ead43d23d2b7be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga561712ec4a1d70f4c9ead43d23d2b7be">setColor</a> (<a class="el" href="structtype_1_1____color__s.html">__color_t</a> color) override</td></tr>
+<tr class="memdesc:ga561712ec4a1d70f4c9ead43d23d2b7be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Color object.  <br /></td></tr>
+<tr class="separator:ga561712ec4a1d70f4c9ead43d23d2b7be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7776840ca7c8331e39023b6b02e9dac6" id="r_ga7776840ca7c8331e39023b6b02e9dac6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_d_l.html#ga7776840ca7c8331e39023b6b02e9dac6">getPoints</a> () const override</td></tr>
+<tr class="memdesc:ga7776840ca7c8331e39023b6b02e9dac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Points object.  <br /></td></tr>
+<tr class="separator:ga7776840ca7c8331e39023b6b02e9dac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgraphic_1_1_i_polygon"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classgraphic_1_1_i_polygon')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a></td></tr>
-<tr class="memitem:ae0d966a02dd57510caf2f7f48b167303 inherit pub_methods_classgraphic_1_1_i_polygon" id="r_ae0d966a02dd57510caf2f7f48b167303"><td class="memItemLeft" align="right" valign="top">
+<tr class="memitem:gae0d966a02dd57510caf2f7f48b167303 inherit pub_methods_classgraphic_1_1_i_polygon" id="r_gae0d966a02dd57510caf2f7f48b167303"><td class="memItemLeft" align="right" valign="top">
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IPolygon</b> ()=default</td></tr>
-<tr class="memdesc:ae0d966a02dd57510caf2f7f48b167303 inherit pub_methods_classgraphic_1_1_i_polygon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_polygon.html" title="Polygon interface.">IPolygon</a> object. <br /></td></tr>
-<tr class="separator:ae0d966a02dd57510caf2f7f48b167303 inherit pub_methods_classgraphic_1_1_i_polygon"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:gae0d966a02dd57510caf2f7f48b167303 inherit pub_methods_classgraphic_1_1_i_polygon"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_polygon.html" title="Polygon interface.">IPolygon</a> object. <br /></td></tr>
+<tr class="separator:gae0d966a02dd57510caf2f7f48b167303 inherit pub_methods_classgraphic_1_1_i_polygon"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a2357e99c3efdcad7dbe62b00f732fa60" id="r_a2357e99c3efdcad7dbe62b00f732fa60"><td class="memItemLeft" align="right" valign="top"><a id="a2357e99c3efdcad7dbe62b00f732fa60" name="a2357e99c3efdcad7dbe62b00f732fa60"></a>
+<tr class="memitem:ga2357e99c3efdcad7dbe62b00f732fa60" id="r_ga2357e99c3efdcad7dbe62b00f732fa60"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="structtype_1_1____color__s.html">__color_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_color</b></td></tr>
-<tr class="separator:a2357e99c3efdcad7dbe62b00f732fa60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbf15485c6a2e0c5099b29204cc1a2d6" id="r_adbf15485c6a2e0c5099b29204cc1a2d6"><td class="memItemLeft" align="right" valign="top"><a id="adbf15485c6a2e0c5099b29204cc1a2d6" name="adbf15485c6a2e0c5099b29204cc1a2d6"></a>
+<tr class="separator:ga2357e99c3efdcad7dbe62b00f732fa60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadbf15485c6a2e0c5099b29204cc1a2d6" id="r_gadbf15485c6a2e0c5099b29204cc1a2d6"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_position</b></td></tr>
-<tr class="separator:adbf15485c6a2e0c5099b29204cc1a2d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9744dea7942a180b3676a458784288c4" id="r_a9744dea7942a180b3676a458784288c4"><td class="memItemLeft" align="right" valign="top"><a id="a9744dea7942a180b3676a458784288c4" name="a9744dea7942a180b3676a458784288c4"></a>
+<tr class="separator:gadbf15485c6a2e0c5099b29204cc1a2d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9744dea7942a180b3676a458784288c4" id="r_ga9744dea7942a180b3676a458784288c4"><td class="memItemLeft" align="right" valign="top">
 std::vector&lt; SDL_Vertex &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_points</b></td></tr>
-<tr class="separator:a9744dea7942a180b3676a458784288c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a106f845b7a9b2964a26b68901e1242dd" id="r_a106f845b7a9b2964a26b68901e1242dd"><td class="memItemLeft" align="right" valign="top"><a id="a106f845b7a9b2964a26b68901e1242dd" name="a106f845b7a9b2964a26b68901e1242dd"></a>
-std::vector&lt; <a class="el" href="namespacegraphic.html#a054df66adc001dc941f2a6de03dc6b4f">graphic::triangle_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_triangles</b></td></tr>
-<tr class="separator:a106f845b7a9b2964a26b68901e1242dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga9744dea7942a180b3676a458784288c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga106f845b7a9b2964a26b68901e1242dd" id="r_ga106f845b7a9b2964a26b68901e1242dd"><td class="memItemLeft" align="right" valign="top">
+std::vector&lt; <a class="el" href="group__graphic.html#ga054df66adc001dc941f2a6de03dc6b4f">graphic::triangle_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_triangles</b></td></tr>
+<tr class="separator:ga106f845b7a9b2964a26b68901e1242dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a7747034efc5e3e0e55a5defe817fc3e3" id="r_a7747034efc5e3e0e55a5defe817fc3e3"><td class="memItemLeft" align="right" valign="top"><a id="a7747034efc5e3e0e55a5defe817fc3e3" name="a7747034efc5e3e0e55a5defe817fc3e3"></a>
+<tr class="memitem:ga7747034efc5e3e0e55a5defe817fc3e3" id="r_ga7747034efc5e3e0e55a5defe817fc3e3"><td class="memItemLeft" align="right" valign="top">
 class&#160;</td><td class="memItemRight" valign="bottom"><b>SdlWindow</b></td></tr>
-<tr class="separator:a7747034efc5e3e0e55a5defe817fc3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga7747034efc5e3e0e55a5defe817fc3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File: <a class="el" href="_sdl_polygon_8hpp_source.html">SdlPolygon.hpp</a> Created Date: Fr Mar 2023 Project: PERRY Author: Perry Chouteau</p>
-<p>Last Modified: Fri Mar 10 2023 Modified By: Perry Chouteau</p>
-<p>Copyright (c) 2023-2033 Perry Chouteau </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa2318c7c47b8ffa339805c41333ee6c8" name="aa2318c7c47b8ffa339805c41333ee6c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2318c7c47b8ffa339805c41333ee6c8">&#9670;&#160;</a></span>getColor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structtype_1_1____color__s.html">__color_t</a> SdlPolygon::getColor </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the Color object. </p>
-<dl class="section return"><dt>Returns</dt><dd>__color_t </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_polygon.html#a58c4bd60aee98dedd69415f941372259">graphic::IPolygon</a>.</p>
-
-</div>
-</div>
-<a id="a7776840ca7c8331e39023b6b02e9dac6" name="a7776840ca7c8331e39023b6b02e9dac6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7776840ca7c8331e39023b6b02e9dac6">&#9670;&#160;</a></span>getPoints()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> &gt; SdlPolygon::getPoints </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the Points object. </p>
-<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;__v2f_t&gt; </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_polygon.html#ad23528f502d73a90ddaa56726ff50e57">graphic::IPolygon</a>.</p>
-
-</div>
-</div>
-<a id="a6c77e095888b6d9f9a295c6042138fc6" name="a6c77e095888b6d9f9a295c6042138fc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c77e095888b6d9f9a295c6042138fc6">&#9670;&#160;</a></span>getPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> SdlPolygon::getPosition </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the <a class="el" href="struct_position.html">Position</a> object. </p>
-<dl class="section return"><dt>Returns</dt><dd>__v2f_t </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_polygon.html#ab3fb8842141a3543208c6f71800abd4f">graphic::IPolygon</a>.</p>
-
-</div>
-</div>
-<a id="a4789b439c0a4796b081731b901f65435" name="a4789b439c0a4796b081731b901f65435"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4789b439c0a4796b081731b901f65435">&#9670;&#160;</a></span>isReady()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool SdlPolygon::isReady </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the <a class="el" href="struct_position.html">Position</a> object. </p>
-<dl class="section return"><dt>Returns</dt><dd>__v2f_t </dd></dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_polygon.html#a0467688a616b36424ddbc8adbeba0544">graphic::IPolygon</a>.</p>
-
-</div>
-</div>
-<a id="a561712ec4a1d70f4c9ead43d23d2b7be" name="a561712ec4a1d70f4c9ead43d23d2b7be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a561712ec4a1d70f4c9ead43d23d2b7be">&#9670;&#160;</a></span>setColor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlPolygon::setColor </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structtype_1_1____color__s.html">__color_t</a></td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the Color object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">position</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_polygon.html#a0a0a5e87e3d64afc16c30d26c13cf33b">graphic::IPolygon</a>.</p>
-
-</div>
-</div>
-<a id="a6a40b6fc99987136011e061ff1a02180" name="a6a40b6fc99987136011e061ff1a02180"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a40b6fc99987136011e061ff1a02180">&#9670;&#160;</a></span>setPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SdlPolygon::setPosition </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a></td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the <a class="el" href="struct_position.html">Position</a> object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">position</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classgraphic_1_1_i_polygon.html#a230ab253cc42e8c2028106b0af038fdd">graphic::IPolygon</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p>handle a polygon </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sdl/graphic/<a class="el" href="_sdl_polygon_8hpp_source.html">SdlPolygon.hpp</a></li>
 </ul>
 </div><!-- contents -->

@@ -2,6 +2,11 @@
 \hypertarget{class_sfml_model}{}\label{class_sfml_model}\index{SfmlModel@{SfmlModel}}
 
 
+Sfml Model class.  
+
+
+
+
 {\ttfamily \#include $<$Sfml\+Model.\+hpp$>$}
 
 Inheritance diagram for Sfml\+Model\+:\begin{figure}[H]
@@ -13,14 +18,16 @@ Inheritance diagram for Sfml\+Model\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{class_sfml_model_aac71166b0cac6cc93c7139221036b424}{get\+Position}} () const override
-\item 
-\Hypertarget{class_sfml_model_a7e6e525af91ab137b7de22598e6c6bed}\label{class_sfml_model_a7e6e525af91ab137b7de22598e6c6bed} 
-void {\bfseries set\+Position} (\+\_\+\+\_\+v3f\+\_\+t pos) override
-\item 
-\Hypertarget{class_sfml_model_ac7ac6dae07fdb82af505899fb8857793}\label{class_sfml_model_ac7ac6dae07fdb82af505899fb8857793} 
-std\+::vector$<$ sf\+::\+Vector3f $>$ {\bfseries get\+Vertices} ()
-\end{DoxyCompactItemize}
+{\bfseries Sfml\+Model} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Sfml Model object. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Sfml\+Model} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Sfml Model object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_gaac71166b0cac6cc93c7139221036b424}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga7e6e525af91ab137b7de22598e6c6bed}{set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t pos) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+std\+::vector$<$ sf\+::\+Vector3f $>$ \mbox{\hyperlink{group___s_f_m_l_gac7ac6dae07fdb82af505899fb8857793}{get\+Vertices}} ()
+\begin{DoxyCompactList}\small\item\em Get the Vertices object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,52 +36,29 @@ virtual void {\bfseries set\+Position} (\mbox{\hyperlink{structtype_1_1____v3f__
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sfml_model_a337fb163813cf7ffa67f2257244dba42}\label{class_sfml_model_a337fb163813cf7ffa67f2257244dba42} 
-void {\bfseries rotate} (sf\+::\+Vector3f angle, sf\+::\+Vector3f center=\{0, 0, 0\})
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{group___s_f_m_l_ga337fb163813cf7ffa67f2257244dba42}{rotate}} (sf\+::\+Vector3f angle, sf\+::\+Vector3f center=\{0, 0, 0\})
+\begin{DoxyCompactList}\small\item\em rotate will rotate the model \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sfml_model_a5a7f5b2b24b759efb0e5d04350de2245}\label{class_sfml_model_a5a7f5b2b24b759efb0e5d04350de2245} 
 sf\+::\+Vector3f {\bfseries position}
 \item 
-\Hypertarget{class_sfml_model_ae9a31f9d54c233db07649ad49da59984}\label{class_sfml_model_ae9a31f9d54c233db07649ad49da59984} 
 \mbox{\hyperlink{class_quaternion}{Quaternion}} {\bfseries rotation}
 \item 
-\Hypertarget{class_sfml_model_aabd52e67ea94b9843982d1035d330d68}\label{class_sfml_model_aabd52e67ea94b9843982d1035d330d68} 
 std\+::vector$<$ sf\+::\+Vector3f $>$ {\bfseries vertices}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sfml_model_ae0b58c2104bb6fe805f93db75b13c82c}\label{class_sfml_model_ae0b58c2104bb6fe805f93db75b13c82c} 
 class {\bfseries Sfml\+Window}
 \item 
-\Hypertarget{class_sfml_model_af1654e188010637d1f860604b0b05bdc}\label{class_sfml_model_af1654e188010637d1f860604b0b05bdc} 
 class {\bfseries Sfml\+Camera}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-File\+: Ray\+Model3.\+hpp Created Date\+: Fr Mar 2023 Project\+: PERRY Author\+: Perry Chouteau
-
-Last Modified\+: Fri Mar 10 2023 Modified By\+: Perry Chouteau
-
-Copyright (c) 2023-\/2033 Perry Chouteau 
-
-\doxysubsection{Member Function Documentation}
-\Hypertarget{class_sfml_model_aac71166b0cac6cc93c7139221036b424}\index{SfmlModel@{SfmlModel}!getPosition@{getPosition}}
-\index{getPosition@{getPosition}!SfmlModel@{SfmlModel}}
-\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
-{\footnotesize\ttfamily \label{class_sfml_model_aac71166b0cac6cc93c7139221036b424} 
-\+\_\+\+\_\+v3f\+\_\+t Sfml\+Model\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}}.
-
-
+Sfml Model class. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sfml/graphic/Sfml\+Model.\+hpp\end{DoxyCompactItemize}
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sfml/graphic/\mbox{\hyperlink{_sfml_model_8hpp}{Sfml\+Model.\+hpp}}\end{DoxyCompactItemize}

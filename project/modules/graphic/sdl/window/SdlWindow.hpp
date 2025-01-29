@@ -1,16 +1,13 @@
 /**
- *
- * File: RayWindow.hpp (header.v2)
- * Created Date: Tue 14/03/2023
- * Project: PERRY
- * Author: Perry Chouteau
- *
- * Last Modified: Sat 18/03/2023
- * Modified By: Perry Chouteau
- *
- * Copyright (c) 2023-2033 Perry Chouteau
- *
- **/
+ * @file SdlWindow.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup SDL
+ * @{
+ */
 
 #ifndef SDLWINDOW_HPP_
 #define SDLWINDOW_HPP_
@@ -30,9 +27,20 @@
 
 #include <iostream>
 
+/**
+ * @brief Sdl Window class 
+ */
 class SdlWindow : public graphic::IWindow {
 
     public:
+
+        /**
+         * @brief Construct a new Sdl Window object
+         * 
+         * @param screenWidth 
+         * @param screenHeight 
+         * @param title 
+         */
         SdlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title): is_open(false), _frameLimit(0), _start(0), _end(60), _delta(60) {
             std::cout << "SdlWindow::SdlWindow implemented" << std::endl;
             if((SDL_Init(SDL_INIT_VIDEO) < 0)) {
@@ -57,44 +65,84 @@ class SdlWindow : public graphic::IWindow {
             is_open = true;
         }
 
+        /**
+         * @brief Destroy the Sdl Window object
+         */
         ~SdlWindow() {
             std::cout << "SdlWindow::~SdlWindow implemented" << std::endl;
             SDL_DestroyRenderer(_renderer);
             SDL_DestroyWindow(_window);
         }
-        //event
+        
+        /**
+         * @brief link an event to the window
+         * 
+         * @param event 
+         */
         void linkEvent(graphic::IEvent *event) override {
             _event = static_cast<SdlEvent *>(event);
         };
 
-        //GLOBAL
+        /**
+         * @brief notice if the window is open
+         * 
+         * @return true 
+         * @return false 
+         */
         bool isOpen() override {
             return is_open;
         };
 
+        /**
+         * @brief close the window
+         */
         void close() override {
             SDL_Quit();
         };
 
-        //Time
-
+        /**
+         * @brief Set the Frame Limit object
+         * 
+         * @param limit 
+         */
         void setFrameLimit(__int32_t limit) override {
             _frameLimit = limit;
         };
 
+        /**
+         * @brief Get the Delta object
+         * 
+         * @return __int32_t 
+         */
         __int32_t getDelta() override {
             return _delta;
         };
 
-        //DRAW
+        /**
+         * @brief begin the 2D drawing
+         */
         void beginDraw() override {
             std::cout << "SdlWindow::beginDraw not implemented" << std::endl;
             SDL_RenderClear(_renderer);
         };
 
+        /**
+         * @brief draw a polygon
+         * 
+         * @param polygon
+         */
         void drawPoly(graphic::IPolygon *polygon) override;
+
+        /**
+         * @brief draw a sprite
+         * 
+         * @param sprite 
+         */
         void drawSprite(graphic::ISprite *sprite) override;
 
+        /**
+         * @brief end the 2D drawing
+         */
         void endDraw() override {
             SDL_RenderPresent(_renderer);
 
@@ -107,21 +155,45 @@ class SdlWindow : public graphic::IWindow {
             _start = _end;
         };
 
-        //Draw3 (Carve)
+        /**
+         * @brief allowing to draw 3D on the window
+         * 
+         * @param camera 
+         */
         void beginMode3(graphic::ICamera *camera) override;
-        
+            
+        /**
+         * @brief draw a model
+         * 
+         * @param model 
+         */
         virtual void drawModel(graphic::IModel *model) override;
 
+        /**
+         * @brief end the 3D drawing
+         */
         void endMode3() override {
             std::cout << "SdlWindow::endMode3 not implemented" << std::endl;
             //EndMode3D();
         };
 
+        /**
+         * @brief poll the event
+         * 
+         * @return true 
+         * @return false 
+         */
         bool pollEvent() override {
             return SDL_PollEvent(&_event->_event) > 0;
         }
 
+        /**
+         * @brief close the window
+         */
         void eventClose() override {
+            if (_event == nullptr) {
+                return;
+            }
             if (_event->_event.type == SDL_QUIT || _event->_event.key.keysym.sym == SDLK_ESCAPE) {
                 is_open = false;
             }
@@ -136,7 +208,7 @@ class SdlWindow : public graphic::IWindow {
         SdlEvent *_event;
 
         __int32_t _frameLimit;
-        
+            
         __uint64_t _start;
         __uint64_t _end;
         float _delta;

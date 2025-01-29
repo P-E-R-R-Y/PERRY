@@ -1,0 +1,166 @@
+\doxysection{Ray\+Keyboard Class Reference}
+\hypertarget{class_ray_keyboard}{}\label{class_ray_keyboard}\index{RayKeyboard@{RayKeyboard}}
+Inheritance diagram for Ray\+Keyboard\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ray_keyboard}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Ray\+Keyboard} (\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} $>$ \mbox{\hyperlink{group___raylib_gacaf4a033e1ab717655d914251f7e5f02}{which\+Key}} () const override
+\begin{DoxyCompactList}\small\item\em Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it\textquotesingle{}s not recommended to use this function in a loop, use \doxylink{group___raylib_ga7c6eebf102bf86a4a775fc0edaf5b02e}{is\+Key\+Pressed()} instead. it\textquotesingle{}s efficient for key detection \& binding. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___raylib_ga7c6eebf102bf86a4a775fc0edaf5b02e}{is\+Key\+Pressed}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is pressed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___raylib_gafda851981ba1f0417247aa4da0870e73}{is\+Key\+Down}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is down. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___raylib_gae1e33ead44212368c573642e9a758b68}{is\+Key\+Released}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is released. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___raylib_ga63fd74eebf0fcab15fa21411b9427fdd}{is\+Key\+Up}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const override
+\begin{DoxyCompactList}\small\item\em Check if the key is up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga8d00f372e21018df95f0b9b8c4e5776c}{update}} () override
+\begin{DoxyCompactList}\small\item\em Update the keyboard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IKeyboard} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_keyboard}{IKeyboard} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::unordered\+\_\+map$<$ IKeyboard\+::\+Keys, int $>$ {\bfseries \+\_\+keys}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} \{ \newline
+{\bfseries KEY\+\_\+\+UNKNOWN} = -\/1
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a27a663d6aa78095a1196587e634de498}{KEY\+\_\+\+ESCAPE}}
+, {\bfseries KEY\+\_\+\+F1}
+, {\bfseries KEY\+\_\+\+F2}
+, \newline
+{\bfseries KEY\+\_\+\+F3}
+, {\bfseries KEY\+\_\+\+F4}
+, {\bfseries KEY\+\_\+\+F5}
+, {\bfseries KEY\+\_\+\+F6}
+, \newline
+{\bfseries KEY\+\_\+\+F7}
+, {\bfseries KEY\+\_\+\+F8}
+, {\bfseries KEY\+\_\+\+F9}
+, {\bfseries KEY\+\_\+\+F10}
+, \newline
+{\bfseries KEY\+\_\+\+F11}
+, {\bfseries KEY\+\_\+\+F12}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a32c0015a1fef3b614047ebb6733ef7ac}{KEY\+\_\+1}}
+, {\bfseries KEY\+\_\+2}
+, \newline
+{\bfseries KEY\+\_\+3}
+, {\bfseries KEY\+\_\+4}
+, {\bfseries KEY\+\_\+5}
+, {\bfseries KEY\+\_\+6}
+, \newline
+{\bfseries KEY\+\_\+7}
+, {\bfseries KEY\+\_\+8}
+, {\bfseries KEY\+\_\+9}
+, {\bfseries KEY\+\_\+0}
+, \newline
+{\bfseries KEY\+\_\+\+MINUS}
+, {\bfseries KEY\+\_\+\+EQUAL}
+, {\bfseries KEY\+\_\+\+BACKSPACE}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ace06806f8c824e87ac0f60b6ec89a9a1}{KEY\+\_\+\+TAB}}
+, \newline
+{\bfseries KEY\+\_\+Q}
+, {\bfseries KEY\+\_\+W}
+, {\bfseries KEY\+\_\+E}
+, {\bfseries KEY\+\_\+R}
+, \newline
+{\bfseries KEY\+\_\+T}
+, {\bfseries KEY\+\_\+Y}
+, {\bfseries KEY\+\_\+U}
+, {\bfseries KEY\+\_\+I}
+, \newline
+{\bfseries KEY\+\_\+O}
+, {\bfseries KEY\+\_\+P}
+, {\bfseries KEY\+\_\+\+LEFT\+\_\+\+BRACKET}
+, {\bfseries KEY\+\_\+\+RIGHT\+\_\+\+BRACKET}
+, \newline
+\mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ae0eb476ec3b3e22394e156871b4115aa}{KEY\+\_\+\+CAPS\+\_\+\+LOCK}}
+, {\bfseries KEY\+\_\+\+LEFT\+\_\+\+CONTROL}
+, {\bfseries KEY\+\_\+A}
+, {\bfseries KEY\+\_\+S}
+, \newline
+{\bfseries KEY\+\_\+D}
+, {\bfseries KEY\+\_\+F}
+, {\bfseries KEY\+\_\+G}
+, {\bfseries KEY\+\_\+H}
+, \newline
+{\bfseries KEY\+\_\+J}
+, {\bfseries KEY\+\_\+K}
+, {\bfseries KEY\+\_\+L}
+, {\bfseries KEY\+\_\+\+SEMICOLON}
+, \newline
+{\bfseries KEY\+\_\+\+APOSTROPHE}
+, {\bfseries BACK\+\_\+\+TICK}
+, {\bfseries KEY\+\_\+\+ENTER}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a5668da55ec2a6b3b5004e5baaf6271f0}{KEY\+\_\+\+LEFT\+\_\+\+SHIFT}}
+, \newline
+{\bfseries KEY\+\_\+\+BACKSLASH}
+, {\bfseries KEY\+\_\+Z}
+, {\bfseries KEY\+\_\+X}
+, {\bfseries KEY\+\_\+C}
+, \newline
+{\bfseries KEY\+\_\+V}
+, {\bfseries KEY\+\_\+B}
+, {\bfseries KEY\+\_\+N}
+, {\bfseries KEY\+\_\+M}
+, \newline
+{\bfseries KEY\+\_\+\+COMMA}
+, {\bfseries KEY\+\_\+\+PERIOD}
+, {\bfseries KEY\+\_\+\+DOT}
+, {\bfseries KEY\+\_\+\+SLASH}
+, \newline
+{\bfseries KEY\+\_\+\+RIGHT\+\_\+\+SHIFT}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2adfadd109727c2b58f8d7573155500fc1}{KEY\+\_\+\+LEFT\+\_\+\+ALT}}
+, {\bfseries KEY\+\_\+\+SPACE}
+, {\bfseries KEY\+\_\+\+RIGHT\+\_\+\+ALT}
+, \newline
+{\bfseries KEY\+\_\+\+RIGHT\+\_\+\+CONTROL}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ad03c11055a2db337da287d95a9279ddb}{KEY\+\_\+\+PAD\+\_\+0}}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+1}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+2}
+, \newline
+{\bfseries KEY\+\_\+\+PAD\+\_\+3}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+4}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+5}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+6}
+, \newline
+{\bfseries KEY\+\_\+\+PAD\+\_\+7}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+8}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+9}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+\+MINUS}
+, \newline
+{\bfseries KEY\+\_\+\+PAD\+\_\+\+PLUS}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+\+DOT}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+\+ENTER}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a2587aa5deb284fdb06a9c51f0efbb1b4}{KEY\+\_\+\+UP}}
+, \newline
+{\bfseries KEY\+\_\+\+DOWN}
+, {\bfseries KEY\+\_\+\+LEFT}
+, {\bfseries KEY\+\_\+\+RIGHT}
+, {\bfseries KEY\+\_\+\+LENGTH}
+ \}
+\begin{DoxyCompactList}\small\item\em Scan codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}}}
+\begin{DoxyCompactItemize}
+\item 
+static const int {\bfseries MAX\+\_\+\+KEYS} = 87
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/raylib/event/\mbox{\hyperlink{_ray_keyboard_8hpp}{Ray\+Keyboard.\+hpp}}\end{DoxyCompactItemize}

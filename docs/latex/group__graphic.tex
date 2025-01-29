@@ -1,0 +1,1480 @@
+\doxysection{Graphic}
+\hypertarget{group__graphic}{}\label{group__graphic}\index{Graphic@{Graphic}}
+\doxysubsubsection*{Topics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group___raylib}{Raylib}}
+\item 
+\mbox{\hyperlink{group___s_d_l}{SDL}}
+\item 
+\mbox{\hyperlink{group___s_f_m_l}{SFML}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacegraphic}{graphic}}
+\begin{DoxyCompactList}\small\item\em define graphic interfaces \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}}
+\begin{DoxyCompactList}\small\item\em Event interface. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}}
+\begin{DoxyCompactList}\small\item\em Keyboard interface. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}}
+\begin{DoxyCompactList}\small\item\em Mouse interface. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}}
+\begin{DoxyCompactList}\small\item\em Model interface. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structgraphic_1_1triangle__s}{graphic\+::triangle\+\_\+s}}
+\begin{DoxyCompactList}\small\item\em Triangle structure. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}}
+\begin{DoxyCompactList}\small\item\em Polygon interface. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}}
+\begin{DoxyCompactList}\small\item\em Sprite interface. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classgraphic_1_1_graphic_shared_loader}{graphic\+::\+Graphic\+Shared\+Loader}}
+\begin{DoxyCompactList}\small\item\em Use to dynamicaly load Graphic shared library. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}}
+\begin{DoxyCompactList}\small\item\em Camera interface. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}}
+\begin{DoxyCompactList}\small\item\em Window interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__graphic_ga054df66adc001dc941f2a6de03dc6b4f}\label{group__graphic_ga054df66adc001dc941f2a6de03dc6b4f} 
+typedef struct \mbox{\hyperlink{structgraphic_1_1triangle__s}{graphic\+::triangle\+\_\+s}} {\bfseries graphic\+::triangle\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Triangle structure. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_ga0e48d24576093ae7d4c9afed8be0ab09}\label{group__graphic_ga0e48d24576093ae7d4c9afed8be0ab09} 
+using {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::\+Params} = std\+::string
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{graphic\+::\+IKeyboard\+::\+Keys}} \{ \newline
+{\bfseries KEY\+\_\+\+UNKNOWN} = -\/1
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a27a663d6aa78095a1196587e634de498}{graphic\+::\+IKeyboard\+::\+KEY\+\_\+\+ESCAPE}}
+, {\bfseries KEY\+\_\+\+F1}
+, {\bfseries KEY\+\_\+\+F2}
+, \newline
+{\bfseries KEY\+\_\+\+F3}
+, {\bfseries KEY\+\_\+\+F4}
+, {\bfseries KEY\+\_\+\+F5}
+, {\bfseries KEY\+\_\+\+F6}
+, \newline
+{\bfseries KEY\+\_\+\+F7}
+, {\bfseries KEY\+\_\+\+F8}
+, {\bfseries KEY\+\_\+\+F9}
+, {\bfseries KEY\+\_\+\+F10}
+, \newline
+{\bfseries KEY\+\_\+\+F11}
+, {\bfseries KEY\+\_\+\+F12}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a32c0015a1fef3b614047ebb6733ef7ac}{graphic\+::\+IKeyboard\+::\+KEY\+\_\+1}}
+, {\bfseries KEY\+\_\+2}
+, \newline
+{\bfseries KEY\+\_\+3}
+, {\bfseries KEY\+\_\+4}
+, {\bfseries KEY\+\_\+5}
+, {\bfseries KEY\+\_\+6}
+, \newline
+{\bfseries KEY\+\_\+7}
+, {\bfseries KEY\+\_\+8}
+, {\bfseries KEY\+\_\+9}
+, {\bfseries KEY\+\_\+0}
+, \newline
+{\bfseries KEY\+\_\+\+MINUS}
+, {\bfseries KEY\+\_\+\+EQUAL}
+, {\bfseries KEY\+\_\+\+BACKSPACE}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ace06806f8c824e87ac0f60b6ec89a9a1}{graphic\+::\+IKeyboard\+::\+KEY\+\_\+\+TAB}}
+, \newline
+{\bfseries KEY\+\_\+Q}
+, {\bfseries KEY\+\_\+W}
+, {\bfseries KEY\+\_\+E}
+, {\bfseries KEY\+\_\+R}
+, \newline
+{\bfseries KEY\+\_\+T}
+, {\bfseries KEY\+\_\+Y}
+, {\bfseries KEY\+\_\+U}
+, {\bfseries KEY\+\_\+I}
+, \newline
+{\bfseries KEY\+\_\+O}
+, {\bfseries KEY\+\_\+P}
+, {\bfseries KEY\+\_\+\+LEFT\+\_\+\+BRACKET}
+, {\bfseries KEY\+\_\+\+RIGHT\+\_\+\+BRACKET}
+, \newline
+\mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ae0eb476ec3b3e22394e156871b4115aa}{graphic\+::\+IKeyboard\+::\+KEY\+\_\+\+CAPS\+\_\+\+LOCK}}
+, {\bfseries KEY\+\_\+\+LEFT\+\_\+\+CONTROL}
+, {\bfseries KEY\+\_\+A}
+, {\bfseries KEY\+\_\+S}
+, \newline
+{\bfseries KEY\+\_\+D}
+, {\bfseries KEY\+\_\+F}
+, {\bfseries KEY\+\_\+G}
+, {\bfseries KEY\+\_\+H}
+, \newline
+{\bfseries KEY\+\_\+J}
+, {\bfseries KEY\+\_\+K}
+, {\bfseries KEY\+\_\+L}
+, {\bfseries KEY\+\_\+\+SEMICOLON}
+, \newline
+{\bfseries KEY\+\_\+\+APOSTROPHE}
+, {\bfseries BACK\+\_\+\+TICK}
+, {\bfseries KEY\+\_\+\+ENTER}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a5668da55ec2a6b3b5004e5baaf6271f0}{graphic\+::\+IKeyboard\+::\+KEY\+\_\+\+LEFT\+\_\+\+SHIFT}}
+, \newline
+{\bfseries KEY\+\_\+\+BACKSLASH}
+, {\bfseries KEY\+\_\+Z}
+, {\bfseries KEY\+\_\+X}
+, {\bfseries KEY\+\_\+C}
+, \newline
+{\bfseries KEY\+\_\+V}
+, {\bfseries KEY\+\_\+B}
+, {\bfseries KEY\+\_\+N}
+, {\bfseries KEY\+\_\+M}
+, \newline
+{\bfseries KEY\+\_\+\+COMMA}
+, {\bfseries KEY\+\_\+\+PERIOD}
+, {\bfseries KEY\+\_\+\+DOT}
+, {\bfseries KEY\+\_\+\+SLASH}
+, \newline
+{\bfseries KEY\+\_\+\+RIGHT\+\_\+\+SHIFT}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2adfadd109727c2b58f8d7573155500fc1}{graphic\+::\+IKeyboard\+::\+KEY\+\_\+\+LEFT\+\_\+\+ALT}}
+, {\bfseries KEY\+\_\+\+SPACE}
+, {\bfseries KEY\+\_\+\+RIGHT\+\_\+\+ALT}
+, \newline
+{\bfseries KEY\+\_\+\+RIGHT\+\_\+\+CONTROL}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ad03c11055a2db337da287d95a9279ddb}{graphic\+::\+IKeyboard\+::\+KEY\+\_\+\+PAD\+\_\+0}}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+1}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+2}
+, \newline
+{\bfseries KEY\+\_\+\+PAD\+\_\+3}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+4}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+5}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+6}
+, \newline
+{\bfseries KEY\+\_\+\+PAD\+\_\+7}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+8}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+9}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+\+MINUS}
+, \newline
+{\bfseries KEY\+\_\+\+PAD\+\_\+\+PLUS}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+\+DOT}
+, {\bfseries KEY\+\_\+\+PAD\+\_\+\+ENTER}
+, \mbox{\hyperlink{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a2587aa5deb284fdb06a9c51f0efbb1b4}{graphic\+::\+IKeyboard\+::\+KEY\+\_\+\+UP}}
+, \newline
+{\bfseries KEY\+\_\+\+DOWN}
+, {\bfseries KEY\+\_\+\+LEFT}
+, {\bfseries KEY\+\_\+\+RIGHT}
+, {\bfseries KEY\+\_\+\+LENGTH}
+ \}
+\begin{DoxyCompactList}\small\item\em Scan codes. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_ga18ae44dcdc8753386db91545cfb83aa1}\label{group__graphic_ga18ae44dcdc8753386db91545cfb83aa1} 
+enum {\bfseries Buttons} \{ \newline
+{\bfseries BUTTON\+\_\+\+LEFT}
+, {\bfseries BUTTON\+\_\+\+RIGHT}
+, {\bfseries BUTTON\+\_\+\+MIDDLE}
+, {\bfseries EXTRA\+\_\+\+BUTTON\+\_\+1}
+, \newline
+{\bfseries EXTRA\+\_\+\+BUTTON\+\_\+2}
+ \}
+\item 
+\Hypertarget{group__graphic_ga559dbe934f065df061e9d4fd5a8d19bb}\label{group__graphic_ga559dbe934f065df061e9d4fd5a8d19bb} 
+enum {\bfseries Projection} \{ {\bfseries PERSPECTIVE}
+, {\bfseries ORTHOGRAPHIC}
+ \}
+\item 
+\Hypertarget{group__graphic_ga2ec72397f3e9f07ad246289590d9ad5d}\label{group__graphic_ga2ec72397f3e9f07ad246289590d9ad5d} 
+enum {\bfseries Mode} \{ \newline
+{\bfseries CUSTOM} = 0
+, {\bfseries FREE}
+, {\bfseries ORBITAL}
+, {\bfseries FIRST\+\_\+\+PERSON}
+, \newline
+{\bfseries THIRD\+\_\+\+PERSON}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__graphic_gac349d0e927a09a75383dc69efcb1b1d5}\label{group__graphic_gac349d0e927a09a75383dc69efcb1b1d5} 
+virtual {\bfseries graphic\+::\+IKeyboard\+::\texorpdfstring{$\sim$}{\string~}\+IKeyboard} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_keyboard}{IKeyboard} object. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} $>$ \mbox{\hyperlink{group__graphic_ga3f85d3034fdc48e70ab3de24d8e141f3}{graphic\+::\+IKeyboard\+::which\+Key}} () const =0
+\begin{DoxyCompactList}\small\item\em Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it\textquotesingle{}s not recommended to use this function in a loop, use \doxylink{group__graphic_gadb4994513e13c607bd8548ed7a87095d}{is\+Key\+Pressed()} instead. it\textquotesingle{}s efficient for key detection \& binding. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_gadb4994513e13c607bd8548ed7a87095d}{graphic\+::\+IKeyboard\+::is\+Key\+Pressed}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const =0
+\begin{DoxyCompactList}\small\item\em Check if the key is pressed. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_ga2a134a18af129f75ae772429b1c05800}{graphic\+::\+IKeyboard\+::is\+Key\+Released}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const =0
+\begin{DoxyCompactList}\small\item\em Check if the key is released. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_ga6e849bccb3ca838a94e796d0146b7e51}{graphic\+::\+IKeyboard\+::is\+Key\+Down}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const =0
+\begin{DoxyCompactList}\small\item\em Check if the key is down. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_ga720d845d0442e6c4a6a7444b6fc4c9d4}{graphic\+::\+IKeyboard\+::is\+Key\+Up}} (\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} key) const =0
+\begin{DoxyCompactList}\small\item\em Check if the key is up. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga1681260f7fa5502cfc353fe139c072f3}{graphic\+::\+IKeyboard\+::update}} ()=0
+\begin{DoxyCompactList}\small\item\em Update the keyboard. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_gae4cf37895d4a403fa899ed14edf9e8d9}\label{group__graphic_gae4cf37895d4a403fa899ed14edf9e8d9} 
+virtual {\bfseries graphic\+::\+IMouse\+::\texorpdfstring{$\sim$}{\string~}\+IMouse} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_mouse}{IMouse} interface. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_gafd8ef257d34f4195838cbc758860df1f}{graphic\+::\+IMouse\+::is\+Button\+Pressed}} (Buttons key) const =0
+\begin{DoxyCompactList}\small\item\em notice if a button is pressed \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_gaddb497afb0c9af10f0e05d416bc8345a}{graphic\+::\+IMouse\+::is\+Button\+Down}} (Buttons key) const =0
+\begin{DoxyCompactList}\small\item\em notice if a button is down \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_ga1b1620f7a9cd866f543172ce711f8d96}{graphic\+::\+IMouse\+::is\+Button\+Released}} (Buttons key) const =0
+\begin{DoxyCompactList}\small\item\em notice if a button is released \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_gafa52d70cdd08910cc7eb7b4084b8adfe}{graphic\+::\+IMouse\+::is\+Button\+Up}} (Buttons key) const =0
+\begin{DoxyCompactList}\small\item\em notice if a button is up \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group__graphic_ga4634bb19c29588e97688f2816be3b3a8}{graphic\+::\+IMouse\+::get\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em get the position of the mouse \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga365cbd8e5b9bd47abdd15ddd157dcb1e}{graphic\+::\+IMouse\+::set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position)=0
+\begin{DoxyCompactList}\small\item\em set the position of the mouse \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{group__graphic_ga5d886845b95237eceebe384df90b05b5}{graphic\+::\+IMouse\+::\+Get\+Mouse\+Wheel\+Move}} () const =0
+\begin{DoxyCompactList}\small\item\em get the mouse wheel move \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga87cc9ca9ea63bb88e083700c74acba74}{graphic\+::\+IMouse\+::update}} ()=0
+\begin{DoxyCompactList}\small\item\em set the mouse wheel move \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structtype_1_1____v3f__s}{\+\_\+\+\_\+v3f\+\_\+t}} \mbox{\hyperlink{group__graphic_gaf87772a963d2c2dc595b8f393ec6464b}{graphic\+::\+IModel\+::get\+Position}} () const =0
+\item 
+\Hypertarget{group__graphic_ga1302ceb31d615e425da789ba42f60687}\label{group__graphic_ga1302ceb31d615e425da789ba42f60687} 
+virtual void {\bfseries graphic\+::\+IModel\+::set\+Position} (\mbox{\hyperlink{structtype_1_1____v3f__s}{\+\_\+\+\_\+v3f\+\_\+t}} position)=0
+\item 
+\Hypertarget{group__graphic_gae0d966a02dd57510caf2f7f48b167303}\label{group__graphic_gae0d966a02dd57510caf2f7f48b167303} 
+virtual {\bfseries graphic\+::\+IPolygon\+::\texorpdfstring{$\sim$}{\string~}\+IPolygon} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_polygon}{IPolygon} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} \mbox{\hyperlink{group__graphic_ga58c4bd60aee98dedd69415f941372259}{graphic\+::\+IPolygon\+::get\+Color}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Color object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga0a0a5e87e3d64afc16c30d26c13cf33b}{graphic\+::\+IPolygon\+::set\+Color}} (\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} position)=0
+\begin{DoxyCompactList}\small\item\em Set the Color object. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_ga0467688a616b36424ddbc8adbeba0544}{graphic\+::\+IPolygon\+::is\+Ready}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{group__graphic_gab3fb8842141a3543208c6f71800abd4f}{graphic\+::\+IPolygon\+::get\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga230ab253cc42e8c2028106b0af038fdd}{graphic\+::\+IPolygon\+::set\+Position}} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} position)=0
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ \mbox{\hyperlink{group__graphic_gad23528f502d73a90ddaa56726ff50e57}{graphic\+::\+IPolygon\+::get\+Points}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Points object. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_ga786a8188a66a935e299d2cf489156241}\label{group__graphic_ga786a8188a66a935e299d2cf489156241} 
+virtual {\bfseries graphic\+::\+ISprite\+::\texorpdfstring{$\sim$}{\string~}\+ISprite} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_sprite}{ISprite} object. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_ga8088e103ac1733993812764debae1e5e}{graphic\+::\+ISprite\+::is\+Ready}} () const =0
+\begin{DoxyCompactList}\small\item\em notice if the sprite is ready \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v4f\+\_\+t \mbox{\hyperlink{group__graphic_ga00a5af5a26c11991f3fe24d268778f85}{graphic\+::\+ISprite\+::get\+Bounds}} () const =0
+\begin{DoxyCompactList}\small\item\em give the bounds of the sprite \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga56dad5536d7c8f370a17842b966a9813}{graphic\+::\+ISprite\+::set\+Crop}} (\+\_\+\+\_\+v4f\+\_\+t rect)=0
+\begin{DoxyCompactList}\small\item\em Crop the sprite with a rectangle. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group__graphic_ga8cc0af533b60b32dc093a7cda5b50cdc}{graphic\+::\+ISprite\+::get\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga7da368451eae7bdc6919d238387f416a}{graphic\+::\+ISprite\+::set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position)=0
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{group__graphic_ga7d03f2782d06584062b096f74120e9e8}{graphic\+::\+ISprite\+::get\+Rotation}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga5706582ed7b81bee47577c05c8d44f12}{graphic\+::\+ISprite\+::set\+Rotation}} (float angle, bool is\+Rad=false)=0
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group__graphic_ga53f82fa3b8aaf11d8fd52645bbb9d7db}{graphic\+::\+ISprite\+::get\+Size}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Sprite size. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga487198bf197d8880aecd8a237e07c9fd}{graphic\+::\+ISprite\+::set\+Size}} (\+\_\+\+\_\+v2f\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Set the Sprite size. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__graphic_ga7acf7f852523798c34387c0201acba93}{graphic\+::\+Graphic\+Shared\+Loader\+::\+Graphic\+Shared\+Loader}} (Params file)
+\begin{DoxyCompactList}\small\item\em Construct a new Graphic Shared Loader object with every symbols from the shared library. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_gae57e5f774b3e374624f11612e9c91b85}\label{group__graphic_gae57e5f774b3e374624f11612e9c91b85} 
+{\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::\texorpdfstring{$\sim$}{\string~}\+Graphic\+Shared\+Loader} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the Graphic Shared Loader object. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_ga1dd8c5e182aeae7bc5875f12c1647746}\label{group__graphic_ga1dd8c5e182aeae7bc5875f12c1647746} 
+virtual {\bfseries graphic\+::\+ICamera\+::\texorpdfstring{$\sim$}{\string~}\+ICamera} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_camera}{ICamera} object. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{group__graphic_gae547aa0df8d893f3affd2168c47c8104}{graphic\+::\+ICamera\+::get\+Fov}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the FOV. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga1e5464620aa2329fd69799638a96cf6e}{graphic\+::\+ICamera\+::set\+Fov}} (float fov)=0
+\begin{DoxyCompactList}\small\item\em Set the FOV. \end{DoxyCompactList}\item 
+virtual Mode \mbox{\hyperlink{group__graphic_ga0959591edf9737198660a710a2c5b05d}{graphic\+::\+ICamera\+::get\+Mode}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the mode. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_gaf460a0f126d44121fe3a4e1e3814afab}{graphic\+::\+ICamera\+::set\+Mode}} (Mode mode)=0
+\begin{DoxyCompactList}\small\item\em Set the mode. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group__graphic_ga61f352cffda9db4d7ef180a308a5afc3}{graphic\+::\+ICamera\+::get\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the position. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_gaa10fb5fa8b569969cdafdf998bfba1b8}{graphic\+::\+ICamera\+::set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t position)=0
+\begin{DoxyCompactList}\small\item\em Set the position. \end{DoxyCompactList}\item 
+virtual Projection \mbox{\hyperlink{group__graphic_ga5e1a3887d3b97ff9d3d8ed4888ab5bb0}{graphic\+::\+ICamera\+::get\+Projection}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Projection. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga4a47bba4a97863daabe50f1bd600245d}{graphic\+::\+ICamera\+::set\+Projection}} (Projection projection)=0
+\begin{DoxyCompactList}\small\item\em Set the Projection. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group__graphic_ga05a871222f25ad3bece5c37e463232a9}{graphic\+::\+ICamera\+::get\+Target}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the target. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga46fd28a7b9f9837462eff3de8d6454a0}{graphic\+::\+ICamera\+::set\+Target}} (\+\_\+\+\_\+v3f\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Set the target. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group__graphic_ga3d05345df858197dd715c84314541f10}{graphic\+::\+ICamera\+::get\+Up}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the up vector. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga3cf381163e3e13e119654f776a0f0c9c}{graphic\+::\+ICamera\+::set\+Up}} (\+\_\+\+\_\+v3f\+\_\+t up)=0
+\begin{DoxyCompactList}\small\item\em Set the up vector. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_ga2947b7684c9f2375be0dd6e66b1d7b7f}\label{group__graphic_ga2947b7684c9f2375be0dd6e66b1d7b7f} 
+virtual {\bfseries graphic\+::\+IWindow\+::\texorpdfstring{$\sim$}{\string~}\+IWindow} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_window}{IWindow} object. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_gae17a137c8ad8da0c414782e27f4c5dfc}{graphic\+::\+IWindow\+::is\+Open}} ()=0
+\begin{DoxyCompactList}\small\item\em notice if the window is open \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga6eb555bdae7c6fa247a35b9147da8c7e}{graphic\+::\+IWindow\+::close}} ()=0
+\begin{DoxyCompactList}\small\item\em close the window \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga6b0e75f9c978eef8aca095144420f5af}{graphic\+::\+IWindow\+::set\+Frame\+Limit}} (\+\_\+\+\_\+int32\+\_\+t limit)=0
+\begin{DoxyCompactList}\small\item\em Set the Frame Limit object. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+int32\+\_\+t \mbox{\hyperlink{group__graphic_gac081cce8b211b1b3f027a7bae33cef61}{graphic\+::\+IWindow\+::get\+Delta}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the Delta object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_gad95ff6150837ebf658a520a4a932b5c3}{graphic\+::\+IWindow\+::link\+Event}} (\mbox{\hyperlink{classgraphic_1_1_i_event}{IEvent}} \texorpdfstring{$\ast$}{*}event)=0
+\begin{DoxyCompactList}\small\item\em link an event to the window \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga37ccabdf7852fe8ff579f5de5ae29976}{graphic\+::\+IWindow\+::begin\+Draw}} ()=0
+\begin{DoxyCompactList}\small\item\em allowing to draw 2D on the window \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_gafe1c61041fa847fe80c0fbc5585a4de3}{graphic\+::\+IWindow\+::draw\+Poly}} (\mbox{\hyperlink{classgraphic_1_1_i_polygon}{IPolygon}} \texorpdfstring{$\ast$}{*}polygon)=0
+\begin{DoxyCompactList}\small\item\em draw a polygon \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga0b6d9dc647ea8fa561630424bb4b5db0}{graphic\+::\+IWindow\+::draw\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{ISprite}} \texorpdfstring{$\ast$}{*}model)=0
+\begin{DoxyCompactList}\small\item\em draw a sprite \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_gafeee676648888ac355a58f7fb90b62a6}{graphic\+::\+IWindow\+::end\+Draw}} ()=0
+\begin{DoxyCompactList}\small\item\em end the 2D drawing \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga44bfe77f58f2825edb1e7cb5304b8177}{graphic\+::\+IWindow\+::begin\+Mode3}} (\mbox{\hyperlink{classgraphic_1_1_i_camera}{ICamera}} \texorpdfstring{$\ast$}{*}camera)=0
+\begin{DoxyCompactList}\small\item\em allowing to draw 3D on the window \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga973287c1dd916f230234e9a557181dd9}{graphic\+::\+IWindow\+::draw\+Model}} (\mbox{\hyperlink{classgraphic_1_1_i_model}{IModel}} \texorpdfstring{$\ast$}{*}model)=0
+\begin{DoxyCompactList}\small\item\em draw a model \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_gad064bd5a6aeafa259e0e629cf6cf82c1}{graphic\+::\+IWindow\+::end\+Mode3}} ()=0
+\begin{DoxyCompactList}\small\item\em end the 3D drawing \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_ga4a40f63b3c53f89a6ce684e7d2a92428}{graphic\+::\+IWindow\+::poll\+Event}} ()=0
+\begin{DoxyCompactList}\small\item\em poll the event \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga6687f79bdb04698ea020aa85e72f3941}{graphic\+::\+IWindow\+::event\+Close}} ()=0
+\begin{DoxyCompactList}\small\item\em update the window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__graphic_ga1110963cd934835610029c4f2740a3d5}\label{group__graphic_ga1110963cd934835610029c4f2740a3d5} 
+static const int {\bfseries graphic\+::\+IKeyboard\+::\+MAX\+\_\+\+KEYS} = 87
+\item 
+\Hypertarget{group__graphic_gac15738104c2a782bb5e5481395619f5e}\label{group__graphic_gac15738104c2a782bb5e5481395619f5e} 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} {\bfseries graphic\+::triangle\+\_\+s\+::A}
+\item 
+\Hypertarget{group__graphic_gacc7b5cecc60043ba7b3b7f3ec7be0e55}\label{group__graphic_gacc7b5cecc60043ba7b3b7f3ec7be0e55} 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} {\bfseries graphic\+::triangle\+\_\+s\+::B}
+\item 
+\Hypertarget{group__graphic_gae380a3e1c232ab5c2a6651003eede8bd}\label{group__graphic_gae380a3e1c232ab5c2a6651003eede8bd} 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} {\bfseries graphic\+::triangle\+\_\+s\+::C}
+\item 
+\Hypertarget{group__graphic_gae52f0bd7cf99482c65dbbf47d6bfa50a}\label{group__graphic_gae52f0bd7cf99482c65dbbf47d6bfa50a} 
+\mbox{\hyperlink{class_dynamic_loader}{Dynamic\+Loader}} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::dl}
+\item 
+\Hypertarget{group__graphic_ga2e73bfdf905cc0d977c55c55a2f214b6}\label{group__graphic_ga2e73bfdf905cc0d977c55c55a2f214b6} 
+\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::create\+Window} )(int, int, std\+::string)
+\begin{DoxyCompactList}\small\item\em Window. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_ga22bc0c3fcedd181eab7603f210b10477}\label{group__graphic_ga22bc0c3fcedd181eab7603f210b10477} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::delete\+Window} )(\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}} \texorpdfstring{$\ast$}{*}window)
+\item 
+\Hypertarget{group__graphic_ga0a3f2c68f0a8000ab30d25f6930fb11b}\label{group__graphic_ga0a3f2c68f0a8000ab30d25f6930fb11b} 
+\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::create\+Event} )()
+\begin{DoxyCompactList}\small\item\em Event. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_gac67e36b54e6db3b0f9db19c5955f2b65}\label{group__graphic_gac67e36b54e6db3b0f9db19c5955f2b65} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::delete\+Event} )(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\item 
+\Hypertarget{group__graphic_gaa817452d67bdda145e3a8211954e0f6e}\label{group__graphic_gaa817452d67bdda145e3a8211954e0f6e} 
+\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::create\+Keyboard} )(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\item 
+\Hypertarget{group__graphic_ga31121be151fb3fa5d9d9145fa74fc52f}\label{group__graphic_ga31121be151fb3fa5d9d9145fa74fc52f} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::delete\+Keyboard} )(\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic\+::\+IKeyboard}} \texorpdfstring{$\ast$}{*}keyboard)
+\item 
+\Hypertarget{group__graphic_gacc3eb5186d5ae330881257d959ff4f11}\label{group__graphic_gacc3eb5186d5ae330881257d959ff4f11} 
+\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::create\+Mouse} )(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic\+::\+IEvent}} \texorpdfstring{$\ast$}{*}event)
+\item 
+\Hypertarget{group__graphic_gae5872e940956c2d32afeb36910bf25c1}\label{group__graphic_gae5872e940956c2d32afeb36910bf25c1} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::delete\+Mouse} )(\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*}mouse)
+\item 
+\Hypertarget{group__graphic_gaca2b6d2e677bb953d01dcc007bdea060}\label{group__graphic_gaca2b6d2e677bb953d01dcc007bdea060} 
+\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::create\+Polygon} )(std\+::vector$<$ \+\_\+\+\_\+v2f\+\_\+t $>$ points)
+\begin{DoxyCompactList}\small\item\em Graphics. \end{DoxyCompactList}\item 
+\Hypertarget{group__graphic_ga896a1e7e5b41fe4389ac696ce24ad4ee}\label{group__graphic_ga896a1e7e5b41fe4389ac696ce24ad4ee} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::delete\+Polygon} )(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}polygon)
+\item 
+\Hypertarget{group__graphic_gae9ba5b7f42881f2b470c0dd3a79fd853}\label{group__graphic_gae9ba5b7f42881f2b470c0dd3a79fd853} 
+\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::create\+Sprite} )(std\+::string)
+\item 
+\Hypertarget{group__graphic_ga4d5f7e795d99c0d681b63a4847e4af16}\label{group__graphic_ga4d5f7e795d99c0d681b63a4847e4af16} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::delete\+Sprite} )(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite)
+\item 
+\Hypertarget{group__graphic_ga635ee00309c37baacd48345487c06333}\label{group__graphic_ga635ee00309c37baacd48345487c06333} 
+\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::create\+Camera} )()
+\item 
+\Hypertarget{group__graphic_ga74a0682dc9a0cc2ec1a08131b6424a0c}\label{group__graphic_ga74a0682dc9a0cc2ec1a08131b6424a0c} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::delete\+Camera} )(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}camera)
+\item 
+\Hypertarget{group__graphic_ga21dcdfd5322b365e360e58a2b50f444e}\label{group__graphic_ga21dcdfd5322b365e360e58a2b50f444e} 
+\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::create\+Model} )()
+\item 
+\Hypertarget{group__graphic_ga9a7acb10c1b7115ccd167c387dbd3655}\label{group__graphic_ga9a7acb10c1b7115ccd167c387dbd3655} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries graphic\+::\+Graphic\+Shared\+Loader\+::delete\+Model} )(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}\index{Graphic@{Graphic}!Keys@{Keys}}
+\index{Keys@{Keys}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{Keys}{Keys}}
+{\footnotesize\ttfamily \label{group__graphic_ga8c628bac8cbea382161df60d48db1ca2} 
+enum \mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{graphic\+::\+IKeyboard\+::\+Keys}}}
+
+
+
+Scan codes. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_ESCAPE@{KEY\_ESCAPE}!Graphic@{Graphic}}\index{Graphic@{Graphic}!KEY\_ESCAPE@{KEY\_ESCAPE}}}\Hypertarget{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a27a663d6aa78095a1196587e634de498}\label{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a27a663d6aa78095a1196587e634de498} 
+KEY\+\_\+\+ESCAPE&Line 0. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_1@{KEY\_1}!Graphic@{Graphic}}\index{Graphic@{Graphic}!KEY\_1@{KEY\_1}}}\Hypertarget{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a32c0015a1fef3b614047ebb6733ef7ac}\label{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a32c0015a1fef3b614047ebb6733ef7ac} 
+KEY\+\_\+1&Line 1. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_TAB@{KEY\_TAB}!Graphic@{Graphic}}\index{Graphic@{Graphic}!KEY\_TAB@{KEY\_TAB}}}\Hypertarget{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ace06806f8c824e87ac0f60b6ec89a9a1}\label{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ace06806f8c824e87ac0f60b6ec89a9a1} 
+KEY\+\_\+\+TAB&Line 2. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_CAPS\_LOCK@{KEY\_CAPS\_LOCK}!Graphic@{Graphic}}\index{Graphic@{Graphic}!KEY\_CAPS\_LOCK@{KEY\_CAPS\_LOCK}}}\Hypertarget{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ae0eb476ec3b3e22394e156871b4115aa}\label{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ae0eb476ec3b3e22394e156871b4115aa} 
+KEY\+\_\+\+CAPS\+\_\+\+LOCK&Line 3. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_LEFT\_SHIFT@{KEY\_LEFT\_SHIFT}!Graphic@{Graphic}}\index{Graphic@{Graphic}!KEY\_LEFT\_SHIFT@{KEY\_LEFT\_SHIFT}}}\Hypertarget{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a5668da55ec2a6b3b5004e5baaf6271f0}\label{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a5668da55ec2a6b3b5004e5baaf6271f0} 
+KEY\+\_\+\+LEFT\+\_\+\+SHIFT&Line 4. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_LEFT\_ALT@{KEY\_LEFT\_ALT}!Graphic@{Graphic}}\index{Graphic@{Graphic}!KEY\_LEFT\_ALT@{KEY\_LEFT\_ALT}}}\Hypertarget{group__graphic_gga8c628bac8cbea382161df60d48db1ca2adfadd109727c2b58f8d7573155500fc1}\label{group__graphic_gga8c628bac8cbea382161df60d48db1ca2adfadd109727c2b58f8d7573155500fc1} 
+KEY\+\_\+\+LEFT\+\_\+\+ALT&Line 5. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_PAD\_0@{KEY\_PAD\_0}!Graphic@{Graphic}}\index{Graphic@{Graphic}!KEY\_PAD\_0@{KEY\_PAD\_0}}}\Hypertarget{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ad03c11055a2db337da287d95a9279ddb}\label{group__graphic_gga8c628bac8cbea382161df60d48db1ca2ad03c11055a2db337da287d95a9279ddb} 
+KEY\+\_\+\+PAD\+\_\+0&KEYPAD. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEY\_UP@{KEY\_UP}!Graphic@{Graphic}}\index{Graphic@{Graphic}!KEY\_UP@{KEY\_UP}}}\Hypertarget{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a2587aa5deb284fdb06a9c51f0efbb1b4}\label{group__graphic_gga8c628bac8cbea382161df60d48db1ca2a2587aa5deb284fdb06a9c51f0efbb1b4} 
+KEY\+\_\+\+UP&ARROWS. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__graphic_ga37ccabdf7852fe8ff579f5de5ae29976}\index{Graphic@{Graphic}!beginDraw@{beginDraw}}
+\index{beginDraw@{beginDraw}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{beginDraw()}{beginDraw()}}
+{\footnotesize\ttfamily \label{group__graphic_ga37ccabdf7852fe8ff579f5de5ae29976} 
+virtual void graphic\+::\+IWindow\+::begin\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+allowing to draw 2D on the window 
+
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga985518be66b89adf9582cdeec747fe98}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga7c566894f7432dfcfd51faee1d239a5d}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_ga4117ec121b2c8df9637d816240b52a3b}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_ga44bfe77f58f2825edb1e7cb5304b8177}\index{Graphic@{Graphic}!beginMode3@{beginMode3}}
+\index{beginMode3@{beginMode3}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{beginMode3()}{beginMode3()}}
+{\footnotesize\ttfamily \label{group__graphic_ga44bfe77f58f2825edb1e7cb5304b8177} 
+virtual void graphic\+::\+IWindow\+::begin\+Mode3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_camera}{ICamera}} \texorpdfstring{$\ast$}{*}}]{camera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+allowing to draw 3D on the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga4c87c2fd27ab3232fe7c61ece8f04473}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_gaa540228a558fee3510a05e29f629220b}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_gae5f1dcb0a9be6bea099ab239cf91c20b}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_ga6eb555bdae7c6fa247a35b9147da8c7e}\index{Graphic@{Graphic}!close@{close}}
+\index{close@{close}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{group__graphic_ga6eb555bdae7c6fa247a35b9147da8c7e} 
+virtual void graphic\+::\+IWindow\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+close the window 
+
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gabca431b2e02bf08a7b350c243fc34027}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_gac1d006b6e87818f90e3042ab8772dec1}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_ga67bf5ca3f1e8ae018deea07ea57a24cb}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_ga973287c1dd916f230234e9a557181dd9}\index{Graphic@{Graphic}!drawModel@{drawModel}}
+\index{drawModel@{drawModel}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{drawModel()}{drawModel()}}
+{\footnotesize\ttfamily \label{group__graphic_ga973287c1dd916f230234e9a557181dd9} 
+virtual void graphic\+::\+IWindow\+::draw\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_model}{IModel}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+draw a model 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga85215ca453fd9f7f45e1b50c77bfa90e}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga304a33df6d466985e50c192b8fc8a25a}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_ga3f211071e81f033d1a48ae8aada09182}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_gafe1c61041fa847fe80c0fbc5585a4de3}\index{Graphic@{Graphic}!drawPoly@{drawPoly}}
+\index{drawPoly@{drawPoly}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{drawPoly()}{drawPoly()}}
+{\footnotesize\ttfamily \label{group__graphic_gafe1c61041fa847fe80c0fbc5585a4de3} 
+virtual void graphic\+::\+IWindow\+::draw\+Poly (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_polygon}{IPolygon}} \texorpdfstring{$\ast$}{*}}]{polygon}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+draw a polygon 
+
+
+\begin{DoxyParams}{Parameters}
+{\em polygon} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga09c164ba3b217542c04764153ca25da0}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga8e1a79f993c7424831754404c32f3684}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_gad410b78abbed2711df65fc02151bb442}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_ga0b6d9dc647ea8fa561630424bb4b5db0}\index{Graphic@{Graphic}!drawSprite@{drawSprite}}
+\index{drawSprite@{drawSprite}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{drawSprite()}{drawSprite()}}
+{\footnotesize\ttfamily \label{group__graphic_ga0b6d9dc647ea8fa561630424bb4b5db0} 
+virtual void graphic\+::\+IWindow\+::draw\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_sprite}{ISprite}} \texorpdfstring{$\ast$}{*}}]{model}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+draw a sprite 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gabf0d19617acbe081bbf04376d790a2be}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga4de650f1f3712087a4a5bca3aa2a5f0e}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_ga82469fd2fc0296594bb4aee76243b1cd}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_gafeee676648888ac355a58f7fb90b62a6}\index{Graphic@{Graphic}!endDraw@{endDraw}}
+\index{endDraw@{endDraw}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{endDraw()}{endDraw()}}
+{\footnotesize\ttfamily \label{group__graphic_gafeee676648888ac355a58f7fb90b62a6} 
+virtual void graphic\+::\+IWindow\+::end\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+end the 2D drawing 
+
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga22489f6acbbbba802e420d8618058590}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga9c0bf1ab0a9b4917ead4ad8fc3c697ff}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_ga98b1ec88cfc0a22b8360dc816741ad64}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_gad064bd5a6aeafa259e0e629cf6cf82c1}\index{Graphic@{Graphic}!endMode3@{endMode3}}
+\index{endMode3@{endMode3}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{endMode3()}{endMode3()}}
+{\footnotesize\ttfamily \label{group__graphic_gad064bd5a6aeafa259e0e629cf6cf82c1} 
+virtual void graphic\+::\+IWindow\+::end\+Mode3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+end the 3D drawing 
+
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gaa390a52e3fa8f3fb3026a6ba21e99d60}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga4de0baf2dcd722e8fa4ce169420216c0}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_ga6cf2d05732e578608f60cdbdc944cf79}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_ga6687f79bdb04698ea020aa85e72f3941}\index{Graphic@{Graphic}!eventClose@{eventClose}}
+\index{eventClose@{eventClose}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{eventClose()}{eventClose()}}
+{\footnotesize\ttfamily \label{group__graphic_ga6687f79bdb04698ea020aa85e72f3941} 
+virtual void graphic\+::\+IWindow\+::event\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+update the window 
+
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga53cbfb2a713521d0493681b04e2da38f}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga27db59127c8c517c420afb80b27b38d2}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_gabe5637e4298c08ee8dd7fd5277b62c48}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_ga00a5af5a26c11991f3fe24d268778f85}\index{Graphic@{Graphic}!getBounds@{getBounds}}
+\index{getBounds@{getBounds}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getBounds()}{getBounds()}}
+{\footnotesize\ttfamily \label{group__graphic_ga00a5af5a26c11991f3fe24d268778f85} 
+virtual \+\_\+\+\_\+v4f\+\_\+t graphic\+::\+ISprite\+::get\+Bounds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+give the bounds of the sprite 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v4f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga2d4b863f75308531e3bdb70f10d7eb7d}{Ray\+Sprite}}, \mbox{\hyperlink{group___s_d_l_gad1e4a114e5429fd2d16176a06cfec5a9}{Sdl\+Sprite}}, and \mbox{\hyperlink{group___s_f_m_l_ga1b6814799269cbec3f07427965df97a6}{Sfml\+Sprite}}.
+
+\Hypertarget{group__graphic_ga58c4bd60aee98dedd69415f941372259}\index{Graphic@{Graphic}!getColor@{getColor}}
+\index{getColor@{getColor}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily \label{group__graphic_ga58c4bd60aee98dedd69415f941372259} 
+virtual \mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}} graphic\+::\+IPolygon\+::get\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Color object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+color\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga923cfce8d41bfd0ce4c52e60cec56291}{Ray\+Polygon}}, \mbox{\hyperlink{group___s_d_l_gaa2318c7c47b8ffa339805c41333ee6c8}{Sdl\+Polygon}}, and \mbox{\hyperlink{group___s_f_m_l_gaf965e46ad7b2c334506788b128a45c98}{Sfml\+Polygon}}.
+
+\Hypertarget{group__graphic_gac081cce8b211b1b3f027a7bae33cef61}\index{Graphic@{Graphic}!getDelta@{getDelta}}
+\index{getDelta@{getDelta}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getDelta()}{getDelta()}}
+{\footnotesize\ttfamily \label{group__graphic_gac081cce8b211b1b3f027a7bae33cef61} 
+virtual \+\_\+\+\_\+int32\+\_\+t graphic\+::\+IWindow\+::get\+Delta (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Delta object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+int32\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga74e776ba4e78582326459807e279b04f}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_gacc7c25e238e5528a77e38ebb7dc160d9}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_gaf6ec8bc5848f2028d54dc04e8bca1751}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_gae547aa0df8d893f3affd2168c47c8104}\index{Graphic@{Graphic}!getFov@{getFov}}
+\index{getFov@{getFov}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getFov()}{getFov()}}
+{\footnotesize\ttfamily \label{group__graphic_gae547aa0df8d893f3affd2168c47c8104} 
+virtual float graphic\+::\+ICamera\+::get\+Fov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the FOV. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga083a2eb20aae6db625641efd695c211d}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_ga169b5eefc0b5e5b1cce85a347948daa1}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_gad11678907097a3d73687808039ee1d42}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_ga0959591edf9737198660a710a2c5b05d}\index{Graphic@{Graphic}!getMode@{getMode}}
+\index{getMode@{getMode}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \label{group__graphic_ga0959591edf9737198660a710a2c5b05d} 
+virtual Mode graphic\+::\+ICamera\+::get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the mode. 
+
+\begin{DoxyReturn}{Returns}
+Mode 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gae51eaae00090fdbca37310b65682ced6}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_ga96ef897c4e3cd8907dea31949f0d2736}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_ga951d66286e7960dd2f5ca4793b0cb370}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_ga5d886845b95237eceebe384df90b05b5}\index{Graphic@{Graphic}!GetMouseWheelMove@{GetMouseWheelMove}}
+\index{GetMouseWheelMove@{GetMouseWheelMove}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{GetMouseWheelMove()}{GetMouseWheelMove()}}
+{\footnotesize\ttfamily \label{group__graphic_ga5d886845b95237eceebe384df90b05b5} 
+virtual float graphic\+::\+IMouse\+::\+Get\+Mouse\+Wheel\+Move (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+get the mouse wheel move 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gaafa50a5912ad674f14594fc49315fd8f}{Ray\+Mouse}}, \mbox{\hyperlink{group___s_d_l_ga90a0264525a1d0e85645fa9697fde004}{Sdl\+Mouse}}, and \mbox{\hyperlink{group___s_f_m_l_ga764f4ad5591e0868e1e9009d2a931f76}{Sfml\+Mouse}}.
+
+\Hypertarget{group__graphic_gad23528f502d73a90ddaa56726ff50e57}\index{Graphic@{Graphic}!getPoints@{getPoints}}
+\index{getPoints@{getPoints}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getPoints()}{getPoints()}}
+{\footnotesize\ttfamily \label{group__graphic_gad23528f502d73a90ddaa56726ff50e57} 
+virtual std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ graphic\+::\+IPolygon\+::get\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Points object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+\_\+\+\_\+v2f\+\_\+t$>$ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gafed65c3512f2124cb8fb0167442abbe3}{Ray\+Polygon}}, \mbox{\hyperlink{group___s_d_l_ga7776840ca7c8331e39023b6b02e9dac6}{Sdl\+Polygon}}, and \mbox{\hyperlink{group___s_f_m_l_ga2990becc3a91765498d757215321a665}{Sfml\+Polygon}}.
+
+\Hypertarget{group__graphic_ga61f352cffda9db4d7ef180a308a5afc3}\index{Graphic@{Graphic}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{group__graphic_ga61f352cffda9db4d7ef180a308a5afc3} 
+virtual \+\_\+\+\_\+v3f\+\_\+t graphic\+::\+ICamera\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the position. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga1a5cbbe6f7b390d339a3adeb6a5fc5f7}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_gadd69b85774af62667a63f8d8f529ac9a}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_ga905167efe03f026b0d84441ad0b202bb}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_gaf87772a963d2c2dc595b8f393ec6464b}\index{Graphic@{Graphic}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{group__graphic_gaf87772a963d2c2dc595b8f393ec6464b} 
+virtual \mbox{\hyperlink{structtype_1_1____v3f__s}{\+\_\+\+\_\+v3f\+\_\+t}} graphic\+::\+IModel\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{group___s_f_m_l_gaac71166b0cac6cc93c7139221036b424}{Sfml\+Model}}.
+
+\Hypertarget{group__graphic_ga4634bb19c29588e97688f2816be3b3a8}\index{Graphic@{Graphic}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{group__graphic_ga4634bb19c29588e97688f2816be3b3a8} 
+virtual \+\_\+\+\_\+v2f\+\_\+t graphic\+::\+IMouse\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+get the position of the mouse 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga4a096691abf8d4e2d44609fe89bcc559}{Ray\+Mouse}}, \mbox{\hyperlink{group___s_d_l_ga4d66a150db63eeb156d5edcf37fc3e5d}{Sdl\+Mouse}}, and \mbox{\hyperlink{group___s_f_m_l_ga2fc4314abc4305e0d1ebb83d83817ac7}{Sfml\+Mouse}}.
+
+\Hypertarget{group__graphic_gab3fb8842141a3543208c6f71800abd4f}\index{Graphic@{Graphic}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{group__graphic_gab3fb8842141a3543208c6f71800abd4f} 
+virtual \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} graphic\+::\+IPolygon\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga440540bafedc1d3c6caac15991595ad2}{Ray\+Polygon}}, \mbox{\hyperlink{group___s_d_l_ga6c77e095888b6d9f9a295c6042138fc6}{Sdl\+Polygon}}, and \mbox{\hyperlink{group___s_f_m_l_ga952cdcf59f314b3a8b738d9c5d1f103d}{Sfml\+Polygon}}.
+
+\Hypertarget{group__graphic_ga8cc0af533b60b32dc093a7cda5b50cdc}\index{Graphic@{Graphic}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{group__graphic_ga8cc0af533b60b32dc093a7cda5b50cdc} 
+virtual \+\_\+\+\_\+v2f\+\_\+t graphic\+::\+ISprite\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga54d86b404491e36c8ea9c6b98546a612}{Ray\+Sprite}}, \mbox{\hyperlink{group___s_d_l_gae879b10bff2c390395e8bfd02bec9226}{Sdl\+Sprite}}, and \mbox{\hyperlink{group___s_f_m_l_ga56ce6dba47ee9764d2e780f6ef2a4729}{Sfml\+Sprite}}.
+
+\Hypertarget{group__graphic_ga5e1a3887d3b97ff9d3d8ed4888ab5bb0}\index{Graphic@{Graphic}!getProjection@{getProjection}}
+\index{getProjection@{getProjection}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getProjection()}{getProjection()}}
+{\footnotesize\ttfamily \label{group__graphic_ga5e1a3887d3b97ff9d3d8ed4888ab5bb0} 
+virtual Projection graphic\+::\+ICamera\+::get\+Projection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Projection. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga9929434ea2f6b62fd2545527c989019b}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_ga33fd59f1783566ce6e6a162ff6dc84b4}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_ga2fb9f5ab1287515a9805468ee29104fe}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_ga7d03f2782d06584062b096f74120e9e8}\index{Graphic@{Graphic}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily \label{group__graphic_ga7d03f2782d06584062b096f74120e9e8} 
+virtual float graphic\+::\+ISprite\+::get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Rotation object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga6fc3cc1a446e5cf64d31f138b9fcf645}{Ray\+Sprite}}, \mbox{\hyperlink{group___s_d_l_gaf798061665fefe8897a57def03881740}{Sdl\+Sprite}}, and \mbox{\hyperlink{group___s_f_m_l_gaacf999c674358e524f41fd302479be98}{Sfml\+Sprite}}.
+
+\Hypertarget{group__graphic_ga53f82fa3b8aaf11d8fd52645bbb9d7db}\index{Graphic@{Graphic}!getSize@{getSize}}
+\index{getSize@{getSize}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{group__graphic_ga53f82fa3b8aaf11d8fd52645bbb9d7db} 
+virtual \+\_\+\+\_\+v2f\+\_\+t graphic\+::\+ISprite\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Sprite size. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga655beb65e2555e895645a222eb4e7f69}{Ray\+Sprite}}, \mbox{\hyperlink{group___s_d_l_ga23fab9c56752a7a30cfd8ae772262650}{Sdl\+Sprite}}, and \mbox{\hyperlink{group___s_f_m_l_gadc048e63cab334b7b73e4b416220374b}{Sfml\+Sprite}}.
+
+\Hypertarget{group__graphic_ga05a871222f25ad3bece5c37e463232a9}\index{Graphic@{Graphic}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \label{group__graphic_ga05a871222f25ad3bece5c37e463232a9} 
+virtual \+\_\+\+\_\+v3f\+\_\+t graphic\+::\+ICamera\+::get\+Target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the target. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga472c2794c1f6de90ff96e5f7374ed547}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_gaa5afb72e250b62488d6df33e8b680499}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_gac9b4abc33f5e1433ca8b375c9d8048ca}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_ga3d05345df858197dd715c84314541f10}\index{Graphic@{Graphic}!getUp@{getUp}}
+\index{getUp@{getUp}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{getUp()}{getUp()}}
+{\footnotesize\ttfamily \label{group__graphic_ga3d05345df858197dd715c84314541f10} 
+virtual \+\_\+\+\_\+v3f\+\_\+t graphic\+::\+ICamera\+::get\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the up vector. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v3f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga7f53ea1a430714dd15b634b3bddbd8c4}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_ga05c8351efd771c7dca962d316e61df6c}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_ga81292302e8e35571d8cff3a4556dfee9}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_ga7acf7f852523798c34387c0201acba93}\index{Graphic@{Graphic}!GraphicSharedLoader@{GraphicSharedLoader}}
+\index{GraphicSharedLoader@{GraphicSharedLoader}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{GraphicSharedLoader()}{GraphicSharedLoader()}}
+{\footnotesize\ttfamily \label{group__graphic_ga7acf7f852523798c34387c0201acba93} 
+graphic\+::\+Graphic\+Shared\+Loader\+::\+Graphic\+Shared\+Loader (\begin{DoxyParamCaption}\item[{Params}]{file}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Graphic Shared Loader object with every symbols from the shared library. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__graphic_gaddb497afb0c9af10f0e05d416bc8345a}\index{Graphic@{Graphic}!isButtonDown@{isButtonDown}}
+\index{isButtonDown@{isButtonDown}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isButtonDown()}{isButtonDown()}}
+{\footnotesize\ttfamily \label{group__graphic_gaddb497afb0c9af10f0e05d416bc8345a} 
+virtual bool graphic\+::\+IMouse\+::is\+Button\+Down (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+notice if a button is down 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga00d36086de90cabf14ebd2759591318f}{Ray\+Mouse}}, \mbox{\hyperlink{group___s_d_l_ga78d1216fc3c78eb6a0f4d2a6c762905c}{Sdl\+Mouse}}, and \mbox{\hyperlink{group___s_f_m_l_ga8525563a7db58d7674fbc8867cf90249}{Sfml\+Mouse}}.
+
+\Hypertarget{group__graphic_gafd8ef257d34f4195838cbc758860df1f}\index{Graphic@{Graphic}!isButtonPressed@{isButtonPressed}}
+\index{isButtonPressed@{isButtonPressed}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isButtonPressed()}{isButtonPressed()}}
+{\footnotesize\ttfamily \label{group__graphic_gafd8ef257d34f4195838cbc758860df1f} 
+virtual bool graphic\+::\+IMouse\+::is\+Button\+Pressed (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+notice if a button is pressed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga107a4a8e7331a21dcfcccda94c0dbb7b}{Ray\+Mouse}}, \mbox{\hyperlink{group___s_d_l_ga4c0700d20c6bb17258122949b093bf02}{Sdl\+Mouse}}, and \mbox{\hyperlink{group___s_f_m_l_ga5b9a63574efc220ec963df1f312b78fd}{Sfml\+Mouse}}.
+
+\Hypertarget{group__graphic_ga1b1620f7a9cd866f543172ce711f8d96}\index{Graphic@{Graphic}!isButtonReleased@{isButtonReleased}}
+\index{isButtonReleased@{isButtonReleased}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isButtonReleased()}{isButtonReleased()}}
+{\footnotesize\ttfamily \label{group__graphic_ga1b1620f7a9cd866f543172ce711f8d96} 
+virtual bool graphic\+::\+IMouse\+::is\+Button\+Released (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+notice if a button is released 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga6f5cb2ee45513fb51d5d9dbdf09e7c43}{Ray\+Mouse}}, \mbox{\hyperlink{group___s_d_l_gaa3f194fc86ed25c083fe13d16dcca800}{Sdl\+Mouse}}, and \mbox{\hyperlink{group___s_f_m_l_gac29f9ce04fa6821c39ee64aba7a072e0}{Sfml\+Mouse}}.
+
+\Hypertarget{group__graphic_gafa52d70cdd08910cc7eb7b4084b8adfe}\index{Graphic@{Graphic}!isButtonUp@{isButtonUp}}
+\index{isButtonUp@{isButtonUp}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isButtonUp()}{isButtonUp()}}
+{\footnotesize\ttfamily \label{group__graphic_gafa52d70cdd08910cc7eb7b4084b8adfe} 
+virtual bool graphic\+::\+IMouse\+::is\+Button\+Up (\begin{DoxyParamCaption}\item[{Buttons}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+notice if a button is up 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga009166d7e3983f892390f80157536b46}{Ray\+Mouse}}, \mbox{\hyperlink{group___s_d_l_gaa5edac30acd48135eb7df43ab4fc4b50}{Sdl\+Mouse}}, and \mbox{\hyperlink{group___s_f_m_l_gaa02ce805d4f597394a83200f4ee8c0b5}{Sfml\+Mouse}}.
+
+\Hypertarget{group__graphic_ga6e849bccb3ca838a94e796d0146b7e51}\index{Graphic@{Graphic}!isKeyDown@{isKeyDown}}
+\index{isKeyDown@{isKeyDown}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isKeyDown()}{isKeyDown()}}
+{\footnotesize\ttfamily \label{group__graphic_ga6e849bccb3ca838a94e796d0146b7e51} 
+virtual bool graphic\+::\+IKeyboard\+::is\+Key\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check if the key is down. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gafda851981ba1f0417247aa4da0870e73}{Ray\+Keyboard}}, \mbox{\hyperlink{group___s_d_l_ga410519587b9a9b5ca0160689c70976e1}{Sdl\+Keyboard}}, and \mbox{\hyperlink{group___s_f_m_l_ga8bd9add9397f7d0d753538d2570d282f}{Sfml\+Keyboard}}.
+
+\Hypertarget{group__graphic_gadb4994513e13c607bd8548ed7a87095d}\index{Graphic@{Graphic}!isKeyPressed@{isKeyPressed}}
+\index{isKeyPressed@{isKeyPressed}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isKeyPressed()}{isKeyPressed()}}
+{\footnotesize\ttfamily \label{group__graphic_gadb4994513e13c607bd8548ed7a87095d} 
+virtual bool graphic\+::\+IKeyboard\+::is\+Key\+Pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check if the key is pressed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga7c6eebf102bf86a4a775fc0edaf5b02e}{Ray\+Keyboard}}, \mbox{\hyperlink{group___s_d_l_ga069134bbcb14fc76dcc5000e020f7a1d}{Sdl\+Keyboard}}, and \mbox{\hyperlink{group___s_f_m_l_ga92ad7947c3f90cb08a340568190845e0}{Sfml\+Keyboard}}.
+
+\Hypertarget{group__graphic_ga2a134a18af129f75ae772429b1c05800}\index{Graphic@{Graphic}!isKeyReleased@{isKeyReleased}}
+\index{isKeyReleased@{isKeyReleased}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isKeyReleased()}{isKeyReleased()}}
+{\footnotesize\ttfamily \label{group__graphic_ga2a134a18af129f75ae772429b1c05800} 
+virtual bool graphic\+::\+IKeyboard\+::is\+Key\+Released (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check if the key is released. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gae1e33ead44212368c573642e9a758b68}{Ray\+Keyboard}}, \mbox{\hyperlink{group___s_d_l_gac1eacb70083fc831c4e6e18ae0fdcf1f}{Sdl\+Keyboard}}, and \mbox{\hyperlink{group___s_f_m_l_ga0912fa8cce798bd65acd7afda66f1461}{Sfml\+Keyboard}}.
+
+\Hypertarget{group__graphic_ga720d845d0442e6c4a6a7444b6fc4c9d4}\index{Graphic@{Graphic}!isKeyUp@{isKeyUp}}
+\index{isKeyUp@{isKeyUp}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isKeyUp()}{isKeyUp()}}
+{\footnotesize\ttfamily \label{group__graphic_ga720d845d0442e6c4a6a7444b6fc4c9d4} 
+virtual bool graphic\+::\+IKeyboard\+::is\+Key\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}}}]{key}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check if the key is up. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga63fd74eebf0fcab15fa21411b9427fdd}{Ray\+Keyboard}}, \mbox{\hyperlink{group___s_d_l_ga7d40f98c4ac6a155662d75b89cf9140b}{Sdl\+Keyboard}}, and \mbox{\hyperlink{group___s_f_m_l_gaf955588917011f16f63e0530ff4b6b6b}{Sfml\+Keyboard}}.
+
+\Hypertarget{group__graphic_gae17a137c8ad8da0c414782e27f4c5dfc}\index{Graphic@{Graphic}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isOpen()}{isOpen()}}
+{\footnotesize\ttfamily \label{group__graphic_gae17a137c8ad8da0c414782e27f4c5dfc} 
+virtual bool graphic\+::\+IWindow\+::is\+Open (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+notice if the window is open 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gabb07389775d4cd9cb2cd9a40b5673d3a}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_gae7881c13fde6af610cb7efb5ab342317}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_ga4bc70711286f774951a94fb931a7cccb}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_ga0467688a616b36424ddbc8adbeba0544}\index{Graphic@{Graphic}!isReady@{isReady}}
+\index{isReady@{isReady}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group__graphic_ga0467688a616b36424ddbc8adbeba0544} 
+virtual bool graphic\+::\+IPolygon\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga5f7c8be7f71e5cd202bc79d3014cadef}{Ray\+Polygon}}, \mbox{\hyperlink{group___s_d_l_ga4789b439c0a4796b081731b901f65435}{Sdl\+Polygon}}, and \mbox{\hyperlink{group___s_f_m_l_ga8c2db5edcd6be4ac71475a09844f9c88}{Sfml\+Polygon}}.
+
+\Hypertarget{group__graphic_ga8088e103ac1733993812764debae1e5e}\index{Graphic@{Graphic}!isReady@{isReady}}
+\index{isReady@{isReady}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group__graphic_ga8088e103ac1733993812764debae1e5e} 
+virtual bool graphic\+::\+ISprite\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+notice if the sprite is ready 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gafc79985bcb3226a6e542243411cb7b78}{Ray\+Sprite}}, \mbox{\hyperlink{group___s_d_l_ga6688eb190b28738eed5ef45453e57cc1}{Sdl\+Sprite}}, and \mbox{\hyperlink{group___s_f_m_l_ga43587aab7d5762108568c65232e31fb8}{Sfml\+Sprite}}.
+
+\Hypertarget{group__graphic_gad95ff6150837ebf658a520a4a932b5c3}\index{Graphic@{Graphic}!linkEvent@{linkEvent}}
+\index{linkEvent@{linkEvent}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{linkEvent()}{linkEvent()}}
+{\footnotesize\ttfamily \label{group__graphic_gad95ff6150837ebf658a520a4a932b5c3} 
+virtual void graphic\+::\+IWindow\+::link\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classgraphic_1_1_i_event}{IEvent}} \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+link an event to the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga2a8308cce439f598e4c456dfc811403e}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga658eab0bf038cd1775e73e920a71b80b}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_gacf62f02f63e55c1416671d224897e576}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_ga4a40f63b3c53f89a6ce684e7d2a92428}\index{Graphic@{Graphic}!pollEvent@{pollEvent}}
+\index{pollEvent@{pollEvent}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{pollEvent()}{pollEvent()}}
+{\footnotesize\ttfamily \label{group__graphic_ga4a40f63b3c53f89a6ce684e7d2a92428} 
+virtual bool graphic\+::\+IWindow\+::poll\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+poll the event 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gaf66a999ab88a2f5da32c2be509c5e7e4}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga3ea7d97069a1522b951696a9c9da2ddf}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_gaf5dab2c2f96830b6a0926de4e1ef57a6}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_ga0a0a5e87e3d64afc16c30d26c13cf33b}\index{Graphic@{Graphic}!setColor@{setColor}}
+\index{setColor@{setColor}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \label{group__graphic_ga0a0a5e87e3d64afc16c30d26c13cf33b} 
+virtual void graphic\+::\+IPolygon\+::set\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtype_1_1____color__s}{\+\_\+\+\_\+color\+\_\+t}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Color object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gaca84ac65f53930cd62b7dfdd4dce6c5a}{Ray\+Polygon}}, and \mbox{\hyperlink{group___s_d_l_ga561712ec4a1d70f4c9ead43d23d2b7be}{Sdl\+Polygon}}.
+
+\Hypertarget{group__graphic_ga56dad5536d7c8f370a17842b966a9813}\index{Graphic@{Graphic}!setCrop@{setCrop}}
+\index{setCrop@{setCrop}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setCrop()}{setCrop()}}
+{\footnotesize\ttfamily \label{group__graphic_ga56dad5536d7c8f370a17842b966a9813} 
+virtual void graphic\+::\+ISprite\+::set\+Crop (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v4f\+\_\+t}]{rect}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Crop the sprite with a rectangle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___s_f_m_l_ga7e44b19b49e74f7525a9026df19f1947}{Sfml\+Sprite}}.
+
+\Hypertarget{group__graphic_ga1e5464620aa2329fd69799638a96cf6e}\index{Graphic@{Graphic}!setFov@{setFov}}
+\index{setFov@{setFov}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setFov()}{setFov()}}
+{\footnotesize\ttfamily \label{group__graphic_ga1e5464620aa2329fd69799638a96cf6e} 
+virtual void graphic\+::\+ICamera\+::set\+Fov (\begin{DoxyParamCaption}\item[{float}]{fov}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the FOV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gac493023fedbe163b1f18167246880fc3}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_gac2755fb30b07ffa2a973c0f3588cce93}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_ga8883151f4d4ee9dc9e263f9c095df511}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_ga6b0e75f9c978eef8aca095144420f5af}\index{Graphic@{Graphic}!setFrameLimit@{setFrameLimit}}
+\index{setFrameLimit@{setFrameLimit}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setFrameLimit()}{setFrameLimit()}}
+{\footnotesize\ttfamily \label{group__graphic_ga6b0e75f9c978eef8aca095144420f5af} 
+virtual void graphic\+::\+IWindow\+::set\+Frame\+Limit (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+int32\+\_\+t}]{limit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Frame Limit object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga485bdbbba4a1e2cda2420ce4f8fecb42}{Ray\+Window}}, \mbox{\hyperlink{group___s_d_l_ga776361f77ae5b82c8bbd20d05c1dc45e}{Sdl\+Window}}, and \mbox{\hyperlink{group___s_f_m_l_gafba623299ffbaf990f5ddff3a8242c0e}{Sfml\+Window}}.
+
+\Hypertarget{group__graphic_gaf460a0f126d44121fe3a4e1e3814afab}\index{Graphic@{Graphic}!setMode@{setMode}}
+\index{setMode@{setMode}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily \label{group__graphic_gaf460a0f126d44121fe3a4e1e3814afab} 
+virtual void graphic\+::\+ICamera\+::set\+Mode (\begin{DoxyParamCaption}\item[{Mode}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__graphic_gaa10fb5fa8b569969cdafdf998bfba1b8}\index{Graphic@{Graphic}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{group__graphic_gaa10fb5fa8b569969cdafdf998bfba1b8} 
+virtual void graphic\+::\+ICamera\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gabe28a1926682ea72a96bb38731a841bf}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_ga4ca762114e7814b7b8f3f3a9a6cfcb69}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_gaea1805f2eeb6da5dfe0f5e1188765d18}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_ga365cbd8e5b9bd47abdd15ddd157dcb1e}\index{Graphic@{Graphic}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{group__graphic_ga365cbd8e5b9bd47abdd15ddd157dcb1e} 
+virtual void graphic\+::\+IMouse\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+set the position of the mouse 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gafd996a7a4f42eab1200a0d51b83bbb6e}{Ray\+Mouse}}, \mbox{\hyperlink{group___s_d_l_ga8f4c5b8eb4303e9776d7e1e132dad987}{Sdl\+Mouse}}, and \mbox{\hyperlink{group___s_f_m_l_ga7fcee9e689f8fe1c359185f0d0d14e13}{Sfml\+Mouse}}.
+
+\Hypertarget{group__graphic_ga230ab253cc42e8c2028106b0af038fdd}\index{Graphic@{Graphic}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{group__graphic_ga230ab253cc42e8c2028106b0af038fdd} 
+virtual void graphic\+::\+IPolygon\+::set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}}}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga8288d0451e4e5387a32bbec669be45de}{Ray\+Polygon}}, and \mbox{\hyperlink{group___s_d_l_ga6a40b6fc99987136011e061ff1a02180}{Sdl\+Polygon}}.
+
+\Hypertarget{group__graphic_ga7da368451eae7bdc6919d238387f416a}\index{Graphic@{Graphic}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{group__graphic_ga7da368451eae7bdc6919d238387f416a} 
+virtual void graphic\+::\+ISprite\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___s_f_m_l_gafa785fd42ef4de9aab70eff27ba8aacc}{Sfml\+Sprite}}.
+
+\Hypertarget{group__graphic_ga4a47bba4a97863daabe50f1bd600245d}\index{Graphic@{Graphic}!setProjection@{setProjection}}
+\index{setProjection@{setProjection}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setProjection()}{setProjection()}}
+{\footnotesize\ttfamily \label{group__graphic_ga4a47bba4a97863daabe50f1bd600245d} 
+virtual void graphic\+::\+ICamera\+::set\+Projection (\begin{DoxyParamCaption}\item[{Projection}]{projection}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Projection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em projection} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{group__graphic_ga5706582ed7b81bee47577c05c8d44f12}\index{Graphic@{Graphic}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{group__graphic_ga5706582ed7b81bee47577c05c8d44f12} 
+virtual void graphic\+::\+ISprite\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{angle}{, }\item[{bool}]{is\+Rad}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+{\em is\+Rad} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga3b3db743dc75d75c88d6c9666f63111e}{Ray\+Sprite}}, \mbox{\hyperlink{group___s_d_l_ga7e1842820bff16d36ebbed60eadbbdb1}{Sdl\+Sprite}}, and \mbox{\hyperlink{group___s_f_m_l_gac80478281cd7c3386dad009cee9ac42f}{Sfml\+Sprite}}.
+
+\Hypertarget{group__graphic_ga487198bf197d8880aecd8a237e07c9fd}\index{Graphic@{Graphic}!setSize@{setSize}}
+\index{setSize@{setSize}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setSize()}{setSize()}}
+{\footnotesize\ttfamily \label{group__graphic_ga487198bf197d8880aecd8a237e07c9fd} 
+virtual void graphic\+::\+ISprite\+::set\+Size (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Sprite size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___s_f_m_l_gaaac0ec9ad459089e2fab0c484d8544bb}{Sfml\+Sprite}}.
+
+\Hypertarget{group__graphic_ga46fd28a7b9f9837462eff3de8d6454a0}\index{Graphic@{Graphic}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily \label{group__graphic_ga46fd28a7b9f9837462eff3de8d6454a0} 
+virtual void graphic\+::\+ICamera\+::set\+Target (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gaad6606fd453efe30f83caa9f81b2c9d2}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_ga654cd8318ceceae621652ba004621525}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_gacfda052fa04fa82d3b30ead5bdf35b32}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_ga3cf381163e3e13e119654f776a0f0c9c}\index{Graphic@{Graphic}!setUp@{setUp}}
+\index{setUp@{setUp}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{setUp()}{setUp()}}
+{\footnotesize\ttfamily \label{group__graphic_ga3cf381163e3e13e119654f776a0f0c9c} 
+virtual void graphic\+::\+ICamera\+::set\+Up (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{up}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the up vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em up} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gab4e41a4a9968c70520d49339b688dcd0}{Ray\+Camera}}, \mbox{\hyperlink{group___s_d_l_ga94086203b6a232ad169d187f9558332e}{Sdl\+Camera}}, and \mbox{\hyperlink{group___s_f_m_l_gab0bb3576dd49509dcfb9ede61be3b487}{Sfml\+Camera}}.
+
+\Hypertarget{group__graphic_ga1681260f7fa5502cfc353fe139c072f3}\index{Graphic@{Graphic}!update@{update}}
+\index{update@{update}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{group__graphic_ga1681260f7fa5502cfc353fe139c072f3} 
+virtual void graphic\+::\+IKeyboard\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Update the keyboard. 
+
+
+
+Implemented in \mbox{\hyperlink{group___raylib_ga8d00f372e21018df95f0b9b8c4e5776c}{Ray\+Keyboard}}, \mbox{\hyperlink{group___s_d_l_gab340de968136a78c5bfc2b63d193db4a}{Sdl\+Keyboard}}, and \mbox{\hyperlink{group___s_f_m_l_ga025eacd7df470b64542db212a21d1860}{Sfml\+Keyboard}}.
+
+\Hypertarget{group__graphic_ga87cc9ca9ea63bb88e083700c74acba74}\index{Graphic@{Graphic}!update@{update}}
+\index{update@{update}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{group__graphic_ga87cc9ca9ea63bb88e083700c74acba74} 
+virtual void graphic\+::\+IMouse\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+set the mouse wheel move 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gaccffa820d2eb0898a42fe2f87b1eeeee}{Ray\+Mouse}}, \mbox{\hyperlink{group___s_d_l_gafe0af04452988961c526e636d174983b}{Sdl\+Mouse}}, and \mbox{\hyperlink{group___s_f_m_l_gab4474d824ce2e9cf2ac4ede8d91e73fa}{Sfml\+Mouse}}.
+
+\Hypertarget{group__graphic_ga3f85d3034fdc48e70ab3de24d8e141f3}\index{Graphic@{Graphic}!whichKey@{whichKey}}
+\index{whichKey@{whichKey}!Graphic@{Graphic}}
+\doxysubsubsection{\texorpdfstring{whichKey()}{whichKey()}}
+{\footnotesize\ttfamily \label{group__graphic_ga3f85d3034fdc48e70ab3de24d8e141f3} 
+virtual std\+::vector$<$ \mbox{\hyperlink{group__graphic_ga8c628bac8cbea382161df60d48db1ca2}{Keys}} $>$ graphic\+::\+IKeyboard\+::which\+Key (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Be careful, this function will check every key of the keyboard and return an array of keys that are pressed it\textquotesingle{}s not recommended to use this function in a loop, use \doxylink{group__graphic_gadb4994513e13c607bd8548ed7a87095d}{is\+Key\+Pressed()} instead. it\textquotesingle{}s efficient for key detection \& binding. 
+
+\begin{DoxyReturn}{Returns}
+Keys\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{group___raylib_gacaf4a033e1ab717655d914251f7e5f02}{Ray\+Keyboard}}, \mbox{\hyperlink{group___s_d_l_gaa6205979772be8f77e971c1a701c5de8}{Sdl\+Keyboard}}, and \mbox{\hyperlink{group___s_f_m_l_gabf6df290e75ecb2e538845dcf3643d73}{Sfml\+Keyboard}}.
+
+\input{group___raylib}
+\input{group___s_d_l}
+\input{group___s_f_m_l}

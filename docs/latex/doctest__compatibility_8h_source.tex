@@ -1,0 +1,43 @@
+\doxysection{doctest\+\_\+compatibility.\+h}
+\hypertarget{doctest__compatibility_8h_source}{}\label{doctest__compatibility_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/doctest/doctest\_compatibility.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/doctest/doctest\_compatibility.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DOCTEST\_COMPATIBILITY}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DOCTEST\_COMPATIBILITY}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ DOCTEST\_CONFIG\_VOID\_CAST\_EXPRESSIONS}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ DOCTEST\_THREAD\_LOCAL\ }\textcolor{comment}{//\ enable\ single-\/threaded\ builds\ on\ XCode\ 6/7\ -\/\ https://github.com/onqtam/doctest/issues/172}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}doctest.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Catch\ doesn't\ require\ a\ semicolon\ after\ CAPTURE\ but\ doctest\ does}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#undef\ CAPTURE}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ CAPTURE(x)\ DOCTEST\_CAPTURE(x);}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Sections\ from\ Catch\ are\ called\ Subcases\ in\ doctest\ and\ don't\ work\ with\ std::string\ by\ default}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#undef\ SUBCASE}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ SECTION(x)\ DOCTEST\_SUBCASE(x)}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ convenience\ macro\ around\ INFO\ since\ it\ doesn't\ support\ temporaries\ (it\ is\ optimized\ to\ avoid\ allocations\ for\ runtime\ speed)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ INFO\_WITH\_TEMP\_IMPL(x,\ var\_name)\ const\ auto\ var\_name\ =\ x;\ INFO(var\_name)\ }\textcolor{comment}{//\ lvalue!}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ INFO\_WITH\_TEMP(x)\ INFO\_WITH\_TEMP\_IMPL(x,\ DOCTEST\_ANONYMOUS(DOCTEST\_STD\_STRING\_))}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ doctest\ doesn't\ support\ THROWS\_WITH\ for\ std::string\ out\ of\ the\ box\ (has\ to\ include\ <string>...)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ CHECK\_THROWS\_WITH\_STD\_STR\_IMPL(expr,\ str,\ var\_name)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ const\ std::string\ var\_name\ =\ str;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ CHECK\_THROWS\_WITH(expr,\ var\_name.c\_str());\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (false)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ CHECK\_THROWS\_WITH\_STD\_STR(expr,\ str)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ CHECK\_THROWS\_WITH\_STD\_STR\_IMPL(expr,\ str,\ DOCTEST\_ANONYMOUS(DOCTEST\_STD\_STRING\_))}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ included\ here\ because\ for\ some\ tests\ in\ the\ json\ repository\ private\ is\ defined\ as}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ public\ and\ if\ no\ STL\ header\ is\ included\ before\ that\ then\ in\ the\ json\ include\ when\ STL}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ stuff\ is\ included\ the\ MSVC\ STL\ complains\ (errors)\ that\ C++\ keywords\ are\ being\ redefined}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <iosfwd>}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Catch\ does\ this\ by\ default}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{using\ }\mbox{\hyperlink{structdoctest_1_1_approx}{doctest::Approx}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

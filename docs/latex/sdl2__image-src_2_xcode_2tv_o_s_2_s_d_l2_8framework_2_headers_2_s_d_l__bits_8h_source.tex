@@ -1,0 +1,117 @@
+\doxysection{SDL\+\_\+bits.\+h}
+\hypertarget{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__bits_8h_source}{}\label{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__bits_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/tvOS/SDL2.framework/Headers/SDL\_bits.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/tvOS/SDL2.framework/Headers/SDL\_bits.h}}
+\mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__bits_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2022\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ SDL\_bits\_h\_}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SDL\_bits\_h\_}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL2/SDL\_stdinc.h}}>}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{SDL2/begin\_code.h}}>}}
+\DoxyCodeLine{00034\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#if\ defined(\_\_WATCOMC\_\_)\ \&\&\ defined(\_\_386\_\_)}}
+\DoxyCodeLine{00051\ \textcolor{keyword}{extern}\ \_\_inline\ \textcolor{keywordtype}{int}\ \_SDL\_bsr\_watcom(Uint32);}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#pragma\ aux\ \_SDL\_bsr\_watcom\ =\ \(\backslash\)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ "{}bsr\ eax,\ eax"{}\ \(\backslash\)}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ parm\ [eax]\ nomemory\ \(\backslash\)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ value\ [eax]\ \(\backslash\)}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ modify\ exact\ [eax]\ nomemory;}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ SDL\_FORCE\_INLINE\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00060\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__bits_8h_ada8cd16089cc635936dfe1a6884729a4}{SDL\_MostSignificantBitIndex32}}(Uint32\ x)}
+\DoxyCodeLine{00061\ \{}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ \&\&\ (\_\_GNUC\_\_\ >=\ 4\ ||\ (\_\_GNUC\_\_\ ==\ 3\ \&\&\ \_\_GNUC\_MINOR\_\_\ >=\ 4))}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{/*\ Count\ Leading\ Zeroes\ builtin\ in\ GCC.}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \ \ \ *\ http://gcc.gnu.org/onlinedocs/gcc-\/4.3.4/gcc/Other-\/Builtins.html}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ ==\ 0)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{return}\ 31\ -\/\ \_\_builtin\_clz(x);}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#elif\ defined(\_\_WATCOMC\_\_)\ \&\&\ defined(\_\_386\_\_)}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ ==\ 0)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{return}\ \_SDL\_bsr\_watcom(x);}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#elif\ defined(\_MSC\_VER)}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ index;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_BitScanReverse(\&index,\ x))\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ index;}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{/*\ Based\ off\ of\ Bit\ Twiddling\ Hacks\ by\ Sean\ Eron\ Anderson}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ \ \ *\ <seander@cs.stanford.edu>,\ released\ in\ the\ public\ domain.}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ \ \ *\ http://graphics.stanford.edu/\string~seander/bithacks.html\#IntegerLog}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{const}\ Uint32\ b[]\ =\ \{0x2,\ 0xC,\ 0xF0,\ 0xFF00,\ 0xFFFF0000\};}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \ \ \ S[]\ =\ \{1,\ 2,\ 4,\ 8,\ 16\};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ msbIndex\ =\ 0;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ ==\ 0)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 4;\ i\ >=\ 0;\ i-\/-\/)}
+\DoxyCodeLine{00097\ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ \&\ b[i])}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ x\ >>=\ S[i];}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ msbIndex\ |=\ S[i];}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{return}\ msbIndex;}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00107\ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ SDL\_FORCE\_INLINE\ SDL\_bool}
+\DoxyCodeLine{00110\ SDL\_HasExactlyOneBitSet32(Uint32\ x)}
+\DoxyCodeLine{00111\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ \&\&\ !(x\ \&\ (x\ -\/\ 1)))\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SDL\_TRUE;}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{return}\ SDL\_FALSE;}
+\DoxyCodeLine{00116\ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00120\ \}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{SDL2/close\_code.h}}>}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_bits\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

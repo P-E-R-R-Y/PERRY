@@ -1,9 +1,5 @@
 \doxysection{Sfml\+Camera Class Reference}
 \hypertarget{class_sfml_camera}{}\label{class_sfml_camera}\index{SfmlCamera@{SfmlCamera}}
-
-
-{\ttfamily \#include $<$Sfml\+Camera.\+hpp$>$}
-
 Inheritance diagram for Sfml\+Camera\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,81 +9,73 @@ Inheritance diagram for Sfml\+Camera\+:\begin{figure}[H]
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sfml_camera_a99c0349ff93a7b007d3830e48305c626}\label{class_sfml_camera_a99c0349ff93a7b007d3830e48305c626} 
-{\bfseries Sfml\+Camera} (sf\+::\+Vector3f pos=\{0.f, 0.\+0f, 0.\+0f\}, sf\+::\+Vector3f target=\{0, 0, -\/1\}, float fov=90)
-\item 
-float \mbox{\hyperlink{class_sfml_camera_ad11678907097a3d73687808039ee1d42}{get\+Fov}} () const override
-\begin{DoxyCompactList}\small\item\em Get the FOV. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_sfml_camera_a8883151f4d4ee9dc9e263f9c095df511}{set\+Fov}} (float fov) override
-\begin{DoxyCompactList}\small\item\em Set the FOV. \end{DoxyCompactList}\item 
-ICamera\+::\+Mode \mbox{\hyperlink{class_sfml_camera_a951d66286e7960dd2f5ca4793b0cb370}{get\+Mode}} () const override
-\begin{DoxyCompactList}\small\item\em Get the mode. \end{DoxyCompactList}\item 
-\Hypertarget{class_sfml_camera_a38cbc9ece85daf00dbac5a776cda380c}\label{class_sfml_camera_a38cbc9ece85daf00dbac5a776cda380c} 
-void {\bfseries set\+Mode} (ICamera\+::\+Mode mode) override
-\item 
-\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{class_sfml_camera_a905167efe03f026b0d84441ad0b202bb}{get\+Position}} () const override
-\begin{DoxyCompactList}\small\item\em Get the position. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_sfml_camera_aea1805f2eeb6da5dfe0f5e1188765d18}{set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t position) override
-\begin{DoxyCompactList}\small\item\em Set the position. \end{DoxyCompactList}\item 
-ICamera\+::\+Projection \mbox{\hyperlink{class_sfml_camera_a2fb9f5ab1287515a9805468ee29104fe}{get\+Projection}} () const override
-\begin{DoxyCompactList}\small\item\em Get the Projection. \end{DoxyCompactList}\item 
-\Hypertarget{class_sfml_camera_a542ca15a2bd57ee4ea25c7069a9562d7}\label{class_sfml_camera_a542ca15a2bd57ee4ea25c7069a9562d7} 
-void {\bfseries set\+Projection} (ICamera\+::\+Projection projection) override
-\item 
-\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{class_sfml_camera_ac9b4abc33f5e1433ca8b375c9d8048ca}{get\+Target}} () const override
-\begin{DoxyCompactList}\small\item\em Get the target. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_sfml_camera_acfda052fa04fa82d3b30ead5bdf35b32}{set\+Target}} (\+\_\+\+\_\+v3f\+\_\+t target) override
-\begin{DoxyCompactList}\small\item\em Set the target. \end{DoxyCompactList}\item 
-\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{class_sfml_camera_a81292302e8e35571d8cff3a4556dfee9}{get\+Up}} () const override
-\begin{DoxyCompactList}\small\item\em Get the up vector. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_sfml_camera_ab0bb3576dd49509dcfb9ede61be3b487}{set\+Up}} (\+\_\+\+\_\+v3f\+\_\+t up) override
-\begin{DoxyCompactList}\small\item\em Set the up vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{group___s_f_m_l_ga99c0349ff93a7b007d3830e48305c626}{Sfml\+Camera}} (sf\+::\+Vector3f pos=\{0.f, 0.\+0f, 0.\+0f\}, sf\+::\+Vector3f target=\{0, 0, -\/1\}, float fov=90)
+\begin{DoxyCompactList}\small\item\em Construct a new Sfml Camera object. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Sfml\+Camera} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Sfml Camera object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___s_f_m_l_gad11678907097a3d73687808039ee1d42}{get\+Fov}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Fov object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga8883151f4d4ee9dc9e263f9c095df511}{set\+Fov}} (float fov) override
+\begin{DoxyCompactList}\small\item\em Set the Fov object. \end{DoxyCompactList}\item 
+ICamera\+::\+Mode \mbox{\hyperlink{group___s_f_m_l_ga951d66286e7960dd2f5ca4793b0cb370}{get\+Mode}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Mode object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga38cbc9ece85daf00dbac5a776cda380c}{set\+Mode}} (ICamera\+::\+Mode mode) override
+\begin{DoxyCompactList}\small\item\em Set the Mode object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga905167efe03f026b0d84441ad0b202bb}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gaea1805f2eeb6da5dfe0f5e1188765d18}{set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+ICamera\+::\+Projection \mbox{\hyperlink{group___s_f_m_l_ga2fb9f5ab1287515a9805468ee29104fe}{get\+Projection}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Projection object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_ga542ca15a2bd57ee4ea25c7069a9562d7}{set\+Projection}} (ICamera\+::\+Projection projection) override
+\begin{DoxyCompactList}\small\item\em Set the Projection object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_gac9b4abc33f5e1433ca8b375c9d8048ca}{get\+Target}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Target object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gacfda052fa04fa82d3b30ead5bdf35b32}{set\+Target}} (\+\_\+\+\_\+v3f\+\_\+t target) override
+\begin{DoxyCompactList}\small\item\em Set the Target object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga81292302e8e35571d8cff3a4556dfee9}{get\+Up}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Up object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_f_m_l_gab0bb3576dd49509dcfb9ede61be3b487}{set\+Up}} (\+\_\+\+\_\+v3f\+\_\+t up) override
+\begin{DoxyCompactList}\small\item\em Set the Up object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}}}
 \begin{DoxyCompactItemize}
 \item 
 virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ICamera} ()=default
 \begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_camera}{ICamera} object. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_af460a0f126d44121fe3a4e1e3814afab}{set\+Mode}} (Mode mode)=0
+virtual void \mbox{\hyperlink{group__graphic_gaf460a0f126d44121fe3a4e1e3814afab}{set\+Mode}} (Mode mode)=0
 \begin{DoxyCompactList}\small\item\em Set the mode. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classgraphic_1_1_i_camera_a4a47bba4a97863daabe50f1bd600245d}{set\+Projection}} (Projection projection)=0
+virtual void \mbox{\hyperlink{group__graphic_ga4a47bba4a97863daabe50f1bd600245d}{set\+Projection}} (Projection projection)=0
 \begin{DoxyCompactList}\small\item\em Set the Projection. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sfml_camera_a1f67ee4655d6ef86714db768b0a34fd7}\label{class_sfml_camera_a1f67ee4655d6ef86714db768b0a34fd7} 
 sf\+::\+Vector3f {\bfseries \+\_\+position}
 \item 
-\Hypertarget{class_sfml_camera_a4741d41f882a6c955ef0f91b91abc795}\label{class_sfml_camera_a4741d41f882a6c955ef0f91b91abc795} 
 sf\+::\+Vector3f {\bfseries \+\_\+up}
 \item 
-\Hypertarget{class_sfml_camera_acfcb93e0900c799d41aa6051c426eea8}\label{class_sfml_camera_acfcb93e0900c799d41aa6051c426eea8} 
 \mbox{\hyperlink{class_quaternion}{Quaternion}} {\bfseries \+\_\+quaternion}
 \item 
-\Hypertarget{class_sfml_camera_a70fbf409c9922bfde2ab96b07be945ff}\label{class_sfml_camera_a70fbf409c9922bfde2ab96b07be945ff} 
 Projection {\bfseries \+\_\+projection}
 \item 
-\Hypertarget{class_sfml_camera_a36e7b93346cb819ba43beb3975a9a004}\label{class_sfml_camera_a36e7b93346cb819ba43beb3975a9a004} 
 Mode {\bfseries \+\_\+mode}
 \item 
-\Hypertarget{class_sfml_camera_a774b21b74e939316662b0ef0e3f47522}\label{class_sfml_camera_a774b21b74e939316662b0ef0e3f47522} 
 float {\bfseries \+\_\+fov}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_sfml_camera_aaf4632a093be9ee39d1a4276e2d7ca69}\label{class_sfml_camera_aaf4632a093be9ee39d1a4276e2d7ca69} 
 class {\bfseries Sfml\+Window}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Types inherited from \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}}}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classgraphic_1_1_i_camera_a559dbe934f065df061e9d4fd5a8d19bb}\label{classgraphic_1_1_i_camera_a559dbe934f065df061e9d4fd5a8d19bb} 
+\Hypertarget{group__graphic_ga559dbe934f065df061e9d4fd5a8d19bb}\label{group__graphic_ga559dbe934f065df061e9d4fd5a8d19bb} 
 enum {\bfseries Projection} \{ {\bfseries PERSPECTIVE}
 , {\bfseries ORTHOGRAPHIC}
  \}
 \item 
-\Hypertarget{classgraphic_1_1_i_camera_a2ec72397f3e9f07ad246289590d9ad5d}\label{classgraphic_1_1_i_camera_a2ec72397f3e9f07ad246289590d9ad5d} 
+\Hypertarget{group__graphic_ga2ec72397f3e9f07ad246289590d9ad5d}\label{group__graphic_ga2ec72397f3e9f07ad246289590d9ad5d} 
 enum {\bfseries Mode} \{ \newline
 {\bfseries CUSTOM} = 0
 , {\bfseries FREE}
@@ -99,194 +87,6 @@ enum {\bfseries Mode} \{ \newline
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-File\+: \doxylink{_i_window_8hpp_source}{IWindow.\+hpp} Created Date\+: Fr Mar 2023 Project\+: PERRY Author\+: Perry Chouteau
-
-Last Modified\+: Fri Mar 10 2023 Modified By\+: Perry Chouteau
-
-Copyright (c) 2023-\/2033 Perry Chouteau 
-
-\doxysubsection{Member Function Documentation}
-\Hypertarget{class_sfml_camera_ad11678907097a3d73687808039ee1d42}\index{SfmlCamera@{SfmlCamera}!getFov@{getFov}}
-\index{getFov@{getFov}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{getFov()}{getFov()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_ad11678907097a3d73687808039ee1d42} 
-float Sfml\+Camera\+::get\+Fov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the FOV. 
-
-\begin{DoxyReturn}{Returns}
-float 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_ae547aa0df8d893f3affd2168c47c8104}{graphic\+::\+ICamera}}.
-
-\Hypertarget{class_sfml_camera_a951d66286e7960dd2f5ca4793b0cb370}\index{SfmlCamera@{SfmlCamera}!getMode@{getMode}}
-\index{getMode@{getMode}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_a951d66286e7960dd2f5ca4793b0cb370} 
-ICamera\+::\+Mode Sfml\+Camera\+::get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the mode. 
-
-\begin{DoxyReturn}{Returns}
-Mode 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a0959591edf9737198660a710a2c5b05d}{graphic\+::\+ICamera}}.
-
-\Hypertarget{class_sfml_camera_a905167efe03f026b0d84441ad0b202bb}\index{SfmlCamera@{SfmlCamera}!getPosition@{getPosition}}
-\index{getPosition@{getPosition}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_a905167efe03f026b0d84441ad0b202bb} 
-\+\_\+\+\_\+v3f\+\_\+t Sfml\+Camera\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the position. 
-
-\begin{DoxyReturn}{Returns}
-\+\_\+\+\_\+v3f\+\_\+t 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a61f352cffda9db4d7ef180a308a5afc3}{graphic\+::\+ICamera}}.
-
-\Hypertarget{class_sfml_camera_a2fb9f5ab1287515a9805468ee29104fe}\index{SfmlCamera@{SfmlCamera}!getProjection@{getProjection}}
-\index{getProjection@{getProjection}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{getProjection()}{getProjection()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_a2fb9f5ab1287515a9805468ee29104fe} 
-ICamera\+::\+Projection Sfml\+Camera\+::get\+Projection (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the Projection. 
-
-\begin{DoxyReturn}{Returns}
-\+\_\+\+\_\+v3f\+\_\+t 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a5e1a3887d3b97ff9d3d8ed4888ab5bb0}{graphic\+::\+ICamera}}.
-
-\Hypertarget{class_sfml_camera_ac9b4abc33f5e1433ca8b375c9d8048ca}\index{SfmlCamera@{SfmlCamera}!getTarget@{getTarget}}
-\index{getTarget@{getTarget}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_ac9b4abc33f5e1433ca8b375c9d8048ca} 
-\+\_\+\+\_\+v3f\+\_\+t Sfml\+Camera\+::get\+Target (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the target. 
-
-\begin{DoxyReturn}{Returns}
-\+\_\+\+\_\+v3f\+\_\+t 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a05a871222f25ad3bece5c37e463232a9}{graphic\+::\+ICamera}}.
-
-\Hypertarget{class_sfml_camera_a81292302e8e35571d8cff3a4556dfee9}\index{SfmlCamera@{SfmlCamera}!getUp@{getUp}}
-\index{getUp@{getUp}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{getUp()}{getUp()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_a81292302e8e35571d8cff3a4556dfee9} 
-\+\_\+\+\_\+v3f\+\_\+t Sfml\+Camera\+::get\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Get the up vector. 
-
-\begin{DoxyReturn}{Returns}
-\+\_\+\+\_\+v3f\+\_\+t 
-\end{DoxyReturn}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a3d05345df858197dd715c84314541f10}{graphic\+::\+ICamera}}.
-
-\Hypertarget{class_sfml_camera_a8883151f4d4ee9dc9e263f9c095df511}\index{SfmlCamera@{SfmlCamera}!setFov@{setFov}}
-\index{setFov@{setFov}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{setFov()}{setFov()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_a8883151f4d4ee9dc9e263f9c095df511} 
-void Sfml\+Camera\+::set\+Fov (\begin{DoxyParamCaption}\item[{float}]{fov}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Set the FOV. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em fov} & \\
-\hline
-\end{DoxyParams}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a1e5464620aa2329fd69799638a96cf6e}{graphic\+::\+ICamera}}.
-
-\Hypertarget{class_sfml_camera_aea1805f2eeb6da5dfe0f5e1188765d18}\index{SfmlCamera@{SfmlCamera}!setPosition@{setPosition}}
-\index{setPosition@{setPosition}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_aea1805f2eeb6da5dfe0f5e1188765d18} 
-void Sfml\+Camera\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Set the position. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em position} & \\
-\hline
-\end{DoxyParams}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_aa10fb5fa8b569969cdafdf998bfba1b8}{graphic\+::\+ICamera}}.
-
-\Hypertarget{class_sfml_camera_acfda052fa04fa82d3b30ead5bdf35b32}\index{SfmlCamera@{SfmlCamera}!setTarget@{setTarget}}
-\index{setTarget@{setTarget}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_acfda052fa04fa82d3b30ead5bdf35b32} 
-void Sfml\+Camera\+::set\+Target (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Set the target. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em size} & \\
-\hline
-\end{DoxyParams}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a46fd28a7b9f9837462eff3de8d6454a0}{graphic\+::\+ICamera}}.
-
-\Hypertarget{class_sfml_camera_ab0bb3576dd49509dcfb9ede61be3b487}\index{SfmlCamera@{SfmlCamera}!setUp@{setUp}}
-\index{setUp@{setUp}!SfmlCamera@{SfmlCamera}}
-\doxysubsubsection{\texorpdfstring{setUp()}{setUp()}}
-{\footnotesize\ttfamily \label{class_sfml_camera_ab0bb3576dd49509dcfb9ede61be3b487} 
-void Sfml\+Camera\+::set\+Up (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v3f\+\_\+t}]{up}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-Set the up vector. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em up} & \\
-\hline
-\end{DoxyParams}
-
-
-Implements \mbox{\hyperlink{classgraphic_1_1_i_camera_a3cf381163e3e13e119654f776a0f0c9c}{graphic\+::\+ICamera}}.
-
-
-
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sfml/window/Sfml\+Camera.\+hpp\end{DoxyCompactItemize}
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sfml/window/\mbox{\hyperlink{_sfml_camera_8hpp}{Sfml\+Camera.\+hpp}}\end{DoxyCompactItemize}

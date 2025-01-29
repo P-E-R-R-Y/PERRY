@@ -1,0 +1,195 @@
+\doxysection{Serial}
+\hypertarget{group__serial}{}\label{group__serial}\index{Serial@{Serial}}
+\doxysubsubsection*{Topics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__json}{Json}}
+\item 
+\mbox{\hyperlink{group__yaml}{Yaml}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceserial}{serial}}
+\begin{DoxyCompactList}\small\item\em namespace serial \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classserial_1_1_node}{serial\+::\+Node}}
+\begin{DoxyCompactList}\small\item\em easy to Manage YAML, JSON, XAML and data serialization formats in C++. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{classserial_1_1_i_serial}{serial\+::\+ISerial}}
+\begin{DoxyCompactList}\small\item\em Interface for Serial. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classserial_1_1_serial_shared_loader}{serial\+::\+Serial\+Shared\+Loader}}
+\begin{DoxyCompactList}\small\item\em Use to dynamicaly load Serial shared library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__serial_gafdbc87c6487ba50d68ceed13a226262f}\label{group__serial_gafdbc87c6487ba50d68ceed13a226262f} 
+using {\bfseries serial\+::\+Node\+::node\+\_\+type} = std\+::variant$<$bool, int, double, std\+::string, std\+::vector$<$\mbox{\hyperlink{classserial_1_1_node}{Node}}$>$, std\+::map$<$std\+::string, \mbox{\hyperlink{classserial_1_1_node}{Node}}$>$, void \texorpdfstring{$\ast$}{*}$>$
+\item 
+\Hypertarget{group__serial_ga807da50884b3bf4c2bfce7aacb81001b}\label{group__serial_ga807da50884b3bf4c2bfce7aacb81001b} 
+using {\bfseries serial\+::\+Serial\+Shared\+Loader\+::\+Params} = std\+::string
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__serial_ga8a389d31197d7c6c9dba7350064ba106}\label{group__serial_ga8a389d31197d7c6c9dba7350064ba106} 
+{\bfseries serial\+::\+Node\+::\+Node} (node\+\_\+type node)
+\item 
+\Hypertarget{group__serial_gaeaac19fe7062ad9050dc5403836e85b7}\label{group__serial_gaeaac19fe7062ad9050dc5403836e85b7} 
+bool {\bfseries serial\+::\+Node\+::is\+Scalar} ()
+\item 
+\Hypertarget{group__serial_gae143be7cbd2ccdb213b9fa751cf0619a}\label{group__serial_gae143be7cbd2ccdb213b9fa751cf0619a} 
+bool {\bfseries serial\+::\+Node\+::is\+Sequence} ()
+\item 
+\Hypertarget{group__serial_ga0bb8cf22ea29d58210453c221e81f7d5}\label{group__serial_ga0bb8cf22ea29d58210453c221e81f7d5} 
+bool {\bfseries serial\+::\+Node\+::is\+Map} ()
+\item 
+\Hypertarget{group__serial_gaf7f994660c914a138c8f2937ea94a35d}\label{group__serial_gaf7f994660c914a138c8f2937ea94a35d} 
+bool {\bfseries serial\+::\+Node\+::is\+Bool} ()
+\item 
+\Hypertarget{group__serial_ga3532b32db2a7c5c48dc33cdf27395f80}\label{group__serial_ga3532b32db2a7c5c48dc33cdf27395f80} 
+bool {\bfseries serial\+::\+Node\+::is\+Int} ()
+\item 
+\Hypertarget{group__serial_ga4e957e0956a70f27ff91be6c5af46e7e}\label{group__serial_ga4e957e0956a70f27ff91be6c5af46e7e} 
+bool {\bfseries serial\+::\+Node\+::is\+Double} ()
+\item 
+\Hypertarget{group__serial_ga21175694aa4ce0163ee8fbe68306e571}\label{group__serial_ga21175694aa4ce0163ee8fbe68306e571} 
+bool {\bfseries serial\+::\+Node\+::is\+String} ()
+\item 
+\Hypertarget{group__serial_ga58407e4f1c87939f3014ebcb7dce9bed}\label{group__serial_ga58407e4f1c87939f3014ebcb7dce9bed} 
+bool {\bfseries serial\+::\+Node\+::is\+Null} ()
+\item 
+\Hypertarget{group__serial_ga3cf4979e7adaa6ca5762253dd655dc10}\label{group__serial_ga3cf4979e7adaa6ca5762253dd655dc10} 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries serial\+::\+Node\+::operator\mbox{[}$\,$\mbox{]}} (const std\+::string \&key)
+\item 
+\Hypertarget{group__serial_ga6070be847dcaea98e0276c2489c01ae5}\label{group__serial_ga6070be847dcaea98e0276c2489c01ae5} 
+\mbox{\hyperlink{classserial_1_1_node}{Node}} {\bfseries serial\+::\+Node\+::operator\mbox{[}$\,$\mbox{]}} (const int \&index)
+\item 
+\Hypertarget{group__serial_ga29be08948c115794c1ab10aa6a05e840}\label{group__serial_ga29be08948c115794c1ab10aa6a05e840} 
+{\footnotesize template$<$typename T$>$ }\\T {\bfseries serial\+::\+Node\+::as} ()
+\item 
+virtual \mbox{\hyperlink{group__serial_ga2a42a8affb7842a3c56bd6a40fb5fff3}{serial\+::\+ISerial\+::\texorpdfstring{$\sim$}{\string~}\+ISerial}} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classserial_1_1_i_serial}{ISerial} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__serial_ga71cc14f1841c3df5683e9c631b7ca4f7}{serial\+::\+ISerial\+::load}} (const std\+::string \&path)=0
+\begin{DoxyCompactList}\small\item\em virtual method to load a file \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__serial_ga3cf30399f7e86a6f29968e125a9079bb}{serial\+::\+ISerial\+::is\+Loaded}} ()=0
+\begin{DoxyCompactList}\small\item\em virtual method to know if the file is loaded \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__serial_ga1e41af32fe3b2d40e0363d86df1a6016}{serial\+::\+ISerial\+::close}} ()=0
+\begin{DoxyCompactList}\small\item\em virtual method to close a file \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classserial_1_1_node}{Node}} \mbox{\hyperlink{group__serial_gaa7657594f1a004aa14b581d0a80b19b1}{serial\+::\+ISerial\+::get\+Root}} ()=0
+\begin{DoxyCompactList}\small\item\em virtual method to get the root node \end{DoxyCompactList}\item 
+\Hypertarget{group__serial_gaebf9d9ec91e3c3a6fa77980101d1b9fc}\label{group__serial_gaebf9d9ec91e3c3a6fa77980101d1b9fc} 
+{\bfseries serial\+::\+Serial\+Shared\+Loader\+::\+Serial\+Shared\+Loader} (Params file)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__serial_ga5d2a937b2770578f116bdad1d033ca8c}\label{group__serial_ga5d2a937b2770578f116bdad1d033ca8c} 
+node\+\_\+type {\bfseries serial\+::\+Node\+::value}
+\item 
+\Hypertarget{group__serial_ga3570443ffdb591950055a9696c7232ce}\label{group__serial_ga3570443ffdb591950055a9696c7232ce} 
+\mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries serial\+::\+Serial\+Shared\+Loader\+::create\+Serial} )(int, int, std\+::string)
+\begin{DoxyCompactList}\small\item\em Window. \end{DoxyCompactList}\item 
+\Hypertarget{group__serial_ga6aeee372e4c7bf9dc45279e80d407e52}\label{group__serial_ga6aeee372e4c7bf9dc45279e80d407e52} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries serial\+::\+Serial\+Shared\+Loader\+::delete\+Serial} )(\mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}} \texorpdfstring{$\ast$}{*}window)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{group__serial_ga1e41af32fe3b2d40e0363d86df1a6016}\index{Serial@{Serial}!close@{close}}
+\index{close@{close}!Serial@{Serial}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{group__serial_ga1e41af32fe3b2d40e0363d86df1a6016} 
+virtual void serial\+::\+ISerial\+::close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+virtual method to close a file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group__json_gad3ce46a0430880e403930e244c51dd24}{Json\+Serial}}, and \mbox{\hyperlink{group__yaml_ga27b4e6e7913a48076aaf46150dd31c9f}{Yaml\+Serial}}.
+
+\Hypertarget{group__serial_gaa7657594f1a004aa14b581d0a80b19b1}\index{Serial@{Serial}!getRoot@{getRoot}}
+\index{getRoot@{getRoot}!Serial@{Serial}}
+\doxysubsubsection{\texorpdfstring{getRoot()}{getRoot()}}
+{\footnotesize\ttfamily \label{group__serial_gaa7657594f1a004aa14b581d0a80b19b1} 
+virtual \mbox{\hyperlink{classserial_1_1_node}{Node}} serial\+::\+ISerial\+::get\+Root (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+virtual method to get the root node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group__json_ga37a58a2841346dddb51c2c0336be1918}{Json\+Serial}}, and \mbox{\hyperlink{group__yaml_gad0cc24a096c9aac49878de5d99954f00}{Yaml\+Serial}}.
+
+\Hypertarget{group__serial_ga3cf30399f7e86a6f29968e125a9079bb}\index{Serial@{Serial}!isLoaded@{isLoaded}}
+\index{isLoaded@{isLoaded}!Serial@{Serial}}
+\doxysubsubsection{\texorpdfstring{isLoaded()}{isLoaded()}}
+{\footnotesize\ttfamily \label{group__serial_ga3cf30399f7e86a6f29968e125a9079bb} 
+virtual bool serial\+::\+ISerial\+::is\+Loaded (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+virtual method to know if the file is loaded 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group__json_gae488c356c07d116778fbc6cf7114abca}{Json\+Serial}}, and \mbox{\hyperlink{group__yaml_ga6622a8423378c56464f3bb90e0f9a537}{Yaml\+Serial}}.
+
+\Hypertarget{group__serial_ga71cc14f1841c3df5683e9c631b7ca4f7}\index{Serial@{Serial}!load@{load}}
+\index{load@{load}!Serial@{Serial}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily \label{group__serial_ga71cc14f1841c3df5683e9c631b7ca4f7} 
+virtual void serial\+::\+ISerial\+::load (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+virtual method to load a file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{group__json_ga2a00f269590167c661c249d1b18041bd}{Json\+Serial}}, and \mbox{\hyperlink{group__yaml_gaa8a4eed5b881afe3712b112b5ed650ee}{Yaml\+Serial}}.
+
+\Hypertarget{group__serial_ga2a42a8affb7842a3c56bd6a40fb5fff3}\index{Serial@{Serial}!````~ISerial@{\texorpdfstring{$\sim$}{\string~}ISerial}}
+\index{````~ISerial@{\texorpdfstring{$\sim$}{\string~}ISerial}!Serial@{Serial}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ISerial()}{\string~ISerial()}}
+{\footnotesize\ttfamily \label{group__serial_ga2a42a8affb7842a3c56bd6a40fb5fff3} 
+virtual serial\+::\+ISerial\+::\texorpdfstring{$\sim$}{\string~}\+ISerial (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Destroy the \doxylink{classserial_1_1_i_serial}{ISerial} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\input{group__json}
+\input{group__yaml}

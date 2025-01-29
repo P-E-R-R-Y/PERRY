@@ -1,0 +1,223 @@
+\doxysection{Fuzzer\+Corpus.\+h}
+\hypertarget{_fuzzer_corpus_8h_source}{}\label{_fuzzer_corpus_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerCorpus.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerCorpus.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerCorpus.h\ -\/\ Internal\ header\ for\ the\ Fuzzer\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ fuzzer::InputCorpus}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_CORPUS}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_CORPUS}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}FuzzerDefs.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}FuzzerIO.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}FuzzerRandom.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}FuzzerSHA1.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}FuzzerTracePC.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfuzzer_1_1_input_info}{InputInfo}}\ \{}
+\DoxyCodeLine{00027\ \ \ Unit\ U;\ \ \textcolor{comment}{//\ The\ actual\ input\ data.}}
+\DoxyCodeLine{00028\ \ \ uint8\_t\ Sha1[kSHA1NumBytes];\ \ \textcolor{comment}{//\ Checksum.}}
+\DoxyCodeLine{00029\ \ \ \textcolor{comment}{//\ Number\ of\ features\ that\ this\ input\ has\ and\ no\ smaller\ input\ has.}}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{size\_t}\ NumFeatures\ =\ 0;}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{size\_t}\ Tmp\ =\ 0;\ \textcolor{comment}{//\ Used\ by\ ValidateFeatureSet.}}
+\DoxyCodeLine{00032\ \ \ \textcolor{comment}{//\ Stats.}}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{size\_t}\ NumExecutedMutations\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{size\_t}\ NumSuccessfullMutations\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{bool}\ MayDeleteFile\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }InputCorpus\ \{}
+\DoxyCodeLine{00039\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ kFeatureSetSize\ =\ 1\ <<\ 16;}
+\DoxyCodeLine{00041\ \ \ InputCorpus(\textcolor{keyword}{const}\ std::string\ \&OutputCorpus)\ :\ OutputCorpus(OutputCorpus)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ memset(InputSizesPerFeature,\ 0,\ \textcolor{keyword}{sizeof}(InputSizesPerFeature));}
+\DoxyCodeLine{00043\ \ \ \ \ memset(SmallestElementPerFeature,\ 0,\ \textcolor{keyword}{sizeof}(SmallestElementPerFeature));}
+\DoxyCodeLine{00044\ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \string~InputCorpus()\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ II\ :\ Inputs)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \textcolor{keyword}{delete}\ II;}
+\DoxyCodeLine{00048\ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{size\_t}\ size()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Inputs.size();\ \}}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{size\_t}\ SizeInBytes()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Res\ =\ 0;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ II\ :\ Inputs)}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ Res\ +=\ II-\/>U.size();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ Res;}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{size\_t}\ NumActiveUnits()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Res\ =\ 0;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ II\ :\ Inputs)}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ Res\ +=\ !II-\/>U.empty();}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ Res;}
+\DoxyCodeLine{00061\ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{bool}\ empty()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Inputs.empty();\ \}}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{const}\ Unit\ \&operator[]\ (\textcolor{keywordtype}{size\_t}\ Idx)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Inputs[Idx]-\/>U;\ \}}
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{void}\ AddToCorpus(\textcolor{keyword}{const}\ Unit\ \&U,\ \textcolor{keywordtype}{size\_t}\ NumFeatures,\ \textcolor{keywordtype}{bool}\ MayDeleteFile\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ assert(!U.empty());}
+\DoxyCodeLine{00066\ \ \ \ \ uint8\_t\ Hash[kSHA1NumBytes];}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (FeatureDebug)}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ Printf(\textcolor{stringliteral}{"{}ADD\_TO\_CORPUS\ \%zd\ NF\ \%zd\(\backslash\)n"{}},\ Inputs.size(),\ NumFeatures);}
+\DoxyCodeLine{00069\ \ \ \ \ ComputeSHA1(U.data(),\ U.size(),\ Hash);}
+\DoxyCodeLine{00070\ \ \ \ \ Hashes.insert(Sha1ToString(Hash));}
+\DoxyCodeLine{00071\ \ \ \ \ Inputs.push\_back(\textcolor{keyword}{new}\ \mbox{\hyperlink{structfuzzer_1_1_input_info}{InputInfo}}());}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{structfuzzer_1_1_input_info}{InputInfo}}\ \&II\ =\ *Inputs.back();}
+\DoxyCodeLine{00073\ \ \ \ \ II.U\ =\ U;}
+\DoxyCodeLine{00074\ \ \ \ \ II.NumFeatures\ =\ NumFeatures;}
+\DoxyCodeLine{00075\ \ \ \ \ II.MayDeleteFile\ =\ MayDeleteFile;}
+\DoxyCodeLine{00076\ \ \ \ \ memcpy(II.Sha1,\ Hash,\ kSHA1NumBytes);}
+\DoxyCodeLine{00077\ \ \ \ \ UpdateCorpusDistribution();}
+\DoxyCodeLine{00078\ \ \ \ \ ValidateFeatureSet();}
+\DoxyCodeLine{00079\ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{bool}\ HasUnit(\textcolor{keyword}{const}\ Unit\ \&U)\ \{\ \textcolor{keywordflow}{return}\ Hashes.count(Hash(U));\ \}}
+\DoxyCodeLine{00082\ \ \ \textcolor{keywordtype}{bool}\ HasUnit(\textcolor{keyword}{const}\ std::string\ \&H)\ \{\ \textcolor{keywordflow}{return}\ Hashes.count(H);\ \}}
+\DoxyCodeLine{00083\ \ \ \mbox{\hyperlink{structfuzzer_1_1_input_info}{InputInfo}}\ \&ChooseUnitToMutate(\mbox{\hyperlink{classfuzzer_1_1_random}{Random}}\ \&Rand)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{structfuzzer_1_1_input_info}{InputInfo}}\ \&II\ =\ *Inputs[ChooseUnitIdxToMutate(Rand)];}
+\DoxyCodeLine{00085\ \ \ \ \ assert(!II.U.empty());}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{return}\ II;}
+\DoxyCodeLine{00087\ \ \ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \textcolor{comment}{//\ Returns\ an\ index\ of\ random\ unit\ from\ the\ corpus\ to\ mutate.}}
+\DoxyCodeLine{00090\ \ \ \textcolor{comment}{//\ Hypothesis:\ units\ added\ to\ the\ corpus\ last\ are\ more\ likely\ to\ be}}
+\DoxyCodeLine{00091\ \ \ \textcolor{comment}{//\ interesting.\ This\ function\ gives\ more\ weight\ to\ the\ more\ recent\ units.}}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordtype}{size\_t}\ ChooseUnitIdxToMutate(\mbox{\hyperlink{classfuzzer_1_1_random}{Random}}\ \&Rand)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Idx\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(CorpusDistribution(Rand.Get\_mt19937()));}
+\DoxyCodeLine{00094\ \ \ \ \ assert(Idx\ <\ Inputs.size());}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{return}\ Idx;}
+\DoxyCodeLine{00096\ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{void}\ PrintStats()\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ Inputs.size();\ i++)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&II\ =\ *Inputs[i];}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ Printf(\textcolor{stringliteral}{"{}\ \ [\%zd\ \%s]\(\backslash\)tsz:\ \%zd\(\backslash\)truns:\ \%zd\(\backslash\)tsucc:\ \%zd\(\backslash\)n"{}},\ i,}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ Sha1ToString(II.Sha1).c\_str(),\ II.U.size(),}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ II.NumExecutedMutations,\ II.NumSuccessfullMutations);}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{void}\ PrintFeatureSet()\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ kFeatureSetSize;\ i++)\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keywordtype}{size\_t}\ Sz\ =\ GetFeature(i))}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ Printf(\textcolor{stringliteral}{"{}[\%zd:\ id\ \%zd\ sz\%zd]\ "{}},\ i,\ SmallestElementPerFeature[i],\ Sz);}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ Printf(\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)t"{}});}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ Inputs.size();\ i++)}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{size\_t}\ N\ =\ Inputs[i]-\/>NumFeatures)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ Printf(\textcolor{stringliteral}{"{}\ \%zd=>\%zd\ "{}},\ i,\ N);}
+\DoxyCodeLine{00116\ \ \ \ \ Printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00117\ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keywordtype}{void}\ DeleteInput(\textcolor{keywordtype}{size\_t}\ Idx)\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{structfuzzer_1_1_input_info}{InputInfo}}\ \&II\ =\ *Inputs[Idx];}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{if}\ (!OutputCorpus.empty()\ \&\&\ II.MayDeleteFile)}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ RemoveFile(DirPlusFile(OutputCorpus,\ Sha1ToString(II.Sha1)));}
+\DoxyCodeLine{00123\ \ \ \ \ Unit().swap(II.U);}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{if}\ (FeatureDebug)}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ Printf(\textcolor{stringliteral}{"{}EVICTED\ \%zd\(\backslash\)n"{}},\ Idx);}
+\DoxyCodeLine{00126\ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{bool}\ AddFeature(\textcolor{keywordtype}{size\_t}\ Idx,\ uint32\_t\ NewSize,\ \textcolor{keywordtype}{bool}\ Shrink)\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ assert(NewSize);}
+\DoxyCodeLine{00130\ \ \ \ \ Idx\ =\ Idx\ \%\ kFeatureSetSize;}
+\DoxyCodeLine{00131\ \ \ \ \ uint32\_t\ OldSize\ =\ GetFeature(Idx);}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{if}\ (OldSize\ ==\ 0\ ||\ (Shrink\ \&\&\ OldSize\ >\ NewSize))\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (OldSize\ >\ 0)\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ OldIdx\ =\ SmallestElementPerFeature[Idx];}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structfuzzer_1_1_input_info}{InputInfo}}\ \&II\ =\ *Inputs[OldIdx];}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ assert(II.NumFeatures\ >\ 0);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ II.NumFeatures-\/-\/;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (II.NumFeatures\ ==\ 0)}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ DeleteInput(OldIdx);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (FeatureDebug)}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ Printf(\textcolor{stringliteral}{"{}ADD\ FEATURE\ \%zd\ sz\ \%d\(\backslash\)n"{}},\ Idx,\ NewSize);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ SmallestElementPerFeature[Idx]\ =\ Inputs.size();}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ InputSizesPerFeature[Idx]\ =\ NewSize;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ CountingFeatures\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00147\ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00149\ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \textcolor{keywordtype}{size\_t}\ NumFeatures()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Res\ =\ 0;}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ kFeatureSetSize;\ i++)}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ Res\ +=\ GetFeature(i)\ !=\ 0;}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordflow}{return}\ Res;}
+\DoxyCodeLine{00156\ \ \ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \textcolor{keywordtype}{void}\ ResetFeatureSet()\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ assert(Inputs.empty());}
+\DoxyCodeLine{00160\ \ \ \ \ memset(InputSizesPerFeature,\ 0,\ \textcolor{keyword}{sizeof}(InputSizesPerFeature));}
+\DoxyCodeLine{00161\ \ \ \ \ memset(SmallestElementPerFeature,\ 0,\ \textcolor{keyword}{sizeof}(SmallestElementPerFeature));}
+\DoxyCodeLine{00162\ \ \ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ FeatureDebug\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \textcolor{keywordtype}{size\_t}\ GetFeature(\textcolor{keywordtype}{size\_t}\ Idx)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ InputSizesPerFeature[Idx];\ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \textcolor{keywordtype}{void}\ ValidateFeatureSet()\ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordflow}{if}\ (!CountingFeatures)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{if}\ (FeatureDebug)}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ PrintFeatureSet();}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ Idx\ =\ 0;\ Idx\ <\ kFeatureSetSize;\ Idx++)}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GetFeature(Idx))}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ Inputs[SmallestElementPerFeature[Idx]]-\/>Tmp++;}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ II:\ Inputs)\ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (II-\/>Tmp\ !=\ II-\/>NumFeatures)}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ Printf(\textcolor{stringliteral}{"{}ZZZ\ \%zd\ \%zd\(\backslash\)n"{}},\ II-\/>Tmp,\ II-\/>NumFeatures);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ assert(II-\/>Tmp\ ==\ II-\/>NumFeatures);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ II-\/>Tmp\ =\ 0;}
+\DoxyCodeLine{00182\ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \ \ \}}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \textcolor{comment}{//\ Updates\ the\ probability\ distribution\ for\ the\ units\ in\ the\ corpus.}}
+\DoxyCodeLine{00186\ \ \ \textcolor{comment}{//\ Must\ be\ called\ whenever\ the\ corpus\ or\ unit\ weights\ are\ changed.}}
+\DoxyCodeLine{00187\ \ \ \textcolor{keywordtype}{void}\ UpdateCorpusDistribution()\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ Inputs.size();}
+\DoxyCodeLine{00189\ \ \ \ \ Intervals.resize(N\ +\ 1);}
+\DoxyCodeLine{00190\ \ \ \ \ Weights.resize(N);}
+\DoxyCodeLine{00191\ \ \ \ \ std::iota(Intervals.begin(),\ Intervals.end(),\ 0);}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordflow}{if}\ (CountingFeatures)}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ N;\ i++)}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ Weights[i]\ =\ Inputs[i]-\/>NumFeatures\ *\ (i\ +\ 1);}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ std::iota(Weights.begin(),\ Weights.end(),\ 1);}
+\DoxyCodeLine{00197\ \ \ \ \ CorpusDistribution\ =\ std::piecewise\_constant\_distribution<double>(}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ Intervals.begin(),\ Intervals.end(),\ Weights.begin());}
+\DoxyCodeLine{00199\ \ \ \}}
+\DoxyCodeLine{00200\ \ \ std::piecewise\_constant\_distribution<double>\ CorpusDistribution;}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ std::vector<double>\ Intervals;}
+\DoxyCodeLine{00203\ \ \ std::vector<double>\ Weights;}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ std::unordered\_set<std::string>\ Hashes;}
+\DoxyCodeLine{00206\ \ \ std::vector<InputInfo*>\ Inputs;}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \textcolor{keywordtype}{bool}\ CountingFeatures\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00209\ \ \ uint32\_t\ InputSizesPerFeature[kFeatureSetSize];}
+\DoxyCodeLine{00210\ \ \ uint32\_t\ SmallestElementPerFeature[kFeatureSetSize];}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ std::string\ OutputCorpus;}
+\DoxyCodeLine{00213\ \};}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \}\ \ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_CORPUS}}
+
+\end{DoxyCode}

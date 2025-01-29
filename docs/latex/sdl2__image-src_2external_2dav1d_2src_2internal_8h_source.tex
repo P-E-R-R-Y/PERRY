@@ -1,0 +1,466 @@
+\doxysection{internal.\+h}
+\hypertarget{sdl2__image-src_2external_2dav1d_2src_2internal_8h_source}{}\label{sdl2__image-src_2external_2dav1d_2src_2internal_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/dav1d/src/internal.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/dav1d/src/internal.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Copyright\ ©\ 2018-\/2021,\ VideoLAN\ and\ dav1d\ authors}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ Copyright\ ©\ 2018,\ Two\ Orioles,\ LLC}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ All\ rights\ reserved.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ modification,\ are\ permitted\ provided\ that\ the\ following\ conditions\ are\ met:}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ 1.\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright\ notice,\ this}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ \ \ \ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ 2.\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright\ notice,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ \ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the\ documentation}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ \ \ \ and/or\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}\ AND}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ THE\ IMPLIED}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ ARE}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ OWNER\ OR\ CONTRIBUTORS\ BE\ LIABLE\ FOR}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ DAMAGES}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ SERVICES;}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ LOSS\ OF\ USE,\ DATA,\ OR\ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ CAUSED\ AND}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ ON\ ANY\ THEORY\ OF\ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ OR\ TORT}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *\ (INCLUDING\ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ OF\ THIS}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ DAV1D\_SRC\_INTERNAL\_H}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ DAV1D\_SRC\_INTERNAL\_H}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <stdatomic.h>}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}dav1d/data.h"{}}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_frame_context}{Dav1dFrameContext}}\ \mbox{\hyperlink{struct_dav1d_frame_context}{Dav1dFrameContext}};}
+\DoxyCodeLine{00036\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_tile_state}{Dav1dTileState}}\ \mbox{\hyperlink{struct_dav1d_tile_state}{Dav1dTileState}};}
+\DoxyCodeLine{00037\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_task_context}{Dav1dTaskContext}}\ \mbox{\hyperlink{struct_dav1d_task_context}{Dav1dTaskContext}};}
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_task}{Dav1dTask}}\ \mbox{\hyperlink{struct_dav1d_task}{Dav1dTask}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}common/attributes.h"{}}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}src/cdef.h"{}}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}src/cdf.h"{}}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}src/data.h"{}}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ "{}src/env.h"{}}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ "{}src/filmgrain.h"{}}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ "{}src/intra\_edge.h"{}}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ "{}src/ipred.h"{}}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}src/itx.h"{}}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#include\ "{}src/levels.h"{}}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}src/lf\_mask.h"{}}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ "{}src/loopfilter.h"{}}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#include\ "{}src/looprestoration.h"{}}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#include\ "{}src/mc.h"{}}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}src/msac.h"{}}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ "{}src/picture.h"{}}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ "{}src/recon.h"{}}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#include\ "{}src/refmvs.h"{}}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#include\ "{}src/thread.h"{}}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_d_s_p_context}{Dav1dDSPContext}}\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_film_grain_d_s_p_context}{Dav1dFilmGrainDSPContext}}\ fg;}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_intra_pred_d_s_p_context}{Dav1dIntraPredDSPContext}}\ ipred;}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_m_c_d_s_p_context}{Dav1dMCDSPContext}}\ mc;}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_inv_txfm_d_s_p_context}{Dav1dInvTxfmDSPContext}}\ itx;}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_loop_filter_d_s_p_context}{Dav1dLoopFilterDSPContext}}\ lf;}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_cdef_d_s_p_context}{Dav1dCdefDSPContext}}\ cdef;}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_loop_restoration_d_s_p_context}{Dav1dLoopRestorationDSPContext}}\ lr;}
+\DoxyCodeLine{00069\ \}\ \mbox{\hyperlink{struct_dav1d_d_s_p_context}{Dav1dDSPContext}};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_tile_group}{Dav1dTileGroup}}\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_data}{Dav1dData}}\ data;}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{int}\ start,\ end;}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{enum}\ TaskType\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ DAV1D\_TASK\_TYPE\_INIT,}
+\DoxyCodeLine{00078\ \ \ \ \ DAV1D\_TASK\_TYPE\_INIT\_CDF,}
+\DoxyCodeLine{00079\ \ \ \ \ DAV1D\_TASK\_TYPE\_TILE\_ENTROPY,}
+\DoxyCodeLine{00080\ \ \ \ \ DAV1D\_TASK\_TYPE\_ENTROPY\_PROGRESS,}
+\DoxyCodeLine{00081\ \ \ \ \ DAV1D\_TASK\_TYPE\_TILE\_RECONSTRUCTION,}
+\DoxyCodeLine{00082\ \ \ \ \ DAV1D\_TASK\_TYPE\_DEBLOCK\_COLS,}
+\DoxyCodeLine{00083\ \ \ \ \ DAV1D\_TASK\_TYPE\_DEBLOCK\_ROWS,}
+\DoxyCodeLine{00084\ \ \ \ \ DAV1D\_TASK\_TYPE\_CDEF,}
+\DoxyCodeLine{00085\ \ \ \ \ DAV1D\_TASK\_TYPE\_SUPER\_RESOLUTION,}
+\DoxyCodeLine{00086\ \ \ \ \ DAV1D\_TASK\_TYPE\_LOOP\_RESTORATION,}
+\DoxyCodeLine{00087\ \ \ \ \ DAV1D\_TASK\_TYPE\_RECONSTRUCTION\_PROGRESS,}
+\DoxyCodeLine{00088\ \ \ \ \ DAV1D\_TASK\_TYPE\_FG\_PREP,}
+\DoxyCodeLine{00089\ \ \ \ \ DAV1D\_TASK\_TYPE\_FG\_APPLY,}
+\DoxyCodeLine{00090\ \};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_context}{Dav1dContext}}\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_frame_context}{Dav1dFrameContext}}\ *fc;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ n\_fc;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_task_context}{Dav1dTaskContext}}\ *tc;}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ n\_tc;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ cache\ of\ OBUs\ that\ make\ up\ a\ single\ frame\ before\ we\ submit\ them}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ to\ a\ frame\ worker\ to\ be\ decoded}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_tile_group}{Dav1dTileGroup}}\ *tile;}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{int}\ n\_tile\_data\_alloc;}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{int}\ n\_tile\_data;}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{int}\ n\_tiles;}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_mem_pool}{Dav1dMemPool}}\ *seq\_hdr\_pool;}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *seq\_hdr\_ref;}
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_sequence_header}{Dav1dSequenceHeader}}\ *seq\_hdr;}
+\DoxyCodeLine{00108\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_mem_pool}{Dav1dMemPool}}\ *frame\_hdr\_pool;}
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *frame\_hdr\_ref;}
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_frame_header}{Dav1dFrameHeader}}\ *frame\_hdr;}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *content\_light\_ref;}
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_content_light_level}{Dav1dContentLightLevel}}\ *content\_light;}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *mastering\_display\_ref;}
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_mastering_display}{Dav1dMasteringDisplay}}\ *mastering\_display;}
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *itut\_t35\_ref;}
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_i_t_u_t_t35}{Dav1dITUTT35}}\ *itut\_t35;}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{int}\ n\_itut\_t35;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ decoded\ output\ picture\ queue}}
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_data}{Dav1dData}}\ in;}
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_thread_picture}{Dav1dThreadPicture}}\ out,\ cache;}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ dummy\ is\ a\ pointer\ to\ prevent\ compiler\ errors\ about\ atomic\_load()}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ not\ taking\ const\ arguments}}
+\DoxyCodeLine{00125\ \ \ \ \ atomic\_int\ flush\_mem,\ *flush;}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_dav1d_thread_picture}{Dav1dThreadPicture}}\ *out\_delayed;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ next;}
+\DoxyCodeLine{00129\ \ \ \ \ \}\ frame\_thread;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ task\ threading\ (refer\ to\ tc[]\ for\ per\_thread\ thingies)}}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_context_1_1_task_thread_data}{TaskThreadData}}\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ pthread\_mutex\_t\ lock;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ pthread\_cond\_t\ cond;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ atomic\_uint\ first;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ cur;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ is\ used\ for\ delayed\ reset\ of\ the\ task\ cur\ pointer\ when}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ such\ operation\ is\ needed\ but\ the\ thread\ doesn't\ enter\ a\ critical}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ section\ (typically\ when\ executing\ the\ next\ sbrow\ task\ locklessly).}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ See\ src/thread\_task.c:reset\_task\_cur().}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ atomic\_uint\ reset\_task\_cur;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ atomic\_int\ cond\_signaled;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ exec;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ pthread\_cond\_t\ cond;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_dav1d_picture}{Dav1dPicture}}\ *in;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_dav1d_picture}{Dav1dPicture}}\ *out;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ TaskType\ type;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ atomic\_int\ progress[2];\ \textcolor{comment}{/*\ [0]=started,\ [1]=completed\ */}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ALIGN(int8\_t\ grain\_lut\_8bpc[3][GRAIN\_HEIGHT\ +\ 1][GRAIN\_WIDTH],\ 16);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ALIGN(uint8\_t\ scaling\_8bpc[3][256],\ 64);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ALIGN(int16\_t\ grain\_lut\_16bpc[3][GRAIN\_HEIGHT\ +\ 1][GRAIN\_WIDTH],\ 16);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ALIGN(uint8\_t\ scaling\_16bpc[3][4096],\ 64);}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \}\ delayed\_fg;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inited;}
+\DoxyCodeLine{00162\ \ \ \ \ \}\ task\_thread;}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{comment}{//\ reference/entropy\ state}}
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_mem_pool}{Dav1dMemPool}}\ *segmap\_pool;}
+\DoxyCodeLine{00166\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_mem_pool}{Dav1dMemPool}}\ *refmvs\_pool;}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_dav1d_thread_picture}{Dav1dThreadPicture}}\ p;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *segmap;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *refmvs;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ refpoc[7];}
+\DoxyCodeLine{00172\ \ \ \ \ \}\ refs[8];}
+\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_mem_pool}{Dav1dMemPool}}\ *cdf\_pool;}
+\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{struct_cdf_thread_context}{CdfThreadContext}}\ cdf[8];}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_d_s_p_context}{Dav1dDSPContext}}\ dsp[3\ \textcolor{comment}{/*\ 8,\ 10,\ 12\ bits/component\ */}];}
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_refmvs_d_s_p_context}{Dav1dRefmvsDSPContext}}\ refmvs\_dsp;}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_pic_allocator}{Dav1dPicAllocator}}\ allocator;}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{int}\ apply\_grain;}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{int}\ operating\_point;}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ operating\_point\_idc;}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{int}\ all\_layers;}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_spatial\_id;}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ frame\_size\_limit;}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{int}\ strict\_std\_compliance;}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{int}\ output\_invisible\_frames;}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keyword}{enum}\ Dav1dInloopFilterType\ inloop\_filters;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{enum}\ Dav1dDecodeFrameType\ decode\_frame\_type;}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordtype}{int}\ drain;}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{enum}\ PictureFlags\ frame\_flags;}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{enum}\ Dav1dEventFlags\ event\_flags;}
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_data_props}{Dav1dDataProps}}\ cached\_error\_props;}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{int}\ cached\_error;}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_logger}{Dav1dLogger}}\ logger;}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_mem_pool}{Dav1dMemPool}}\ *picture\_pool;}
+\DoxyCodeLine{00199\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_mem_pool}{Dav1dMemPool}}\ *pic\_ctx\_pool;}
+\DoxyCodeLine{00200\ \};}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_task}{Dav1dTask}}\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ frame\_idx;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ frame\ thread\ id}}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{enum}\ TaskType\ type;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ task\ work}}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{int}\ sby;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sbrow}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{comment}{//\ task\ dependencies}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{int}\ recon\_progress,\ deblock\_progress;}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{int}\ deps\_skip;}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_task}{Dav1dTask}}\ *next;\ \textcolor{comment}{//\ only\ used\ in\ task\ queue}}
+\DoxyCodeLine{00211\ \};}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_frame_context}{Dav1dFrameContext}}\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *seq\_hdr\_ref;}
+\DoxyCodeLine{00215\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_sequence_header}{Dav1dSequenceHeader}}\ *seq\_hdr;}
+\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *frame\_hdr\_ref;}
+\DoxyCodeLine{00217\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_frame_header}{Dav1dFrameHeader}}\ *frame\_hdr;}
+\DoxyCodeLine{00218\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_thread_picture}{Dav1dThreadPicture}}\ refp[7];}
+\DoxyCodeLine{00219\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_picture}{Dav1dPicture}}\ cur;\ \textcolor{comment}{//\ during\ block\ coding\ /\ reconstruction}}
+\DoxyCodeLine{00220\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_thread_picture}{Dav1dThreadPicture}}\ sr\_cur;\ \textcolor{comment}{//\ after\ super-\/resolution\ upscaling}}
+\DoxyCodeLine{00221\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *mvs\_ref;}
+\DoxyCodeLine{00222\ \ \ \ \ refmvs\_temporal\_block\ *mvs,\ *ref\_mvs[7];}
+\DoxyCodeLine{00223\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *ref\_mvs\_ref[7];}
+\DoxyCodeLine{00224\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_ref}{Dav1dRef}}\ *cur\_segmap\_ref,\ *prev\_segmap\_ref;}
+\DoxyCodeLine{00225\ \ \ \ \ uint8\_t\ *cur\_segmap;}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *prev\_segmap;}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ refpoc[7],\ refrefpoc[7][7];}
+\DoxyCodeLine{00228\ \ \ \ \ uint8\_t\ gmv\_warp\_allowed[7];}
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{struct_cdf_thread_context}{CdfThreadContext}}\ in\_cdf,\ out\_cdf;}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_tile_group}{Dav1dTileGroup}}\ *tile;}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordtype}{int}\ n\_tile\_data\_alloc;}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordtype}{int}\ n\_tile\_data;}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{comment}{//\ for\ scalable\ references}}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_frame_context_1_1_scalable_motion_params}{ScalableMotionParams}}\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ scale;\ \textcolor{comment}{//\ if\ no\ scaling,\ this\ is\ 0}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ step;}
+\DoxyCodeLine{00238\ \ \ \ \ \}\ svc[7][2\ \textcolor{comment}{/*\ x,\ y\ */}];}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordtype}{int}\ resize\_step[2\ \textcolor{comment}{/*\ y,\ uv\ */}],\ resize\_start[2\ \textcolor{comment}{/*\ y,\ uv\ */}];}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_dav1d_context}{Dav1dContext}}\ *c;}
+\DoxyCodeLine{00242\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_tile_state}{Dav1dTileState}}\ *ts;}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{int}\ n\_ts;}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_dav1d_d_s_p_context}{Dav1dDSPContext}}\ *dsp;}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ recon\_b\_intra\_fn\ recon\_b\_intra;}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ recon\_b\_inter\_fn\ recon\_b\_inter;}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ filter\_sbrow\_fn\ filter\_sbrow;}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ filter\_sbrow\_fn\ filter\_sbrow\_deblock\_cols;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ filter\_sbrow\_fn\ filter\_sbrow\_deblock\_rows;}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ void\ (*filter\_sbrow\_cdef)(\mbox{\hyperlink{struct_dav1d_task_context}{Dav1dTaskContext}}\ *tc,\ \textcolor{keywordtype}{int}\ sby);}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ filter\_sbrow\_fn\ filter\_sbrow\_resize;}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ filter\_sbrow\_fn\ filter\_sbrow\_lr;}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ backup\_ipred\_edge\_fn\ backup\_ipred\_edge;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ read\_coef\_blocks\_fn\ read\_coef\_blocks;}
+\DoxyCodeLine{00256\ \ \ \ \ \}\ bd\_fn;}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordtype}{int}\ ipred\_edge\_sz;}
+\DoxyCodeLine{00259\ \ \ \ \ pixel\ *ipred\_edge[3];}
+\DoxyCodeLine{00260\ \ \ \ \ ptrdiff\_t\ b4\_stride;}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{int}\ w4,\ h4,\ bw,\ bh,\ sb128w,\ sb128h,\ sbh,\ sb\_shift,\ sb\_step,\ sr\_sb128w;}
+\DoxyCodeLine{00262\ \ \ \ \ uint16\_t\ dq[DAV1D\_MAX\_SEGMENTS][3\ \textcolor{comment}{/*\ plane\ */}][2\ \textcolor{comment}{/*\ dc/ac\ */}];}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *qm[N\_RECT\_TX\_SIZES][3\ \textcolor{comment}{/*\ plane\ */}];}
+\DoxyCodeLine{00264\ \ \ \ \ \mbox{\hyperlink{struct_block_context}{BlockContext}}\ *a;}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordtype}{int}\ a\_sz\ \textcolor{comment}{/*\ w*tile\_rows\ */};}
+\DoxyCodeLine{00266\ \ \ \ \ \mbox{\hyperlink{structrefmvs__frame}{refmvs\_frame}}\ rf;}
+\DoxyCodeLine{00267\ \ \ \ \ uint8\_t\ jnt\_weights[7][7];}
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keywordtype}{int}\ bitdepth\_max;}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ next\_tile\_row[2\ \textcolor{comment}{/*\ 0:\ reconstruction,\ 1:\ entropy\ */}];}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ atomic\_int\ entropy\_progress;}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ atomic\_int\ deblock\_progress;\ \textcolor{comment}{//\ in\ sby\ units}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ atomic\_uint\ *frame\_progress,\ *copy\_lpf\_progress;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ indexed\ using\ t-\/>by\ *\ f-\/>b4\_stride\ +\ t-\/>bx}}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_av1_block}{Av1Block}}\ *b;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }CodedBlockInfo\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ int16\_t\ eob[3\ \textcolor{comment}{/*\ plane\ */}];}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ txtp[3\ \textcolor{comment}{/*\ plane\ */}];}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \}\ *cbi;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ indexed\ using\ (t-\/>by\ >>\ 1)\ *\ (f-\/>b4\_stride\ >>\ 1)\ +\ (t-\/>bx\ >>\ 1)}}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ uint16\_t\ (*pal)[3\ \textcolor{comment}{/*\ plane\ */}][8\ \textcolor{comment}{/*\ idx\ */}];}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ iterated\ over\ inside\ tile\ state}}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ uint8\_t\ *pal\_idx;}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ coef\ *cf;}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ prog\_sz;}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pal\_sz,\ pal\_idx\_sz,\ cf\_sz;}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ start\ offsets\ per\ tile}}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *tile\_start\_off;}
+\DoxyCodeLine{00290\ \ \ \ \ \}\ frame\_thread;}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{comment}{//\ loopfilter}}
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ uint8\_t\ (*level)[4];}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ Av1Filter\ *mask;}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ Av1Restoration\ *lr\_mask;}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mask\_sz\ \textcolor{comment}{/*\ w*h\ */},\ lr\_mask\_sz;}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cdef\_buf\_plane\_sz[2];\ \textcolor{comment}{/*\ stride*sbh*4\ */}}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cdef\_buf\_sbh;}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ lr\_buf\_plane\_sz[2];\ \textcolor{comment}{/*\ (stride*sbh*4)\ <<\ sb128\ if\ n\_tc\ >\ 1,\ else\ stride*4\ */}}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ re\_sz\ \textcolor{comment}{/*\ h\ */};}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ ALIGN(Av1FilterLUT\ lim\_lut,\ 16);}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ last\_sharpness;}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ uint8\_t\ lvl[8\ \textcolor{comment}{/*\ seg\_id\ */}][4\ \textcolor{comment}{/*\ dir\ */}][8\ \textcolor{comment}{/*\ ref\ */}][2\ \textcolor{comment}{/*\ is\_gmv\ */}];}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ uint8\_t\ *tx\_lpf\_right\_edge[2];}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ uint8\_t\ *cdef\_line\_buf,\ *lr\_line\_buf;}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ pixel\ *cdef\_line[2\ \textcolor{comment}{/*\ pre,\ post\ */}][3\ \textcolor{comment}{/*\ plane\ */}];}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ pixel\ *cdef\_lpf\_line[3\ \textcolor{comment}{/*\ plane\ */}];}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ pixel\ *lr\_lpf\_line[3\ \textcolor{comment}{/*\ plane\ */}];}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ in-\/loop\ filter\ per-\/frame\ state\ keeping}}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ uint8\_t\ *start\_of\_tile\_row;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ start\_of\_tile\_row\_sz;}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ need\_cdef\_lpf\_copy;}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ pixel\ *p[3],\ *sr\_p[3];}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ Av1Filter\ *mask\_ptr,\ *prev\_mask\_ptr;}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ restore\_planes;\ \textcolor{comment}{//\ enum\ LrRestorePlanes}}
+\DoxyCodeLine{00318\ \ \ \ \ \}\ lf;}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ pthread\_mutex\_t\ lock;}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ pthread\_cond\_t\ cond;}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }TaskThreadData\ *ttd;}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }Dav1dTask\ *tasks,\ *tile\_tasks[2],\ init\_task;}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_tasks,\ num\_tile\_tasks;}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ atomic\_int\ init\_done;}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ atomic\_int\ done[2];}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ retval;}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ update\_set;\ \textcolor{comment}{//\ whether\ we\ need\ to\ update\ CDF\ reference}}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ atomic\_int\ error;}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ atomic\_int\ task\_counter;}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }Dav1dTask\ *task\_head,\ *task\_tail;}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Points\ to\ the\ task\ directly\ before\ the\ cur\ pointer\ in\ the\ queue.}}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ cur\ pointer\ is\ theoretical\ here,\ we\ actually\ keep\ track\ of\ the}}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ "{}prev\_t"{}\ variable.\ This\ is\ needed\ to\ not\ loose\ the\ tasks\ in}}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [head;cur-\/1]\ when\ picking\ one\ for\ execution.}}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }Dav1dTask\ *task\_cur\_prev;}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{\ \textcolor{comment}{//\ async\ task\ insertion}}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ atomic\_int\ merge;}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ pthread\_mutex\_t\ lock;}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ Dav1dTask\ *head,\ *tail;}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \}\ pending\_tasks;}
+\DoxyCodeLine{00343\ \ \ \ \ \}\ task\_thread;}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{comment}{//\ threading\ (refer\ to\ tc[]\ for\ per-\/thread\ things)}}
+\DoxyCodeLine{00346\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_frame_context_1_1_frame_tile_thread_data}{FrameTileThreadData}}\ \{}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ int\ (*lowest\_pixel\_mem)[7][2];}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ lowest\_pixel\_mem\_sz;}
+\DoxyCodeLine{00349\ \ \ \ \ \}\ tile\_thread;}
+\DoxyCodeLine{00350\ \};}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_tile_state}{Dav1dTileState}}\ \{}
+\DoxyCodeLine{00353\ \ \ \ \ \mbox{\hyperlink{struct_cdf_context}{CdfContext}}\ cdf;}
+\DoxyCodeLine{00354\ \ \ \ \ \mbox{\hyperlink{struct_msac_context}{MsacContext}}\ msac;}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\_start,\ col\_end,\ row\_start,\ row\_end;\ \textcolor{comment}{//\ in\ 4px\ units}}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col,\ row;\ \textcolor{comment}{//\ in\ tile\ units}}
+\DoxyCodeLine{00359\ \ \ \ \ \}\ tiling;}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{comment}{//\ in\ sby\ units,\ TILE\_ERROR\ after\ a\ decoding\ error}}
+\DoxyCodeLine{00362\ \ \ \ \ atomic\_int\ progress[2\ \textcolor{comment}{/*\ 0:\ reconstruction,\ 1:\ entropy\ */}];}
+\DoxyCodeLine{00363\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ uint8\_t\ *pal\_idx;}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ coef\ *cf;}
+\DoxyCodeLine{00366\ \ \ \ \ \}\ frame\_thread[2\ \textcolor{comment}{/*\ 0:\ reconstruction,\ 1:\ entropy\ */}];}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \ \ \textcolor{comment}{//\ in\ fullpel\ units,\ [0]\ =\ Y,\ [1]\ =\ UV,\ used\ for\ progress\ requirements}}
+\DoxyCodeLine{00369\ \ \ \ \ \textcolor{comment}{//\ each\ entry\ is\ one\ tile-\/sbrow;\ middle\ index\ is\ refidx}}
+\DoxyCodeLine{00370\ \ \ \ \ int\ (*lowest\_pixel)[7][2];}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \ \ \ \ uint16\_t\ dqmem[DAV1D\_MAX\_SEGMENTS][3\ \textcolor{comment}{/*\ plane\ */}][2\ \textcolor{comment}{/*\ dc/ac\ */}];}
+\DoxyCodeLine{00373\ \ \ \ \ \textcolor{keyword}{const}\ uint16\_t\ (*dq)[3][2];}
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{keywordtype}{int}\ last\_qidx;}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \ \ \ \ int8\_t\ last\_delta\_lf[4];}
+\DoxyCodeLine{00377\ \ \ \ \ uint8\_t\ lflvlmem[8\ \textcolor{comment}{/*\ seg\_id\ */}][4\ \textcolor{comment}{/*\ dir\ */}][8\ \textcolor{comment}{/*\ ref\ */}][2\ \textcolor{comment}{/*\ is\_gmv\ */}];}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ (*lflvl)[4][8][2];}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \ \ \ \mbox{\hyperlink{struct_av1_restoration_unit}{Av1RestorationUnit}}\ *lr\_ref[3];}
+\DoxyCodeLine{00381\ \};}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00383\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_dav1d_task_context}{Dav1dTaskContext}}\ \{}
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_dav1d_context}{Dav1dContext}}\ *c;}
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_dav1d_frame_context}{Dav1dFrameContext}}\ *f;}
+\DoxyCodeLine{00386\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_tile_state}{Dav1dTileState}}\ *ts;}
+\DoxyCodeLine{00387\ \ \ \ \ \textcolor{keywordtype}{int}\ bx,\ by;}
+\DoxyCodeLine{00388\ \ \ \ \ \mbox{\hyperlink{struct_block_context}{BlockContext}}\ l,\ *a;}
+\DoxyCodeLine{00389\ \ \ \ \ \mbox{\hyperlink{structrefmvs__tile}{refmvs\_tile}}\ rt;}
+\DoxyCodeLine{00390\ \ \ \ \ ALIGN(\textcolor{keyword}{union},\ 64)\ \{}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ int16\_t\ cf\_8bpc\ [32\ *\ 32];}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ int32\_t\ cf\_16bpc[32\ *\ 32];}
+\DoxyCodeLine{00393\ \ \ \ \ \};}
+\DoxyCodeLine{00394\ \ \ \ \ \textcolor{comment}{//\ FIXME\ types\ can\ be\ changed\ to\ pixel\ (and\ dynamically\ allocated)}}
+\DoxyCodeLine{00395\ \ \ \ \ \textcolor{comment}{//\ which\ would\ make\ copy/assign\ operations\ slightly\ faster?}}
+\DoxyCodeLine{00396\ \ \ \ \ uint16\_t\ al\_pal[2\ \textcolor{comment}{/*\ a/l\ */}][32\ \textcolor{comment}{/*\ bx/y4\ */}][3\ \textcolor{comment}{/*\ plane\ */}][8\ \textcolor{comment}{/*\ palette\_idx\ */}];}
+\DoxyCodeLine{00397\ \ \ \ \ uint8\_t\ pal\_sz\_uv[2\ \textcolor{comment}{/*\ a/l\ */}][32\ \textcolor{comment}{/*\ bx4/by4\ */}];}
+\DoxyCodeLine{00398\ \ \ \ \ uint8\_t\ txtp\_map[32\ *\ 32];\ \textcolor{comment}{//\ inter-\/only}}
+\DoxyCodeLine{00399\ \ \ \ \ ALIGN(\textcolor{keyword}{union},\ 64)\ \{}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \ lap\_8bpc\ [128\ *\ 32];}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ lap\_16bpc[128\ *\ 32];}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int16\_t\ compinter[2][128\ *\ 128];}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ seg\_mask[128\ *\ 128];}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stride=192\ for\ non-\/SVC,\ or\ 320\ for\ SVC}}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \ emu\_edge\_8bpc\ [320\ *\ (256\ +\ 7)];}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ emu\_edge\_16bpc[320\ *\ (256\ +\ 7)];}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ levels[32\ *\ 34];}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ pal\_order[64][8];}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ pal\_ctx[64];}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ int16\_t\ ac[32\ *\ 32];}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ pal\_idx[2\ *\ 64\ *\ 64];}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ pal[3\ \textcolor{comment}{/*\ plane\ */}][8\ \textcolor{comment}{/*\ palette\_idx\ */}];}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ ALIGN(\textcolor{keyword}{union},\ 64)\ \{}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ interintra\_8bpc[64\ *\ 64];}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ edge\_8bpc[257];}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ interintra\_16bpc[64\ *\ 64];}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ edge\_16bpc[257];}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00437\ \ \ \ \ \}\ scratch;}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ \ \ \ \ \mbox{\hyperlink{struct_dav1d_warped_motion_params}{Dav1dWarpedMotionParams}}\ warpmv;}
+\DoxyCodeLine{00440\ \ \ \ \ \mbox{\hyperlink{struct_av1_filter}{Av1Filter}}\ *lf\_mask;}
+\DoxyCodeLine{00441\ \ \ \ \ \textcolor{keywordtype}{int}\ top\_pre\_cdef\_toggle;}
+\DoxyCodeLine{00442\ \ \ \ \ int8\_t\ *cur\_sb\_cdef\_idx\_ptr;}
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{comment}{//\ for\ chroma\ sub8x8,\ we\ need\ to\ know\ the\ filter\ for\ all\ 4\ subblocks\ in}}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{comment}{//\ a\ 4x4\ area,\ but\ the\ top/left\ one\ can\ go\ out\ of\ cache\ already,\ so\ this}}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{comment}{//\ keeps\ it\ accessible}}
+\DoxyCodeLine{00446\ \ \ \ \ \textcolor{keyword}{enum}\ Filter2d\ tl\_4x4\_filter;}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00448\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pass;}
+\DoxyCodeLine{00450\ \ \ \ \ \}\ frame\_thread;}
+\DoxyCodeLine{00451\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structthread__data}{thread\_data}}\ td;}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }TaskThreadData\ *ttd;}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }FrameTileThreadData\ *fttd;}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ flushed;}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ die;}
+\DoxyCodeLine{00457\ \ \ \ \ \}\ task\_thread;}
+\DoxyCodeLine{00458\ \};}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00460\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ DAV1D\_SRC\_INTERNAL\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

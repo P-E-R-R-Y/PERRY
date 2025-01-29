@@ -1,0 +1,89 @@
+\doxysection{utils.\+h}
+\hypertarget{sdl2__image-src_2external_2libjxl_2third__party_2sjpeg_2examples_2utils_8h_source}{}\label{sdl2__image-src_2external_2libjxl_2third__party_2sjpeg_2examples_2utils_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/libjxl/third\_party/sjpeg/examples/utils.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/external/libjxl/third\_party/sjpeg/examples/utils.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2017\ Google,\ Inc.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ \ Few\ utilities\ for\ the\ examples}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Author:\ Mikolaj\ Zalewski\ (mikolajz@google.com)}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ Skal\ (pascal.massimino@gmail.com)}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ SJPEG\_EXAMPLES\_UTILS\_H\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ SJPEG\_EXAMPLES\_UTILS\_H\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}sjpeg.h"{}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ reads\ a\ disk\ file}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{extern}\ std::string\ ReadFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ filename[]);}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ save\ data\ to\ disk\ file}}
+\DoxyCodeLine{00030\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ SaveFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keyword}{const}\ std::string\&\ out,\ \textcolor{keywordtype}{bool}\ quiet);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ returns\ the\ current\ time\ in\ seconds.}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{double}\ GetStopwatchTime();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ try\ to\ systematically\ decode\ the\ input\ as\ a\ JPEG,\ PNG,\ PPM\ (in\ this\ order)}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{extern}\ std::vector<uint8\_t>\ ReadImage(\textcolor{keyword}{const}\ std::string\&\ in,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ width,\ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ height,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsjpeg_1_1_encoder_param}{sjpeg::EncoderParam}}*\ \textcolor{keyword}{const}\ param);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ Return\ CRC32\ signature\ for\ data\ block.\ 'crc'\ is\ the\ current\ checksum\ value.}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{extern}\ uint32\_t\ GetCRC32(\textcolor{keyword}{const}\ std::string\&\ data,\ uint32\_t\ crc\ =\ 0);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ guessed\ image\ types}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ SJPEG\_UNKNOWN\ =\ 0,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SJPEG\_JPEG,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SJPEG\_PNG,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SJPEG\_PPM\ \}\ ImageType;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ returns\ a\ printable\ 3-\/letter\ name\ for\ the\ image\ type}}
+\DoxyCodeLine{00052\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ ImageTypeName(ImageType\ type);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ try\ to\ guess\ the\ image\ format\ based\ on\ few\ header\ bytes.}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ Even\ if\ SJPEG\_UNKNOWN\ is\ returned,\ some\ of\ the\ ReadXXX\ functions\ below}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ can\ succeed\ reading\ the\ file.}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{extern}\ ImageType\ GuessImageType(\textcolor{keyword}{const}\ std::string\&\ input);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ signature\ for\ the\ function\ reading\ a\ image\ format}}
+\DoxyCodeLine{00060\ \textcolor{keyword}{typedef}\ std::vector<uint8\_t>\ (*ImageReader)(\textcolor{keyword}{const}\ std::string\&\ in,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ width,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ height,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsjpeg_1_1_encoder_param}{sjpeg::EncoderParam}}*\ \textcolor{keyword}{const}\ param);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ returns\ a\ callable\ function\ associated\ with\ the\ detected\ image\ type.}}
+\DoxyCodeLine{00066\ \textcolor{keyword}{extern}\ ImageReader\ GuessImageReader(\textcolor{keyword}{const}\ std::string\&\ input);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ quickly\ try\ to\ guess\ the\ image\ format\ and\ read\ it.}}
+\DoxyCodeLine{00069\ \textcolor{keyword}{extern}\ std::vector<uint8\_t>\ ReadImageQuick(\textcolor{keyword}{const}\ std::string\&\ in,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ width,\ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ height,}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsjpeg_1_1_encoder_param}{sjpeg::EncoderParam}}*\ \textcolor{keyword}{const}\ param);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ Directly\ callable\ functions,\ in\ case\ auto-\/detection\ didn't\ work.}}
+\DoxyCodeLine{00074\ \textcolor{keyword}{extern}\ std::vector<uint8\_t>\ ReadJPEG(\textcolor{keyword}{const}\ std::string\&\ in,}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ width,\ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ height,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsjpeg_1_1_encoder_param}{sjpeg::EncoderParam}}*\ \textcolor{keyword}{const}\ param);}
+\DoxyCodeLine{00077\ \textcolor{keyword}{extern}\ std::vector<uint8\_t>\ ReadPNG(\textcolor{keyword}{const}\ std::string\&\ input,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ width\_ptr,\ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ height\_ptr,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsjpeg_1_1_encoder_param}{sjpeg::EncoderParam}}*\ \textcolor{keyword}{const}\ param);}
+\DoxyCodeLine{00080\ \textcolor{keyword}{extern}\ std::vector<uint8\_t>\ ReadPPM(\textcolor{keyword}{const}\ std::string\&\ input,}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ width,\ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ height,}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structsjpeg_1_1_encoder_param}{sjpeg::EncoderParam}}*\ \textcolor{keyword}{const}\ param);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ SJPEG\_EXAMPLES\_UTILS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

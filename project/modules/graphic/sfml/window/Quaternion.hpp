@@ -1,19 +1,63 @@
+/**
+ * @file Quaternion.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup SFML
+ * @{
+ * @addtogroup sfml_extra extra
+ */
+
 #pragma once
 
 #include <SFML/Graphics.hpp>
 #include "Vector3f.hpp"
 
+/**
+ * @brief quaternion are four-dimensional vector that can be used to represent rotations in 3D space.
+ */
 class Quaternion {
     public:
+
+        /**
+         * @brief Construct a new Quaternion object
+         */
         Quaternion(): w(1), x(0), y(0), z(0) {}
  
+        /**
+         * @brief Construct a new Quaternion object
+         * 
+         * @param w 
+         * @param x 
+         * @param y 
+         * @param z 
+         */
         Quaternion(float w, float x, float y, float z) : w(w), x(x), y(y), z(z) {}
+
+        /**
+         * @brief Destroy the Quaternion object
+         */
         ~Quaternion() {}
 
+        /**
+         * @brief return the identity quaternion
+         * 
+         * @return Quaternion 
+         */
         static Quaternion identity() {
             return Quaternion(1, 0, 0, 0);
         }
 
+        /**
+         * @brief fromEulerAngles will create a quaternion from euler angles
+         * 
+         * @param x 
+         * @param y 
+         * @param z 
+         * @return Quaternion 
+         */
         static Quaternion fromEulerAngles(float x, float y, float z) {
             Quaternion q;
             sf::Vector3f half = {x / 2, y / 2, z / 2};
@@ -77,10 +121,18 @@ class Quaternion {
             return q;
         }
 
+        /**
+         * @brief conjugate will return the conjugate of the quaternion
+         * 
+         * @return Quaternion 
+         */
         Quaternion conjugate() const {
             return Quaternion(w, -x, -y, -z);
         }
 
+        /**
+         * @brief normalize will normalize the quaternion
+         */
         void normalize() {
             float magnitude = std::sqrt(w * w + x * x + y * y + z * z);
             if (magnitude == 0) {
@@ -96,21 +148,9 @@ class Quaternion {
             }
         }
 
-        void normalise() {
-            float magnitude = std::sqrt(w * w + x * x + y * y + z * z);
-            if (magnitude == 0) {
-                w = 1;
-                x = 0;
-                y = 0;
-                z = 0;
-            } else {
-                w /= magnitude;
-                x /= magnitude;
-                y /= magnitude;
-                z /= magnitude;
-            }
-        }
-
+        /**
+         * @brief enforceSign will enforce the sign of the quaternion
+         */
         void enforceSign() {
             if (w < 0) {
                 w = -w;
@@ -120,12 +160,25 @@ class Quaternion {
             }
         }
 
+        /**
+         * @brief rotate will rotate a point around a center
+         * 
+         * @param point 
+         * @param center 
+         * @return sf::Vector3f 
+         */
         sf::Vector3f rotate(sf::Vector3f point, sf::Vector3f center = {0, 0, 0}) const {
             Quaternion p(0, point.x - center.x, point.y - center.y, point.z - center.z);
             Quaternion q = (*this * p) * conjugate();
             return {q.x + center.x, q.y + center.y, q.z + center.z};
         }
 
+        /**
+         * @brief operator* will multiply two quaternions
+         * 
+         * @param other 
+         * @return Quaternion 
+         */
         Quaternion operator*(const Quaternion& other) const {
             Quaternion q(
                 w * other.w - x * other.x - y * other.y - z * other.z,

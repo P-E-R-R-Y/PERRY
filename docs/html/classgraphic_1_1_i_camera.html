@@ -25,8 +25,9 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="small-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">PERRY<span id="projectnumber">&#160;v0.1.0</span>
+   <div id="projectname">PERRY<span id="projectnumber">&#160;v1.0.0</span>
    </div>
    <div id="projectbrief">P-E-R-R-Y/PERRY helps creating games with a bunch of tools.</div>
   </td>
@@ -94,7 +95,7 @@ $(function(){ initResizable(false); });
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classgraphic_1_1_i_camera-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">graphic::ICamera Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">graphic::ICamera Interface Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span><div class="ingroups"><a class="el" href="group__graphic.html">Graphic</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -108,19 +109,19 @@ Inheritance diagram for graphic::ICamera:</div>
  <div class="center">
   <img src="classgraphic_1_1_i_camera.png" usemap="#graphic::ICamera_map" alt=""/>
   <map id="graphic::ICamera_map" name="graphic::ICamera_map">
-<area href="class_sdl_camera.html" alt="SdlCamera" shape="rect" coords="0,56,116,80"/>
-<area href="class_sfml_camera.html" alt="SfmlCamera" shape="rect" coords="126,56,242,80"/>
-<area href="classraylib_1_1_ray_camera.html" title="Raylib Camera class." alt="raylib::RayCamera" shape="rect" coords="252,56,368,80"/>
+<area href="class_ray_camera.html" title="Raylib Camera class." alt="RayCamera" shape="rect" coords="0,56,108,80"/>
+<area href="class_sdl_camera.html" alt="SdlCamera" shape="rect" coords="118,56,226,80"/>
+<area href="class_sfml_camera.html" alt="SfmlCamera" shape="rect" coords="236,56,344,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a559dbe934f065df061e9d4fd5a8d19bb" id="r_a559dbe934f065df061e9d4fd5a8d19bb"><td class="memItemLeft" align="right" valign="top"><a id="a559dbe934f065df061e9d4fd5a8d19bb" name="a559dbe934f065df061e9d4fd5a8d19bb"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Projection</b> { <b>PERSPECTIVE</b>
+<tr class="memitem:ga559dbe934f065df061e9d4fd5a8d19bb" id="r_ga559dbe934f065df061e9d4fd5a8d19bb"><td class="memItemLeft" align="right" valign="top"><a id="ga559dbe934f065df061e9d4fd5a8d19bb" name="ga559dbe934f065df061e9d4fd5a8d19bb"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Projection</b> { <b>PERSPECTIVE</b>
 , <b>ORTHOGRAPHIC</b>
  }</td></tr>
-<tr class="separator:a559dbe934f065df061e9d4fd5a8d19bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ec72397f3e9f07ad246289590d9ad5d" id="r_a2ec72397f3e9f07ad246289590d9ad5d"><td class="memItemLeft" align="right" valign="top"><a id="a2ec72397f3e9f07ad246289590d9ad5d" name="a2ec72397f3e9f07ad246289590d9ad5d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Mode</b> { <br />
+<tr class="separator:ga559dbe934f065df061e9d4fd5a8d19bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ec72397f3e9f07ad246289590d9ad5d" id="r_ga2ec72397f3e9f07ad246289590d9ad5d"><td class="memItemLeft" align="right" valign="top"><a id="ga2ec72397f3e9f07ad246289590d9ad5d" name="ga2ec72397f3e9f07ad246289590d9ad5d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Mode</b> { <br />
 &#160;&#160;<b>CUSTOM</b> = 0
 , <b>FREE</b>
 , <b>ORBITAL</b>
@@ -129,441 +130,54 @@ Public Types</h2></td></tr>
 &#160;&#160;<b>THIRD_PERSON</b>
 <br />
  }</td></tr>
-<tr class="separator:a2ec72397f3e9f07ad246289590d9ad5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ga2ec72397f3e9f07ad246289590d9ad5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1dd8c5e182aeae7bc5875f12c1647746" id="r_a1dd8c5e182aeae7bc5875f12c1647746"><td class="memItemLeft" align="right" valign="top"><a id="a1dd8c5e182aeae7bc5875f12c1647746" name="a1dd8c5e182aeae7bc5875f12c1647746"></a>
+<tr class="memitem:ga1dd8c5e182aeae7bc5875f12c1647746" id="r_ga1dd8c5e182aeae7bc5875f12c1647746"><td class="memItemLeft" align="right" valign="top">
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ICamera</b> ()=default</td></tr>
-<tr class="memdesc:a1dd8c5e182aeae7bc5875f12c1647746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_camera.html" title="Camera interface.">ICamera</a> object. <br /></td></tr>
-<tr class="separator:a1dd8c5e182aeae7bc5875f12c1647746"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae547aa0df8d893f3affd2168c47c8104" id="r_ae547aa0df8d893f3affd2168c47c8104"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae547aa0df8d893f3affd2168c47c8104">getFov</a> () const =0</td></tr>
-<tr class="memdesc:ae547aa0df8d893f3affd2168c47c8104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the FOV.  <br /></td></tr>
-<tr class="separator:ae547aa0df8d893f3affd2168c47c8104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e5464620aa2329fd69799638a96cf6e" id="r_a1e5464620aa2329fd69799638a96cf6e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e5464620aa2329fd69799638a96cf6e">setFov</a> (float fov)=0</td></tr>
-<tr class="memdesc:a1e5464620aa2329fd69799638a96cf6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the FOV.  <br /></td></tr>
-<tr class="separator:a1e5464620aa2329fd69799638a96cf6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0959591edf9737198660a710a2c5b05d" id="r_a0959591edf9737198660a710a2c5b05d"><td class="memItemLeft" align="right" valign="top">virtual Mode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0959591edf9737198660a710a2c5b05d">getMode</a> () const =0</td></tr>
-<tr class="memdesc:a0959591edf9737198660a710a2c5b05d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mode.  <br /></td></tr>
-<tr class="separator:a0959591edf9737198660a710a2c5b05d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af460a0f126d44121fe3a4e1e3814afab" id="r_af460a0f126d44121fe3a4e1e3814afab"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af460a0f126d44121fe3a4e1e3814afab">setMode</a> (Mode mode)=0</td></tr>
-<tr class="memdesc:af460a0f126d44121fe3a4e1e3814afab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mode.  <br /></td></tr>
-<tr class="separator:af460a0f126d44121fe3a4e1e3814afab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61f352cffda9db4d7ef180a308a5afc3" id="r_a61f352cffda9db4d7ef180a308a5afc3"><td class="memItemLeft" align="right" valign="top">virtual __v3f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61f352cffda9db4d7ef180a308a5afc3">getPosition</a> () const =0</td></tr>
-<tr class="memdesc:a61f352cffda9db4d7ef180a308a5afc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the position.  <br /></td></tr>
-<tr class="separator:a61f352cffda9db4d7ef180a308a5afc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa10fb5fa8b569969cdafdf998bfba1b8" id="r_aa10fb5fa8b569969cdafdf998bfba1b8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa10fb5fa8b569969cdafdf998bfba1b8">setPosition</a> (__v3f_t position)=0</td></tr>
-<tr class="memdesc:aa10fb5fa8b569969cdafdf998bfba1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the position.  <br /></td></tr>
-<tr class="separator:aa10fb5fa8b569969cdafdf998bfba1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e1a3887d3b97ff9d3d8ed4888ab5bb0" id="r_a5e1a3887d3b97ff9d3d8ed4888ab5bb0"><td class="memItemLeft" align="right" valign="top">virtual Projection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e1a3887d3b97ff9d3d8ed4888ab5bb0">getProjection</a> () const =0</td></tr>
-<tr class="memdesc:a5e1a3887d3b97ff9d3d8ed4888ab5bb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Projection.  <br /></td></tr>
-<tr class="separator:a5e1a3887d3b97ff9d3d8ed4888ab5bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a47bba4a97863daabe50f1bd600245d" id="r_a4a47bba4a97863daabe50f1bd600245d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a47bba4a97863daabe50f1bd600245d">setProjection</a> (Projection projection)=0</td></tr>
-<tr class="memdesc:a4a47bba4a97863daabe50f1bd600245d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Projection.  <br /></td></tr>
-<tr class="separator:a4a47bba4a97863daabe50f1bd600245d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05a871222f25ad3bece5c37e463232a9" id="r_a05a871222f25ad3bece5c37e463232a9"><td class="memItemLeft" align="right" valign="top">virtual __v3f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05a871222f25ad3bece5c37e463232a9">getTarget</a> () const =0</td></tr>
-<tr class="memdesc:a05a871222f25ad3bece5c37e463232a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the target.  <br /></td></tr>
-<tr class="separator:a05a871222f25ad3bece5c37e463232a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46fd28a7b9f9837462eff3de8d6454a0" id="r_a46fd28a7b9f9837462eff3de8d6454a0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46fd28a7b9f9837462eff3de8d6454a0">setTarget</a> (__v3f_t size)=0</td></tr>
-<tr class="memdesc:a46fd28a7b9f9837462eff3de8d6454a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the target.  <br /></td></tr>
-<tr class="separator:a46fd28a7b9f9837462eff3de8d6454a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d05345df858197dd715c84314541f10" id="r_a3d05345df858197dd715c84314541f10"><td class="memItemLeft" align="right" valign="top">virtual __v3f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d05345df858197dd715c84314541f10">getUp</a> () const =0</td></tr>
-<tr class="memdesc:a3d05345df858197dd715c84314541f10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the up vector.  <br /></td></tr>
-<tr class="separator:a3d05345df858197dd715c84314541f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cf381163e3e13e119654f776a0f0c9c" id="r_a3cf381163e3e13e119654f776a0f0c9c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cf381163e3e13e119654f776a0f0c9c">setUp</a> (__v3f_t up)=0</td></tr>
-<tr class="memdesc:a3cf381163e3e13e119654f776a0f0c9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the up vector.  <br /></td></tr>
-<tr class="separator:a3cf381163e3e13e119654f776a0f0c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga1dd8c5e182aeae7bc5875f12c1647746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_camera.html" title="Camera interface.">ICamera</a> object. <br /></td></tr>
+<tr class="separator:ga1dd8c5e182aeae7bc5875f12c1647746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae547aa0df8d893f3affd2168c47c8104" id="r_gae547aa0df8d893f3affd2168c47c8104"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#gae547aa0df8d893f3affd2168c47c8104">getFov</a> () const =0</td></tr>
+<tr class="memdesc:gae547aa0df8d893f3affd2168c47c8104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the FOV.  <br /></td></tr>
+<tr class="separator:gae547aa0df8d893f3affd2168c47c8104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e5464620aa2329fd69799638a96cf6e" id="r_ga1e5464620aa2329fd69799638a96cf6e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga1e5464620aa2329fd69799638a96cf6e">setFov</a> (float fov)=0</td></tr>
+<tr class="memdesc:ga1e5464620aa2329fd69799638a96cf6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the FOV.  <br /></td></tr>
+<tr class="separator:ga1e5464620aa2329fd69799638a96cf6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0959591edf9737198660a710a2c5b05d" id="r_ga0959591edf9737198660a710a2c5b05d"><td class="memItemLeft" align="right" valign="top">virtual Mode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga0959591edf9737198660a710a2c5b05d">getMode</a> () const =0</td></tr>
+<tr class="memdesc:ga0959591edf9737198660a710a2c5b05d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the mode.  <br /></td></tr>
+<tr class="separator:ga0959591edf9737198660a710a2c5b05d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf460a0f126d44121fe3a4e1e3814afab" id="r_gaf460a0f126d44121fe3a4e1e3814afab"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#gaf460a0f126d44121fe3a4e1e3814afab">setMode</a> (Mode mode)=0</td></tr>
+<tr class="memdesc:gaf460a0f126d44121fe3a4e1e3814afab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the mode.  <br /></td></tr>
+<tr class="separator:gaf460a0f126d44121fe3a4e1e3814afab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61f352cffda9db4d7ef180a308a5afc3" id="r_ga61f352cffda9db4d7ef180a308a5afc3"><td class="memItemLeft" align="right" valign="top">virtual __v3f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga61f352cffda9db4d7ef180a308a5afc3">getPosition</a> () const =0</td></tr>
+<tr class="memdesc:ga61f352cffda9db4d7ef180a308a5afc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the position.  <br /></td></tr>
+<tr class="separator:ga61f352cffda9db4d7ef180a308a5afc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa10fb5fa8b569969cdafdf998bfba1b8" id="r_gaa10fb5fa8b569969cdafdf998bfba1b8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#gaa10fb5fa8b569969cdafdf998bfba1b8">setPosition</a> (__v3f_t position)=0</td></tr>
+<tr class="memdesc:gaa10fb5fa8b569969cdafdf998bfba1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the position.  <br /></td></tr>
+<tr class="separator:gaa10fb5fa8b569969cdafdf998bfba1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e1a3887d3b97ff9d3d8ed4888ab5bb0" id="r_ga5e1a3887d3b97ff9d3d8ed4888ab5bb0"><td class="memItemLeft" align="right" valign="top">virtual Projection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga5e1a3887d3b97ff9d3d8ed4888ab5bb0">getProjection</a> () const =0</td></tr>
+<tr class="memdesc:ga5e1a3887d3b97ff9d3d8ed4888ab5bb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Projection.  <br /></td></tr>
+<tr class="separator:ga5e1a3887d3b97ff9d3d8ed4888ab5bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a47bba4a97863daabe50f1bd600245d" id="r_ga4a47bba4a97863daabe50f1bd600245d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga4a47bba4a97863daabe50f1bd600245d">setProjection</a> (Projection projection)=0</td></tr>
+<tr class="memdesc:ga4a47bba4a97863daabe50f1bd600245d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Projection.  <br /></td></tr>
+<tr class="separator:ga4a47bba4a97863daabe50f1bd600245d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga05a871222f25ad3bece5c37e463232a9" id="r_ga05a871222f25ad3bece5c37e463232a9"><td class="memItemLeft" align="right" valign="top">virtual __v3f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga05a871222f25ad3bece5c37e463232a9">getTarget</a> () const =0</td></tr>
+<tr class="memdesc:ga05a871222f25ad3bece5c37e463232a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the target.  <br /></td></tr>
+<tr class="separator:ga05a871222f25ad3bece5c37e463232a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46fd28a7b9f9837462eff3de8d6454a0" id="r_ga46fd28a7b9f9837462eff3de8d6454a0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga46fd28a7b9f9837462eff3de8d6454a0">setTarget</a> (__v3f_t size)=0</td></tr>
+<tr class="memdesc:ga46fd28a7b9f9837462eff3de8d6454a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the target.  <br /></td></tr>
+<tr class="separator:ga46fd28a7b9f9837462eff3de8d6454a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d05345df858197dd715c84314541f10" id="r_ga3d05345df858197dd715c84314541f10"><td class="memItemLeft" align="right" valign="top">virtual __v3f_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga3d05345df858197dd715c84314541f10">getUp</a> () const =0</td></tr>
+<tr class="memdesc:ga3d05345df858197dd715c84314541f10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the up vector.  <br /></td></tr>
+<tr class="separator:ga3d05345df858197dd715c84314541f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3cf381163e3e13e119654f776a0f0c9c" id="r_ga3cf381163e3e13e119654f776a0f0c9c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga3cf381163e3e13e119654f776a0f0c9c">setUp</a> (__v3f_t up)=0</td></tr>
+<tr class="memdesc:ga3cf381163e3e13e119654f776a0f0c9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the up vector.  <br /></td></tr>
+<tr class="separator:ga3cf381163e3e13e119654f776a0f0c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Camera interface. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae547aa0df8d893f3affd2168c47c8104" name="ae547aa0df8d893f3affd2168c47c8104"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae547aa0df8d893f3affd2168c47c8104">&#9670;&#160;</a></span>getFov()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual float graphic::ICamera::getFov </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the FOV. </p>
-<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#a77c3b5a6e85e347bcd50525a3efecb91">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#a169b5eefc0b5e5b1cce85a347948daa1">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#ad11678907097a3d73687808039ee1d42">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<a id="a0959591edf9737198660a710a2c5b05d" name="a0959591edf9737198660a710a2c5b05d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0959591edf9737198660a710a2c5b05d">&#9670;&#160;</a></span>getMode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual Mode graphic::ICamera::getMode </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the mode. </p>
-<dl class="section return"><dt>Returns</dt><dd>Mode </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#a0031a74770c3cd2b461afd446d5405c8">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#a96ef897c4e3cd8907dea31949f0d2736">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#a951d66286e7960dd2f5ca4793b0cb370">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<a id="a61f352cffda9db4d7ef180a308a5afc3" name="a61f352cffda9db4d7ef180a308a5afc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61f352cffda9db4d7ef180a308a5afc3">&#9670;&#160;</a></span>getPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual __v3f_t graphic::ICamera::getPosition </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the position. </p>
-<dl class="section return"><dt>Returns</dt><dd>__v3f_t </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#a5807dc8c171719e845b44ec5ea30b684">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#add69b85774af62667a63f8d8f529ac9a">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#a905167efe03f026b0d84441ad0b202bb">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<a id="a5e1a3887d3b97ff9d3d8ed4888ab5bb0" name="a5e1a3887d3b97ff9d3d8ed4888ab5bb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e1a3887d3b97ff9d3d8ed4888ab5bb0">&#9670;&#160;</a></span>getProjection()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual Projection graphic::ICamera::getProjection </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the Projection. </p>
-<dl class="section return"><dt>Returns</dt><dd>__v3f_t </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#a5e1d191fb38877ccfa3791222431c56b">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#a33fd59f1783566ce6e6a162ff6dc84b4">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#a2fb9f5ab1287515a9805468ee29104fe">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<a id="a05a871222f25ad3bece5c37e463232a9" name="a05a871222f25ad3bece5c37e463232a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05a871222f25ad3bece5c37e463232a9">&#9670;&#160;</a></span>getTarget()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual __v3f_t graphic::ICamera::getTarget </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the target. </p>
-<dl class="section return"><dt>Returns</dt><dd>__v3f_t </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#ae2cab92fd79a07db3f713386077e0123">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#aa5afb72e250b62488d6df33e8b680499">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#ac9b4abc33f5e1433ca8b375c9d8048ca">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<a id="a3d05345df858197dd715c84314541f10" name="a3d05345df858197dd715c84314541f10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d05345df858197dd715c84314541f10">&#9670;&#160;</a></span>getUp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual __v3f_t graphic::ICamera::getUp </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the up vector. </p>
-<dl class="section return"><dt>Returns</dt><dd>__v3f_t </dd></dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#afe5745cd07be041ef4e49cca4d36b12b">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#a05c8351efd771c7dca962d316e61df6c">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#a81292302e8e35571d8cff3a4556dfee9">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<a id="a1e5464620aa2329fd69799638a96cf6e" name="a1e5464620aa2329fd69799638a96cf6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e5464620aa2329fd69799638a96cf6e">&#9670;&#160;</a></span>setFov()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void graphic::ICamera::setFov </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>fov</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the FOV. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">fov</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#a2b2e98c54e612de8e6a25960f53301a8">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#ac2755fb30b07ffa2a973c0f3588cce93">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#a8883151f4d4ee9dc9e263f9c095df511">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<a id="af460a0f126d44121fe3a4e1e3814afab" name="af460a0f126d44121fe3a4e1e3814afab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af460a0f126d44121fe3a4e1e3814afab">&#9670;&#160;</a></span>setMode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void graphic::ICamera::setMode </td>
-          <td>(</td>
-          <td class="paramtype">Mode</td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the mode. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mode</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="aa10fb5fa8b569969cdafdf998bfba1b8" name="aa10fb5fa8b569969cdafdf998bfba1b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa10fb5fa8b569969cdafdf998bfba1b8">&#9670;&#160;</a></span>setPosition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void graphic::ICamera::setPosition </td>
-          <td>(</td>
-          <td class="paramtype">__v3f_t</td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the position. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">position</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#a5db51af4af2fe844318e527dcb8fffa3">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#a4ca762114e7814b7b8f3f3a9a6cfcb69">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#aea1805f2eeb6da5dfe0f5e1188765d18">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<a id="a4a47bba4a97863daabe50f1bd600245d" name="a4a47bba4a97863daabe50f1bd600245d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a47bba4a97863daabe50f1bd600245d">&#9670;&#160;</a></span>setProjection()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void graphic::ICamera::setProjection </td>
-          <td>(</td>
-          <td class="paramtype">Projection</td>          <td class="paramname"><span class="paramname"><em>projection</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the Projection. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">projection</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a46fd28a7b9f9837462eff3de8d6454a0" name="a46fd28a7b9f9837462eff3de8d6454a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46fd28a7b9f9837462eff3de8d6454a0">&#9670;&#160;</a></span>setTarget()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void graphic::ICamera::setTarget </td>
-          <td>(</td>
-          <td class="paramtype">__v3f_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the target. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">size</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#aeaad4bcad9abe35b6cfe412c58aedc25">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#a654cd8318ceceae621652ba004621525">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#acfda052fa04fa82d3b30ead5bdf35b32">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<a id="a3cf381163e3e13e119654f776a0f0c9c" name="a3cf381163e3e13e119654f776a0f0c9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3cf381163e3e13e119654f776a0f0c9c">&#9670;&#160;</a></span>setUp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void graphic::ICamera::setUp </td>
-          <td>(</td>
-          <td class="paramtype">__v3f_t</td>          <td class="paramname"><span class="paramname"><em>up</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the up vector. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">up</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="classraylib_1_1_ray_camera.html#af96fa9cc44fda988498d5b1594f734e8">raylib::RayCamera</a>, <a class="el" href="class_sdl_camera.html#a94086203b6a232ad169d187f9558332e">SdlCamera</a>, and <a class="el" href="class_sfml_camera.html#ab0bb3576dd49509dcfb9ede61be3b487">SfmlCamera</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this interface was generated from the following file:<ul>
+</div><hr/>The documentation for this interface was generated from the following file:<ul>
 <li>/Users/perrychouteau/Documents/GitHub/PERRY/project/interfaces/graphic/window/<a class="el" href="_i_camera_8hpp_source.html">ICamera.hpp</a></li>
 </ul>
 </div><!-- contents -->

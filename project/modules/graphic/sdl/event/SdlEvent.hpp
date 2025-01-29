@@ -1,9 +1,12 @@
 /**
- * @ Author: Perry Chouteau
- * @ Create Time: 2024-05-13 11:09:33
- * @ Modified by: Perry Chouteau
- * @ Modified time: 2024-11-11 12:16:58
- * @ Description:
+ * @file SdlEvent.hpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+
+ * @addtogroup SDL
+ * @{
  */
 
 #ifndef SDLEVENT_HPP
@@ -15,19 +18,29 @@
 //Sdl
 #include <SDL2/SDL.h>
 
+/**
+ * @brief Sdl Event class
+ */
 class SdlEvent : public graphic::IEvent {
-  public:
-    friend class SdlWindow;
-    friend class SdlKeyboard;
-    friend class SdlMouse;
 
-    SdlEvent() {}
-    ~SdlEvent() {}
-  protected:
-    //std::vector<SDL_KeyCode> _actualKeys;
-    //std::vector<SDL_KeyCode> _previousKeys;
+    public:
+        friend class SdlWindow;
+        friend class SdlKeyboard;
+        friend class SdlMouse;
 
-    SDL_Event _event;
+        /**
+         * @brief Construct a new Sdl Event object
+         */
+        SdlEvent() {}
+
+        /**
+         * @brief Destroy the Sdl Event object
+         */
+        ~SdlEvent() {}
+
+    protected:
+
+        SDL_Event _event;
 };
 
 #endif // SDLEVENT_HPP

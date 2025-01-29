@@ -6,11 +6,28 @@
 
 using namespace type;
 
+/**
+ * @brief give the cross product of two vectors
+ * 
+ * @param a 
+ * @param b 
+ * @return double 
+ */
 double cross_product(__v2f_t a, __v2f_t b) {
     //cross product formula
     return a.x * b.y - a.y * b.x;
 }
 
+/**
+ * @brief calculate if a point is inside a triangle
+ * 
+ * @param P 
+ * @param A 
+ * @param B 
+ * @param C 
+ * @return true 
+ * @return false 
+ */
 bool is_inside_triangle(__v2f_t P, __v2f_t A, __v2f_t B, __v2f_t C) {
     //To calculate the area of a triangle given three points (x, y), you can use the formula for the area of a triangle formed by three vertices (x1, y1), (x2, y2), and (x3, y3):
     //Area = 0.5 * |(x1(y2 - y3) + x2(y3 - y1) + x3(y1 - y2))|
@@ -25,6 +42,16 @@ bool is_inside_triangle(__v2f_t P, __v2f_t A, __v2f_t B, __v2f_t C) {
     return abc == abp + bcp + cap;
 }
 
+/**
+ * @brief check if the angle is convex or concave
+ * 
+ * @param A 
+ * @param B 
+ * @param C 
+ * @param clockwise 
+ * @return true 
+ * @return false 
+ */
 bool is_convex(__v2f_t A, __v2f_t B, __v2f_t C, bool clockwise = true) {
     //calculate the vector from B to A and B to C
     __v2f_t BA = {A.x - B.x, A.y - B.y};
@@ -42,6 +69,16 @@ bool is_convex(__v2f_t A, __v2f_t B, __v2f_t C, bool clockwise = true) {
     }
 }
 
+/**
+ * @brief check if the angle is concave
+ * 
+ * @param A 
+ * @param B 
+ * @param C 
+ * @param clockwise 
+ * @return true 
+ * @return false 
+ */
 bool is_concave(__v2f_t A, __v2f_t B, __v2f_t C, bool clockwise = true) {
     //if it's not convex, then it's concave
     //prefere to inverse clockwise rather than inverse the result of is_convex to handle the 180 degree case

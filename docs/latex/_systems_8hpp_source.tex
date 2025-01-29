@@ -1,82 +1,86 @@
 \doxysection{Systems.\+hpp}
 \hypertarget{_systems_8hpp_source}{}\label{_systems_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/includes/Systems.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/includes/Systems.hpp}}
-
+\mbox{\hyperlink{_systems_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SYSTEMS\_HPP}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SYSTEMS\_HPP}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_registry_8hpp}{Registry.hpp}}"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Component.hpp"{}}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}System.hpp"{}}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ RED\ "{}\(\backslash\)033[31m"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ GREEN\ "{}\(\backslash\)033[32m"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ RESET\ "{}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{00001\ }
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{comment}{//class}}
-\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }MovementSystem:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classecs_1_1_system}{ecs::System}}\ \{}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ MovementSystem(std::string\ name):\ \_name(name)\ \{\};}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \string~MovementSystem()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ lambda(\mbox{\hyperlink{classecs_1_1_registry}{ecs::Registry}}\ \&r)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/\ "{}}\ <<\ \_name\ <<\ \textcolor{stringliteral}{"{}\ Move\ Begin\ -\/-\/-\/-\/-\/"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ positions\ =\ r.\mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents}}<\mbox{\hyperlink{struct_position}{Position}}>();}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ velocities\ =\ r.\mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents}}<\mbox{\hyperlink{struct_velocity}{Velocity}}>();}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ positions.size();\ ++i)\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!positions[i]\ ||\ !velocities[i])\ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positions[i]-\/>x\ +=\ velocities[i]-\/>x;}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positions[i]-\/>y\ +=\ velocities[i]-\/>y;}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::string\ \_name;}
-\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ SYSTEMS\_HPP}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ SYSTEMS\_HPP}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_registry_8hpp}{Registry.hpp}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_component_8hpp}{Component.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_system_8hpp}{System.hpp}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }user\ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }MovementSystem:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classecs_1_1_system}{ecs::System}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ MovementSystem(std::string\ name):\ \_name(name)\ \{\};}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \string~MovementSystem()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ lambda(\mbox{\hyperlink{classecs_1_1_registry}{ecs::Registry}}\ \&r)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/\ "{}}\ <<\ \_name\ <<\ \textcolor{stringliteral}{"{}\ Move\ Begin\ -\/-\/-\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ positions\ =\ r.\mbox{\hyperlink{group__ecs_gaa00d974334f625d6ef9325a3a3d826af}{getComponents}}<\mbox{\hyperlink{struct_position}{Position}}>();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ velocities\ =\ r.\mbox{\hyperlink{group__ecs_gaa00d974334f625d6ef9325a3a3d826af}{getComponents}}<\mbox{\hyperlink{struct_velocity}{Velocity}}>();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ positions.size();\ ++i)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!positions[i]\ ||\ !velocities[i])\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }Math\ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ Math()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \string~Math()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sqrt(\textcolor{keywordtype}{int}\ a)\ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a\ *\ a;}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00044\ \};}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{keyword}{class\ }DisplaySystem:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classecs_1_1_system}{ecs::System}}\ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ DisplaySystem(\mbox{\hyperlink{class_math}{Math}}\&\ math):\ \_math(math)\ \{\};}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \string~DisplaySystem()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ lambda(\mbox{\hyperlink{classecs_1_1_registry}{ecs::Registry}}\ \&r)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/\ Display\ Begin\ -\/-\/-\/-\/-\/"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ positions\ =\ r.\mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents}}<\mbox{\hyperlink{struct_position}{Position}}>();}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ velocities\ =\ r.\mbox{\hyperlink{classecs_1_1_registry_aa00d974334f625d6ef9325a3a3d826af}{getComponents}}<\mbox{\hyperlink{struct_velocity}{Velocity}}>();}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ positions.size();\ ++i)\ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!positions[i])\ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Position:\ "{}}\ <<\ *positions[i]\ <<\ std::endl;}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Velocity:\ "{}}\ <<\ *velocities[i]\ <<\ std::endl;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positions[i]-\/>x\ +=\ velocities[i]-\/>x;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positions[i]-\/>y\ +=\ velocities[i]-\/>y;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \_name;}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{class\ }Math\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ Math()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \string~Math()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sqrt(\textcolor{keywordtype}{int}\ a)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a\ *\ a;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{class\ }DisplaySystem:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classecs_1_1_system}{ecs::System}}\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ DisplaySystem(\mbox{\hyperlink{classuser_1_1_math}{Math}}\&\ math):\ \_math(math)\ \{\};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \string~DisplaySystem()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ lambda(\mbox{\hyperlink{classecs_1_1_registry}{ecs::Registry}}\ \&r)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/\ Display\ Begin\ -\/-\/-\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ positions\ =\ r.\mbox{\hyperlink{group__ecs_gaa00d974334f625d6ef9325a3a3d826af}{getComponents}}<\mbox{\hyperlink{struct_position}{Position}}>();}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ velocities\ =\ r.\mbox{\hyperlink{group__ecs_gaa00d974334f625d6ef9325a3a3d826af}{getComponents}}<\mbox{\hyperlink{struct_velocity}{Velocity}}>();}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//turn\ text\ to\ red\ color\ }}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ RED\ <<\ \textcolor{stringliteral}{"{}sqrtPosX\ "{}}\ <<\ \ \_math.sqrt(positions[i]-\/>x)\ <<\ std::endl;}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}sqrtPosX\ "{}}\ <<\ \ \_math.sqrt(positions[i]-\/>y)\ <<\ RESET\ <<\ std::endl;}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ positions.size();\ ++i)\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!positions[i])\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Position:\ "{}}\ <<\ *positions[i]\ <<\ std::endl;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Velocity:\ "{}}\ <<\ *velocities[i]\ <<\ std::endl;}
 \DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_math}{Math}}\&\ \_math;}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \};}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SYSTEMS\_HPP}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//turn\ text\ to\ red\ color\ }}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ RED\ <<\ \textcolor{stringliteral}{"{}sqrtPosX\ "{}}\ <<\ \ \_math.sqrt(positions[i]-\/>x)\ <<\ std::endl;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}sqrtPosX\ "{}}\ <<\ \ \_math.sqrt(positions[i]-\/>y)\ <<\ RESET\ <<\ std::endl;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classuser_1_1_math}{Math}}\&\ \_math;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ RED\ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[31m"{}};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ RESET\ =\ \textcolor{stringliteral}{"{}\(\backslash\)033[0m"{}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SYSTEMS\_HPP}}
 
 \end{DoxyCode}

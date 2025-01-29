@@ -1,0 +1,77 @@
+\doxysection{Ray\+Sprite Class Reference}
+\hypertarget{class_ray_sprite}{}\label{class_ray_sprite}\index{RaySprite@{RaySprite}}
+
+
+Raylib Sprite class.  
+
+
+
+
+{\ttfamily \#include $<$Ray\+Sprite.\+hpp$>$}
+
+Inheritance diagram for Ray\+Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ray_sprite}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Ray\+Sprite} (std\+::string path)
+\item 
+bool \mbox{\hyperlink{group___raylib_gafc79985bcb3226a6e542243411cb7b78}{is\+Ready}} () const override
+\begin{DoxyCompactList}\small\item\em notice if the sprite is ready \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtype_1_1____v4f__s}{\+\_\+\+\_\+v4f\+\_\+t}} \mbox{\hyperlink{group___raylib_ga2d4b863f75308531e3bdb70f10d7eb7d}{get\+Bounds}} () const override
+\begin{DoxyCompactList}\small\item\em give the bounds of the sprite \end{DoxyCompactList}\item 
+void {\bfseries set\+Crop} (\mbox{\hyperlink{structtype_1_1____v4f__s}{\+\_\+\+\_\+v4f\+\_\+t}} rect) override
+\item 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{group___raylib_ga54d86b404491e36c8ea9c6b98546a612}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void {\bfseries set\+Position} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} position) override
+\item 
+float \mbox{\hyperlink{group___raylib_ga6fc3cc1a446e5cf64d31f138b9fcf645}{get\+Rotation}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga3b3db743dc75d75c88d6c9666f63111e}{set\+Rotation}} (float angle, bool is\+Rad=false) override
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{group___raylib_ga655beb65e2555e895645a222eb4e7f69}{get\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Sprite size. \end{DoxyCompactList}\item 
+void {\bfseries set\+Size} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} size) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ISprite} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_sprite}{ISprite} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga56dad5536d7c8f370a17842b966a9813}{set\+Crop}} (\+\_\+\+\_\+v4f\+\_\+t rect)=0
+\begin{DoxyCompactList}\small\item\em Crop the sprite with a rectangle. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga7da368451eae7bdc6919d238387f416a}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position)=0
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga487198bf197d8880aecd8a237e07c9fd}{set\+Size}} (\+\_\+\+\_\+v2f\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Set the Sprite size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Texture2D {\bfseries \+\_\+texture}
+\item 
+Vector2 {\bfseries \+\_\+position}
+\item 
+Vector2 {\bfseries \+\_\+scale}
+\item 
+Rectangle {\bfseries \+\_\+crop}
+\item 
+float {\bfseries \+\_\+rotation}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Ray\+Window}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Raylib Sprite class. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/raylib/graphic/\mbox{\hyperlink{_ray_sprite_8hpp}{Ray\+Sprite.\+hpp}}\end{DoxyCompactItemize}

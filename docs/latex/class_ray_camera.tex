@@ -1,0 +1,96 @@
+\doxysection{Ray\+Camera Class Reference}
+\hypertarget{class_ray_camera}{}\label{class_ray_camera}\index{RayCamera@{RayCamera}}
+
+
+Raylib Camera class.  
+
+
+
+
+{\ttfamily \#include $<$Ray\+Camera.\+hpp$>$}
+
+Inheritance diagram for Ray\+Camera\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ray_camera}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Ray\+Camera} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Ray Camera object. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Ray\+Camera} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Ray Camera object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___raylib_ga083a2eb20aae6db625641efd695c211d}{get\+Fov}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Fov object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gac493023fedbe163b1f18167246880fc3}{set\+Fov}} (float fov) override
+\begin{DoxyCompactList}\small\item\em Set the Fov object. \end{DoxyCompactList}\item 
+ICamera\+::\+Mode \mbox{\hyperlink{group___raylib_gae51eaae00090fdbca37310b65682ced6}{get\+Mode}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Mode object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gacff2b207623f46f597f480473bd296c4}{set\+Mode}} (ICamera\+::\+Mode mode) override
+\begin{DoxyCompactList}\small\item\em Set the Mode object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___raylib_ga1a5cbbe6f7b390d339a3adeb6a5fc5f7}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gabe28a1926682ea72a96bb38731a841bf}{set\+Position}} (\+\_\+\+\_\+v3f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+ICamera\+::\+Projection \mbox{\hyperlink{group___raylib_ga9929434ea2f6b62fd2545527c989019b}{get\+Projection}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Projection object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga067b83dc6cb064293d3a77a98e32a51b}{set\+Projection}} (ICamera\+::\+Projection projection) override
+\begin{DoxyCompactList}\small\item\em Set the Projection object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___raylib_ga472c2794c1f6de90ff96e5f7374ed547}{get\+Target}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Target object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gaad6606fd453efe30f83caa9f81b2c9d2}{set\+Target}} (\+\_\+\+\_\+v3f\+\_\+t target) override
+\begin{DoxyCompactList}\small\item\em Set the Target object. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v3f\+\_\+t \mbox{\hyperlink{group___raylib_ga7f53ea1a430714dd15b634b3bddbd8c4}{get\+Up}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Up object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gab4e41a4a9968c70520d49339b688dcd0}{set\+Up}} (\+\_\+\+\_\+v3f\+\_\+t up) override
+\begin{DoxyCompactList}\small\item\em Set the Up object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ICamera} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_camera}{ICamera} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_gaf460a0f126d44121fe3a4e1e3814afab}{set\+Mode}} (Mode mode)=0
+\begin{DoxyCompactList}\small\item\em Set the mode. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga4a47bba4a97863daabe50f1bd600245d}{set\+Projection}} (Projection projection)=0
+\begin{DoxyCompactList}\small\item\em Set the Projection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Camera {\bfseries \+\_\+camera}
+\item 
+Camera\+Mode {\bfseries \+\_\+mode}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Ray\+Window}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__graphic_ga559dbe934f065df061e9d4fd5a8d19bb}\label{group__graphic_ga559dbe934f065df061e9d4fd5a8d19bb} 
+enum {\bfseries Projection} \{ {\bfseries PERSPECTIVE}
+, {\bfseries ORTHOGRAPHIC}
+ \}
+\item 
+\Hypertarget{group__graphic_ga2ec72397f3e9f07ad246289590d9ad5d}\label{group__graphic_ga2ec72397f3e9f07ad246289590d9ad5d} 
+enum {\bfseries Mode} \{ \newline
+{\bfseries CUSTOM} = 0
+, {\bfseries FREE}
+, {\bfseries ORBITAL}
+, {\bfseries FIRST\+\_\+\+PERSON}
+, \newline
+{\bfseries THIRD\+\_\+\+PERSON}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Raylib Camera class. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/raylib/window/\mbox{\hyperlink{_ray_camera_8hpp}{Ray\+Camera.\+hpp}}\end{DoxyCompactItemize}

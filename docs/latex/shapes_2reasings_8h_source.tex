@@ -1,0 +1,269 @@
+\doxysection{reasings.\+h}
+\hypertarget{shapes_2reasings_8h_source}{}\label{shapes_2reasings_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/examples/shapes/reasings.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/raylib-\/src/examples/shapes/reasings.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*******************************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ \ \ reasings\ -\/\ raylib\ easings\ library,\ based\ on\ Robert\ Penner\ library}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ \ \ Useful\ easing\ functions\ for\ values\ animation}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*\ \ \ This\ header\ uses:}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*\ \ \ \ \ \ \ \#define\ REASINGS\_STATIC\_INLINE\ \ \ \ \ \ //\ Inlines\ all\ functions\ code,\ so\ it\ runs\ faster.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ This\ requires\ lots\ of\ memory\ on\ system.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*\ \ \ How\ to\ use:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{*\ \ \ The\ four\ inputs\ t,b,c,d\ are\ defined\ as\ follows:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*\ \ \ t\ =\ current\ time\ (in\ any\ unit\ measure,\ but\ same\ unit\ as\ duration)}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*\ \ \ b\ =\ starting\ value\ to\ interpolate}}
+\DoxyCodeLine{00014\ \textcolor{comment}{*\ \ \ c\ =\ the\ total\ change\ in\ value\ of\ b\ that\ needs\ to\ occur}}
+\DoxyCodeLine{00015\ \textcolor{comment}{*\ \ \ d\ =\ total\ time\ it\ should\ take\ to\ complete\ (duration)}}
+\DoxyCodeLine{00016\ \textcolor{comment}{*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*\ \ \ Example:}}
+\DoxyCodeLine{00018\ \textcolor{comment}{*}}
+\DoxyCodeLine{00019\ \textcolor{comment}{*\ \ \ int\ currentTime\ =\ 0;}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*\ \ \ int\ duration\ =\ 100;}}
+\DoxyCodeLine{00021\ \textcolor{comment}{*\ \ \ float\ startPositionX\ =\ 0.0f;}}
+\DoxyCodeLine{00022\ \textcolor{comment}{*\ \ \ float\ finalPositionX\ =\ 30.0f;}}
+\DoxyCodeLine{00023\ \textcolor{comment}{*\ \ \ float\ currentPositionX\ =\ startPositionX;}}
+\DoxyCodeLine{00024\ \textcolor{comment}{*}}
+\DoxyCodeLine{00025\ \textcolor{comment}{*\ \ \ while\ (currentPositionX\ <\ finalPositionX)}}
+\DoxyCodeLine{00026\ \textcolor{comment}{*\ \ \ \{}}
+\DoxyCodeLine{00027\ \textcolor{comment}{*\ \ \ \ \ \ \ currentPositionX\ =\ EaseSineIn(currentTime,\ startPositionX,\ finalPositionX\ -\/\ startPositionX,\ duration);}}
+\DoxyCodeLine{00028\ \textcolor{comment}{*\ \ \ \ \ \ \ currentTime++;}}
+\DoxyCodeLine{00029\ \textcolor{comment}{*\ \ \ \}}}
+\DoxyCodeLine{00030\ \textcolor{comment}{*}}
+\DoxyCodeLine{00031\ \textcolor{comment}{*\ \ \ A\ port\ of\ Robert\ Penner's\ easing\ equations\ to\ C\ (http://robertpenner.com/easing/)}}
+\DoxyCodeLine{00032\ \textcolor{comment}{*}}
+\DoxyCodeLine{00033\ \textcolor{comment}{*\ \ \ Robert\ Penner\ License}}
+\DoxyCodeLine{00034\ \textcolor{comment}{*\ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00035\ \textcolor{comment}{*\ \ \ Open\ source\ under\ the\ BSD\ License.}}
+\DoxyCodeLine{00036\ \textcolor{comment}{*}}
+\DoxyCodeLine{00037\ \textcolor{comment}{*\ \ \ Copyright\ (c)\ 2001\ Robert\ Penner.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00038\ \textcolor{comment}{*}}
+\DoxyCodeLine{00039\ \textcolor{comment}{*\ \ \ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without\ modification,}}
+\DoxyCodeLine{00040\ \textcolor{comment}{*\ \ \ are\ permitted\ provided\ that\ the\ following\ conditions\ are\ met:}}
+\DoxyCodeLine{00041\ \textcolor{comment}{*}}
+\DoxyCodeLine{00042\ \textcolor{comment}{*\ \ \ \ \ \ \ -\/\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright\ notice,}}
+\DoxyCodeLine{00043\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ this\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00044\ \textcolor{comment}{*\ \ \ \ \ \ \ -\/\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright\ notice,}}
+\DoxyCodeLine{00045\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the\ documentation}}
+\DoxyCodeLine{00046\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ and/or\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00047\ \textcolor{comment}{*\ \ \ \ \ \ \ -\/\ Neither\ the\ name\ of\ the\ author\ nor\ the\ names\ of\ contributors\ may\ be\ used}}
+\DoxyCodeLine{00048\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ to\ endorse\ or\ promote\ products\ derived\ from\ this\ software\ without\ specific}}
+\DoxyCodeLine{00049\ \textcolor{comment}{*\ \ \ \ \ \ \ \ \ prior\ written\ permission.}}
+\DoxyCodeLine{00050\ \textcolor{comment}{*}}
+\DoxyCodeLine{00051\ \textcolor{comment}{*\ \ \ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}\ AND}}
+\DoxyCodeLine{00052\ \textcolor{comment}{*\ \ \ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ THE\ IMPLIED}}
+\DoxyCodeLine{00053\ \textcolor{comment}{*\ \ \ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ ARE\ DISCLAIMED.}}
+\DoxyCodeLine{00054\ \textcolor{comment}{*\ \ \ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ OWNER\ OR\ CONTRIBUTORS\ BE\ LIABLE\ FOR\ ANY\ DIRECT,}}
+\DoxyCodeLine{00055\ \textcolor{comment}{*\ \ \ INDIRECT,\ INCIDENTAL,\ SPECIAL,\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ DAMAGES\ (INCLUDING,}}
+\DoxyCodeLine{00056\ \textcolor{comment}{*\ \ \ BUT\ NOT\ LIMITED\ TO,\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ SERVICES;\ LOSS\ OF\ USE,}}
+\DoxyCodeLine{00057\ \textcolor{comment}{*\ \ \ DATA,\ OR\ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF}}
+\DoxyCodeLine{00058\ \textcolor{comment}{*\ \ \ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ OR\ TORT\ (INCLUDING\ NEGLIGENCE}}
+\DoxyCodeLine{00059\ \textcolor{comment}{*\ \ \ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ OF\ THIS\ SOFTWARE,\ EVEN\ IF\ ADVISED}}
+\DoxyCodeLine{00060\ \textcolor{comment}{*\ \ \ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00061\ \textcolor{comment}{*\ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00062\ \textcolor{comment}{*}}
+\DoxyCodeLine{00063\ \textcolor{comment}{*\ \ \ Copyright\ (c)\ 2015-\/2023\ Ramon\ Santamaria\ (@raysan5)}}
+\DoxyCodeLine{00064\ \textcolor{comment}{*}}
+\DoxyCodeLine{00065\ \textcolor{comment}{*\ \ \ This\ software\ is\ provided\ "{}as-\/is"{},\ without\ any\ express\ or\ implied\ warranty.\ In\ no\ event}}
+\DoxyCodeLine{00066\ \textcolor{comment}{*\ \ \ will\ the\ authors\ be\ held\ liable\ for\ any\ damages\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00067\ \textcolor{comment}{*}}
+\DoxyCodeLine{00068\ \textcolor{comment}{*\ \ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,\ including\ commercial}}
+\DoxyCodeLine{00069\ \textcolor{comment}{*\ \ \ applications,\ and\ to\ alter\ it\ and\ redistribute\ it\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00070\ \textcolor{comment}{*}}
+\DoxyCodeLine{00071\ \textcolor{comment}{*\ \ \ \ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not\ claim\ that\ you}}
+\DoxyCodeLine{00072\ \textcolor{comment}{*\ \ \ \ \ wrote\ the\ original\ software.\ If\ you\ use\ this\ software\ in\ a\ product,\ an\ acknowledgment}}
+\DoxyCodeLine{00073\ \textcolor{comment}{*\ \ \ \ \ in\ the\ product\ documentation\ would\ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00074\ \textcolor{comment}{*}}
+\DoxyCodeLine{00075\ \textcolor{comment}{*\ \ \ \ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be\ misrepresented}}
+\DoxyCodeLine{00076\ \textcolor{comment}{*\ \ \ \ \ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00077\ \textcolor{comment}{*}}
+\DoxyCodeLine{00078\ \textcolor{comment}{*\ \ \ \ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00079\ \textcolor{comment}{*}}
+\DoxyCodeLine{00080\ \textcolor{comment}{**********************************************************************************************/}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#ifndef\ REASINGS\_H}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ REASINGS\_H}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ REASINGS\_STATIC\_INLINE\ \ \ \ \ }\textcolor{comment}{//\ NOTE:\ By\ default,\ compile\ functions\ as\ static\ inline}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#if\ defined(REASINGS\_STATIC\_INLINE)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\ \ \ \ \#define\ EASEDEF\ static\ inline}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ \#define\ EASEDEF\ extern}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#include\ <math.h>}\ \ \ \ \ \ \ \textcolor{comment}{//\ Required\ for:\ sinf(),\ cosf(),\ sqrtf(),\ powf()}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#ifndef\ PI}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\ \ \ \ \#define\ PI\ 3.14159265358979323846f\ }\textcolor{comment}{//Required\ as\ PI\ is\ not\ always\ defined\ in\ math.h}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)}}
+\DoxyCodeLine{00100\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Prevents\ name\ mangling\ of\ functions}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ Linear\ Easing\ functions}}
+\DoxyCodeLine{00104\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseLinearNone(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (c*t/d\ +\ b);\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Linear}}
+\DoxyCodeLine{00105\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseLinearIn(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (c*t/d\ +\ b);\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Linear\ In}}
+\DoxyCodeLine{00106\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseLinearOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (c*t/d\ +\ b);\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Linear\ Out}}
+\DoxyCodeLine{00107\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseLinearInOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (c*t/d\ +\ b);\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Linear\ In\ Out}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{comment}{//\ Sine\ Easing\ functions}}
+\DoxyCodeLine{00110\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseSineIn(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (-\/c*cosf(t/d*(PI/2.0f))\ +\ c\ +\ b);\ \}\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Sine\ In}}
+\DoxyCodeLine{00111\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseSineOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (c*sinf(t/d*(PI/2.0f))\ +\ b);\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Sine\ Out}}
+\DoxyCodeLine{00112\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseSineInOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (-\/c/2.0f*(cosf(PI*t/d)\ -\/\ 1.0f)\ +\ b);\ \}\ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Sine\ In\ Out}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{comment}{//\ Circular\ Easing\ functions}}
+\DoxyCodeLine{00115\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseCircIn(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ t\ /=\ d;\ \textcolor{keywordflow}{return}\ (-\/c*(sqrtf(1.0f\ -\/\ t*t)\ -\/\ 1.0f)\ +\ b);\ \}\ \textcolor{comment}{//\ Ease:\ Circular\ In}}
+\DoxyCodeLine{00116\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseCircOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ t\ =\ t/d\ -\/\ 1.0f;\ \textcolor{keywordflow}{return}\ (c*sqrtf(1.0f\ -\/\ t*t)\ +\ b);\ \}\ \ \textcolor{comment}{//\ Ease:\ Circular\ Out}}
+\DoxyCodeLine{00117\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseCircInOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Circular\ In\ Out}}
+\DoxyCodeLine{00118\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{if}\ ((t/=d/2.0f)\ <\ 1.0f)\ \textcolor{keywordflow}{return}\ (-\/c/2.0f*(sqrtf(1.0f\ -\/\ t*t)\ -\/\ 1.0f)\ +\ b);}
+\DoxyCodeLine{00120\ \ \ \ \ t\ -\/=\ 2.0f;\ \textcolor{keywordflow}{return}\ (c/2.0f*(sqrtf(1.0f\ -\/\ t*t)\ +\ 1.0f)\ +\ b);}
+\DoxyCodeLine{00121\ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{comment}{//\ Cubic\ Easing\ functions}}
+\DoxyCodeLine{00124\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseCubicIn(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ t\ /=\ d;\ \textcolor{keywordflow}{return}\ (c*t*t*t\ +\ b);\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Cubic\ In}}
+\DoxyCodeLine{00125\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseCubicOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ t\ =\ t/d\ -\/\ 1.0f;\ \textcolor{keywordflow}{return}\ (c*(t*t*t\ +\ 1.0f)\ +\ b);\ \}\ \ \ \ \textcolor{comment}{//\ Ease:\ Cubic\ Out}}
+\DoxyCodeLine{00126\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseCubicInOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Cubic\ In\ Out}}
+\DoxyCodeLine{00127\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{if}\ ((t/=d/2.0f)\ <\ 1.0f)\ \textcolor{keywordflow}{return}\ (c/2.0f*t*t*t\ +\ b);}
+\DoxyCodeLine{00129\ \ \ \ \ t\ -\/=\ 2.0f;\ \textcolor{keywordflow}{return}\ (c/2.0f*(t*t*t\ +\ 2.0f)\ +\ b);}
+\DoxyCodeLine{00130\ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ Quadratic\ Easing\ functions}}
+\DoxyCodeLine{00133\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseQuadIn(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ t\ /=\ d;\ \textcolor{keywordflow}{return}\ (c*t*t\ +\ b);\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Quadratic\ In}}
+\DoxyCodeLine{00134\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseQuadOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ t\ /=\ d;\ \textcolor{keywordflow}{return}\ (-\/c*t*(t\ -\/\ 2.0f)\ +\ b);\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Quadratic\ Out}}
+\DoxyCodeLine{00135\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseQuadInOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Quadratic\ In\ Out}}
+\DoxyCodeLine{00136\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{if}\ ((t/=d/2)\ <\ 1)\ \textcolor{keywordflow}{return}\ (((c/2)*(t*t))\ +\ b);}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{return}\ (-\/c/2.0f*(((t\ -\/\ 1.0f)*(t\ -\/\ 3.0f))\ -\/\ 1.0f)\ +\ b);}
+\DoxyCodeLine{00139\ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{comment}{//\ Exponential\ Easing\ functions}}
+\DoxyCodeLine{00142\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseExpoIn(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (t\ ==\ 0.0f)\ ?\ b\ :\ (c*powf(2.0f,\ 10.0f*(t/d\ -\/\ 1.0f))\ +\ b);\ \}\ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Exponential\ In}}
+\DoxyCodeLine{00143\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseExpoOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (t\ ==\ d)\ ?\ (b\ +\ c)\ :\ (c*(-\/powf(2.0f,\ -\/10.0f*t/d)\ +\ 1.0f)\ +\ b);\ \}\ \textcolor{comment}{//\ Ease:\ Exponential\ Out}}
+\DoxyCodeLine{00144\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseExpoInOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ease:\ Exponential\ In\ Out}}
+\DoxyCodeLine{00145\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ ==\ 0.0f)\ \textcolor{keywordflow}{return}\ b;}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ ==\ d)\ \textcolor{keywordflow}{return}\ (b\ +\ c);}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{if}\ ((t/=d/2.0f)\ <\ 1.0f)\ \textcolor{keywordflow}{return}\ (c/2.0f*powf(2.0f,\ 10.0f*(t\ -\/\ 1.0f))\ +\ b);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{return}\ (c/2.0f*(-\/powf(2.0f,\ -\/10.0f*(t\ -\/\ 1.0f))\ +\ 2.0f)\ +\ b);}
+\DoxyCodeLine{00151\ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ Back\ Easing\ functions}}
+\DoxyCodeLine{00154\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseBackIn(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \textcolor{comment}{//\ Ease:\ Back\ In}}
+\DoxyCodeLine{00155\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ 1.70158f;}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{float}\ postFix\ =\ t/=d;}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{return}\ (c*(postFix)*t*((s\ +\ 1.0f)*t\ -\/\ s)\ +\ b);}
+\DoxyCodeLine{00159\ \}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseBackOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \textcolor{comment}{//\ Ease:\ Back\ Out}}
+\DoxyCodeLine{00162\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ 1.70158f;}
+\DoxyCodeLine{00164\ \ \ \ \ t\ =\ t/d\ -\/\ 1.0f;}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordflow}{return}\ (c*(t*t*((s\ +\ 1.0f)*t\ +\ s)\ +\ 1.0f)\ +\ b);}
+\DoxyCodeLine{00166\ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseBackInOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \textcolor{comment}{//\ Ease:\ Back\ In\ Out}}
+\DoxyCodeLine{00169\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ 1.70158f;}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordflow}{if}\ ((t/=d/2.0f)\ <\ 1.0f)}
+\DoxyCodeLine{00172\ \ \ \ \ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ s\ *=\ 1.525f;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (c/2.0f*(t*t*((s\ +\ 1.0f)*t\ -\/\ s))\ +\ b);}
+\DoxyCodeLine{00175\ \ \ \ \ \}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{float}\ postFix\ =\ t-\/=2.0f;}
+\DoxyCodeLine{00178\ \ \ \ \ s\ *=\ 1.525f;}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordflow}{return}\ (c/2.0f*((postFix)*t*((s\ +\ 1.0f)*t\ +\ s)\ +\ 2.0f)\ +\ b);}
+\DoxyCodeLine{00180\ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{comment}{//\ Bounce\ Easing\ functions}}
+\DoxyCodeLine{00183\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseBounceOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \textcolor{comment}{//\ Ease:\ Bounce\ Out}}
+\DoxyCodeLine{00184\ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordflow}{if}\ ((t/=d)\ <\ (1.0f/2.75f))}
+\DoxyCodeLine{00186\ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (c*(7.5625f*t*t)\ +\ b);}
+\DoxyCodeLine{00188\ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\ <\ (2.0f/2.75f))}
+\DoxyCodeLine{00190\ \ \ \ \ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ postFix\ =\ t-\/=(1.5f/2.75f);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (c*(7.5625f*(postFix)*t\ +\ 0.75f)\ +\ b);}
+\DoxyCodeLine{00193\ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (t\ <\ (2.5/2.75))}
+\DoxyCodeLine{00195\ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ postFix\ =\ t-\/=(2.25f/2.75f);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (c*(7.5625f*(postFix)*t\ +\ 0.9375f)\ +\ b);}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00200\ \ \ \ \ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ postFix\ =\ t-\/=(2.625f/2.75f);}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (c*(7.5625f*(postFix)*t\ +\ 0.984375f)\ +\ b);}
+\DoxyCodeLine{00203\ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseBounceIn(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \{\ \textcolor{keywordflow}{return}\ (c\ -\/\ EaseBounceOut(d\ -\/\ t,\ 0.0f,\ c,\ d)\ +\ b);\ \}\ \textcolor{comment}{//\ Ease:\ Bounce\ In}}
+\DoxyCodeLine{00207\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseBounceInOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \textcolor{comment}{//\ Ease:\ Bounce\ In\ Out}}
+\DoxyCodeLine{00208\ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ <\ d/2.0f)\ \textcolor{keywordflow}{return}\ (EaseBounceIn(t*2.0f,\ 0.0f,\ c,\ d)*0.5f\ +\ b);}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ (EaseBounceOut(t*2.0f\ -\/\ d,\ 0.0f,\ c,\ d)*0.5f\ +\ c*0.5f\ +\ b);}
+\DoxyCodeLine{00211\ \}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \textcolor{comment}{//\ Elastic\ Easing\ functions}}
+\DoxyCodeLine{00214\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseElasticIn(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \textcolor{comment}{//\ Ease:\ Elastic\ In}}
+\DoxyCodeLine{00215\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ ==\ 0.0f)\ \textcolor{keywordflow}{return}\ b;}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{if}\ ((t/=d)\ ==\ 1.0f)\ \textcolor{keywordflow}{return}\ (b\ +\ c);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{float}\ p\ =\ d*0.3f;}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordtype}{float}\ a\ =\ c;}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ p/4.0f;}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordtype}{float}\ postFix\ =\ a*powf(2.0f,\ 10.0f*(t-\/=1.0f));}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keywordflow}{return}\ (-\/(postFix*sinf((t*d-\/s)*(2.0f*PI)/p\ ))\ +\ b);}
+\DoxyCodeLine{00225\ \}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseElasticOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \textcolor{comment}{//\ Ease:\ Elastic\ Out}}
+\DoxyCodeLine{00228\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ ==\ 0.0f)\ \textcolor{keywordflow}{return}\ b;}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordflow}{if}\ ((t/=d)\ ==\ 1.0f)\ \textcolor{keywordflow}{return}\ (b\ +\ c);}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordtype}{float}\ p\ =\ d*0.3f;}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keywordtype}{float}\ a\ =\ c;}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ p/4.0f;}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{return}\ (a*powf(2.0f,-\/10.0f*t)*sinf((t*d-\/s)*(2.0f*PI)/p)\ +\ c\ +\ b);}
+\DoxyCodeLine{00237\ \}}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ EASEDEF\ \textcolor{keywordtype}{float}\ EaseElasticInOut(\textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ c,\ \textcolor{keywordtype}{float}\ d)\ \textcolor{comment}{//\ Ease:\ Elastic\ In\ Out}}
+\DoxyCodeLine{00240\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ ==\ 0.0f)\ \textcolor{keywordflow}{return}\ b;}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{if}\ ((t/=d/2.0f)\ ==\ 2.0f)\ \textcolor{keywordflow}{return}\ (b\ +\ c);}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{float}\ p\ =\ d*(0.3f*1.5f);}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordtype}{float}\ a\ =\ c;}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ p/4.0f;}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{if}\ (t\ <\ 1.0f)}
+\DoxyCodeLine{00249\ \ \ \ \ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ postFix\ =\ a*powf(2.0f,\ 10.0f*(t-\/=1.0f));}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/0.5f*(postFix*sinf((t*d-\/s)*(2.0f*PI)/p))\ +\ b;}
+\DoxyCodeLine{00252\ \ \ \ \ \}}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordtype}{float}\ postFix\ =\ a*powf(2.0f,\ -\/10.0f*(t-\/=1.0f));}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{return}\ (postFix*sinf((t*d-\/s)*(2.0f*PI)/p)*0.5f\ +\ c\ +\ b);}
+\DoxyCodeLine{00257\ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\#if\ defined(\_\_cplusplus)}}
+\DoxyCodeLine{00260\ \}}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REASINGS\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,324 @@
+\doxysection{SDL\+\_\+audio.\+h}
+\hypertarget{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_source}{}\label{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_audio.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_audio.h}}
+\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{/*\ !!!\ FIXME:\ several\ functions\ in\ here\ need\ Doxygen\ comments.\ */}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#ifndef\ SDL\_audio\_h\_}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ SDL\_audio\_h\_}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL\_stdinc.h}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__error_8h}{SDL\_error.h}}"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__endian_8h}{SDL\_endian.h}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mutex_8h}{SDL\_mutex.h}}"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__thread_8h}{SDL\_thread.h}}"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__rwops_8h}{SDL\_rwops.h}}"{}}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00041\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{typedef}\ Uint16\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_MASK\_BITSIZE\ \ \ \ \ \ \ (0xFF)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_MASK\_DATATYPE\ \ \ \ \ \ (1<<8)}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_MASK\_ENDIAN\ \ \ \ \ \ \ \ (1<<12)}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_MASK\_SIGNED\ \ \ \ \ \ \ \ (1<<15)}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_BITSIZE(x)\ \ \ \ \ \ \ \ \ (x\ \&\ SDL\_AUDIO\_MASK\_BITSIZE)}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ISFLOAT(x)\ \ \ \ \ \ \ \ \ (x\ \&\ SDL\_AUDIO\_MASK\_DATATYPE)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ISBIGENDIAN(x)\ \ \ \ \ (x\ \&\ SDL\_AUDIO\_MASK\_ENDIAN)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ISSIGNED(x)\ \ \ \ \ \ \ \ (x\ \&\ SDL\_AUDIO\_MASK\_SIGNED)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ISINT(x)\ \ \ \ \ \ \ \ \ \ \ (!SDL\_AUDIO\_ISFLOAT(x))}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ISLITTLEENDIAN(x)\ \ (!SDL\_AUDIO\_ISBIGENDIAN(x))}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ISUNSIGNED(x)\ \ \ \ \ \ (!SDL\_AUDIO\_ISSIGNED(x))}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ AUDIO\_U8\ \ \ \ \ \ \ \ 0x0008\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ AUDIO\_S8\ \ \ \ \ \ \ \ 0x8008\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ AUDIO\_U16LSB\ \ \ \ 0x0010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ AUDIO\_S16LSB\ \ \ \ 0x8010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ AUDIO\_U16MSB\ \ \ \ 0x1010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ AUDIO\_S16MSB\ \ \ \ 0x9010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ AUDIO\_U16\ \ \ \ \ \ \ AUDIO\_U16LSB}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ AUDIO\_S16\ \ \ \ \ \ \ AUDIO\_S16LSB}}
+\DoxyCodeLine{00099\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00104\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ AUDIO\_S32LSB\ \ \ \ 0x8020\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ AUDIO\_S32MSB\ \ \ \ 0x9020\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ AUDIO\_S32\ \ \ \ \ \ \ AUDIO\_S32LSB}}
+\DoxyCodeLine{00108\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ AUDIO\_F32LSB\ \ \ \ 0x8120\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ AUDIO\_F32MSB\ \ \ \ 0x9120\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ AUDIO\_F32\ \ \ \ \ \ \ AUDIO\_F32LSB}}
+\DoxyCodeLine{00117\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00122\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#if\ SDL\_BYTEORDER\ ==\ SDL\_LIL\_ENDIAN}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ AUDIO\_U16SYS\ \ \ \ AUDIO\_U16LSB}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ AUDIO\_S16SYS\ \ \ \ AUDIO\_S16LSB}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ AUDIO\_S32SYS\ \ \ \ AUDIO\_S32LSB}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ AUDIO\_F32SYS\ \ \ \ AUDIO\_F32LSB}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ AUDIO\_U16SYS\ \ \ \ AUDIO\_U16MSB}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ AUDIO\_S16SYS\ \ \ \ AUDIO\_S16MSB}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ AUDIO\_S32SYS\ \ \ \ AUDIO\_S32MSB}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ AUDIO\_F32SYS\ \ \ \ AUDIO\_F32MSB}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00134\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00141\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ALLOW\_FREQUENCY\_CHANGE\ \ \ \ 0x00000001}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ALLOW\_FORMAT\_CHANGE\ \ \ \ \ \ \ 0x00000002}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ALLOW\_CHANNELS\_CHANGE\ \ \ \ \ 0x00000004}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ALLOW\_SAMPLES\_CHANGE\ \ \ \ \ \ 0x00000008}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ SDL\_AUDIO\_ALLOW\_ANY\_CHANGE\ \ \ \ \ \ \ \ \ \ (SDL\_AUDIO\_ALLOW\_FREQUENCY\_CHANGE|SDL\_AUDIO\_ALLOW\_FORMAT\_CHANGE|SDL\_AUDIO\_ALLOW\_CHANNELS\_CHANGE|SDL\_AUDIO\_ALLOW\_SAMPLES\_CHANGE)}}
+\DoxyCodeLine{00147\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \textcolor{comment}{/*\ @\}\ */}\textcolor{comment}{/*\ Audio\ flags\ */}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00165\ \textcolor{keyword}{typedef}\ void\ (SDLCALL\ *\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a379fcc25845e46bfa80cb3619fc2821c}{SDL\_AudioCallback}})\ (\textcolor{keywordtype}{void}\ *userdata,\ Uint8\ *\ stream,}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ len);}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00180\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}}}
+\DoxyCodeLine{00181\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l___audio_spec_a8b823ce46fc2e448cf7e6fc141aff6b2}{freq}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}}\ \mbox{\hyperlink{struct_s_d_l___audio_spec_ae37c634cac5807762f184c8d5d49fc2d}{format}};\ \ \ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___audio_spec_a31fe8b3710cf23bbef24be8a1749fe46}{channels}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ Uint8\ \mbox{\hyperlink{struct_s_d_l___audio_spec_addc462c8a806e6c122eccf63482048f6}{silence}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ Uint16\ \mbox{\hyperlink{struct_s_d_l___audio_spec_a2cdf5e885808c10bfa2810b706e69f95}{samples}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ Uint16\ \mbox{\hyperlink{struct_s_d_l___audio_spec_a738371fc13b54cefef4db16994abeeb6}{padding}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00188\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___audio_spec_a154cf44743ecec78c36dc6c827dd2fdb}{size}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__audio_8h_a379fcc25845e46bfa80cb3619fc2821c}{SDL\_AudioCallback}}\ \mbox{\hyperlink{struct_s_d_l___audio_spec_a1f8d05139f1679dcf359f49251233eac}{callback}};\ }
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{struct_s_d_l___audio_spec_ae3fdaf1ab3c3eb6878979d670dbcc774}{userdata}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00191\ \}\ \mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}};}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___audio_c_v_t}{SDL\_AudioCVT}};}
+\DoxyCodeLine{00195\ \textcolor{keyword}{typedef}\ void\ (SDLCALL\ *\ SDL\_AudioFilter)\ (\textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___audio_c_v_t}{SDL\_AudioCVT}}\ *\ cvt,}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}}\ format);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ SDL\_AUDIOCVT\_MAX\_FILTERS\ 9}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#if\ defined(\_\_GNUC\_\_)\ \&\&\ !defined(\_\_CHERI\_PURE\_CAPABILITY\_\_)}}
+\DoxyCodeLine{00218\ \textcolor{comment}{/*\ This\ structure\ is\ 84\ bytes\ on\ 32-\/bit\ architectures,\ make\ sure\ GCC\ doesn't}}
+\DoxyCodeLine{00219\ \textcolor{comment}{\ \ \ pad\ it\ out\ to\ 88\ bytes\ to\ guarantee\ ABI\ compatibility\ between\ compilers.}}
+\DoxyCodeLine{00220\ \textcolor{comment}{\ \ \ This\ is\ not\ a\ concern\ on\ CHERI\ architectures,\ where\ pointers\ must\ be\ stored}}
+\DoxyCodeLine{00221\ \textcolor{comment}{\ \ \ at\ aligned\ locations\ otherwise\ they\ will\ become\ invalid,\ and\ thus\ structs}}
+\DoxyCodeLine{00222\ \textcolor{comment}{\ \ \ containing\ pointers\ cannot\ be\ packed\ without\ giving\ a\ warning\ or\ error.}}
+\DoxyCodeLine{00223\ \textcolor{comment}{\ \ \ vvv}}
+\DoxyCodeLine{00224\ \textcolor{comment}{\ \ \ The\ next\ time\ we\ rev\ the\ ABI,\ make\ sure\ to\ size\ the\ ints\ and\ add\ padding.}}
+\DoxyCodeLine{00225\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#define\ SDL\_AUDIOCVT\_PACKED\ \_\_attribute\_\_((packed))}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ SDL\_AUDIOCVT\_PACKED}}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00230\ \textcolor{comment}{/*\ */}}
+\DoxyCodeLine{00231\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___audio_c_v_t}{SDL\_AudioCVT}}}
+\DoxyCodeLine{00232\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_ac600a035a48df05e14d3712fd6953ad4}{needed}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00234\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}}\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_a6ae81231e017105e6d5e745a51732e16}{src\_format}};\ }
+\DoxyCodeLine{00235\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}}\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_a8f890d017be857a3b048bf00525736c6}{dst\_format}};\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_ad886122c23a6673073baace31bff3b6c}{rate\_incr}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00237\ \ \ \ \ Uint8\ *\mbox{\hyperlink{struct_s_d_l___audio_c_v_t_af42eb88b79cf9180670a5122c2c82671}{buf}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_aeaeb8c5a63c3ab96471fbfdf412c78ff}{len}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_a5c60163f34d1947e5b166c23aba9879d}{len\_cvt}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_ac9662d47cf2348b82b27b151150116b0}{len\_mult}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_a5628ff5ccf711de9d77c0a4a9f57d2f0}{len\_ratio}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00242\ \ \ \ \ SDL\_AudioFilter\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_a40c487357708e2ee7fc239b233294b73}{filters}}[\mbox{\hyperlink{sdl2__image-src_2_xcode_2tv_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__audio_8h_a3d38380ac4a45a68a0e1c1a7a02bd290}{SDL\_AUDIOCVT\_MAX\_FILTERS}}\ +\ 1];\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t_a35093b3ad3331c17416c593a76012b63}{filter\_index}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00244\ \}\ SDL\_AUDIOCVT\_PACKED\ \mbox{\hyperlink{struct_s_d_l___audio_c_v_t}{SDL\_AudioCVT}};}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \textcolor{comment}{/*\ Function\ prototypes\ */}}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00255\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00276\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_ae3cb6a3321d9ee32f3c05ea0794c5fb8}{SDL\_GetNumAudioDrivers}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00298\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SDLCALL\ SDL\_GetAudioDriver(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00299\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00308\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00325\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_AudioInit(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *driver\_name);}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00339\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a478c602cbfaab8663cb4f58a62600323}{SDL\_AudioQuit}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00340\ \textcolor{comment}{/*\ @\}\ */}}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00358\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a1fa49ad53602ae0e45f224d5625d64a9}{SDL\_GetCurrentAudioDriver}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00407\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_OpenAudio(\mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}}\ *\ desired,}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}}\ *\ obtained);}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00419\ \textcolor{keyword}{typedef}\ Uint32\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}};}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00465\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetNumAudioDevices(\textcolor{keywordtype}{int}\ iscapture);}
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00492\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *SDLCALL\ SDL\_GetAudioDeviceName(\textcolor{keywordtype}{int}\ index,}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ iscapture);}
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00518\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetAudioDeviceSpec(\textcolor{keywordtype}{int}\ index,}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ iscapture,}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}}\ *spec);}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00522\ }
+\DoxyCodeLine{00553\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetDefaultAudioInfo(\textcolor{keywordtype}{char}\ **name,}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}}\ *spec,}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ iscapture);}
+\DoxyCodeLine{00556\ }
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00669\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ SDLCALL\ SDL\_OpenAudioDevice(}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *device,}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ iscapture,}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}}\ *desired,}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}}\ *obtained,}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ allowed\_changes);}
+\DoxyCodeLine{00675\ }
+\DoxyCodeLine{00676\ }
+\DoxyCodeLine{00677\ }
+\DoxyCodeLine{00683\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00684\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00685\ \{}
+\DoxyCodeLine{00686\ \ \ \ \ SDL\_AUDIO\_STOPPED\ =\ 0,}
+\DoxyCodeLine{00687\ \ \ \ \ SDL\_AUDIO\_PLAYING,}
+\DoxyCodeLine{00688\ \ \ \ \ SDL\_AUDIO\_PAUSED}
+\DoxyCodeLine{00689\ \}\ SDL\_AudioStatus;}
+\DoxyCodeLine{00690\ }
+\DoxyCodeLine{00709\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_AudioStatus\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a568e10207e6ff53f8e238a0d562ef594}{SDL\_GetAudioStatus}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00710\ }
+\DoxyCodeLine{00722\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_AudioStatus\ SDLCALL\ SDL\_GetAudioDeviceStatus(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ dev);}
+\DoxyCodeLine{00723\ \textcolor{comment}{/*\ @\}\ */}\textcolor{comment}{/*\ Audio\ State\ */}}
+\DoxyCodeLine{00724\ }
+\DoxyCodeLine{00734\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{00735\ }
+\DoxyCodeLine{00755\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_PauseAudio(\textcolor{keywordtype}{int}\ pause\_on);}
+\DoxyCodeLine{00756\ }
+\DoxyCodeLine{00785\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_PauseAudioDevice(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ dev,}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pause\_on);}
+\DoxyCodeLine{00787\ \textcolor{comment}{/*\ @\}\ */}\textcolor{comment}{/*\ Pause\ audio\ functions\ */}}
+\DoxyCodeLine{00788\ }
+\DoxyCodeLine{00870\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}}\ *SDLCALL\ SDL\_LoadWAV\_RW(\mbox{\hyperlink{struct_s_d_l___r_wops}{SDL\_RWops}}\ *\ src,}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ freesrc,}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___audio_spec}{SDL\_AudioSpec}}\ *\ spec,}
+\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ **\ audio\_buf,}
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint32\ *\ audio\_len);}
+\DoxyCodeLine{00875\ }
+\DoxyCodeLine{00880\ \textcolor{preprocessor}{\#define\ SDL\_LoadWAV(file,\ spec,\ audio\_buf,\ audio\_len)\ \(\backslash\)}}
+\DoxyCodeLine{00881\ \textcolor{preprocessor}{\ \ \ \ SDL\_LoadWAV\_RW(SDL\_RWFromFile(file,\ "{}rb"{}),1,\ spec,audio\_buf,audio\_len)}}
+\DoxyCodeLine{00882\ }
+\DoxyCodeLine{00898\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_FreeWAV(Uint8\ *\ audio\_buf);}
+\DoxyCodeLine{00899\ }
+\DoxyCodeLine{00932\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_BuildAudioCVT(\mbox{\hyperlink{struct_s_d_l___audio_c_v_t}{SDL\_AudioCVT}}\ *\ cvt,}
+\DoxyCodeLine{00933\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}}\ src\_format,}
+\DoxyCodeLine{00934\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ src\_channels,}
+\DoxyCodeLine{00935\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ src\_rate,}
+\DoxyCodeLine{00936\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}}\ dst\_format,}
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ dst\_channels,}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ dst\_rate);}
+\DoxyCodeLine{00939\ }
+\DoxyCodeLine{00978\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_ConvertAudio(\mbox{\hyperlink{struct_s_d_l___audio_c_v_t}{SDL\_AudioCVT}}\ *\ cvt);}
+\DoxyCodeLine{00979\ }
+\DoxyCodeLine{00980\ \textcolor{comment}{/*\ SDL\_AudioStream\ is\ a\ new\ audio\ conversion\ interface.}}
+\DoxyCodeLine{00981\ \textcolor{comment}{\ \ \ The\ benefits\ vs\ SDL\_AudioCVT:}}
+\DoxyCodeLine{00982\ \textcolor{comment}{\ \ \ \ -\/\ it\ can\ handle\ resampling\ data\ in\ chunks\ without\ generating}}
+\DoxyCodeLine{00983\ \textcolor{comment}{\ \ \ \ \ \ artifacts,\ when\ it\ doesn't\ have\ the\ complete\ buffer\ available.}}
+\DoxyCodeLine{00984\ \textcolor{comment}{\ \ \ \ -\/\ it\ can\ handle\ incoming\ data\ in\ any\ variable\ size.}}
+\DoxyCodeLine{00985\ \textcolor{comment}{\ \ \ \ -\/\ You\ push\ data\ as\ you\ have\ it,\ and\ pull\ it\ when\ you\ need\ it}}
+\DoxyCodeLine{00986\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00987\ \textcolor{comment}{/*\ this\ is\ opaque\ to\ the\ outside\ world.\ */}}
+\DoxyCodeLine{00988\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___s_d_l___audio_stream}{\_SDL\_AudioStream}};}
+\DoxyCodeLine{00989\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___s_d_l___audio_stream}{\_SDL\_AudioStream}}\ SDL\_AudioStream;}
+\DoxyCodeLine{00990\ }
+\DoxyCodeLine{01011\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_AudioStream\ *\ SDLCALL\ SDL\_NewAudioStream(\textcolor{keyword}{const}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}}\ src\_format,}
+\DoxyCodeLine{01012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Uint8\ src\_channels,}
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ src\_rate,}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}}\ dst\_format,}
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Uint8\ dst\_channels,}
+\DoxyCodeLine{01016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ dst\_rate);}
+\DoxyCodeLine{01017\ }
+\DoxyCodeLine{01035\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_AudioStreamPut(SDL\_AudioStream\ *stream,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *buf,\ \textcolor{keywordtype}{int}\ len);}
+\DoxyCodeLine{01036\ }
+\DoxyCodeLine{01054\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_AudioStreamGet(SDL\_AudioStream\ *stream,\ \textcolor{keywordtype}{void}\ *buf,\ \textcolor{keywordtype}{int}\ len);}
+\DoxyCodeLine{01055\ }
+\DoxyCodeLine{01072\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_AudioStreamAvailable(SDL\_AudioStream\ *stream);}
+\DoxyCodeLine{01073\ }
+\DoxyCodeLine{01091\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_AudioStreamFlush(SDL\_AudioStream\ *stream);}
+\DoxyCodeLine{01092\ }
+\DoxyCodeLine{01105\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_AudioStreamClear(SDL\_AudioStream\ *stream);}
+\DoxyCodeLine{01106\ }
+\DoxyCodeLine{01119\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_FreeAudioStream(SDL\_AudioStream\ *stream);}
+\DoxyCodeLine{01120\ }
+\DoxyCodeLine{01121\ \textcolor{preprocessor}{\#define\ SDL\_MIX\_MAXVOLUME\ 128}}
+\DoxyCodeLine{01122\ }
+\DoxyCodeLine{01145\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_MixAudio(Uint8\ *\ dst,\ \textcolor{keyword}{const}\ Uint8\ *\ src,}
+\DoxyCodeLine{01146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint32\ len,\ \textcolor{keywordtype}{int}\ volume);}
+\DoxyCodeLine{01147\ }
+\DoxyCodeLine{01178\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_MixAudioFormat(Uint8\ *\ dst,}
+\DoxyCodeLine{01179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Uint8\ *\ src,}
+\DoxyCodeLine{01180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a491ed103fd25d920c4e6b7495217ce66}{SDL\_AudioFormat}}\ format,}
+\DoxyCodeLine{01181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint32\ len,\ \textcolor{keywordtype}{int}\ volume);}
+\DoxyCodeLine{01182\ }
+\DoxyCodeLine{01229\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_QueueAudio(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ dev,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *data,\ Uint32\ len);}
+\DoxyCodeLine{01230\ }
+\DoxyCodeLine{01277\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint32\ SDLCALL\ SDL\_DequeueAudio(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ dev,\ \textcolor{keywordtype}{void}\ *data,\ Uint32\ len);}
+\DoxyCodeLine{01278\ }
+\DoxyCodeLine{01311\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint32\ SDLCALL\ SDL\_GetQueuedAudioSize(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ dev);}
+\DoxyCodeLine{01312\ }
+\DoxyCodeLine{01345\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_ClearQueuedAudio(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ dev);}
+\DoxyCodeLine{01346\ }
+\DoxyCodeLine{01347\ }
+\DoxyCodeLine{01356\ \textcolor{comment}{/*\ @\{\ */}}
+\DoxyCodeLine{01357\ }
+\DoxyCodeLine{01376\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a7ffa484f230f6085e271a4f43e678f06}{SDL\_LockAudio}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{01377\ }
+\DoxyCodeLine{01415\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_LockAudioDevice(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ dev);}
+\DoxyCodeLine{01416\ }
+\DoxyCodeLine{01434\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a76d8179bee14dad268e65378058d897d}{SDL\_UnlockAudio}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{01435\ }
+\DoxyCodeLine{01448\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_UnlockAudioDevice(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ dev);}
+\DoxyCodeLine{01449\ \textcolor{comment}{/*\ @\}\ */}\textcolor{comment}{/*\ Audio\ lock\ functions\ */}}
+\DoxyCodeLine{01450\ }
+\DoxyCodeLine{01466\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_aa176acc650e66e1d38814cbed3ca258e}{SDL\_CloseAudio}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{01467\ }
+\DoxyCodeLine{01490\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_CloseAudioDevice(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__audio_8h_a677d9d2a6f77a7502a0dc8b45ad211bb}{SDL\_AudioDeviceID}}\ dev);}
+\DoxyCodeLine{01491\ }
+\DoxyCodeLine{01492\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{01493\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{01494\ \}}
+\DoxyCodeLine{01495\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01496\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{01497\ }
+\DoxyCodeLine{01498\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_audio\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01499\ }
+\DoxyCodeLine{01500\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

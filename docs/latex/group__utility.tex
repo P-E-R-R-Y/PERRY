@@ -1,0 +1,97 @@
+\doxysection{Utility}
+\hypertarget{group__utility}{}\label{group__utility}\index{Utility@{Utility}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_dynamic_loader}{Dynamic\+Loader}}
+\begin{DoxyCompactList}\small\item\em load shared libraries \& retrieve symbols \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_file_searcher}{File\+Searcher}}
+\begin{DoxyCompactList}\small\item\em class to help handling files when working with shared libraries \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_flag_parser}{Flag\+Parser}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__utility_gab9f7d768cb5f7bbb8acb8f6cad3bafc1}\label{group__utility_gab9f7d768cb5f7bbb8acb8f6cad3bafc1} 
+enum {\bfseries lib\+\_\+e} \{ {\bfseries SHARED\+\_\+\+LIB}
+, {\bfseries STATIC\+\_\+\+LIB}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__utility_gac4bd810483591e3c53863b77ccb1b367}\label{group__utility_gac4bd810483591e3c53863b77ccb1b367} 
+{\bfseries Dynamic\+Loader\+::\+Dynamic\+Loader} (std\+::string str)
+\item 
+\Hypertarget{group__utility_ga5d61f8b3354faa75d57d3eddf42c9513}\label{group__utility_ga5d61f8b3354faa75d57d3eddf42c9513} 
+{\bfseries Dynamic\+Loader\+::\+Dynamic\+Loader} (const \mbox{\hyperlink{class_dynamic_loader}{Dynamic\+Loader}} \&other)
+\item 
+\Hypertarget{group__utility_ga45feec47aae9c278814cddcc2e8a317a}\label{group__utility_ga45feec47aae9c278814cddcc2e8a317a} 
+{\bfseries Dynamic\+Loader\+::\+Dynamic\+Loader} (\mbox{\hyperlink{class_dynamic_loader}{Dynamic\+Loader}} \&\&other)
+\item 
+\Hypertarget{group__utility_gaeeb05735bdf4209e0bca8ea55a052180}\label{group__utility_gaeeb05735bdf4209e0bca8ea55a052180} 
+bool {\bfseries Dynamic\+Loader\+::is\+Ready} ()
+\item 
+\Hypertarget{group__utility_ga71ef119ae179e239fe2f771afd6cd94a}\label{group__utility_ga71ef119ae179e239fe2f771afd6cd94a} 
+void {\bfseries Dynamic\+Loader\+::set\+Path} (std\+::string str)
+\item 
+\Hypertarget{group__utility_gaa3cf9241058f91825f491af407e688f4}\label{group__utility_gaa3cf9241058f91825f491af407e688f4} 
+std\+::string {\bfseries Dynamic\+Loader\+::get\+Path} () const
+\item 
+\Hypertarget{group__utility_gaf8dab5467948a33159dc3ad36f814d48}\label{group__utility_gaf8dab5467948a33159dc3ad36f814d48} 
+void {\bfseries Dynamic\+Loader\+::set\+Lib} (void \texorpdfstring{$\ast$}{*}lib)
+\item 
+\Hypertarget{group__utility_ga017d4bc270a4a6c104426e1340203473}\label{group__utility_ga017d4bc270a4a6c104426e1340203473} 
+void \texorpdfstring{$\ast$}{*} {\bfseries Dynamic\+Loader\+::get\+Lib} ()
+\item 
+\Hypertarget{group__utility_gaf980a8bd9c1a8d2745d355d6e0c810fd}\label{group__utility_gaf980a8bd9c1a8d2745d355d6e0c810fd} 
+void \texorpdfstring{$\ast$}{*} {\bfseries Dynamic\+Loader\+::find\+Symbol} (std\+::string str)
+\item 
+\Hypertarget{group__utility_ga77504fcb06986e4f253c8280dc5efbd9}\label{group__utility_ga77504fcb06986e4f253c8280dc5efbd9} 
+static void {\bfseries File\+Searcher\+::display\+Files} (std\+::string folder)
+\item 
+\Hypertarget{group__utility_gaa6164aa62638f3d534fe8454df6fadb7}\label{group__utility_gaa6164aa62638f3d534fe8454df6fadb7} 
+static void {\bfseries File\+Searcher\+::display\+Files} (std\+::string folder, std\+::string extension)
+\item 
+\Hypertarget{group__utility_ga70118377951b7efc2a4c548e03fb228c}\label{group__utility_ga70118377951b7efc2a4c548e03fb228c} 
+static std\+::vector$<$ std\+::string $>$ {\bfseries File\+Searcher\+::search\+Files} (std\+::string folder)
+\item 
+\Hypertarget{group__utility_gab9b3812b0ce06da78c11c87a5eb8df9a}\label{group__utility_gab9b3812b0ce06da78c11c87a5eb8df9a} 
+static std\+::vector$<$ std\+::string $>$ {\bfseries File\+Searcher\+::search\+Files} (std\+::string folder, std\+::string extension)
+\item 
+\Hypertarget{group__utility_ga46d39b6f32ec6d5e45bf7fdcc04e97bb}\label{group__utility_ga46d39b6f32ec6d5e45bf7fdcc04e97bb} 
+static std\+::vector$<$ std\+::string $>$ {\bfseries File\+Searcher\+::search\+Shared\+Libraries} (std\+::string folder, bool sub\+\_\+directory=false)
+\item 
+\Hypertarget{group__utility_ga3ad8bfc92ad78a3c999284e89d3b380e}\label{group__utility_ga3ad8bfc92ad78a3c999284e89d3b380e} 
+static std\+::vector$<$ std\+::string $>$ {\bfseries File\+Searcher\+::search\+Path\+Files} (std\+::string folder, std\+::string extension, bool sub\+\_\+directory=false)
+\item 
+\Hypertarget{group__utility_ga63d41246e1e5ca91ff9ef8333327fc4a}\label{group__utility_ga63d41246e1e5ca91ff9ef8333327fc4a} 
+{\bfseries Flag\+Parser\+::\+Flag\+Parser} (int ac, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}av)
+\item 
+\Hypertarget{group__utility_ga9ac30f4c8cf3c6805b25d387dfd2c05d}\label{group__utility_ga9ac30f4c8cf3c6805b25d387dfd2c05d} 
+void {\bfseries Flag\+Parser\+::display} ()
+\item 
+\Hypertarget{group__utility_ga248e77687e613118426f74799a29646d}\label{group__utility_ga248e77687e613118426f74799a29646d} 
+void {\bfseries Flag\+Parser\+::display} (std\+::string flag)
+\item 
+\Hypertarget{group__utility_gac6e5d928eb9cf46afc7f47422b0d106e}\label{group__utility_gac6e5d928eb9cf46afc7f47422b0d106e} 
+std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ {\bfseries Flag\+Parser\+::get} ()
+\item 
+\Hypertarget{group__utility_ga7ca4fa0503d68ecefef6d2a2a9812d7b}\label{group__utility_ga7ca4fa0503d68ecefef6d2a2a9812d7b} 
+std\+::vector$<$ std\+::string $>$ {\bfseries Flag\+Parser\+::get} (std\+::string flag)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__utility_gae59b85788b80da2160229b806afb521d}\label{group__utility_gae59b85788b80da2160229b806afb521d} 
+void \texorpdfstring{$\ast$}{*} {\bfseries Dynamic\+Loader\+::\+\_\+lib}
+\item 
+\Hypertarget{group__utility_gafe47b136f5b96b2a6b989739e47c68a0}\label{group__utility_gafe47b136f5b96b2a6b989739e47c68a0} 
+std\+::string {\bfseries Dynamic\+Loader\+::\+\_\+name}
+\item 
+\Hypertarget{group__utility_gadb3b8160b479b7e5761f01e6b93541d3}\label{group__utility_gadb3b8160b479b7e5761f01e6b93541d3} 
+std\+::map$<$ std\+::string, std\+::vector$<$ std\+::string $>$ $>$ {\bfseries Flag\+Parser\+::\+\_\+key\+Value}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}

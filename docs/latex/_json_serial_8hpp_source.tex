@@ -1,88 +1,92 @@
 \doxysection{Json\+Serial.\+hpp}
 \hypertarget{_json_serial_8hpp_source}{}\label{_json_serial_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/serial/json/JsonSerial.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/serial/json/JsonSerial.hpp}}
-
+\mbox{\hyperlink{_json_serial_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ JSON\_SERIAL\_HPP}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ JSON\_SERIAL\_HPP}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <variant>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}ISerial.hpp"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <fstream>}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }JsonSerial:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_serial}{ISerial}}\ \{}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ JsonSerial()\ \{\ }
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{false};\ }
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \string~JsonSerial()\ \{\};}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ load(\textcolor{keyword}{const}\ std::string\&\ path)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::ifstream\ file(path);}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nlohmann::json\ json\ =\ nlohmann::json::parse(file);}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ json\_converter(json);}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (nlohmann::json::exception\&\ e)\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ e.what()\ <<\ std::endl;}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isLoaded()\textcolor{keyword}{\ override}\{}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ loaded;}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ JSON\_SERIAL\_HPP}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ JSON\_SERIAL\_HPP}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_serial_8hpp}{ISerial.hpp}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespaceserial}{serial}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }JsonSerial:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classserial_1_1_i_serial}{ISerial}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ JsonSerial()\ \{\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \string~JsonSerial()\ \{\};}
 \DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ close()\textcolor{keyword}{\ override}\{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ \mbox{\hyperlink{class_node}{Node}}();\ \ \ \textcolor{comment}{//\ Clear\ the\ node}}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ Reset\ the\ loaded\ flag}}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ getRoot()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node;}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00043\ \ \ \ \ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ node;}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ loaded;}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//private\ function\ needed\ to\ convert\ yaml\ to\ Node}}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ json\_converter(nlohmann::json\ json)\ \{}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_node}{Node}}\ n;}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (json.is\_object())\ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ Node>\ m;}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ json.begin();\ it\ !=\ json.end();\ ++it)\ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m[it.key()]\ =\ json\_converter(it.value());}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ m;}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_array())\ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Node>\ v;}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ json.begin();\ it\ !=\ json.end();\ ++it)\ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v.push\_back(json\_converter(*it));}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ v;}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_string())\ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ Node::node\_type(json.get<std::string>());}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_number\_integer())\ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ Node::node\_type(json.get<\textcolor{keywordtype}{int}>());}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_number\_float())\ \{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ Node::node\_type(json.get<\textcolor{keywordtype}{double}>());}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_boolean())\ \{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ Node::node\_type(json.get<\textcolor{keywordtype}{bool}>());}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_null())\ \{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\ *\textcolor{keyword}{>}(\textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Node\ is\ not\ a\ scalar,\ map\ or\ sequence"{}});}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00080\ \};}
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ JSON\_SERIAL\_HPP}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__json_ga2a00f269590167c661c249d1b18041bd}{load}}(\textcolor{keyword}{const}\ std::string\&\ path)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::ifstream\ file(path);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nlohmann::json\ json\ =\ nlohmann::json::parse(file);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ json\_converter(json);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (nlohmann::json::exception\&\ e)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ e.what()\ <<\ std::endl;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__json_gae488c356c07d116778fbc6cf7114abca}{isLoaded}}()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ loaded;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__json_gad3ce46a0430880e403930e244c51dd24}{close}}()\textcolor{keyword}{\ override}\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ node\ =\ \mbox{\hyperlink{classserial_1_1_node}{Node}}();\ \ \ \textcolor{comment}{//\ Clear\ the\ node}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ loaded\ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ Reset\ the\ loaded\ flag}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classserial_1_1_node}{Node}}\ \mbox{\hyperlink{group__json_ga37a58a2841346dddb51c2c0336be1918}{getRoot}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classserial_1_1_node}{Node}}\ node;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ loaded;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//private\ function\ needed\ to\ convert\ yaml\ to\ Node}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classserial_1_1_node}{Node}}\ json\_converter(nlohmann::json\ json)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classserial_1_1_node}{Node}}\ n;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (json.is\_object())\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ Node>\ m;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ json.begin();\ it\ !=\ json.end();\ ++it)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m[it.key()]\ =\ json\_converter(it.value());}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ m;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_array())\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Node>\ v;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ json.begin();\ it\ !=\ json.end();\ ++it)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v.push\_back(json\_converter(*it));}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ v;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_string())\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ Node::node\_type(json.get<std::string>());}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_number\_integer())\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ Node::node\_type(json.get<\textcolor{keywordtype}{int}>());}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_number\_float())\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ Node::node\_type(json.get<\textcolor{keywordtype}{double}>());}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_boolean())\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ Node::node\_type(json.get<\textcolor{keywordtype}{bool}>());}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (json.is\_null())\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n.value\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\ *\textcolor{keyword}{>}(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Node\ is\ not\ a\ scalar,\ map\ or\ sequence"{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ JSON\_SERIAL\_HPP}}
 
 \end{DoxyCode}

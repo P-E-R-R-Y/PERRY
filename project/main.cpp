@@ -1,3 +1,14 @@
+/**
+ * @file main.cpp
+ * @author @Perry-Chouteau (perry.chouteau@outlook.com)
+ * @brief 
+ * @version 0.1
+ * @date 2025-01-29
+ * 
+ * @addtogroup user
+ * @{
+ */
+
 #include <iostream>
 #include <ostream>
 #include <memory>
@@ -20,12 +31,30 @@
 #include "includes/Component.hpp"
 #include "includes/Systems.hpp"
 
+/**
+ * @brief Create a Game from CustomisableEngine<GraphicSharedLoader, Registry>
+ * - the graphic symbols from the shared library
+ * - get the registry methods and 
+ * 
+ * @tparam GraphicSharedLoader
+ * @tparam Registry
+ */
 class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registry> {
     public:
         //todo change vector to variadic template
+        /**
+         * @brief Construct a new Game object
+         * 
+         * @param graphic 
+         */
         Game(std::string graphic): CustomisableEngine(graphic, nullptr) {};
         ~Game() = default;
 
+        /**
+         * @brief start the game
+         * 
+         * @return int 
+         */
         int start() override {
             // main loop
             this->initHandler();
@@ -46,6 +75,10 @@ class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registr
         }
 
     protected:
+
+        /**
+         * @brief init the game using inherited methods
+         */
         void initHandler() override {
             std::cout << "initHandler " << std::endl;
             window = createWindow(800, 500, "Perry");
@@ -63,6 +96,9 @@ class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registr
             window->setFrameLimit(120);
         }
 
+        /**
+         * @brief handle event the game using inherited methods
+         */
         void eventHandler() override {
             if (keyboard != nullptr) {
                 if (keyboard->isKeyDown(graphic::IKeyboard::Keys::KEY_SPACE)) {
@@ -77,11 +113,17 @@ class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registr
             //std::cout << "eventHandler " << std::endl;
         }
 
+        /**
+         * @brief update event the game using inherited methods
+         */
         void updateHandler() override {
             std::cout << window->getDelta() << std::endl;
             //std::cout << "updateHandler " << std::endl;
         }
 
+        /**
+         * @brief render the game using inherited methods
+         */
         void displayHandler() override {
             std::cout << "displayHandler" << std::endl;
             window->drawSprite(sprite);
@@ -93,6 +135,9 @@ class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registr
             window->endMode3();
         }
 
+        /**
+         * @brief free game's data using inherited methods
+         */
         void destroyHandler() override {
             deleteWindow(window);
             deleteEvent(event);
@@ -119,6 +164,12 @@ class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registr
 
 };
 
+/**
+ * @brief sort shared library
+ * 
+ * @param files 
+ * @return std::map<std::string, std::vector<std::string>> 
+ */
 std::map<std::string, std::vector<std::string>> sortSharedLibrary(std::vector<std::string> files) {
     std::map<std::string, std::vector<std::string>> map;
     for (auto& file: files) {

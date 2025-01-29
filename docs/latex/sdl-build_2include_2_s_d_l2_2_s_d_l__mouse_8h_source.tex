@@ -1,0 +1,129 @@
+\doxysection{SDL\+\_\+mouse.\+h}
+\hypertarget{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_source}{}\label{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_mouse.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/build/include/SDL2/SDL\_mouse.h}}
+\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ SDL\_mouse\_h\_}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SDL\_mouse\_h\_}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__stdinc_8h}{SDL\_stdinc.h}}"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__error_8h}{SDL\_error.h}}"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__video_8h}{SDL\_video.h}}"{}}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___cursor}{SDL\_Cursor}}\ \mbox{\hyperlink{struct_s_d_l___cursor}{SDL\_Cursor}};\ \ \ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00047\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a0ea5055b7ef96598a39570abf365b9f9}{SDL\_SYSTEM\_CURSOR\_ARROW}},\ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a5f3b85170a85ffb62aa477f9c31987fb}{SDL\_SYSTEM\_CURSOR\_IBEAM}},\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a8ce5ae38a754042575234c8da72417e6}{SDL\_SYSTEM\_CURSOR\_WAIT}},\ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732ae18ee52eb9724301950db552c953e48e}{SDL\_SYSTEM\_CURSOR\_CROSSHAIR}},\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a71fe25cd68c411ca52370bacc40b2764}{SDL\_SYSTEM\_CURSOR\_WAITARROW}},\ }
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a0eb8a498162417265c0ec79c1eacb30e}{SDL\_SYSTEM\_CURSOR\_SIZENWSE}},\ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a5b70e5fee565ccf9a6a99f92c571b4ed}{SDL\_SYSTEM\_CURSOR\_SIZENESW}},\ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732aa2f663333ca851ce0f40f8f8d2c2a731}{SDL\_SYSTEM\_CURSOR\_SIZEWE}},\ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a04d6abe3f01b1c4b8d77af1b2ef5e4e9}{SDL\_SYSTEM\_CURSOR\_SIZENS}},\ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a88849f7320ea2bf629e05a06c6ff8e20}{SDL\_SYSTEM\_CURSOR\_SIZEALL}},\ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a70a8b0dec44a0f63d7af72e649de3b62}{SDL\_SYSTEM\_CURSOR\_NO}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732a09cd11742bffaafbd1073afeea03f7bc}{SDL\_SYSTEM\_CURSOR\_HAND}},\ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ SDL\_NUM\_SYSTEM\_CURSORS}
+\DoxyCodeLine{00061\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732}{SDL\_SystemCursor}};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00067\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_ac65151e54bea0e005902790c68e738f3a8778fa74ec64be00b8b6c48d10f6e984}{SDL\_MOUSEWHEEL\_NORMAL}},\ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_ac65151e54bea0e005902790c68e738f3a8e744c7abe1563a5fb219d32f413af1a}{SDL\_MOUSEWHEEL\_FLIPPED}}\ \ \ \ }
+\DoxyCodeLine{00070\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_ac65151e54bea0e005902790c68e738f3}{SDL\_MouseWheelDirection}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{comment}{/*\ Function\ prototypes\ */}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}\ *\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a1ca19fb9815f7b80ab15ab597e2eef06}{SDL\_GetMouseFocus}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint32\ SDLCALL\ SDL\_GetMouseState(\textcolor{keywordtype}{int}\ *x,\ \textcolor{keywordtype}{int}\ *y);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint32\ SDLCALL\ SDL\_GetGlobalMouseState(\textcolor{keywordtype}{int}\ *x,\ \textcolor{keywordtype}{int}\ *y);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00152\ \textcolor{keyword}{extern}\ DECLSPEC\ Uint32\ SDLCALL\ SDL\_GetRelativeMouseState(\textcolor{keywordtype}{int}\ *x,\ \textcolor{keywordtype}{int}\ *y);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00173\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_WarpMouseInWindow(\mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}\ *\ window,}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00196\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_WarpMouseGlobal(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00217\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetRelativeMouseMode(SDL\_bool\ enabled);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00263\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_CaptureMouse(SDL\_bool\ enabled);}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00274\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_ae97aaf1682b3a6b62214dda1dda9b212}{SDL\_GetRelativeMouseMode}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00317\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___cursor}{SDL\_Cursor}}\ *SDLCALL\ SDL\_CreateCursor(\textcolor{keyword}{const}\ Uint8\ *\ data,}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Uint8\ *\ mask,}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ hot\_x,}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hot\_y);}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00336\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___cursor}{SDL\_Cursor}}\ *SDLCALL\ SDL\_CreateColorCursor(\mbox{\hyperlink{struct_s_d_l___surface}{SDL\_Surface}}\ *surface,}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hot\_x,}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hot\_y);}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00351\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___cursor}{SDL\_Cursor}}\ *SDLCALL\ SDL\_CreateSystemCursor(\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a3e8083d1d8ce4c5a1ba76bfc2be8e732}{SDL\_SystemCursor}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00369\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_SetCursor(\mbox{\hyperlink{struct_s_d_l___cursor}{SDL\_Cursor}}\ *\ cursor);}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00383\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___cursor}{SDL\_Cursor}}\ *SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a98d7b811cebffcdd9afb3b65288d715c}{SDL\_GetCursor}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00397\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___cursor}{SDL\_Cursor}}\ *SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__mouse_8h_a395cc3d18523a9240cb132f1c5d0034a}{SDL\_GetDefaultCursor}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00413\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_FreeCursor(\mbox{\hyperlink{struct_s_d_l___cursor}{SDL\_Cursor}}\ *\ cursor);}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00435\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_ShowCursor(\textcolor{keywordtype}{int}\ toggle);}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00444\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON(X)\ \ \ \ \ \ \ (1\ <<\ ((X)-\/1))}}
+\DoxyCodeLine{00445\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_LEFT\ \ \ \ \ 1}}
+\DoxyCodeLine{00446\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_MIDDLE\ \ \ 2}}
+\DoxyCodeLine{00447\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_RIGHT\ \ \ \ 3}}
+\DoxyCodeLine{00448\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_X1\ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00449\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_X2\ \ \ \ \ \ \ 5}}
+\DoxyCodeLine{00450\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_LMASK\ \ \ \ SDL\_BUTTON(SDL\_BUTTON\_LEFT)}}
+\DoxyCodeLine{00451\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_MMASK\ \ \ \ SDL\_BUTTON(SDL\_BUTTON\_MIDDLE)}}
+\DoxyCodeLine{00452\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_RMASK\ \ \ \ SDL\_BUTTON(SDL\_BUTTON\_RIGHT)}}
+\DoxyCodeLine{00453\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_X1MASK\ \ \ SDL\_BUTTON(SDL\_BUTTON\_X1)}}
+\DoxyCodeLine{00454\ \textcolor{preprocessor}{\#define\ SDL\_BUTTON\_X2MASK\ \ \ SDL\_BUTTON(SDL\_BUTTON\_X2)}}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{00457\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00458\ \}}
+\DoxyCodeLine{00459\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00460\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_mouse\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00464\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

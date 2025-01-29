@@ -1,61 +1,57 @@
 \doxysection{Ray\+Mouse.\+hpp}
 \hypertarget{_ray_mouse_8hpp_source}{}\label{_ray_mouse_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/event/RayMouse.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/event/RayMouse.hpp}}
-
+\mbox{\hyperlink{_ray_mouse_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ RAYMOUSE\_HPP\_}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ RAYMOUSE\_HPP\_}}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{comment}{//Interface}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../../../../interfaces/graphic/event/IMouse.hpp"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}RayEvent.hpp"{}}}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{comment}{//Raylib}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <raylib.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ RAYMOUSE\_HPP\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ RAYMOUSE\_HPP\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_mouse_8hpp}{../../../../interfaces/graphic/event/IMouse.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_ray_event_8hpp}{RayEvent.hpp}}"{}}}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceraylib}{raylib}}\ \{}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }RayMouse\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ \{}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ RayMouse(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \string~RayMouse()\ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_mouse_ab3f88b7353be3fb4755dc2538a82b375}{isButtonPressed}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsMouseButtonPressed(key);}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_mouse_ae9107e57d786d0e7d40c4d0a66c22609}{isButtonDown}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsMouseButtonDown(key);}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_mouse_aa504ae73fc7b5398e6496092a763be37}{isButtonReleased}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsMouseButtonReleased(key);}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classraylib_1_1_ray_mouse_a8e05b8154e9141143e122bf7b448db3a}{isButtonUp}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsMouseButtonUp(key);}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{classraylib_1_1_ray_mouse_aed641b29c15222d71ceefda349f87702}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{float(GetMouseX()),\ float(GetMouseY())\};}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_mouse_aee5f43a15aba3f5c9712b20b0d8f1f67}{setPosition}}(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetMousePosition(\textcolor{keywordtype}{int}(position.x),\ \textcolor{keywordtype}{int}(position.y));}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classraylib_1_1_ray_mouse_a521ecc70ca45a45153e5952174513624}{GetMouseWheelMove}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classraylib_1_1_ray_mouse_a521ecc70ca45a45153e5952174513624}{GetMouseWheelMove}}();}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classraylib_1_1_ray_mouse_a2cb24d9ea5b96f196c849232bdbd67d7}{update}}()\textcolor{keyword}{\ override\ }\{\};}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00060\ \ \ \ \ \};}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \}\ \textcolor{comment}{//\ namespace\ ray}}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !RAYMOUSE\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//Raylib}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <raylib.h>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }RayMouse\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ RayMouse(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \string~RayMouse()\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___raylib_ga107a4a8e7331a21dcfcccda94c0dbb7b}{isButtonPressed}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsMouseButtonPressed(key);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___raylib_ga00d36086de90cabf14ebd2759591318f}{isButtonDown}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsMouseButtonDown(key);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___raylib_ga6f5cb2ee45513fb51d5d9dbdf09e7c43}{isButtonReleased}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsMouseButtonReleased(key);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___raylib_ga009166d7e3983f892390f80157536b46}{isButtonUp}}(Buttons\ key)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsMouseButtonUp(key);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{group___raylib_ga4a096691abf8d4e2d44609fe89bcc559}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{float(GetMouseX()),\ float(GetMouseY())\};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___raylib_gafd996a7a4f42eab1200a0d51b83bbb6e}{setPosition}}(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ SetMousePosition(\textcolor{keywordtype}{int}(position.x),\ \textcolor{keywordtype}{int}(position.y));}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group___raylib_gaafa50a5912ad674f14594fc49315fd8f}{GetMouseWheelMove}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___raylib_gaafa50a5912ad674f14594fc49315fd8f}{GetMouseWheelMove}}();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___raylib_gaccffa820d2eb0898a42fe2f87b1eeeee}{update}}()\textcolor{keyword}{\ override\ }\{\};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !RAYMOUSE\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

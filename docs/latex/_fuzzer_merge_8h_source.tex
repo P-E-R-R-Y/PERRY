@@ -1,0 +1,76 @@
+\doxysection{Fuzzer\+Merge.\+h}
+\hypertarget{_fuzzer_merge_8h_source}{}\label{_fuzzer_merge_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerMerge.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/thirdparty/Fuzzer/FuzzerMerge.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/\ FuzzerMerge.h\ -\/\ merging\ corpa\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*-\/\ C++\ -\/*\ ===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ LLVM\ Compiler\ Infrastructure}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ file\ is\ distributed\ under\ the\ University\ of\ Illinois\ Open\ Source}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ License.\ See\ LICENSE.TXT\ for\ details.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Merging\ Corpora.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ The\ task:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ \ \ Take\ the\ existing\ corpus\ (possibly\ empty)\ and\ merge\ new\ inputs\ into}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ \ \ it\ so\ that\ only\ inputs\ with\ new\ coverage\ ('features')\ are\ added.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ \ \ The\ process\ should\ tolerate\ the\ crashes,\ OOMs,\ leaks,\ etc.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Algorithm:}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ \ \ The\ outter\ process\ collects\ the\ set\ of\ files\ and\ writes\ their\ names}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ \ \ into\ a\ temporary\ "{}control"{}\ file,\ then\ repeatedly\ launches\ the\ inner}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ \ \ process\ until\ all\ inputs\ are\ processed.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ \ \ The\ outer\ process\ does\ not\ actually\ execute\ the\ target\ code.}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ \ \ The\ inner\ process\ reads\ the\ control\ file\ and\ sees\ a)\ list\ of\ all\ the\ inputs}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ \ \ and\ b)\ the\ last\ processed\ input.\ Then\ it\ starts\ processing\ the\ inputs\ one}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ \ \ by\ one.\ Before\ processing\ every\ input\ it\ writes\ one\ line\ to\ control\ file:}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ \ \ STARTED\ INPUT\_ID\ INPUT\_SIZE}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ \ \ After\ processing\ an\ input\ it\ write\ another\ line:}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ \ \ DONE\ INPUT\_ID\ Feature1\ Feature2\ Feature3\ ...}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ \ \ If\ a\ crash\ happens\ while\ processing\ an\ input\ the\ last\ line\ in\ the\ control}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ \ \ file\ will\ be\ "{}STARTED\ INPUT\_ID"{}\ and\ so\ the\ next\ process\ will\ know}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ \ \ where\ to\ resume.}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ \ \ Once\ all\ inputs\ are\ processed\ by\ the\ innner\ process(es)\ the\ outer\ process}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ \ \ reads\ the\ control\ files\ and\ does\ the\ merge\ based\ entirely\ on\ the\ contents}}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ \ \ of\ control\ file.}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ \ \ It\ uses\ a\ single\ pass\ greedy\ algorithm\ choosing\ first\ the\ smallest\ inputs}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ \ \ within\ the\ same\ size\ the\ inputs\ that\ have\ more\ new\ features.}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//}}
+\DoxyCodeLine{00038\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifndef\ LLVM\_FUZZER\_MERGE\_H}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ LLVM\_FUZZER\_MERGE\_H}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}FuzzerDefs.h"{}}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <istream>}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{namespace\ }fuzzer\ \{}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfuzzer_1_1_merge_file_info}{MergeFileInfo}}\ \{}
+\DoxyCodeLine{00051\ \ \ std::string\ Name;}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{size\_t}\ Size\ =\ 0;}
+\DoxyCodeLine{00053\ \ \ std::vector<uint32\_t>\ Features;}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfuzzer_1_1_merger}{Merger}}\ \{}
+\DoxyCodeLine{00057\ \ \ std::vector<MergeFileInfo>\ Files;}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{size\_t}\ NumFilesInFirstCorpus\ =\ 0;}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{size\_t}\ FirstNotProcessedFile\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ std::string\ LastFailure;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{bool}\ Parse(std::istream\ \&IS,\ \textcolor{keywordtype}{bool}\ ParseCoverage);}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{bool}\ Parse(\textcolor{keyword}{const}\ std::string\ \&Str,\ \textcolor{keywordtype}{bool}\ ParseCoverage);}
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{void}\ ParseOrExit(std::istream\ \&IS,\ \textcolor{keywordtype}{bool}\ ParseCoverage);}
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{size\_t}\ Merge(std::vector<std::string>\ *NewFiles);}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \}\ \ \textcolor{comment}{//\ namespace\ fuzzer}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LLVM\_FUZZER\_MERGE\_H}}
+
+\end{DoxyCode}

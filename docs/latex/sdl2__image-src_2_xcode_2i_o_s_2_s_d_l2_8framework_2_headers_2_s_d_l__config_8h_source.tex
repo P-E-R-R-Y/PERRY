@@ -1,0 +1,58 @@
+\doxysection{SDL\+\_\+config.\+h}
+\hypertarget{sdl2__image-src_2_xcode_2i_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__config_8h_source}{}\label{sdl2__image-src_2_xcode_2i_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__config_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/iOS/SDL2.framework/Headers/SDL\_config.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_image-\/src/Xcode/iOS/SDL2.framework/Headers/SDL\_config.h}}
+\mbox{\hyperlink{sdl2__image-src_2_xcode_2i_o_s_2_s_d_l2_8framework_2_headers_2_s_d_l__config_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2022\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ SDL\_config\_h\_}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ SDL\_config\_h\_}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__platform_8h}{SDL2/SDL\_platform.h}}>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{/*\ Add\ any\ platform\ that\ doesn't\ build\ using\ the\ configure\ system.\ */}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#if\ defined(\_\_WIN32\_\_)}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_config\_windows.h>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#elif\ defined(\_\_WINRT\_\_)}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_config\_winrt.h>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#elif\ defined(\_\_MACOSX\_\_)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_config\_macosx.h>}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#elif\ defined(\_\_IPHONEOS\_\_)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_config\_iphoneos.h>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#elif\ defined(\_\_ANDROID\_\_)}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_config\_android.h>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#elif\ defined(\_\_OS2\_\_)}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_config\_os2.h>}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#elif\ defined(\_\_EMSCRIPTEN\_\_)}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_config\_emscripten.h>}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00047\ \textcolor{comment}{/*\ This\ is\ a\ minimal\ configuration\ just\ to\ get\ SDL\ running\ on\ new\ platforms.\ */}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_config\_minimal.h>}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ platform\ config\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#ifdef\ USING\_GENERATED\_CONFIG\_H}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#error\ Wrong\ SDL\_config.h,\ check\ your\ include\ path?}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_config\_h\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

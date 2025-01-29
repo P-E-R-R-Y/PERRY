@@ -1,0 +1,184 @@
+\doxysection{sdl\+::Sdl\+Sprite Class Reference}
+\hypertarget{classsdl_1_1_sdl_sprite}{}\label{classsdl_1_1_sdl_sprite}\index{sdl::SdlSprite@{sdl::SdlSprite}}
+Inheritance diagram for sdl\+::Sdl\+Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsdl_1_1_sdl_sprite}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_addc58ceb99ed302ee35fa06819b1343f}\label{classsdl_1_1_sdl_sprite_addc58ceb99ed302ee35fa06819b1343f} 
+{\bfseries Sdl\+Sprite} (std\+::string path)
+\item 
+bool \mbox{\hyperlink{classsdl_1_1_sdl_sprite_a7d8b07bbe7936759fae86c6c9a259eee}{is\+Ready}} () const override
+\begin{DoxyCompactList}\small\item\em notice if the sprite is ready \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtype_1_1____v4f__s}{\+\_\+\+\_\+v4f\+\_\+t}} \mbox{\hyperlink{classsdl_1_1_sdl_sprite_a96a834afc6c56f9a71f9cdeddb66bc98}{get\+Bounds}} () const override
+\begin{DoxyCompactList}\small\item\em give the bounds of the sprite \end{DoxyCompactList}\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_adffc11df886d7f003631aff58041efdb}\label{classsdl_1_1_sdl_sprite_adffc11df886d7f003631aff58041efdb} 
+void {\bfseries set\+Crop} (\mbox{\hyperlink{structtype_1_1____v4f__s}{\+\_\+\+\_\+v4f\+\_\+t}} rect) override
+\item 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{classsdl_1_1_sdl_sprite_ac4a9b248a80c22b38d55f29500c7657e}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_aa6c58e2df03154b6174c446f0cf7b135}\label{classsdl_1_1_sdl_sprite_aa6c58e2df03154b6174c446f0cf7b135} 
+void {\bfseries set\+Position} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} position) override
+\item 
+float \mbox{\hyperlink{classsdl_1_1_sdl_sprite_a03c77b2a76f0f5801163ce2fa15d1c50}{get\+Rotation}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsdl_1_1_sdl_sprite_a4b6e1de49ac97bacd83c1edeebb89dff}{set\+Rotation}} (float angle, bool is\+Rad=false) override
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{classsdl_1_1_sdl_sprite_ae629c60517580f763eb5dd1bbac40943}{get\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Sprite size. \end{DoxyCompactList}\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_a7cbbe013ff3179717f40c53a306d5945}\label{classsdl_1_1_sdl_sprite_a7cbbe013ff3179717f40c53a306d5945} 
+void {\bfseries set\+Size} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} size) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ISprite} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_sprite}{ISprite} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_sprite_a56dad5536d7c8f370a17842b966a9813}{set\+Crop}} (\+\_\+\+\_\+v4f\+\_\+t rect)=0
+\begin{DoxyCompactList}\small\item\em Crop the sprite with a rectangle. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_sprite_a7da368451eae7bdc6919d238387f416a}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position)=0
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_sprite_a487198bf197d8880aecd8a237e07c9fd}{set\+Size}} (\+\_\+\+\_\+v2f\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Set the Sprite size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_a612bfb974b6fd67acbcf82eb49531917}\label{classsdl_1_1_sdl_sprite_a612bfb974b6fd67acbcf82eb49531917} 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+surface}
+\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_aea4d7fc9a919711db3d6c61a4791a942}\label{classsdl_1_1_sdl_sprite_aea4d7fc9a919711db3d6c61a4791a942} 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+texture}
+\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_a2d2e9f7e44754760dd51d4cbffca0e2e}\label{classsdl_1_1_sdl_sprite_a2d2e9f7e44754760dd51d4cbffca0e2e} 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} {\bfseries \+\_\+position}
+\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_ad7d93e35d92c96638ed3cb251aa08aa3}\label{classsdl_1_1_sdl_sprite_ad7d93e35d92c96638ed3cb251aa08aa3} 
+SDL\+\_\+\+Rect {\bfseries \+\_\+crop}
+\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_a3e12aea7ba1210afc945d51f2bb611c2}\label{classsdl_1_1_sdl_sprite_a3e12aea7ba1210afc945d51f2bb611c2} 
+float {\bfseries \+\_\+rotation}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classsdl_1_1_sdl_sprite_a7747034efc5e3e0e55a5defe817fc3e3}\label{classsdl_1_1_sdl_sprite_a7747034efc5e3e0e55a5defe817fc3e3} 
+class {\bfseries Sdl\+Window}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classsdl_1_1_sdl_sprite_a96a834afc6c56f9a71f9cdeddb66bc98}\index{sdl::SdlSprite@{sdl::SdlSprite}!getBounds@{getBounds}}
+\index{getBounds@{getBounds}!sdl::SdlSprite@{sdl::SdlSprite}}
+\doxysubsubsection{\texorpdfstring{getBounds()}{getBounds()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_sprite_a96a834afc6c56f9a71f9cdeddb66bc98} 
+\mbox{\hyperlink{structtype_1_1____v4f__s}{\+\_\+\+\_\+v4f\+\_\+t}} sdl\+::\+Sdl\+Sprite\+::get\+Bounds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+give the bounds of the sprite 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v4f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a00a5af5a26c11991f3fe24d268778f85}{graphic\+::\+ISprite}}.
+
+\Hypertarget{classsdl_1_1_sdl_sprite_ac4a9b248a80c22b38d55f29500c7657e}\index{sdl::SdlSprite@{sdl::SdlSprite}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!sdl::SdlSprite@{sdl::SdlSprite}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_sprite_ac4a9b248a80c22b38d55f29500c7657e} 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} sdl\+::\+Sdl\+Sprite\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} object. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a8cc0af533b60b32dc093a7cda5b50cdc}{graphic\+::\+ISprite}}.
+
+\Hypertarget{classsdl_1_1_sdl_sprite_a03c77b2a76f0f5801163ce2fa15d1c50}\index{sdl::SdlSprite@{sdl::SdlSprite}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!sdl::SdlSprite@{sdl::SdlSprite}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_sprite_a03c77b2a76f0f5801163ce2fa15d1c50} 
+float sdl\+::\+Sdl\+Sprite\+::get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Rotation object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a7d03f2782d06584062b096f74120e9e8}{graphic\+::\+ISprite}}.
+
+\Hypertarget{classsdl_1_1_sdl_sprite_ae629c60517580f763eb5dd1bbac40943}\index{sdl::SdlSprite@{sdl::SdlSprite}!getSize@{getSize}}
+\index{getSize@{getSize}!sdl::SdlSprite@{sdl::SdlSprite}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_sprite_ae629c60517580f763eb5dd1bbac40943} 
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} sdl\+::\+Sdl\+Sprite\+::get\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Sprite size. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a53f82fa3b8aaf11d8fd52645bbb9d7db}{graphic\+::\+ISprite}}.
+
+\Hypertarget{classsdl_1_1_sdl_sprite_a7d8b07bbe7936759fae86c6c9a259eee}\index{sdl::SdlSprite@{sdl::SdlSprite}!isReady@{isReady}}
+\index{isReady@{isReady}!sdl::SdlSprite@{sdl::SdlSprite}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_sprite_a7d8b07bbe7936759fae86c6c9a259eee} 
+bool sdl\+::\+Sdl\+Sprite\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+notice if the sprite is ready 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a8088e103ac1733993812764debae1e5e}{graphic\+::\+ISprite}}.
+
+\Hypertarget{classsdl_1_1_sdl_sprite_a4b6e1de49ac97bacd83c1edeebb89dff}\index{sdl::SdlSprite@{sdl::SdlSprite}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!sdl::SdlSprite@{sdl::SdlSprite}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{classsdl_1_1_sdl_sprite_a4b6e1de49ac97bacd83c1edeebb89dff} 
+void sdl\+::\+Sdl\+Sprite\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{angle}{, }\item[{bool}]{is\+Rad}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+{\em is\+Rad} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_sprite_a5706582ed7b81bee47577c05c8d44f12}{graphic\+::\+ISprite}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/graphic/Sdl\+Sprite.\+hpp\end{DoxyCompactItemize}

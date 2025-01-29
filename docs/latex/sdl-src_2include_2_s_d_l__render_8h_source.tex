@@ -1,0 +1,385 @@
+\doxysection{SDL\+\_\+render.\+h}
+\hypertarget{sdl-src_2include_2_s_d_l__render_8h_source}{}\label{sdl-src_2include_2_s_d_l__render_8h_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_render.h@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl-\/src/include/SDL\_render.h}}
+\mbox{\hyperlink{sdl-src_2include_2_s_d_l__render_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ Simple\ DirectMedia\ Layer}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Copyright\ (C)\ 1997-\/2024\ Sam\ Lantinga\ <slouken@libsdl.org>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ \ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ warranty.\ \ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would\ be}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not\ be}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source\ distribution.}}
+\DoxyCodeLine{00020\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#ifndef\ SDL\_render\_h\_}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ SDL\_render\_h\_}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__stdinc_8h}{SDL\_stdinc.h}}"{}}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__rect_8h}{SDL\_rect.h}}"{}}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2_s_d_l__video_8h}{SDL\_video.h}}"{}}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2begin__code_8h}{begin\_code.h}}"{}}}
+\DoxyCodeLine{00056\ \textcolor{comment}{/*\ Set\ up\ for\ C\ function\ definitions,\ even\ when\ using\ C++\ */}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00058\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00065\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a3a6e51bbee5fd3f8ee0c9f7504ae4130a02efc6cb7656c03d7a7d0164aced7e84}{SDL\_RENDERER\_SOFTWARE}}\ =\ 0x00000001,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a3a6e51bbee5fd3f8ee0c9f7504ae4130a1268ba2faaf6d9c7c7b71fc550f4248a}{SDL\_RENDERER\_ACCELERATED}}\ =\ 0x00000002,\ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a3a6e51bbee5fd3f8ee0c9f7504ae4130a12abcfe685ff444f0fc727db981a0c83}{SDL\_RENDERER\_PRESENTVSYNC}}\ =\ 0x00000004,\ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a3a6e51bbee5fd3f8ee0c9f7504ae4130a77aa48df9c4f56f0b1c66c406da3ab81}{SDL\_RENDERER\_TARGETTEXTURE}}\ =\ 0x00000008\ \ \ \ \ }
+\DoxyCodeLine{00073\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a3a6e51bbee5fd3f8ee0c9f7504ae4130}{SDL\_RendererFlags}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___renderer_info}{SDL\_RendererInfo}}}
+\DoxyCodeLine{00079\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_s_d_l___renderer_info_a7b37ff58e8310328cc16e3218c56dc4e}{name}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___renderer_info_a95cf0ffd1704fd0a4dd8ceac6c9f0542}{flags}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___renderer_info_acdec165b2053b914313f5996983ec6b8}{num\_texture\_formats}};\ }
+\DoxyCodeLine{00083\ \ \ \ \ Uint32\ \mbox{\hyperlink{struct_s_d_l___renderer_info_a16b63b945662da26d2280458bb2bfa01}{texture\_formats}}[16];\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l___renderer_info_a6e6757e3d5c1f0922adaba39380edfa6}{max\_texture\_width}};\ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_s_d_l___renderer_info_a87c6a13e8d535c2148f8913c05e13102}{max\_texture\_height}};\ \ \ \ \ }
+\DoxyCodeLine{00086\ \}\ \mbox{\hyperlink{struct_s_d_l___renderer_info}{SDL\_RendererInfo}};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___vertex}{SDL\_Vertex}}}
+\DoxyCodeLine{00092\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__rect_8h_ad2d04905f83d62ade9d6e215e3ac9874}{SDL\_FPoint}}\ \mbox{\hyperlink{struct_s_d_l___vertex_ace816a77e2a2abe41a8c712686250577}{position}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__pixels_8h_aefb2a1d044dcf564bcd0d6894d0e8c04}{SDL\_Color}}\ \ \mbox{\hyperlink{struct_s_d_l___vertex_ace543def50f0b3f3f87a86c47caab53f}{color}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__rect_8h_ad2d04905f83d62ade9d6e215e3ac9874}{SDL\_FPoint}}\ \mbox{\hyperlink{struct_s_d_l___vertex_a613ca86679cbd0f84041298ffcde5bc4}{tex\_coord}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ \}\ \mbox{\hyperlink{struct_s_d_l___vertex}{SDL\_Vertex}};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00101\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00102\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a7cee9cc7b0b54027860fde346ea26c71af7de2943791eb2a873139506d40a305d}{SDL\_ScaleModeNearest}},\ }
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a7cee9cc7b0b54027860fde346ea26c71a9558b9559ab5d26ac398bb18cc731365}{SDL\_ScaleModeLinear}},\ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a7cee9cc7b0b54027860fde346ea26c71adaae98d92cef330646363f08cdef6f9e}{SDL\_ScaleModeBest}}\ \ \ \ \ }
+\DoxyCodeLine{00106\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a7cee9cc7b0b54027860fde346ea26c71}{SDL\_ScaleMode}};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00112\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6b8417d7af279e8a0d4a51233da99bc9a07c9015fe5cf4e0737d2836acdf00a34}{SDL\_TEXTUREACCESS\_STATIC}},\ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6b8417d7af279e8a0d4a51233da99bc9a19a4751f16e6b411aeb9c835d6c061b4}{SDL\_TEXTUREACCESS\_STREAMING}},\ }
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6b8417d7af279e8a0d4a51233da99bc9a52249f41ca2ec4971ec96ee395868a9a}{SDL\_TEXTUREACCESS\_TARGET}}\ \ \ \ \ }
+\DoxyCodeLine{00116\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6b8417d7af279e8a0d4a51233da99bc9}{SDL\_TextureAccess}};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00121\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00122\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a8d8aacd15cb2cb24e61ae1905e7a5ab5a3c1a49753bd4e0a8cfa7c64ed5a4b0df}{SDL\_TEXTUREMODULATE\_NONE}}\ =\ 0x00000000,\ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a8d8aacd15cb2cb24e61ae1905e7a5ab5a5a9d122094526405306483d856caa21e}{SDL\_TEXTUREMODULATE\_COLOR}}\ =\ 0x00000001,\ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a8d8aacd15cb2cb24e61ae1905e7a5ab5a431abaf1e024cd43df94a967ba1e836f}{SDL\_TEXTUREMODULATE\_ALPHA}}\ =\ 0x00000002\ \ \ \ \ }
+\DoxyCodeLine{00126\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a8d8aacd15cb2cb24e61ae1905e7a5ab5}{SDL\_TextureModulate}};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00132\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6280e56838e0e684caa0869c7c973c12a580b026a6ad4e3493677ad47f3bd939a}{SDL\_FLIP\_NONE}}\ =\ 0x00000000,\ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6280e56838e0e684caa0869c7c973c12acfc2af6936e75fa246c98d316425c0ce}{SDL\_FLIP\_HORIZONTAL}}\ =\ 0x00000001,\ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6280e56838e0e684caa0869c7c973c12a27ec807eec1d9adffced6a70cd85ef01}{SDL\_FLIP\_VERTICAL}}\ =\ 0x00000002\ \ \ \ \ }
+\DoxyCodeLine{00136\ \}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6280e56838e0e684caa0869c7c973c12}{SDL\_RendererFlip}};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}};}
+\DoxyCodeLine{00142\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ \mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00147\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}};}
+\DoxyCodeLine{00148\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{comment}{/*\ Function\ prototypes\ */}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00169\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a4dd8a7e6e6f0948541a1ff6b2ecff192}{SDL\_GetNumRenderDrivers}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00185\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetRenderDriverInfo(\textcolor{keywordtype}{int}\ index,}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___renderer_info}{SDL\_RendererInfo}}\ *\ info);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00205\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_CreateWindowAndRenderer(}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ Uint32\ window\_flags,}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}\ **window,\ \mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ **renderer);}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00227\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ SDLCALL\ SDL\_CreateRenderer(\mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}\ *\ window,}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index,\ Uint32\ flags);}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00249\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ SDLCALL\ SDL\_CreateSoftwareRenderer(\mbox{\hyperlink{struct_s_d_l___surface}{SDL\_Surface}}\ *\ surface);}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00262\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ SDLCALL\ SDL\_GetRenderer(\mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}\ *\ window);}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00273\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___window}{SDL\_Window}}\ *\ SDLCALL\ SDL\_RenderGetWindow(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *renderer);}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00288\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetRendererInfo(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___renderer_info}{SDL\_RendererInfo}}\ *\ info);}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00308\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetRendererOutputSize(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *w,\ \textcolor{keywordtype}{int}\ *h);}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00333\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ SDLCALL\ SDL\_CreateTexture(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint32\ format,}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ access,\ \textcolor{keywordtype}{int}\ w,}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00362\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ SDLCALL\ SDL\_CreateTextureFromSurface(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,\ \mbox{\hyperlink{struct_s_d_l___surface}{SDL\_Surface}}\ *\ surface);}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00386\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_QueryTexture(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint32\ *\ format,\ \textcolor{keywordtype}{int}\ *access,}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *w,\ \textcolor{keywordtype}{int}\ *h);}
+\DoxyCodeLine{00389\ }
+\DoxyCodeLine{00414\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetTextureColorMod(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ r,\ Uint8\ g,\ Uint8\ b);}
+\DoxyCodeLine{00416\ }
+\DoxyCodeLine{00417\ }
+\DoxyCodeLine{00433\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetTextureColorMod(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ *\ r,\ Uint8\ *\ g,}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ *\ b);}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00458\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetTextureAlphaMod(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ alpha);}
+\DoxyCodeLine{00460\ }
+\DoxyCodeLine{00474\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetTextureAlphaMod(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ *\ alpha);}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00493\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetTextureBlendMode(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__blendmode_8h_a850d3c67a878fd6698a1c8dbb1eabf1e}{SDL\_BlendMode}}\ blendMode);}
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00508\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetTextureBlendMode(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__blendmode_8h_a850d3c67a878fd6698a1c8dbb1eabf1e}{SDL\_BlendMode}}\ *blendMode);}
+\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00524\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetTextureScaleMode(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a7cee9cc7b0b54027860fde346ea26c71}{SDL\_ScaleMode}}\ \mbox{\hyperlink{struct_s_d_l___texture_ad3ee1ee0670dce1d9c5c89b0f72d6e4f}{scaleMode}});}
+\DoxyCodeLine{00526\ }
+\DoxyCodeLine{00538\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetTextureScaleMode(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a7cee9cc7b0b54027860fde346ea26c71}{SDL\_ScaleMode}}\ *\mbox{\hyperlink{struct_s_d_l___texture_ad3ee1ee0670dce1d9c5c89b0f72d6e4f}{scaleMode}});}
+\DoxyCodeLine{00540\ }
+\DoxyCodeLine{00552\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetTextureUserData(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *userdata);}
+\DoxyCodeLine{00554\ }
+\DoxyCodeLine{00566\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ *\ SDLCALL\ SDL\_GetTextureUserData(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture);}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00597\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_UpdateTexture(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect,}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *pixels,\ \textcolor{keywordtype}{int}\ pitch);}
+\DoxyCodeLine{00600\ }
+\DoxyCodeLine{00628\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_UpdateYUVTexture(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect,}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Uint8\ *Yplane,\ \textcolor{keywordtype}{int}\ Ypitch,}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Uint8\ *Uplane,\ \textcolor{keywordtype}{int}\ Upitch,}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Uint8\ *Vplane,\ \textcolor{keywordtype}{int}\ Vpitch);}
+\DoxyCodeLine{00633\ }
+\DoxyCodeLine{00654\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_UpdateNVTexture(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect,}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Uint8\ *Yplane,\ \textcolor{keywordtype}{int}\ Ypitch,}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Uint8\ *UVplane,\ \textcolor{keywordtype}{int}\ UVpitch);}
+\DoxyCodeLine{00658\ }
+\DoxyCodeLine{00686\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_LockTexture(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect,}
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ **pixels,\ \textcolor{keywordtype}{int}\ *pitch);}
+\DoxyCodeLine{00689\ }
+\DoxyCodeLine{00722\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_LockTextureToSurface(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *texture,}
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *rect,}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___surface}{SDL\_Surface}}\ **surface);}
+\DoxyCodeLine{00725\ }
+\DoxyCodeLine{00743\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_UnlockTexture(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture);}
+\DoxyCodeLine{00744\ }
+\DoxyCodeLine{00755\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_RenderTargetSupported(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *renderer);}
+\DoxyCodeLine{00756\ }
+\DoxyCodeLine{00779\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetRenderTarget(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *renderer,}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *texture);}
+\DoxyCodeLine{00781\ }
+\DoxyCodeLine{00795\ \textcolor{keyword}{extern}\ DECLSPEC\ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ SDLCALL\ SDL\_GetRenderTarget(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *renderer);}
+\DoxyCodeLine{00796\ }
+\DoxyCodeLine{00823\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderSetLogicalSize(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00824\ }
+\DoxyCodeLine{00844\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_RenderGetLogicalSize(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,\ \textcolor{keywordtype}{int}\ *w,\ \textcolor{keywordtype}{int}\ *h);}
+\DoxyCodeLine{00845\ }
+\DoxyCodeLine{00863\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderSetIntegerScale(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_bool\ enable);}
+\DoxyCodeLine{00865\ }
+\DoxyCodeLine{00877\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_RenderGetIntegerScale(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer);}
+\DoxyCodeLine{00878\ }
+\DoxyCodeLine{00895\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderSetViewport(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect);}
+\DoxyCodeLine{00897\ }
+\DoxyCodeLine{00908\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_RenderGetViewport(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect);}
+\DoxyCodeLine{00910\ }
+\DoxyCodeLine{00926\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderSetClipRect(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect);}
+\DoxyCodeLine{00928\ }
+\DoxyCodeLine{00942\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_RenderGetClipRect(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect);}
+\DoxyCodeLine{00944\ }
+\DoxyCodeLine{00957\ \textcolor{keyword}{extern}\ DECLSPEC\ SDL\_bool\ SDLCALL\ SDL\_RenderIsClipEnabled(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer);}
+\DoxyCodeLine{00958\ }
+\DoxyCodeLine{00959\ }
+\DoxyCodeLine{00982\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderSetScale(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ scaleX,\ \textcolor{keywordtype}{float}\ scaleY);}
+\DoxyCodeLine{00984\ }
+\DoxyCodeLine{00996\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_RenderGetScale(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ *scaleX,\ \textcolor{keywordtype}{float}\ *scaleY);}
+\DoxyCodeLine{00998\ }
+\DoxyCodeLine{01020\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_RenderWindowToLogical(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,\ }
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ windowX,\ \textcolor{keywordtype}{int}\ windowY,\ }
+\DoxyCodeLine{01022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ *logicalX,\ \textcolor{keywordtype}{float}\ *logicalY);}
+\DoxyCodeLine{01023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01024\ }
+\DoxyCodeLine{01046\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_RenderLogicalToWindow(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,\ }
+\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ logicalX,\ \textcolor{keywordtype}{float}\ logicalY,}
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ *windowX,\ \textcolor{keywordtype}{int}\ *windowY);}
+\DoxyCodeLine{01049\ }
+\DoxyCodeLine{01079\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetRenderDrawColor(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ r,\ Uint8\ g,\ Uint8\ b,}
+\DoxyCodeLine{01081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ a);}
+\DoxyCodeLine{01082\ }
+\DoxyCodeLine{01102\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetRenderDrawColor(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ *\ r,\ Uint8\ *\ g,\ Uint8\ *\ b,}
+\DoxyCodeLine{01104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint8\ *\ a);}
+\DoxyCodeLine{01105\ }
+\DoxyCodeLine{01128\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_SetRenderDrawBlendMode(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__blendmode_8h_a850d3c67a878fd6698a1c8dbb1eabf1e}{SDL\_BlendMode}}\ blendMode);}
+\DoxyCodeLine{01130\ }
+\DoxyCodeLine{01143\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GetRenderDrawBlendMode(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__blendmode_8h_a850d3c67a878fd6698a1c8dbb1eabf1e}{SDL\_BlendMode}}\ *blendMode);}
+\DoxyCodeLine{01145\ }
+\DoxyCodeLine{01160\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderClear(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer);}
+\DoxyCodeLine{01161\ }
+\DoxyCodeLine{01187\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawPoint(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{01189\ }
+\DoxyCodeLine{01213\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawPoints(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___point}{SDL\_Point}}\ *\ points,}
+\DoxyCodeLine{01215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{01216\ }
+\DoxyCodeLine{01244\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawLine(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x1,\ \textcolor{keywordtype}{int}\ y1,\ \textcolor{keywordtype}{int}\ x2,\ \textcolor{keywordtype}{int}\ y2);}
+\DoxyCodeLine{01246\ }
+\DoxyCodeLine{01270\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawLines(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___point}{SDL\_Point}}\ *\ points,}
+\DoxyCodeLine{01272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{01273\ }
+\DoxyCodeLine{01296\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawRect(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect);}
+\DoxyCodeLine{01298\ }
+\DoxyCodeLine{01322\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawRects(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rects,}
+\DoxyCodeLine{01324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{01325\ }
+\DoxyCodeLine{01352\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderFillRect(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect);}
+\DoxyCodeLine{01354\ }
+\DoxyCodeLine{01377\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderFillRects(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rects,}
+\DoxyCodeLine{01379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{01380\ }
+\DoxyCodeLine{01409\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderCopy(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{01411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ srcrect,}
+\DoxyCodeLine{01412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ dstrect);}
+\DoxyCodeLine{01413\ }
+\DoxyCodeLine{01453\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderCopyEx(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{01455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ srcrect,}
+\DoxyCodeLine{01456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ dstrect,}
+\DoxyCodeLine{01457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ angle,}
+\DoxyCodeLine{01458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___point}{SDL\_Point}}\ *center,}
+\DoxyCodeLine{01459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6280e56838e0e684caa0869c7c973c12}{SDL\_RendererFlip}}\ flip);}
+\DoxyCodeLine{01460\ }
+\DoxyCodeLine{01461\ }
+\DoxyCodeLine{01472\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawPointF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{01474\ }
+\DoxyCodeLine{01485\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawPointsF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___f_point}{SDL\_FPoint}}\ *\ points,}
+\DoxyCodeLine{01487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{01488\ }
+\DoxyCodeLine{01501\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawLineF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x1,\ \textcolor{keywordtype}{float}\ y1,\ \textcolor{keywordtype}{float}\ x2,\ \textcolor{keywordtype}{float}\ y2);}
+\DoxyCodeLine{01503\ }
+\DoxyCodeLine{01515\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawLinesF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___f_point}{SDL\_FPoint}}\ *\ points,}
+\DoxyCodeLine{01517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{01518\ }
+\DoxyCodeLine{01529\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawRectF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___f_rect}{SDL\_FRect}}\ *\ rect);}
+\DoxyCodeLine{01531\ }
+\DoxyCodeLine{01543\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderDrawRectsF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___f_rect}{SDL\_FRect}}\ *\ rects,}
+\DoxyCodeLine{01545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{01546\ }
+\DoxyCodeLine{01558\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderFillRectF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___f_rect}{SDL\_FRect}}\ *\ rect);}
+\DoxyCodeLine{01560\ }
+\DoxyCodeLine{01572\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderFillRectsF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___f_rect}{SDL\_FRect}}\ *\ rects,}
+\DoxyCodeLine{01574\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{01575\ }
+\DoxyCodeLine{01590\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderCopyF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{01592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ srcrect,}
+\DoxyCodeLine{01593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___f_rect}{SDL\_FRect}}\ *\ dstrect);}
+\DoxyCodeLine{01594\ }
+\DoxyCodeLine{01616\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderCopyExF(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture,}
+\DoxyCodeLine{01618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ srcrect,}
+\DoxyCodeLine{01619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___f_rect}{SDL\_FRect}}\ *\ dstrect,}
+\DoxyCodeLine{01620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ angle,}
+\DoxyCodeLine{01621\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___f_point}{SDL\_FPoint}}\ *center,}
+\DoxyCodeLine{01622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{sdl-build_2include_2_s_d_l2_2_s_d_l__render_8h_a6280e56838e0e684caa0869c7c973c12}{SDL\_RendererFlip}}\ flip);}
+\DoxyCodeLine{01623\ }
+\DoxyCodeLine{01644\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderGeometry(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *renderer,}
+\DoxyCodeLine{01645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *texture,}
+\DoxyCodeLine{01646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___vertex}{SDL\_Vertex}}\ *vertices,\ \textcolor{keywordtype}{int}\ num\_vertices,}
+\DoxyCodeLine{01647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ *indices,\ \textcolor{keywordtype}{int}\ num\_indices);}
+\DoxyCodeLine{01648\ }
+\DoxyCodeLine{01674\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderGeometryRaw(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *renderer,}
+\DoxyCodeLine{01675\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *texture,}
+\DoxyCodeLine{01676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *xy,\ \textcolor{keywordtype}{int}\ xy\_stride,}
+\DoxyCodeLine{01677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___color}{SDL\_Color}}\ *color,\ \textcolor{keywordtype}{int}\ color\_stride,}
+\DoxyCodeLine{01678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *uv,\ \textcolor{keywordtype}{int}\ uv\_stride,}
+\DoxyCodeLine{01679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\_vertices,}
+\DoxyCodeLine{01680\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *indices,\ \textcolor{keywordtype}{int}\ num\_indices,\ \textcolor{keywordtype}{int}\ size\_indices);}
+\DoxyCodeLine{01681\ }
+\DoxyCodeLine{01708\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderReadPixels(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer,}
+\DoxyCodeLine{01709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_s_d_l___rect}{SDL\_Rect}}\ *\ rect,}
+\DoxyCodeLine{01710\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Uint32\ format,}
+\DoxyCodeLine{01711\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *pixels,\ \textcolor{keywordtype}{int}\ pitch);}
+\DoxyCodeLine{01712\ }
+\DoxyCodeLine{01753\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_RenderPresent(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer);}
+\DoxyCodeLine{01754\ }
+\DoxyCodeLine{01768\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_DestroyTexture(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *\ texture);}
+\DoxyCodeLine{01769\ }
+\DoxyCodeLine{01782\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ SDLCALL\ SDL\_DestroyRenderer(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer);}
+\DoxyCodeLine{01783\ }
+\DoxyCodeLine{01813\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderFlush(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer);}
+\DoxyCodeLine{01814\ }
+\DoxyCodeLine{01815\ }
+\DoxyCodeLine{01851\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GL\_BindTexture(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *texture,\ \textcolor{keywordtype}{float}\ *texw,\ \textcolor{keywordtype}{float}\ *texh);}
+\DoxyCodeLine{01852\ }
+\DoxyCodeLine{01866\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_GL\_UnbindTexture(\mbox{\hyperlink{struct_s_d_l___texture}{SDL\_Texture}}\ *texture);}
+\DoxyCodeLine{01867\ }
+\DoxyCodeLine{01882\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ *SDLCALL\ SDL\_RenderGetMetalLayer(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer);}
+\DoxyCodeLine{01883\ }
+\DoxyCodeLine{01903\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{void}\ *SDLCALL\ SDL\_RenderGetMetalCommandEncoder(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}\ *\ renderer);}
+\DoxyCodeLine{01904\ }
+\DoxyCodeLine{01914\ \textcolor{keyword}{extern}\ DECLSPEC\ \textcolor{keywordtype}{int}\ SDLCALL\ SDL\_RenderSetVSync(\mbox{\hyperlink{struct_s_d_l___renderer}{SDL\_Renderer}}*\ renderer,\ \textcolor{keywordtype}{int}\ vsync);}
+\DoxyCodeLine{01915\ }
+\DoxyCodeLine{01916\ \textcolor{comment}{/*\ Ends\ C\ function\ definitions\ when\ using\ C++\ */}}
+\DoxyCodeLine{01917\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{01918\ \}}
+\DoxyCodeLine{01919\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01920\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sdl-src_2include_2close__code_8h}{close\_code.h}}"{}}}
+\DoxyCodeLine{01921\ }
+\DoxyCodeLine{01922\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SDL\_render\_h\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01923\ }
+\DoxyCodeLine{01924\ \textcolor{comment}{/*\ vi:\ set\ ts=4\ sw=4\ expandtab:\ */}}
+
+\end{DoxyCode}

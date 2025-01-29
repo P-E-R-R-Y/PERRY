@@ -1,0 +1,41 @@
+\doxysection{config.\+hpp}
+\hypertarget{json-src_2tests_2abi_2config_2config_8hpp_source}{}\label{json-src_2tests_2abi_2config_2config_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/abi/config/config.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/json-\/src/tests/abi/config/config.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \ \ \ \ \_\_\ \_\_\_\_\_\ \_\_\_\_\_\ \_\_\_\_\_}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ \_\_|\ \ |\ \ \ \_\_|\ \ \ \ \ |\ \ \ |\ |\ \ JSON\ for\ Modern\ C++\ (supporting\ code)}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ |\ \ |\ \ |\_\_\ \ \ |\ \ |\ \ |\ |\ |\ |\ \ version\ 3.11.3}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ |\_\_\_\_\_|\_\_\_\_\_|\_\_\_\_\_|\_|\_\_\_|\ \ https://github.com/nlohmann/json}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ SPDX-\/FileCopyrightText:\ 2013-\/2023\ Niels\ Lohmann\ <https://nlohmann.me>}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ MIT}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}doctest.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <regex>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ STRINGIZE\_EX(x)\ \#x}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ STRINGIZE(x)\ STRINGIZE\_EX(x)}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00021\ std::string\ namespace\_name(std::string\ ns,\ T*\ \textcolor{comment}{/*unused*/}\ =\ \textcolor{keyword}{nullptr})\ \textcolor{comment}{//\ NOLINT(performance-\/unnecessary-\/value-\/param)}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#if\ DOCTEST\_MSVC\ \&\&\ !DOCTEST\_CLANG}}
+\DoxyCodeLine{00024\ \ \ \ \ ns\ =\ \_\_FUNCSIG\_\_;}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#elif\ !DOCTEST\_CLANG}}
+\DoxyCodeLine{00026\ \ \ \ \ ns\ =\ \_\_PRETTY\_FUNCTION\_\_;}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00028\ \ \ \ \ std::smatch\ m;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ extract\ the\ true\ namespace\ name\ from\ the\ function\ signature}}
+\DoxyCodeLine{00031\ \ \ \ \ CAPTURE(ns);}
+\DoxyCodeLine{00032\ \ \ \ \ CHECK(std::regex\_search(ns,\ m,\ std::regex(\textcolor{stringliteral}{"{}nlohmann(::[a-\/zA-\/Z0-\/9\_]+)*::basic\_json"{}})));}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{return}\ m.str();}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}

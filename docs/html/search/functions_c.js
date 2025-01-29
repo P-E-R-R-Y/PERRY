@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['raycamera_0',['RayCamera',['../classraylib_1_1_ray_camera.html#a785eb74ebc8b8b9743380355197dac57',1,'raylib::RayCamera']]],
-  ['raymodel_1',['RayModel',['../classraylib_1_1_ray_model.html#a0c4e3acdb24a245f1548710649439300',1,'raylib::RayModel']]],
-  ['registercomponent_2',['registerComponent',['../classecs_1_1_registry.html#a8ae60d5b07b673167b3bdcf4dd36c627',1,'ecs::Registry']]],
-  ['registercomponents_3',['registerComponents',['../classecs_1_1_registry.html#a85267c79d43567eb563452e47802b306',1,'ecs::Registry']]],
-  ['registercomponentsbyextraction_4',['registerComponentsByExtraction',['../classecs_1_1_registry.html#acf03f85797c2d65adfbe11638bd8589a',1,'ecs::Registry']]],
-  ['removecomponent_5',['removeComponent',['../classecs_1_1_entity.html#a30056c776dc8e57264e3fc83658e3198',1,'ecs::Entity::removeComponent()'],['../classecs_1_1_registry.html#a99a1b5411ada253846bff2ced94e4f95',1,'ecs::Registry::removeComponent(Entity const &amp;from)']]],
-  ['removesystem_6',['removeSystem',['../classecs_1_1_registry.html#a05a9ad3d377d1f0b731e112245ac165c',1,'ecs::Registry']]]
+  ['operator_28_29_0',['operator()',['../group__sfml__extra.html#ga297dd2bc35a5249bbc9f90e5ad20256a',1,'Matrice::operator()(int row, int col)'],['../group__sfml__extra.html#gacac28fe1829782e2f172449692296558',1,'Matrice::operator()(int row, int col) const']]],
+  ['operator_2a_1',['operator*',['../group___s_f_m_l.html#ga757ec55f9f361fcd8b518abaec05b29b',1,'Quaternion::operator*()'],['../group__sfml__extra.html#ga8d882600c0c7c8ed9a1ea17746eb3d17',1,'operator*():&#160;Matrice.hpp']]],
+  ['operator_3c_3c_2',['operator&lt;&lt;',['../group__ecs.html#ga33f0fc11fb1c041d745e876a06d926b5',1,'ecs']]],
+  ['operator_3d_3',['operator=',['../group__ecs.html#ga51ddd8eb6f4e141263ab96f415f2ace5',1,'ecs::SparseArray::operator=(SparseArray const &amp;)=default'],['../group__ecs.html#ga2310e70f90e14974abb8f787f96473c9',1,'ecs::SparseArray::operator=(SparseArray &amp;&amp;) noexcept=default'],['../group__sfml__extra.html#ga4a6fc8d1cc02a91afc785dca867ef850',1,'Matrice::operator=()']]],
+  ['operator_5b_5d_4',['operator[]',['../group__ecs.html#gae7282b077963d20ac0dbfab958024cdc',1,'ecs::SparseArray::operator[](size_t idx)'],['../group__ecs.html#gaad8fda364318d88af7e1be3d14ad4363',1,'ecs::SparseArray::operator[](size_t idx) const']]],
+  ['orthographicprojection_5',['orthographicProjection',['../group___s_f_m_l.html#ga157982865c73fefadf30a7b8739c890c',1,'SfmlCamera.hpp']]]
 ];

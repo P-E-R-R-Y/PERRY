@@ -13,7 +13,7 @@
 #define RAYEVENT_HPP
 
 //Interface
-#include "../../../../interfaces/graphic/event/IEvent.hpp"
+#include "IEvent.hpp"
 
 //Raylib
 #include <raylib.h>

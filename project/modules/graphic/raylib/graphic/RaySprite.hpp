@@ -14,7 +14,7 @@
 #define RAYSPRITE_HPP_
 
 //Interface
-#include "../../../../interfaces/graphic/graphic/IPolygon.hpp"
+#include "ISprite.hpp"
 
 //Raylib
 #include <raylib.h>

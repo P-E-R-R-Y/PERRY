@@ -68,6 +68,7 @@ class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registr
                 this->displayHandler();
                 window->endDraw();
             }
+            window->endAudio();
             window->close();
 
             this->destroyHandler();
@@ -82,17 +83,21 @@ class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registr
         void initHandler() override {
             std::cout << "initHandler " << std::endl;
             window = createWindow(800, 500, "Perry");
+            window->beginAudio();
             event = createEvent();
             window->linkEvent(event);
             std::vector<__v2f_t> star_points = {{125, 200}, {175, 200}, {200, 150}, {225, 200}, {275, 200},  {250, 250}, {255, 305}, {200, 285}, {145, 305}, {150, 250}};
             std::vector<__v2f_t> heart_points = {{500, 100}, {600, 100}, {600, 200}, {700, 200}, {700, 300},  {500, 300}};
             poly_star = createPolygon(star_points);
             poly_heart = createPolygon(heart_points);
-            sprite = createSprite("./assets/image.png");
+            sprite = createSprite("./assets/image/image.png");
             camera = createCamera();
             model = createModel();
             keyboard = createKeyboard(event);
             mouse = createMouse(event);
+            text = createText("text", "./assets/font/noto.ttf");
+            music = createMusic("./assets/music/redSunInTheSky.mp3");
+            music->play();
             window->setFrameLimit(120);
         }
 
@@ -126,10 +131,12 @@ class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registr
          */
         void displayHandler() override {
             std::cout << "displayHandler" << std::endl;
+            //2D
             window->drawSprite(sprite);
-
             window->drawPoly(poly_star);
             window->drawPoly(poly_heart);
+            window->drawText(text);
+            //3D
             window->beginMode3(camera);
             window->drawModel(model);
             window->endMode3();
@@ -158,6 +165,10 @@ class Game: public CustomisableEngine<graphic::GraphicSharedLoader, ecs::Registr
         graphic::ISprite *sprite;
         graphic::ICamera *camera;
         graphic::IModel *model;
+        graphic::IText *text;
+        //sound
+    //  graphic::ISound *sound;
+        graphic::IMusic *music;
         //event
         graphic::IKeyboard *keyboard;
         graphic::IMouse *mouse;
@@ -185,21 +196,24 @@ std::map<std::string, std::vector<std::string>> sortSharedLibrary(std::vector<st
 }
 
 int main() {
+    std::cout << "D" << std::endl;
     std::vector<std::string> files = FileSearcher::searchSharedLibraries("./shared");
     std::cout << "Shared Libraries:" << std::endl;
     std::map<std::string, std::vector<std::string>> map = sortSharedLibrary(files);
-
+    std::cout << "C" << std::endl;
     for (auto& [key, value]: map) {
         std::cout << key << std::endl;
         for (auto& file: value) {
             std::cout << "\t" << file << std::endl;
         }
     }
-
-    for (int i = 0; i < 3; ++i) {
-        Game game(map["graphic"][i]);
+    std::cout << "B" << std::endl;
+    std::cout << map["graphic"].size() << std::endl;
+    for (auto& file: map["graphic"]) {
+        Game game(file);
         game.start();
     }
 
+    std::cout << "A" << std::endl;
     return 0;
 }

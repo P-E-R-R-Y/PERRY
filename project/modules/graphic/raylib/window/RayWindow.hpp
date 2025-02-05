@@ -20,6 +20,7 @@
 #include "../graphic/RayPolygon.hpp"
 #include "../graphic/RaySprite.hpp"
 #include "../graphic/RayModel.hpp"
+#include "../graphic/RayText.hpp"
 #include "RayCamera.hpp"
 
 #include <iostream>
@@ -81,16 +82,33 @@ class RayWindow : public graphic::IWindow {
             EndDrawing();
         };
 
-        virtual void drawPoly(graphic::IPolygon *polygon) override;
-        virtual void drawSprite(graphic::ISprite *sprite) override;
+        void drawPoly(graphic::IPolygon *polygon) override;
+        void drawSprite(graphic::ISprite *sprite) override;
+        
+        void drawText(graphic::IText *text) override {
+            RayText *raytext = static_cast<RayText *>(text);
+
+//            DrawTextPro(raytext->_font, "Press SPACE to PLAY the WAV sound!", 200, 180, 20, LIGHTGRAY);
+//            DrawTextPro(raytext->_font, raytext->_data.c_str(), raytext->_position, {0, 0},raytext->_rotation, raytext->_size, 1, raytext->_color);
+            DrawTextPro(raytext->_font, raytext->_data.c_str(), raytext->_position, {0, 0},raytext->_rotation, raytext->_size, 1, raytext->_color);
+        };
 
         //3D
         //Draw3 (Carve)
         void beginMode3(graphic::ICamera *camera) override;
         
-        virtual void drawModel(graphic::IModel *model) override;
+        void drawModel(graphic::IModel *model) override;
 
         void endMode3() override;
+
+        bool beginAudio() override {
+            InitAudioDevice();
+            return true;
+        };
+
+        void endAudio() override {
+            CloseAudioDevice();
+        };
 
     private:
 };

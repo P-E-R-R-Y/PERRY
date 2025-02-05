@@ -13,7 +13,7 @@
 #define RAYMOUSE_HPP_
 
 //Interface
-#include "../../../../interfaces/graphic/event/IMouse.hpp"
+#include "IMouse.hpp"
 #include "RayEvent.hpp"
 
 //Raylib

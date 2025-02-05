@@ -16,7 +16,7 @@ list(APPEND CMAKE_BIN_STATIC system maths finder)
 list(APPEND CMAKE_SOURCE_SHARED 
   graphic/raylib
   graphic/sfml
-  graphic/sdl
+#  graphic/sdl
 
   serial/json
   serial/yaml
@@ -27,7 +27,7 @@ list(APPEND CMAKE_SOURCE_SHARED
 list(APPEND CMAKE_BIN_SHARED
   raylibgraphic 
   sfmlgraphic
-  sdlgraphic
+#  sdlgraphic
 
   jsonserial
   yamlserial

@@ -12,18 +12,25 @@
 #ifndef SDLWINDOW_HPP_
 #define SDLWINDOW_HPP_
 //Sdl
-#include "SDL.h" //#include <SDL2/SDL.h>
+#include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
+#include "SDL_mixer.h"
 
 //Interface
-#include "../../../../interfaces/graphic/window/IWindow.hpp"
+#include "IWindow.hpp"
 //encapsulation
-#include "../graphic/SdlPolygon.hpp"
-#include "../graphic/SdlSprite.hpp"
-#include "../graphic/SdlModel.hpp"
-#include "../event/SdlEvent.hpp"
-#include "SdlCamera.hpp"
+#include "SdlPolygon.hpp"
+#include "SdlSprite.hpp"
+#include "SdlText.hpp"
 
+#include "SdlEvent.hpp"
+
+#include "SdlCamera.hpp"
+#include "SdlModel.hpp"
+
+#include "SdlSound.hpp"
+#include "SdlMusic.hpp"
 
 #include <iostream>
 
@@ -140,6 +147,8 @@ class SdlWindow : public graphic::IWindow {
          */
         void drawSprite(graphic::ISprite *sprite) override;
 
+        void drawText(graphic::IText *text) override;
+
         /**
          * @brief end the 2D drawing
          */
@@ -199,12 +208,27 @@ class SdlWindow : public graphic::IWindow {
             }
         };
 
+        bool beginAudio() override {
+            if (!is_audio_init && Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+                return false;
+            } else {
+                Mix_AllocateChannels(32); // Set max channels
+                is_audio_init = true;
+                return true;
+            }
+        };
+
+        void endAudio() override {
+            if (is_audio_init) {
+                Mix_CloseAudio();
+            }
+        };
+
     private:
+        bool is_audio_init; 
         bool is_open;
         SDL_Window   *_window;
-        //SDL_Surface *_surface;
         SDL_Renderer *_renderer;
-        //IEvent *_event;
         SdlEvent *_event;
 
         __int32_t _frameLimit;
@@ -248,9 +272,6 @@ void SdlWindow::drawSprite(graphic::ISprite *sprite) {
     SdlSprite *sdlSprite = static_cast<SdlSprite *>(sprite);
     if (sdlSprite->_texture == nullptr && sdlSprite->_surface != nullptr) {
         sdlSprite->_texture = SDL_CreateTextureFromSurface(_renderer, sdlSprite->_surface);
-
-        //if (sdlSprite->_surface != nullptr)
-        //    SDL_FreeSurface(sdlSprite->_surface);
     }
     SDL_FRect position = {static_cast<float>(sdlSprite->_position.x), 
                         static_cast<float>(sdlSprite->_position.y),
@@ -260,6 +281,23 @@ void SdlWindow::drawSprite(graphic::ISprite *sprite) {
     SDL_FPoint center = {0, 0};
     std::cout << center.x << " " << center.y << std::endl;
     SDL_RenderCopyExF(_renderer, sdlSprite->_texture, &sdlSprite->_crop, &position, sdlSprite->_rotation,  &center, SDL_FLIP_NONE);
+};
+
+void SdlWindow::drawText(graphic::IText *text) {
+    std::cout << "SdlWindow::drawText implemented" << std::endl;
+    SdlText *sdlText = static_cast<SdlText *>(text);
+
+    if (sdlText->_texture == nullptr && sdlText->_surface != nullptr) {
+        sdlText->_texture = SDL_CreateTextureFromSurface(_renderer, sdlText->_surface);
+    }
+    SDL_FRect position = {static_cast<float>(sdlText->_position.x), 
+                        static_cast<float>(sdlText->_position.y),
+                        static_cast<float>(sdlText->_surface->w),
+                        static_cast<float>(sdlText->_surface->h)};
+    
+    SDL_FPoint center = {static_cast<float>(sdlText->_surface->w / 2), static_cast<float>(sdlText->_surface->h / 2)};
+    
+    SDL_RenderCopyExF(_renderer, sdlText->_texture, nullptr, &position, sdlText->_rotation,  &center, SDL_FLIP_NONE);
 };
 
 void SdlWindow::beginMode3(graphic::ICamera *camera) {

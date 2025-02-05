@@ -17,12 +17,20 @@
 
 //Raylib
 #include "window/RayWindow.hpp"
+
+#include "graphic/RaySprite.hpp"
 #include "graphic/RayPolygon.hpp"
+#include "graphic/RayText.hpp"
+
 #include "graphic/RayModel.hpp"
 #include "window/RayCamera.hpp"
+
 #include "event/RayKeyboard.hpp"
 #include "event/RayMouse.hpp"
 #include "event/RayEvent.hpp"
+
+#include "audio/RaySound.hpp"
+#include "audio/RayMusic.hpp"
 
 /**
  * @brief create a window
@@ -163,6 +171,25 @@ extern "C" void deleteSprite(graphic::ISprite *sprite) {
 }
 
 /**
+ * @brief create a text
+ * 
+ * @param text
+ * @return graphic::IText*
+ */
+extern "C" graphic::IText *createText(std::string text, std::string font) {
+    return new RayText(text, font);
+}
+
+/**
+ * @brief delete a text
+ * 
+ * @param text
+ */
+extern "C" void deleteText(graphic::IText *text) {
+    delete text;
+}
+
+/**
  * @brief create a model
  * 
  * @return graphic::IModel*
@@ -178,6 +205,46 @@ extern "C" graphic::IModel *createModel() {
  */
 extern "C" void deleteModel(graphic::IModel *model) {
     delete model;
+}
+
+///Audio
+
+/**
+ * @brief create a sound
+ * 
+ * @param sound
+ * @return graphic::ISound*
+ */
+extern "C" graphic::ISound *createSound(std::string sound) {
+    return new RaySound(sound);
+}
+
+/**
+ * @brief delete a sound
+ * 
+ * @param sound
+ */
+extern "C" void deleteSound(graphic::ISound *sound) {
+    delete sound;
+}
+
+/**
+ * @brief create a music
+ * 
+ * @param music
+ * @return graphic::IMusic*
+ */
+extern "C" graphic::IMusic *createMusic(std::string music) {
+    return new RayMusic(music);
+}
+
+/**
+ * @brief delete a music
+ * 
+ * @param music
+ */
+extern "C" void deleteMusic(graphic::IMusic *music) {
+    delete music;
 }
 
 /**

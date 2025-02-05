@@ -25,16 +25,17 @@
 #include <cmath>
 
 ///Interface
-#include "../../../../interfaces/graphic/window/IWindow.hpp"
+#include "IWindow.hpp"
 #include "../../../../libraries/maths/geometry.hpp"
 
 ///Abstract
 //graphic
-#include "../graphic/SfmlPolygon.hpp"
-#include "../graphic/SfmlSprite.hpp"
-#include "../graphic/SfmlModel.hpp"
+#include "SfmlPolygon.hpp"
+#include "SfmlSprite.hpp"
+#include "SfmlModel.hpp"
+#include "SfmlText.hpp"
 //event
-#include "../event/SfmlEvent.hpp"
+#include "SfmlEvent.hpp"
 //window
 #include "SfmlCamera.hpp"
 
@@ -129,14 +130,20 @@ class SfmlWindow : public graphic::IWindow {
          * 
          * @param polygon
          */
-        virtual void drawPoly(graphic::IPolygon *polygon) override;
+        void drawPoly(graphic::IPolygon *polygon) override;
 
         /**
          * @brief draw a sprite
          * 
          * @param sprite 
          */
-        virtual void drawSprite(graphic::ISprite *sprite) override;
+        void drawSprite(graphic::ISprite *sprite) override;
+
+        void drawText(graphic::IText *text) override {
+            SfmlText *sfmlText = static_cast<SfmlText *>(text);
+
+            _window.draw(sfmlText->_text);
+        };
 
         /**
          * @brief end the drawing
@@ -230,8 +237,7 @@ class SfmlWindow : public graphic::IWindow {
         /**
          * @brief end the 3D drawing
          */
-        void endMode3() override {
-        };
+        void endMode3() override {};
 
         /**
          * @brief poll the event
@@ -249,9 +255,13 @@ class SfmlWindow : public graphic::IWindow {
         void eventClose() override {
             if (_event->_event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
                 _window.close();
-        };
+        }
+
+        bool beginAudio() override { return true; } //no need to open audio
+        void endAudio() override {} //no need to close audio
 
     private:
+    
         sf::RenderWindow _window;
         SfmlEvent *_event;
         SfmlCamera *_camera;

@@ -13,7 +13,7 @@
 #define RAYMODEL_HPP_
 
 //Interface
-#include "../../../../interfaces/graphic/graphic/IModel.hpp"
+#include "IModel.hpp"
 
 //Raylib
 #include <raylib.h>

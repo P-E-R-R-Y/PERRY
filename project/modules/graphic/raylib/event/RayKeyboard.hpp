@@ -13,7 +13,7 @@
 #define RAYKEYBOARD_HPP_
 
 //Interface
-#include "../../../../interfaces/graphic/event/IKeyboard.hpp"
+#include "IKeyboard.hpp"
 
 //Raylib
 #include <raylib.h>

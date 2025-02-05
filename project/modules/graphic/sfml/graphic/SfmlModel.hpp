@@ -13,7 +13,7 @@
 #define SFMLMODEL_HPP_
 
 //Interface
-#include "../../../interfaces/graphic/graphic/IModel.hpp"
+#include "IModel.hpp"
 
 //SFML
 #include <SFML/System.hpp>

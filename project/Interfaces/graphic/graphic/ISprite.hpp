@@ -18,7 +18,7 @@ namespace graphic {
 
     /**
      * @brief Sprite interface
-     * @interface ISprite 
+     * @interface ISprite
      */
     class ISprite {
 

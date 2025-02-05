@@ -16,7 +16,7 @@
 #include "../../../../interfaces/graphic/window/ICamera.hpp"
 
 //Sdl
-#include <SDL2/SDL.h>
+#include "SDL.h"
 
 class SdlCamera : public graphic::ICamera {
 

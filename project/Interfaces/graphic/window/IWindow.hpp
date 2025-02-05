@@ -14,6 +14,7 @@
     #include "../graphic/IPolygon.hpp"
     #include "../graphic/IModel.hpp"
     #include "../graphic/ISprite.hpp"
+    #include "../graphic/IText.hpp"
     #include "../event/IEvent.hpp"
     #include "ICamera.hpp"
 
@@ -85,6 +86,12 @@ namespace graphic {
             virtual void drawSprite(ISprite *model) = 0;
 
             /**
+             * @brief draw a text
+             * 
+             */
+            virtual void drawText(IText *text) = 0;
+
+            /**
              * @brief end the 2D drawing
              */
             virtual void endDraw() = 0;
@@ -119,6 +126,16 @@ namespace graphic {
              * @brief update the window
              */
             virtual void eventClose() = 0;
+
+            /**
+             * @brief begin Audio
+             */
+            virtual bool beginAudio() = 0;
+
+            /**
+             * @brief end Audio
+             */
+            virtual void endAudio() = 0;
 
         private:
             //your variables here

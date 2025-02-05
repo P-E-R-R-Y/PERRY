@@ -12,18 +12,22 @@
 #ifndef GRAPHIC_SHARED_LOADER_HPP
 #define GRAPHIC_SHARED_LOADER_HPP
 
-#include "../../../interfaces/core/ICore.hpp"
-#include "../../../interfaces/graphic/window/IWindow.hpp"
+#include "../../core/ICore.hpp"
+#include "../window/IWindow.hpp"
 
-#include "../../../interfaces/graphic/event/IEvent.hpp"
-#include "../../../interfaces/graphic/event/IKeyboard.hpp"
-#include "../../../interfaces/graphic/event/IMouse.hpp"
+#include "event/IEvent.hpp"
+#include "event/IKeyboard.hpp"
+#include "event/IMouse.hpp"
 
-#include "../../../interfaces/graphic/graphic/IPolygon.hpp"
-#include "../../../interfaces/graphic/graphic/ISprite.hpp"
+#include "graphic/IPolygon.hpp"
+#include "graphic/ISprite.hpp"
+#include "graphic/IText.hpp"
 
-#include "../../../interfaces/graphic/window/ICamera.hpp"
-#include "../../../interfaces/graphic/graphic/IModel.hpp"
+#include "audio/ISound.hpp"
+#include "audio/IMusic.hpp"
+
+#include "window/ICamera.hpp"
+#include "graphic/IModel.hpp"
 
 #include "../../../libraries/finder/DynamicLoader.hpp"
 #include "../InfoSharedLoader.hpp"
@@ -46,12 +50,15 @@ namespace graphic {
              * 
              * @param file 
              */
-            GraphicSharedLoader(Params file): dl(file) {
+            GraphicSharedLoader(std::string file): dl(file) {
                 // Check if the shared library is a graphic library
+                std::cout << "A" << std::endl;
+
                 if (!dl.isReady() || std::string(reinterpret_cast<char *(*)()>(dl.findSymbol("getType"))()) != std::string("graphic")) {
                     std::cerr << "Failed to load: " << file << std::endl;
                     return;
                 }
+                std::cout << "A" << std::endl;
                 //Core
                 createWindow = reinterpret_cast<graphic::IWindow *(*)(__int32_t, __int32_t, std::string)>(dl.findSymbol("createWindow"));
                 deleteWindow = reinterpret_cast<void (*)(graphic::IWindow *window)>(dl.findSymbol("deleteWindow"));
@@ -73,12 +80,22 @@ namespace graphic {
                 createSprite = reinterpret_cast<graphic::ISprite *(*)(std::string)>(dl.findSymbol("createSprite"));
                 deleteSprite = reinterpret_cast<void (*)(graphic::ISprite *model)>(dl.findSymbol("deleteSprite"));
 
+                createText = reinterpret_cast<graphic::IText *(*)(std::string, std::string)>(dl.findSymbol("createText"));
+                deleteText = reinterpret_cast<void (*)(graphic::IText *model)>(dl.findSymbol("deleteText"));
+
                 //3D
                 createCamera = reinterpret_cast<graphic::ICamera *(*)()>(dl.findSymbol("createCamera"));
                 deleteCamera = reinterpret_cast<void (*)(graphic::ICamera *camera)>(dl.findSymbol("deleteCamera"));
 
                 createModel = reinterpret_cast<graphic::IModel *(*)()>(dl.findSymbol("createModel"));
                 deleteModel = reinterpret_cast<void (*)(graphic::IModel *model3)>(dl.findSymbol("deleteModel"));
+
+                //Sound
+                createSound = reinterpret_cast<graphic::ISound *(*)(std::string)>(dl.findSymbol("createSound"));
+                deleteSound = reinterpret_cast<void (*)(graphic::ISound *sound)>(dl.findSymbol("deleteSound"));
+
+                createMusic = reinterpret_cast<graphic::IMusic *(*)(std::string)>(dl.findSymbol("createMusic"));
+                deleteMusic = reinterpret_cast<void (*)(graphic::IMusic *music)>(dl.findSymbol("deleteMusic"));
 
                 std::cout << "Loaded: " << file << std::endl;
             }
@@ -111,7 +128,7 @@ namespace graphic {
             void (*deleteMouse)(graphic::IMouse *mouse);
             
             /**
-             * @brief Graphics
+             * @brief 2D
              */
             // polygon
             graphic::IPolygon *(*createPolygon)(std::vector<__v2f_t> points);
@@ -119,12 +136,30 @@ namespace graphic {
             // sprite
             graphic::ISprite *(*createSprite)(std::string);
             void (*deleteSprite)(graphic::ISprite *sprite);
+
+            graphic::IText *(*createText)(std::string text, std::string font);
+            void (*deleteText)(graphic::IText *text);
+
+            /**
+             * @brief 3D
+             * 
+             */
+
             //camera
             graphic::ICamera *(*createCamera)();
             void (*deleteCamera)(graphic::ICamera *camera);
             //model
             graphic::IModel *(*createModel)();
             void (*deleteModel)(graphic::IModel *model);
+
+            /**
+             * @brief Sound
+             */
+            graphic::ISound *(*createSound)(std::string);
+            void (*deleteSound)(graphic::ISound *sound);
+
+            graphic::IMusic *(*createMusic)(std::string);
+            void (*deleteMusic)(graphic::IMusic *music);
     };
 
 }

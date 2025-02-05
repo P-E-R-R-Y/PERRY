@@ -26,6 +26,7 @@ set(SOURCE_FILES sfml.cpp)
 add_compile_definitions(_HAS_AUTO_PTR_ETC=1)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
+
 target_link_libraries(${PROJECT_NAME} igraphic 
     sfml-graphics
     sfml-window
@@ -36,6 +37,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   window
   graphic
   event
+  audio
   .
 )
 

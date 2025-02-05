@@ -8,6 +8,7 @@ add_library(${PROJECT_NAME} STATIC no_source.cpp)
 target_include_directories(${PROJECT_NAME} PUBLIC
   window
   graphic
+  audio
   event
   .
 )

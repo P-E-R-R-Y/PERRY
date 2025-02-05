@@ -23,6 +23,7 @@
  */
 class DynamicLoader {
     public:
+    
         DynamicLoader() {
         }
 
@@ -51,6 +52,7 @@ class DynamicLoader {
         }
 
         void setPath(std::string str) {
+            _name = str;
             _lib = dlopen(str.c_str(), RTLD_NOW);
         }
 

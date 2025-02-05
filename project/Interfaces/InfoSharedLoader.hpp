@@ -28,7 +28,7 @@ class InfoSharedLoader {
         /**
          * @brief Construct a new Info Shared Loader object with every symbols from the shared library
          * 
-         * @param file 
+         * @param file
          */
         InfoSharedLoader(std::string file): dl(file) {
             if (!dl.isReady()) {
@@ -40,7 +40,14 @@ class InfoSharedLoader {
 
             //Core
             getType = reinterpret_cast<const char *(*)()>(dl.findSymbol("getType"));
+            if (!getType()) {
+                std::cerr << "Failed to find symbol getType() in: " << file << std::endl;
+            }
+
             getName = reinterpret_cast<const char *(*)()>(dl.findSymbol("getName"));
+            if (!getName()) {
+                std::cerr << "Failed to find symbol getName() in: " << file << std::endl;
+            }
             std::cout << "Constructor>> " << file << std::endl;
         }
 

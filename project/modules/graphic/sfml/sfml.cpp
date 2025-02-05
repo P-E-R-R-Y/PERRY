@@ -25,6 +25,13 @@
 //graphic
 #include "graphic/SfmlSprite.hpp"
 #include "graphic/SfmlModel.hpp"
+#include "graphic/SfmlPolygon.hpp"
+#include "graphic/SfmlText.hpp"
+
+//audio
+#include "audio/SfmlSound.hpp"
+#include "audio/SfmlMusic.hpp"
+
 #include <string>
 
 /**
@@ -141,6 +148,45 @@ extern "C" graphic::IModel *createModel() {
  */
 extern "C" void deleteModel(graphic::IModel *model) {
     delete model;
+}
+
+/**
+ * @brief create Sfml text
+ */
+extern "C" graphic::IText *createText(std::string text, std::string font) {
+    return new SfmlText(text, font);
+}
+
+/**
+ * @brief destroy Sfml text
+ */
+extern "C" void deleteText(graphic::IText *text) {
+    delete text;
+}
+
+/**
+ * @brief create Sfml sound
+ */
+extern "C" graphic::ISound *createSound(std::string path) {
+    return new SfmlSound(path);
+}
+
+extern "C" void deleteSound(graphic::ISound *sound) {
+    delete sound;
+}
+
+/**
+ * @brief create Sfml music
+ */
+extern "C" graphic::IMusic *createMusic(std::string path) {
+    return new SfmlMusic(path);
+}
+
+/**
+ * @brief destroy Sfml music
+ */
+extern "C" void deleteMusic(graphic::IMusic *music) {
+    delete music;
 }
 
 /**

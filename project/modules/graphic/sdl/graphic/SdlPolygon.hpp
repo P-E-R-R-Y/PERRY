@@ -16,7 +16,7 @@
 #include "../../../../interfaces/graphic/graphic/IPolygon.hpp"
 
 //Sdl
-#include <SDL2/SDL.h>
+#include "SDL.h"
 
 #include <vector>
 

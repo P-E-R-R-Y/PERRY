@@ -14,7 +14,7 @@
 #define SFMLSPRITE_HPP_
 
 //Interface
-#include "../../../interfaces/graphic/graphic/IPolygon.hpp"
+#include "IPolygon.hpp"
 
 //Raylib
 #include <SFML/System.hpp>
@@ -36,6 +36,7 @@ class SfmlSprite : public graphic::ISprite {
          * @param path 
          */
         SfmlSprite(std::string path) {
+            std::cout << "SfmlSprite::path-> " << path << std::endl;
             if (_texture.loadFromFile(path)) {
                 _sprite.setTexture(_texture);
             }

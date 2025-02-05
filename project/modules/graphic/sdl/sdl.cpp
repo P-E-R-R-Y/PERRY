@@ -18,16 +18,19 @@
 #define SDLLIB_CPP_
 
 //window
-#include "window/SdlWindow.hpp"
-#include "window/SdlCamera.hpp"
+#include "SdlWindow.hpp"
+#include "SdlCamera.hpp"
 //event
-#include "event/SdlEvent.hpp"
-#include "event/SdlKeyboard.hpp"
-#include "event/SdlMouse.hpp"
+#include "SdlEvent.hpp"
+#include "SdlKeyboard.hpp"
+#include "SdlMouse.hpp"
 //graphic
-#include "graphic/SdlPolygon.hpp"
-#include "graphic/SdlModel.hpp"
-#include "graphic/SdlSprite.hpp"
+#include "SdlModel.hpp"
+#include "SdlSprite.hpp"
+#include "SdlText.hpp"
+//audio
+#include "SdlSound.hpp"
+#include "SdlMusic.hpp"
 
 /**
  * @brief create Sdl window 
@@ -168,6 +171,22 @@ extern "C" void deleteSprite(graphic::ISprite *sprite) {
 }
 
 /**
+ * @brief create Sdl text
+ * 
+ */
+extern "C" graphic::IText *createText(std::string data, std::string fontPath) {
+    return new SdlText(data, fontPath);
+}
+
+/**
+ * @brief delete Sdl text
+ * 
+ */
+extern "C" void deleteText(graphic::IText *text) {
+    delete text;
+}
+
+/**
  * @brief create Sdl model
  * 
  * @return graphic::IModel*
@@ -183,6 +202,46 @@ extern "C" graphic::IModel *createModel() {
  */
 extern "C" void deleteModel(graphic::IModel *model) {
     delete model;
+}
+
+/**
+ * @brief create Sdl Sound
+ * 
+ * @param sound
+ * 
+ * @return graphic::ISound*
+ */
+extern "C" graphic::ISound *createSound(std::string sound) {
+    return new SdlSound(sound);
+}
+
+/**
+ * @brief delete Sdl sound
+ * 
+ * @param sound
+ */
+extern "C" void deleteSound(graphic::ISound *sound) {
+    delete sound;
+}
+
+/**
+ * @brief create Sdl music
+ * 
+ * @param music
+ * 
+ * @return graphic::IMusic*
+ */
+extern "C" graphic::IMusic *createMusic(std::string music) {
+    return new SdlMusic(music);
+}
+
+/**
+ * @brief delete Sdl music
+ * 
+ * @param music
+ */
+extern "C" void deleteMusic(graphic::IMusic *music) {
+    delete music;
 }
 
 /**

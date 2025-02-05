@@ -14,7 +14,7 @@
 #define SFMLPOLYGON_HPP_
 
 //Interface
-#include "../../../interfaces/graphic/graphic/IPolygon.hpp"
+#include "IPolygon.hpp"
 
 //Sfml
 #include <SFML/Graphics.hpp>
@@ -68,9 +68,9 @@ class SfmlPolygon : public graphic::IPolygon {
                     }
                 }
             }
-            for (int i = 0; i < _triangles.size(); i++) {
-                std::cout << "triangle: " << i << " " << _triangles[i].A.x << " " << _triangles[i].A.y << " " << _triangles[i].B.x << " " << _triangles[i].B.y << " " << _triangles[i].C.x << " " << _triangles[i].C.y << std::endl;
-            }
+            //for (int i = 0; i < _triangles.size(); i++) {
+            //    std::cout << "triangle: " << i << " " << _triangles[i].A.x << " " << _triangles[i].A.y << " " << _triangles[i].B.x << " " << _triangles[i].B.y << " " << _triangles[i].C.x << " " << _triangles[i].C.y << std::endl;
+            //}
             std::cout << "SfmlPolygon created" << std::endl;
         }
 

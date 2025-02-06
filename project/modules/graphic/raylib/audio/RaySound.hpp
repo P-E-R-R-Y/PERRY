@@ -14,6 +14,8 @@
 
     #include "ISound.hpp"
 
+    #include <raylib.h>
+
 class RaySound: public graphic::ISound {
 
     public:

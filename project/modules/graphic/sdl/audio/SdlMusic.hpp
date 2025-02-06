@@ -30,11 +30,10 @@ class SdlMusic: public graphic::IMusic {
          */
         SdlMusic(std::string path) {
             _music = Mix_LoadMUS(path.c_str());
-            _isReady = (_music == NULL) ? false : true;
             _loop = false;
             _pause = false;
         }
-        
+         
         /**
          * @brief Destroy the Ray Music
          * 
@@ -46,7 +45,7 @@ class SdlMusic: public graphic::IMusic {
         }
 
         bool isReady() const override {
-            return _isReady;
+            return false; //_music == NULL;
         }
 
         /**
@@ -125,6 +124,7 @@ class SdlMusic: public graphic::IMusic {
          * @param position 
          */
         void setTime(float position) override {
+            Mix_SetMusicPosition(static_cast<double>(position));
         }
 
         /**
@@ -133,7 +133,7 @@ class SdlMusic: public graphic::IMusic {
          * @return float 
          */
         float getTime() const override {
-            return 0;
+            return static_cast<float>(Mix_GetMusicPosition(_music));
         }
 
         /**
@@ -142,13 +142,12 @@ class SdlMusic: public graphic::IMusic {
          * @return float 
          */
         float getLength() const override {
-            return 0;
+            return static_cast<float>(Mix_GetMusicLoopLengthTime(_music));
         }
 
     private:
 
         Mix_Music *_music;
-        bool _isReady;
         bool _loop;
         bool _pause;
         float _volume;

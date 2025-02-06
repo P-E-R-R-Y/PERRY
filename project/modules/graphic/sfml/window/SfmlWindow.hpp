@@ -174,7 +174,7 @@ class SfmlWindow : public graphic::IWindow {
             //!make the camera the origin
             sf::Vector3f relativePosition = point - _camera->_position;
 
-            std::cout << "relativePosition: " << relativePosition.x << " " << relativePosition.y << " " << relativePosition.z << std::endl;
+            //std::cout << "relativePosition: " << relativePosition.x << " " << relativePosition.y << " " << relativePosition.z << std::endl;
 
             //!rotate the object
             sf::Vector3f relativeRotatedPosition = _camera->_quaternion.conjugate().rotate(relativePosition);
@@ -185,7 +185,7 @@ class SfmlWindow : public graphic::IWindow {
 
             //Don't need to move the object back to its original position because the camera is the origin for perspective projection
             sf::Vector3f rotatedPosition = relativeRotatedPosition;
-            std::cout << "points: " << rotatedPosition.x << " " << rotatedPosition.y << " " << rotatedPosition.z << std::endl;
+            //std::cout << "points: " << rotatedPosition.x << " " << rotatedPosition.y << " " << rotatedPosition.z << std::endl;
             //!perspective projection
             sf::Vector2f screen = _window.getView().getSize();
 
@@ -228,7 +228,7 @@ class SfmlWindow : public graphic::IWindow {
             SfmlModel *sfmlModel = static_cast<SfmlModel *>(model);
 
             for (sf::Vector3f point : sfmlModel->vertices) {
-                std::cout << ">>>" << point.x << " " << point.y << " " << point.z << std::endl;
+                //std::cout << ">>>" << point.x << " " << point.y << " " << point.z << std::endl;
                 drawPoint(point);
 
             }
@@ -275,19 +275,17 @@ void SfmlWindow::drawPoly(graphic::IPolygon *polygon) {
     SfmlPolygon *sfmlPolygon = static_cast<SfmlPolygon *>(polygon);
     std::vector<graphic::triangle_t> triangles = sfmlPolygon->_triangles;
 
-    std::cout << "StartDraw" << std::endl;
     for (int i = 0; i < triangles.size(); i++) {
         sf::ConvexShape cpolygon;
         cpolygon.setPointCount(3);
         cpolygon.setPoint(0, sf::Vector2f(triangles[i].A.x, triangles[i].A.y));
         cpolygon.setPoint(1, sf::Vector2f(triangles[i].B.x, triangles[i].B.y));
         cpolygon.setPoint(2, sf::Vector2f(triangles[i].C.x, triangles[i].C.y));
-        cpolygon.setFillColor(sf::Color{static_cast<sf::Uint8>(rand()%255), 0, 0, 255});
+        cpolygon.setFillColor(sfmlPolygon->_color);
 
         cpolygon.setPosition(0, 0);
         _window.draw(cpolygon);
     }
-    std::cout << "EndDraw" << std::endl;
 };
 
 void SfmlWindow::drawSprite(graphic::ISprite *sprite) {

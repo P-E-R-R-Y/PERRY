@@ -28,18 +28,18 @@ class DynamicLoader {
         }
 
         DynamicLoader(std::string str): _lib(dlopen(str.c_str(), RTLD_NOW)), _name(str) {
-            if (!this->isReady())
-                std::cout << "string str == null" << std::endl;
+            if (!_lib)
+                std::cerr << "dlopen failed: " << dlerror() << std::endl;
         }
 
         DynamicLoader(const DynamicLoader& other): _lib(other._lib), _name(other._name) {
             if (!this->isReady())
-                std::cout << "& other == null" << std::endl;
+                std::cout << "move other == null" << std::endl;
         }
 
         DynamicLoader(DynamicLoader&& other): _lib(other._lib), _name(other._name) {
             if (!this->isReady())
-                std::cout << "&& other == null" << std::endl;
+                std::cout << "copy other == null" << std::endl;
         }
 
         ~DynamicLoader() {

@@ -25,6 +25,7 @@
 #include "SdlKeyboard.hpp"
 #include "SdlMouse.hpp"
 //graphic
+#include "SdlPolygon.hpp"
 #include "SdlModel.hpp"
 #include "SdlSprite.hpp"
 #include "SdlText.hpp"
@@ -174,8 +175,8 @@ extern "C" void deleteSprite(graphic::ISprite *sprite) {
  * @brief create Sdl text
  * 
  */
-extern "C" graphic::IText *createText(std::string data, std::string fontPath) {
-    return new SdlText(data, fontPath);
+extern "C" graphic::IText *createText(std::string data, std::string font) {
+    return new SdlText(data, font);
 }
 
 /**

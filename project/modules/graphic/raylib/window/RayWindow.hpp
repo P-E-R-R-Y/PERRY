@@ -124,7 +124,7 @@ void RayWindow::drawPoly(graphic::IPolygon *polygon) {
         DrawTriangle({static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)},
                     {static_cast<float>(triangles[i].B.x), static_cast<float>(triangles[i].B.y)},
                     {static_cast<float>(triangles[i].A.x), static_cast<float>(triangles[i].A.y)},
-                    Color{static_cast<unsigned char>(rand()%255), 0, 0, 255});
+                    rayPolygon->_color);
     }
     std::cout << "EndDraw" << std::endl;
 };

@@ -21,19 +21,11 @@
     #include <SFML/System.hpp>
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
-    #include <SFML/Audio.hpp>
-    #include <SFML/Network.hpp>
 
 class SfmlText: public graphic::IText {
 
     public:
         SfmlText(std::string text, std::string font) {
-            std::cout << "Font path: " << font << std::endl;
-            std::cout << "Font path: " << font << std::endl;
-            std::cout << "Font path: " << font << std::endl;
-            std::cout << "Font path: " << font << std::endl;
-            std::cout << "Font path: " << font << std::endl;
-            std::cout << "Font path: " << font << std::endl;
             _isLoadedSuccessfully = _font.loadFromFile(font.c_str());
             _text.setFont(_font);
             _text.setString(text);

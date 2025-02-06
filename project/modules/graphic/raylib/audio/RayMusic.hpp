@@ -29,6 +29,7 @@ class RayMusic: public graphic::IMusic {
          */
         RayMusic(std::string path) {
             _music = LoadMusicStream(path.c_str());
+            _pause = false;
             _volume = 1.0f;
         }
         

@@ -25,6 +25,9 @@ class SfmlMusic: public graphic::IMusic {
          * @param path 
          */
         SfmlMusic(std::string path) {
+            if (!music.openFromFile(path)) {
+                std::cerr << "SfmlMusic::SfmlMusic failed to load music" << std::endl;
+            }
         }
         
         /**
@@ -32,6 +35,9 @@ class SfmlMusic: public graphic::IMusic {
          * 
          */
         ~SfmlMusic() override {
+            if (music.getStatus() != sf::Music::Stopped) {
+                music.stop();
+            }
         }
 
         /**
@@ -46,6 +52,7 @@ class SfmlMusic: public graphic::IMusic {
          * @brief play the music
          */
         void play() override {
+            music.play();
         }
 
         /**
@@ -53,6 +60,7 @@ class SfmlMusic: public graphic::IMusic {
          * 
          */
         void pause() override {
+            music.pause();
         }
 
         /**
@@ -60,10 +68,10 @@ class SfmlMusic: public graphic::IMusic {
          * 
          */
         void stop() override {
+            music.stop();
         }
 
-        void update() override {
-        }
+        void update() override { }
 
         /**
          * @brief set the volume of the music
@@ -71,6 +79,7 @@ class SfmlMusic: public graphic::IMusic {
          * @param volume 
          */
         void setVolume(float volume) override {
+            music.setVolume(volume);
         }
 
         /**
@@ -79,7 +88,7 @@ class SfmlMusic: public graphic::IMusic {
          * @return float 
          */
         float getVolume() const override {
-            return 0;
+            return music.getVolume();
         }
 
         /**
@@ -128,6 +137,7 @@ class SfmlMusic: public graphic::IMusic {
 
     private:
 
+        sf::Music music;
 };
 
 #endif /* !SFMLMUSIC_HPP_ */

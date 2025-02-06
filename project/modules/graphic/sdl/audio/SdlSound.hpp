@@ -12,7 +12,12 @@
 #ifndef SDLSOUND_HPP_
     #define SDLSOUND_HPP_
 
+    //Interface
     #include "ISound.hpp"
+
+    //Sdl
+    #include <SDL.h>
+    #include <SDL_mixer.h>
 
 class SdlSound: public graphic::ISound {
 
@@ -36,7 +41,7 @@ class SdlSound: public graphic::ISound {
          * @return false 
          */
         bool isReady() const override {
-            return sound != NULL;
+            return false;//sound != NULL;
         }
 
         /**
@@ -63,7 +68,9 @@ class SdlSound: public graphic::ISound {
          * 
          */
         void stop() override {
-            Mix_HaltChannel(channel);
+            if (channel != -1) {
+                Mix_HaltChannel(channel);
+            }
         }
 
         /**
@@ -85,8 +92,8 @@ class SdlSound: public graphic::ISound {
         }
 
     private:
-        int channel;
         Mix_Chunk* sound;
+        int channel;
 };
 
 

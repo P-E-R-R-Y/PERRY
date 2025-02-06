@@ -14,22 +14,28 @@
 
     #include "ISound.hpp"
 
+    #include <SFML/Audio.hpp>
+
 class SfmlSound: public graphic::ISound {
 
     public:
 
         SfmlSound(std::string path) {
+            _ready = buffer.loadFromFile(path);
+            if (_ready) {
+                sound.setBuffer(buffer);
+            }
         }
 
-        ~SfmlSound() override {
-        }
+        ~SfmlSound() override { }
 
-        bool isReady() const override { return true; } //sfml sound is always ready
+        bool isReady() const override { return _ready; } //sfml sound is always ready
 
         /**
          * @brief play the sound
          */
         void play() override {
+            sound.play();
         }
 
         /**
@@ -37,6 +43,7 @@ class SfmlSound: public graphic::ISound {
          * 
          */
         void pause() override {
+            sound.pause();
         }
 
         /**
@@ -44,6 +51,7 @@ class SfmlSound: public graphic::ISound {
          * 
          */
         void stop() override {
+            sound.stop();
         }
 
         /**
@@ -52,6 +60,7 @@ class SfmlSound: public graphic::ISound {
          * @param volume 
          */
         void setVolume(float volume) override {
+            sound.setVolume(volume * 100);
         }
 
         /**
@@ -60,10 +69,14 @@ class SfmlSound: public graphic::ISound {
          * @return float 
          */
         float getVolume() const override {
-            return 0;
+            return sound.getVolume();
         }
 
     private:
+
+        sf::SoundBuffer buffer;
+        sf::Sound sound;
+        bool _ready;
 
 };
 

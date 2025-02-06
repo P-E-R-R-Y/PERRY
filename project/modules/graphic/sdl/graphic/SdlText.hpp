@@ -20,8 +20,8 @@
 
     //Sdl
     #include "SDL.h"
-    #include "SDL_image.h"
-    #include "SDL_ttf.h"
+//    #include "SDL_image.h"
+//    #include "SDL_ttf.h"
 
 
 class SdlText: public graphic::IText {
@@ -34,27 +34,27 @@ class SdlText: public graphic::IText {
             _position = {0, 0};
             _rotation = 0;
 
-            _font = TTF_OpenFont(font.c_str(), _size);
+            //_font = TTF_OpenFont(font.c_str(), _size);
             _color = {255, 255, 255, 255};
-            _surface = TTF_RenderText_Solid(_font, data.c_str(), _color);
+            //_surface = TTF_RenderText_Solid(_font, data.c_str(), _color);
             _texture = nullptr;
         }
 
         virtual ~SdlText() = default;
 
         bool isReady() const override {
-            return _font != NULL;
+            return false; //_font != NULL;
         }
 
         void setText(std::string text) override {
             _data = text;
-            if (_surface != nullptr) {
-                SDL_FreeSurface(_surface);
-            }
-            _surface = TTF_RenderText_Solid(_font, text.c_str(), _color);
-            if (_texture != nullptr) {
-                SDL_DestroyTexture(_texture);
-            }
+            //if (_surface != nullptr) {
+            //    SDL_FreeSurface(_surface);
+            //}
+            //_surface = TTF_RenderText_Solid(_font, text.c_str(), _color);
+            //if (_texture != nullptr) {
+            //    SDL_DestroyTexture(_texture);
+            //}
         } 
 
         std::string getText() const override {
@@ -63,18 +63,18 @@ class SdlText: public graphic::IText {
 
         void setFont(std::string font) override {
             _path = font;
-            if (_font != nullptr) {
-                TTF_CloseFont(_font);
-            }
-            _font = TTF_OpenFont(font.c_str(), _size);
+            //if (_font != nullptr) {
+            //    TTF_CloseFont(_font);
+            //}
+            //_font = TTF_OpenFont(font.c_str(), _size);
         }
 
         void setFontSize(unsigned int size) override {
             _size = size;
-            if (_font != nullptr) {
-                TTF_CloseFont(_font);
-            }
-            _font = TTF_OpenFont(_path.c_str(), _size);
+            //if (_font != nullptr) {
+            //    TTF_CloseFont(_font);
+            //}
+            //_font = TTF_OpenFont(_path.c_str(), _size);
         }
         unsigned int getFontSize() const override {
             return _size;
@@ -113,7 +113,7 @@ class SdlText: public graphic::IText {
         __v2f_t _position;
         float _rotation;
 
-        TTF_Font *_font;
+        //TTF_Font *_font;
         SDL_Color _color;
         SDL_Surface *_surface;
         SDL_Texture *_texture;

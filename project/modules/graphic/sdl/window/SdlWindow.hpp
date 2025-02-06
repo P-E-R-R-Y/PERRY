@@ -14,8 +14,8 @@
 //Sdl
 #include "SDL.h"
 #include "SDL_image.h"
-#include "SDL_ttf.h"
-#include "SDL_mixer.h"
+//#include "SDL_ttf.h"
+//#include "SDL_mixer.h"
 
 //Interface
 #include "IWindow.hpp"
@@ -250,13 +250,15 @@ void SdlWindow::drawPoly(graphic::IPolygon *polygon) {
         //raylib ask for counter clockwise it's why I reverse the order
 //        SDL_RenderGeometry(_renderer, nullptr, points.data(), points.size(), nullptr, 0);
         int rColor = rand()%255;
+        SDL_Color color = {static_cast<unsigned char>(sdlPolygon->_color.r), static_cast<unsigned char>(sdlPolygon->_color.g), static_cast<unsigned char>(sdlPolygon->_color.b), static_cast<unsigned char>(sdlPolygon->_color.a)};
+        
         std::vector<SDL_Vertex> vertices = {
             SDL_Vertex{SDL_FPoint{static_cast<float>(triangles[i].A.x), static_cast<float>(triangles[i].A.y)}, 
-                        SDL_Color{static_cast<unsigned char>(rColor), 0, 0, 255}, SDL_FPoint{0, 0}},
+                        color, SDL_FPoint{0, 0}},
             SDL_Vertex{SDL_FPoint{static_cast<float>(triangles[i].B.x), static_cast<float>(triangles[i].B.y)}, 
-                        SDL_Color{static_cast<unsigned char>(rColor), 0, 0, 255}, SDL_FPoint{0, 0}},
+                        color, SDL_FPoint{0, 0}},
             SDL_Vertex{SDL_FPoint{static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)}, 
-                        SDL_Color{static_cast<unsigned char>(rColor), 0, 0, 255}, SDL_FPoint{0, 0}},
+                        color, SDL_FPoint{0, 0}},
         }; 
         SDL_RenderGeometry(_renderer, nullptr, vertices.data(), vertices.size(), nullptr, 0);
         //DrawTriangle({static_cast<float>(triangles[i].C.x), static_cast<float>(triangles[i].C.y)},
@@ -284,20 +286,20 @@ void SdlWindow::drawSprite(graphic::ISprite *sprite) {
 };
 
 void SdlWindow::drawText(graphic::IText *text) {
-    std::cout << "SdlWindow::drawText implemented" << std::endl;
-    SdlText *sdlText = static_cast<SdlText *>(text);
-
-    if (sdlText->_texture == nullptr && sdlText->_surface != nullptr) {
-        sdlText->_texture = SDL_CreateTextureFromSurface(_renderer, sdlText->_surface);
-    }
-    SDL_FRect position = {static_cast<float>(sdlText->_position.x), 
-                        static_cast<float>(sdlText->_position.y),
-                        static_cast<float>(sdlText->_surface->w),
-                        static_cast<float>(sdlText->_surface->h)};
-    
-    SDL_FPoint center = {static_cast<float>(sdlText->_surface->w / 2), static_cast<float>(sdlText->_surface->h / 2)};
-    
-    SDL_RenderCopyExF(_renderer, sdlText->_texture, nullptr, &position, sdlText->_rotation,  &center, SDL_FLIP_NONE);
+    //std::cout << "SdlWindow::drawText implemented" << std::endl;
+    //SdlText *sdlText = static_cast<SdlText *>(text);
+//
+    //if (sdlText->_texture == nullptr && sdlText->_surface != nullptr) {
+    //    sdlText->_texture = SDL_CreateTextureFromSurface(_renderer, sdlText->_surface);
+    //}
+    //SDL_FRect position = {static_cast<float>(sdlText->_position.x), 
+    //                    static_cast<float>(sdlText->_position.y),
+    //                    static_cast<float>(sdlText->_surface->w),
+    //                    static_cast<float>(sdlText->_surface->h)};
+    //
+    //SDL_FPoint center = {static_cast<float>(sdlText->_surface->w / 2), static_cast<float>(sdlText->_surface->h / 2)};
+    //
+    //SDL_RenderCopyExF(_renderer, sdlText->_texture, nullptr, &position, sdlText->_rotation,  &center, SDL_FLIP_NONE);
 };
 
 void SdlWindow::beginMode3(graphic::ICamera *camera) {

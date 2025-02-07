@@ -1,0 +1,107 @@
+\doxysection{Ray\+Text.\+hpp}
+\hypertarget{_ray_text_8hpp_source}{}\label{_ray_text_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/graphic/RayText.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/raylib/graphic/RayText.hpp}}
+\mbox{\hyperlink{_ray_text_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ RAYTEXT\_HPP\_}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#define\ RAYTEXT\_HPP\_}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//standard}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_i_text_8hpp}{IText.hpp}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//Raylib}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \#include\ <raylib.h>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }RayText:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_text}{graphic::IText}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ RayText(std::string\ data,\ std::string\ font)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_data\ =\ data;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ \{0,\ 0\};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \_color\ =\ Color\{255,\ 255,\ 255,\ 255\};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_font\ =\ LoadFont(font.c\_str());}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_size\ =\ 20;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_spacing\ =\ 1;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_rotation\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ updateOrigin();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \string~RayText()\textcolor{keyword}{\ override\ }\{\}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isReady()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ IsFontReady(\_font);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ray_text_a2313c9b3ceb6a786257746194746e3ff}{setText}}(\textcolor{keyword}{const}\ std::string\ text)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \_data\ =\ text;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ updateOrigin();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_ray_text_a2fb862b25ad719e453b07286c2039e11}{getText}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_data;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ray_text_aa7cc6630323190d9d27e42e42b9624d3}{setFont}}(std::string\ font)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \_font\ =\ LoadFont(font.c\_str());}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ updateOrigin();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ray_text_ab4c6b58039e7c67c096c337e33fcd7ac}{setFontSize}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size)\textcolor{keyword}{\ \ override\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \_size\ =\ size;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ updateOrigin();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_ray_text_a09191e67d0907ca789046e3a3e24e214}{getFontSize}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_size;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ray_text_aec92e857acb7c335d02e17c0b474b6ee}{setTextColor}}(\_\_color\_t\ color)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \_color\ =\ Color\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(color.r),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(color.g),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(color.b),\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(color.a)\};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \_\_color\_t\ \mbox{\hyperlink{class_ray_text_acdf7c48480704effcb2c9a3af68839f4}{getTextColor}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_color\_t\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.r),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.g),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.b),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.a)\};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ray_text_a7492525ded1c379b0f3c36d6e2fcbf87}{setPosition}}(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ Vector2\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(position.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(position.y)\};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{class_ray_text_a408ba725f4f4a59bca918cac39c9687f}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_v2f\_t\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_position.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_position.y)\};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ray_text_a4efb04b837d7027ad6fdea21e61c20a2}{setRotation}}(\textcolor{keywordtype}{float}\ angle)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \_rotation\ =\ angle;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_ray_text_a6e7676bdb2bda5b888453bbe420c336f}{getRotation}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_rotation;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ray_window}{RayWindow}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ updateOrigin()\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vector2\ textSize\ =\ MeasureTextEx(\_font,\ \_data.c\_str(),\ \_size,\ \_spacing);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \_origin\ =\ \{\ textSize.x\ /\ 2,\ textSize.y\ /\ 2\ \};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ std::string\ \_data;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ Vector2\ \_position;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ Color\ \_color;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ Font\ \_font;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_size;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ Vector2\ \_origin;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_rotation;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_spacing;}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !RAYTEXT\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

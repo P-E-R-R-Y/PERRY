@@ -36,6 +36,8 @@ virtual void \mbox{\hyperlink{group__graphic_gafe1c61041fa847fe80c0fbc5585a4de3}
 \begin{DoxyCompactList}\small\item\em draw a polygon \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{group__graphic_ga0b6d9dc647ea8fa561630424bb4b5db0}{draw\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{ISprite}} \texorpdfstring{$\ast$}{*}model)=0
 \begin{DoxyCompactList}\small\item\em draw a sprite \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga2deb06e5b90bdf22e483bfbeb8a851f9}{draw\+Text}} (\mbox{\hyperlink{classgraphic_1_1_i_text}{IText}} \texorpdfstring{$\ast$}{*}text)=0
+\begin{DoxyCompactList}\small\item\em draw a text \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{group__graphic_gafeee676648888ac355a58f7fb90b62a6}{end\+Draw}} ()=0
 \begin{DoxyCompactList}\small\item\em end the 2D drawing \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{group__graphic_ga44bfe77f58f2825edb1e7cb5304b8177}{begin\+Mode3}} (\mbox{\hyperlink{classgraphic_1_1_i_camera}{ICamera}} \texorpdfstring{$\ast$}{*}camera)=0
@@ -47,7 +49,11 @@ virtual void \mbox{\hyperlink{group__graphic_gad064bd5a6aeafa259e0e629cf6cf82c1}
 virtual bool \mbox{\hyperlink{group__graphic_ga4a40f63b3c53f89a6ce684e7d2a92428}{poll\+Event}} ()=0
 \begin{DoxyCompactList}\small\item\em poll the event \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{group__graphic_ga6687f79bdb04698ea020aa85e72f3941}{event\+Close}} ()=0
-\begin{DoxyCompactList}\small\item\em update the window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em update the window \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{group__graphic_gab38ae232ea16ecaa1cbde4320bb998d7}{begin\+Audio}} ()=0
+\begin{DoxyCompactList}\small\item\em begin Audio \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga9f2ca533a6c0270d0e1e8512ba96532e}{end\+Audio}} ()=0
+\begin{DoxyCompactList}\small\item\em end Audio \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

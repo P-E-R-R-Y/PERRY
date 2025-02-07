@@ -17,7 +17,7 @@ using {\bfseries Params} = std\+::string
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{group__graphic_ga7acf7f852523798c34387c0201acba93}{Graphic\+Shared\+Loader}} (Params file)
+\mbox{\hyperlink{group__graphic_ga551e7e7dd6044c702d9e626e18cab849}{Graphic\+Shared\+Loader}} (std\+::string file)
 \begin{DoxyCompactList}\small\item\em Construct a new Graphic Shared Loader object with every symbols from the shared library. \end{DoxyCompactList}\item 
 {\bfseries \texorpdfstring{$\sim$}{\string~}\+Graphic\+Shared\+Loader} ()=default
 \begin{DoxyCompactList}\small\item\em Destroy the Graphic Shared Loader object. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -40,21 +40,33 @@ void(\texorpdfstring{$\ast$}{*} {\bfseries delete\+Keyboard} )(\mbox{\hyperlink{
 \item 
 void(\texorpdfstring{$\ast$}{*} {\bfseries delete\+Mouse} )(\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic\+::\+IMouse}} \texorpdfstring{$\ast$}{*}mouse)
 \item 
-\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries create\+Polygon} )(std\+::vector$<$ \+\_\+\+\_\+v2f\+\_\+t $>$ points)
-\begin{DoxyCompactList}\small\item\em Graphics. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries create\+Polygon} )(std\+::vector$<$ \mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} $>$ points)
+\begin{DoxyCompactList}\small\item\em 2D \end{DoxyCompactList}\item 
 void(\texorpdfstring{$\ast$}{*} {\bfseries delete\+Polygon} )(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic\+::\+IPolygon}} \texorpdfstring{$\ast$}{*}polygon)
 \item 
 \mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries create\+Sprite} )(std\+::string)
 \item 
 void(\texorpdfstring{$\ast$}{*} {\bfseries delete\+Sprite} )(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite)
 \item 
-\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries create\+Camera} )()
+\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries create\+Text} )(std\+::string text, std\+::string font)
 \item 
+void(\texorpdfstring{$\ast$}{*} {\bfseries delete\+Text} )(\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}} \texorpdfstring{$\ast$}{*}text)
+\item 
+\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries create\+Camera} )()
+\begin{DoxyCompactList}\small\item\em 3D \end{DoxyCompactList}\item 
 void(\texorpdfstring{$\ast$}{*} {\bfseries delete\+Camera} )(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}camera)
 \item 
 \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries create\+Model} )()
 \item 
 void(\texorpdfstring{$\ast$}{*} {\bfseries delete\+Model} )(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model)
+\item 
+\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic\+::\+ISound}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries create\+Sound} )(std\+::string)
+\begin{DoxyCompactList}\small\item\em Sound. \end{DoxyCompactList}\item 
+void(\texorpdfstring{$\ast$}{*} {\bfseries delete\+Sound} )(\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic\+::\+ISound}} \texorpdfstring{$\ast$}{*}sound)
+\item 
+\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} {\bfseries create\+Music} )(std\+::string)
+\item 
+void(\texorpdfstring{$\ast$}{*} {\bfseries delete\+Music} )(\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}} \texorpdfstring{$\ast$}{*}music)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}

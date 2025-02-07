@@ -12,6 +12,10 @@ shared graphic/sfml library symbols
 {\ttfamily \#include "{}event/\+Sfml\+Mouse.\+hpp"{}}\newline
 {\ttfamily \#include "{}graphic/\+Sfml\+Sprite.\+hpp"{}}\newline
 {\ttfamily \#include "{}graphic/\+Sfml\+Model.\+hpp"{}}\newline
+{\ttfamily \#include "{}graphic/\+Sfml\+Polygon.\+hpp"{}}\newline
+{\ttfamily \#include "{}graphic/\+Sfml\+Text.\+hpp"{}}\newline
+{\ttfamily \#include "{}audio/\+Sfml\+Sound.\+hpp"{}}\newline
+{\ttfamily \#include "{}audio/\+Sfml\+Music.\+hpp"{}}\newline
 {\ttfamily \#include $<$string$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -48,6 +52,18 @@ void {\bfseries delete\+Sprite} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{gra
 \begin{DoxyCompactList}\small\item\em create Sfml model \end{DoxyCompactList}\item 
 void {\bfseries delete\+Model} (\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model)
 \begin{DoxyCompactList}\small\item\em destroy Sfml model \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Text} (std\+::string text, std\+::string font)
+\begin{DoxyCompactList}\small\item\em create Sfml text \end{DoxyCompactList}\item 
+void {\bfseries delete\+Text} (\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}} \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em destroy Sfml text \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic\+::\+ISound}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Sound} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em create Sfml sound \end{DoxyCompactList}\item 
+void {\bfseries delete\+Sound} (\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic\+::\+ISound}} \texorpdfstring{$\ast$}{*}sound)
+\item 
+\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Music} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em create Sfml music \end{DoxyCompactList}\item 
+void {\bfseries delete\+Music} (\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}} \texorpdfstring{$\ast$}{*}music)
+\begin{DoxyCompactList}\small\item\em destroy Sfml music \end{DoxyCompactList}\item 
 const char \texorpdfstring{$\ast$}{*} {\bfseries get\+Name} ()
 \begin{DoxyCompactList}\small\item\em get the name of the library \end{DoxyCompactList}\item 
 const char \texorpdfstring{$\ast$}{*} {\bfseries get\+Type} ()

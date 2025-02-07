@@ -101,7 +101,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define RAYSPRITE_HPP_</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">//Interface</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="_i_polygon_8hpp.html">../../../../interfaces/graphic/graphic/IPolygon.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="_i_sprite_8hpp.html">ISprite.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//Raylib</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;raylib.h&gt;</span></div>
@@ -133,18 +133,22 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
 </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">void</span> setCrop(__v4f_t rect)<span class="keyword"> override </span>{</div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="group___raylib.html#gaf87ededce0a1e5507300db8b6bce44dd">   47</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#gaf87ededce0a1e5507300db8b6bce44dd">setCrop</a>(__v4f_t rect)<span class="keyword"> override </span>{</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            _crop = {float(rect.x), float(rect.y), float(rect.w), float(rect.h)};</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
+</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="group___raylib.html#ga54d86b404491e36c8ea9c6b98546a612">   51</a></span>        __v2f_t <a class="code hl_function" href="group___raylib.html#ga54d86b404491e36c8ea9c6b98546a612">getPosition</a>()<span class="keyword"> const override </span>{</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordflow">return</span> {_position.x, _position.y};</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
 </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordtype">void</span> setPosition(__v2f_t position)<span class="keyword"> override </span>{</div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="group___raylib.html#ga2b25d339ee6507feb70d988a4ff852f8">   54</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#ga2b25d339ee6507feb70d988a4ff852f8">setPosition</a>(__v2f_t position)<span class="keyword"> override </span>{</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            _position = {float(position.x), float(position.y)};</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
+</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="group___raylib.html#ga6fc3cc1a446e5cf64d31f138b9fcf645">   58</a></span>        <span class="keywordtype">float</span> <a class="code hl_function" href="group___raylib.html#ga6fc3cc1a446e5cf64d31f138b9fcf645">getRotation</a>()<span class="keyword"> const override </span>{</div>
@@ -168,11 +172,13 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
 </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordtype">void</span> setSize(__v2f_t size)<span class="keyword"> override </span>{</div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="group___raylib.html#gadcadd9375b1f24fe08faec53c3c47ce2">   74</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="group___raylib.html#gadcadd9375b1f24fe08faec53c3c47ce2">setSize</a>(__v2f_t size)<span class="keyword"> override </span>{</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            _scale = {float(this-&gt;<a class="code hl_function" href="group___raylib.html#ga655beb65e2555e895645a222eb4e7f69">getSize</a>().x/<span class="keywordtype">float</span>(_texture.width)), float(this-&gt;<a class="code hl_function" href="group___raylib.html#ga655beb65e2555e895645a222eb4e7f69">getSize</a>().y/<span class="keywordtype">float</span>(_texture.height))};</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
+</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keyword">friend</span> <span class="keyword">class </span>RayWindow;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="class_ray_window.html">RayWindow</a>;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        Texture2D _texture;</div>
@@ -186,13 +192,17 @@ $(function(){ initResizable(false); });
 </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#endif </span><span class="comment">/* !RAYSPRITE_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="a_i_polygon_8hpp_html"><div class="ttname"><a href="_i_polygon_8hpp.html">IPolygon.hpp</a></div></div>
+<div class="ttc" id="a_i_sprite_8hpp_html"><div class="ttname"><a href="_i_sprite_8hpp.html">ISprite.hpp</a></div></div>
+<div class="ttc" id="aclass_ray_window_html"><div class="ttname"><a href="class_ray_window.html">RayWindow</a></div><div class="ttdoc">Raylib Window class.</div><div class="ttdef"><b>Definition</b> RayWindow.hpp:31</div></div>
 <div class="ttc" id="aclassgraphic_1_1_i_sprite_html"><div class="ttname"><a href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a></div><div class="ttdoc">Sprite interface.</div><div class="ttdef"><b>Definition</b> ISprite.hpp:23</div></div>
+<div class="ttc" id="agroup___raylib_html_ga2b25d339ee6507feb70d988a4ff852f8"><div class="ttname"><a href="group___raylib.html#ga2b25d339ee6507feb70d988a4ff852f8">RaySprite::setPosition</a></div><div class="ttdeci">void setPosition(__v2f_t position) override</div><div class="ttdoc">Set the Position object.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:54</div></div>
 <div class="ttc" id="agroup___raylib_html_ga2d4b863f75308531e3bdb70f10d7eb7d"><div class="ttname"><a href="group___raylib.html#ga2d4b863f75308531e3bdb70f10d7eb7d">RaySprite::getBounds</a></div><div class="ttdeci">__v4f_t getBounds() const override</div><div class="ttdoc">give the bounds of the sprite</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:43</div></div>
 <div class="ttc" id="agroup___raylib_html_ga3b3db743dc75d75c88d6c9666f63111e"><div class="ttname"><a href="group___raylib.html#ga3b3db743dc75d75c88d6c9666f63111e">RaySprite::setRotation</a></div><div class="ttdeci">void setRotation(float angle, bool isRad=false) override</div><div class="ttdoc">Set the Rotation object.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:62</div></div>
 <div class="ttc" id="agroup___raylib_html_ga54d86b404491e36c8ea9c6b98546a612"><div class="ttname"><a href="group___raylib.html#ga54d86b404491e36c8ea9c6b98546a612">RaySprite::getPosition</a></div><div class="ttdeci">__v2f_t getPosition() const override</div><div class="ttdoc">Get the Position object.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:51</div></div>
 <div class="ttc" id="agroup___raylib_html_ga655beb65e2555e895645a222eb4e7f69"><div class="ttname"><a href="group___raylib.html#ga655beb65e2555e895645a222eb4e7f69">RaySprite::getSize</a></div><div class="ttdeci">__v2f_t getSize() const override</div><div class="ttdoc">Get the Sprite size.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:70</div></div>
 <div class="ttc" id="agroup___raylib_html_ga6fc3cc1a446e5cf64d31f138b9fcf645"><div class="ttname"><a href="group___raylib.html#ga6fc3cc1a446e5cf64d31f138b9fcf645">RaySprite::getRotation</a></div><div class="ttdeci">float getRotation() const override</div><div class="ttdoc">Get the Rotation object.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:58</div></div>
+<div class="ttc" id="agroup___raylib_html_gadcadd9375b1f24fe08faec53c3c47ce2"><div class="ttname"><a href="group___raylib.html#gadcadd9375b1f24fe08faec53c3c47ce2">RaySprite::setSize</a></div><div class="ttdeci">void setSize(__v2f_t size) override</div><div class="ttdoc">Set the Sprite size.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:74</div></div>
+<div class="ttc" id="agroup___raylib_html_gaf87ededce0a1e5507300db8b6bce44dd"><div class="ttname"><a href="group___raylib.html#gaf87ededce0a1e5507300db8b6bce44dd">RaySprite::setCrop</a></div><div class="ttdeci">void setCrop(__v4f_t rect) override</div><div class="ttdoc">Crop the sprite with a rectangle.</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:47</div></div>
 <div class="ttc" id="agroup___raylib_html_gafc79985bcb3226a6e542243411cb7b78"><div class="ttname"><a href="group___raylib.html#gafc79985bcb3226a6e542243411cb7b78">RaySprite::isReady</a></div><div class="ttdeci">bool isReady() const override</div><div class="ttdoc">notice if the sprite is ready</div><div class="ttdef"><b>Definition</b> RaySprite.hpp:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -9,7 +9,7 @@
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ RAYSPRITE\_HPP\_}}
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{comment}{//Interface}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_polygon_8hpp}{../../../../interfaces/graphic/graphic/IPolygon.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_sprite_8hpp}{ISprite.hpp}}"{}}}
 \DoxyCodeLine{00018\ }
 \DoxyCodeLine{00019\ \textcolor{comment}{//Raylib}}
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <raylib.h>}}
@@ -36,14 +36,14 @@
 \DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\_position.x,\ \_position.y,\ float(\_texture.width),\ float(\_texture.height)\};}
 \DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setCrop(\_\_v4f\_t\ rect)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___raylib_gaf87ededce0a1e5507300db8b6bce44dd}{setCrop}}(\_\_v4f\_t\ rect)\textcolor{keyword}{\ override\ }\{}
 \DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \_crop\ =\ \{float(rect.x),\ float(rect.y),\ float(rect.w),\ float(rect.h)\};}
 \DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00050\ }
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{group___raylib_ga54d86b404491e36c8ea9c6b98546a612}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\_position.x,\ \_position.y\};}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setPosition(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___raylib_ga2b25d339ee6507feb70d988a4ff852f8}{setPosition}}(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ \{float(position.x),\ float(position.y)\};}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00057\ }
@@ -63,11 +63,11 @@
 \DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ float(\_texture.width)\ *\ \_scale.x,\ float(\_texture.height)\ *\ \_scale.y\ \};}
 \DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setSize(\_\_v2f\_t\ size)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___raylib_gadcadd9375b1f24fe08faec53c3c47ce2}{setSize}}(\_\_v2f\_t\ size)\textcolor{keyword}{\ override\ }\{}
 \DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \_scale\ =\ \{float(this-\/>\mbox{\hyperlink{group___raylib_ga655beb65e2555e895645a222eb4e7f69}{getSize}}().x/\textcolor{keywordtype}{float}(\_texture.width)),\ float(this-\/>\mbox{\hyperlink{group___raylib_ga655beb65e2555e895645a222eb4e7f69}{getSize}}().y/\textcolor{keywordtype}{float}(\_texture.height))\};}
 \DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00077\ }
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }RayWindow;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ray_window}{RayWindow}};}
 \DoxyCodeLine{00079\ }
 \DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ Texture2D\ \_texture;}

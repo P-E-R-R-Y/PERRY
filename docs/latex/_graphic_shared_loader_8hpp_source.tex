@@ -7,99 +7,127 @@
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ GRAPHIC\_SHARED\_LOADER\_HPP}}
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ GRAPHIC\_SHARED\_LOADER\_HPP}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/core/ICore.hpp"{}}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/window/IWindow.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../../core/ICore.hpp"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../window/IWindow.hpp"{}}}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/event/IEvent.hpp"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/event/IKeyboard.hpp"{}}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/event/IMouse.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_event_8hpp}{event/IEvent.hpp}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_keyboard_8hpp}{event/IKeyboard.hpp}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_mouse_8hpp}{event/IMouse.hpp}}"{}}}
 \DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/graphic/IPolygon.hpp"{}}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/graphic/ISprite.hpp"{}}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/window/ICamera.hpp"{}}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/graphic/IModel.hpp"{}}}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}../../../libraries/finder/DynamicLoader.hpp"{}}}
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_info_shared_loader_8hpp}{../InfoSharedLoader.hpp}}"{}}}
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <typeinfo>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_polygon_8hpp}{graphic/IPolygon.hpp}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_sprite_8hpp}{graphic/ISprite.hpp}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_text_8hpp}{graphic/IText.hpp}}"{}}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}audio/ISound.hpp"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}audio/IMusic.hpp"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_camera_8hpp}{window/ICamera.hpp}}"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_model_8hpp}{graphic/IModel.hpp}}"{}}}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegraphic}{graphic}}\ \{}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{group__graphic_ga7acf7f852523798c34387c0201acba93}{GraphicSharedLoader}}\ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Params\ =\ std::string;}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_ga7acf7f852523798c34387c0201acba93}{GraphicSharedLoader}}(Params\ file):\ dl(file)\ \{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ shared\ library\ is\ a\ graphic\ library}}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dl.isReady()\ ||\ std::string(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}getType"{}}))())\ !=\ std::string(\textcolor{stringliteral}{"{}graphic"{}}))\ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ load:\ "{}}\ <<\ file\ <<\ std::endl;}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return;}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core}}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_ga2e73bfdf905cc0d977c55c55a2f214b6}{createWindow}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ *(*)(\_\_int32\_t,\ \_\_int32\_t,\ std::string)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createWindow"{}}));}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteWindow\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ *window)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteWindow"{}}));}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Event}}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_ga0a3f2c68f0a8000ab30d25f6930fb11b}{createEvent}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createEvent"{}}));}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteEvent\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteEvent"{}}));}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createKeyboard\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ *(*)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createKeyboard"{}}));}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteKeyboard\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ *keyboard)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteKeyboard"{}}));}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}../../../libraries/finder/DynamicLoader.hpp"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_info_shared_loader_8hpp}{../InfoSharedLoader.hpp}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <typeinfo>}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacegraphic}{graphic}}\ \{}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{group__graphic_ga551e7e7dd6044c702d9e626e18cab849}{GraphicSharedLoader}}\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Params\ =\ std::string;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_ga551e7e7dd6044c702d9e626e18cab849}{GraphicSharedLoader}}(std::string\ file):\ dl(file)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ shared\ library\ is\ a\ graphic\ library}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!dl.isReady()\ ||\ std::string(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}getType"{}}))())\ !=\ std::string(\textcolor{stringliteral}{"{}graphic"{}}))\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ load:\ "{}}\ <<\ file\ <<\ std::endl;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_ga2e73bfdf905cc0d977c55c55a2f214b6}{createWindow}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ *(*)(\_\_int32\_t,\ \_\_int32\_t,\ std::string)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createWindow"{}}));}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteWindow\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ *window)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteWindow"{}}));}
 \DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createMouse\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ *(*)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createMouse"{}}));}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteMouse\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ *mouse)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteMouse"{}}));}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Graphics}}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_gaca2b6d2e677bb953d01dcc007bdea060}{createPolygon}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *(*)(std::vector<\_\_v2f\_t>)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createPolygon"{}}));}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deletePolygon\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *model)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deletePolygon"{}}));}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Event}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_ga0a3f2c68f0a8000ab30d25f6930fb11b}{createEvent}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createEvent"{}}));}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteEvent\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteEvent"{}}));}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createKeyboard\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ *(*)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createKeyboard"{}}));}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteKeyboard\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ *keyboard)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteKeyboard"{}}));}
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createSprite\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *(*)(std::string)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createSprite"{}}));}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteSprite\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *model)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteSprite"{}}));}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createMouse\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ *(*)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createMouse"{}}));}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteMouse\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ *mouse)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteMouse"{}}));}
 \DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//3D}}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createCamera\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createCamera"{}}));}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteCamera\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteCamera"{}}));}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Graphics}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_gaca2b6d2e677bb953d01dcc007bdea060}{createPolygon}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *(*)(std::vector<\_\_v2f\_t>)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createPolygon"{}}));}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deletePolygon\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *model)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deletePolygon"{}}));}
 \DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createModel\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createModel"{}}));}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteModel\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model3)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteModel"{}}));}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createSprite\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *(*)(std::string)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createSprite"{}}));}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteSprite\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *model)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteSprite"{}}));}
 \DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Loaded:\ "{}}\ <<\ file\ <<\ std::endl;}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_gae57e5f774b3e374624f11612e9c91b85}{\string~GraphicSharedLoader}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dynamic_loader}{DynamicLoader}}\ dl;}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ *(*createWindow)(int,\ int,\ std::string);}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteWindow)(\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ *window);}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *(*createEvent)();}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteEvent)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event);}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ *(*createKeyboard)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event);}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteKeyboard)(\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ *keyboard);}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ *(*createMouse)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event);}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteMouse)(\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ *mouse);}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ polygon}}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *(*createPolygon)(std::vector<\_\_v2f\_t>\ points);}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deletePolygon)(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon);}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sprite}}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *(*createSprite)(std::string);}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteSprite)(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite);}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//camera}}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *(*createCamera)();}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteCamera)(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera);}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//model}}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *(*createModel)();}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteModel)(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model);}
-\DoxyCodeLine{00128\ \ \ \ \ \};}
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00130\ \}}
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GRAPHIC\_DYNAMIC\_LOADER\_HPP}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createText\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic::IText}}\ *(*)(std::string,\ std::string)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createText"{}}));}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteText\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic::IText}}\ *model)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteText"{}}));}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//3D}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_ga635ee00309c37baacd48345487c06333}{createCamera}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createCamera"{}}));}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteCamera\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteCamera"{}}));}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createModel\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *(*)()\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createModel"{}}));}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteModel\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model3)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteModel"{}}));}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Sound}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_ga8be8e6211635d19a03bc633dc58d7a11}{createSound}}\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic::ISound}}\ *(*)(std::string)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createSound"{}}));}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteSound\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic::ISound}}\ *sound)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteSound"{}}));}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createMusic\ =\ \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic::IMusic}}\ *(*)(std::string)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}createMusic"{}}));}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deleteMusic\ =\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}\ (*)(\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic::IMusic}}\ *music)\textcolor{keyword}{>}(dl.findSymbol(\textcolor{stringliteral}{"{}deleteMusic"{}}));}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Loaded:\ "{}}\ <<\ file\ <<\ std::endl;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__graphic_gae57e5f774b3e374624f11612e9c91b85}{\string~GraphicSharedLoader}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_dynamic_loader}{DynamicLoader}}\ dl;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ *(*createWindow)(int,\ int,\ std::string);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteWindow)(\mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ *window);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *(*createEvent)();}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteEvent)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ *(*createKeyboard)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteKeyboard)(\mbox{\hyperlink{classgraphic_1_1_i_keyboard}{graphic::IKeyboard}}\ *keyboard);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ *(*createMouse)(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteMouse)(\mbox{\hyperlink{classgraphic_1_1_i_mouse}{graphic::IMouse}}\ *mouse);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ polygon}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *(*createPolygon)(std::vector<\_\_v2f\_t>\ points);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deletePolygon)(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon);}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sprite}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *(*createSprite)(std::string);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteSprite)(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_text}{graphic::IText}}\ *(*createText)(std::string\ text,\ std::string\ font);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteText)(\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic::IText}}\ *text);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//camera}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *(*createCamera)();}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteCamera)(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//model}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *(*createModel)();}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteModel)(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model);}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic::ISound}}\ *(*createSound)(std::string);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteSound)(\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic::ISound}}\ *sound);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classgraphic_1_1_i_music}{graphic::IMusic}}\ *(*createMusic)(std::string);}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ void\ (*deleteMusic)(\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic::IMusic}}\ *music);}
+\DoxyCodeLine{00163\ \ \ \ \ \};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GRAPHIC\_DYNAMIC\_LOADER\_HPP}}
 
 \end{DoxyCode}

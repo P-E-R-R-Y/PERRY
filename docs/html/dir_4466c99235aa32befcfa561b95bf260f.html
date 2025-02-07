@@ -97,6 +97,8 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="subdirs" name="subdirs"></a>
 Directories</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_bd822c77b9e4dbf1bb7a37a050d6dd52.html">audio</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_bad741f9f2925ab6e97201b4d8929a0d.html">event</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="iconfclosed"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_6422f729d865d519549c9b96f029f2d7.html">graphic</a></td></tr>
@@ -117,7 +119,18 @@ Files</h2></td></tr>
 Develop</h1>
 <h2><a class="anchor" id="autotoc_md19"></a>
 includes are defined here for more information</h2>
-<p><code><a href="https://github.com/libsdl-org/SDL_image/blob/release-2.8.2/examples/showimage.c">https://github.com/libsdl-org/SDL_image/blob/release-2.8.2/examples/showimage.c</a></code> </p>
+<p><code><a href="https://github.com/libsdl-org/SDL_image/blob/release-2.8.2/examples/showimage.c">https://github.com/libsdl-org/SDL_image/blob/release-2.8.2/examples/showimage.c</a></code></p>
+<p>in macos I ran into this issue:</p>
+<div class="fragment"><div class="line">In file included from /Users/perrychouteau/Documents/GitHub/PERRY/project/build/_deps/sdl2_mixer-src/src/codecs/music_opus.c:34:</div>
+<div class="line">/opt/homebrew/include/opus/opusfile.h:110:11: error: &#39;opus_multistream.h&#39; file not found with &lt;angled&gt; include; use &quot;quotes&quot; instead</div>
+<div class="line">  110 | # include &lt;opus_multistream.h&gt;</div>
+<div class="line">      |           ^~~~~~~~~~~~~~~~~~~~</div>
+<div class="line">      |           &quot;opus_multistream.h&quot;</div>
+<div class="line">1 error generated.</div>
+<div class="line">make[2]: *** [_deps/sdl2_mixer-build/CMakeFiles/SDL2_mixer.dir/src/codecs/music_opus.c.o] Error 1</div>
+<div class="line">make[1]: *** [_deps/sdl2_mixer-build/CMakeFiles/SDL2_mixer.dir/all] Error 2</div>
+<div class="line">make: *** [all] Error 2</div>
+</div><!-- fragment --><p>fixed will editing this file <code>.../project/build/_deps/sdl2_mixer-src/VisualC/external/include/opus/opus.h</code> </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

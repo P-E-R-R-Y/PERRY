@@ -38,6 +38,8 @@ void \mbox{\hyperlink{group___s_d_l_ga8e1a79f993c7424831754404c32f3684}{draw\+Po
 \begin{DoxyCompactList}\small\item\em draw a polygon \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group___s_d_l_ga4de650f1f3712087a4a5bca3aa2a5f0e}{draw\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite) override
 \begin{DoxyCompactList}\small\item\em draw a sprite \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_ga360486d07bcb0cef8df5b18b0252a542}{draw\+Text}} (\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}} \texorpdfstring{$\ast$}{*}text) override
+\begin{DoxyCompactList}\small\item\em draw a text \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group___s_d_l_ga9c0bf1ab0a9b4917ead4ad8fc3c697ff}{end\+Draw}} () override
 \begin{DoxyCompactList}\small\item\em end the 2D drawing \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group___s_d_l_gaa540228a558fee3510a05e29f629220b}{begin\+Mode3}} (\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic\+::\+ICamera}} \texorpdfstring{$\ast$}{*}camera) override
@@ -49,7 +51,11 @@ void \mbox{\hyperlink{group___s_d_l_ga4de0baf2dcd722e8fa4ce169420216c0}{end\+Mod
 bool \mbox{\hyperlink{group___s_d_l_ga3ea7d97069a1522b951696a9c9da2ddf}{poll\+Event}} () override
 \begin{DoxyCompactList}\small\item\em poll the event \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group___s_d_l_ga27db59127c8c517c420afb80b27b38d2}{event\+Close}} () override
-\begin{DoxyCompactList}\small\item\em close the window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em close the window \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_d_l_ga71d5f9d17e55e2ea3e1436ab18832421}{begin\+Audio}} () override
+\begin{DoxyCompactList}\small\item\em begin Audio \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_gafcfaf1d017c1ceb15c11fc87de80ce0e}{end\+Audio}} () override
+\begin{DoxyCompactList}\small\item\em end Audio \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic\+::\+IWindow}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -57,6 +63,8 @@ virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IWindow} ()=default
 \begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_window}{IWindow} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
+\item 
+bool {\bfseries is\+\_\+audio\+\_\+init}
 \item 
 bool {\bfseries is\+\_\+open}
 \item 

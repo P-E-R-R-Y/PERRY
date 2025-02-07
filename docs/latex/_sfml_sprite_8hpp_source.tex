@@ -9,7 +9,7 @@
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ SFMLSPRITE\_HPP\_}}
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{comment}{//Interface}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../../../interfaces/graphic/graphic/IPolygon.hpp"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_polygon_8hpp}{IPolygon.hpp}}"{}}}
 \DoxyCodeLine{00018\ }
 \DoxyCodeLine{00019\ \textcolor{comment}{//Raylib}}
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <SFML/System.hpp>}}
@@ -22,69 +22,70 @@
 \DoxyCodeLine{00031\ }
 \DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___s_f_m_l_ga4dee9a5402ae6f2cb11c2a6e40e852b7}{SfmlSprite}}(std::string\ path)\ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_texture.loadFromFile(path))\ \{}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setTexture(\_texture);}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ \{0,\ 0\};}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \_scale\ =\ \{1,\ 1\};}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sfml_sprite}{\string~SfmlSprite}}()\ =\ \textcolor{keywordflow}{default};}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_f_m_l_ga43587aab7d5762108568c65232e31fb8}{isReady}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\_sprite.getTexture()\ !=\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \_\_v4f\_t\ \mbox{\hyperlink{group___s_f_m_l_ga1b6814799269cbec3f07427965df97a6}{getBounds}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ sf::FloatRect\ rect\ =\ \_sprite.getGlobalBounds();}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ rect.left,\ rect.top,\ rect.width,\ rect.height\};}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_ga7e44b19b49e74f7525a9026df19f1947}{setCrop}}(\_\_v4f\_t\ rect)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setTextureRect(sf::IntRect(rect.x,\ rect.y,\ rect.w,\ rect.h));}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{group___s_f_m_l_ga56ce6dba47ee9764d2e780f6ef2a4729}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ \_sprite.getPosition().x,\ \_sprite.getPosition().y\};}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gafa785fd42ef4de9aab70eff27ba8aacc}{setPosition}}(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setPosition(position.x,\ position.y);}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group___s_f_m_l_gaacf999c674358e524f41fd302479be98}{getRotation}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_sprite.getRotation();}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00103\ }
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gac80478281cd7c3386dad009cee9ac42f}{setRotation}}(\textcolor{keywordtype}{float}\ angle,\ \textcolor{keywordtype}{bool}\ isRad\ =\ \textcolor{keyword}{false})\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isRad)\ \{}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setRotation(angle\ *\ 180.f\ /\ M\_PI);}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setRotation(angle);}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{group___s_f_m_l_gadc048e63cab334b7b73e4b416220374b}{getSize}}()\textcolor{keyword}{\ const\ override\ }\{}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2u\ size\ =\ \_sprite.getTexture()-\/>getSize();}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ scale\ =\ \_sprite.getScale();}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{float(size.x)\ *\ scale.x,\ float(size.y)\ *\ scale.y\};}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gaaac0ec9ad459089e2fab0c484d8544bb}{setSize}}(\_\_v2f\_t\ size)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ oldSize\ =\ \_sprite.getTexture()-\/>getSize();}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setScale(size.x/oldSize.x,\ size.y/oldSize.y);}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sfml_window}{SfmlWindow}};}
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ sf::Texture\ \_texture;}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ sf::Sprite\ \_sprite;}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ sf::Vector2f\ \_position;}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ sf::Vector2f\ \_scale;}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//your\ variables\ here}}
-\DoxyCodeLine{00147\ \};}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SFMLSPRITE\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SfmlSprite::path-\/>\ "{}}\ <<\ path\ <<\ std::endl;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_texture.loadFromFile(path))\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setTexture(\_texture);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ \{0,\ 0\};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \_scale\ =\ \{1,\ 1\};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sfml_sprite}{\string~SfmlSprite}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_f_m_l_ga43587aab7d5762108568c65232e31fb8}{isReady}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\_sprite.getTexture()\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \_\_v4f\_t\ \mbox{\hyperlink{group___s_f_m_l_ga1b6814799269cbec3f07427965df97a6}{getBounds}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ sf::FloatRect\ rect\ =\ \_sprite.getGlobalBounds();}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ rect.left,\ rect.top,\ rect.width,\ rect.height\};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_ga7e44b19b49e74f7525a9026df19f1947}{setCrop}}(\_\_v4f\_t\ rect)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setTextureRect(sf::IntRect(rect.x,\ rect.y,\ rect.w,\ rect.h));}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{group___s_f_m_l_ga56ce6dba47ee9764d2e780f6ef2a4729}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\ \_sprite.getPosition().x,\ \_sprite.getPosition().y\};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gafa785fd42ef4de9aab70eff27ba8aacc}{setPosition}}(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setPosition(position.x,\ position.y);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group___s_f_m_l_gaacf999c674358e524f41fd302479be98}{getRotation}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_sprite.getRotation();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gac80478281cd7c3386dad009cee9ac42f}{setRotation}}(\textcolor{keywordtype}{float}\ angle,\ \textcolor{keywordtype}{bool}\ isRad\ =\ \textcolor{keyword}{false})\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isRad)\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setRotation(angle\ *\ 180.f\ /\ M\_PI);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setRotation(angle);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{group___s_f_m_l_gadc048e63cab334b7b73e4b416220374b}{getSize}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2u\ size\ =\ \_sprite.getTexture()-\/>getSize();}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ scale\ =\ \_sprite.getScale();}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{float(size.x)\ *\ scale.x,\ float(size.y)\ *\ scale.y\};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_f_m_l_gaaac0ec9ad459089e2fab0c484d8544bb}{setSize}}(\_\_v2f\_t\ size)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ oldSize\ =\ \_sprite.getTexture()-\/>getSize();}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \_sprite.setScale(size.x/oldSize.x,\ size.y/oldSize.y);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sfml_window}{SfmlWindow}};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ sf::Texture\ \_texture;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ sf::Sprite\ \_sprite;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ sf::Vector2f\ \_position;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ sf::Vector2f\ \_scale;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{//your\ variables\ here}}
+\DoxyCodeLine{00148\ \};}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SFMLSPRITE\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

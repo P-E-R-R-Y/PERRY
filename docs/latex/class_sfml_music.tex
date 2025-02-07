@@ -1,0 +1,274 @@
+\doxysection{Sfml\+Music Class Reference}
+\hypertarget{class_sfml_music}{}\label{class_sfml_music}\index{SfmlMusic@{SfmlMusic}}
+Inheritance diagram for Sfml\+Music\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sfml_music}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sfml_music_a36cd3df180eb6d20482c16563aae81e0}{Sfml\+Music}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Construct a new Ray Music. \end{DoxyCompactList}\item 
+\Hypertarget{class_sfml_music_a3cb160f2ff7e534bedb53883ac332f44}\label{class_sfml_music_a3cb160f2ff7e534bedb53883ac332f44} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Sfml\+Music} () override
+\begin{DoxyCompactList}\small\item\em Destroy the Ray Music. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sfml_music_a517edbed439d3163fe9aaea921a6af48}{is\+Ready}} () const override
+\begin{DoxyCompactList}\small\item\em check if the music is ready \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_music_ad2a82c52b6f36e8a08ec297c9ce9b856}{play}} () override
+\begin{DoxyCompactList}\small\item\em play the music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_music_a1cf67d6bfc2cd62a06e7a6e576863ea3}{pause}} () override
+\begin{DoxyCompactList}\small\item\em pause the music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_music_ace4ac4b2090fe0214f7e2c2155cb8a64}{stop}} () override
+\begin{DoxyCompactList}\small\item\em stop the music and reset it to the beginning \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_music_adefc48473d098c7efc6c2a7a62d0caca}{update}} () override
+\begin{DoxyCompactList}\small\item\em update the music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_music_af140d442a3d764516b9c570172567767}{set\+Volume}} (float volume) override
+\begin{DoxyCompactList}\small\item\em set the volume of the music \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sfml_music_a92f7b916b507c21c173dc5d40e899cd6}{get\+Volume}} () const override
+\begin{DoxyCompactList}\small\item\em get the volume of the music or if not set the master volume \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_music_a1290598a4f045d581c85578e3d68c5cb}{set\+Loop}} (bool loop) override
+\begin{DoxyCompactList}\small\item\em set the music to loop or not \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sfml_music_a2c57c98a65738f92bcb6554627cb3623}{get\+Loop}} () const override
+\begin{DoxyCompactList}\small\item\em get if the music is looping or not \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sfml_music_a85eba07a11009aa7f1785afa8c2b5510}{set\+Time}} (float position) override
+\begin{DoxyCompactList}\small\item\em Set the time of the music in seconds. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sfml_music_a4a5758f10cce3a39ebfc6afb4fcc556c}{get\+Time}} () const override
+\begin{DoxyCompactList}\small\item\em Get the current time of the music in seconds. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_sfml_music_a5c486bb44afc1d9529c33c06957d4620}{get\+Length}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Length of the music. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_sfml_music_a707946509e1946968491e7d379d12c39}\label{class_sfml_music_a707946509e1946968491e7d379d12c39} 
+sf\+::\+Music {\bfseries music}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sfml_music_a36cd3df180eb6d20482c16563aae81e0}\index{SfmlMusic@{SfmlMusic}!SfmlMusic@{SfmlMusic}}
+\index{SfmlMusic@{SfmlMusic}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{SfmlMusic()}{SfmlMusic()}}
+{\footnotesize\ttfamily \label{class_sfml_music_a36cd3df180eb6d20482c16563aae81e0} 
+Sfml\+Music\+::\+Sfml\+Music (\begin{DoxyParamCaption}\item[{std\+::string}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Ray Music. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sfml_music_a5c486bb44afc1d9529c33c06957d4620}\index{SfmlMusic@{SfmlMusic}!getLength@{getLength}}
+\index{getLength@{getLength}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{getLength()}{getLength()}}
+{\footnotesize\ttfamily \label{class_sfml_music_a5c486bb44afc1d9529c33c06957d4620} 
+float Sfml\+Music\+::get\+Length (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Length of the music. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga1b29abcd0856f6868a0b325fa5e14e59}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_a2c57c98a65738f92bcb6554627cb3623}\index{SfmlMusic@{SfmlMusic}!getLoop@{getLoop}}
+\index{getLoop@{getLoop}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{getLoop()}{getLoop()}}
+{\footnotesize\ttfamily \label{class_sfml_music_a2c57c98a65738f92bcb6554627cb3623} 
+bool Sfml\+Music\+::get\+Loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get if the music is looping or not 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga2087cdcc5aabebb1bd6a63373ba765fc}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_a4a5758f10cce3a39ebfc6afb4fcc556c}\index{SfmlMusic@{SfmlMusic}!getTime@{getTime}}
+\index{getTime@{getTime}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily \label{class_sfml_music_a4a5758f10cce3a39ebfc6afb4fcc556c} 
+float Sfml\+Music\+::get\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the current time of the music in seconds. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga714c4b9f7490b153c38ecf616a556856}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_a92f7b916b507c21c173dc5d40e899cd6}\index{SfmlMusic@{SfmlMusic}!getVolume@{getVolume}}
+\index{getVolume@{getVolume}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{getVolume()}{getVolume()}}
+{\footnotesize\ttfamily \label{class_sfml_music_a92f7b916b507c21c173dc5d40e899cd6} 
+float Sfml\+Music\+::get\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get the volume of the music or if not set the master volume 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga5475b79de5f305f56ad6936852bdfdc3}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_a517edbed439d3163fe9aaea921a6af48}\index{SfmlMusic@{SfmlMusic}!isReady@{isReady}}
+\index{isReady@{isReady}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily \label{class_sfml_music_a517edbed439d3163fe9aaea921a6af48} 
+bool Sfml\+Music\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+check if the music is ready 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_a1cf67d6bfc2cd62a06e7a6e576863ea3}\index{SfmlMusic@{SfmlMusic}!pause@{pause}}
+\index{pause@{pause}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily \label{class_sfml_music_a1cf67d6bfc2cd62a06e7a6e576863ea3} 
+void Sfml\+Music\+::pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+pause the music 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_gaea2be8e2fde6f10767aafb6fefd5eb04}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_ad2a82c52b6f36e8a08ec297c9ce9b856}\index{SfmlMusic@{SfmlMusic}!play@{play}}
+\index{play@{play}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily \label{class_sfml_music_ad2a82c52b6f36e8a08ec297c9ce9b856} 
+void Sfml\+Music\+::play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+play the music 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga63a7f49c04d33b6c6d481ce63de7297e}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_a1290598a4f045d581c85578e3d68c5cb}\index{SfmlMusic@{SfmlMusic}!setLoop@{setLoop}}
+\index{setLoop@{setLoop}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{setLoop()}{setLoop()}}
+{\footnotesize\ttfamily \label{class_sfml_music_a1290598a4f045d581c85578e3d68c5cb} 
+void Sfml\+Music\+::set\+Loop (\begin{DoxyParamCaption}\item[{bool}]{loop}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the music to loop or not 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loop} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga7aa769b70c66143b639c792845c8d2c3}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_a85eba07a11009aa7f1785afa8c2b5510}\index{SfmlMusic@{SfmlMusic}!setTime@{setTime}}
+\index{setTime@{setTime}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily \label{class_sfml_music_a85eba07a11009aa7f1785afa8c2b5510} 
+void Sfml\+Music\+::set\+Time (\begin{DoxyParamCaption}\item[{float}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the time of the music in seconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_gafb1219fe65290e1edb440f61fdb7209c}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_af140d442a3d764516b9c570172567767}\index{SfmlMusic@{SfmlMusic}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily \label{class_sfml_music_af140d442a3d764516b9c570172567767} 
+void Sfml\+Music\+::set\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the volume of the music 
+
+
+\begin{DoxyParams}{Parameters}
+{\em volume} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga7d97abf91592741dadc6b0bb4150ae8e}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_ace4ac4b2090fe0214f7e2c2155cb8a64}\index{SfmlMusic@{SfmlMusic}!stop@{stop}}
+\index{stop@{stop}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{class_sfml_music_ace4ac4b2090fe0214f7e2c2155cb8a64} 
+void Sfml\+Music\+::stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+stop the music and reset it to the beginning 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga46b96c0934d772afc61966d1f2570d20}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_sfml_music_adefc48473d098c7efc6c2a7a62d0caca}\index{SfmlMusic@{SfmlMusic}!update@{update}}
+\index{update@{update}!SfmlMusic@{SfmlMusic}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_sfml_music_adefc48473d098c7efc6c2a7a62d0caca} 
+void Sfml\+Music\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+update the music 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga4457ac4a4273bd466dcd66c1cfa2127b}{graphic\+::\+IMusic}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sfml/audio/\mbox{\hyperlink{_sfml_music_8hpp}{Sfml\+Music.\+hpp}}\end{DoxyCompactItemize}

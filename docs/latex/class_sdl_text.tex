@@ -1,0 +1,85 @@
+\doxysection{Sdl\+Text Class Reference}
+\hypertarget{class_sdl_text}{}\label{class_sdl_text}\index{SdlText@{SdlText}}
+
+
+Sdl Text class.  
+
+
+
+
+{\ttfamily \#include $<$Sdl\+Text.\+hpp$>$}
+
+Inheritance diagram for Sdl\+Text\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sdl_text}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Sdl\+Text} (std\+::string data, std\+::string font)
+\item 
+bool \mbox{\hyperlink{group___s_d_l_gadd7a780ffbba7bea39c0743f48fd22a7}{is\+Ready}} () const override
+\item 
+void \mbox{\hyperlink{group___s_d_l_ga1f6188f064f19f2c0da5ba14c3a827f8}{set\+Text}} (std\+::string text) override
+\begin{DoxyCompactList}\small\item\em Set the Text value. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{group___s_d_l_gab7ee26d2592fdd7192e74d0f16d933f0}{get\+Text}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Text value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_ga496eb61428e548aaa74c9eb346b1cb97}{set\+Font}} (std\+::string font) override
+\begin{DoxyCompactList}\small\item\em Set the Font value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_gaf8aebf2d32040964bf1c75f30a55a5dc}{set\+Font\+Size}} (unsigned int size) override
+\begin{DoxyCompactList}\small\item\em Set the Font Size text. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{group___s_d_l_gaf9e69ffe4d57fe799163d547bf310765}{get\+Font\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Font Size text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_ga438ec872daaabfd92c96791c295ad54c}{set\+Text\+Color}} (\+\_\+\+\_\+color\+\_\+t color) override
+\begin{DoxyCompactList}\small\item\em Set the Text Color text. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+color\+\_\+t \mbox{\hyperlink{group___s_d_l_gaac617ed2257cf23288c90f5cca498806}{get\+Text\+Color}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Text Color text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_gaac845d0116288600b9bb92bff0daeeac}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} text. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group___s_d_l_ga9dec21a7473bc5734d2c19ffc448146a}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_ga02f98ba3e32b0517e2e1813fc7d57a7b}{set\+Rotation}} (float angle) override
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___s_d_l_ga2379fecdc5ec437a2946b4ef488d5d54}{get\+Rotation}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IText} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_text}{IText} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries \+\_\+data}
+\item 
+std\+::string {\bfseries \+\_\+path}
+\item 
+unsigned int {\bfseries \+\_\+size}
+\item 
+\+\_\+\+\_\+v2f\+\_\+t {\bfseries \+\_\+position}
+\item 
+float {\bfseries \+\_\+rotation}
+\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+font}
+\item 
+SDL\+\_\+\+Color {\bfseries \+\_\+color}
+\item 
+SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+surface}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+texture}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Sdl\+Window}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sdl Text class. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/graphic/\mbox{\hyperlink{_sdl_text_8hpp}{Sdl\+Text.\+hpp}}\end{DoxyCompactItemize}

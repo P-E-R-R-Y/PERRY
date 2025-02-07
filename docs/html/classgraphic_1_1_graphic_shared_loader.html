@@ -114,9 +114,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>Params</b> = std::st
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ga7acf7f852523798c34387c0201acba93" id="r_ga7acf7f852523798c34387c0201acba93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga7acf7f852523798c34387c0201acba93">GraphicSharedLoader</a> (Params file)</td></tr>
-<tr class="memdesc:ga7acf7f852523798c34387c0201acba93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic Shared Loader object with every symbols from the shared library.  <br /></td></tr>
-<tr class="separator:ga7acf7f852523798c34387c0201acba93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga551e7e7dd6044c702d9e626e18cab849" id="r_ga551e7e7dd6044c702d9e626e18cab849"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__graphic.html#ga551e7e7dd6044c702d9e626e18cab849">GraphicSharedLoader</a> (std::string file)</td></tr>
+<tr class="memdesc:ga551e7e7dd6044c702d9e626e18cab849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic Shared Loader object with every symbols from the shared library.  <br /></td></tr>
+<tr class="separator:ga551e7e7dd6044c702d9e626e18cab849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae57e5f774b3e374624f11612e9c91b85" id="r_gae57e5f774b3e374624f11612e9c91b85"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>~GraphicSharedLoader</b> ()=default</td></tr>
 <tr class="memdesc:gae57e5f774b3e374624f11612e9c91b85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Graphic Shared Loader object. <br /></td></tr>
@@ -151,8 +151,8 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deleteKeyboard</b> 
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deleteMouse</b> )(<a class="el" href="classgraphic_1_1_i_mouse.html">graphic::IMouse</a> *mouse)</td></tr>
 <tr class="separator:gae5872e940956c2d32afeb36910bf25c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaca2b6d2e677bb953d01dcc007bdea060" id="r_gaca2b6d2e677bb953d01dcc007bdea060"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>createPolygon</b> )(std::vector&lt; __v2f_t &gt; points)</td></tr>
-<tr class="memdesc:gaca2b6d2e677bb953d01dcc007bdea060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphics. <br /></td></tr>
+<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>createPolygon</b> )(std::vector&lt; <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> &gt; points)</td></tr>
+<tr class="memdesc:gaca2b6d2e677bb953d01dcc007bdea060"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D <br /></td></tr>
 <tr class="separator:gaca2b6d2e677bb953d01dcc007bdea060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga896a1e7e5b41fe4389ac696ce24ad4ee" id="r_ga896a1e7e5b41fe4389ac696ce24ad4ee"><td class="memItemLeft" align="right" valign="top">
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deletePolygon</b> )(<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon)</td></tr>
@@ -163,8 +163,15 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deletePolygon</b> )
 <tr class="memitem:ga4d5f7e795d99c0d681b63a4847e4af16" id="r_ga4d5f7e795d99c0d681b63a4847e4af16"><td class="memItemLeft" align="right" valign="top">
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deleteSprite</b> )(<a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite)</td></tr>
 <tr class="separator:ga4d5f7e795d99c0d681b63a4847e4af16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32198155877f91fe69a7c3ced8ed1a76" id="r_ga32198155877f91fe69a7c3ced8ed1a76"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classgraphic_1_1_i_text.html">graphic::IText</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>createText</b> )(std::string text, std::string font)</td></tr>
+<tr class="separator:ga32198155877f91fe69a7c3ced8ed1a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba06eeab643b981d339e60d2b10908f0" id="r_gaba06eeab643b981d339e60d2b10908f0"><td class="memItemLeft" align="right" valign="top">
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deleteText</b> )(<a class="el" href="classgraphic_1_1_i_text.html">graphic::IText</a> *text)</td></tr>
+<tr class="separator:gaba06eeab643b981d339e60d2b10908f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga635ee00309c37baacd48345487c06333" id="r_ga635ee00309c37baacd48345487c06333"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>createCamera</b> )()</td></tr>
+<tr class="memdesc:ga635ee00309c37baacd48345487c06333"><td class="mdescLeft">&#160;</td><td class="mdescRight">3D <br /></td></tr>
 <tr class="separator:ga635ee00309c37baacd48345487c06333"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga74a0682dc9a0cc2ec1a08131b6424a0c" id="r_ga74a0682dc9a0cc2ec1a08131b6424a0c"><td class="memItemLeft" align="right" valign="top">
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deleteCamera</b> )(<a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera)</td></tr>
@@ -175,6 +182,19 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deleteCamera</b> )(
 <tr class="memitem:ga9a7acb10c1b7115ccd167c387dbd3655" id="r_ga9a7acb10c1b7115ccd167c387dbd3655"><td class="memItemLeft" align="right" valign="top">
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deleteModel</b> )(<a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model)</td></tr>
 <tr class="separator:ga9a7acb10c1b7115ccd167c387dbd3655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8be8e6211635d19a03bc633dc58d7a11" id="r_ga8be8e6211635d19a03bc633dc58d7a11"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>createSound</b> )(std::string)</td></tr>
+<tr class="memdesc:ga8be8e6211635d19a03bc633dc58d7a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sound. <br /></td></tr>
+<tr class="separator:ga8be8e6211635d19a03bc633dc58d7a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaca451778edf3fc4269407725e7d1e34" id="r_gaaca451778edf3fc4269407725e7d1e34"><td class="memItemLeft" align="right" valign="top">
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deleteSound</b> )(<a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a> *sound)</td></tr>
+<tr class="separator:gaaca451778edf3fc4269407725e7d1e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3acdcb8066a73a1ca2f214e17f201ff0" id="r_ga3acdcb8066a73a1ca2f214e17f201ff0"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classgraphic_1_1_i_music.html">graphic::IMusic</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>createMusic</b> )(std::string)</td></tr>
+<tr class="separator:ga3acdcb8066a73a1ca2f214e17f201ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5292f9938b0f6fa8a6d3bcc57cfcd171" id="r_ga5292f9938b0f6fa8a6d3bcc57cfcd171"><td class="memItemLeft" align="right" valign="top">
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>deleteMusic</b> )(<a class="el" href="classgraphic_1_1_i_music.html">graphic::IMusic</a> *music)</td></tr>
+<tr class="separator:ga5292f9938b0f6fa8a6d3bcc57cfcd171"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>

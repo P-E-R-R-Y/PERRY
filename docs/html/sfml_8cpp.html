@@ -107,6 +107,10 @@ $(function(){ initResizable(false); });
 <code>#include &quot;<a class="el" href="_sfml_mouse_8hpp_source.html">event/SfmlMouse.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_sfml_sprite_8hpp_source.html">graphic/SfmlSprite.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_sfml_model_8hpp_source.html">graphic/SfmlModel.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_sfml_polygon_8hpp_source.html">graphic/SfmlPolygon.hpp</a>&quot;</code><br />
+<code>#include &quot;graphic/SfmlText.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="_sfml_sound_8hpp_source.html">audio/SfmlSound.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_sfml_music_8hpp_source.html">audio/SfmlMusic.hpp</a>&quot;</code><br />
 <code>#include &lt;string&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -175,6 +179,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteSprite</b> (<a 
 void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteModel</b> (<a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model)</td></tr>
 <tr class="memdesc:ga86f4defa19eab58adaf4ae8c058898c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy Sfml model <br /></td></tr>
 <tr class="separator:ga86f4defa19eab58adaf4ae8c058898c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4b8858c0dc68f0f83bfa2d5dd172a62f" id="r_ga4b8858c0dc68f0f83bfa2d5dd172a62f"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classgraphic_1_1_i_text.html">graphic::IText</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createText</b> (std::string text, std::string font)</td></tr>
+<tr class="memdesc:ga4b8858c0dc68f0f83bfa2d5dd172a62f"><td class="mdescLeft">&#160;</td><td class="mdescRight">create Sfml text <br /></td></tr>
+<tr class="separator:ga4b8858c0dc68f0f83bfa2d5dd172a62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f3d0d9baae4b6896c9c9939ad4b9600" id="r_ga2f3d0d9baae4b6896c9c9939ad4b9600"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteText</b> (<a class="el" href="classgraphic_1_1_i_text.html">graphic::IText</a> *text)</td></tr>
+<tr class="memdesc:ga2f3d0d9baae4b6896c9c9939ad4b9600"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy Sfml text <br /></td></tr>
+<tr class="separator:ga2f3d0d9baae4b6896c9c9939ad4b9600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0e5832d4f4051d6575c60a138bdaa23a" id="r_ga0e5832d4f4051d6575c60a138bdaa23a"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createSound</b> (std::string path)</td></tr>
+<tr class="memdesc:ga0e5832d4f4051d6575c60a138bdaa23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">create Sfml sound <br /></td></tr>
+<tr class="separator:ga0e5832d4f4051d6575c60a138bdaa23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6e56b6234a6ae86432b15f563217151" id="r_gad6e56b6234a6ae86432b15f563217151"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteSound</b> (<a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a> *sound)</td></tr>
+<tr class="separator:gad6e56b6234a6ae86432b15f563217151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1548e359cee47b69c8cff6cfe752326c" id="r_ga1548e359cee47b69c8cff6cfe752326c"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classgraphic_1_1_i_music.html">graphic::IMusic</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createMusic</b> (std::string path)</td></tr>
+<tr class="memdesc:ga1548e359cee47b69c8cff6cfe752326c"><td class="mdescLeft">&#160;</td><td class="mdescRight">create Sfml music <br /></td></tr>
+<tr class="separator:ga1548e359cee47b69c8cff6cfe752326c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37745d7eaaa2632d3ab2c4c09b0dffc0" id="r_ga37745d7eaaa2632d3ab2c4c09b0dffc0"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteMusic</b> (<a class="el" href="classgraphic_1_1_i_music.html">graphic::IMusic</a> *music)</td></tr>
+<tr class="memdesc:ga37745d7eaaa2632d3ab2c4c09b0dffc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy Sfml music <br /></td></tr>
+<tr class="separator:ga37745d7eaaa2632d3ab2c4c09b0dffc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1b612f3670f20ad2c7ed3d7a21acc6b5" id="r_ga1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="memItemLeft" align="right" valign="top">
 const char *&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> ()</td></tr>
 <tr class="memdesc:ga1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the name of the library <br /></td></tr>

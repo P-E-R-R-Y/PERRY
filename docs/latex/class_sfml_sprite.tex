@@ -22,27 +22,33 @@ Inheritance diagram for Sfml\+Sprite\+:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em Construct a new Sfml Sprite object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{group___s_f_m_l_ga43587aab7d5762108568c65232e31fb8}{is\+Ready}} () const override
 \begin{DoxyCompactList}\small\item\em check if the sprite is ready \end{DoxyCompactList}\item 
-\+\_\+\+\_\+v4f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga1b6814799269cbec3f07427965df97a6}{get\+Bounds}} () const override
+\mbox{\hyperlink{structtype_1_1____v4f__s}{\+\_\+\+\_\+v4f\+\_\+t}} \mbox{\hyperlink{group___s_f_m_l_ga1b6814799269cbec3f07427965df97a6}{get\+Bounds}} () const override
 \begin{DoxyCompactList}\small\item\em Get the Bounds object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___s_f_m_l_ga7e44b19b49e74f7525a9026df19f1947}{set\+Crop}} (\+\_\+\+\_\+v4f\+\_\+t rect) override
+void \mbox{\hyperlink{group___s_f_m_l_ga7e44b19b49e74f7525a9026df19f1947}{set\+Crop}} (\mbox{\hyperlink{structtype_1_1____v4f__s}{\+\_\+\+\_\+v4f\+\_\+t}} rect) override
 \begin{DoxyCompactList}\small\item\em Set the Crop object. \end{DoxyCompactList}\item 
-\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_ga56ce6dba47ee9764d2e780f6ef2a4729}{get\+Position}} () const override
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{group___s_f_m_l_ga56ce6dba47ee9764d2e780f6ef2a4729}{get\+Position}} () const override
 \begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___s_f_m_l_gafa785fd42ef4de9aab70eff27ba8aacc}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position) override
+void \mbox{\hyperlink{group___s_f_m_l_gafa785fd42ef4de9aab70eff27ba8aacc}{set\+Position}} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} position) override
 \begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{group___s_f_m_l_gaacf999c674358e524f41fd302479be98}{get\+Rotation}} () const override
 \begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group___s_f_m_l_gac80478281cd7c3386dad009cee9ac42f}{set\+Rotation}} (float angle, bool is\+Rad=false) override
 \begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
-\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{group___s_f_m_l_gadc048e63cab334b7b73e4b416220374b}{get\+Size}} () const override
+\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} \mbox{\hyperlink{group___s_f_m_l_gadc048e63cab334b7b73e4b416220374b}{get\+Size}} () const override
 \begin{DoxyCompactList}\small\item\em Get the Size object. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{group___s_f_m_l_gaaac0ec9ad459089e2fab0c484d8544bb}{set\+Size}} (\+\_\+\+\_\+v2f\+\_\+t size) override
+void \mbox{\hyperlink{group___s_f_m_l_gaaac0ec9ad459089e2fab0c484d8544bb}{set\+Size}} (\mbox{\hyperlink{structtype_1_1____v2f__s}{\+\_\+\+\_\+v2f\+\_\+t}} size) override
 \begin{DoxyCompactList}\small\item\em Set the Size object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}}}
 \begin{DoxyCompactItemize}
 \item 
 virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+ISprite} ()=default
-\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_sprite}{ISprite} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_sprite}{ISprite} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga56dad5536d7c8f370a17842b966a9813}{set\+Crop}} (\+\_\+\+\_\+v4f\+\_\+t rect)=0
+\begin{DoxyCompactList}\small\item\em Crop the sprite with a rectangle. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga7da368451eae7bdc6919d238387f416a}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position)=0
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{group__graphic_ga487198bf197d8880aecd8a237e07c9fd}{set\+Size}} (\+\_\+\+\_\+v2f\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Set the Sprite size. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 

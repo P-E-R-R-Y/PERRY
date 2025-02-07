@@ -1,0 +1,258 @@
+\doxysection{graphic\+::IText Interface Reference}
+\hypertarget{classgraphic_1_1_i_text}{}\label{classgraphic_1_1_i_text}\index{graphic::IText@{graphic::IText}}
+
+
+Text interface.  
+
+
+
+
+{\ttfamily \#include $<$IText.\+hpp$>$}
+
+Inheritance diagram for graphic\+::IText\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgraphic_1_1_i_text}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classgraphic_1_1_i_text_a1f6cbcb8d4ddc916fdd0a538e58d680d}\label{classgraphic_1_1_i_text_a1f6cbcb8d4ddc916fdd0a538e58d680d} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IText} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_text}{IText} object. \end{DoxyCompactList}\item 
+\Hypertarget{classgraphic_1_1_i_text_acff016458e1a11b7c5094b973b8f5a5e}\label{classgraphic_1_1_i_text_acff016458e1a11b7c5094b973b8f5a5e} 
+virtual bool {\bfseries is\+Ready} () const =0
+\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_text_a8be9b356bbc958eb3df2df592c1e1cb6}{set\+Text}} (const std\+::string text)=0
+\begin{DoxyCompactList}\small\item\em Set the Text value. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classgraphic_1_1_i_text_a26668766479eadb4b3d599fb98b6c038}{get\+Text}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Text value. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_text_a2af4ac60fd595ab31449a79c6b455f95}{set\+Font}} (std\+::string path)=0
+\begin{DoxyCompactList}\small\item\em Set the Font value. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_text_adf5bcb210926241091d0a2b02fb7d573}{set\+Font\+Size}} (unsigned int size)=0
+\begin{DoxyCompactList}\small\item\em Set the Font Size text. \end{DoxyCompactList}\item 
+virtual unsigned int \mbox{\hyperlink{classgraphic_1_1_i_text_a007d8adedcb85cc19a583fa465986873}{get\+Font\+Size}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Font Size text. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_text_af7331269912ef0284c26c11d45a0c365}{set\+Text\+Color}} (\+\_\+\+\_\+color\+\_\+t color)=0
+\begin{DoxyCompactList}\small\item\em Set the Text Color text. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+color\+\_\+t \mbox{\hyperlink{classgraphic_1_1_i_text_a8931fc8567dcd238f7b5938cd4ad2447}{get\+Text\+Color}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Text Color text. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_text_a77df1cbc93331b518843e20b0495f21f}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position)=0
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} text. \end{DoxyCompactList}\item 
+virtual \+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{classgraphic_1_1_i_text_acb42fcd8bca082fea58540a4c47f9be8}{get\+Position}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} text. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgraphic_1_1_i_text_a49d81f08b4cb9ffbd2518289cd3dfbbf}{set\+Rotation}} (float angle)=0
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{classgraphic_1_1_i_text_aea78a0cfad6529689d7c5e28f2f005be}{get\+Rotation}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Text interface. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classgraphic_1_1_i_text_a007d8adedcb85cc19a583fa465986873}\index{graphic::IText@{graphic::IText}!getFontSize@{getFontSize}}
+\index{getFontSize@{getFontSize}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{getFontSize()}{getFontSize()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_a007d8adedcb85cc19a583fa465986873} 
+virtual unsigned int graphic\+::\+IText\+::get\+Font\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Font Size text. 
+
+\begin{DoxyReturn}{Returns}
+unsigned int 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_a09191e67d0907ca789046e3a3e24e214}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_gaf9e69ffe4d57fe799163d547bf310765}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_a3dce1d0e5568ba340e8650101d7277e0}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_acb42fcd8bca082fea58540a4c47f9be8}\index{graphic::IText@{graphic::IText}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_acb42fcd8bca082fea58540a4c47f9be8} 
+virtual \+\_\+\+\_\+v2f\+\_\+t graphic\+::\+IText\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} text. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_a408ba725f4f4a59bca918cac39c9687f}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_ga9dec21a7473bc5734d2c19ffc448146a}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_a9c69c76261e567ee5e1a66dc82759a8c}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_aea78a0cfad6529689d7c5e28f2f005be}\index{graphic::IText@{graphic::IText}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_aea78a0cfad6529689d7c5e28f2f005be} 
+virtual float graphic\+::\+IText\+::get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Rotation object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_a6e7676bdb2bda5b888453bbe420c336f}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_ga2379fecdc5ec437a2946b4ef488d5d54}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_aa33c71eeb6e738d87196627471668e64}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_a26668766479eadb4b3d599fb98b6c038}\index{graphic::IText@{graphic::IText}!getText@{getText}}
+\index{getText@{getText}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{getText()}{getText()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_a26668766479eadb4b3d599fb98b6c038} 
+virtual std\+::string graphic\+::\+IText\+::get\+Text (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Text value. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_a2fb862b25ad719e453b07286c2039e11}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_gab7ee26d2592fdd7192e74d0f16d933f0}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_a9caa145d9937eeb479ab74383d5eb4e6}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_a8931fc8567dcd238f7b5938cd4ad2447}\index{graphic::IText@{graphic::IText}!getTextColor@{getTextColor}}
+\index{getTextColor@{getTextColor}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{getTextColor()}{getTextColor()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_a8931fc8567dcd238f7b5938cd4ad2447} 
+virtual \+\_\+\+\_\+color\+\_\+t graphic\+::\+IText\+::get\+Text\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Text Color text. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v4f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_acdf7c48480704effcb2c9a3af68839f4}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_gaac617ed2257cf23288c90f5cca498806}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_a73581a77a961a6fa50c8391e7459f92c}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_a2af4ac60fd595ab31449a79c6b455f95}\index{graphic::IText@{graphic::IText}!setFont@{setFont}}
+\index{setFont@{setFont}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{setFont()}{setFont()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_a2af4ac60fd595ab31449a79c6b455f95} 
+virtual void graphic\+::\+IText\+::set\+Font (\begin{DoxyParamCaption}\item[{std\+::string}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Font value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_aa7cc6630323190d9d27e42e42b9624d3}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_ga496eb61428e548aaa74c9eb346b1cb97}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_a4677d8686bd6b799e4d6d7c1ab5a8fce}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_adf5bcb210926241091d0a2b02fb7d573}\index{graphic::IText@{graphic::IText}!setFontSize@{setFontSize}}
+\index{setFontSize@{setFontSize}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{setFontSize()}{setFontSize()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_adf5bcb210926241091d0a2b02fb7d573} 
+virtual void graphic\+::\+IText\+::set\+Font\+Size (\begin{DoxyParamCaption}\item[{unsigned int}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Font Size text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_ab4c6b58039e7c67c096c337e33fcd7ac}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_gaf8aebf2d32040964bf1c75f30a55a5dc}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_a08dc75642dcf785ec0c9f62407484695}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_a77df1cbc93331b518843e20b0495f21f}\index{graphic::IText@{graphic::IText}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_a77df1cbc93331b518843e20b0495f21f} 
+virtual void graphic\+::\+IText\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_a7492525ded1c379b0f3c36d6e2fcbf87}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_gaac845d0116288600b9bb92bff0daeeac}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_ad9908b78b9d8abee4b81aec664f2a39c}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_a49d81f08b4cb9ffbd2518289cd3dfbbf}\index{graphic::IText@{graphic::IText}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_a49d81f08b4cb9ffbd2518289cd3dfbbf} 
+virtual void graphic\+::\+IText\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{angle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_a4efb04b837d7027ad6fdea21e61c20a2}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_ga02f98ba3e32b0517e2e1813fc7d57a7b}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_a1ba72c35a9143f0b6bd094c81a66253e}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_a8be9b356bbc958eb3df2df592c1e1cb6}\index{graphic::IText@{graphic::IText}!setText@{setText}}
+\index{setText@{setText}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{setText()}{setText()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_a8be9b356bbc958eb3df2df592c1e1cb6} 
+virtual void graphic\+::\+IText\+::set\+Text (\begin{DoxyParamCaption}\item[{const std\+::string}]{text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Text value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_a2313c9b3ceb6a786257746194746e3ff}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_ga1f6188f064f19f2c0da5ba14c3a827f8}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_a4e5adc791b69dcf6134c1de5d1e329c4}{Sfml\+Text}}.
+
+\Hypertarget{classgraphic_1_1_i_text_af7331269912ef0284c26c11d45a0c365}\index{graphic::IText@{graphic::IText}!setTextColor@{setTextColor}}
+\index{setTextColor@{setTextColor}!graphic::IText@{graphic::IText}}
+\doxysubsubsection{\texorpdfstring{setTextColor()}{setTextColor()}}
+{\footnotesize\ttfamily \label{classgraphic_1_1_i_text_af7331269912ef0284c26c11d45a0c365} 
+virtual void graphic\+::\+IText\+::set\+Text\+Color (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+color\+\_\+t}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set the Text Color text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_ray_text_aec92e857acb7c335d02e17c0b474b6ee}{Ray\+Text}}, \mbox{\hyperlink{group___s_d_l_ga438ec872daaabfd92c96791c295ad54c}{Sdl\+Text}}, and \mbox{\hyperlink{class_sfml_text_ab01079ad23feeb85bbeb668c845122da}{Sfml\+Text}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/interfaces/graphic/graphic/\mbox{\hyperlink{_i_text_8hpp}{IText.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,55 @@
+\doxysection{Sdl\+Music Class Reference}
+\hypertarget{class_sdl_music}{}\label{class_sdl_music}\index{SdlMusic@{SdlMusic}}
+Inheritance diagram for Sdl\+Music\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sdl_music}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group___s_d_l_ga4cb4f2a5414d61735ec96ef6f4ceaadd}{Sdl\+Music}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Construct a new Ray Music. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Sdl\+Music} () override
+\begin{DoxyCompactList}\small\item\em Destroy the Ray Music. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_d_l_gaae64ce4f767d37a11b39a2038f3d8247}{is\+Ready}} () const override
+\item 
+void \mbox{\hyperlink{group___s_d_l_ga8ca773b1f9ed33843fe96f31fce56dc5}{play}} () override
+\begin{DoxyCompactList}\small\item\em play or resume the music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_ga71741e73770325fad046663cb499fbd5}{pause}} () override
+\begin{DoxyCompactList}\small\item\em pause the music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_ga494bdacb2b49160c13e6a1bfe2cf5117}{stop}} () override
+\begin{DoxyCompactList}\small\item\em stop the music and reset it to the beginning \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_ga1697cc689b52fad84da85bba87d9eb26}{update}} () override
+\begin{DoxyCompactList}\small\item\em update the music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_gaf5d20b4fac13231f26dd46bf3bbe4005}{set\+Volume}} (float volume) override
+\begin{DoxyCompactList}\small\item\em set the volume of the music \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___s_d_l_ga30994158e786d9aa379f6668e8f01756}{get\+Volume}} () const override
+\begin{DoxyCompactList}\small\item\em get the volume of the music or if not set the master volume \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_gadd4b657da6f1a55c3e054c73c75604c9}{set\+Loop}} (bool loop) override
+\begin{DoxyCompactList}\small\item\em set the music to loop or not \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group___s_d_l_gaf99cc332da12431c4edc95cf962679e7}{get\+Loop}} () const override
+\begin{DoxyCompactList}\small\item\em get if the music is looping or not \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_ga94a59a9e2a7bd5cea60d1529df53797c}{set\+Time}} (float position) override
+\begin{DoxyCompactList}\small\item\em Set the time of the music in seconds. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___s_d_l_gaf2201f790221be9d96c2f6d15ef3ee6d}{get\+Time}} () const override
+\begin{DoxyCompactList}\small\item\em Get the current time of the music in seconds. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group___s_d_l_gaee0f5c06b795e8c1443b5c448af1c3fc}{get\+Length}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Length of the music. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Mix\+\_\+\+Music \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+music}
+\item 
+bool {\bfseries \+\_\+loop}
+\item 
+bool {\bfseries \+\_\+pause}
+\item 
+float {\bfseries \+\_\+volume}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/sdl/audio/\mbox{\hyperlink{_sdl_music_8hpp}{Sdl\+Music.\+hpp}}\end{DoxyCompactItemize}

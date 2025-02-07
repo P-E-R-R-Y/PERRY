@@ -101,12 +101,16 @@ $(function(){ initResizable(false); });
 <p>graphic shared library for raylib implementation  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_ray_window_8hpp_source.html">window/RayWindow.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_ray_sprite_8hpp_source.html">graphic/RaySprite.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_ray_polygon_8hpp_source.html">graphic/RayPolygon.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_ray_text_8hpp_source.html">graphic/RayText.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_ray_model_8hpp_source.html">graphic/RayModel.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_ray_camera_8hpp_source.html">window/RayCamera.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_ray_keyboard_8hpp_source.html">event/RayKeyboard.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_ray_mouse_8hpp_source.html">event/RayMouse.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_ray_event_8hpp_source.html">event/RayEvent.hpp</a>&quot;</code><br />
+<code>#include &quot;audio/RaySound.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="_ray_music_8hpp_source.html">audio/RayMusic.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -152,12 +156,30 @@ Functions</h2></td></tr>
 <tr class="memitem:ga7ac2d74301041e22c583cf1a5e2a4024" id="r_ga7ac2d74301041e22c583cf1a5e2a4024"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga7ac2d74301041e22c583cf1a5e2a4024">deleteSprite</a> (<a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite)</td></tr>
 <tr class="memdesc:ga7ac2d74301041e22c583cf1a5e2a4024"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a sprite  <br /></td></tr>
 <tr class="separator:ga7ac2d74301041e22c583cf1a5e2a4024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4b8858c0dc68f0f83bfa2d5dd172a62f" id="r_ga4b8858c0dc68f0f83bfa2d5dd172a62f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_text.html">graphic::IText</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga4b8858c0dc68f0f83bfa2d5dd172a62f">createText</a> (std::string text, std::string font)</td></tr>
+<tr class="memdesc:ga4b8858c0dc68f0f83bfa2d5dd172a62f"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a text  <br /></td></tr>
+<tr class="separator:ga4b8858c0dc68f0f83bfa2d5dd172a62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f3d0d9baae4b6896c9c9939ad4b9600" id="r_ga2f3d0d9baae4b6896c9c9939ad4b9600"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga2f3d0d9baae4b6896c9c9939ad4b9600">deleteText</a> (<a class="el" href="classgraphic_1_1_i_text.html">graphic::IText</a> *text)</td></tr>
+<tr class="memdesc:ga2f3d0d9baae4b6896c9c9939ad4b9600"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a text  <br /></td></tr>
+<tr class="separator:ga2f3d0d9baae4b6896c9c9939ad4b9600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad84e5fbd85db7969676a38ac10819452" id="r_gad84e5fbd85db7969676a38ac10819452"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#gad84e5fbd85db7969676a38ac10819452">createModel</a> ()</td></tr>
 <tr class="memdesc:gad84e5fbd85db7969676a38ac10819452"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a model  <br /></td></tr>
 <tr class="separator:gad84e5fbd85db7969676a38ac10819452"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga86f4defa19eab58adaf4ae8c058898c5" id="r_ga86f4defa19eab58adaf4ae8c058898c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga86f4defa19eab58adaf4ae8c058898c5">deleteModel</a> (<a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model)</td></tr>
 <tr class="memdesc:ga86f4defa19eab58adaf4ae8c058898c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a model  <br /></td></tr>
 <tr class="separator:ga86f4defa19eab58adaf4ae8c058898c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab016de780f35dbfb835b8d8a6ef9ef7e" id="r_gab016de780f35dbfb835b8d8a6ef9ef7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#gab016de780f35dbfb835b8d8a6ef9ef7e">createSound</a> (std::string sound)</td></tr>
+<tr class="memdesc:gab016de780f35dbfb835b8d8a6ef9ef7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Audio.  <br /></td></tr>
+<tr class="separator:gab016de780f35dbfb835b8d8a6ef9ef7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6e56b6234a6ae86432b15f563217151" id="r_gad6e56b6234a6ae86432b15f563217151"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#gad6e56b6234a6ae86432b15f563217151">deleteSound</a> (<a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a> *sound)</td></tr>
+<tr class="memdesc:gad6e56b6234a6ae86432b15f563217151"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a sound  <br /></td></tr>
+<tr class="separator:gad6e56b6234a6ae86432b15f563217151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4b81701f69e25664463110015a69f7e4" id="r_ga4b81701f69e25664463110015a69f7e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgraphic_1_1_i_music.html">graphic::IMusic</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga4b81701f69e25664463110015a69f7e4">createMusic</a> (std::string music)</td></tr>
+<tr class="memdesc:ga4b81701f69e25664463110015a69f7e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a music  <br /></td></tr>
+<tr class="separator:ga4b81701f69e25664463110015a69f7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37745d7eaaa2632d3ab2c4c09b0dffc0" id="r_ga37745d7eaaa2632d3ab2c4c09b0dffc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga37745d7eaaa2632d3ab2c4c09b0dffc0">deleteMusic</a> (<a class="el" href="classgraphic_1_1_i_music.html">graphic::IMusic</a> *music)</td></tr>
+<tr class="memdesc:ga37745d7eaaa2632d3ab2c4c09b0dffc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a music  <br /></td></tr>
+<tr class="separator:ga37745d7eaaa2632d3ab2c4c09b0dffc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1b612f3670f20ad2c7ed3d7a21acc6b5" id="r_ga1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___raylib.html#ga1b612f3670f20ad2c7ed3d7a21acc6b5">getName</a> ()</td></tr>
 <tr class="memdesc:ga1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the name of the library  <br /></td></tr>
 <tr class="separator:ga1b612f3670f20ad2c7ed3d7a21acc6b5"><td class="memSeparator" colspan="2">&#160;</td></tr>

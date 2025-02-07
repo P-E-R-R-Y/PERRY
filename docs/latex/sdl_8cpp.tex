@@ -5,14 +5,17 @@
 shared graphic/sdl library symbols  
 
 
-{\ttfamily \#include "{}window/\+Sdl\+Window.\+hpp"{}}\newline
-{\ttfamily \#include "{}window/\+Sdl\+Camera.\+hpp"{}}\newline
-{\ttfamily \#include "{}event/\+Sdl\+Event.\+hpp"{}}\newline
-{\ttfamily \#include "{}event/\+Sdl\+Keyboard.\+hpp"{}}\newline
-{\ttfamily \#include "{}event/\+Sdl\+Mouse.\+hpp"{}}\newline
-{\ttfamily \#include "{}graphic/\+Sdl\+Polygon.\+hpp"{}}\newline
-{\ttfamily \#include "{}graphic/\+Sdl\+Model.\+hpp"{}}\newline
-{\ttfamily \#include "{}graphic/\+Sdl\+Sprite.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Window.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Camera.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Event.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Keyboard.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Mouse.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Polygon.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Model.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Sprite.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Text.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Sound.\+hpp"{}}\newline
+{\ttfamily \#include "{}Sdl\+Music.\+hpp"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -44,10 +47,22 @@ void \mbox{\hyperlink{group___s_d_l_ga634a535acef8fb288ed32dc07ff92322}{delete\+
 \begin{DoxyCompactList}\small\item\em create Sdl sprite \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group___s_d_l_ga7ac2d74301041e22c583cf1a5e2a4024}{delete\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite)
 \begin{DoxyCompactList}\small\item\em delete Sdl sprite \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}} \texorpdfstring{$\ast$}{*} {\bfseries create\+Text} (std\+::string data, std\+::string font)
+\begin{DoxyCompactList}\small\item\em create Sdl text \end{DoxyCompactList}\item 
+void {\bfseries delete\+Text} (\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}} \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em delete Sdl text \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___s_d_l_gad84e5fbd85db7969676a38ac10819452}{create\+Model}} ()
 \begin{DoxyCompactList}\small\item\em create Sdl model \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group___s_d_l_ga86f4defa19eab58adaf4ae8c058898c5}{delete\+Model}} (\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model)
 \begin{DoxyCompactList}\small\item\em delete Sdl model \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic\+::\+ISound}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___s_d_l_gab016de780f35dbfb835b8d8a6ef9ef7e}{create\+Sound}} (std\+::string sound)
+\begin{DoxyCompactList}\small\item\em create Sdl Sound \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_gad6e56b6234a6ae86432b15f563217151}{delete\+Sound}} (\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic\+::\+ISound}} \texorpdfstring{$\ast$}{*}sound)
+\begin{DoxyCompactList}\small\item\em delete Sdl sound \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___s_d_l_ga4b81701f69e25664463110015a69f7e4}{create\+Music}} (std\+::string music)
+\begin{DoxyCompactList}\small\item\em create Sdl music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___s_d_l_ga37745d7eaaa2632d3ab2c4c09b0dffc0}{delete\+Music}} (\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}} \texorpdfstring{$\ast$}{*}music)
+\begin{DoxyCompactList}\small\item\em delete Sdl music \end{DoxyCompactList}\item 
 const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___s_d_l_ga1b612f3670f20ad2c7ed3d7a21acc6b5}{get\+Name}} ()
 \begin{DoxyCompactList}\small\item\em get the name of the library \end{DoxyCompactList}\item 
 const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___s_d_l_ga5a9e1cf52200ed570b486bf1df100e08}{get\+Type}} ()

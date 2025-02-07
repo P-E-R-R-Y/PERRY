@@ -120,26 +120,33 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="comment">//Core</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            getType = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *(*)()<span class="keyword">&gt;</span>(<a class="code hl_variable" href="group__dynamic.html#ga74377da9545c3d3c8796a8fb420011aa">dl</a>.findSymbol(<span class="stringliteral">&quot;getType&quot;</span>));</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            getName = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *(*)()<span class="keyword">&gt;</span>(<a class="code hl_variable" href="group__dynamic.html#ga74377da9545c3d3c8796a8fb420011aa">dl</a>.findSymbol(<span class="stringliteral">&quot;getName&quot;</span>));</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Constructor&gt;&gt; &quot;</span> &lt;&lt; file &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            if (!getType()) {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                std::cerr &lt;&lt; <span class="stringliteral">&quot;Failed to find symbol getType() in: &quot;</span> &lt;&lt; file &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            getName = <span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span> *(*)()<span class="keyword">&gt;</span>(<a class="code hl_variable" href="group__dynamic.html#ga74377da9545c3d3c8796a8fb420011aa">dl</a>.findSymbol(<span class="stringliteral">&quot;getName&quot;</span>));</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">if</span> (!getName()) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                std::cerr &lt;&lt; <span class="stringliteral">&quot;Failed to find symbol getName() in: &quot;</span> &lt;&lt; file &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Constructor&gt;&gt; &quot;</span> &lt;&lt; file &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="group__dynamic.html#ga1321489133ffdf8d3dca19f4db1442ad">   50</a></span>        <a class="code hl_function" href="group__dynamic.html#ga1321489133ffdf8d3dca19f4db1442ad">~InfoSharedLoader</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="group__dynamic.html#ga74377da9545c3d3c8796a8fb420011aa">   56</a></span>        <a class="code hl_class" href="class_dynamic_loader.html">DynamicLoader</a> <a class="code hl_variable" href="group__dynamic.html#ga74377da9545c3d3c8796a8fb420011aa">dl</a>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *(*getType)();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *(*getName)();</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>};</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="group__dynamic.html#ga1321489133ffdf8d3dca19f4db1442ad">   57</a></span>        <a class="code hl_function" href="group__dynamic.html#ga1321489133ffdf8d3dca19f4db1442ad">~InfoSharedLoader</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="group__dynamic.html#ga74377da9545c3d3c8796a8fb420011aa">   63</a></span>        <a class="code hl_class" href="class_dynamic_loader.html">DynamicLoader</a> <a class="code hl_variable" href="group__dynamic.html#ga74377da9545c3d3c8796a8fb420011aa">dl</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *(*getType)();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *(*getName)();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>};</div>
 </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif </span><span class="comment">//INFO_SHARED_LOADER_HPP</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif </span><span class="comment">//INFO_SHARED_LOADER_HPP</span></div>
 <div class="ttc" id="aclass_dynamic_loader_html"><div class="ttname"><a href="class_dynamic_loader.html">DynamicLoader</a></div><div class="ttdoc">load shared libraries &amp; retrieve symbols</div><div class="ttdef"><b>Definition</b> DynamicLoader.hpp:24</div></div>
 <div class="ttc" id="agroup__dynamic_html_ga0ca457ddd9cf8ae8dce01fbabf22d3d4"><div class="ttname"><a href="group__dynamic.html#ga0ca457ddd9cf8ae8dce01fbabf22d3d4">InfoSharedLoader::InfoSharedLoader</a></div><div class="ttdeci">InfoSharedLoader(std::string file)</div><div class="ttdoc">Construct a new Info Shared Loader object with every symbols from the shared library.</div><div class="ttdef"><b>Definition</b> InfoSharedLoader.hpp:33</div></div>
 <div class="ttc" id="agroup__dynamic_html_ga1321489133ffdf8d3dca19f4db1442ad"><div class="ttname"><a href="group__dynamic.html#ga1321489133ffdf8d3dca19f4db1442ad">InfoSharedLoader::~InfoSharedLoader</a></div><div class="ttdeci">~InfoSharedLoader()=default</div><div class="ttdoc">Destroy the Info Shared Loader object.</div></div>
-<div class="ttc" id="agroup__dynamic_html_ga74377da9545c3d3c8796a8fb420011aa"><div class="ttname"><a href="group__dynamic.html#ga74377da9545c3d3c8796a8fb420011aa">InfoSharedLoader::dl</a></div><div class="ttdeci">DynamicLoader dl</div><div class="ttdoc">Window.</div><div class="ttdef"><b>Definition</b> InfoSharedLoader.hpp:56</div></div>
+<div class="ttc" id="agroup__dynamic_html_ga74377da9545c3d3c8796a8fb420011aa"><div class="ttname"><a href="group__dynamic.html#ga74377da9545c3d3c8796a8fb420011aa">InfoSharedLoader::dl</a></div><div class="ttdeci">DynamicLoader dl</div><div class="ttdoc">Window.</div><div class="ttdef"><b>Definition</b> InfoSharedLoader.hpp:63</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -117,6 +117,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraphic_1_1_i_music.html">graphic::IMusic</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraphic_1_1_i_event.html">graphic::IEvent</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event interface.  <a href="classgraphic_1_1_i_event.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +150,10 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgraphic_1_1_i_window.html">graphic::IWindow</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Window interface.  <a href="classgraphic_1_1_i_window.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ray_sound.html">RaySound</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sfml_sound.html">SfmlSound</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -306,6 +314,58 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga52b081bfc7fa987dfe8107dcc4b11eab" id="r_ga52b081bfc7fa987dfe8107dcc4b11eab"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga52b081bfc7fa987dfe8107dcc4b11eab">graphic::IMusic::isReady</a> () const =0</td></tr>
+<tr class="separator:ga52b081bfc7fa987dfe8107dcc4b11eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63a7f49c04d33b6c6d481ce63de7297e" id="r_ga63a7f49c04d33b6c6d481ce63de7297e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga63a7f49c04d33b6c6d481ce63de7297e">graphic::IMusic::play</a> ()=0</td></tr>
+<tr class="memdesc:ga63a7f49c04d33b6c6d481ce63de7297e"><td class="mdescLeft">&#160;</td><td class="mdescRight">play the music  <br /></td></tr>
+<tr class="separator:ga63a7f49c04d33b6c6d481ce63de7297e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaea2be8e2fde6f10767aafb6fefd5eb04" id="r_gaea2be8e2fde6f10767aafb6fefd5eb04"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaea2be8e2fde6f10767aafb6fefd5eb04">graphic::IMusic::pause</a> ()=0</td></tr>
+<tr class="memdesc:gaea2be8e2fde6f10767aafb6fefd5eb04"><td class="mdescLeft">&#160;</td><td class="mdescRight">pause the music  <br /></td></tr>
+<tr class="separator:gaea2be8e2fde6f10767aafb6fefd5eb04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46b96c0934d772afc61966d1f2570d20" id="r_ga46b96c0934d772afc61966d1f2570d20"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga46b96c0934d772afc61966d1f2570d20">graphic::IMusic::stop</a> ()=0</td></tr>
+<tr class="memdesc:ga46b96c0934d772afc61966d1f2570d20"><td class="mdescLeft">&#160;</td><td class="mdescRight">stop the music and reset it to the beginning  <br /></td></tr>
+<tr class="separator:ga46b96c0934d772afc61966d1f2570d20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4457ac4a4273bd466dcd66c1cfa2127b" id="r_ga4457ac4a4273bd466dcd66c1cfa2127b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4457ac4a4273bd466dcd66c1cfa2127b">graphic::IMusic::update</a> ()=0</td></tr>
+<tr class="memdesc:ga4457ac4a4273bd466dcd66c1cfa2127b"><td class="mdescLeft">&#160;</td><td class="mdescRight">update the music  <br /></td></tr>
+<tr class="separator:ga4457ac4a4273bd466dcd66c1cfa2127b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d97abf91592741dadc6b0bb4150ae8e" id="r_ga7d97abf91592741dadc6b0bb4150ae8e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7d97abf91592741dadc6b0bb4150ae8e">graphic::IMusic::setVolume</a> (float volume)=0</td></tr>
+<tr class="memdesc:ga7d97abf91592741dadc6b0bb4150ae8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the volume of the music  <br /></td></tr>
+<tr class="separator:ga7d97abf91592741dadc6b0bb4150ae8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5475b79de5f305f56ad6936852bdfdc3" id="r_ga5475b79de5f305f56ad6936852bdfdc3"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga5475b79de5f305f56ad6936852bdfdc3">graphic::IMusic::getVolume</a> () const =0</td></tr>
+<tr class="memdesc:ga5475b79de5f305f56ad6936852bdfdc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the volume of the music  <br /></td></tr>
+<tr class="separator:ga5475b79de5f305f56ad6936852bdfdc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7aa769b70c66143b639c792845c8d2c3" id="r_ga7aa769b70c66143b639c792845c8d2c3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7aa769b70c66143b639c792845c8d2c3">graphic::IMusic::setLoop</a> (bool loop)=0</td></tr>
+<tr class="memdesc:ga7aa769b70c66143b639c792845c8d2c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the music to loop or not  <br /></td></tr>
+<tr class="separator:ga7aa769b70c66143b639c792845c8d2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2087cdcc5aabebb1bd6a63373ba765fc" id="r_ga2087cdcc5aabebb1bd6a63373ba765fc"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga2087cdcc5aabebb1bd6a63373ba765fc">graphic::IMusic::getLoop</a> () const =0</td></tr>
+<tr class="memdesc:ga2087cdcc5aabebb1bd6a63373ba765fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">get if the music is looping or not  <br /></td></tr>
+<tr class="separator:ga2087cdcc5aabebb1bd6a63373ba765fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafb1219fe65290e1edb440f61fdb7209c" id="r_gafb1219fe65290e1edb440f61fdb7209c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gafb1219fe65290e1edb440f61fdb7209c">graphic::IMusic::setTime</a> (float position)=0</td></tr>
+<tr class="memdesc:gafb1219fe65290e1edb440f61fdb7209c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the time of the music in seconds.  <br /></td></tr>
+<tr class="separator:gafb1219fe65290e1edb440f61fdb7209c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga714c4b9f7490b153c38ecf616a556856" id="r_ga714c4b9f7490b153c38ecf616a556856"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga714c4b9f7490b153c38ecf616a556856">graphic::IMusic::getTime</a> () const =0</td></tr>
+<tr class="memdesc:ga714c4b9f7490b153c38ecf616a556856"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current time of the music in seconds.  <br /></td></tr>
+<tr class="separator:ga714c4b9f7490b153c38ecf616a556856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1b29abcd0856f6868a0b325fa5e14e59" id="r_ga1b29abcd0856f6868a0b325fa5e14e59"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga1b29abcd0856f6868a0b325fa5e14e59">graphic::IMusic::getLength</a> () const =0</td></tr>
+<tr class="memdesc:ga1b29abcd0856f6868a0b325fa5e14e59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Length of the music.  <br /></td></tr>
+<tr class="separator:ga1b29abcd0856f6868a0b325fa5e14e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae2a80e11fd649db243bd27397ac40985" id="r_gae2a80e11fd649db243bd27397ac40985"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gae2a80e11fd649db243bd27397ac40985">graphic::ISound::isReady</a> () const =0</td></tr>
+<tr class="separator:gae2a80e11fd649db243bd27397ac40985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32ef6050a24418a4ab3e8657bc6a2aff" id="r_ga32ef6050a24418a4ab3e8657bc6a2aff"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga32ef6050a24418a4ab3e8657bc6a2aff">graphic::ISound::play</a> ()=0</td></tr>
+<tr class="memdesc:ga32ef6050a24418a4ab3e8657bc6a2aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">play the sound  <br /></td></tr>
+<tr class="separator:ga32ef6050a24418a4ab3e8657bc6a2aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4316851c1f629b686f76478b7bdb1b4f" id="r_ga4316851c1f629b686f76478b7bdb1b4f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4316851c1f629b686f76478b7bdb1b4f">graphic::ISound::pause</a> ()=0</td></tr>
+<tr class="memdesc:ga4316851c1f629b686f76478b7bdb1b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">pause the sound  <br /></td></tr>
+<tr class="separator:ga4316851c1f629b686f76478b7bdb1b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa4f07e89345de5bad0ff2bb3ac50b061" id="r_gaa4f07e89345de5bad0ff2bb3ac50b061"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaa4f07e89345de5bad0ff2bb3ac50b061">graphic::ISound::stop</a> ()=0</td></tr>
+<tr class="memdesc:gaa4f07e89345de5bad0ff2bb3ac50b061"><td class="mdescLeft">&#160;</td><td class="mdescRight">stop the sound and reset it to the beginning  <br /></td></tr>
+<tr class="separator:gaa4f07e89345de5bad0ff2bb3ac50b061"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaecb0640ad26dce8fb49832c59f56b79c" id="r_gaecb0640ad26dce8fb49832c59f56b79c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaecb0640ad26dce8fb49832c59f56b79c">graphic::ISound::setVolume</a> (float volume)=0</td></tr>
+<tr class="memdesc:gaecb0640ad26dce8fb49832c59f56b79c"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the volume of the sound  <br /></td></tr>
+<tr class="separator:gaecb0640ad26dce8fb49832c59f56b79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac975b47d392d2361c2ccfe291c2694ae" id="r_gac975b47d392d2361c2ccfe291c2694ae"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gac975b47d392d2361c2ccfe291c2694ae">graphic::ISound::getVolume</a> () const =0</td></tr>
+<tr class="memdesc:gac975b47d392d2361c2ccfe291c2694ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the volume of the sound  <br /></td></tr>
+<tr class="separator:gac975b47d392d2361c2ccfe291c2694ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac349d0e927a09a75383dc69efcb1b1d5" id="r_gac349d0e927a09a75383dc69efcb1b1d5"><td class="memItemLeft" align="right" valign="top"><a id="gac349d0e927a09a75383dc69efcb1b1d5" name="gac349d0e927a09a75383dc69efcb1b1d5"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::IKeyboard::~IKeyboard</b> ()</td></tr>
 <tr class="memdesc:gac349d0e927a09a75383dc69efcb1b1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="classgraphic_1_1_i_keyboard.html" title="Keyboard interface.">IKeyboard</a> object. <br /></td></tr>
@@ -358,8 +418,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::IMouse::~
 <tr class="separator:ga87cc9ca9ea63bb88e083700c74acba74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf87772a963d2c2dc595b8f393ec6464b" id="r_gaf87772a963d2c2dc595b8f393ec6464b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaf87772a963d2c2dc595b8f393ec6464b">graphic::IModel::getPosition</a> () const =0</td></tr>
 <tr class="separator:gaf87772a963d2c2dc595b8f393ec6464b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1302ceb31d615e425da789ba42f60687" id="r_ga1302ceb31d615e425da789ba42f60687"><td class="memItemLeft" align="right" valign="top"><a id="ga1302ceb31d615e425da789ba42f60687" name="ga1302ceb31d615e425da789ba42f60687"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::IModel::setPosition</b> (<a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a> position)=0</td></tr>
+<tr class="memitem:ga1302ceb31d615e425da789ba42f60687" id="r_ga1302ceb31d615e425da789ba42f60687"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga1302ceb31d615e425da789ba42f60687">graphic::IModel::setPosition</a> (<a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a> position)=0</td></tr>
 <tr class="separator:ga1302ceb31d615e425da789ba42f60687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae0d966a02dd57510caf2f7f48b167303" id="r_gae0d966a02dd57510caf2f7f48b167303"><td class="memItemLeft" align="right" valign="top"><a id="gae0d966a02dd57510caf2f7f48b167303" name="gae0d966a02dd57510caf2f7f48b167303"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::IPolygon::~IPolygon</b> ()=default</td></tr>
@@ -414,9 +473,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::ISprite::
 <tr class="memitem:ga487198bf197d8880aecd8a237e07c9fd" id="r_ga487198bf197d8880aecd8a237e07c9fd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga487198bf197d8880aecd8a237e07c9fd">graphic::ISprite::setSize</a> (__v2f_t size)=0</td></tr>
 <tr class="memdesc:ga487198bf197d8880aecd8a237e07c9fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Sprite size.  <br /></td></tr>
 <tr class="separator:ga487198bf197d8880aecd8a237e07c9fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7acf7f852523798c34387c0201acba93" id="r_ga7acf7f852523798c34387c0201acba93"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7acf7f852523798c34387c0201acba93">graphic::GraphicSharedLoader::GraphicSharedLoader</a> (Params file)</td></tr>
-<tr class="memdesc:ga7acf7f852523798c34387c0201acba93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic Shared Loader object with every symbols from the shared library.  <br /></td></tr>
-<tr class="separator:ga7acf7f852523798c34387c0201acba93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga551e7e7dd6044c702d9e626e18cab849" id="r_ga551e7e7dd6044c702d9e626e18cab849"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga551e7e7dd6044c702d9e626e18cab849">graphic::GraphicSharedLoader::GraphicSharedLoader</a> (std::string file)</td></tr>
+<tr class="memdesc:ga551e7e7dd6044c702d9e626e18cab849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Graphic Shared Loader object with every symbols from the shared library.  <br /></td></tr>
+<tr class="separator:ga551e7e7dd6044c702d9e626e18cab849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae57e5f774b3e374624f11612e9c91b85" id="r_gae57e5f774b3e374624f11612e9c91b85"><td class="memItemLeft" align="right" valign="top"><a id="gae57e5f774b3e374624f11612e9c91b85" name="gae57e5f774b3e374624f11612e9c91b85"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::~GraphicSharedLoader</b> ()=default</td></tr>
 <tr class="memdesc:gae57e5f774b3e374624f11612e9c91b85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Graphic Shared Loader object. <br /></td></tr>
@@ -489,6 +548,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::IWindow::
 <tr class="memitem:ga0b6d9dc647ea8fa561630424bb4b5db0" id="r_ga0b6d9dc647ea8fa561630424bb4b5db0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga0b6d9dc647ea8fa561630424bb4b5db0">graphic::IWindow::drawSprite</a> (<a class="el" href="classgraphic_1_1_i_sprite.html">ISprite</a> *model)=0</td></tr>
 <tr class="memdesc:ga0b6d9dc647ea8fa561630424bb4b5db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a sprite  <br /></td></tr>
 <tr class="separator:ga0b6d9dc647ea8fa561630424bb4b5db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2deb06e5b90bdf22e483bfbeb8a851f9" id="r_ga2deb06e5b90bdf22e483bfbeb8a851f9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga2deb06e5b90bdf22e483bfbeb8a851f9">graphic::IWindow::drawText</a> (<a class="el" href="classgraphic_1_1_i_text.html">IText</a> *text)=0</td></tr>
+<tr class="memdesc:ga2deb06e5b90bdf22e483bfbeb8a851f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">draw a text  <br /></td></tr>
+<tr class="separator:ga2deb06e5b90bdf22e483bfbeb8a851f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafeee676648888ac355a58f7fb90b62a6" id="r_gafeee676648888ac355a58f7fb90b62a6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gafeee676648888ac355a58f7fb90b62a6">graphic::IWindow::endDraw</a> ()=0</td></tr>
 <tr class="memdesc:gafeee676648888ac355a58f7fb90b62a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">end the 2D drawing  <br /></td></tr>
 <tr class="separator:gafeee676648888ac355a58f7fb90b62a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -507,6 +569,52 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::IWindow::
 <tr class="memitem:ga6687f79bdb04698ea020aa85e72f3941" id="r_ga6687f79bdb04698ea020aa85e72f3941"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga6687f79bdb04698ea020aa85e72f3941">graphic::IWindow::eventClose</a> ()=0</td></tr>
 <tr class="memdesc:ga6687f79bdb04698ea020aa85e72f3941"><td class="mdescLeft">&#160;</td><td class="mdescRight">update the window  <br /></td></tr>
 <tr class="separator:ga6687f79bdb04698ea020aa85e72f3941"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab38ae232ea16ecaa1cbde4320bb998d7" id="r_gab38ae232ea16ecaa1cbde4320bb998d7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gab38ae232ea16ecaa1cbde4320bb998d7">graphic::IWindow::beginAudio</a> ()=0</td></tr>
+<tr class="memdesc:gab38ae232ea16ecaa1cbde4320bb998d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">begin Audio  <br /></td></tr>
+<tr class="separator:gab38ae232ea16ecaa1cbde4320bb998d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f2ca533a6c0270d0e1e8512ba96532e" id="r_ga9f2ca533a6c0270d0e1e8512ba96532e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga9f2ca533a6c0270d0e1e8512ba96532e">graphic::IWindow::endAudio</a> ()=0</td></tr>
+<tr class="memdesc:ga9f2ca533a6c0270d0e1e8512ba96532e"><td class="mdescLeft">&#160;</td><td class="mdescRight">end Audio  <br /></td></tr>
+<tr class="separator:ga9f2ca533a6c0270d0e1e8512ba96532e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga87c64902e69219de7fc06855316510f8" id="r_ga87c64902e69219de7fc06855316510f8"><td class="memItemLeft" align="right" valign="top"><a id="ga87c64902e69219de7fc06855316510f8" name="ga87c64902e69219de7fc06855316510f8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>RaySound::RaySound</b> (std::string path)</td></tr>
+<tr class="separator:ga87c64902e69219de7fc06855316510f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaafbf512e068b8e4874c465a4837e4932" id="r_gaafbf512e068b8e4874c465a4837e4932"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaafbf512e068b8e4874c465a4837e4932">RaySound::isReady</a> () const override</td></tr>
+<tr class="separator:gaafbf512e068b8e4874c465a4837e4932"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7cf61e13258d6fa6d7a3a8456983fba" id="r_gae7cf61e13258d6fa6d7a3a8456983fba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gae7cf61e13258d6fa6d7a3a8456983fba">RaySound::play</a> () override</td></tr>
+<tr class="memdesc:gae7cf61e13258d6fa6d7a3a8456983fba"><td class="mdescLeft">&#160;</td><td class="mdescRight">play the sound  <br /></td></tr>
+<tr class="separator:gae7cf61e13258d6fa6d7a3a8456983fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga78263385490468ee3ba8533e6c905456" id="r_ga78263385490468ee3ba8533e6c905456"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga78263385490468ee3ba8533e6c905456">RaySound::pause</a> () override</td></tr>
+<tr class="memdesc:ga78263385490468ee3ba8533e6c905456"><td class="mdescLeft">&#160;</td><td class="mdescRight">pause the sound  <br /></td></tr>
+<tr class="separator:ga78263385490468ee3ba8533e6c905456"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2454da98cfe02924c3bf9b7e0d6bd935" id="r_ga2454da98cfe02924c3bf9b7e0d6bd935"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga2454da98cfe02924c3bf9b7e0d6bd935">RaySound::stop</a> () override</td></tr>
+<tr class="memdesc:ga2454da98cfe02924c3bf9b7e0d6bd935"><td class="mdescLeft">&#160;</td><td class="mdescRight">stop the sound and reset it to the beginning  <br /></td></tr>
+<tr class="separator:ga2454da98cfe02924c3bf9b7e0d6bd935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga18da5979db940d788ec4ce4e640b4e28" id="r_ga18da5979db940d788ec4ce4e640b4e28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga18da5979db940d788ec4ce4e640b4e28">RaySound::setVolume</a> (float volume) override</td></tr>
+<tr class="memdesc:ga18da5979db940d788ec4ce4e640b4e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the volume of the sound  <br /></td></tr>
+<tr class="separator:ga18da5979db940d788ec4ce4e640b4e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4d048a37f831445285baaaefb3e9fa0" id="r_gab4d048a37f831445285baaaefb3e9fa0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gab4d048a37f831445285baaaefb3e9fa0">RaySound::getVolume</a> () const override</td></tr>
+<tr class="memdesc:gab4d048a37f831445285baaaefb3e9fa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the volume of the sound  <br /></td></tr>
+<tr class="separator:gab4d048a37f831445285baaaefb3e9fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c9c6bc13b636cc02a9c54a627b5e71c" id="r_ga9c9c6bc13b636cc02a9c54a627b5e71c"><td class="memItemLeft" align="right" valign="top"><a id="ga9c9c6bc13b636cc02a9c54a627b5e71c" name="ga9c9c6bc13b636cc02a9c54a627b5e71c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SfmlSound::SfmlSound</b> (std::string path)</td></tr>
+<tr class="separator:ga9c9c6bc13b636cc02a9c54a627b5e71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabb8ea77b7e35ed6c1fad8139dab85077" id="r_gabb8ea77b7e35ed6c1fad8139dab85077"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gabb8ea77b7e35ed6c1fad8139dab85077">SfmlSound::isReady</a> () const override</td></tr>
+<tr class="separator:gabb8ea77b7e35ed6c1fad8139dab85077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad9dbba2811e8f1027d33854567f36994" id="r_gad9dbba2811e8f1027d33854567f36994"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad9dbba2811e8f1027d33854567f36994">SfmlSound::play</a> () override</td></tr>
+<tr class="memdesc:gad9dbba2811e8f1027d33854567f36994"><td class="mdescLeft">&#160;</td><td class="mdescRight">play the sound  <br /></td></tr>
+<tr class="separator:gad9dbba2811e8f1027d33854567f36994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7b7fc426972bcca6cbe8347681b09103" id="r_ga7b7fc426972bcca6cbe8347681b09103"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7b7fc426972bcca6cbe8347681b09103">SfmlSound::pause</a> () override</td></tr>
+<tr class="memdesc:ga7b7fc426972bcca6cbe8347681b09103"><td class="mdescLeft">&#160;</td><td class="mdescRight">pause the sound  <br /></td></tr>
+<tr class="separator:ga7b7fc426972bcca6cbe8347681b09103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7be553a7f7297c4abc8b8e9c3992dd26" id="r_ga7be553a7f7297c4abc8b8e9c3992dd26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7be553a7f7297c4abc8b8e9c3992dd26">SfmlSound::stop</a> () override</td></tr>
+<tr class="memdesc:ga7be553a7f7297c4abc8b8e9c3992dd26"><td class="mdescLeft">&#160;</td><td class="mdescRight">stop the sound and reset it to the beginning  <br /></td></tr>
+<tr class="separator:ga7be553a7f7297c4abc8b8e9c3992dd26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0870414ffd3c8a70249a5a5d18ae9b40" id="r_ga0870414ffd3c8a70249a5a5d18ae9b40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga0870414ffd3c8a70249a5a5d18ae9b40">SfmlSound::setVolume</a> (float volume) override</td></tr>
+<tr class="memdesc:ga0870414ffd3c8a70249a5a5d18ae9b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the volume of the sound  <br /></td></tr>
+<tr class="separator:ga0870414ffd3c8a70249a5a5d18ae9b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab4b0014652fb4558d76b21121b6dbfbd" id="r_gab4b0014652fb4558d76b21121b6dbfbd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gab4b0014652fb4558d76b21121b6dbfbd">SfmlSound::getVolume</a> () const override</td></tr>
+<tr class="memdesc:gab4b0014652fb4558d76b21121b6dbfbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the volume of the sound  <br /></td></tr>
+<tr class="separator:gab4b0014652fb4558d76b21121b6dbfbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -552,8 +660,8 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSha
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::deleteMouse</b> )(<a class="el" href="classgraphic_1_1_i_mouse.html">graphic::IMouse</a> *mouse)</td></tr>
 <tr class="separator:gae5872e940956c2d32afeb36910bf25c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaca2b6d2e677bb953d01dcc007bdea060" id="r_gaca2b6d2e677bb953d01dcc007bdea060"><td class="memItemLeft" align="right" valign="top"><a id="gaca2b6d2e677bb953d01dcc007bdea060" name="gaca2b6d2e677bb953d01dcc007bdea060"></a>
-<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::createPolygon</b> )(std::vector&lt; __v2f_t &gt; points)</td></tr>
-<tr class="memdesc:gaca2b6d2e677bb953d01dcc007bdea060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphics. <br /></td></tr>
+<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::createPolygon</b> )(std::vector&lt; <a class="el" href="structtype_1_1____v2f__s.html">__v2f_t</a> &gt; points)</td></tr>
+<tr class="memdesc:gaca2b6d2e677bb953d01dcc007bdea060"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D <br /></td></tr>
 <tr class="separator:gaca2b6d2e677bb953d01dcc007bdea060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga896a1e7e5b41fe4389ac696ce24ad4ee" id="r_ga896a1e7e5b41fe4389ac696ce24ad4ee"><td class="memItemLeft" align="right" valign="top"><a id="ga896a1e7e5b41fe4389ac696ce24ad4ee" name="ga896a1e7e5b41fe4389ac696ce24ad4ee"></a>
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::deletePolygon</b> )(<a class="el" href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a> *polygon)</td></tr>
@@ -564,8 +672,15 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSha
 <tr class="memitem:ga4d5f7e795d99c0d681b63a4847e4af16" id="r_ga4d5f7e795d99c0d681b63a4847e4af16"><td class="memItemLeft" align="right" valign="top"><a id="ga4d5f7e795d99c0d681b63a4847e4af16" name="ga4d5f7e795d99c0d681b63a4847e4af16"></a>
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::deleteSprite</b> )(<a class="el" href="classgraphic_1_1_i_sprite.html">graphic::ISprite</a> *sprite)</td></tr>
 <tr class="separator:ga4d5f7e795d99c0d681b63a4847e4af16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga32198155877f91fe69a7c3ced8ed1a76" id="r_ga32198155877f91fe69a7c3ced8ed1a76"><td class="memItemLeft" align="right" valign="top"><a id="ga32198155877f91fe69a7c3ced8ed1a76" name="ga32198155877f91fe69a7c3ced8ed1a76"></a>
+<a class="el" href="classgraphic_1_1_i_text.html">graphic::IText</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::createText</b> )(std::string text, std::string font)</td></tr>
+<tr class="separator:ga32198155877f91fe69a7c3ced8ed1a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba06eeab643b981d339e60d2b10908f0" id="r_gaba06eeab643b981d339e60d2b10908f0"><td class="memItemLeft" align="right" valign="top"><a id="gaba06eeab643b981d339e60d2b10908f0" name="gaba06eeab643b981d339e60d2b10908f0"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::deleteText</b> )(<a class="el" href="classgraphic_1_1_i_text.html">graphic::IText</a> *text)</td></tr>
+<tr class="separator:gaba06eeab643b981d339e60d2b10908f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga635ee00309c37baacd48345487c06333" id="r_ga635ee00309c37baacd48345487c06333"><td class="memItemLeft" align="right" valign="top"><a id="ga635ee00309c37baacd48345487c06333" name="ga635ee00309c37baacd48345487c06333"></a>
 <a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::createCamera</b> )()</td></tr>
+<tr class="memdesc:ga635ee00309c37baacd48345487c06333"><td class="mdescLeft">&#160;</td><td class="mdescRight">3D <br /></td></tr>
 <tr class="separator:ga635ee00309c37baacd48345487c06333"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga74a0682dc9a0cc2ec1a08131b6424a0c" id="r_ga74a0682dc9a0cc2ec1a08131b6424a0c"><td class="memItemLeft" align="right" valign="top"><a id="ga74a0682dc9a0cc2ec1a08131b6424a0c" name="ga74a0682dc9a0cc2ec1a08131b6424a0c"></a>
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::deleteCamera</b> )(<a class="el" href="classgraphic_1_1_i_camera.html">graphic::ICamera</a> *camera)</td></tr>
@@ -576,6 +691,34 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSha
 <tr class="memitem:ga9a7acb10c1b7115ccd167c387dbd3655" id="r_ga9a7acb10c1b7115ccd167c387dbd3655"><td class="memItemLeft" align="right" valign="top"><a id="ga9a7acb10c1b7115ccd167c387dbd3655" name="ga9a7acb10c1b7115ccd167c387dbd3655"></a>
 void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::deleteModel</b> )(<a class="el" href="classgraphic_1_1_i_model.html">graphic::IModel</a> *model)</td></tr>
 <tr class="separator:ga9a7acb10c1b7115ccd167c387dbd3655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8be8e6211635d19a03bc633dc58d7a11" id="r_ga8be8e6211635d19a03bc633dc58d7a11"><td class="memItemLeft" align="right" valign="top"><a id="ga8be8e6211635d19a03bc633dc58d7a11" name="ga8be8e6211635d19a03bc633dc58d7a11"></a>
+<a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::createSound</b> )(std::string)</td></tr>
+<tr class="memdesc:ga8be8e6211635d19a03bc633dc58d7a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sound. <br /></td></tr>
+<tr class="separator:ga8be8e6211635d19a03bc633dc58d7a11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaca451778edf3fc4269407725e7d1e34" id="r_gaaca451778edf3fc4269407725e7d1e34"><td class="memItemLeft" align="right" valign="top"><a id="gaaca451778edf3fc4269407725e7d1e34" name="gaaca451778edf3fc4269407725e7d1e34"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::deleteSound</b> )(<a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a> *sound)</td></tr>
+<tr class="separator:gaaca451778edf3fc4269407725e7d1e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3acdcb8066a73a1ca2f214e17f201ff0" id="r_ga3acdcb8066a73a1ca2f214e17f201ff0"><td class="memItemLeft" align="right" valign="top"><a id="ga3acdcb8066a73a1ca2f214e17f201ff0" name="ga3acdcb8066a73a1ca2f214e17f201ff0"></a>
+<a class="el" href="classgraphic_1_1_i_music.html">graphic::IMusic</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::createMusic</b> )(std::string)</td></tr>
+<tr class="separator:ga3acdcb8066a73a1ca2f214e17f201ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5292f9938b0f6fa8a6d3bcc57cfcd171" id="r_ga5292f9938b0f6fa8a6d3bcc57cfcd171"><td class="memItemLeft" align="right" valign="top"><a id="ga5292f9938b0f6fa8a6d3bcc57cfcd171" name="ga5292f9938b0f6fa8a6d3bcc57cfcd171"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSharedLoader::deleteMusic</b> )(<a class="el" href="classgraphic_1_1_i_music.html">graphic::IMusic</a> *music)</td></tr>
+<tr class="separator:ga5292f9938b0f6fa8a6d3bcc57cfcd171"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7b7f251c71900bad3d41ca61652cb4a5" id="r_ga7b7f251c71900bad3d41ca61652cb4a5"><td class="memItemLeft" align="right" valign="top"><a id="ga7b7f251c71900bad3d41ca61652cb4a5" name="ga7b7f251c71900bad3d41ca61652cb4a5"></a>
+Sound&#160;</td><td class="memItemRight" valign="bottom"><b>RaySound::_sound</b></td></tr>
+<tr class="separator:ga7b7f251c71900bad3d41ca61652cb4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga214681511801928d48322d993571281c" id="r_ga214681511801928d48322d993571281c"><td class="memItemLeft" align="right" valign="top"><a id="ga214681511801928d48322d993571281c" name="ga214681511801928d48322d993571281c"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>RaySound::_volume</b></td></tr>
+<tr class="separator:ga214681511801928d48322d993571281c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaee97ac4c8af756e92527f4a1027130c9" id="r_gaee97ac4c8af756e92527f4a1027130c9"><td class="memItemLeft" align="right" valign="top"><a id="gaee97ac4c8af756e92527f4a1027130c9" name="gaee97ac4c8af756e92527f4a1027130c9"></a>
+sf::SoundBuffer&#160;</td><td class="memItemRight" valign="bottom"><b>SfmlSound::buffer</b></td></tr>
+<tr class="separator:gaee97ac4c8af756e92527f4a1027130c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga630ce13ee989d15cfd2e1401f4b6b9b4" id="r_ga630ce13ee989d15cfd2e1401f4b6b9b4"><td class="memItemLeft" align="right" valign="top"><a id="ga630ce13ee989d15cfd2e1401f4b6b9b4" name="ga630ce13ee989d15cfd2e1401f4b6b9b4"></a>
+sf::Sound&#160;</td><td class="memItemRight" valign="bottom"><b>SfmlSound::sound</b></td></tr>
+<tr class="separator:ga630ce13ee989d15cfd2e1401f4b6b9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f370c279bd620cd2961d7c2e9be43cd" id="r_ga5f370c279bd620cd2961d7c2e9be43cd"><td class="memItemLeft" align="right" valign="top"><a id="ga5f370c279bd620cd2961d7c2e9be43cd" name="ga5f370c279bd620cd2961d7c2e9be43cd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>SfmlSound::_ready</b></td></tr>
+<tr class="separator:ga5f370c279bd620cd2961d7c2e9be43cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -614,6 +757,35 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSha
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gab38ae232ea16ecaa1cbde4320bb998d7" name="gab38ae232ea16ecaa1cbde4320bb998d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab38ae232ea16ecaa1cbde4320bb998d7">&#9670;&#160;</a></span>beginAudio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool graphic::IWindow::beginAudio </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>begin Audio </p>
+
+<p>Implemented in <a class="el" href="group___raylib.html#ga22e832beae00880e7c41ba6bb14c4031">RayWindow</a>, <a class="el" href="group___s_d_l.html#ga71d5f9d17e55e2ea3e1436ab18832421">SdlWindow</a>, and <a class="el" href="group___s_f_m_l.html#ga774d336ce244c0f5591c4341a00ae83d">SfmlWindow</a>.</p>
+
+</div>
+</div>
 <a id="ga37ccabdf7852fe8ff579f5de5ae29976" name="ga37ccabdf7852fe8ff579f5de5ae29976"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga37ccabdf7852fe8ff579f5de5ae29976">&#9670;&#160;</a></span>beginDraw()</h2>
 
@@ -809,6 +981,64 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSha
 </dl>
 
 <p>Implemented in <a class="el" href="group___raylib.html#gabf0d19617acbe081bbf04376d790a2be">RayWindow</a>, <a class="el" href="group___s_d_l.html#ga4de650f1f3712087a4a5bca3aa2a5f0e">SdlWindow</a>, and <a class="el" href="group___s_f_m_l.html#ga82469fd2fc0296594bb4aee76243b1cd">SfmlWindow</a>.</p>
+
+</div>
+</div>
+<a id="ga2deb06e5b90bdf22e483bfbeb8a851f9" name="ga2deb06e5b90bdf22e483bfbeb8a851f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2deb06e5b90bdf22e483bfbeb8a851f9">&#9670;&#160;</a></span>drawText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IWindow::drawText </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgraphic_1_1_i_text.html">IText</a> *</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>draw a text </p>
+
+<p>Implemented in <a class="el" href="group___raylib.html#gafefe8cb01948537b7b77c6a2561bf4b0">RayWindow</a>, <a class="el" href="group___s_d_l.html#ga360486d07bcb0cef8df5b18b0252a542">SdlWindow</a>, and <a class="el" href="group___s_f_m_l.html#ga2a60322751c22a04ecdd6348ddaaf83d">SfmlWindow</a>.</p>
+
+</div>
+</div>
+<a id="ga9f2ca533a6c0270d0e1e8512ba96532e" name="ga9f2ca533a6c0270d0e1e8512ba96532e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9f2ca533a6c0270d0e1e8512ba96532e">&#9670;&#160;</a></span>endAudio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IWindow::endAudio </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>end Audio </p>
+
+<p>Implemented in <a class="el" href="group___raylib.html#gacb73b4e5548185c43dd995738ae1284f">RayWindow</a>, <a class="el" href="group___s_d_l.html#gafcfaf1d017c1ceb15c11fc87de80ce0e">SdlWindow</a>, and <a class="el" href="group___s_f_m_l.html#gafc37fc92b43136ede47a01c799526287">SfmlWindow</a>.</p>
 
 </div>
 </div>
@@ -1016,6 +1246,68 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSha
 <dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
 
 <p>Implemented in <a class="el" href="group___raylib.html#ga083a2eb20aae6db625641efd695c211d">RayCamera</a>, <a class="el" href="group___s_d_l.html#ga169b5eefc0b5e5b1cce85a347948daa1">SdlCamera</a>, and <a class="el" href="group___s_f_m_l.html#gad11678907097a3d73687808039ee1d42">SfmlCamera</a>.</p>
+
+</div>
+</div>
+<a id="ga1b29abcd0856f6868a0b325fa5e14e59" name="ga1b29abcd0856f6868a0b325fa5e14e59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1b29abcd0856f6868a0b325fa5e14e59">&#9670;&#160;</a></span>getLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float graphic::IMusic::getLength </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the Length of the music. </p>
+<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#ad928f077f18ee507d8dd31fdc97ff8c5">RayMusic</a>, <a class="el" href="group___s_d_l.html#gaee0f5c06b795e8c1443b5c448af1c3fc">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#a5c486bb44afc1d9529c33c06957d4620">SfmlMusic</a>.</p>
+
+</div>
+</div>
+<a id="ga2087cdcc5aabebb1bd6a63373ba765fc" name="ga2087cdcc5aabebb1bd6a63373ba765fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2087cdcc5aabebb1bd6a63373ba765fc">&#9670;&#160;</a></span>getLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool graphic::IMusic::getLoop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get if the music is looping or not </p>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#ad98bae2beec78a3e68a52259cfbc8f28">RayMusic</a>, <a class="el" href="group___s_d_l.html#gaf99cc332da12431c4edc95cf962679e7">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#a2c57c98a65738f92bcb6554627cb3623">SfmlMusic</a>.</p>
 
 </div>
 </div>
@@ -1376,6 +1668,36 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSha
 
 </div>
 </div>
+<a id="ga714c4b9f7490b153c38ecf616a556856" name="ga714c4b9f7490b153c38ecf616a556856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga714c4b9f7490b153c38ecf616a556856">&#9670;&#160;</a></span>getTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float graphic::IMusic::getTime </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current time of the music in seconds. </p>
+<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#a13dfe2995ac8d00bbe5f6a6aeb6129cb">RayMusic</a>, <a class="el" href="group___s_d_l.html#gaf2201f790221be9d96c2f6d15ef3ee6d">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#a4a5758f10cce3a39ebfc6afb4fcc556c">SfmlMusic</a>.</p>
+
+</div>
+</div>
 <a id="ga3d05345df858197dd715c84314541f10" name="ga3d05345df858197dd715c84314541f10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga3d05345df858197dd715c84314541f10">&#9670;&#160;</a></span>getUp()</h2>
 
@@ -1406,8 +1728,128 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSha
 
 </div>
 </div>
-<a id="ga7acf7f852523798c34387c0201acba93" name="ga7acf7f852523798c34387c0201acba93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7acf7f852523798c34387c0201acba93">&#9670;&#160;</a></span>GraphicSharedLoader()</h2>
+<a id="ga5475b79de5f305f56ad6936852bdfdc3" name="ga5475b79de5f305f56ad6936852bdfdc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5475b79de5f305f56ad6936852bdfdc3">&#9670;&#160;</a></span>getVolume() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float graphic::IMusic::getVolume </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get the volume of the music </p>
+<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#a848a0199d8bd263e8a99503836e6c78e">RayMusic</a>, <a class="el" href="group___s_d_l.html#ga30994158e786d9aa379f6668e8f01756">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#a92f7b916b507c21c173dc5d40e899cd6">SfmlMusic</a>.</p>
+
+</div>
+</div>
+<a id="gac975b47d392d2361c2ccfe291c2694ae" name="gac975b47d392d2361c2ccfe291c2694ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac975b47d392d2361c2ccfe291c2694ae">&#9670;&#160;</a></span>getVolume() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float graphic::ISound::getVolume </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get the volume of the sound </p>
+<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+
+<p>Implemented in <a class="el" href="#gab4d048a37f831445285baaaefb3e9fa0">RaySound</a>, <a class="el" href="group___s_d_l.html#gafda1fbb49c4111d552baf9c5335fbb01">SdlSound</a>, and <a class="el" href="#gab4b0014652fb4558d76b21121b6dbfbd">SfmlSound</a>.</p>
+
+</div>
+</div>
+<a id="gab4d048a37f831445285baaaefb3e9fa0" name="gab4d048a37f831445285baaaefb3e9fa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab4d048a37f831445285baaaefb3e9fa0">&#9670;&#160;</a></span>getVolume() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float RaySound::getVolume </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get the volume of the sound </p>
+<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+
+<p>Implements <a class="el" href="#gac975b47d392d2361c2ccfe291c2694ae">graphic::ISound</a>.</p>
+
+</div>
+</div>
+<a id="gab4b0014652fb4558d76b21121b6dbfbd" name="gab4b0014652fb4558d76b21121b6dbfbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab4b0014652fb4558d76b21121b6dbfbd">&#9670;&#160;</a></span>getVolume() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float SfmlSound::getVolume </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>get the volume of the sound </p>
+<dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+
+<p>Implements <a class="el" href="#gac975b47d392d2361c2ccfe291c2694ae">graphic::ISound</a>.</p>
+
+</div>
+</div>
+<a id="ga551e7e7dd6044c702d9e626e18cab849" name="ga551e7e7dd6044c702d9e626e18cab849"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga551e7e7dd6044c702d9e626e18cab849">&#9670;&#160;</a></span>GraphicSharedLoader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1418,7 +1860,7 @@ void(*&#160;</td><td class="memItemRight" valign="bottom"><b>graphic::GraphicSha
         <tr>
           <td class="memname">graphic::GraphicSharedLoader::GraphicSharedLoader </td>
           <td>(</td>
-          <td class="paramtype">Params</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1765,8 +2207,35 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="ga52b081bfc7fa987dfe8107dcc4b11eab" name="ga52b081bfc7fa987dfe8107dcc4b11eab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga52b081bfc7fa987dfe8107dcc4b11eab">&#9670;&#160;</a></span>isReady() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool graphic::IMusic::isReady </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_sfml_music.html#a517edbed439d3163fe9aaea921a6af48">SfmlMusic</a>.</p>
+
+</div>
+</div>
 <a id="ga0467688a616b36424ddbc8adbeba0544" name="ga0467688a616b36424ddbc8adbeba0544"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0467688a616b36424ddbc8adbeba0544">&#9670;&#160;</a></span>isReady() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0467688a616b36424ddbc8adbeba0544">&#9670;&#160;</a></span>isReady() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1795,8 +2264,35 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="gae2a80e11fd649db243bd27397ac40985" name="gae2a80e11fd649db243bd27397ac40985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae2a80e11fd649db243bd27397ac40985">&#9670;&#160;</a></span>isReady() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool graphic::ISound::isReady </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="group___s_d_l.html#ga69d8f0d65cf76376a105156d5721c650">SdlSound</a>.</p>
+
+</div>
+</div>
 <a id="ga8088e103ac1733993812764debae1e5e" name="ga8088e103ac1733993812764debae1e5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8088e103ac1733993812764debae1e5e">&#9670;&#160;</a></span>isReady() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8088e103ac1733993812764debae1e5e">&#9670;&#160;</a></span>isReady() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1822,6 +2318,60 @@ false </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 
 <p>Implemented in <a class="el" href="group___raylib.html#gafc79985bcb3226a6e542243411cb7b78">RaySprite</a>, <a class="el" href="group___s_d_l.html#ga6688eb190b28738eed5ef45453e57cc1">SdlSprite</a>, and <a class="el" href="group___s_f_m_l.html#ga43587aab7d5762108568c65232e31fb8">SfmlSprite</a>.</p>
+
+</div>
+</div>
+<a id="gaafbf512e068b8e4874c465a4837e4932" name="gaafbf512e068b8e4874c465a4837e4932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaafbf512e068b8e4874c465a4837e4932">&#9670;&#160;</a></span>isReady() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RaySound::isReady </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a>.</p>
+
+</div>
+</div>
+<a id="gabb8ea77b7e35ed6c1fad8139dab85077" name="gabb8ea77b7e35ed6c1fad8139dab85077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabb8ea77b7e35ed6c1fad8139dab85077">&#9670;&#160;</a></span>isReady() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SfmlSound::isReady </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classgraphic_1_1_i_sound.html">graphic::ISound</a>.</p>
 
 </div>
 </div>
@@ -1857,6 +2407,238 @@ false </dd></dl>
 </dl>
 
 <p>Implemented in <a class="el" href="group___raylib.html#ga2a8308cce439f598e4c456dfc811403e">RayWindow</a>, <a class="el" href="group___s_d_l.html#ga658eab0bf038cd1775e73e920a71b80b">SdlWindow</a>, and <a class="el" href="group___s_f_m_l.html#gacf62f02f63e55c1416671d224897e576">SfmlWindow</a>.</p>
+
+</div>
+</div>
+<a id="gaea2be8e2fde6f10767aafb6fefd5eb04" name="gaea2be8e2fde6f10767aafb6fefd5eb04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaea2be8e2fde6f10767aafb6fefd5eb04">&#9670;&#160;</a></span>pause() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IMusic::pause </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pause the music </p>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#a1239dfe28bc370948a59f0f78887e2b2">RayMusic</a>, <a class="el" href="group___s_d_l.html#ga71741e73770325fad046663cb499fbd5">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#a1cf67d6bfc2cd62a06e7a6e576863ea3">SfmlMusic</a>.</p>
+
+</div>
+</div>
+<a id="ga4316851c1f629b686f76478b7bdb1b4f" name="ga4316851c1f629b686f76478b7bdb1b4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4316851c1f629b686f76478b7bdb1b4f">&#9670;&#160;</a></span>pause() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::ISound::pause </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pause the sound </p>
+
+<p>Implemented in <a class="el" href="#ga78263385490468ee3ba8533e6c905456">RaySound</a>, <a class="el" href="group___s_d_l.html#ga62164856d34e47815ec88c398d13e361">SdlSound</a>, and <a class="el" href="#ga7b7fc426972bcca6cbe8347681b09103">SfmlSound</a>.</p>
+
+</div>
+</div>
+<a id="ga78263385490468ee3ba8533e6c905456" name="ga78263385490468ee3ba8533e6c905456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga78263385490468ee3ba8533e6c905456">&#9670;&#160;</a></span>pause() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RaySound::pause </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pause the sound </p>
+
+<p>Implements <a class="el" href="#ga4316851c1f629b686f76478b7bdb1b4f">graphic::ISound</a>.</p>
+
+</div>
+</div>
+<a id="ga7b7fc426972bcca6cbe8347681b09103" name="ga7b7fc426972bcca6cbe8347681b09103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7b7fc426972bcca6cbe8347681b09103">&#9670;&#160;</a></span>pause() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SfmlSound::pause </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pause the sound </p>
+
+<p>Implements <a class="el" href="#ga4316851c1f629b686f76478b7bdb1b4f">graphic::ISound</a>.</p>
+
+</div>
+</div>
+<a id="ga63a7f49c04d33b6c6d481ce63de7297e" name="ga63a7f49c04d33b6c6d481ce63de7297e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga63a7f49c04d33b6c6d481ce63de7297e">&#9670;&#160;</a></span>play() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IMusic::play </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>play the music </p>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#a6ba404bcea8c637849d770febeddfb05">RayMusic</a>, <a class="el" href="group___s_d_l.html#ga8ca773b1f9ed33843fe96f31fce56dc5">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#ad2a82c52b6f36e8a08ec297c9ce9b856">SfmlMusic</a>.</p>
+
+</div>
+</div>
+<a id="ga32ef6050a24418a4ab3e8657bc6a2aff" name="ga32ef6050a24418a4ab3e8657bc6a2aff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga32ef6050a24418a4ab3e8657bc6a2aff">&#9670;&#160;</a></span>play() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::ISound::play </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>play the sound </p>
+
+<p>Implemented in <a class="el" href="#gae7cf61e13258d6fa6d7a3a8456983fba">RaySound</a>, <a class="el" href="group___s_d_l.html#gaccbc5d2e2848c4cdc78a23cae9f013d9">SdlSound</a>, and <a class="el" href="#gad9dbba2811e8f1027d33854567f36994">SfmlSound</a>.</p>
+
+</div>
+</div>
+<a id="gae7cf61e13258d6fa6d7a3a8456983fba" name="gae7cf61e13258d6fa6d7a3a8456983fba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae7cf61e13258d6fa6d7a3a8456983fba">&#9670;&#160;</a></span>play() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RaySound::play </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>play the sound </p>
+
+<p>Implements <a class="el" href="#ga32ef6050a24418a4ab3e8657bc6a2aff">graphic::ISound</a>.</p>
+
+</div>
+</div>
+<a id="gad9dbba2811e8f1027d33854567f36994" name="gad9dbba2811e8f1027d33854567f36994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad9dbba2811e8f1027d33854567f36994">&#9670;&#160;</a></span>play() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SfmlSound::play </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>play the sound </p>
+
+<p>Implements <a class="el" href="#ga32ef6050a24418a4ab3e8657bc6a2aff">graphic::ISound</a>.</p>
 
 </div>
 </div>
@@ -1921,7 +2703,7 @@ false </dd></dl>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="group___raylib.html#gaca84ac65f53930cd62b7dfdd4dce6c5a">RayPolygon</a>, and <a class="el" href="group___s_d_l.html#ga561712ec4a1d70f4c9ead43d23d2b7be">SdlPolygon</a>.</p>
+<p>Implemented in <a class="el" href="group___raylib.html#gaca84ac65f53930cd62b7dfdd4dce6c5a">RayPolygon</a>, <a class="el" href="group___s_d_l.html#ga561712ec4a1d70f4c9ead43d23d2b7be">SdlPolygon</a>, and <a class="el" href="group___s_f_m_l.html#ga17e4d3fb8d685939292bb917ec1d4a2a">SfmlPolygon</a>.</p>
 
 </div>
 </div>
@@ -1956,7 +2738,7 @@ false </dd></dl>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="group___s_f_m_l.html#ga7e44b19b49e74f7525a9026df19f1947">SfmlSprite</a>.</p>
+<p>Implemented in <a class="el" href="group___raylib.html#gaf87ededce0a1e5507300db8b6bce44dd">RaySprite</a>.</p>
 
 </div>
 </div>
@@ -2030,6 +2812,41 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="ga7aa769b70c66143b639c792845c8d2c3" name="ga7aa769b70c66143b639c792845c8d2c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7aa769b70c66143b639c792845c8d2c3">&#9670;&#160;</a></span>setLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IMusic::setLoop </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>loop</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>set the music to loop or not </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loop</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#a2068ea4535312afb54c1352825fb288d">RayMusic</a>, <a class="el" href="group___s_d_l.html#gadd4b657da6f1a55c3e054c73c75604c9">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#a1290598a4f045d581c85578e3d68c5cb">SfmlMusic</a>.</p>
+
+</div>
+</div>
 <a id="gaf460a0f126d44121fe3a4e1e3814afab" name="gaf460a0f126d44121fe3a4e1e3814afab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf460a0f126d44121fe3a4e1e3814afab">&#9670;&#160;</a></span>setMode()</h2>
 
@@ -2064,7 +2881,7 @@ false </dd></dl>
 </div>
 </div>
 <a id="gaa10fb5fa8b569969cdafdf998bfba1b8" name="gaa10fb5fa8b569969cdafdf998bfba1b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa10fb5fa8b569969cdafdf998bfba1b8">&#9670;&#160;</a></span>setPosition() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa10fb5fa8b569969cdafdf998bfba1b8">&#9670;&#160;</a></span>setPosition() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2098,8 +2915,35 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="ga1302ceb31d615e425da789ba42f60687" name="ga1302ceb31d615e425da789ba42f60687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1302ceb31d615e425da789ba42f60687">&#9670;&#160;</a></span>setPosition() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IModel::setPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structtype_1_1____v3f__s.html">__v3f_t</a></td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="group___s_f_m_l.html#ga7e6e525af91ab137b7de22598e6c6bed">SfmlModel</a>.</p>
+
+</div>
+</div>
 <a id="ga365cbd8e5b9bd47abdd15ddd157dcb1e" name="ga365cbd8e5b9bd47abdd15ddd157dcb1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga365cbd8e5b9bd47abdd15ddd157dcb1e">&#9670;&#160;</a></span>setPosition() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga365cbd8e5b9bd47abdd15ddd157dcb1e">&#9670;&#160;</a></span>setPosition() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2134,7 +2978,7 @@ false </dd></dl>
 </div>
 </div>
 <a id="ga230ab253cc42e8c2028106b0af038fdd" name="ga230ab253cc42e8c2028106b0af038fdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga230ab253cc42e8c2028106b0af038fdd">&#9670;&#160;</a></span>setPosition() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga230ab253cc42e8c2028106b0af038fdd">&#9670;&#160;</a></span>setPosition() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2164,12 +3008,12 @@ false </dd></dl>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="group___raylib.html#ga8288d0451e4e5387a32bbec669be45de">RayPolygon</a>, and <a class="el" href="group___s_d_l.html#ga6a40b6fc99987136011e061ff1a02180">SdlPolygon</a>.</p>
+<p>Implemented in <a class="el" href="group___raylib.html#ga8288d0451e4e5387a32bbec669be45de">RayPolygon</a>, <a class="el" href="group___s_d_l.html#ga6a40b6fc99987136011e061ff1a02180">SdlPolygon</a>, and <a class="el" href="group___s_f_m_l.html#gad19e684383ddd37dfc241bb4af04f2a7">SfmlPolygon</a>.</p>
 
 </div>
 </div>
 <a id="ga7da368451eae7bdc6919d238387f416a" name="ga7da368451eae7bdc6919d238387f416a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7da368451eae7bdc6919d238387f416a">&#9670;&#160;</a></span>setPosition() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7da368451eae7bdc6919d238387f416a">&#9670;&#160;</a></span>setPosition() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2199,7 +3043,7 @@ false </dd></dl>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="group___s_f_m_l.html#gafa785fd42ef4de9aab70eff27ba8aacc">SfmlSprite</a>.</p>
+<p>Implemented in <a class="el" href="group___raylib.html#ga2b25d339ee6507feb70d988a4ff852f8">RaySprite</a>.</p>
 
 </div>
 </div>
@@ -2307,7 +3151,7 @@ false </dd></dl>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="group___s_f_m_l.html#gaaac0ec9ad459089e2fab0c484d8544bb">SfmlSprite</a>.</p>
+<p>Implemented in <a class="el" href="group___raylib.html#gadcadd9375b1f24fe08faec53c3c47ce2">RaySprite</a>.</p>
 
 </div>
 </div>
@@ -2346,6 +3190,41 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="gafb1219fe65290e1edb440f61fdb7209c" name="gafb1219fe65290e1edb440f61fdb7209c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafb1219fe65290e1edb440f61fdb7209c">&#9670;&#160;</a></span>setTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IMusic::setTime </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the time of the music in seconds. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#a76e5915f73710035f4eb9a3c349eea4c">RayMusic</a>, <a class="el" href="group___s_d_l.html#ga94a59a9e2a7bd5cea60d1529df53797c">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#a85eba07a11009aa7f1785afa8c2b5510">SfmlMusic</a>.</p>
+
+</div>
+</div>
 <a id="ga3cf381163e3e13e119654f776a0f0c9c" name="ga3cf381163e3e13e119654f776a0f0c9c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga3cf381163e3e13e119654f776a0f0c9c">&#9670;&#160;</a></span>setUp()</h2>
 
@@ -2381,8 +3260,264 @@ false </dd></dl>
 
 </div>
 </div>
+<a id="ga7d97abf91592741dadc6b0bb4150ae8e" name="ga7d97abf91592741dadc6b0bb4150ae8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7d97abf91592741dadc6b0bb4150ae8e">&#9670;&#160;</a></span>setVolume() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IMusic::setVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>set the volume of the music </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#ab0835ee151b4d2995fd777263d214fb3">RayMusic</a>, <a class="el" href="group___s_d_l.html#gaf5d20b4fac13231f26dd46bf3bbe4005">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#af140d442a3d764516b9c570172567767">SfmlMusic</a>.</p>
+
+</div>
+</div>
+<a id="gaecb0640ad26dce8fb49832c59f56b79c" name="gaecb0640ad26dce8fb49832c59f56b79c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaecb0640ad26dce8fb49832c59f56b79c">&#9670;&#160;</a></span>setVolume() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::ISound::setVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>set the volume of the sound </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="#ga18da5979db940d788ec4ce4e640b4e28">RaySound</a>, <a class="el" href="group___s_d_l.html#gac2d5f4cea37d4982bfabc4886fd1869a">SdlSound</a>, and <a class="el" href="#ga0870414ffd3c8a70249a5a5d18ae9b40">SfmlSound</a>.</p>
+
+</div>
+</div>
+<a id="ga18da5979db940d788ec4ce4e640b4e28" name="ga18da5979db940d788ec4ce4e640b4e28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga18da5979db940d788ec4ce4e640b4e28">&#9670;&#160;</a></span>setVolume() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RaySound::setVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>set the volume of the sound </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="#gaecb0640ad26dce8fb49832c59f56b79c">graphic::ISound</a>.</p>
+
+</div>
+</div>
+<a id="ga0870414ffd3c8a70249a5a5d18ae9b40" name="ga0870414ffd3c8a70249a5a5d18ae9b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0870414ffd3c8a70249a5a5d18ae9b40">&#9670;&#160;</a></span>setVolume() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SfmlSound::setVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>set the volume of the sound </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="#gaecb0640ad26dce8fb49832c59f56b79c">graphic::ISound</a>.</p>
+
+</div>
+</div>
+<a id="ga46b96c0934d772afc61966d1f2570d20" name="ga46b96c0934d772afc61966d1f2570d20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga46b96c0934d772afc61966d1f2570d20">&#9670;&#160;</a></span>stop() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IMusic::stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>stop the music and reset it to the beginning </p>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#a50e8e378de7027b71d62630e1e8d17c7">RayMusic</a>, <a class="el" href="group___s_d_l.html#ga494bdacb2b49160c13e6a1bfe2cf5117">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#ace4ac4b2090fe0214f7e2c2155cb8a64">SfmlMusic</a>.</p>
+
+</div>
+</div>
+<a id="gaa4f07e89345de5bad0ff2bb3ac50b061" name="gaa4f07e89345de5bad0ff2bb3ac50b061"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa4f07e89345de5bad0ff2bb3ac50b061">&#9670;&#160;</a></span>stop() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::ISound::stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>stop the sound and reset it to the beginning </p>
+
+<p>Implemented in <a class="el" href="#ga2454da98cfe02924c3bf9b7e0d6bd935">RaySound</a>, <a class="el" href="group___s_d_l.html#ga65b916ffeea7f60b8a2e97365dc8782e">SdlSound</a>, and <a class="el" href="#ga7be553a7f7297c4abc8b8e9c3992dd26">SfmlSound</a>.</p>
+
+</div>
+</div>
+<a id="ga2454da98cfe02924c3bf9b7e0d6bd935" name="ga2454da98cfe02924c3bf9b7e0d6bd935"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2454da98cfe02924c3bf9b7e0d6bd935">&#9670;&#160;</a></span>stop() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RaySound::stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>stop the sound and reset it to the beginning </p>
+
+<p>Implements <a class="el" href="#gaa4f07e89345de5bad0ff2bb3ac50b061">graphic::ISound</a>.</p>
+
+</div>
+</div>
+<a id="ga7be553a7f7297c4abc8b8e9c3992dd26" name="ga7be553a7f7297c4abc8b8e9c3992dd26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7be553a7f7297c4abc8b8e9c3992dd26">&#9670;&#160;</a></span>stop() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SfmlSound::stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>stop the sound and reset it to the beginning </p>
+
+<p>Implements <a class="el" href="#gaa4f07e89345de5bad0ff2bb3ac50b061">graphic::ISound</a>.</p>
+
+</div>
+</div>
 <a id="ga1681260f7fa5502cfc353fe139c072f3" name="ga1681260f7fa5502cfc353fe139c072f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1681260f7fa5502cfc353fe139c072f3">&#9670;&#160;</a></span>update() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1681260f7fa5502cfc353fe139c072f3">&#9670;&#160;</a></span>update() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2411,7 +3546,7 @@ false </dd></dl>
 </div>
 </div>
 <a id="ga87cc9ca9ea63bb88e083700c74acba74" name="ga87cc9ca9ea63bb88e083700c74acba74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga87cc9ca9ea63bb88e083700c74acba74">&#9670;&#160;</a></span>update() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga87cc9ca9ea63bb88e083700c74acba74">&#9670;&#160;</a></span>update() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2442,6 +3577,35 @@ false </dd></dl>
 </dl>
 
 <p>Implemented in <a class="el" href="group___raylib.html#gaccffa820d2eb0898a42fe2f87b1eeeee">RayMouse</a>, <a class="el" href="group___s_d_l.html#gafe0af04452988961c526e636d174983b">SdlMouse</a>, and <a class="el" href="group___s_f_m_l.html#gab4474d824ce2e9cf2ac4ede8d91e73fa">SfmlMouse</a>.</p>
+
+</div>
+</div>
+<a id="ga4457ac4a4273bd466dcd66c1cfa2127b" name="ga4457ac4a4273bd466dcd66c1cfa2127b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4457ac4a4273bd466dcd66c1cfa2127b">&#9670;&#160;</a></span>update() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void graphic::IMusic::update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>update the music </p>
+
+<p>Implemented in <a class="el" href="class_ray_music.html#a79324e7ea74372f81962926b9ed5c692">RayMusic</a>, <a class="el" href="group___s_d_l.html#ga1697cc689b52fad84da85bba87d9eb26">SdlMusic</a>, and <a class="el" href="class_sfml_music.html#adefc48473d098c7efc6c2a7a62d0caca">SfmlMusic</a>.</p>
 
 </div>
 </div>

@@ -51,9 +51,15 @@ class SdlWindow : public graphic::IWindow {
         SdlWindow(__int32_t screenWidth, __int32_t screenHeight, std::string title): is_open(false), _frameLimit(0), _start(0), _end(60), _delta(60) {
             std::cout << "SdlWindow::SdlWindow implemented" << std::endl;
             if((SDL_Init(SDL_INIT_VIDEO) < 0)) {
-                std::cout << "SDL_Init failed" << std::endl;
+                std::cerr << "SDL_Init failed" << std::endl;
                 return;
-            }            
+            }
+
+            if (TTF_Init() == -1) {
+                std::cerr << "SDL_ttf could not initialize! Error: " << TTF_GetError() << std::endl;
+                return;
+            }
+
             std::cout << "SDL_Init success" << std::endl;
             _window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
             if (!_window) {

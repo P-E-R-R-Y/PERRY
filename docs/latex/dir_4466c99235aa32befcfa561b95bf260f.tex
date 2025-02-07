@@ -3,6 +3,8 @@
 \doxysubsubsection*{Directories}
 \begin{DoxyCompactItemize}
 \item 
+directory \mbox{\hyperlink{dir_bd822c77b9e4dbf1bb7a37a050d6dd52}{audio}}
+\item 
 directory \mbox{\hyperlink{dir_bad741f9f2925ab6e97201b4d8929a0d}{event}}
 \item 
 directory \mbox{\hyperlink{dir_6422f729d865d519549c9b96f029f2d7}{graphic}}
@@ -21,4 +23,23 @@ It\textquotesingle{}s Graphics3
 
 imodul 3d herit du Imodel 2d\hypertarget{Readme.md_autotoc_md18}{}\doxysubsection{\texorpdfstring{Develop}{Develop}}\label{Readme.md_autotoc_md18}
 \hypertarget{Readme.md_autotoc_md19}{}\doxysubsubsection{\texorpdfstring{includes are defined here for more information}{includes are defined here for more information}}\label{Readme.md_autotoc_md19}
-{\ttfamily \href{https://github.com/libsdl-org/SDL_image/blob/release-2.8.2/examples/showimage.c}{\texttt{ https\+://github.\+com/libsdl-\/org/\+SDL\+\_\+image/blob/release-\/2.\+8.\+2/examples/showimage.\+c}}} 
+{\ttfamily \href{https://github.com/libsdl-org/SDL_image/blob/release-2.8.2/examples/showimage.c}{\texttt{ https\+://github.\+com/libsdl-\/org/\+SDL\+\_\+image/blob/release-\/2.\+8.\+2/examples/showimage.\+c}}}
+
+in macos I ran into this issue\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{In\ file\ included\ from\ /Users/perrychouteau/Documents/GitHub/PERRY/project/build/\_deps/sdl2\_mixer-\/src/src/codecs/music\_opus.c:34:}
+\DoxyCodeLine{/opt/homebrew/include/opus/opusfile.h:110:11:\ error:\ 'opus\_multistream.h'\ file\ not\ found\ with\ <angled>\ include;\ use\ "{}quotes"{}\ instead}
+\DoxyCodeLine{\ \ 110\ |\ \#\ include\ <opus\_multistream.h>}
+\DoxyCodeLine{\ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ \string^\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~}
+\DoxyCodeLine{\ \ \ \ \ \ |\ \ \ \ \ \ \ \ \ \ \ "{}opus\_multistream.h"{}}
+\DoxyCodeLine{1\ error\ generated.}
+\DoxyCodeLine{make[2]:\ ***\ [\_deps/sdl2\_mixer-\/build/CMakeFiles/SDL2\_mixer.dir/src/codecs/music\_opus.c.o]\ Error\ 1}
+\DoxyCodeLine{make[1]:\ ***\ [\_deps/sdl2\_mixer-\/build/CMakeFiles/SDL2\_mixer.dir/all]\ Error\ 2}
+\DoxyCodeLine{make:\ ***\ [all]\ Error\ 2}
+
+\end{DoxyCode}
+
+
+fixed will editing this file {\ttfamily .../project/build/\+\_\+deps/sdl2\+\_\+mixer-\/src/\+Visual\+C/external/include/opus/opus.h} 

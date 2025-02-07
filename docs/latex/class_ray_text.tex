@@ -1,0 +1,299 @@
+\doxysection{Ray\+Text Class Reference}
+\hypertarget{class_ray_text}{}\label{class_ray_text}\index{RayText@{RayText}}
+Inheritance diagram for Ray\+Text\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ray_text}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ray_text_a329720dc9b5f9ad9bdf7e25e384bc933}\label{class_ray_text_a329720dc9b5f9ad9bdf7e25e384bc933} 
+{\bfseries Ray\+Text} (std\+::string data, std\+::string font)
+\item 
+bool \mbox{\hyperlink{class_ray_text_aff014a3705bfa3079c8d6289299e555f}{is\+Ready}} () const override
+\item 
+void \mbox{\hyperlink{class_ray_text_a2313c9b3ceb6a786257746194746e3ff}{set\+Text}} (const std\+::string text) override
+\begin{DoxyCompactList}\small\item\em Set the Text value. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_ray_text_a2fb862b25ad719e453b07286c2039e11}{get\+Text}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Text value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_text_aa7cc6630323190d9d27e42e42b9624d3}{set\+Font}} (std\+::string font) override
+\begin{DoxyCompactList}\small\item\em Set the Font value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_text_ab4c6b58039e7c67c096c337e33fcd7ac}{set\+Font\+Size}} (unsigned int size) override
+\begin{DoxyCompactList}\small\item\em Set the Font Size text. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{class_ray_text_a09191e67d0907ca789046e3a3e24e214}{get\+Font\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Font Size text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_text_aec92e857acb7c335d02e17c0b474b6ee}{set\+Text\+Color}} (\+\_\+\+\_\+color\+\_\+t color) override
+\begin{DoxyCompactList}\small\item\em Set the Text Color text. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+color\+\_\+t \mbox{\hyperlink{class_ray_text_acdf7c48480704effcb2c9a3af68839f4}{get\+Text\+Color}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Text Color text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_text_a7492525ded1c379b0f3c36d6e2fcbf87}{set\+Position}} (\+\_\+\+\_\+v2f\+\_\+t position) override
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{struct_position}{Position} text. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+v2f\+\_\+t \mbox{\hyperlink{class_ray_text_a408ba725f4f4a59bca918cac39c9687f}{get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Get the \doxylink{struct_position}{Position} text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_text_a4efb04b837d7027ad6fdea21e61c20a2}{set\+Rotation}} (float angle) override
+\begin{DoxyCompactList}\small\item\em Set the Rotation object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_ray_text_a6e7676bdb2bda5b888453bbe420c336f}{get\+Rotation}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Rotation object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+IText} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classgraphic_1_1_i_text}{IText} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ray_text_a1247d8e85077d01038c6aa9f93d9854e}\label{class_ray_text_a1247d8e85077d01038c6aa9f93d9854e} 
+void {\bfseries update\+Origin} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ray_text_a1680bd62da44b7ca2c35e8447b7ce418}\label{class_ray_text_a1680bd62da44b7ca2c35e8447b7ce418} 
+std\+::string {\bfseries \+\_\+data}
+\item 
+\Hypertarget{class_ray_text_a3fdfb47355ad7d201e42d0734caa4027}\label{class_ray_text_a3fdfb47355ad7d201e42d0734caa4027} 
+Vector2 {\bfseries \+\_\+position}
+\item 
+\Hypertarget{class_ray_text_a5110286c5eb96a9b522438d7cc734a77}\label{class_ray_text_a5110286c5eb96a9b522438d7cc734a77} 
+Color {\bfseries \+\_\+color}
+\item 
+\Hypertarget{class_ray_text_a194e5a6193c1f20085278113a6e41a44}\label{class_ray_text_a194e5a6193c1f20085278113a6e41a44} 
+Font {\bfseries \+\_\+font}
+\item 
+\Hypertarget{class_ray_text_a1ab1abbe7f2f8b9d2b374f553bdacc28}\label{class_ray_text_a1ab1abbe7f2f8b9d2b374f553bdacc28} 
+unsigned int {\bfseries \+\_\+size}
+\item 
+\Hypertarget{class_ray_text_a49dcae18e0609e4606911bab8f0cb996}\label{class_ray_text_a49dcae18e0609e4606911bab8f0cb996} 
+Vector2 {\bfseries \+\_\+origin}
+\item 
+\Hypertarget{class_ray_text_a929ad7eb28ca4f4c37f31968df4dcdb4}\label{class_ray_text_a929ad7eb28ca4f4c37f31968df4dcdb4} 
+float {\bfseries \+\_\+rotation}
+\item 
+\Hypertarget{class_ray_text_aaeee750fe9071fba90f8d9a115c8f6ea}\label{class_ray_text_aaeee750fe9071fba90f8d9a115c8f6ea} 
+float {\bfseries \+\_\+spacing}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ray_text_a852295199caa10afeb7325536eef4353}\label{class_ray_text_a852295199caa10afeb7325536eef4353} 
+class {\bfseries Ray\+Window}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ray_text_a09191e67d0907ca789046e3a3e24e214}\index{RayText@{RayText}!getFontSize@{getFontSize}}
+\index{getFontSize@{getFontSize}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{getFontSize()}{getFontSize()}}
+{\footnotesize\ttfamily \label{class_ray_text_a09191e67d0907ca789046e3a3e24e214} 
+unsigned int Ray\+Text\+::get\+Font\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Font Size text. 
+
+\begin{DoxyReturn}{Returns}
+unsigned int 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_a007d8adedcb85cc19a583fa465986873}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_a408ba725f4f4a59bca918cac39c9687f}\index{RayText@{RayText}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{class_ray_text_a408ba725f4f4a59bca918cac39c9687f} 
+\+\_\+\+\_\+v2f\+\_\+t Ray\+Text\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the \doxylink{struct_position}{Position} text. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v2f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_acb42fcd8bca082fea58540a4c47f9be8}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_a6e7676bdb2bda5b888453bbe420c336f}\index{RayText@{RayText}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily \label{class_ray_text_a6e7676bdb2bda5b888453bbe420c336f} 
+float Ray\+Text\+::get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Rotation object. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_aea78a0cfad6529689d7c5e28f2f005be}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_a2fb862b25ad719e453b07286c2039e11}\index{RayText@{RayText}!getText@{getText}}
+\index{getText@{getText}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{getText()}{getText()}}
+{\footnotesize\ttfamily \label{class_ray_text_a2fb862b25ad719e453b07286c2039e11} 
+std\+::string Ray\+Text\+::get\+Text (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Text value. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_a26668766479eadb4b3d599fb98b6c038}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_acdf7c48480704effcb2c9a3af68839f4}\index{RayText@{RayText}!getTextColor@{getTextColor}}
+\index{getTextColor@{getTextColor}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{getTextColor()}{getTextColor()}}
+{\footnotesize\ttfamily \label{class_ray_text_acdf7c48480704effcb2c9a3af68839f4} 
+\+\_\+\+\_\+color\+\_\+t Ray\+Text\+::get\+Text\+Color (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Text Color text. 
+
+\begin{DoxyReturn}{Returns}
+\+\_\+\+\_\+v4f\+\_\+t 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_a8931fc8567dcd238f7b5938cd4ad2447}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_aff014a3705bfa3079c8d6289299e555f}\index{RayText@{RayText}!isReady@{isReady}}
+\index{isReady@{isReady}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily \label{class_ray_text_aff014a3705bfa3079c8d6289299e555f} 
+bool Ray\+Text\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_aa7cc6630323190d9d27e42e42b9624d3}\index{RayText@{RayText}!setFont@{setFont}}
+\index{setFont@{setFont}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{setFont()}{setFont()}}
+{\footnotesize\ttfamily \label{class_ray_text_aa7cc6630323190d9d27e42e42b9624d3} 
+void Ray\+Text\+::set\+Font (\begin{DoxyParamCaption}\item[{std\+::string}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Font value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_a2af4ac60fd595ab31449a79c6b455f95}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_ab4c6b58039e7c67c096c337e33fcd7ac}\index{RayText@{RayText}!setFontSize@{setFontSize}}
+\index{setFontSize@{setFontSize}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{setFontSize()}{setFontSize()}}
+{\footnotesize\ttfamily \label{class_ray_text_ab4c6b58039e7c67c096c337e33fcd7ac} 
+void Ray\+Text\+::set\+Font\+Size (\begin{DoxyParamCaption}\item[{unsigned int}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Font Size text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_adf5bcb210926241091d0a2b02fb7d573}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_a7492525ded1c379b0f3c36d6e2fcbf87}\index{RayText@{RayText}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{class_ray_text_a7492525ded1c379b0f3c36d6e2fcbf87} 
+void Ray\+Text\+::set\+Position (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+v2f\+\_\+t}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the \doxylink{struct_position}{Position} text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_a77df1cbc93331b518843e20b0495f21f}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_a4efb04b837d7027ad6fdea21e61c20a2}\index{RayText@{RayText}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{class_ray_text_a4efb04b837d7027ad6fdea21e61c20a2} 
+void Ray\+Text\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{angle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Rotation object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_a49d81f08b4cb9ffbd2518289cd3dfbbf}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_a2313c9b3ceb6a786257746194746e3ff}\index{RayText@{RayText}!setText@{setText}}
+\index{setText@{setText}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{setText()}{setText()}}
+{\footnotesize\ttfamily \label{class_ray_text_a2313c9b3ceb6a786257746194746e3ff} 
+void Ray\+Text\+::set\+Text (\begin{DoxyParamCaption}\item[{const std\+::string}]{text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Text value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_a8be9b356bbc958eb3df2df592c1e1cb6}{graphic\+::\+IText}}.
+
+\Hypertarget{class_ray_text_aec92e857acb7c335d02e17c0b474b6ee}\index{RayText@{RayText}!setTextColor@{setTextColor}}
+\index{setTextColor@{setTextColor}!RayText@{RayText}}
+\doxysubsubsection{\texorpdfstring{setTextColor()}{setTextColor()}}
+{\footnotesize\ttfamily \label{class_ray_text_aec92e857acb7c335d02e17c0b474b6ee} 
+void Ray\+Text\+::set\+Text\+Color (\begin{DoxyParamCaption}\item[{\+\_\+\+\_\+color\+\_\+t}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the Text Color text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_text_af7331269912ef0284c26c11d45a0c365}{graphic\+::\+IText}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/raylib/graphic/\mbox{\hyperlink{_ray_text_8hpp}{Ray\+Text.\+hpp}}\end{DoxyCompactItemize}

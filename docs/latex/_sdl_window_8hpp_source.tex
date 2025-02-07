@@ -7,189 +7,235 @@
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ SDLWINDOW\_HPP\_}}
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ SDLWINDOW\_HPP\_}}
 \DoxyCodeLine{00014\ \textcolor{comment}{//Sdl}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}SDL.h"{}}\ \textcolor{comment}{//\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}SDL.h"{}}}
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}SDL\_image.h"{}}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{comment}{//Interface}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_window_8hpp}{../../../../interfaces/graphic/window/IWindow.hpp}}"{}}}
-\DoxyCodeLine{00020\ \textcolor{comment}{//encapsulation}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_polygon_8hpp}{../graphic/SdlPolygon.hpp}}"{}}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_sprite_8hpp}{../graphic/SdlSprite.hpp}}"{}}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_model_8hpp}{../graphic/SdlModel.hpp}}"{}}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_event_8hpp}{../event/SdlEvent.hpp}}"{}}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_camera_8hpp}{SdlCamera.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\#include\ "{}SDL\_ttf.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\#include\ "{}SDL\_mixer.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_window_8hpp}{IWindow.hpp}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//encapsulation}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_polygon_8hpp}{SdlPolygon.hpp}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_sprite_8hpp}{SdlSprite.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_text_8hpp}{SdlText.hpp}}"{}}}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{group___s_d_l_ga977f564355412e0852d8415f237a9ef5}{SdlWindow}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_event_8hpp}{SdlEvent.hpp}}"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_camera_8hpp}{SdlCamera.hpp}}"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_model_8hpp}{SdlModel.hpp}}"{}}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_sound_8hpp}{SdlSound.hpp}}"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sdl_music_8hpp}{SdlMusic.hpp}}"{}}}
 \DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <iostream>}}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___s_d_l_ga977f564355412e0852d8415f237a9ef5}{SdlWindow}}(\_\_int32\_t\ screenWidth,\ \_\_int32\_t\ screenHeight,\ std::string\ title):\ is\_open(false),\ \_frameLimit(0),\ \_start(0),\ \_end(60),\ \_delta(60)\ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::SdlWindow\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((SDL\_Init(SDL\_INIT\_VIDEO)\ <\ 0))\ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Init\ failed"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Init\ success"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \_window\ =\ SDL\_CreateWindow(title.c\_str(),\ SDL\_WINDOWPOS\_CENTERED,\ SDL\_WINDOWPOS\_CENTERED,\ screenWidth,\ screenHeight,\ SDL\_WINDOW\_SHOWN);}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_window)\ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Window\ failed"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Window\ success"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \_renderer\ =\ SDL\_CreateRenderer(\_window,\ -\/1,\ SDL\_RENDERER\_ACCELERATED\ |\ SDL\_RENDERER\_PRESENTVSYNC);}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_SetRenderDrawColor(\_renderer,\ 0,\ 0,\ 0,\ 255);}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_surface\ =\ SDL\_GetWindowSurface(\_window);}}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\_renderer)\ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Render\ failed"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Render\ success"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ is\_open\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___s_d_l_ga1d165b038a44aa75acf09c042d49253d}{\string~SdlWindow}}()\ \{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::\string~SdlWindow\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_DestroyRenderer(\_renderer);}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_DestroyWindow(\_window);}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga658eab0bf038cd1775e73e920a71b80b}{linkEvent}}(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \_event\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sdl_event}{SdlEvent}}\ *\textcolor{keyword}{>}(event);}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_d_l_gae7881c13fde6af610cb7efb5ab342317}{isOpen}}()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is\_open;}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_gac1d006b6e87818f90e3042ab8772dec1}{close}}()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Quit();}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00102\ }
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga776361f77ae5b82c8bbd20d05c1dc45e}{setFrameLimit}}(\_\_int32\_t\ limit)\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \_frameLimit\ =\ limit;}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00111\ }
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \_\_int32\_t\ \mbox{\hyperlink{group___s_d_l_gacc7c25e238e5528a77e38ebb7dc160d9}{getDelta}}()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_delta;}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga7c566894f7432dfcfd51faee1d239a5d}{beginDraw}}()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::beginDraw\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_RenderClear(\_renderer);}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga8e1a79f993c7424831754404c32f3684}{drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga4de650f1f3712087a4a5bca3aa2a5f0e}{drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga9c0bf1ab0a9b4917ead4ad8fc3c697ff}{endDraw}}()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_RenderPresent(\_renderer);}
+\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }\mbox{\hyperlink{group___s_d_l_ga977f564355412e0852d8415f237a9ef5}{SdlWindow}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_window}{graphic::IWindow}}\ \{}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___s_d_l_ga977f564355412e0852d8415f237a9ef5}{SdlWindow}}(\_\_int32\_t\ screenWidth,\ \_\_int32\_t\ screenHeight,\ std::string\ title):\ is\_open(false),\ \_frameLimit(0),\ \_start(0),\ \_end(60),\ \_delta(60)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::SdlWindow\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((SDL\_Init(SDL\_INIT\_VIDEO)\ <\ 0))\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}SDL\_Init\ failed"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (TTF\_Init()\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}SDL\_ttf\ could\ not\ initialize!\ Error:\ "{}}\ <<\ TTF\_GetError()\ <<\ std::endl;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Init\ success"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \_window\ =\ SDL\_CreateWindow(title.c\_str(),\ SDL\_WINDOWPOS\_CENTERED,\ SDL\_WINDOWPOS\_CENTERED,\ screenWidth,\ screenHeight,\ SDL\_WINDOW\_SHOWN);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_window)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Window\ failed"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Window\ success"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \_renderer\ =\ SDL\_CreateRenderer(\_window,\ -\/1,\ SDL\_RENDERER\_ACCELERATED\ |\ SDL\_RENDERER\_PRESENTVSYNC);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_SetRenderDrawColor(\_renderer,\ 0,\ 0,\ 0,\ 255);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_surface\ =\ SDL\_GetWindowSurface(\_window);}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\_renderer)\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Render\ failed"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SDL\_Render\ success"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ is\_open\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___s_d_l_ga1d165b038a44aa75acf09c042d49253d}{\string~SdlWindow}}()\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::\string~SdlWindow\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_DestroyRenderer(\_renderer);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_DestroyWindow(\_window);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga658eab0bf038cd1775e73e920a71b80b}{linkEvent}}(\mbox{\hyperlink{classgraphic_1_1_i_event}{graphic::IEvent}}\ *event)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \_event\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sdl_event}{SdlEvent}}\ *\textcolor{keyword}{>}(event);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_d_l_gae7881c13fde6af610cb7efb5ab342317}{isOpen}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is\_open;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_gac1d006b6e87818f90e3042ab8772dec1}{close}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Quit();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga776361f77ae5b82c8bbd20d05c1dc45e}{setFrameLimit}}(\_\_int32\_t\ limit)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \_frameLimit\ =\ limit;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \_\_int32\_t\ \mbox{\hyperlink{group___s_d_l_gacc7c25e238e5528a77e38ebb7dc160d9}{getDelta}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_delta;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga7c566894f7432dfcfd51faee1d239a5d}{beginDraw}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::beginDraw\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_RenderClear(\_renderer);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga8e1a79f993c7424831754404c32f3684}{drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00148\ }
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//time\ handling}}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \_end\ =\ SDL\_GetTicks64();}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \_delta\ =\ \_end\ -\/\ \_start;}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_frameLimit\ !=\ 0\ \&\&\ \_delta\ <\ \_frameLimit)\ \{}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Delay(\_frameLimit\ -\/\ \_delta);}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \_start\ =\ \_end;}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga4de650f1f3712087a4a5bca3aa2a5f0e}{drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga360486d07bcb0cef8df5b18b0252a542}{drawText}}(\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic::IText}}\ *text)\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00157\ }
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_gaa540228a558fee3510a05e29f629220b}{beginMode3}}(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga304a33df6d466985e50c192b8fc8a25a}{drawModel}}(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00171\ }
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga4de0baf2dcd722e8fa4ce169420216c0}{endMode3}}()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::endMode3\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//EndMode3D();}}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00179\ }
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_d_l_ga3ea7d97069a1522b951696a9c9da2ddf}{pollEvent}}()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SDL\_PollEvent(\&\_event-\/>\_event)\ >\ 0;}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga27db59127c8c517c420afb80b27b38d2}{eventClose}}()\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_event\ ==\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_event-\/>\_event.type\ ==\ SDL\_QUIT\ ||\ \_event-\/>\_event.key.keysym.sym\ ==\ SDLK\_ESCAPE)\ \{}
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_open\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00201\ }
-\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_open;}
-\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ SDL\_Window\ \ \ *\_window;}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{comment}{//SDL\_Surface\ *\_surface;}}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ SDL\_Renderer\ *\_renderer;}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{comment}{//IEvent\ *\_event;}}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sdl_event}{SdlEvent}}\ *\_event;}
-\DoxyCodeLine{00209\ }
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \_\_int32\_t\ \_frameLimit;}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \_\_uint64\_t\ \_start;}
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \_\_uint64\_t\ \_end;}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_delta;}
-\DoxyCodeLine{00215\ \};}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga9c0bf1ab0a9b4917ead4ad8fc3c697ff}{endDraw}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_RenderPresent(\_renderer);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//time\ handling}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \_end\ =\ SDL\_GetTicks64();}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \_delta\ =\ \_end\ -\/\ \_start;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_frameLimit\ !=\ 0\ \&\&\ \_delta\ <\ \_frameLimit)\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Delay(\_frameLimit\ -\/\ \_delta);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \_start\ =\ \_end;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_gaa540228a558fee3510a05e29f629220b}{beginMode3}}(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga304a33df6d466985e50c192b8fc8a25a}{drawModel}}(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga4de0baf2dcd722e8fa4ce169420216c0}{endMode3}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::endMode3\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//EndMode3D();}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_d_l_ga3ea7d97069a1522b951696a9c9da2ddf}{pollEvent}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ SDL\_PollEvent(\&\_event-\/>\_event)\ >\ 0;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga27db59127c8c517c420afb80b27b38d2}{eventClose}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_event\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_event-\/>\_event.type\ ==\ SDL\_QUIT\ ||\ \_event-\/>\_event.key.keysym.sym\ ==\ SDLK\_ESCAPE)\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_open\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \};}
 \DoxyCodeLine{00216\ }
-\DoxyCodeLine{00217\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga8e1a79f993c7424831754404c32f3684}{SdlWindow::drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon)\ \{}
-\DoxyCodeLine{00218\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::drawPoly\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00219\ \ \ \ \ \mbox{\hyperlink{class_sdl_polygon}{SdlPolygon}}\ *sdlPolygon\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sdl_polygon}{SdlPolygon}}\ *\textcolor{keyword}{>}(polygon);}
-\DoxyCodeLine{00220\ }
-\DoxyCodeLine{00221\ \ \ \ \ std::vector<graphic::triangle\_t>\ triangles\ =\ sdlPolygon-\/>\_triangles;}
-\DoxyCodeLine{00222\ \ \ \ \ std::vector<SDL\_Vertex>\ points\ =\ sdlPolygon-\/>\_points;}
-\DoxyCodeLine{00223\ }
-\DoxyCodeLine{00224\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}StartDraw"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ triangles.size();\ i++)\ \{}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{comment}{//raylib\ ask\ for\ counter\ clockwise\ it's\ why\ I\ reverse\ the\ order}}
-\DoxyCodeLine{00227\ \textcolor{comment}{//\ \ \ \ \ \ \ \ SDL\_RenderGeometry(\_renderer,\ nullptr,\ points.data(),\ points.size(),\ nullptr,\ 0);}}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rColor\ =\ rand()\%255;}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ std::vector<SDL\_Vertex>\ vertices\ =\ \{}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Vertex\{SDL\_FPoint\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].A.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].A.y)\},\ }
-\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Color\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(rColor),\ 0,\ 0,\ 255\},\ SDL\_FPoint\{0,\ 0\}\},}
-\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Vertex\{SDL\_FPoint\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].B.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].B.y)\},\ }
-\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Color\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(rColor),\ 0,\ 0,\ 255\},\ SDL\_FPoint\{0,\ 0\}\},}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Vertex\{SDL\_FPoint\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].C.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].C.y)\},\ }
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Color\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(rColor),\ 0,\ 0,\ 255\},\ SDL\_FPoint\{0,\ 0\}\},}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \};\ }
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ SDL\_RenderGeometry(\_renderer,\ \textcolor{keyword}{nullptr},\ vertices.data(),\ vertices.size(),\ \textcolor{keyword}{nullptr},\ 0);}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{comment}{//DrawTriangle(\{static\_cast<float>(triangles[i].C.x),\ static\_cast<float>(triangles[i].C.y)\},}}
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \{static\_cast<float>(triangles[i].B.x),\ static\_cast<float>(triangles[i].B.y)\},}}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \{static\_cast<float>(triangles[i].A.x),\ static\_cast<float>(triangles[i].A.y)\},}}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ Color\{static\_cast<unsigned\ char>(rand()\%255),\ 0,\ 0,\ 255\});}}
-\DoxyCodeLine{00242\ \ \ \ \ \}}
-\DoxyCodeLine{00243\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}EndDraw"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00244\ \};}
-\DoxyCodeLine{00245\ }
-\DoxyCodeLine{00246\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga4de650f1f3712087a4a5bca3aa2a5f0e}{SdlWindow::drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite)\ \{}
-\DoxyCodeLine{00247\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::drawSprite\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00248\ \ \ \ \ \mbox{\hyperlink{class_sdl_sprite}{SdlSprite}}\ *sdlSprite\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sdl_sprite}{SdlSprite}}\ *\textcolor{keyword}{>}(sprite);}
-\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordflow}{if}\ (sdlSprite-\/>\_texture\ ==\ \textcolor{keyword}{nullptr}\ \&\&\ sdlSprite-\/>\_surface\ !=\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ sdlSprite-\/>\_texture\ =\ SDL\_CreateTextureFromSurface(\_renderer,\ sdlSprite-\/>\_surface);}
-\DoxyCodeLine{00251\ }
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (sdlSprite-\/>\_surface\ !=\ nullptr)}}
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ SDL\_FreeSurface(sdlSprite-\/>\_surface);}}
-\DoxyCodeLine{00254\ \ \ \ \ \}}
-\DoxyCodeLine{00255\ \ \ \ \ SDL\_FRect\ position\ =\ \{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sdlSprite-\/>\_position.x),\ }
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sdlSprite-\/>\_position.y),}
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sdlSprite-\/>\_crop.w),}
-\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sdlSprite-\/>\_crop.h)\};}
-\DoxyCodeLine{00259\ \ \ \ \ \textcolor{comment}{//SDL\_FPoint\ center\ =\ \{static\_cast<float>(sdlSprite-\/>\_crop.w*-\/0.5),\ static\_cast<float>(sdlSprite-\/>\_crop.h*-\/0.5)\};}}
-\DoxyCodeLine{00260\ \ \ \ \ SDL\_FPoint\ center\ =\ \{0,\ 0\};}
-\DoxyCodeLine{00261\ \ \ \ \ std::cout\ <<\ center.x\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ center.y\ <<\ std::endl;}
-\DoxyCodeLine{00262\ \ \ \ \ SDL\_RenderCopyExF(\_renderer,\ sdlSprite-\/>\_texture,\ \&sdlSprite-\/>\_crop,\ \&position,\ sdlSprite-\/>\_rotation,\ \ \&center,\ SDL\_FLIP\_NONE);}
-\DoxyCodeLine{00263\ \};}
-\DoxyCodeLine{00264\ }
-\DoxyCodeLine{00265\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_gaa540228a558fee3510a05e29f629220b}{SdlWindow::beginMode3}}(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera)\ \{}
-\DoxyCodeLine{00266\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::beginMode3\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00267\ \};}
-\DoxyCodeLine{00268\ }
-\DoxyCodeLine{00269\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga304a33df6d466985e50c192b8fc8a25a}{SdlWindow::drawModel}}(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model)\ \{}
-\DoxyCodeLine{00270\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::drawModel\ not\ implemented"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00271\ \};}
-\DoxyCodeLine{00272\ }
-\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SDLWINDOW\_HPP\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_d_l_ga71d5f9d17e55e2ea3e1436ab18832421}{beginAudio}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_audio\_init\ \&\&\ Mix\_OpenAudio(44100,\ MIX\_DEFAULT\_FORMAT,\ 2,\ 2048)\ <\ 0)\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mix\_AllocateChannels(32);\ \textcolor{comment}{//\ Set\ max\ channels}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_audio\_init\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_gafcfaf1d017c1ceb15c11fc87de80ce0e}{endAudio}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_audio\_init)\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mix\_CloseAudio();}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_audio\_init;\ }
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_open;}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ SDL\_Window\ \ \ *\_window;}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ SDL\_Renderer\ *\_renderer;}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sdl_event}{SdlEvent}}\ *\_event;}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \_\_int32\_t\ \_frameLimit;}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \_\_uint64\_t\ \_start;}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \_\_uint64\_t\ \_end;}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_delta;}
+\DoxyCodeLine{00245\ \};}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga8e1a79f993c7424831754404c32f3684}{SdlWindow::drawPoly}}(\mbox{\hyperlink{classgraphic_1_1_i_polygon}{graphic::IPolygon}}\ *polygon)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::drawPoly\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00249\ \ \ \ \ \mbox{\hyperlink{class_sdl_polygon}{SdlPolygon}}\ *sdlPolygon\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sdl_polygon}{SdlPolygon}}\ *\textcolor{keyword}{>}(polygon);}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ std::vector<graphic::triangle\_t>\ triangles\ =\ sdlPolygon-\/>\_triangles;}
+\DoxyCodeLine{00252\ \ \ \ \ std::vector<SDL\_Vertex>\ points\ =\ sdlPolygon-\/>\_points;}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}StartDraw"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ triangles.size();\ i++)\ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//raylib\ ask\ for\ counter\ clockwise\ it's\ why\ I\ reverse\ the\ order}}
+\DoxyCodeLine{00257\ \textcolor{comment}{//\ \ \ \ \ \ \ \ SDL\_RenderGeometry(\_renderer,\ nullptr,\ points.data(),\ points.size(),\ nullptr,\ 0);}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rColor\ =\ rand()\%255;}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ SDL\_Color\ color\ =\ \{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(sdlPolygon-\/>\_color.r),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(sdlPolygon-\/>\_color.g),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(sdlPolygon-\/>\_color.b),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(sdlPolygon-\/>\_color.a)\};}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ std::vector<SDL\_Vertex>\ vertices\ =\ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Vertex\{SDL\_FPoint\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].A.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].A.y)\},\ }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ color,\ SDL\_FPoint\{0,\ 0\}\},}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Vertex\{SDL\_FPoint\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].B.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].B.y)\},\ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ color,\ SDL\_FPoint\{0,\ 0\}\},}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_Vertex\{SDL\_FPoint\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].C.x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(triangles[i].C.y)\},\ }
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ color,\ SDL\_FPoint\{0,\ 0\}\},}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \};\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ SDL\_RenderGeometry(\_renderer,\ \textcolor{keyword}{nullptr},\ vertices.data(),\ vertices.size(),\ \textcolor{keyword}{nullptr},\ 0);}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \textcolor{comment}{//DrawTriangle(\{static\_cast<float>(triangles[i].C.x),\ static\_cast<float>(triangles[i].C.y)\},}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \{static\_cast<float>(triangles[i].B.x),\ static\_cast<float>(triangles[i].B.y)\},}}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \{static\_cast<float>(triangles[i].A.x),\ static\_cast<float>(triangles[i].A.y)\},}}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ Color\{static\_cast<unsigned\ char>(rand()\%255),\ 0,\ 0,\ 255\});}}
+\DoxyCodeLine{00274\ \ \ \ \ \}}
+\DoxyCodeLine{00275\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}EndDraw"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00276\ \};}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga4de650f1f3712087a4a5bca3aa2a5f0e}{SdlWindow::drawSprite}}(\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic::ISprite}}\ *sprite)\ \{}
+\DoxyCodeLine{00279\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::drawSprite\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{class_sdl_sprite}{SdlSprite}}\ *sdlSprite\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{class_sdl_sprite}{SdlSprite}}\ *\textcolor{keyword}{>}(sprite);}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{if}\ (sdlSprite-\/>\_texture\ ==\ \textcolor{keyword}{nullptr}\ \&\&\ sdlSprite-\/>\_surface\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ sdlSprite-\/>\_texture\ =\ SDL\_CreateTextureFromSurface(\_renderer,\ sdlSprite-\/>\_surface);}
+\DoxyCodeLine{00283\ \ \ \ \ \}}
+\DoxyCodeLine{00284\ \ \ \ \ SDL\_FRect\ position\ =\ \{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sdlSprite-\/>\_position.x),\ }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sdlSprite-\/>\_position.y),}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sdlSprite-\/>\_crop.w),}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sdlSprite-\/>\_crop.h)\};}
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{comment}{//SDL\_FPoint\ center\ =\ \{static\_cast<float>(sdlSprite-\/>\_crop.w*-\/0.5),\ static\_cast<float>(sdlSprite-\/>\_crop.h*-\/0.5)\};}}
+\DoxyCodeLine{00289\ \ \ \ \ SDL\_FPoint\ center\ =\ \{0,\ 0\};}
+\DoxyCodeLine{00290\ \ \ \ \ std::cout\ <<\ center.x\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ center.y\ <<\ std::endl;}
+\DoxyCodeLine{00291\ \ \ \ \ SDL\_RenderCopyExF(\_renderer,\ sdlSprite-\/>\_texture,\ \&sdlSprite-\/>\_crop,\ \&position,\ sdlSprite-\/>\_rotation,\ \ \&center,\ SDL\_FLIP\_NONE);}
+\DoxyCodeLine{00292\ \};}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga360486d07bcb0cef8df5b18b0252a542}{SdlWindow::drawText}}(\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic::IText}}\ *text)\ \{}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}SdlWindow::drawText\ implemented"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{comment}{//SdlText\ *sdlText\ =\ static\_cast<SdlText\ *>(text);}}
+\DoxyCodeLine{00297\ \textcolor{comment}{//}}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{comment}{//if\ (sdlText-\/>\_texture\ ==\ nullptr\ \&\&\ sdlText-\/>\_surface\ !=\ nullptr)\ \{}}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{comment}{//\ \ \ \ sdlText-\/>\_texture\ =\ SDL\_CreateTextureFromSurface(\_renderer,\ sdlText-\/>\_surface);}}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{comment}{//SDL\_FRect\ position\ =\ \{static\_cast<float>(sdlText-\/>\_position.x),\ }}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ static\_cast<float>(sdlText-\/>\_position.y),}}
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ static\_cast<float>(sdlText-\/>\_surface-\/>w),}}
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ static\_cast<float>(sdlText-\/>\_surface-\/>h)\};}}
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{comment}{//SDL\_FPoint\ center\ =\ \{static\_cast<float>(sdlText-\/>\_surface-\/>w\ /\ 2),\ static\_cast<float>(sdlText-\/>\_surface-\/>h\ /\ 2)\};}}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{comment}{//SDL\_RenderCopyExF(\_renderer,\ sdlText-\/>\_texture,\ nullptr,\ \&position,\ sdlText-\/>\_rotation,\ \ \&center,\ SDL\_FLIP\_NONE);}}
+\DoxyCodeLine{00309\ \};}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_gaa540228a558fee3510a05e29f629220b}{SdlWindow::beginMode3}}(\mbox{\hyperlink{classgraphic_1_1_i_camera}{graphic::ICamera}}\ *camera)\ \{}
+\DoxyCodeLine{00312\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::beginMode3\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00313\ \};}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga304a33df6d466985e50c192b8fc8a25a}{SdlWindow::drawModel}}(\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic::IModel}}\ *model)\ \{}
+\DoxyCodeLine{00316\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlWindow::drawModel\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00317\ \};}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SDLWINDOW\_HPP\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

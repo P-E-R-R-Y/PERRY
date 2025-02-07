@@ -101,7 +101,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define SFMLPOLYGON_HPP_</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">//Interface</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;../../../interfaces/graphic/graphic/IPolygon.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="_i_polygon_8hpp.html">IPolygon.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//Sfml</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
@@ -149,9 +149,9 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    }</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                }</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; _triangles.size(); i++) {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;triangle: &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; _triangles[i].A.x &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; _triangles[i].A.y &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; _triangles[i].B.x &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; _triangles[i].B.y &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; _triangles[i].C.x &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; _triangles[i].C.y &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="comment">//for (int i = 0; i &lt; _triangles.size(); i++) {</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="comment">//    std::cout &lt;&lt; &quot;triangle: &quot; &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; _triangles[i].A.x &lt;&lt; &quot; &quot; &lt;&lt; _triangles[i].A.y &lt;&lt; &quot; &quot; &lt;&lt; _triangles[i].B.x &lt;&lt; &quot; &quot; &lt;&lt; _triangles[i].B.y &lt;&lt; &quot; &quot; &lt;&lt; _triangles[i].C.x &lt;&lt; &quot; &quot; &lt;&lt; _triangles[i].C.y &lt;&lt; std::endl;</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="comment">//}</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;SfmlPolygon created&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
 </div>
@@ -220,7 +220,8 @@ $(function(){ initResizable(false); });
 </div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="preprocessor">#endif </span><span class="comment">/* !SFMLPOLYGON_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclass_sfml_window_html"><div class="ttname"><a href="class_sfml_window.html">SfmlWindow</a></div><div class="ttdoc">define sfml window</div><div class="ttdef"><b>Definition</b> SfmlWindow.hpp:56</div></div>
+<div class="ttc" id="a_i_polygon_8hpp_html"><div class="ttname"><a href="_i_polygon_8hpp.html">IPolygon.hpp</a></div></div>
+<div class="ttc" id="aclass_sfml_window_html"><div class="ttname"><a href="class_sfml_window.html">SfmlWindow</a></div><div class="ttdoc">define sfml window</div><div class="ttdef"><b>Definition</b> SfmlWindow.hpp:57</div></div>
 <div class="ttc" id="aclassgraphic_1_1_i_polygon_html"><div class="ttname"><a href="classgraphic_1_1_i_polygon.html">graphic::IPolygon</a></div><div class="ttdoc">Polygon interface.</div><div class="ttdef"><b>Definition</b> IPolygon.hpp:36</div></div>
 <div class="ttc" id="agroup___s_f_m_l_html_ga17e4d3fb8d685939292bb917ec1d4a2a"><div class="ttname"><a href="group___s_f_m_l.html#ga17e4d3fb8d685939292bb917ec1d4a2a">SfmlPolygon::setColor</a></div><div class="ttdeci">void setColor(__color_t color) override</div><div class="ttdoc">Set the Color object.</div><div class="ttdef"><b>Definition</b> SfmlPolygon.hpp:129</div></div>
 <div class="ttc" id="agroup___s_f_m_l_html_ga296cf94d12cf33c0a05bf5e4348c4d78"><div class="ttname"><a href="group___s_f_m_l.html#ga296cf94d12cf33c0a05bf5e4348c4d78">SfmlPolygon::SfmlPolygon</a></div><div class="ttdeci">SfmlPolygon(std::vector&lt; __v2f_t &gt; points)</div><div class="ttdoc">Construct a new Sfml Polygon object.</div><div class="ttdef"><b>Definition</b> SfmlPolygon.hpp:35</div></div>

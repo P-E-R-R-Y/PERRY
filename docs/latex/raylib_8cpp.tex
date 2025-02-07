@@ -6,12 +6,16 @@ graphic shared library for raylib implementation
 
 
 {\ttfamily \#include "{}window/\+Ray\+Window.\+hpp"{}}\newline
+{\ttfamily \#include "{}graphic/\+Ray\+Sprite.\+hpp"{}}\newline
 {\ttfamily \#include "{}graphic/\+Ray\+Polygon.\+hpp"{}}\newline
+{\ttfamily \#include "{}graphic/\+Ray\+Text.\+hpp"{}}\newline
 {\ttfamily \#include "{}graphic/\+Ray\+Model.\+hpp"{}}\newline
 {\ttfamily \#include "{}window/\+Ray\+Camera.\+hpp"{}}\newline
 {\ttfamily \#include "{}event/\+Ray\+Keyboard.\+hpp"{}}\newline
 {\ttfamily \#include "{}event/\+Ray\+Mouse.\+hpp"{}}\newline
 {\ttfamily \#include "{}event/\+Ray\+Event.\+hpp"{}}\newline
+{\ttfamily \#include "{}audio/\+Ray\+Sound.\+hpp"{}}\newline
+{\ttfamily \#include "{}audio/\+Ray\+Music.\+hpp"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,10 +47,22 @@ void \mbox{\hyperlink{group___raylib_ga634a535acef8fb288ed32dc07ff92322}{delete\
 \begin{DoxyCompactList}\small\item\em create a sprite \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group___raylib_ga7ac2d74301041e22c583cf1a5e2a4024}{delete\+Sprite}} (\mbox{\hyperlink{classgraphic_1_1_i_sprite}{graphic\+::\+ISprite}} \texorpdfstring{$\ast$}{*}sprite)
 \begin{DoxyCompactList}\small\item\em delete a sprite \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___raylib_ga4b8858c0dc68f0f83bfa2d5dd172a62f}{create\+Text}} (std\+::string text, std\+::string font)
+\begin{DoxyCompactList}\small\item\em create a text \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga2f3d0d9baae4b6896c9c9939ad4b9600}{delete\+Text}} (\mbox{\hyperlink{classgraphic_1_1_i_text}{graphic\+::\+IText}} \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em delete a text \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___raylib_gad84e5fbd85db7969676a38ac10819452}{create\+Model}} ()
 \begin{DoxyCompactList}\small\item\em create a model \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{group___raylib_ga86f4defa19eab58adaf4ae8c058898c5}{delete\+Model}} (\mbox{\hyperlink{classgraphic_1_1_i_model}{graphic\+::\+IModel}} \texorpdfstring{$\ast$}{*}model)
 \begin{DoxyCompactList}\small\item\em delete a model \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic\+::\+ISound}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___raylib_gab016de780f35dbfb835b8d8a6ef9ef7e}{create\+Sound}} (std\+::string sound)
+\begin{DoxyCompactList}\small\item\em Audio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_gad6e56b6234a6ae86432b15f563217151}{delete\+Sound}} (\mbox{\hyperlink{classgraphic_1_1_i_sound}{graphic\+::\+ISound}} \texorpdfstring{$\ast$}{*}sound)
+\begin{DoxyCompactList}\small\item\em delete a sound \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___raylib_ga4b81701f69e25664463110015a69f7e4}{create\+Music}} (std\+::string music)
+\begin{DoxyCompactList}\small\item\em create a music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___raylib_ga37745d7eaaa2632d3ab2c4c09b0dffc0}{delete\+Music}} (\mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}} \texorpdfstring{$\ast$}{*}music)
+\begin{DoxyCompactList}\small\item\em delete a music \end{DoxyCompactList}\item 
 const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___raylib_ga1b612f3670f20ad2c7ed3d7a21acc6b5}{get\+Name}} ()
 \begin{DoxyCompactList}\small\item\em get the name of the library \end{DoxyCompactList}\item 
 const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___raylib_ga5a9e1cf52200ed570b486bf1df100e08}{get\+Type}} ()

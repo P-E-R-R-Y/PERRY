@@ -10,5 +10,6 @@ var searchData=
   ['ipolygon_2ehpp_7',['IPolygon.hpp',['../_i_polygon_8hpp.html',1,'']]],
   ['iserial_2ehpp_8',['ISerial.hpp',['../_i_serial_8hpp.html',1,'']]],
   ['isprite_2ehpp_9',['ISprite.hpp',['../_i_sprite_8hpp.html',1,'']]],
-  ['iwindow_2ehpp_10',['IWindow.hpp',['../_i_window_8hpp.html',1,'']]]
+  ['itext_2ehpp_10',['IText.hpp',['../_i_text_8hpp.html',1,'']]],
+  ['iwindow_2ehpp_11',['IWindow.hpp',['../_i_window_8hpp.html',1,'']]]
 ];

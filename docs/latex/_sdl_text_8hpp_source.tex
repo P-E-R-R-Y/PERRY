@@ -1,0 +1,119 @@
+\doxysection{Sdl\+Text.\+hpp}
+\hypertarget{_sdl_text_8hpp_source}{}\label{_sdl_text_8hpp_source}\index{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sdl/graphic/SdlText.hpp@{/Users/perrychouteau/Documents/GitHub/PERRY/project/modules/graphic/sdl/graphic/SdlText.hpp}}
+\mbox{\hyperlink{_sdl_text_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ SDLTEXT\_HPP\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#define\ SDLTEXT\_HPP\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{comment}{//standard}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ <iostream>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//Interface}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{_i_text_8hpp}{IText.hpp}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//Sdl}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}SDL.h"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}SDL\_ttf.h"{}}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }SdlText:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classgraphic_1_1_i_text}{graphic::IText}}\ \{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ SdlText(std::string\ data,\ std::string\ font)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_data\ =\ data;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_path\ =\ font;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_size\ =\ 20;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ \{0,\ 0\};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_rotation\ =\ 0;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_font\ =\ TTF\_OpenFont(font.c\_str(),\ \_size);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \_color\ =\ \{255,\ 255,\ 255,\ 255\};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \_surface\ =\ TTF\_RenderText\_Solid(\_font,\ data.c\_str(),\ \_color);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_texture\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \string~SdlText()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isReady()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\_font\ !=\ NULL;}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga1f6188f064f19f2c0da5ba14c3a827f8}{setText}}(std::string\ text)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \_data\ =\ text;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_surface\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_FreeSurface(\_surface);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \_surface\ =\ TTF\_RenderText\_Solid(\_font,\ text.c\_str(),\ \_color);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_texture\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SDL\_DestroyTexture(\_texture);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{group___s_d_l_gab7ee26d2592fdd7192e74d0f16d933f0}{getText}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_data;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga496eb61428e548aaa74c9eb346b1cb97}{setFont}}(std::string\ font)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \_path\ =\ font;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_font\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TTF\_CloseFont(\_font);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \_font\ =\ TTF\_OpenFont(font.c\_str(),\ \_size);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_gaf8aebf2d32040964bf1c75f30a55a5dc}{setFontSize}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \_size\ =\ size;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_font\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TTF\_CloseFont(\_font);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \_font\ =\ TTF\_OpenFont(\_path.c\_str(),\ \_size);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___s_d_l_gaf9e69ffe4d57fe799163d547bf310765}{getFontSize}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_size;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga438ec872daaabfd92c96791c295ad54c}{setTextColor}}(\_\_color\_t\ color)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \_color\ =\ \{\textcolor{keyword}{static\_cast<}Uint8\textcolor{keyword}{>}(color.r),\ \textcolor{keyword}{static\_cast<}Uint8\textcolor{keyword}{>}(color.g),\ \textcolor{keyword}{static\_cast<}Uint8\textcolor{keyword}{>}(color.b),\ \textcolor{keyword}{static\_cast<}Uint8\textcolor{keyword}{>}(color.a)\};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \_\_color\_t\ \mbox{\hyperlink{group___s_d_l_gaac617ed2257cf23288c90f5cca498806}{getTextColor}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_color\_t\{\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.r),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.g),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.b),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_color.a)\};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_gaac845d0116288600b9bb92bff0daeeac}{setPosition}}(\_\_v2f\_t\ position)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \_position\ =\ position;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \mbox{\hyperlink{group___s_d_l_ga9dec21a7473bc5734d2c19ffc448146a}{getPosition}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_v2f\_t\{\_position.x,\ \_position.y\};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_d_l_ga02f98ba3e32b0517e2e1813fc7d57a7b}{setRotation}}(\textcolor{keywordtype}{float}\ angle)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SdlText::setRotation\ not\ implemented"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group___s_d_l_ga2379fecdc5ec437a2946b4ef488d5d54}{getRotation}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_sdl_window}{SdlWindow}};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ std::string\ \_data;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ std::string\ \_path;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_size;\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \_\_v2f\_t\ \_position;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_rotation;}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ TTF\_Font\ *\_font;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ SDL\_Color\ \_color;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ SDL\_Surface\ *\_surface;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ SDL\_Texture\ *\_texture;}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !SDLTEXT\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

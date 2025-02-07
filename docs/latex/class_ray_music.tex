@@ -1,0 +1,274 @@
+\doxysection{Ray\+Music Class Reference}
+\hypertarget{class_ray_music}{}\label{class_ray_music}\index{RayMusic@{RayMusic}}
+Inheritance diagram for Ray\+Music\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ray_music}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ray_music_ac4c30bf8e3ea4756d15d45f741dc4472}{Ray\+Music}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Construct a new Ray Music. \end{DoxyCompactList}\item 
+\Hypertarget{class_ray_music_ae1c9e8eb7df0bd120da0cc8fea90f676}\label{class_ray_music_ae1c9e8eb7df0bd120da0cc8fea90f676} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Ray\+Music} () override
+\begin{DoxyCompactList}\small\item\em Destroy the Ray Music. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ray_music_a537704091aeb8e89c556c994e8c9b71f}{is\+Ready}} () const override
+\item 
+void \mbox{\hyperlink{class_ray_music_a6ba404bcea8c637849d770febeddfb05}{play}} () override
+\begin{DoxyCompactList}\small\item\em play the music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_music_a1239dfe28bc370948a59f0f78887e2b2}{pause}} () override
+\begin{DoxyCompactList}\small\item\em pause the music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_music_a50e8e378de7027b71d62630e1e8d17c7}{stop}} () override
+\begin{DoxyCompactList}\small\item\em stop the music and reset it to the beginning \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_music_a79324e7ea74372f81962926b9ed5c692}{update}} () override
+\begin{DoxyCompactList}\small\item\em update the music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_music_ab0835ee151b4d2995fd777263d214fb3}{set\+Volume}} (float volume) override
+\begin{DoxyCompactList}\small\item\em set the volume of the music \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_ray_music_a848a0199d8bd263e8a99503836e6c78e}{get\+Volume}} () const override
+\begin{DoxyCompactList}\small\item\em get the volume of the music or if not set the master volume \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_music_a2068ea4535312afb54c1352825fb288d}{set\+Loop}} (bool loop) override
+\begin{DoxyCompactList}\small\item\em set the music to loop or not \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ray_music_ad98bae2beec78a3e68a52259cfbc8f28}{get\+Loop}} () const override
+\begin{DoxyCompactList}\small\item\em get if the music is looping or not \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ray_music_a76e5915f73710035f4eb9a3c349eea4c}{set\+Time}} (float position) override
+\begin{DoxyCompactList}\small\item\em Set the time of the music in seconds. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_ray_music_a13dfe2995ac8d00bbe5f6a6aeb6129cb}{get\+Time}} () const override
+\begin{DoxyCompactList}\small\item\em Get the current time of the music in seconds. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_ray_music_ad928f077f18ee507d8dd31fdc97ff8c5}{get\+Length}} () const override
+\begin{DoxyCompactList}\small\item\em Get the Length of the music. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ray_music_a447c6de76649d9ca6a848abe138798fe}\label{class_ray_music_a447c6de76649d9ca6a848abe138798fe} 
+Music {\bfseries \+\_\+music}
+\item 
+\Hypertarget{class_ray_music_aa6451387a9ceabe2c31f42f162f7b8a9}\label{class_ray_music_aa6451387a9ceabe2c31f42f162f7b8a9} 
+bool {\bfseries \+\_\+loop}
+\item 
+\Hypertarget{class_ray_music_a54e61fff5bb53405c3651c6c8ab4d8d5}\label{class_ray_music_a54e61fff5bb53405c3651c6c8ab4d8d5} 
+bool {\bfseries \+\_\+pause}
+\item 
+\Hypertarget{class_ray_music_a650694289794d82d5fca64fdd711727a}\label{class_ray_music_a650694289794d82d5fca64fdd711727a} 
+float {\bfseries \+\_\+volume}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ray_music_ac4c30bf8e3ea4756d15d45f741dc4472}\index{RayMusic@{RayMusic}!RayMusic@{RayMusic}}
+\index{RayMusic@{RayMusic}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{RayMusic()}{RayMusic()}}
+{\footnotesize\ttfamily \label{class_ray_music_ac4c30bf8e3ea4756d15d45f741dc4472} 
+Ray\+Music\+::\+Ray\+Music (\begin{DoxyParamCaption}\item[{std\+::string}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Ray Music. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ray_music_ad928f077f18ee507d8dd31fdc97ff8c5}\index{RayMusic@{RayMusic}!getLength@{getLength}}
+\index{getLength@{getLength}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{getLength()}{getLength()}}
+{\footnotesize\ttfamily \label{class_ray_music_ad928f077f18ee507d8dd31fdc97ff8c5} 
+float Ray\+Music\+::get\+Length (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the Length of the music. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga1b29abcd0856f6868a0b325fa5e14e59}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_ad98bae2beec78a3e68a52259cfbc8f28}\index{RayMusic@{RayMusic}!getLoop@{getLoop}}
+\index{getLoop@{getLoop}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{getLoop()}{getLoop()}}
+{\footnotesize\ttfamily \label{class_ray_music_ad98bae2beec78a3e68a52259cfbc8f28} 
+bool Ray\+Music\+::get\+Loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get if the music is looping or not 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga2087cdcc5aabebb1bd6a63373ba765fc}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_a13dfe2995ac8d00bbe5f6a6aeb6129cb}\index{RayMusic@{RayMusic}!getTime@{getTime}}
+\index{getTime@{getTime}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily \label{class_ray_music_a13dfe2995ac8d00bbe5f6a6aeb6129cb} 
+float Ray\+Music\+::get\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the current time of the music in seconds. 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga714c4b9f7490b153c38ecf616a556856}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_a848a0199d8bd263e8a99503836e6c78e}\index{RayMusic@{RayMusic}!getVolume@{getVolume}}
+\index{getVolume@{getVolume}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{getVolume()}{getVolume()}}
+{\footnotesize\ttfamily \label{class_ray_music_a848a0199d8bd263e8a99503836e6c78e} 
+float Ray\+Music\+::get\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get the volume of the music or if not set the master volume 
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga5475b79de5f305f56ad6936852bdfdc3}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_a537704091aeb8e89c556c994e8c9b71f}\index{RayMusic@{RayMusic}!isReady@{isReady}}
+\index{isReady@{isReady}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily \label{class_ray_music_a537704091aeb8e89c556c994e8c9b71f} 
+bool Ray\+Music\+::is\+Ready (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classgraphic_1_1_i_music}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_a1239dfe28bc370948a59f0f78887e2b2}\index{RayMusic@{RayMusic}!pause@{pause}}
+\index{pause@{pause}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily \label{class_ray_music_a1239dfe28bc370948a59f0f78887e2b2} 
+void Ray\+Music\+::pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+pause the music 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_gaea2be8e2fde6f10767aafb6fefd5eb04}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_a6ba404bcea8c637849d770febeddfb05}\index{RayMusic@{RayMusic}!play@{play}}
+\index{play@{play}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily \label{class_ray_music_a6ba404bcea8c637849d770febeddfb05} 
+void Ray\+Music\+::play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+play the music 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga63a7f49c04d33b6c6d481ce63de7297e}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_a2068ea4535312afb54c1352825fb288d}\index{RayMusic@{RayMusic}!setLoop@{setLoop}}
+\index{setLoop@{setLoop}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{setLoop()}{setLoop()}}
+{\footnotesize\ttfamily \label{class_ray_music_a2068ea4535312afb54c1352825fb288d} 
+void Ray\+Music\+::set\+Loop (\begin{DoxyParamCaption}\item[{bool}]{loop}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the music to loop or not 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loop} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga7aa769b70c66143b639c792845c8d2c3}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_a76e5915f73710035f4eb9a3c349eea4c}\index{RayMusic@{RayMusic}!setTime@{setTime}}
+\index{setTime@{setTime}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily \label{class_ray_music_a76e5915f73710035f4eb9a3c349eea4c} 
+void Ray\+Music\+::set\+Time (\begin{DoxyParamCaption}\item[{float}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the time of the music in seconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_gafb1219fe65290e1edb440f61fdb7209c}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_ab0835ee151b4d2995fd777263d214fb3}\index{RayMusic@{RayMusic}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily \label{class_ray_music_ab0835ee151b4d2995fd777263d214fb3} 
+void Ray\+Music\+::set\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set the volume of the music 
+
+
+\begin{DoxyParams}{Parameters}
+{\em volume} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{group__graphic_ga7d97abf91592741dadc6b0bb4150ae8e}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_a50e8e378de7027b71d62630e1e8d17c7}\index{RayMusic@{RayMusic}!stop@{stop}}
+\index{stop@{stop}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{class_ray_music_a50e8e378de7027b71d62630e1e8d17c7} 
+void Ray\+Music\+::stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+stop the music and reset it to the beginning 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga46b96c0934d772afc61966d1f2570d20}{graphic\+::\+IMusic}}.
+
+\Hypertarget{class_ray_music_a79324e7ea74372f81962926b9ed5c692}\index{RayMusic@{RayMusic}!update@{update}}
+\index{update@{update}!RayMusic@{RayMusic}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_ray_music_a79324e7ea74372f81962926b9ed5c692} 
+void Ray\+Music\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+update the music 
+
+
+
+Implements \mbox{\hyperlink{group__graphic_ga4457ac4a4273bd466dcd66c1cfa2127b}{graphic\+::\+IMusic}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/perrychouteau/\+Documents/\+Git\+Hub/\+PERRY/project/modules/graphic/raylib/audio/\mbox{\hyperlink{_ray_music_8hpp}{Ray\+Music.\+hpp}}\end{DoxyCompactItemize}

@@ -6,19 +6,62 @@
  * @date 2025-02-06
  */
 
-#include "SDL.h"
-#include "SDL_ttf.h"
-#include <iostream>
+#include "window/SdlWindow.hpp"
 
-#include "graphic/Window.hpp"
-#include "graphic/Text.hpp"
+#include "event/SdlEvent.hpp"
+#include "event/SdlKeyboard.hpp"
+#include "event/SdlMouse.hpp"
+
+#include "graphic/SdlSprite.hpp"
+#include "graphic/SdlText.hpp"
+
+#include "audio/SdlSound.hpp"
+#include "audio/SdlMusic.hpp"
+
+// window
 
 extern "C" graphic::IWindow *createWindow() {
-    return new SdlWindow();
+    return new SdlWindow(800, 600, "SDL2 Text Example");
 }
 
 extern "C" void deleteWindow(graphic::IWindow *window) {
     delete window;
+}
+
+// event
+
+extern "C" graphic::IEvent *createEvent() {
+    return new SdlEvent();
+}
+
+extern "C" void deleteEvent(graphic::IEvent *event) {
+    delete event;
+}
+
+extern "C" graphic::IKeyboard *createKeyboard(graphic::IEvent *event) {
+    return new SdlKeyboard(event);
+}
+
+extern "C" void deleteKeyboard(graphic::IKeyboard *keyboard) {
+    delete keyboard;
+}
+
+extern "C" graphic::IMouse *createMouse(graphic::IEvent *event) {
+    return new SdlMouse(event);
+}
+
+extern "C" void deleteMouse(graphic::IMouse *mouse) {
+    delete mouse;
+}
+
+// graphic
+
+extern "C" graphic::ISprite *createSprite(std::string path) {
+    return new SdlSprite(path);
+}
+
+extern "C" void deleteSprite(graphic::ISprite *sprite) {
+    delete sprite;
 }
 
 extern "C" graphic::IText *createText(std::string data, std::string font) {
@@ -29,81 +72,20 @@ extern "C" void deleteText(graphic::IText *text) {
     delete text;
 }
 
-extern "C" int function() {
-    // Initialize SDL and SDL_ttf
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cerr << "SDL could not initialize! Error: " << SDL_GetError() << std::endl;
-        return -1;
-    }
-    if (TTF_Init() == -1) {
-        std::cerr << "SDL_ttf could not initialize! Error: " << TTF_GetError() << std::endl;
-        return -1;
-    }
+// audio
 
-    // Create window
-    SDL_Window* window = SDL_CreateWindow("SDL2 Text Example", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
-    if (!window) {
-        std::cerr << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
-        return -1;
-    }
+extern "C" graphic::ISound *createSound(std::string sound) {
+    return new SdlSound(sound);
+}
 
-    // Create renderer
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (!renderer) {
-        std::cerr << "Renderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
-        return -1;
-    }
+extern "C" void deleteSound(graphic::ISound *sound) {
+    delete sound;
+}
 
-    // Load font
-    TTF_Font* font = TTF_OpenFont("assets/noto.ttf", 24);
-    if (!font) {
-        std::cerr << "Failed to load font! TTF_Error: " << TTF_GetError() << std::endl;
-        return -1;
-    }
+extern "C" graphic::IMusic *createMusic(std::string music) {
+    return new SdlMusic(music);
+}
 
-    // Create text surface and texture
-    SDL_Color textColor = {255, 255, 255}; // White color
-    SDL_Surface* textSurface = TTF_RenderText_Solid(font, "Hello, SDL2!", textColor);
-    if (!textSurface) {
-        std::cerr << "Unable to render text surface! TTF_Error: " << TTF_GetError() << std::endl;
-        return -1;
-    }
-    SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-    SDL_FreeSurface(textSurface); // Free surface after creating texture
-
-    // Get texture size
-    int textWidth, textHeight;
-    SDL_QueryTexture(textTexture, nullptr, nullptr, &textWidth, &textHeight);
-    SDL_Rect textRect = { (WIDTH - textWidth) / 2, (HEIGHT - textHeight) / 2, textWidth, textHeight };
-
-    // Main loop
-    bool running = true;
-    SDL_Event e;
-    while (running) {
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT) {
-                running = false;
-            }
-        }
-
-        // Clear screen
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        SDL_RenderClear(renderer);
-
-        // Render text
-        SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
-
-        // Present the renderer
-        SDL_RenderPresent(renderer);
-    }
-
-    // Cleanup
-    SDL_DestroyTexture(textTexture);
-    TTF_CloseFont(font);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    TTF_Quit();
-    SDL_Quit();
-
-    return 0;
+extern "C" void deleteMusic(graphic::IMusic *music) {
+    delete music;
 }

@@ -43,11 +43,11 @@ foreach(folder IN LISTS CMAKE_SOURCE_INTERFACE)
 endforeach()
 #libraries
 foreach(folder IN LISTS CMAKE_SOURCE_STATIC)
-  add_subdirectory(libraries/${folder})
+  add_subdirectory(static/${folder})
 endforeach()
 #modules
 foreach(folder IN LISTS CMAKE_SOURCE_SHARED)
-  add_subdirectory(modules/${folder})
+  add_subdirectory(shared/${folder})
 endforeach()
 
 ## ----------- Executable -----------
@@ -91,7 +91,7 @@ add_custom_target(copy_shared ALL
 
 foreach(folder bin IN ZIP_LISTS CMAKE_SOURCE_SHARED CMAKE_BIN_SHARED)
   message(${folder} " : " ${bin})
-  if (EXISTS ${CMAKE_SOURCE_DIR}/modules/${folder})
+  if (EXISTS ${CMAKE_SOURCE_DIR}/shared/${folder})
     add_custom_command(TARGET copy_shared
       COMMAND ${CMAKE_COMMAND} -E echo "Copying" ${bin} "to shared directory..."
       COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${bin}> ${SHARED_DIR})

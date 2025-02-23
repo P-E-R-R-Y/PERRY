@@ -8,18 +8,14 @@ set(SOURCE_FILES
   main.cpp
 )
 
-add_subdirectory(graphic)
+add_subdirectory(sdlgraphic)
 add_subdirectory(shared)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
   igraphic
-  sharedsdl
-)
-
-target_include_directories(${PROJECT_NAME} PUBLIC
-  ./
+  sdlgraphic
 )
 
 ## ----------- Copy Assets -----------

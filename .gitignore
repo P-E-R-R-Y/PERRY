@@ -1,6 +1,5 @@
-build/
-
 .vscode/
-a.out
+build/
 .DS_Store
+a.out
 a

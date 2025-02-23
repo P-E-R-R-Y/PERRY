@@ -1,5 +1,5 @@
 /**
- * @file Text.hpp
+ * @file SdlText.hpp
  * @author @Perry-Chouteau (perry.chouteau@outlook.com)
  * @brief 
  * @version 0.1
@@ -14,6 +14,8 @@
     #include <SDL_ttf.h>
 
     #include "IText.hpp"
+
+    #include <iostream>
 
 class SdlText: public graphic::IText {
 
